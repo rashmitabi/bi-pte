@@ -10,6 +10,8 @@ php artisan migrate:rollback --path=/database/migrations/relations/2021_05_29_08
 
 
 
+
+
 php artisan migrate --path=/database/migrations/2021_05_21_000000_create_roles.php
 
 php artisan migrate --path=/database/migrations/2021_05_21_133551_create_user.php

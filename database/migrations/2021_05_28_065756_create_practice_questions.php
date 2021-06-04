@@ -17,8 +17,8 @@ class CreatePracticeQuestions extends Migration
             $table->bigInteger('id');
             $table->integer('user_id')->comment('Foreign key of users table');
             $table->tinyInteger('section_id')->comment('Foreign key of sections table');
-            $table->tinyInteger('design_id')->comment('Foreign key of question_design table');
-            $table->tinyInteger('question_type_id')->comment('Foreign key of question_type table');
+            $table->tinyInteger('design_id')->comment('Foreign key of question_designs table');
+            $table->tinyInteger('question_type_id')->comment('Foreign key of question_types table');
             $table->string('name',500);
             $table->string('short_desc',1000);
             $table->string('desc',2000);

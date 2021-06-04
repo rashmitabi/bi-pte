@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCertificate extends Migration
+class CreateCertificates extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateCertificate extends Migration
      */
     public function up()
     {
-        Schema::create('certificate', function (Blueprint $table) {
+        Schema::create('certificates', function (Blueprint $table) {
             $table->bigInteger('id');
             $table->integer('student_user_id')->comment('Foreign key of users table');
-            $table->integer('test_id')->comment('Foreign key of generat_test  table');
+            $table->integer('test_id')->comment('Foreign key of generate_tests  table');
             $table->integer('generate_by_user_id')->comment('Foreign key of users table');
             $table->tinyInteger('score');
             $table->tinyInteger('speaking');
@@ -33,8 +33,8 @@ class CreateCertificate extends Migration
             $table->timestamp('updated_at')->nullable();
         });
 
-        DB::statement("ALTER TABLE certificate CHANGE `updated_at` `updated_at` TIMESTAMP NULL ON UPDATE CURRENT_TIMESTAMP");
-        DB::statement("ALTER TABLE certificate MODIFY  id INT AUTO_INCREMENT  PRIMARY KEY");
+        DB::statement("ALTER TABLE certificates CHANGE `updated_at` `updated_at` TIMESTAMP NULL ON UPDATE CURRENT_TIMESTAMP");
+        DB::statement("ALTER TABLE certificates MODIFY  id INT AUTO_INCREMENT  PRIMARY KEY");
     }
 
     /**
@@ -44,6 +44,6 @@ class CreateCertificate extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('certificate');
+        Schema::dropIfExists('certificates');
     }
 }

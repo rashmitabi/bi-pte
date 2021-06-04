@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDeviceLog extends Migration
+class CreateDeviceLogs extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateDeviceLog extends Migration
      */
     public function up()
     {
-        Schema::create('device_log', function (Blueprint $table) {
+        Schema::create('device_logs', function (Blueprint $table) {
             $table->integer('id');
             $table->integer('user_id')->comment('Foreign key of users table');
             $table->string('browser_name',255);
@@ -25,8 +25,8 @@ class CreateDeviceLog extends Migration
             $table->timestamp('updated_at')->nullable();
         });
 
-        DB::statement("ALTER TABLE device_log CHANGE `updated_at` `updated_at` TIMESTAMP NULL ON UPDATE CURRENT_TIMESTAMP");
-        DB::statement("ALTER TABLE device_log MODIFY  id INT AUTO_INCREMENT  PRIMARY KEY");
+        DB::statement("ALTER TABLE device_logs CHANGE `updated_at` `updated_at` TIMESTAMP NULL ON UPDATE CURRENT_TIMESTAMP");
+        DB::statement("ALTER TABLE device_logs MODIFY  id INT AUTO_INCREMENT  PRIMARY KEY");
     }
 
     /**
@@ -36,6 +36,6 @@ class CreateDeviceLog extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('device_log');
+        Schema::dropIfExists('device_logs');
     }
 }

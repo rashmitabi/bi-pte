@@ -15,7 +15,7 @@ class CreateQuestionData extends Migration
     {
         Schema::create('question_data', function (Blueprint $table) {
             $table->bigInteger('id');
-            $table->bigInteger('question_id')->comment('Foreign key of question table');
+            $table->bigInteger('question_id')->comment('Foreign key of questions table');
             $table->string('data_type',255)->comment('Option for dropdown,Audio,summery text,list for drag and drop,');
             $table->string('data_value',3000);
         });

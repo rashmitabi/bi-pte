@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateLogActivity extends Migration
+class CreateLogActivities extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateLogActivity extends Migration
      */
     public function up()
     { 
-        Schema::create('log_activity', function (Blueprint $table) {
+        Schema::create('log_activities', function (Blueprint $table) {
             $table->integer('id');
             $table->tinyInteger('role_id')->comment('Foreign key of roles table');
             $table->integer('user_id')->comment('Foreign key of users table');
@@ -26,8 +26,8 @@ class CreateLogActivity extends Migration
             $table->timestamp('updated_at')->nullable();
         });
 
-        DB::statement("ALTER TABLE log_activity CHANGE `updated_at` `updated_at` TIMESTAMP NULL ON UPDATE CURRENT_TIMESTAMP");
-        DB::statement("ALTER TABLE log_activity MODIFY  id INT AUTO_INCREMENT  PRIMARY KEY");
+        DB::statement("ALTER TABLE log_activities CHANGE `updated_at` `updated_at` TIMESTAMP NULL ON UPDATE CURRENT_TIMESTAMP");
+        DB::statement("ALTER TABLE log_activities MODIFY  id INT AUTO_INCREMENT  PRIMARY KEY");
     }
 
     /**
@@ -37,6 +37,6 @@ class CreateLogActivity extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('log_activity');
+        Schema::dropIfExists('log_activities');
     }
 }

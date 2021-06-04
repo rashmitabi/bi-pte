@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateStudentTest extends Migration
+class CreateStudentTests extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,15 @@ class CreateStudentTest extends Migration
      */
     public function up()
     {
-        Schema::create('student_test', function (Blueprint $table) {
+        Schema::create('student_tests', function (Blueprint $table) {
             $table->integer('id');
             $table->integer('user_id')->comment('Foreign key of users table');
-            $table->integer('test_id')->comment('Foreign key of generat_test  table');
+            $table->integer('test_id')->comment('Foreign key of generate_tests  table');
             $table->enum('status',['A','I','C'])->comment("A=assigned, I=Inprogress, C=completed");
             $table->dateTime('start_date');
             $table->dateTime('end_date');
         });
-        DB::statement("ALTER TABLE student_test MODIFY  id INT AUTO_INCREMENT  PRIMARY KEY");
+        DB::statement("ALTER TABLE student_tests MODIFY  id INT AUTO_INCREMENT  PRIMARY KEY");
     }
 
     /**
@@ -31,6 +31,6 @@ class CreateStudentTest extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('student_test');
+        Schema::dropIfExists('student_tests');
     }
 }

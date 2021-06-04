@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateInstitue extends Migration
+class CreateInstitues extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateInstitue extends Migration
      */
     public function up()
     {
-        Schema::create('institue', function (Blueprint $table) {
+        Schema::create('institues', function (Blueprint $table) {
             $table->integer('id');
             $table->integer('user_id')->comment('Foreign key of users table');
             $table->string('sub_domain',255);
@@ -34,8 +34,8 @@ class CreateInstitue extends Migration
             $table->timestamp('updated_at')->nullable();
         });
         
-        DB::statement("ALTER TABLE institue CHANGE `updated_at` `updated_at` TIMESTAMP NULL ON UPDATE CURRENT_TIMESTAMP");
-        DB::statement("ALTER TABLE institue MODIFY  id INT AUTO_INCREMENT  PRIMARY KEY");
+        DB::statement("ALTER TABLE institues CHANGE `updated_at` `updated_at` TIMESTAMP NULL ON UPDATE CURRENT_TIMESTAMP");
+        DB::statement("ALTER TABLE institues MODIFY  id INT AUTO_INCREMENT  PRIMARY KEY");
     }
 
     /**
@@ -45,6 +45,6 @@ class CreateInstitue extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('institue');
+        Schema::dropIfExists('institues');
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateQuestionType extends Migration
+class CreateQuestionTypes extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateQuestionType extends Migration
      */
     public function up()
     {
-        Schema::create('question_type', function (Blueprint $table) {
+        Schema::create('question_types', function (Blueprint $table) {
             $table->tinyInteger('id');
             $table->tinyInteger('section_id')->comment('Foreign key of sections table');
             $table->string('question_title',255)->comment('Read Aloud,Repeat Sentence etc...');
@@ -24,7 +24,7 @@ class CreateQuestionType extends Migration
             
         });
 
-        DB::statement("ALTER TABLE question_type MODIFY  id tinyint(4) AUTO_INCREMENT  PRIMARY KEY");
+        DB::statement("ALTER TABLE question_types MODIFY  id tinyint(4) AUTO_INCREMENT  PRIMARY KEY");
     }
 
     /**
@@ -34,6 +34,6 @@ class CreateQuestionType extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('question_type');
+        Schema::dropIfExists('question_types');
     }
 }

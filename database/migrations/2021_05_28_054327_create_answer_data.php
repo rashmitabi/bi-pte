@@ -15,7 +15,7 @@ class CreateAnswerData extends Migration
     {
         Schema::create('answer_data', function (Blueprint $table) {
             $table->bigInteger('id');
-            $table->bigInteger('question_id')->comment('Foreign key of question table');
+            $table->bigInteger('question_id')->comment('Foreign key of questions table');
             $table->string('answer_type',255)->comment('correct Option,keywords,list of correct Order');
             $table->string('answer_value',3000);
             $table->string('sample_answer',1000);

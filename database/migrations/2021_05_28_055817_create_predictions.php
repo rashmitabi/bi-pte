@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTestResult extends Migration
+class CreatePredictions extends Migration
 {
     /**
      * Run the migrations.
@@ -13,20 +13,21 @@ class CreateTestResult extends Migration
      */
     public function up()
     {
-        Schema::create('test_result', function (Blueprint $table) {
+        Schema::create('predictions', function (Blueprint $table) {
             $table->bigInteger('id');
-            $table->integer('test_id')->comment('Foreign key of generat test  table');
             $table->integer('user_id')->comment('Foreign key of generat users  table');
             $table->tinyInteger('section_id')->comment('Foreign key of sections table');
-            $table->tinyInteger('question_type_id')->comment('Foreign key of question_type table');
-            $table->tinyInteger('get_score');
-            $table->bigInteger('question_id')->comment('Foreign key of question table');
+            $table->tinyInteger('question_type_id')->comment('Foreign key of question_types table');
+            $table->string('title',255);
+            $table->string('description',1000);
+            $table->string('link',255);
+            $table->enum('status',['E','D'])->comment("E=enable , D=disable");
             $table->dateTime('created_at')->useCurrent();
             $table->timestamp('updated_at')->nullable();
         });
 
-        DB::statement("ALTER TABLE test_result CHANGE `updated_at` `updated_at` TIMESTAMP NULL ON UPDATE CURRENT_TIMESTAMP");
-        DB::statement("ALTER TABLE test_result MODIFY  id bigint(20) AUTO_INCREMENT  PRIMARY KEY");
+        DB::statement("ALTER TABLE predictions CHANGE `updated_at` `updated_at` TIMESTAMP NULL ON UPDATE CURRENT_TIMESTAMP");
+        DB::statement("ALTER TABLE predictions MODIFY  id INT AUTO_INCREMENT  PRIMARY KEY");
     }
 
     /**
@@ -36,6 +37,6 @@ class CreateTestResult extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('test_result');
+        Schema::dropIfExists('predictions');
     }
 }

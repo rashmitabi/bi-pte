@@ -15,7 +15,7 @@ class CreatePracticeQuestionData extends Migration
     {
         Schema::create('practice_question_data', function (Blueprint $table) {
             $table->bigInteger('id');
-            $table->integer('practice_question_id')->comment('Foreign key of practice question table');
+            $table->integer('practice_question_id')->comment('Foreign key of practice questions table');
             $table->string('data_type',255)->comment('Option for dropdown,Audio,summery text,list for drag and drop,');
             $table->string('data_value',3000);
         });

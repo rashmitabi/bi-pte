@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSubscription extends Migration
+class CreateSubscriptions extends Migration
 {
     /**
      * Run the migrations.
@@ -25,7 +25,7 @@ class CreateSubscription extends Migration
         //     $table->timestamp('updated_at')->nullable();
         // });
 
-        Schema::create('subscription', function (Blueprint $table) {
+        Schema::create('subscriptions', function (Blueprint $table) {
             $table->tinyInteger('id');
             $table->tinyInteger('role_id')->comment('Foreign key of roles table');
             $table->string('title',255);
@@ -46,8 +46,8 @@ class CreateSubscription extends Migration
             $table->timestamp('updated_at')->nullable();
         });
 
-        DB::statement("ALTER TABLE subscription CHANGE `updated_at` `updated_at` TIMESTAMP NULL ON UPDATE CURRENT_TIMESTAMP");
-        DB::statement("ALTER TABLE subscription MODIFY  id tinyint(4) AUTO_INCREMENT  PRIMARY KEY");
+        DB::statement("ALTER TABLE subscriptions CHANGE `updated_at` `updated_at` TIMESTAMP NULL ON UPDATE CURRENT_TIMESTAMP");
+        DB::statement("ALTER TABLE subscriptions MODIFY  id tinyint(4) AUTO_INCREMENT  PRIMARY KEY");
     }
 
     /**
@@ -57,6 +57,6 @@ class CreateSubscription extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('subscription');
+        Schema::dropIfExists('subscriptions');
     }
 }

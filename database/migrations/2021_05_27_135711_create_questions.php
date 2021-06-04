@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateQuestion extends Migration
+class CreateQuestions extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateQuestion extends Migration
      */
     public function up()
     {
-        Schema::create('question', function (Blueprint $table) {
+        Schema::create('questions', function (Blueprint $table) {
             $table->bigInteger('id');
             $table->tinyInteger('section_id')->comment('Foreign key of sections table');
-            $table->integer('test_id')->comment('Foreign key of generat test  table');
-            $table->tinyInteger('design_id')->comment('Foreign key of generat question_design  table');
-            $table->tinyInteger('question_type_id')->comment('Foreign key of question_type table');
+            $table->integer('test_id')->comment('Foreign key of generate_tests  table');
+            $table->tinyInteger('design_id')->comment('Foreign key of generat question_designs  table');
+            $table->tinyInteger('question_type_id')->comment('Foreign key of question_types table');
             $table->string('name',500);
             $table->string('short_desc',1000);
             $table->string('desc',5000);
@@ -32,8 +32,8 @@ class CreateQuestion extends Migration
             $table->timestamp('updated_at')->nullable();
         });
 
-        DB::statement("ALTER TABLE question CHANGE `updated_at` `updated_at` TIMESTAMP NULL ON UPDATE CURRENT_TIMESTAMP");
-        DB::statement("ALTER TABLE question MODIFY  id bigint(20)  AUTO_INCREMENT  PRIMARY KEY");
+        DB::statement("ALTER TABLE questions CHANGE `updated_at` `updated_at` TIMESTAMP NULL ON UPDATE CURRENT_TIMESTAMP");
+        DB::statement("ALTER TABLE questions MODIFY  id bigint(20)  AUTO_INCREMENT  PRIMARY KEY");
     }
 
     /**

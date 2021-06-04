@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTestSubject extends Migration
+class CreateTestSubjects extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateTestSubject extends Migration
      */
     public function up()
     {
-        Schema::create('test_subject', function (Blueprint $table) {
+        Schema::create('test_subjects', function (Blueprint $table) {
             $table->tinyInteger('id');
             $table->string('subject_name',255);
             $table->enum('status',['E','D'])->comment("E=enable , D=disable");
@@ -21,8 +21,8 @@ class CreateTestSubject extends Migration
             $table->timestamp('updated_at')->nullable();
         });
 
-        DB::statement("ALTER TABLE test_subject CHANGE `updated_at` `updated_at` TIMESTAMP NULL ON UPDATE CURRENT_TIMESTAMP");
-        DB::statement("ALTER TABLE test_subject MODIFY  id tinyint(4) AUTO_INCREMENT  PRIMARY KEY");
+        DB::statement("ALTER TABLE test_subjects CHANGE `updated_at` `updated_at` TIMESTAMP NULL ON UPDATE CURRENT_TIMESTAMP");
+        DB::statement("ALTER TABLE test_subjects MODIFY  id tinyint(4) AUTO_INCREMENT  PRIMARY KEY");
     }
 
     /**
@@ -32,6 +32,6 @@ class CreateTestSubject extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('test_subject');
+        Schema::dropIfExists('test_subjects');
     }
 }

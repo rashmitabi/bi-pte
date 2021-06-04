@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateGeneratTest extends Migration
+class CreateGenerateTests extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateGeneratTest extends Migration
      */
     public function up()
     {
-        Schema::create('generat_test', function (Blueprint $table) {
+        Schema::create('generate_tests', function (Blueprint $table) {
             $table->integer('id');
             $table->string('test_name',255);
-            $table->tinyInteger('subject_id')->comment('Foreign key of test subject table');
+            $table->tinyInteger('subject_id')->comment('Foreign key of test subjects table');
             $table->integer('generated_by_user_id')->comment('Foreign key of users table');
             $table->tinyInteger('generated_by_role_id')->comment('Foreign key of roles table');
             $table->enum('type',['M','P'])->comment('M=Mock test,P=Practices test');
@@ -27,8 +27,8 @@ class CreateGeneratTest extends Migration
             $table->timestamp('updated_at')->nullable();
         });
 
-        DB::statement("ALTER TABLE generat_test CHANGE `updated_at` `updated_at` TIMESTAMP NULL ON UPDATE CURRENT_TIMESTAMP");
-        DB::statement("ALTER TABLE generat_test MODIFY  id INT AUTO_INCREMENT  PRIMARY KEY");
+        DB::statement("ALTER TABLE generate_tests CHANGE `updated_at` `updated_at` TIMESTAMP NULL ON UPDATE CURRENT_TIMESTAMP");
+        DB::statement("ALTER TABLE generate_tests MODIFY  id INT AUTO_INCREMENT  PRIMARY KEY");
     }
 
     /**
@@ -38,6 +38,6 @@ class CreateGeneratTest extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('generat_test');
+        Schema::dropIfExists('generate_tests');
     }
 }
