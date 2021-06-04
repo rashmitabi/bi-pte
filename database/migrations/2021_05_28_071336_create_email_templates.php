@@ -15,7 +15,7 @@ class CreateEmailTemplates extends Migration
     {
         Schema::create('email_templates', function (Blueprint $table) {
             $table->integer('id');
-            $table->integer('user_id')->comment('Foreign key of users_info table');
+            $table->integer('user_id')->comment('Foreign key of users table');
             
             $table->string('name',255);
             $table->string('subject',1000);

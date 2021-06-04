@@ -15,7 +15,7 @@ class CreateStudentTest extends Migration
     {
         Schema::create('student_test', function (Blueprint $table) {
             $table->integer('id');
-            $table->integer('user_id')->comment('Foreign key of users_info table');
+            $table->integer('user_id')->comment('Foreign key of users table');
             $table->integer('test_id')->comment('Foreign key of generat_test  table');
             $table->enum('status',['A','I','C'])->comment("A=assigned, I=Inprogress, C=completed");
             $table->dateTime('start_date');

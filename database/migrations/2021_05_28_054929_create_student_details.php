@@ -15,7 +15,7 @@ class CreateStudentDetails extends Migration
     {
         Schema::create('student_details', function (Blueprint $table) {
             $table->integer('id');
-            $table->integer('user_id')->comment('Foreign key of users_info table');
+            $table->integer('user_id')->comment('Foreign key of users table');
             $table->string('address',255);
             $table->string('user_interests',255);
             $table->enum('show_admin_videos',['Y','N'])->comment('Y=yes,N=no');

@@ -15,7 +15,7 @@ class CreatePracticeQuestions extends Migration
     {
         Schema::create('practice_questions', function (Blueprint $table) {
             $table->bigInteger('id');
-            $table->integer('user_id')->comment('Foreign key of users_info table');
+            $table->integer('user_id')->comment('Foreign key of users table');
             $table->tinyInteger('section_id')->comment('Foreign key of sections table');
             $table->tinyInteger('design_id')->comment('Foreign key of question_design table');
             $table->tinyInteger('question_type_id')->comment('Foreign key of question_type table');

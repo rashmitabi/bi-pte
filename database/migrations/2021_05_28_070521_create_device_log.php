@@ -15,7 +15,7 @@ class CreateDeviceLog extends Migration
     {
         Schema::create('device_log', function (Blueprint $table) {
             $table->integer('id');
-            $table->integer('user_id')->comment('Foreign key of users_info table');
+            $table->integer('user_id')->comment('Foreign key of users table');
             $table->string('browser_name',255);
             $table->string('device_name',255);
             $table->string('ip_address',20);

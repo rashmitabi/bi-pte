@@ -15,7 +15,7 @@ class CreateUsersSubscription extends Migration
     {
         Schema::create('users_subscription', function (Blueprint $table) {
             $table->bigInteger('id');
-            $table->integer('user_id')->comment('Foreign key of users_info table');
+            $table->integer('user_id')->comment('Foreign key of users table');
             $table->tinyInteger('subscription_id')->comment('Foreign key of subscription table');
             $table->date('start_date');
             $table->date('end_date');

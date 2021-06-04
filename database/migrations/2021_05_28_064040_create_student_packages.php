@@ -15,7 +15,7 @@ class CreateStudentPackages extends Migration
     {
         Schema::create('student_packages', function (Blueprint $table) {
             $table->bigInteger('id');
-            $table->integer('user_id')->comment('Foreign key of users_info table');
+            $table->integer('user_id')->comment('Foreign key of users table');
             $table->tinyInteger('speaking');
             $table->tinyInteger('listening');
             $table->tinyInteger('reading');

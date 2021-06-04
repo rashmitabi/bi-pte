@@ -17,7 +17,7 @@ class CreateGeneratTest extends Migration
             $table->integer('id');
             $table->string('test_name',255);
             $table->tinyInteger('subject_id')->comment('Foreign key of test subject table');
-            $table->integer('generated_by_user_id')->comment('Foreign key of users_info table');
+            $table->integer('generated_by_user_id')->comment('Foreign key of users table');
             $table->tinyInteger('generated_by_role_id')->comment('Foreign key of roles table');
             $table->enum('type',['M','P'])->comment('M=Mock test,P=Practices test');
             $table->enum('free_test',['Y','N'])->comment("Y=yes, N=no (default = no) - only superadmin can manage this field");

@@ -15,7 +15,7 @@ class CreateVideo extends Migration
     {
         Schema::create('video', function (Blueprint $table) {
             $table->bigInteger('id');
-            $table->integer('user_id')->comment('Foreign key of generat users_info  table');
+            $table->integer('user_id')->comment('Foreign key of generat users  table');
             $table->tinyInteger('section_id')->comment('Foreign key of sections table');
             $table->tinyInteger('question_type_id')->comment('Foreign key of question_type table');
             $table->string('title',255);

@@ -15,7 +15,7 @@ class CreateUsersPayments extends Migration
     {
         Schema::create('users_payments', function (Blueprint $table) {
             $table->bigInteger('id');
-            $table->integer('user_id')->comment('Foreign key of users_info table');
+            $table->integer('user_id')->comment('Foreign key of users table');
             $table->float('amount',8, 2);
             $table->string('payment_method',255);
             $table->string('trancation_id',255);

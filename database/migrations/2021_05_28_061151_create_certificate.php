@@ -15,9 +15,9 @@ class CreateCertificate extends Migration
     {
         Schema::create('certificate', function (Blueprint $table) {
             $table->bigInteger('id');
-            $table->integer('student_user_id')->comment('Foreign key of users_info table');
+            $table->integer('student_user_id')->comment('Foreign key of users table');
             $table->integer('test_id')->comment('Foreign key of generat_test  table');
-            $table->integer('generate_by_user_id')->comment('Foreign key of users_info table');
+            $table->integer('generate_by_user_id')->comment('Foreign key of users table');
             $table->tinyInteger('score');
             $table->tinyInteger('speaking');
             $table->tinyInteger('listening');

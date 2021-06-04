@@ -16,7 +16,7 @@ class CreateLogActivity extends Migration
         Schema::create('log_activity', function (Blueprint $table) {
             $table->integer('id');
             $table->tinyInteger('role_id')->comment('Foreign key of roles table');
-            $table->integer('user_id')->comment('Foreign key of users_info table');
+            $table->integer('user_id')->comment('Foreign key of users table');
             $table->string('subject',255);
             $table->string('message',1000);
             $table->string('ip_address',20);

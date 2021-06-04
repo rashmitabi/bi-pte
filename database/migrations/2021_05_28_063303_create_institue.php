@@ -15,7 +15,7 @@ class CreateInstitue extends Migration
     {
         Schema::create('institue', function (Blueprint $table) {
             $table->integer('id');
-            $table->integer('user_id')->comment('Foreign key of users_info table');
+            $table->integer('user_id')->comment('Foreign key of users table');
             $table->string('sub_domain',255);
             $table->string('domain',255);
             $table->tinyInteger('students_allowed');
