@@ -1,9 +1,11 @@
+######## run migrations ########
 php artisan migrate
 
-php artisan make:migration create_relation_with_table --path=/database/migrations/relations
-
+######## relation folder in run migration ########
 php artisan migrate --path=/database/migrations/relations/2021_05_29_084236_create_relation_with_table.php
 
+######## relation folder in run migration rollback ########
+php artisan migrate:rollback --path=/database/migrations/relations/2021_05_29_084236_create_relation_with_table.php
 
 
 
