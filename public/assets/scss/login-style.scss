@@ -1,0 +1,78 @@
+.login-wrap {
+     height: 100vh;
+	.login-img-wrap {
+          height: 100%;
+          display: flex;
+          align-items: center;
+		.login-img {
+			width: 100%;
+		}
+	}
+	.login-right-wrap {
+		background-color: #F4F7FC;
+		height: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		.heading-title {
+			font-size: 16px;
+			text-align: center;
+               margin-bottom: 40px;
+		}
+          .form-group{
+               position: relative;
+               margin-bottom: 30px;
+               .form-icon{
+                    position: absolute;
+                    top: 14px;
+                    left: 20px;
+               }
+               .form-control{
+                    padding-left: 50px;
+                    border: 1px solid #000;
+                    background-color: transparent;
+                    height: 44px;
+                    &:focus{
+                         outline: none;
+                         border-color: #9d1346;
+                         box-shadow: 0 0px 6px 0 rgba(0, 0, 0, 0.30);
+                    }
+               }
+               .lock-icon{
+                    position: absolute;
+                    right: 0;
+                    margin-right: 14px;
+                    top: 16px;
+               }
+               .pass-label{
+                    color: #092950;
+                    font-size: 16px;
+                    font-weight: 500;
+               }
+          }
+          .submit-btn{
+               .btn-submit{
+                    width: 100%;
+                    color: #fff;
+                    background: #092950;
+                    margin-top: 14px;
+                    box-shadow: 0 0px 6px 0 rgba(0, 0, 0, 0.30);
+                    text-transform: uppercase;
+    font-size: 16px;
+    font-weight: 600;
+               }
+          }
+	}
+}
+
+// .form-control::placeholder {
+//      color: red;
+//      opacity: 1; /* Firefox */
+// }
+// .form-control:-ms-input-placeholder { /* Internet Explorer 10-11 */
+//     color: red;
+   
+// }
+// .form-control::-ms-input-placeholder { /* Microsoft Edge */
+//     color: red;
+//    }
