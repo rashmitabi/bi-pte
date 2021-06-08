@@ -20,6 +20,9 @@ class DatabaseSeeder extends Seeder
 
         // \App\Models\GenerateTest::truncate();
         // \DB::table('roles')->delete();
+        \DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+		\DB::table('roles')->truncate();
+		\DB::statement('SET FOREIGN_KEY_CHECKS=1;');
     	$role = [
     		[
 	            'role_name' => 'Super Admin',
@@ -35,6 +38,9 @@ class DatabaseSeeder extends Seeder
         \DB::table('roles')->insert($role);
 
         // \DB::table('users')->delete();
+        \DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+		\DB::table('users')->truncate();
+		\DB::statement('SET FOREIGN_KEY_CHECKS=1;');
         $users = [
         	[
 	            'role_id' => 1,
@@ -43,7 +49,7 @@ class DatabaseSeeder extends Seeder
 	            'last_name' => 'admin',
 	            'name' => 'superadmin',
 	            'email' => 'superadmin@gmail.com',
-	            'password' => '123',
+	            'password' => '$2y$10$783PDgbQeC7dPYtjtYWoPeRmSRNs.Xlbnvq2JO0qPD4pAn1QPa8GW',
 	            'mobile_no' => '',
 	            'date_of_birth' => null,
 	            'profile_image' => '',
@@ -62,7 +68,7 @@ class DatabaseSeeder extends Seeder
 	            'last_name' => 'admin',
 	            'name' => 'admin',
 	            'email' => 'admin@gmail.com',
-	            'password' => '123',
+	            'password' => '$2y$10$783PDgbQeC7dPYtjtYWoPeRmSRNs.Xlbnvq2JO0qPD4pAn1QPa8GW',
 	            'mobile_no' => '',
 	            'date_of_birth' => null,
 	            'profile_image' => '',
@@ -81,7 +87,7 @@ class DatabaseSeeder extends Seeder
 	            'last_name' => 'student',
 	            'name' => 'student',
 	            'email' => 'student@gmail.com',
-	            'password' => '123',
+	            'password' => '$2y$10$783PDgbQeC7dPYtjtYWoPeRmSRNs.Xlbnvq2JO0qPD4pAn1QPa8GW',
 	            'mobile_no' => '',
 	            'date_of_birth' => null,
 	            'profile_image' => '',
@@ -96,5 +102,7 @@ class DatabaseSeeder extends Seeder
         	]
         ];
         \DB::table('users')->insert($users);
+
+        
     }
 }
