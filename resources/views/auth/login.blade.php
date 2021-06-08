@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<!-- <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -66,6 +66,43 @@
                         </div>
                     </form>
                 </div>
+            </div>
+        </div>
+    </div>
+</div> -->
+<div class="login-wrap">
+    <div class="row mx-auto h-100">
+        <div class="col-12 col-md-6 col-xl-6 col-sm-6">
+            <div class="login-img-wrap">
+                <img src="{{ asset('assets/images/login-img.png') }}" class="login-img">
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-xl-6 col-sm-6">
+            <div class="login-right-wrap">
+                <div class="col-12 col-md-12 col-xl-8 col-sm-8">
+                    <h3 class="heading-title"> Welcome Back! Please Sign In To Continue </h3>
+                    <div class="loginform-wrap">
+                        <div class="form-group">
+                            <i class="fas fa-user form-icon"></i>
+                            <input type="text" class="form-control" placeholder="Enter User Name"> 
+                        </div>
+                        <div class="form-group mb-3">
+                            
+                            <i class="fas fa-lock form-icon"></i>
+                            <input type="text" class="form-control" placeholder="Enter  Password"> 
+                            <i class="far fa-eye lock-icon"></i>
+                        </div>
+                        <div class="form-group mb-0 text-right">
+                            <a href="#" class="pass-label"> Forgot Your Password? </a>
+                        </div>
+                        <div class="submit-btn">
+                            <Button type="button" class="btn btn-submit"> Sign IN  </Button>
+
+                        </div>
+
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
