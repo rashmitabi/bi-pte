@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<!-- <div class="container">
+<div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -69,8 +69,8 @@
             </div>
         </div>
     </div>
-</div> -->
-<div class="login-wrap">
+</div>
+<!-- <div class="login-wrap">
     <div class="row mx-auto h-100">
         <div class="col-12 col-md-6 col-xl-6 col-sm-6">
             <div class="login-img-wrap">
@@ -106,5 +106,5 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 @endsection

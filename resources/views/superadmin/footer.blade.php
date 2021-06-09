@@ -1,3 +1,4 @@
-<html>
-<center>Footer part</center>
-</html>
+</body>
+         
+         
+         </html>
