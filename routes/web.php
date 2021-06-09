@@ -12,12 +12,23 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
+    //return view('welcome');
 });
-
+Route::get('/login', function () {
+    return view('auth.login');
+});
+Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('superadmin/dashboard', [App\Http\Controllers\SuperAdmin\DashboardController::class, 'index'])->name('dashboard');
+
+Route::group(['middleware' => ['auth']], function () {
+	Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+	Route::get('superadmin/dashboard', [App\Http\Controllers\SuperAdmin\DashboardController::class, 'index'])->name('dashboard');
+
+	Route::get('branchadmin/dashboard', [App\Http\Controllers\BranchAdmin\DashboardController::class, 'index'])->name('dashboard');
+
+    Route::resource('superadmin/subscription', App\Http\Controllers\SuperAdmin\SubscriptionsController::class);
+});

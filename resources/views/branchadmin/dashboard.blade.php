@@ -1,4 +1,4 @@
-@extends('layouts.appSuperAdmin')
+@extends('layouts.appBranchAdmin')
 @section('content')
    <!-- Page Content  -->
    <div id="content">

@@ -14,7 +14,7 @@ class SubscriptionsController extends Controller
      */
     public function index()
     {
-        //
+        return view('superadmin/subscription/index');
     }
 
     /**
