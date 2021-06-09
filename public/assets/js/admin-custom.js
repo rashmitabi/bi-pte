@@ -2,13 +2,9 @@ $(document).ready(function () {
     $('#sidebarCollapse').on('click', function () {
         $('#sidebar').toggleClass('active');
     });
+
+    $('#sidebarCollapse').on('click', function () {
+      $('#content').toggleClass("full_content");
+  });
 });
 
-$(document).ready(function(){
-    $("#sidebar").click(function(){
-      $(".content").addClass();
-    });
-    $("#sidebar").click(function(){
-      $(".content").removeClass();
-    });
-  });
