@@ -10,38 +10,15 @@ php artisan migrate:rollback --path=/database/migrations/relations/2021_05_29_08
 ########  data seeder ########
 php artisan db:seed
 
+######## create resource controller ########
+php artisan make:controller /SuperAdmin/UsersController --resource 
 
 
+######## create resource controller and model ########
+php artisan make:controller /SuperAdmin/UsersController --resource --model=Users
 
-
-php artisan migrate --path=/database/migrations/2021_05_21_000000_create_roles.php
-
-php artisan migrate --path=/database/migrations/2021_05_21_133551_create_user.php
-
-php artisan migrate --path=/database/migrations/2021_05_22_095205_create_role_has_permissions.php
-
-php artisan migrate --path=/database/migrations/2021_05_22_095307_create_log_activity.php
-
-php artisan migrate --path=/database/migrations/2021_05_22_095359_create_sections.php
-
-php artisan migrate --path=/database/migrations/2021_05_27_123115_create_modules.php
-
-php artisan migrate --path=/database/migrations/2021_05_27_123523_create_question_type.php
-
-php artisan migrate --path=/database/migrations/2021_05_27_124120_create_section_question_score.php
-
-php artisan migrate --path=/database/migrations/2021_05_27_124558_create_generat_test.php
-
-php artisan migrate --path=/database/migrations/2021_05_27_130506_create_question_design.php
-
-php artisan migrate --path=/database/migrations/2021_05_27_130735_create_test_result.php
-
-php artisan migrate --path=/database/migrations/2021_05_27_131728_create_test_subject.php
-
-php artisan migrate --path=/database/migrations/2021_05_27_135506_create_question_data.php
-
-php artisan migrate --path=/database/migrations/2021_05_27_135711_create_question.php
-
+######## create controller ########
+php artisan make:controller Users 
 
 
 

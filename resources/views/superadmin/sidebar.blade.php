@@ -1,5 +1,5 @@
   <!-- Sidebar  -->
-
+<div>
   <nav id="sidebar">
       <ul class="list-unstyled components">
          <li class="active">
@@ -159,3 +159,4 @@
          </li>
       </ul>
    </nav>
+</div>
