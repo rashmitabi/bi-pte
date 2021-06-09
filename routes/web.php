@@ -23,12 +23,30 @@ Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 Auth::routes();
 
 
-Route::group(['middleware' => ['auth']], function () {
-	Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::group(['middleware' => ['auth', 'verified']], function () { 
 
+
+	//start Super admin routes
 	Route::get('superadmin/dashboard', [App\Http\Controllers\SuperAdmin\DashboardController::class, 'index'])->name('dashboard');
+	//end Super admin routes
 
+
+	//start branch admin routes
 	Route::get('branchadmin/dashboard', [App\Http\Controllers\BranchAdmin\DashboardController::class, 'index'])->name('dashboard');
 
+	//end branch admin routes
+
+
+	//start student admin routes
+	Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+	//end student admin routes
+
+
+
+
     Route::resource('superadmin/subscription', App\Http\Controllers\SuperAdmin\SubscriptionsController::class);
+
+
+    Route::resource('superadmin/users/index', App\Http\Controllers\SuperAdmin\ManageUserController::class);
+
 });
