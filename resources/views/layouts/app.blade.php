@@ -16,12 +16,12 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="{{ asset('assets/css/font.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/fontawesome/css/all.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/fontawesome/css/fontawesome.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/scss/login-style.css') }}" rel="stylesheet">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/fontawesome/css/all.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/fontawesome/css/fontawesome.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/scss/login-style.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
