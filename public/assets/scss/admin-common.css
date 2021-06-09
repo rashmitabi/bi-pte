@@ -49,9 +49,84 @@ body {
           align-items: center;
 }
 
+.navbar .navbar-collapse .right-navbar-wrap .notificaiton-main {
+  position: relative;
+}
+
 .navbar .navbar-collapse .right-navbar-wrap .notificaiton-main svg {
   color: #000000;
   font-size: 20px;
+  cursor: pointer;
+}
+
+.navbar .navbar-collapse .right-navbar-wrap .notificaiton-main .budge-notificaiton {
+  background-color: #000000;
+  color: #fff;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  font-size: 11px;
+  position: absolute;
+  top: -8px;
+  left: 8px;
+}
+
+.navbar .navbar-collapse .right-navbar-wrap .notificaiton-main .dropdown-toggle-wrap {
+  display: none;
+  background-color: #fff;
+  -webkit-box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.22);
+          box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.22);
+  min-width: 350px;
+  position: absolute;
+  top: 54px;
+  border-radius: 4px;
+  right: -200px;
+}
+
+.navbar .navbar-collapse .right-navbar-wrap .notificaiton-main .dropdown-toggle-wrap .heading {
+  padding: 10px 16px;
+  display: block;
+  border-bottom: 1px solid #ccc;
+  font-weight: 500;
+}
+
+.navbar .navbar-collapse .right-navbar-wrap .notificaiton-main .dropdown-toggle-wrap .notifications-main-wrap {
+  padding: 0px 14px;
+}
+
+.navbar .navbar-collapse .right-navbar-wrap .notificaiton-main .dropdown-toggle-wrap .notifications-main-wrap ul {
+  margin: 0px;
+}
+
+.navbar .navbar-collapse .right-navbar-wrap .notificaiton-main .dropdown-toggle-wrap .notifications-main-wrap ul li {
+  font-size: 12px;
+  font-weight: 500;
+  border-bottom: 1px solid #ccc;
+  padding: 8px 0px;
+  list-style: none;
+  position: relative;
+}
+
+.navbar .navbar-collapse .right-navbar-wrap .notificaiton-main .dropdown-toggle-wrap .notifications-main-wrap ul li::after {
+  content: '';
+  height: 8px;
+  width: 8px;
+  background-color: #092950;
+  display: block;
+  border-radius: 50%;
+  position: absolute;
+  top: 14px;
+  left: -20px;
+}
+
+.navbar .navbar-collapse .right-navbar-wrap .notificaiton-main .dropdown-toggle-wrap .notifications-main-wrap ul li span {
+  display: block;
+  font-weight: 300;
+  color: #bababa;
+}
+
+.navbar .navbar-collapse .right-navbar-wrap .notificaiton-main .dropdown-toggle-wrap .notifications-main-wrap ul li:last-child {
+  border-bottom: none;
 }
 
 .navbar .navbar-collapse .right-navbar-wrap .profile-user-wrap {
@@ -203,6 +278,10 @@ body {
 }
 
 #sidebar.active ul li a::before {
+  display: none;
+}
+
+#sidebar.active .collapse {
   display: none;
 }
 
