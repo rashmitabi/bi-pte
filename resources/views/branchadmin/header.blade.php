@@ -17,7 +17,7 @@
                <i class="fas fa-bell"></i>
             </div>
             <div class="profile-user-wrap">
-                     <a href="#">{{ Auth::user()->first_name }} {{ Auth::user()->last_name }} <i class="fas fa-chevron-down"></i> <img src="{{ asset('assets/images/Userprofile.png') }}" class="">
+                     <a href="#">{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}<i class="fas fa-chevron-down"></i> <img src="{{ asset('assets/images/Userprofile.png') }}" class="">
                    </a>
                    
             </div>
