@@ -33,6 +33,7 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
 
 	//start branch admin routes
 	Route::get('branchadmin/dashboard', [App\Http\Controllers\BranchAdmin\DashboardController::class, 'index'])->name('dashboard');
+
 	//end branch admin routes
 
 
@@ -40,5 +41,9 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
 	Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 	//end student admin routes
 
+
+
+
+    Route::resource('superadmin/subscription', App\Http\Controllers\SuperAdmin\SubscriptionsController::class);
 
 });

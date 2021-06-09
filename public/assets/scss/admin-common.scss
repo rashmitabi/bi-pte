@@ -37,9 +37,72 @@ body {
                display: flex;
                align-items: center;
                .notificaiton-main {
+                    position: relative;
                     svg {
                          color: $black;
                          font-size: $fs-20;
+                         cursor: pointer;
+                        
+                    }
+                    .budge-notificaiton{
+                         background-color: $black;
+                         color: $white-color;
+                         border-radius: 50%;
+                         width: 16px;
+                         height: 16px;
+                         font-size: 11px;
+                         position: absolute;
+                         top: -8px;
+                         left: 8px;
+                    }
+                    .dropdown-toggle-wrap{
+                         display: none;
+                         background-color: $white-color;
+                         box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.22);
+                         min-width: 350px;
+                         position: absolute;
+                         top: 54px;
+                         border-radius: 4px;
+                         right: -200px;
+                         .heading{
+                              padding: 10px 16px;
+                              display: block;
+                              border-bottom: 1px solid #ccc;
+                              font-weight: $fw-500;
+                         }
+                         .notifications-main-wrap{
+                              padding: 0px 14px;
+                              ul{
+                                   margin: 0px;
+                                   li{
+                                        font-size: $fs-12;
+                                        font-weight: $fw-500;
+                                        border-bottom: 1px solid #ccc;
+                                        padding: 8px 0px;
+                                        list-style: none;
+                                        position: relative;
+                                        &::after{
+                                             content: '';
+                                             height: 8px;
+                                             width: 8px;
+                                             background-color: $primary-color;
+                                             display: block;
+                                             border-radius: 50%;
+                                             position: absolute;
+                                             top: 14px;
+                                             left: -20px;
+                                        }
+                                        span{
+                                             display: block;
+                                             font-weight: $fw-300;
+                                             color: $lightgrey-color;
+                                        }
+                                        &:last-child{
+                                             border-bottom: none;
+                                        }
+                                   }
+                              }
+                         }
                     }
                }
                .profile-user-wrap {
@@ -167,6 +230,10 @@ body {
 #sidebar.active ul li a::before{
      display: none;
 }
+#sidebar.active .collapse {
+     display: none;
+}
+
 .dropdown-toggle {
      &::after {
           display: block;
