@@ -5,16 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class GenerateTest extends Model
+class Modules extends Model
 {
-    use HasFactory; 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
+    use HasFactory;
+    protected $table = 'modules';
     protected $fillable = [
-    	'role_name',
+    	'module_name',
+    	'module_slug',
     	'status'
     ];
 }

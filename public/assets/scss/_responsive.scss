@@ -1,0 +1,109 @@
+// all Mobiles
+@media (max-width: 575.98px){
+     body {
+          #content {
+               margin-left: 0px;
+               margin-top: 40px;
+           }
+           .full_content {
+               margin-left: 0px !important;
+           }
+           #sidebar{
+               margin-top: 48px;
+               padding-bottom: 40px;
+           }
+           #sidebar.active {
+               width: 0px;
+               padding: 0px;
+           }
+          .navbar {
+               z-index: 999;
+               .container-fluid{
+                    justify-content: unset;
+               }
+               .btn-toggle {
+                    font-size: $fs-22;
+               }
+               .main-content-heading {
+                    h3 {
+                         margin-left: 0px;
+                         font-size: $fs-22;
+                    }
+               }
+               .dropdown-toggle-wrap {
+                    right: auto;
+                }
+          }
+     }
+}
+// Medium Device
+@media (min-width: 375px) and (max-width: 425px){
+     body{
+          .navbar {
+               .main-content-heading {
+                    h3 {
+                         margin-left: 0px;
+                         font-size: $fs-18;
+                    }
+               }
+          }
+          .dropdown-toggle-wrap {
+               min-width: 300px;
+           }
+     }
+}
+
+// Small Device
+@media (min-width: 320px) and (max-width: 374px){
+     body{
+          .navbar {
+               .main-content-heading {
+                    h3 {
+                         margin-left: 0px;
+                         font-size: $fs-16;
+                         padding: 10px 8px;
+                    }
+               }
+               .btn-toggle {
+                    font-size: $fs-20;
+                    padding: 10px 4px;
+               }
+               
+          }
+          .responsive-toggle{
+               padding: 2px 8px;
+          }
+          .dropdown-toggle-wrap {
+               min-width: 250px;
+           }
+     }
+	
+}
+
+/* tablets devices (tablets, 768px and up)  */
+@media (min-width: 768px) and (max-width: 991.98px) {
+     body {
+          #content {
+               margin-left: 0px;
+               margin-top: 48px;
+           }
+           .full_content {
+               margin-left: 0px !important;
+           }
+           #sidebar{
+               margin-top: 48px;
+           }
+           #sidebar.active {
+               width: 0px;
+               padding: 0px;
+           }
+          .navbar {
+               z-index: 999;
+               
+          }
+          .dropdown-toggle-wrap {
+               right: auto;
+           }
+     }
+	
+}

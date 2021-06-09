@@ -14,7 +14,14 @@
 	    <script src="{{ asset('js/app.js') }}" defer></script>
 	    <script src="{{ asset('assets/fontawesome/js/all.min.js') }}" defer></script>
 	    <script src="{{ asset('assets/js/jquery.min.js') }}" defer></script>
+
+	    <script src="{{ asset('assets/js/jquery.dataTables.min.js') }}" defer></script>
+	    <script src="{{ asset('assets/js/dataTables.bootstrap4.min.js') }}" defer></script>
+	    <script src="{{ asset('assets/js/dataTables.responsive.min.js') }}" defer></script>
+	    <script src="{{ asset('assets/js/responsive.bootstrap4.min.js') }}" defer></script>
+
 	    <script src="{{ asset('assets/js/admin-custom.js') }}" defer></script>
+
 
 	    <!-- Fonts -->
 	    <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -26,6 +33,10 @@
 	    <link href="{{ asset('assets/fontawesome/css/fontawesome.min.css') }}" rel="stylesheet">
 	    <link href="{{ asset('assets/scss/admin-common.css') }}" rel="stylesheet">
 	    <link href="{{ asset('assets/scss/admin-style.css') }}" rel="stylesheet">
+
+	    <link href="{{ asset('assets/css/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
+	    <link href="{{ asset('assets/css/responsive.bootstrap4.min.css') }}" rel="stylesheet">
+
 	    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
 	      rel="stylesheet">
 	    @yield('css-hooks')
