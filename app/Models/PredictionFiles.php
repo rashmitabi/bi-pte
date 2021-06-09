@@ -8,12 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class PredictionFiles extends Model
 {
     use HasFactory;
-    protected $table = 'email_templates';
+    protected $table = 'predictions';
     protected $fillable = [
         'user_id',
-        'name',
-        'subject',
-        'body',
+        'section_id',
+        'question_type_id',
+        'title',
+        'description',
+        'link',
         'status'
     ];
 }
