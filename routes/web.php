@@ -31,4 +31,6 @@ Route::group(['middleware' => ['auth']], function () {
 	Route::get('branchadmin/dashboard', [App\Http\Controllers\BranchAdmin\DashboardController::class, 'index'])->name('dashboard');
 
     Route::resource('superadmin/subscription', App\Http\Controllers\SuperAdmin\SubscriptionsController::class);
+
+    Route::resource('superadmin/users/index', App\Http\Controllers\SuperAdmin\ManageUserController::class);
 });
