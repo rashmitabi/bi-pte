@@ -6,7 +6,7 @@
          <i class="fas fa-align-center"></i>
       </button>
       <div class="main-content-heading">
-           <h3> Australian Academy </h3> 
+         <h3> Australian Academy </h3>
 
       </div>
       <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -16,12 +16,30 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
          <div class="right-navbar-wrap">
             <div class="notificaiton-main">
-               <i class="fas fa-bell"></i>
+               <div class="budge-notificaiton-wrap">
+                  <i class="fas fa-bell"> </i> <span class="badge budge-notificaiton">2</span>
+               </div>
+
+               <div class="dropdown-toggle-wrap">
+                  <span class="heading"> Notifications </span>
+                  <div class="notifications-main-wrap">
+                     <ul>
+                        <li> A new institute with name "ABC" has been
+                           registered. Please check for approval. <span>Now </span>
+                        </li>
+                        <li> Institute "XYZ" has renewed his subscription.<span> 4h ago </span>
+                        </li>
+                        <li>Institute "ABC" subscription has been expired.<span> 6h ago </span>
+                        </li>
+                     </ul>
+                  </div>
+
+               </div>
             </div>
             <div class="profile-user-wrap">
-                     <a href="#">   Marten Alex <i class="fas fa-chevron-down"></i> <img src="{{ asset('assets/images/Userprofile.png') }}" class="">
-                   </a>
-                   
+               <a href="#"> Marten Alex <i class="fas fa-chevron-down"></i> <img src="{{ asset('assets/images/Userprofile.png') }}" class="">
+               </a>
+
             </div>
          </div>
       </div>
@@ -33,7 +51,7 @@
    <nav id="sidebar">
       <ul class="list-unstyled components">
          <li class="active">
-            <a href="#dashboardsubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">  <img src="{{ asset('assets/images/icons/dashboard.svg') }}" class=""> <span> Dashboard </span> </a>
+            <a href="#dashboardsubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"> <img src="{{ asset('assets/images/icons/dashboard.svg') }}" class=""> <span> Dashboard </span> </a>
             <ul class="collapse list-unstyled" id="dashboardsubmenu">
                <li>
                   <a href="#">Home 1</a>
@@ -46,9 +64,9 @@
                </li>
             </ul>
          </li>
-         
+
          <li>
-            <a href="#Usersubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"> <img src="{{ asset('assets/images/icons/dashboard.svg') }}" class=""> <span>  Manage User </span></a>
+            <a href="#Usersubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"> <img src="{{ asset('assets/images/icons/dashboard.svg') }}" class=""> <span> Manage User </span></a>
             <ul class="collapse list-unstyled" id="Usersubmenu">
                <li>
                   <a href="#">Page 1</a>
@@ -77,7 +95,7 @@
             </ul>
          </li>
          <li>
-            <a href="#"> <img src="{{ asset('assets/images/icons/dashboard.svg') }}" class=""><span>  Manage Test Result </span></a>
+            <a href="#"> <img src="{{ asset('assets/images/icons/dashboard.svg') }}" class=""><span> Manage Test Result </span></a>
          </li>
          <li>
             <a href="#Subjetsubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"> <img src="{{ asset('assets/images/icons/dashboard.svg') }}" class=""> <span> Manage Subjet </span> </a>
@@ -93,7 +111,7 @@
                </li>
             </ul>
          </li>
-         
+
          <li>
             <a href="#Questionssubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"> <img src="{{ asset('assets/images/icons/dashboard.svg') }}" class=""> <span> Practice Questions </span></a>
             <ul class="collapse list-unstyled" id="Questionssubmenu">
@@ -192,11 +210,7 @@
 
    <!-- Page Content  -->
    <div id="content">
-
-
-
       <h2>Main Content</h2>
-      
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
    </div>
 </div>
