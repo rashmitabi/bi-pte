@@ -1,3 +1,4 @@
+@charset "UTF-8";
 body {
   background-color: #f4f7fc;
 }
@@ -391,7 +392,79 @@ body {
 /* White BG */
 .white-bg {
   background-color: #fff;
-  -webkit-box-shadow: 5px 5px 10px #000000;
-          box-shadow: 5px 5px 10px #000000;
+  -webkit-box-shadow: 0px 2px 6px #00000016;
+          box-shadow: 0px 2px 6px #00000016;
+}
+
+.remove-main-margin {
+  margin: 0 15px;
+}
+
+/* Datatable */
+.dataTables_wrapper .top-label {
+  color: #333D5F;
+  font-size: 16px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.dataTables_wrapper .top-search {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 35px;
+}
+
+.dataTables_wrapper .top-search label, .dataTables_wrapper .top-search input, .dataTables_wrapper .top-search .dataTables_filter {
+  width: 100% !important;
+  margin: 0;
+}
+
+.dataTables_wrapper .top-search input {
+  padding-left: 30px;
+  background-color: #F4F7FC;
+  color: #818E94;
+  font-weight: 500;
+  height: 35px;
+  position: relative;
+  margin: 0 !important;
+}
+
+.dataTables_wrapper .top-search input::before {
+  content: "«";
+  position: absolute;
+}
+
+.dataTables_wrapper .top-search input:focus {
+  outline: none;
+}
+
+.dataTables_wrapper .top-pagination {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.dataTables_wrapper .top-pagination select {
+  background-color: #F4F7FC;
+  border-radius: 4px;
+  border: unset;
+  height: 35px;
+  color: #0C213A;
+  font-weight: 500;
+  padding: 0px 8px;
 }
 /*# sourceMappingURL=admin-common.css.map */

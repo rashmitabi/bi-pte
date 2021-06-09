@@ -350,5 +350,58 @@ body {
 
 .white-bg{
      background-color: #fff;
-     box-shadow:  5px 5px 10px #000000,
+     box-shadow:  0px 2px 6px #00000016;
+}
+
+.remove-main-margin{
+     margin: 0 15px;
+}
+
+/* Datatable */
+.dataTables_wrapper{
+     .top-label{
+          color: #333D5F;
+          font-size: 16px;
+          align-items: center;
+          display: flex;
+     }
+     .top-search{
+          align-items: center;
+          display: flex;
+          height: 35px;
+          label, input, .dataTables_filter{
+               width: 100% !important;
+               margin: 0;
+          }
+          input{
+               padding-left: 30px;
+               background-color: #F4F7FC;
+               color: #818E94;
+               font-weight: 500;
+               height: 35px;
+               position: relative;
+               margin: 0 !important;
+               &::before{
+                    content: "«";
+                    position: absolute;
+               }
+               &:focus{
+                    outline: none;
+               }
+          }
+     }
+     .top-pagination{
+          align-items: center;
+          display: flex;
+          justify-content: flex-end;
+          select{
+               background-color: #F4F7FC;
+               border-radius: 4px;
+               border: unset;
+               height: 35px;
+               color: #0C213A;
+               font-weight: 500;
+               padding: 0px 8px;
+          }
+     }
 }
