@@ -93,8 +93,7 @@ body {
 }
 
 #sidebar {
-  min-width: 250px;
-  max-width: 250px;
+  width: 260px;
   background: #9D1346;
   color: #fff;
   -webkit-transition: all 0.3s;
@@ -104,6 +103,7 @@ body {
   height: 100vh;
   margin-top: 82px;
   overflow: auto;
+  transition: all 0.3s;
 }
 
 #sidebar .sidebar-header {
@@ -177,7 +177,32 @@ body {
 }
 
 #sidebar.active {
-  margin-left: -250px;
+  width: 75px;
+}
+
+#sidebar.active ul li a span {
+  display: none;
+}
+
+#sidebar.active ul li a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#sidebar.active ul li a img {
+  margin-right: 0px;
+}
+
+#sidebar.active ul li a img {
+  margin-right: 0px;
+}
+
+#sidebar.active ul li a::before {
+  display: none;
 }
 
 .dropdown-toggle::after {

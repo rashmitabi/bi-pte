@@ -73,8 +73,7 @@ body {
      align-items: stretch;
 }
 #sidebar {
-     min-width: 250px;
-     max-width: 250px;
+     width: 260px;
      background: $secondary-color;
      color: $white-color;
      transition: all 0.3s;
@@ -83,6 +82,7 @@ body {
      height: 100vh;
      margin-top: 82px;
      overflow: auto;
+     transition: all 0.3s;
      .sidebar-header {
           padding: 20px;
           background: #6d7fcc;
@@ -149,7 +149,23 @@ body {
       }
 }
 #sidebar.active {
-     margin-left: -250px;
+     width: 75px;
+}
+#sidebar.active ul li a span{
+     display: none;
+}
+#sidebar.active ul li a{
+     display: flex;
+     justify-content: center;
+}
+#sidebar.active ul li a img{
+    margin-right: 0px;
+}
+#sidebar.active ul li a img{
+     margin-right: 0px;
+ }
+#sidebar.active ul li a::before{
+     display: none;
 }
 .dropdown-toggle {
      &::after {
