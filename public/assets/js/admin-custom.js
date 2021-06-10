@@ -53,8 +53,30 @@ $(document).ready(function() {
         "<'row'<'col-sm-12't>>" +
         "<'row'<'col-sm-12 col-md-12'p>>",
     });
-    $("#device_wrapper div.toolbar").html('Manage Device');
+    $("#device_wrapper div.toolbar").html('Manage Device Log');  
     
+    $('#email').DataTable({
+        language: {
+            search: '',
+            searchPlaceholder: "Search by template  name, email subject, created date, status",
+            "sLengthMenu": '<select>'+
+                '<option value="10">10 Per Page</option>'+
+                '<option value="20">20 Per Page</option>'+
+                '<option value="30">30 Per Page</option>'+
+                '<option value="40">40 Per Page</option>'+
+                '<option value="50">50 Per Page</option>'+
+                '<option value="-1">All</option>'+
+                '</select>',
+            paginate: {
+                next: '<i class="fas fa-chevron-right"></i>', // or '→'
+                previous: '<i class="fas fa-chevron-left"></i>' // or '←' 
+            }
+        },
+        "dom": "<'row'<'col-sm-12 col-md-3 top-label'<'toolbar'>><'col-sm-12 col-md-6 top-search'f><'col-sm-12 col-md-3 top-pagination'l>>" +
+        "<'row'<'col-sm-12't>>" +
+        "<'row'<'col-sm-12 col-md-12'p>>",
+    });
+    $("#email_wrapper div.toolbar").html('Email Template');  
 } );
 
 // $(document).ready(function(){

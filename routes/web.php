@@ -24,33 +24,31 @@ Auth::routes();
 
 
 Route::group(['middleware' => ['auth', 'verified','superadmin']], function () { //start Super admin routes
-	Route::get('superadmin/dashboard', [App\Http\Controllers\SuperAdmin\DashboardController::class, 'index'])->name('dashboard');
-	//end Super admin routes
+    Route::get('superadmin/dashboard', [App\Http\Controllers\SuperAdmin\DashboardController::class, 'index'])->name('dashboard');
+    //end Super admin routes
 
 });
 
 Route::group(['middleware' => ['auth', 'verified','branchadmin']], function () {
-	//start branch admin routes
-	Route::get('branchadmin/dashboard', [App\Http\Controllers\BranchAdmin\DashboardController::class, 'index'])->name('dashboard');
+    //start branch admin routes
+    Route::get('branchadmin/dashboard', [App\Http\Controllers\BranchAdmin\DashboardController::class, 'index'])->name('dashboard');
 
-	//end branch admin routes
+    //end branch admin routes
 
 });
 
 Route::group(['middleware' => ['auth', 'verified','student']], function () {
-	//start student admin routes
-	Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-	//end student admin routes
+    //start student admin routes
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    //end student admin routes
 });
 
 
     Route::resource('superadmin/subscription', App\Http\Controllers\SuperAdmin\SubscriptionsController::class);
 
-
     Route::resource('superadmin/users', App\Http\Controllers\SuperAdmin\ManageUserController::class);
-
-    Route::resource('superadmin/users/index', App\Http\Controllers\SuperAdmin\ManageUserController::class);
 
     Route::resource('superadmin/device', App\Http\Controllers\SuperAdmin\DeviceController::class);
 
+    Route::resource('superadmin/email', App\Http\Controllers\SuperAdmin\EmailTemplatesController::class);
 

@@ -14,7 +14,7 @@ class EmailTemplatesController extends Controller
      */
     public function index()
     {
-        //
+        return view('superadmin/email/index');
     }
 
     /**
@@ -24,7 +24,7 @@ class EmailTemplatesController extends Controller
      */
     public function create()
     {
-        //
+        return view('superadmin/email/addemail');
     }
 
     /**
