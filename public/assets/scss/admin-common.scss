@@ -315,11 +315,11 @@ body {
  ----------------------------------------------------- */
 
 #content {
-     width: 100%;
+     width: calc(100% - 19%);
      padding: 20px;
      min-height: 100vh;
      transition: all 0.3s;
-     margin-left: 250px;
+     margin-left: 19%;
      margin-top: 80px;
 }
 .full_content{
@@ -408,19 +408,20 @@ body {
 }
 
 
-/* White BG */
 
-.white-bg{
-     background-color: #fff;
-<<<<<<< HEAD
-     box-shadow:  5px 5px 10px #000000,
-}
 
 /*users*/
 
 .user-form{
      .form-group{
           margin-bottom: 25px;
+          .lock-icon{
+               position: absolute;
+               right: 30px;
+               top: 11px;
+               font-size: $fs-16;
+               color:  $primary-color;   
+          }
           .col-form-label{
             font-size: $fs-16;
             color: $black;
@@ -431,22 +432,23 @@ body {
          }
          .form-control{
             border: 1px solid $black;
+             
          }
          .form-control:focus{
-            box-shadow: none;
-         }
+               box-shadow: none;
+          }
          .custom-select:focus{
             box-shadow: none;
          }
          .btn-radio{
             margin-top: 7px;
           }
+          .custom-file-label{
+               border-color: $black;
+          }
           .custom-file-label::after{
                color: #fff !important;
                background-color: $primary-color;
-          }
-          .custom-file-label{
-               border-color: $black;
           }
           .custom-file-input:focus ~ .custom-file-label{
                border-color: $black;
@@ -457,10 +459,57 @@ body {
                     float: right!important;
                     background-color: $primary-color;
                     color: $white-color;
-                    border-color: $primary-color
+                    border-color: $primary-color;
+                    .save-icon{
+                      margin-right: 13px;
+                    }
                }
                :focus{
                     box-shadow: none;
+               }
+          }
+          .toggle-switch{
+               input[type=checkbox]{
+                    height: 0;
+                    width: 0;
+                    visibility: hidden;
+               }
+               
+               label {
+                    cursor: pointer;
+                    text-indent: -9999px;
+                    width: 65px;
+                    height: 26px;
+                    background: grey;
+                    display: block;
+                    border-radius: 100px;
+                    position: relative;
+                    margin-top: -15px;
+               }
+               
+               label:after {
+                    content: '';
+                    position: absolute;
+                    top: 3px;
+                    left: 2px;
+                    width: 20px;
+                    height: 20px;
+                    background: #fff;
+                    border-radius: 90px;
+                    transition: 0.7s;
+               }
+               
+               input:checked + label {
+                    background: $primary-color;
+               }
+               
+               input:checked + label:after {
+                    left: calc(100% - 2px);
+                    transform: translateX(-100%);
+               }
+               
+               label:active:after {
+                    width: 130px;
                }
           }
      }
@@ -478,7 +527,7 @@ body {
      float: left;
      -webkit-user-select: none;
      user-select: none;
- }
+   }
  
  .btn-radio:not(:first-child) {
      margin-left: 20px;
@@ -544,7 +593,11 @@ body {
  }
  
  // Radio button end
-=======
+
+/* White BG */
+
+.white-bg{
+     background-color: #fff;
      box-shadow:  0px 2px 6px #00000016;
 }
 
@@ -554,6 +607,12 @@ body {
 
 /* Datatable */
 .dataTables_wrapper{
+     padding: 20px;
+     .row{
+          &:first-child{
+               margin-bottom: 15px;
+          }
+     }
      .top-label{
           color: #333D5F;
           font-size: 16px;
@@ -563,7 +622,7 @@ body {
      .top-search{
           align-items: center;
           display: flex;
-          height: 35px;
+          // height: 35px;
           label, input, .dataTables_filter{
                width: 100% !important;
                margin: 0;
@@ -589,6 +648,9 @@ body {
           align-items: center;
           display: flex;
           justify-content: flex-end;
+          label{
+               margin: 0;
+          }
           select{
                background-color: #F4F7FC;
                border-radius: 4px;
@@ -599,5 +661,86 @@ body {
                padding: 0px 8px;
           }
      }
+     table{
+          margin: 0 !important;
+          border: unset;
+          thead{
+               tr{
+                    th{
+                         width: auto !important;
+                         font-size: 12px;
+                         white-space: normal !important;
+                         background-color: #9D1346;
+                         color: #fff;
+                         border: unset;
+                    }
+               }
+          }
+          tbody{
+               .odd{
+                    background-color: #F4F7FC;
+               }
+               td{
+                    border: unset;
+                    font-size: 12px;
+                    color: #818E94;
+                    .actions-btns{
+                         padding: 0;
+                         margin: 0;
+                         list-style: none;
+                         display: flex;
+                         .action{
+                              background-color: #092950;
+                              border-radius: 4px;
+                              height: 30px;
+                              width: 30px;
+                              margin: 0px 5px;
+                              display: flex;
+                              align-items: center;
+                              justify-content: center;
+                              a{
+                                   svg{
+                                        path{
+                                             fill: #fff;
+                                        }
+                                   }
+                                   img{
+                                        height: 15px;
+                                        width: 15px;
+                                   }
+                              }
+                         }
+                         .shield{
+                              &.green{
+                                   background-color: #09502A;
+                              }
+                              &.red{
+                                   background-color: #D0021B;
+                              }
+                         }
+                    }
+                    &.dtr-control{
+                         font-size: 0.9rem !important;
+                    }
+               }
+          }
+     }
+     .dataTables_paginate{
+          .pagination{
+               li{
+                    &.previous , &.next{
+                         a{
+                              background-color: #092950;
+                              color: #fff;
+                         }
+                    }
+                    &.active{
+                         a{
+                              background-color: #9D1346;
+                              border-color: #9D1346;
+                         }
+                    }
+               }
+          }
+     }
 }
->>>>>>> 7994101a89cd8b319fcfb920ac03cbb9afdd4595
