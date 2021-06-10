@@ -41,12 +41,9 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
 	Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 	//end student admin routes
 
-
-
-
     Route::resource('superadmin/subscription', App\Http\Controllers\SuperAdmin\SubscriptionsController::class);
-
 
     Route::resource('superadmin/users/index', App\Http\Controllers\SuperAdmin\ManageUserController::class);
 
+    Route::resource('superadmin/device', App\Http\Controllers\SuperAdmin\DeviceController::class);
 });

@@ -451,17 +451,18 @@ body {
      CONTENT STYLE
  ----------------------------------------------------- */
 #content {
-  width: calc(100% - 19%);
+  width: calc(100% - 260px);
   padding: 20px;
   min-height: 100vh;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
-  margin-left: 19%;
+  margin-left: 260px;
   margin-top: 80px;
 }
 
 .full_content {
   margin-left: 70px !important;
+  width: 100% !important;
 }
 
 /* ---------------------------------------------------
@@ -539,12 +540,12 @@ body {
   font-size: 12px;
 }
 
-/*users*/
-.user-form .form-group {
+/* Forms */
+.form .form-group {
   margin-bottom: 25px;
 }
 
-.user-form .form-group .lock-icon {
+.form .form-group .lock-icon {
   position: absolute;
   right: 30px;
   top: 11px;
@@ -552,72 +553,107 @@ body {
   color: #092950;
 }
 
-.user-form .form-group .col-form-label {
+.form .form-group .col-form-label {
   font-size: 16px;
   color: #000000;
   font-weight: 500;
 }
 
-.user-form .form-group .user-type {
-  border: 1px solid #000000;
+.form .form-group .user-type {
+  border: 1px solid #0C213A;
+  border-radius: 5px;
+  font-size: 14px;
+  color: #000000;
+  line-height: 4;
 }
 
-.user-form .form-group .form-control {
-  border: 1px solid #000000;
+.form .form-group .form-control {
+  border: 1px solid #0C213A;
+  border-radius: 5px;
+  font-size: 14px;
+  color: #000000;
+  line-height: 4;
+  font-weight: 500;
 }
 
-.user-form .form-group .form-control:focus {
+.form .form-group .form-control::-webkit-input-placeholder {
+  color: #000000;
+}
+
+.form .form-group .form-control:-ms-input-placeholder {
+  color: #000000;
+}
+
+.form .form-group .form-control::-ms-input-placeholder {
+  color: #000000;
+}
+
+.form .form-group .form-control::placeholder {
+  color: #000000;
+}
+
+.form .form-group textarea, .form .form-group select {
+  line-height: 1.6 !important;
+  font-weight: 500;
+}
+
+.form .form-group select {
+  background: #fff url(../images/icons/caret-down.svg) right 0.75rem center/15px 10px no-repeat;
+}
+
+.form .form-group .form-control:focus {
   -webkit-box-shadow: none;
           box-shadow: none;
 }
 
-.user-form .form-group .custom-select:focus {
+.form .form-group .custom-select:focus {
   -webkit-box-shadow: none;
           box-shadow: none;
 }
 
-.user-form .form-group .btn-radio {
+.form .form-group .btn-radio {
   margin-top: 7px;
 }
 
-.user-form .form-group .custom-file-label {
+.form .form-group .custom-file-label {
   border-color: #000000;
 }
 
-.user-form .form-group .custom-file-label::after {
+.form .form-group .custom-file-label::after {
   color: #fff !important;
   background-color: #092950;
 }
 
-.user-form .form-group .custom-file-input:focus ~ .custom-file-label {
+.form .form-group .custom-file-input:focus ~ .custom-file-label {
   border-color: #000000;
   -webkit-box-shadow: none;
           box-shadow: none;
 }
 
-.user-form .form-group .save-user-btn button {
+.form .form-group .save-btn button {
   float: right !important;
   background-color: #092950;
   color: #fff;
   border-color: #092950;
+  min-width: 120px;
 }
 
-.user-form .form-group .save-user-btn button .save-icon {
+.form .form-group .save-btn button .save-icon {
   margin-right: 13px;
 }
 
-.user-form .form-group .save-user-btn :focus {
+.form .form-group .save-btn :focus {
   -webkit-box-shadow: none;
           box-shadow: none;
 }
 
-.user-form .form-group .toggle-switch input[type=checkbox] {
+.form .form-group .toggle-switch input[type=checkbox] {
   height: 0;
   width: 0;
   visibility: hidden;
 }
 
-.user-form .form-group .toggle-switch label {
+.form .form-group .toggle-switch label {
   cursor: pointer;
   text-indent: -9999px;
   width: 65px;
@@ -629,7 +665,7 @@ body {
   margin-top: -15px;
 }
 
-.user-form .form-group .toggle-switch label:after {
+.form .form-group .toggle-switch label:after {
   content: '';
   position: absolute;
   top: 3px;
@@ -642,17 +678,17 @@ body {
   transition: 0.7s;
 }
 
-.user-form .form-group .toggle-switch input:checked + label {
+.form .form-group .toggle-switch input:checked + label {
   background: #092950;
 }
 
-.user-form .form-group .toggle-switch input:checked + label:after {
+.form .form-group .toggle-switch input:checked + label:after {
   left: calc(100% - 2px);
   -webkit-transform: translateX(-100%);
           transform: translateX(-100%);
 }
 
-.user-form .form-group .toggle-switch label:active:after {
+.form .form-group .toggle-switch label:active:after {
   width: 130px;
 }
 
@@ -835,9 +871,7 @@ body {
 }
 
 .dataTables_wrapper table thead tr th {
-  width: auto !important;
   font-size: 12px;
-  white-space: normal !important;
   background-color: #9D1346;
   color: #fff;
   border: unset;
@@ -877,6 +911,7 @@ body {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  cursor: pointer;
 }
 
 .dataTables_wrapper table tbody td .actions-btns .action a svg path {
@@ -908,5 +943,34 @@ body {
 .dataTables_wrapper .dataTables_paginate .pagination li.active a {
   background-color: #9D1346;
   border-color: #9D1346;
+}
+
+/* Modal */
+.modal .modal-dialog .modal-content .modal-header {
+  border: unset;
+  padding-bottom: 0;
+}
+
+.modal .modal-dialog .modal-content .modal-header button {
+  opacity: 1;
+}
+
+.modal .modal-dialog .modal-content .modal-header button span {
+  background-color: #D0021B;
+  padding: 3px;
+  border-radius: 50px;
+  width: 28px;
+  display: block;
+  color: #fff;
+}
+
+.modal .modal-dialog .modal-content .modal-body {
+  padding: 10px 30px;
+}
+
+/* Subscription page */
+.subscription thead tr th {
+  white-space: normal !important;
+  width: auto !important;
 }
 /*# sourceMappingURL=admin-common.css.map */
