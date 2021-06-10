@@ -25,79 +25,224 @@
                   </nav>
                   <div class="tab-content" id="nav-tabContent">
                        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                       <table id="example" class="table table-striped table-bordered dt-responsive nowrap" style="width:100%">
+                       <table id="users" class="table table-striped table-bordered dt-responsive nowrap" style="width:100%">
                     <thead>
                         <tr>
+                            <th> <input type="checkbox" class="form-check-input position-relative ml-0" id="exampleCheck1"> </th>
                             <th>Sr No</th>
-                            <th>Subscription Name</th>
-                            <th>Monthly Price</th>
-                            <th>Quarterly Price</th>
-                            <th>Half Yearly Price</th>
-                            <th>Yearly Price</th>
-                            <th>White Label Price</th>
-                            <th>Students Allowed</th>
-                            <th>Mock Test Allowed</th>
-                            <th>Practice Test Allowed</th>
+                            <th>Institute Name</th>
+                            <th>Email</th>
+                            <th>Mobile Number</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
+                            <td><input type="checkbox" class="form-check-input position-relative ml-0" id="exampleCheck1"></td>
                             <td>1</td>
-                            <td>Subscription 1</td>
-                            <td>100</td>
-                            <td>100</td>
-                            <td>100</td>
-                            <td>100</td>
-                            <td>100</td>
-                            <td>30</td>
-                            <td>20</td>
-                            <td>15</td>
-                            <td>action</td>
+                            <td>Abc Institute</td>
+                            <td>navneet394@gmail.com</td>
+                            <td>9842000106</td>
+                            <td>
+                                <ul class="actions-btns">
+                                <li class="action"><a href="#"><i class="fas fa-user"></i></a></li>
+                                    <li class="action"><a href="#"><i class="fas fa-pen"></i></a></li>
+                                    <li class="action"><a href="#"><i class="fas fa-trash"></i></a></li>
+                                    <li class="action shield green"><a href="#"><img src="{{ asset('assets/images/icons/blocked.svg') }}" class=""></a></li>
+                                    <li class="action"><a href="#"><i class="fas fa-unlock-alt"></i></a></li>
+                                    <li class="action"><a href="#"><i class="fas fa-clipboard-check"></i></a></li>
+                                    <li class="action"><a href="#"><i class="fas fa-clipboard-list"></i></a></li>
+                                    <li class="action"><a href="#"><i class="fas fa-clipboard-list"></i></a></li>
+                                </ul>
+                            </td>
                         </tr>
                         <tr>
-                            <td>1</td>
-                            <td>Subscription 1</td>
-                            <td>100</td>
-                            <td>100</td>
-                            <td>100</td>
-                            <td>100</td>
-                            <td>100</td>
-                            <td>30</td>
-                            <td>20</td>
-                            <td>15</td>
-                            <td>action</td>
+                            <td><input type="checkbox" class="form-check-input position-relative ml-0" id="exampleCheck1"></td>
+                            <td>2</td>
+                            <td>Abc Institute</td>
+                            <td>navneet394@gmail.com</td>
+                            <td>9842000106</td>
+                            <td>
+                                <ul class="actions-btns">
+                                    <li class="action"><a href="#"><i class="fas fa-user"></i></a></li>
+                                    <li class="action"><a href="#"><i class="fas fa-pen"></i></a></li>
+                                    <li class="action"><a href="#"><i class="fas fa-trash"></i></a></li>
+                                    <li class="action shield green"><a href="#"><img src="{{ asset('assets/images/icons/blocked.svg') }}" class=""></a></li>
+                                    <li class="action"><a href="#"><i class="fas fa-unlock-alt"></i></a></li>
+                                    <li class="action"><a href="#"><i class="fas fa-clipboard-check"></i></a></li>
+                                    <li class="action"><a href="#"><i class="fas fa-clipboard-list"></i></a></li>
+                                    <li class="action"><a href="#"><i class="fas fa-clipboard-list"></i></a></li>
+                                </ul>
+                            </td>
                         </tr>
                         <tr>
-                            <td>1</td>
-                            <td>Subscription 1</td>
-                            <td>100</td>
-                            <td>100</td>
-                            <td>100</td>
-                            <td>100</td>
-                            <td>100</td>
-                            <td>30</td>
-                            <td>20</td>
-                            <td>15</td>
-                            <td>action</td>
+                            <td><input type="checkbox" class="form-check-input position-relative ml-0" id="exampleCheck1"></td>
+                            <td>3</td>
+                            <td>Abc Institute</td>
+                            <td>navneet394@gmail.com</td>
+                            <td>9842000106</td>
+                            <td>
+                                <ul class="actions-btns">
+                                <li class="action"><a href="#"><i class="fas fa-user"></i></a></li>
+                                    <li class="action"><a href="#"><i class="fas fa-pen"></i></a></li>
+                                    <li class="action"><a href="#"><i class="fas fa-trash"></i></a></li>
+                                    <li class="action shield green"><a href="#"><img src="{{ asset('assets/images/icons/blocked.svg') }}" class=""></a></li>
+                                    <li class="action"><a href="#"><i class="fas fa-unlock-alt"></i></a></li>
+                                    <li class="action"><a href="#"><i class="fas fa-clipboard-check"></i></a></li>
+                                    <li class="action"><a href="#"><i class="fas fa-clipboard-list"></i></a></li>
+                                    <li class="action"><a href="#"><i class="fas fa-clipboard-list"></i></a></li>
+                                </ul>
+                            </td>
                         </tr>
                         <tr>
-                            <td>1</td>
-                            <td>Subscription 1</td>
-                            <td>100</td>
-                            <td>100</td>
-                            <td>100</td>
-                            <td>100</td>
-                            <td>100</td>
-                            <td>30</td>
-                            <td>20</td>
-                            <td>15</td>
-                            <td>action</td>
+                            <td><input type="checkbox" class="form-check-input position-relative ml-0" id="exampleCheck1"></td>
+                            <td>4</td>
+                            <td>Abc Institute</td>
+                            <td>navneet394@gmail.com</td>
+                            <td>9842000106</td>
+                            <td>
+                                <ul class="actions-btns">
+                                <li class="action"><a href="#"><i class="fas fa-user"></i></a></li>
+                                    <li class="action"><a href="#"><i class="fas fa-pen"></i></a></li>
+                                    <li class="action"><a href="#"><i class="fas fa-trash"></i></a></li>
+                                    <li class="action shield green"><a href="#"><img src="{{ asset('assets/images/icons/blocked.svg') }}" class=""></a></li>
+                                    <li class="action"><a href="#"><i class="fas fa-unlock-alt"></i></a></li>
+                                    <li class="action"><a href="#"><i class="fas fa-clipboard-check"></i></a></li>
+                                    <li class="action"><a href="#"><i class="fas fa-clipboard-list"></i></a></li>
+                                    <li class="action"><a href="#"><i class="fas fa-clipboard-list"></i></a></li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" class="form-check-input position-relative ml-0" id="exampleCheck1"></td>
+                            <td>5</td>
+                            <td>Abc Institute</td>
+                            <td>navneet394@gmail.com</td>
+                            <td>9842000106</td>
+                            <td>
+                                <ul class="actions-btns">
+                                <li class="action"><a href="#"><i class="fas fa-user"></i></a></li>
+                                    <li class="action"><a href="#"><i class="fas fa-pen"></i></a></li>
+                                    <li class="action"><a href="#"><i class="fas fa-trash"></i></a></li>
+                                    <li class="action shield green"><a href="#"><img src="{{ asset('assets/images/icons/blocked.svg') }}" class=""></a></li>
+                                    <li class="action"><a href="#"><i class="fas fa-unlock-alt"></i></a></li>
+                                    <li class="action"><a href="#"><i class="fas fa-clipboard-check"></i></a></li>
+                                    <li class="action"><a href="#"><i class="fas fa-clipboard-list"></i></a></li>
+                                    <li class="action"><a href="#"><i class="fas fa-clipboard-list"></i></a></li>
+                                </ul>
+                            </td>
                         </tr>
                 </table>
                        </div>
                        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                        pati
+                       <table id="students" class="table table-striped table-bordered dt-responsive nowrap" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th> <input type="checkbox" class="form-check-input position-relative ml-0" id="exampleCheck1"> </th>
+                            <th>Sr No</th>
+                            <th>Full Name</th>
+                            <th>Email</th>
+                            <th>Mobile Number</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><input type="checkbox" class="form-check-input position-relative ml-0" id="exampleCheck1"></td>
+                            <td>1</td>
+                            <td>navneet kaur</td>
+                            <td>navneet394@gmail.com</td>
+                            <td>9842000106</td>
+                            <td>
+                                <ul class="actions-btns">
+                                <li class="action"><a href="#"><i class="fas fa-user"></i></a></li>
+                                    <li class="action"><a href="#"><i class="fas fa-pen"></i></a></li>
+                                    <li class="action"><a href="#"><i class="fas fa-trash"></i></a></li>
+                                    <li class="action shield green"><a href="#"><img src="{{ asset('assets/images/icons/blocked.svg') }}" class=""></a></li>
+                                    <li class="action"><a href="#"><i class="fas fa-unlock-alt"></i></a></li>
+                                    <li class="action"><a href="#"><i class="fas fa-clipboard-check"></i></a></li>
+                                    <li class="action"><a href="#"><i class="fas fa-clipboard-list"></i></a></li>
+                                    <li class="action"><a href="#"><i class="fas fa-clipboard-list"></i></a></li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" class="form-check-input position-relative ml-0" id="exampleCheck1"></td>
+                            <td>2</td>
+                            <td>navneet kaur</td>
+                            <td>navneet394@gmail.com</td>
+                            <td>9842000106</td>
+                            <td>
+                                <ul class="actions-btns">
+                                    <li class="action"><a href="#"><i class="fas fa-user"></i></a></li>
+                                    <li class="action"><a href="#"><i class="fas fa-pen"></i></a></li>
+                                    <li class="action"><a href="#"><i class="fas fa-trash"></i></a></li>
+                                    <li class="action shield green"><a href="#"><img src="{{ asset('assets/images/icons/blocked.svg') }}" class=""></a></li>
+                                    <li class="action"><a href="#"><i class="fas fa-unlock-alt"></i></a></li>
+                                    <li class="action"><a href="#"><i class="fas fa-clipboard-check"></i></a></li>
+                                    <li class="action"><a href="#"><i class="fas fa-clipboard-list"></i></a></li>
+                                    <li class="action"><a href="#"><i class="fas fa-clipboard-list"></i></a></li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" class="form-check-input position-relative ml-0" id="exampleCheck1"></td>
+                            <td>3</td>
+                            <td>navneet kaur</td>
+                            <td>navneet394@gmail.com</td>
+                            <td>9842000106</td>
+                            <td>
+                                <ul class="actions-btns">
+                                <li class="action"><a href="#"><i class="fas fa-user"></i></a></li>
+                                    <li class="action"><a href="#"><i class="fas fa-pen"></i></a></li>
+                                    <li class="action"><a href="#"><i class="fas fa-trash"></i></a></li>
+                                    <li class="action shield green"><a href="#"><img src="{{ asset('assets/images/icons/blocked.svg') }}" class=""></a></li>
+                                    <li class="action"><a href="#"><i class="fas fa-unlock-alt"></i></a></li>
+                                    <li class="action"><a href="#"><i class="fas fa-clipboard-check"></i></a></li>
+                                    <li class="action"><a href="#"><i class="fas fa-clipboard-list"></i></a></li>
+                                    <li class="action"><a href="#"><i class="fas fa-clipboard-list"></i></a></li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" class="form-check-input position-relative ml-0" id="exampleCheck1"></td>
+                            <td>4</td>
+                            <td>navneet kaur</td>
+                            <td>navneet394@gmail.com</td>
+                            <td>9842000106</td>
+                            <td>
+                                <ul class="actions-btns">
+                                <li class="action"><a href="#"><i class="fas fa-user"></i></a></li>
+                                    <li class="action"><a href="#"><i class="fas fa-pen"></i></a></li>
+                                    <li class="action"><a href="#"><i class="fas fa-trash"></i></a></li>
+                                    <li class="action shield green"><a href="#"><img src="{{ asset('assets/images/icons/blocked.svg') }}" class=""></a></li>
+                                    <li class="action"><a href="#"><i class="fas fa-unlock-alt"></i></a></li>
+                                    <li class="action"><a href="#"><i class="fas fa-clipboard-check"></i></a></li>
+                                    <li class="action"><a href="#"><i class="fas fa-clipboard-list"></i></a></li>
+                                    <li class="action"><a href="#"><i class="fas fa-clipboard-list"></i></a></li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" class="form-check-input position-relative ml-0" id="exampleCheck1"></td>
+                            <td>5</td>
+                            <td>navneet kaur</td>
+                            <td>navneet394@gmail.com</td>
+                            <td>9842000106</td>
+                            <td>
+                                <ul class="actions-btns">
+                                <li class="action"><a href="#"><i class="fas fa-user"></i></a></li>
+                                    <li class="action"><a href="#"><i class="fas fa-pen"></i></a></li>
+                                    <li class="action"><a href="#"><i class="fas fa-trash"></i></a></li>
+                                    <li class="action shield green"><a href="#"><img src="{{ asset('assets/images/icons/blocked.svg') }}" class=""></a></li>
+                                    <li class="action"><a href="#"><i class="fas fa-unlock-alt"></i></a></li>
+                                    <li class="action"><a href="#"><i class="fas fa-clipboard-check"></i></a></li>
+                                    <li class="action"><a href="#"><i class="fas fa-clipboard-list"></i></a></li>
+                                    <li class="action"><a href="#"><i class="fas fa-clipboard-list"></i></a></li>
+                                </ul>
+                            </td>
+                        </tr>
+                </table>
                        </div>
                   </div>
                </div>

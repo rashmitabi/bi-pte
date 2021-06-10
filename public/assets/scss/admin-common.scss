@@ -801,6 +801,11 @@ body {
               font-weight: 500;
               padding: 8px 30px;
           }
+          .nav-item:focus{
+               background-color: $primary-color;
+               color: $white-color;
+               border: none;
+          }
      }
 }     
 /* Subscription page */
