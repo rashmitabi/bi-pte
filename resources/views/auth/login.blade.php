@@ -17,7 +17,7 @@
                             @csrf
                             <div class="form-group">
                                 <i class="fas fa-user form-icon"></i>
-                                <input id="email" type="email" name="email" class="form-control @error('email') is-invalid @enderror" autocomplete="email" autofocus placeholder="Enter User Name" required>
+                                <input id="email" type="email" name="email" class="form-control @error('email') is-invalid @enderror" autocomplete="email" autofocus placeholder="Enter Email Address" >
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -27,7 +27,7 @@
                             <div class="form-group mb-3">
                                 
                                 <i class="fas fa-lock form-icon"></i>
-                                <input id="password" type="password" name="password" class="form-control @error('password') is-invalid @enderror" autocomplete="current-password" placeholder="Enter  Password" required> 
+                                <input id="password" type="password" name="password" class="form-control @error('password') is-invalid @enderror" autocomplete="current-password" placeholder="Enter  Password" > 
                                 <i class="far fa-eye-slash lock-icon password-icon" onclick="password()"></i>
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
