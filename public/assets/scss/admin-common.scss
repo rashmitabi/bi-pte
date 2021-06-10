@@ -1,4 +1,5 @@
 @import "variables";
+@import "_responsive";
 
 body {
      background-color: #f4f7fc;
@@ -6,7 +7,7 @@ body {
 
 // Sidebar and header Css
 .navbar {
-     padding: 10px 10px;
+     padding: 0px 10px;
      background: $white-color;
      border: none;
      border-radius: 0;
@@ -39,6 +40,10 @@ body {
                align-items: center;
                .notificaiton-main {
                     position: relative;
+                    padding: 28px 20px;
+                    display: block;
+                    cursor: pointer;
+
                     svg {
                          color: $black;
                          font-size: $fs-20;
@@ -49,69 +54,30 @@ body {
                          background-color: $black;
                          color: $white-color;
                          border-radius: 50%;
-                         width: 16px;
-                         height: 16px;
-                         font-size: 11px;
+                         width: 18px;
+                         height: 18px;
+                         font-size: 10px;
                          position: absolute;
-                         top: -8px;
-                         left: 8px;
+                         top: 18px;
+                         left: 28px;
+                         border: 2px solid $white-color;
                     }
-                    .dropdown-toggle-wrap{
-                         display: none;
-                         background-color: $white-color;
-                         box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.22);
-                         min-width: 350px;
-                         position: absolute;
-                         top: 54px;
-                         border-radius: 4px;
-                         right: -200px;
-                         .heading{
-                              padding: 10px 16px;
+                    
+                    &:hover{
+                         .dropdown-toggle-wrap{
                               display: block;
-                              border-bottom: 1px solid #ccc;
-                              font-weight: $fw-500;
-                         }
-                         .notifications-main-wrap{
-                              padding: 0px 14px;
-                              ul{
-                                   margin: 0px;
-                                   li{
-                                        font-size: $fs-12;
-                                        font-weight: $fw-500;
-                                        border-bottom: 1px solid #ccc;
-                                        padding: 8px 0px;
-                                        list-style: none;
-                                        position: relative;
-                                        &::after{
-                                             content: '';
-                                             height: 8px;
-                                             width: 8px;
-                                             background-color: $primary-color;
-                                             display: block;
-                                             border-radius: 50%;
-                                             position: absolute;
-                                             top: 14px;
-                                             left: -20px;
-                                        }
-                                        span{
-                                             display: block;
-                                             font-weight: $fw-300;
-                                             color: $lightgrey-color;
-                                        }
-                                        &:last-child{
-                                             border-bottom: none;
-                                        }
-                                   }
-                              }
                          }
                     }
                }
                .profile-user-wrap {
-                    margin-left: 28px;
-                    a {
+                    position: relative;
+                    margin-left: 8px;
+                    .profile-name {
                          color: $grey-color;
                          font-size: 15px;
                          text-decoration: none;
+                         padding: 16px 0px;
+                         display: block;
                          &:hover {
                               color: $primary-color;
                          }
@@ -122,9 +88,108 @@ body {
                               margin-left: 10px;
                          }
                     }
+                    &:hover{
+                         .logout-dropdown{
+                              display: block;
+                         }
+                    }
                }
           }
      }
+}
+.dropdown-toggle-wrap{
+     display: none;
+     background-color: $white-color;
+     box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.22);
+     min-width: 350px;
+     position: absolute;
+     top: 72px;
+     border-radius: 4px;
+     right: -150px;
+     
+     .heading{
+          padding: 10px 16px;
+          display: block;
+          border-bottom: 1px solid #ccc;
+          font-weight: $fw-500;
+     }
+     .notifications-main-wrap{
+          padding: 0px 14px;
+          max-height: 200px;
+          overflow: scroll;
+          ul{
+               margin: 0px;
+               li{
+                    font-size: $fs-12;
+                    font-weight: $fw-500;
+                    border-bottom: 1px solid #ccc;
+                    padding: 8px 0px;
+                    list-style: none;
+                    position: relative;
+                    &::after{
+                         content: '';
+                         height: 8px;
+                         width: 8px;
+                         background-color: $primary-color;
+                         display: block;
+                         border-radius: 50%;
+                         position: absolute;
+                         top: 14px;
+                         left: -20px;
+                    }
+                    span{
+                         display: block;
+                         font-weight: $fw-300;
+                         color: $lightgrey-color;
+                    }
+                    &:last-child{
+                         border-bottom: none;
+                    }
+               }
+          }
+     }
+}
+.logout-dropdown{
+     display: none;
+     min-width: auto;
+     position: absolute;
+     border-radius: 4px;
+     right: auto;
+     background-color: $white-color;
+     box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.22);
+     top: 75px;
+     border-radius: 4px;
+     .notifications-main-wrap{
+
+          margin-top: 10px;
+     ul{
+          padding: 0px;
+          li{
+               list-style: none;
+               padding: 10px 20px;
+               text-align: center;
+               transition: all 0.3s;
+               a{
+                    color: $grey-color;
+                    font-size: $fs-16;
+                    text-decoration: none;
+                   
+                    svg{
+                         margin-right: 10px;
+                    }
+                    
+               }
+               &:hover{
+                    background-color: $primary-color;
+                   
+                    a{
+                         color:$white-color;
+                    }
+               }
+              
+          }
+     }
+}
 }
 .navbar-btn {
      box-shadow: none;
@@ -257,18 +322,15 @@ body {
      margin-left: 250px;
      margin-top: 80px;
 }
-
+.full_content{
+     margin-left: 70px !important;
+}
 /* ---------------------------------------------------
      MEDIAQUERIES
  ----------------------------------------------------- */
 
 @media (max-width: 768px) {
-     #sidebar {
-          margin-left: -250px;
-     }
-     #sidebar.active {
-          margin-left: 0;
-     }
+     
      #sidebarCollapse span {
           display: none;
      }
@@ -350,5 +412,192 @@ body {
 
 .white-bg{
      background-color: #fff;
+<<<<<<< HEAD
      box-shadow:  5px 5px 10px #000000,
 }
+
+/*users*/
+
+.user-form{
+     .form-group{
+          margin-bottom: 25px;
+          .col-form-label{
+            font-size: $fs-16;
+            color: $black;
+            font-weight: $fw-500;
+          }
+         .user-type{
+             border: 1px solid $black;
+         }
+         .form-control{
+            border: 1px solid $black;
+         }
+         .form-control:focus{
+            box-shadow: none;
+         }
+         .custom-select:focus{
+            box-shadow: none;
+         }
+         .btn-radio{
+            margin-top: 7px;
+          }
+          .custom-file-label::after{
+               color: #fff !important;
+               background-color: $primary-color;
+          }
+          .custom-file-label{
+               border-color: $black;
+          }
+          .custom-file-input:focus ~ .custom-file-label{
+               border-color: $black;
+               box-shadow: none;
+          }
+          .save-user-btn{
+               button{
+                    float: right!important;
+                    background-color: $primary-color;
+                    color: $white-color;
+                    border-color: $primary-color
+               }
+               :focus{
+                    box-shadow: none;
+               }
+          }
+     }
+}
+
+
+// Radio button start
+.cntr {
+     margin: auto;
+ }
+ .booking-page{ overflow: hidden;}
+ .btn-radio {
+     cursor: pointer;
+     display: inline-block;
+     float: left;
+     -webkit-user-select: none;
+     user-select: none;
+ }
+ 
+ .btn-radio:not(:first-child) {
+     margin-left: 20px;
+ }
+ 
+ @media screen and (max-width: 480px) {
+     .btn-radio {
+         display: block;
+         float: none;
+     }
+     .btn-radio:not(:first-child) {
+         margin-left: 0;
+         margin-top: 15px;
+     }
+ }
+ 
+ .btn-radio svg {
+     fill: none;
+     vertical-align: middle;
+ }
+ 
+ .btn-radio svg circle {
+     stroke-width: 2;
+     stroke: $primary-color;
+ }
+ 
+ .btn-radio svg path {
+     stroke: $primary-color;
+ }
+ 
+ .btn-radio svg path.inner {
+     stroke-width: 6;
+     stroke-dasharray: 19;
+     stroke-dashoffset: 19;
+ }
+ 
+ .btn-radio svg path.outer {
+     stroke-width: 2;
+     stroke-dasharray: 57;
+     stroke-dashoffset: 57;
+ }
+ 
+ .btn-radio input {
+     display: none;
+ }
+ 
+ .btn-radio input:checked+svg path {
+     transition: all 0.4s ease;
+ }
+ 
+ .btn-radio input:checked+svg path.inner {
+     stroke-dashoffset: 38;
+     transition-delay: 0.3s;
+ }
+ 
+ .btn-radio input:checked+svg path.outer {
+     stroke-dashoffset: 0;
+ }
+ 
+ .btn-radio span {
+     display: inline-block;
+     vertical-align: middle;
+ }
+ 
+ // Radio button end
+=======
+     box-shadow:  0px 2px 6px #00000016;
+}
+
+.remove-main-margin{
+     margin: 0 15px;
+}
+
+/* Datatable */
+.dataTables_wrapper{
+     .top-label{
+          color: #333D5F;
+          font-size: 16px;
+          align-items: center;
+          display: flex;
+     }
+     .top-search{
+          align-items: center;
+          display: flex;
+          height: 35px;
+          label, input, .dataTables_filter{
+               width: 100% !important;
+               margin: 0;
+          }
+          input{
+               padding-left: 30px;
+               background-color: #F4F7FC;
+               color: #818E94;
+               font-weight: 500;
+               height: 35px;
+               position: relative;
+               margin: 0 !important;
+               &::before{
+                    content: "«";
+                    position: absolute;
+               }
+               &:focus{
+                    outline: none;
+               }
+          }
+     }
+     .top-pagination{
+          align-items: center;
+          display: flex;
+          justify-content: flex-end;
+          select{
+               background-color: #F4F7FC;
+               border-radius: 4px;
+               border: unset;
+               height: 35px;
+               color: #0C213A;
+               font-weight: 500;
+               padding: 0px 8px;
+          }
+     }
+}
+>>>>>>> 7994101a89cd8b319fcfb920ac03cbb9afdd4595
