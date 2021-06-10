@@ -21,95 +21,72 @@
                     <thead>
                         <tr>
                             <th>Sr No</th>
-                            <th>Subscription Name</th>
-                            <th>Monthly Price</th>
-                            <th>Quarterly Price</th>
-                            <th>Half Yearly Price</th>
-                            <th>Yearly Price</th>
-                            <th>White Label Price</th>
-                            <th>Students Allowed</th>
-                            <th>Mock Test Allowed</th>
-                            <th>Practice Test Allowed</th>
+                            <th>User Name</th>
+                            <th>Browser Name</th>
+                            <th>IP Address</th>
+                            <th>Devices Name</th>
+                            <th>Status</th>
+                            <th>Login Time</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td>1</td>
-                            <td>Subscription 1</td>
-                            <td>100</td>
-                            <td>100</td>
-                            <td>100</td>
-                            <td>100</td>
-                            <td>100</td>
-                            <td>30</td>
-                            <td>20</td>
-                            <td>15</td>
+                            <td>Study Care Institute</td>
+                            <td>Microsoft Edge</td>
+                            <td>123.201.234.106</td>
+                            <td>Oppo Mobile</td>
+                            <td>Active</td>
+                            <td>20-JUN-2020 08:03 AM</td>
                             <td>
                                 <ul class="actions-btns">
-                                    <li class="action"><a href="#"><i class="fas fa-pen"></i></a></li>
-                                    <li class="action"><a href="#"><i class="fas fa-trash"></i></a></li>
-                                    <li class="action shield green"><a href="#"><img
+                                    <li class="action shield"><a href="#"><img
                                                 src="{{ asset('assets/images/icons/blocked.svg') }}" class=""></a></li>
                                 </ul>
                             </td>
                         </tr>
                         <tr>
                             <td>1</td>
-                            <td>Subscription 1</td>
-                            <td>100</td>
-                            <td>100</td>
-                            <td>100</td>
-                            <td>100</td>
-                            <td>100</td>
-                            <td>30</td>
-                            <td>20</td>
-                            <td>15</td>
+                            <td>Study Care Institute</td>
+                            <td>Microsoft Edge</td>
+                            <td>123.201.234.106</td>
+                            <td>Oppo Mobile</td>
+                            <td>Active</td>
+                            <td>20-JUN-2020 08:03 AM</td>
                             <td>
                                 <ul class="actions-btns">
-                                    <li class="action"><a href="#"><i class="fas fa-pen"></i></a></li>
-                                    <li class="action"><a href="#"><i class="fas fa-trash"></i></a></li>
-                                    <li class="action shield red"><a href="#"><img
+                                    <li class="action shield"><a href="#"><img
                                                 src="{{ asset('assets/images/icons/blocked.svg') }}" class=""></a></li>
                                 </ul>
                             </td>
                         </tr>
                         <tr>
                             <td>1</td>
-                            <td>Subscription 1</td>
-                            <td>100</td>
-                            <td>100</td>
-                            <td>100</td>
-                            <td>100</td>
-                            <td>100</td>
-                            <td>30</td>
-                            <td>20</td>
-                            <td>15</td>
+                            <td>Study Care Institute</td>
+                            <td>Microsoft Edge</td>
+                            <td>123.201.234.106</td>
+                            <td>Oppo Mobile</td>
+                            <td>Active</td>
+                            <td>20-JUN-2020 08:03 AM</td>
                             <td>
                                 <ul class="actions-btns">
-                                    <li class="action"><a href="#"><i class="fas fa-pen"></i></a></li>
-                                    <li class="action"><a href="#"><i class="fas fa-trash"></i></a></li>
-                                    <li class="action shield green"><a href="#"><img
+                                    <li class="action shield"><a href="#"><img
                                                 src="{{ asset('assets/images/icons/blocked.svg') }}" class=""></a></li>
                                 </ul>
                             </td>
                         </tr>
                         <tr>
                             <td>1</td>
-                            <td>Subscription 1</td>
-                            <td>100</td>
-                            <td>100</td>
-                            <td>100</td>
-                            <td>100</td>
-                            <td>100</td>
-                            <td>30</td>
-                            <td>20</td>
-                            <td>15</td>
+                            <td>Study Care Institute</td>
+                            <td>Microsoft Edge</td>
+                            <td>123.201.234.106</td>
+                            <td>Oppo Mobile</td>
+                            <td>Active</td>
+                            <td>20-JUN-2020 08:03 AM</td>
                             <td>
                                 <ul class="actions-btns">
-                                    <li class="action"><a href="#"><i class="fas fa-pen"></i></a></li>
-                                    <li class="action"><a href="#"><i class="fas fa-trash"></i></a></li>
-                                    <li class="action shield green"><a href="#"><img
+                                    <li class="action shield"><a href="#"><img
                                                 src="{{ asset('assets/images/icons/blocked.svg') }}" class=""></a></li>
                                 </ul>
                             </td>
