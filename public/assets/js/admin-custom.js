@@ -20,7 +20,11 @@ $(document).ready(function() {
                 '<option value="40">40 Per Page</option>'+
                 '<option value="50">50 Per Page</option>'+
                 '<option value="-1">All</option>'+
-                '</select>'
+                '</select>',
+            paginate: {
+                next: '<i class="fas fa-chevron-right"></i>', // or '→'
+                previous: '<i class="fas fa-chevron-left"></i>' // or '←' 
+            }
         },
         "dom": "<'row'<'col-sm-12 col-md-3 top-label'<'toolbar'>><'col-sm-12 col-md-6 top-search'f><'col-sm-12 col-md-3 top-pagination'l>>" +
         "<'row'<'col-sm-12't>>" +
