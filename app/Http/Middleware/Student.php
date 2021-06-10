@@ -17,7 +17,7 @@ class Student
     public function handle(Request $request, Closure $next)
     {
         if (\Auth::user()->role_id != '3') {
-            return redirect('/');
+            return redirect('/login');
         }
         return $next($request);
     }
