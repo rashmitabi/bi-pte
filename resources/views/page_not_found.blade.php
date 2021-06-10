@@ -1,58 +1,139 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="" />
-    <meta name="keywords" content="" />
-    <meta name="author" content="Bootstrap Website Templates">
-
-    <title>Bitcoin Trade - one page bootstrap website template</title>
-
-    <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Theme CSS -->
-    <link href="css/style.css" rel="stylesheet">
-
-    <!-- Custom Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet">
+ @extends('layouts.app')
+@section('css-hooks')
+<style>
+body, html {
+  background: #000;
+  position: relative;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+#mainC {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  font-family: sans-serif;
+  max-width: 340px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+  
+  .message {
+    font-size: 16px;
+    text-align: center;
+}
+    h1 {
+      margin: 0;
+      padding: 0;
+      font-size: 11em;
+      transform: skewY(-5deg);
+      transition: 0.4s ease-in-out all;
+  }
+      &:hover {
+        text-shadow: 20px 20px 0 fade(#afd33d, 10%);
+      }
+      @media (max-width: 300px) {
+        font-size: 50vw;
+      }
     
+    h3 {
+      color: #afd33d;
+      font-size: 0.9em;
+      font-weight: lighter;
+      line-height: 1;
+  }
+      @media (max-width: 300px) {
+        font-size: 5vw;
+      }
+    
+  .footer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 100%;
+}
+    
+    a {
+      position: relative;
+      flex: 1;
+      color: rgba(255, 255, 255, 0.6);
+      text-decoration: none;
+      border-radius: 3px;
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      margin: 0 20px;
+      text-align: center;
+      padding: 10px 0;
+      overflow: hidden;
+      transition: all 0.2s ease-in-out;
+      z-index:3;
+  }
+      
+      @media (max-width: 300px) {
+        flex: 5 100%;
+        width: 100%;
+      }
+      
+      &:hover {
+        border: 1px solid rgba(255, 255, 255, 1);
+        color: #121212;
+    }
+        
+        span {
+          width: 310px;
+          height: 310px;
+        }
+      
+      span {
+        content:'';
+        position: absolute;
+        background: #afd33d;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 0;
+        height: 0;
+        border-radius: 50%;
+        transition: all 0.5s ease;
+        z-index: -1;
+    }
+        
+        @media (max-width: 300px) {
+          transition: all 0.2s ease-in;
+        }
+        
+        &:active {
+          background: lighten(#afd33d, 10%);
+        }
+      
+    .legal {
+      text-align: center;
+      flex: 3;
+      color: fade(#ccc, 50%);
+  }
+      
+      @media (max-width: 300px) {
+        font-size: 4vw;
+        flex: 5 100%;
+        padding: 5px 10px;
+      }
+    
+</style>
+@endsection
+@section('content')
 
-
-</head>
-
-<body>
-
-    <div class="container text-center">
-        <div class="brand">
-            <span class="glyphicon glyphicon-king" aria-hidden="true"></span>
-            <h3 class="text-uppercase">The King Maker</h3>
-        </div>
-        <h1 class="head"><span>404</span></h1>
-        <p>Oops! The Page you requested was not found!</p>
-        <a href="#" class="btn-outline"> Back to Home</a>
-    </div>
-
-   <div class="bwt-footer-copyright">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6 copyright">
-            <div class="left-text">Copyright &copy; The King Maker 2018. All Rights Reserved</div>
-        </div>
-      </div>
-    </div>
-   </div>
+<div id="mainC">
+  <div class="message">
+    <h1>404</h1>
+    <h3>the page you seek does not exist</h3>
+  </div>
+  <div class="footer">
+    <a href="//leoh.me" title="home" target="_blank">leoh.me <span></span></a>
+    <p class="legal">copyright &copy; 2015&nbsp;-&nbsp;2016 Ltrademark&trade; all rights reserved</p>
+  </div>
+</div>
    
-    <!-- jQuery -->
-    <script src="js/jquery.min.js"></script>
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
-    <!-- Theme JavaScript -->
-    <script src="js/script.js"></script>
-
-</body>
-</html>
+@endsection
