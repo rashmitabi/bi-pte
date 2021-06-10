@@ -534,7 +534,7 @@ body {
           }
      }
 }
-
+/*form end*/
 
 // Radio button start
 .cntr {
@@ -792,6 +792,17 @@ body {
      }
 }
 
+
+/*table tab */
+.tab{
+  .nav-tabs{
+          .nav-item{
+              color: $black;
+              font-weight: 500;
+              padding: 8px 30px;
+          }
+     }
+}     
 /* Subscription page */
 .subscription{
      thead{

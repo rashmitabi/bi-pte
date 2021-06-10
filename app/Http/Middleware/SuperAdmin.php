@@ -17,7 +17,7 @@ class SuperAdmin
     public function handle(Request $request, Closure $next)
     {
         if (\Auth::user()->role_id != '1') {
-            return redirect('/');
+            return redirect('/login');
         }
         return $next($request);
     }

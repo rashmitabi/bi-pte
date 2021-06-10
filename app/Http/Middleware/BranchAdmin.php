@@ -5,8 +5,8 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 
-class Admin
-{
+class BranchAdmin
+{ 
     /**
      * Handle an incoming request.
      *
@@ -17,7 +17,7 @@ class Admin
     public function handle(Request $request, Closure $next)
     {
         if (\Auth::user()->role_id != '2') {
-            return redirect('/');
+            return redirect('/login');
         }
         return $next($request);
     }
