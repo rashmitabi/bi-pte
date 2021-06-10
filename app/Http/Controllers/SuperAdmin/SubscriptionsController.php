@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\SuperAdmin;
-
+use App\Models\Subscriptions;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -35,7 +35,32 @@ class SubscriptionsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // $this->validate($request,[
+        //     'title'=>'required',
+        //     'description'=>'required',
+        //     'role_id'=>'required',
+        //     'students_allowed'=>'required',
+        //     'monthly_price'=>'required',
+        //     'quarterly_price'=>'required',
+        //     'halfyearly_price'=>'required',
+        //     'annually_price'=>'required',
+        //     'white_labelling_price'=>'required',
+        //     'mock_tests'=>'required',
+        //     'practice_tests'=>'required',
+        //     'videos'=>'required',
+        //     'prediction_files'=>'required',
+        //     'status'=>'required'
+        //  ]);
+        $input  = \Arr::except($request->all(),array('_token'));
+        $input['practice_questions'] = 10;
+        $result = Subscriptions::create($input);
+        if($result){
+            return redirect()->route('subscription.index')
+                        ->with('success','Subscription created successfully');
+        }else{
+            return redirect()->route('subscription.index')
+                        ->with('error','Subscription created successfully');
+        }
     }
 
     /**
