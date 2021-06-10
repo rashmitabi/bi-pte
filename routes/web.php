@@ -50,4 +50,6 @@ Route::group(['middleware' => ['auth', 'verified','student']], function () {
 
     Route::resource('superadmin/device', App\Http\Controllers\SuperAdmin\DeviceController::class);
 
+    Route::resource('superadmin/email', App\Http\Controllers\SuperAdmin\EmailTemplatesController::class);
+
 

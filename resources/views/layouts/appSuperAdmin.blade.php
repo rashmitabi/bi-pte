@@ -19,6 +19,9 @@
 	    <script src="{{ asset('assets/js/dataTables.bootstrap4.min.js') }}" defer></script>
 	    <script src="{{ asset('assets/js/dataTables.responsive.min.js') }}" defer></script>
 	    <script src="{{ asset('assets/js/responsive.bootstrap4.min.js') }}" defer></script>
+	    <!-- <script src="{{ asset('assets/js/ckeditor.js') }}" defer></script> -->
+		<script src="https://cdn.ckeditor.com/ckeditor5/28.0.0/classic/ckeditor.js"></script>
+	
 
 	    <script src="{{ asset('assets/js/admin-custom.js') }}" defer></script>
 
