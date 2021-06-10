@@ -23,8 +23,7 @@ Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 Auth::routes();
 
 
-Route::group(['middleware' => ['auth', 'verified']], function () { 
-
+Route::group(['middleware' => ['auth', 'verified','student']], function () { 
 
 	//start Super admin routes
 	Route::get('superadmin/dashboard', [App\Http\Controllers\SuperAdmin\DashboardController::class, 'index'])->name('dashboard');
