@@ -410,9 +410,9 @@ body {
 
 
 
-/*users*/
+/*form*/
 
-.user-form{
+.form{
      .form-group{
           margin-bottom: 25px;
           .lock-icon{
@@ -514,7 +514,7 @@ body {
           }
      }
 }
-
+/*form end*/
 
 // Radio button start
 .cntr {
@@ -650,6 +650,18 @@ body {
                color: #0C213A;
                font-weight: 500;
                padding: 0px 8px;
+          }
+     }
+}
+
+
+/*table tab */
+.tab{
+  .nav-tabs{
+          .nav-item{
+              color: $black;
+              font-weight: 500;
+              padding: 8px 30px;
           }
      }
 }
