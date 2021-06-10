@@ -12,4 +12,13 @@ class ManageUserController extends Controller
     {
         return view('superadmin/users/index');
     }
+    /**
+* Show the form for creating a new resource.
+*
+* @return \Illuminate\Http\Response
+*/
+    public function create()
+    {
+        return view('superadmin/users/newusers');
+    }
 }

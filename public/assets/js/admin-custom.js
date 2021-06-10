@@ -35,7 +35,7 @@ $(document).ready(function() {
     $('#device').DataTable({
         language: {
             search: '',
-            searchPlaceholder: "Search by subscription name, price, created date, status, type",
+            searchPlaceholder: "Search by browser name, user name",
             "sLengthMenu": '<select>'+
                 '<option value="10">10 Per Page</option>'+
                 '<option value="20">20 Per Page</option>'+
@@ -57,10 +57,6 @@ $(document).ready(function() {
     
 } );
 
-$(document).ready(function() {
-    
-
-} );
 // $(document).ready(function(){
 //     $("#sidebar").click(function(){
 //       $(".content").addClass();
@@ -69,3 +65,5 @@ $(document).ready(function() {
 //       $(".content").removeClass();
 //     });
 //   });
+
+

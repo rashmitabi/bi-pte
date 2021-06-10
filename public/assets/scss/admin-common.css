@@ -692,6 +692,7 @@ body {
   width: 130px;
 }
 
+/*form end*/
 .cntr {
   margin: auto;
 }
@@ -966,6 +967,13 @@ body {
 
 .modal .modal-dialog .modal-content .modal-body {
   padding: 10px 30px;
+}
+
+/*table tab */
+.tab .nav-tabs .nav-item {
+  color: #000000;
+  font-weight: 500;
+  padding: 8px 30px;
 }
 
 /* Subscription page */
