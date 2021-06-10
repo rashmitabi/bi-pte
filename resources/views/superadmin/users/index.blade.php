@@ -132,7 +132,7 @@
                       </div>
                    </div>
                    <div class="form-group row">
-                       <div class="col-11 save-user-btn">
+                       <div class="col-11 save-btn">
                          <button  type="button" class="btn btn-outline-primary"><i class="far fa-save save-icon"></i>Save User</button>
                       </div>
                    </div>
@@ -332,7 +332,7 @@
                       </div>
                    </div>
                    <div class="form-group row">
-                       <div class="col-11 save-user-btn">
+                       <div class="col-11 save-btn">
                          <button  type="button" class="btn btn-outline-primary"><i class="far fa-save save-icon"></i>Save User</button>
                       </div>
                    </div>

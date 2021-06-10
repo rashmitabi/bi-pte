@@ -5,7 +5,7 @@ namespace App\Http\Controllers\SuperAdmin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class SubscriptionsController extends Controller
+class DeviceController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class SubscriptionsController extends Controller
      */
     public function index()
     {
-        return view('superadmin/subscription/index');
+        return view('superadmin/device/index');
     }
 
     /**
@@ -24,7 +24,7 @@ class SubscriptionsController extends Controller
      */
     public function create()
     {
-        return view('superadmin/subscription/addsubscription');
+        
     }
 
     /**
