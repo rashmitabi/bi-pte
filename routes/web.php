@@ -45,9 +45,7 @@ Route::group(['middleware' => ['auth', 'verified','student']], function () {
 
 
     Route::resource('superadmin/subscription', App\Http\Controllers\SuperAdmin\SubscriptionsController::class);
-
     Route::resource('superadmin/users/index', App\Http\Controllers\SuperAdmin\ManageUserController::class);
-
     Route::resource('superadmin/device', App\Http\Controllers\SuperAdmin\DeviceController::class);
 
 
