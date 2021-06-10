@@ -315,15 +315,16 @@ body {
  ----------------------------------------------------- */
 
 #content {
-     width: calc(100% - 19%);
+     width: calc(100% - 260px);
      padding: 20px;
      min-height: 100vh;
      transition: all 0.3s;
-     margin-left: 19%;
+     margin-left: 260px;
      margin-top: 80px;
 }
 .full_content{
      margin-left: 70px !important;
+     width: 100% !important;
 }
 /* ---------------------------------------------------
      MEDIAQUERIES
@@ -410,9 +411,9 @@ body {
 
 
 
-/*users*/
+/* Forms */
 
-.user-form{
+.form{
      .form-group{
           margin-bottom: 25px;
           .lock-icon{
@@ -428,11 +429,29 @@ body {
             font-weight: $fw-500;
           }
          .user-type{
-             border: 1px solid $black;
+             border: 1px solid #0C213A;
+             border-radius: 5px;
+               font-size: 14px;
+               color: #000000;
+               line-height: 4;
          }
          .form-control{
-            border: 1px solid $black;
-             
+            border: 1px solid #0C213A;
+            border-radius: 5px;
+            font-size: 14px;
+            color: #000000;
+            line-height: 4;
+            font-weight: 500;
+            &::placeholder{
+               color: #000000;
+            }
+         }
+         textarea, select{
+               line-height: 1.6 !important;
+               font-weight: 500;
+         }
+         select{
+               background: #fff url(../images/icons/caret-down.svg) right 0.75rem center/15px 10px no-repeat;
          }
          .form-control:focus{
                box-shadow: none;
@@ -454,12 +473,13 @@ body {
                border-color: $black;
                box-shadow: none;
           }
-          .save-user-btn{
+          .save-btn{
                button{
                     float: right!important;
                     background-color: $primary-color;
                     color: $white-color;
                     border-color: $primary-color;
+                    min-width: 120px;
                     .save-icon{
                       margin-right: 13px;
                     }
@@ -667,9 +687,9 @@ body {
           thead{
                tr{
                     th{
-                         width: auto !important;
+                         // width: auto !important;
                          font-size: 12px;
-                         white-space: normal !important;
+                         // white-space: normal !important;
                          background-color: #9D1346;
                          color: #fff;
                          border: unset;
@@ -698,6 +718,7 @@ body {
                               display: flex;
                               align-items: center;
                               justify-content: center;
+                              cursor: pointer;
                               a{
                                    svg{
                                         path{
@@ -740,6 +761,44 @@ body {
                               border-color: #9D1346;
                          }
                     }
+               }
+          }
+     }
+}
+
+/* Modal */
+.modal{
+     .modal-dialog{
+          .modal-content{
+               .modal-header{
+                    border: unset;
+                    padding-bottom: 0;
+                    button{
+                         opacity: 1;
+                         span{
+                              background-color: #D0021B;
+                              padding: 3px;
+                              border-radius: 50px;
+                              width: 28px;
+                              display: block;
+                              color: #fff;
+                         }
+                    }
+               }
+               .modal-body{
+                    padding: 10px 30px;
+               }
+          }
+     }
+}
+
+/* Subscription page */
+.subscription{
+     thead{
+          tr{
+               th{
+                    white-space: normal !important;
+                    width: auto !important;
                }
           }
      }
