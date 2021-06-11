@@ -42,6 +42,11 @@
 
 	    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
 	      rel="stylesheet">
+		  <style>
+		  		.error-msg{
+					  color:red;
+				  }
+		  </style>
 	    @yield('css-hooks')
 	</head>
 	<body>
@@ -57,6 +62,14 @@
 		        @yield('content')
 		    </div>
 		</div>
+		@include('superadmin.deleteModel')
+		@include('superadmin.alert')
+		<script type="text/javascript">
+    		var DATE = "{{ date('d-m-Y') }}";
+    		var current_page_url = "<?php echo URL::current(); ?>";
+    		var current_page_fullurl = "<?php echo URL::full(); ?>";
+    		var CSRF_TOKEN= "{{ csrf_token() }}";
+		</script>
 		@yield('js-hooks')
 	</body>
 </html>
