@@ -22,12 +22,14 @@ Route::get('/login', function () {
 Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 Auth::routes();
 
-
-Route::group(['middleware' => ['auth', 'verified','superadmin']], function () { //start Super admin routes
+//start Super admin routes
+Route::group(['middleware' => ['auth', 'verified','superadmin']], function () { 
     Route::get('superadmin/dashboard', [App\Http\Controllers\SuperAdmin\DashboardController::class, 'index'])->name('dashboard');
-    //end Super admin routes
+    
+    Route::resource('superadmin/users', App\Http\Controllers\SuperAdmin\UsersController::class)->names('users');
 
 });
+//end Super admin routes
 
 Route::group(['middleware' => ['auth', 'verified','branchadmin']], function () {
     //start branch admin routes
@@ -46,7 +48,7 @@ Route::group(['middleware' => ['auth', 'verified','student']], function () {
 
     Route::resource('superadmin/subscription', App\Http\Controllers\SuperAdmin\SubscriptionsController::class);
 
-    Route::resource('superadmin/users', App\Http\Controllers\SuperAdmin\ManageUserController::class);
+    
 
     Route::resource('superadmin/device', App\Http\Controllers\SuperAdmin\DeviceController::class);
 

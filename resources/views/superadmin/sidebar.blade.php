@@ -3,31 +3,17 @@
   <nav id="sidebar">
       <ul class="list-unstyled components">
          <li class="active">
-            <a href="#dashboardsubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"> <img src="{{ asset('assets/images/icons/dashboard.svg') }}" class=""> <span> Dashboard </span> </a>
-            <ul class="collapse list-unstyled" id="dashboardsubmenu">
-               <li>
-                  <a href="#">Home 1</a>
-               </li>
-               <li>
-                  <a href="#">Home 2</a>
-               </li>
-               <li>
-                  <a href="#">Home 3</a>
-               </li>
-            </ul>
+            <a href="{{ route('dashboard') }}" > <img src="{{ asset('assets/images/icons/dashboard.svg') }}" class=""> <span> Dashboard </span> </a>
          </li>
 
          <li>
             <a href="#Usersubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"> <img src="{{ asset('assets/images/icons/user.svg') }}" class=""> <span> Manage User </span></a>
             <ul class="collapse list-unstyled" id="Usersubmenu">
                <li>
-                  <a href="#">Page 1</a>
+                  <a href="{{ route('users.index') }}">All Users</a>
                </li>
                <li>
-                  <a href="#">Page 2</a>
-               </li>
-               <li>
-                  <a href="#">Page 3</a>
+                  <a href="{{ route('users.create') }}">Add New User</a>
                </li>
             </ul>
          </li>
@@ -144,13 +130,10 @@
             <a href="#Subscriptionsubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"> <img src="{{ asset('assets/images/icons/subscription.svg') }}" class=""> <span> Manage Subscription </span> </a>
             <ul class="collapse list-unstyled" id="Subscriptionsubmenu">
                <li>
-                  <a href="#">Page 1</a>
+                  <a href="{{ route('subscription.create')}}">Subscription Create</a>
                </li>
                <li>
-                  <a href="#">Page 2</a>
-               </li>
-               <li>
-                  <a href="#">Page 3</a>
+                  <a href="{{ route('subscription.index') }}">Subscription List</a>
                </li>
             </ul>
          </li>
