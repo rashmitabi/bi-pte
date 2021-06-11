@@ -970,6 +970,47 @@ body {
   padding: 10px 30px;
 }
 
+.modal-body .form {
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.modal-body .form .common-heading {
+  margin-right: 75px;
+}
+
+.modal-body .form label {
+  font-weight: 500;
+  color: #000000;
+}
+
+.modal-body .form .common-wrap {
+  border: 1px solid #4D4F5C;
+  margin-top: 15px;
+}
+
+.modal-body .form .test-series {
+  padding: 15px 43px;
+}
+
+.modal-body .form .test-series .form-check {
+  margin-right: 40px;
+  width: 75px;
+}
+
+.modal-body .form .test-series .assign-btn button {
+  float: left;
+  background-color: #092950;
+  color: #fff;
+  border-color: #092950;
+  margin-top: 40px;
+}
+
+.modal-body .form .test-series .assign-btn button .save-icon {
+  margin-right: 13px;
+}
+
 /*table tab */
 .tab .nav-tabs .nav-item {
   color: #000000;

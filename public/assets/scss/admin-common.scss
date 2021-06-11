@@ -793,6 +793,43 @@ body {
      }
 }
 
+.modal-body{
+    .form{
+     //     display: flex;
+         align-items: flex-start;
+        .common-heading {
+             margin-right: 75px;
+          }
+          label{
+             font-weight: $fw-500;
+             color: $black;
+          }
+          .common-wrap{
+               border: 1px solid $grey-color;
+               margin-top: 15px;
+          }
+          .test-series{
+               padding: 15px 43px;
+               .form-check{
+                    margin-right: 40px;
+                    width: 75px;
+               }
+               .assign-btn{
+                    button{
+                      float: left;
+                      background-color: #092950;
+                      color: #fff;
+                      border-color: #092950;
+                      margin-top: 40px;
+                      .save-icon{
+                         margin-right: 13px;
+                       }
+                    }
+               }
+          }
+     } 
+} 
+
 
 /*table tab */
 .tab{

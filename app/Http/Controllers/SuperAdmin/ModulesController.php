@@ -15,7 +15,7 @@ class ModulesController extends Controller
      */
     public function index()
     {
-        //
+        return view('superadmin/modules/index');
     }
 
     /**
@@ -83,4 +83,5 @@ class ModulesController extends Controller
     {
         //
     }
+   
 }

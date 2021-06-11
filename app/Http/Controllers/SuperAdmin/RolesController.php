@@ -15,9 +15,8 @@ class RolesController extends Controller
      */
     public function index()
     {
-        //
+        return view('superadmin/roles/index');
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -25,7 +24,7 @@ class RolesController extends Controller
      */
     public function create()
     {
-        //
+        return view('superadmin/roles/addnewroles');
     }
 
     /**
