@@ -45,7 +45,8 @@ Route::group(['middleware' => ['auth', 'verified','student']], function () {
     //end student admin routes
 });
 
-
+Route::get('superadmin/subscription/changestatus/{id}', [App\Http\Controllers\SuperAdmin\SubscriptionsController::class, 'changeStatus'])
+->name('superadmin-subscription-changestatus');
     Route::resource('superadmin/subscription', App\Http\Controllers\SuperAdmin\SubscriptionsController::class);
 
     Route::resource('superadmin/device', App\Http\Controllers\SuperAdmin\DeviceController::class);
