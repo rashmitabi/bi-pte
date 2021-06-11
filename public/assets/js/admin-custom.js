@@ -141,7 +141,22 @@ $(document).ready(function() {
       // $('body').find('.remove-record-model').find( "input" ).remove();
     });
     ////Delete Model for SuperAdmin End
-} );
+    $('body').on('click','.subscription-edit',function(){
+        var id = $(this).data('id');
+        var apiUrl = $(this).data('url');
+        $.ajax({
+            url: apiUrl,
+            type:'GET',
+            data:{'id' : id},
+            beforeSend: function(){
+                $('#sub-edit-body').html('<i class="fa fa-spinner fa-spin"></i>  Please Wait...');
+            },
+            success:function(data) {
+                $('#sub-edit-body').html(data.html);
+            },
+        });
+    });
+});
 
 // $(document).ready(function(){
 //     $("#sidebar").click(function(){

@@ -56,10 +56,10 @@
                                 <td>
                                     <ul class="actions-btns">
                                         <li class="action" data-toggle="modal"
-                                                data-target="#editsubscription"><a href="#"><i class="fas fa-pen"></i></a></li>
+                                                data-target="#editsubscription"><a href="javascript:void(0);" class="subscription-edit" data-id="{{ $subscription->id }}" data-url="{!! URL::route('subscription.edit', $subscription->id) !!}"><i class="fas fa-pen"></i></a></li>
                                         <li class="action"><a href="#" class="delete_modal" data-toggle="modal" data-target="#delete_modal"  data-url="{!! URL::route('subscription.destroy', $subscription->id) !!}" data-id="{{ $subscription->id }}"><i class="fas fa-trash"></i></a></li>
-                                        <li class="action shield green"><a href="#"><img
-                                                    src="{{ asset('assets/images/icons/blocked.svg') }}" class=""></a></li>
+                                        <li class="action shield green"><a href="{{route('superadmin-subscription-changestatus', $subscription->id )}}"><img
+                                                    src="{{ asset('assets/images/icons/blocked.svg') }}"></a></li>
                                     </ul>
                                 </td>
                             </tr>
@@ -80,7 +80,7 @@
                         <span aria-hidden="true"><i class="fas fa-times"></i></span>
                     </button>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body" id="sub-edit-body">
                     <form class="form mt-4">
                         <div class="form-group row">
                             <label class="col-4 col-form-label ">Subscription Title</label>
@@ -185,3 +185,5 @@
     </div>
 </div>
 @endsection
+
+
