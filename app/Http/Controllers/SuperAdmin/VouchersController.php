@@ -14,7 +14,7 @@ class VouchersController extends Controller
      */
     public function index()
     {
-        //
+        return view('superadmin/vouchers/index');
     }
 
     /**
@@ -24,7 +24,7 @@ class VouchersController extends Controller
      */
     public function create()
     {
-        //
+        return view('superadmin/vouchers/addvouchers');
     }
 
     /**

@@ -1,8 +1,14 @@
-@import "variables";
+@import "_variables";
 @import "_responsive";
 
 body {
      background-color: #f4f7fc;
+}
+
+#sidebarCollapse{
+     img{
+          height: 26px;
+     }
 }
 
 // Sidebar and header Css
@@ -446,6 +452,12 @@ body {
                color: #000000;
             }
          }
+         .custom-file{
+              .custom-file-label{
+                    color: #000000;
+                    font-weight: 500;
+              }
+         }
          textarea, select{
                line-height: 1.6 !important;
                font-weight: 500;
@@ -532,6 +544,43 @@ body {
                     width: 130px;
                }
           }
+     }
+}
+
+/* ckeditor */
+#cke_editor{
+     border: 1px solid #0C213A !important;
+     border-radius: 5px;
+     overflow: hidden;
+     .cke_top{
+          border-bottom: 1px solid #0C213A;
+          background: unset;
+     }
+     .cke_bottom{
+          border-top: 1px solid #0C213A;
+     }
+     .cke_toolgroup{
+          a{
+               border: 1px solid #d1d1d1;
+               border-radius: 5px;
+               margin: 2px;
+               box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+               &:after{
+                    all: unset;
+               }
+          }
+     }
+     .cke_toolbar_separator{
+          display: none;
+     }
+     .cke_combo{
+          &:after{
+               all: unset;
+          }
+     }
+     .cke_toolgroup{
+          margin-right: 0;
+          padding-right: 0;
      }
 }
 /*form end*/
@@ -767,6 +816,28 @@ body {
      }
 }
 
+#subscription, #vouchers, #transactions{
+     tr{
+          th{
+               width: auto !important;
+               white-space: normal !important;
+          }
+     }
+}
+
+#prediction{
+     tr{
+          td{
+               word-break: break-word;
+               white-space: normal;
+          }
+          th{
+               white-space: normal !important;
+          }
+     }
+}
+
+
 /* Modal */
 .modal{
      .modal-dialog{
@@ -839,10 +910,14 @@ body {
               font-weight: 500;
               padding: 8px 30px;
           }
-          .nav-item:focus{
-               background-color: $primary-color;
-               color: $white-color;
+          .nav-item:focus, .active{
+               background-color: $primary-color !important;
+               color: $white-color !important;
                border: none;
+          }
+          .nav-item{
+               background-color: $white-color;
+               color: $primary-color;
           }
      }
 }     

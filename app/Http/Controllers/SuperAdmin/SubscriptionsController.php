@@ -4,6 +4,7 @@ namespace App\Http\Controllers\SuperAdmin;
 use App\Models\Subscriptions;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreSubscriptionRequest;
 
 class SubscriptionsController extends Controller
 {
@@ -14,7 +15,9 @@ class SubscriptionsController extends Controller
      */
     public function index()
     {
-        return view('superadmin/subscription/index');
+        $subscriptions = Subscriptions::get();
+        
+        return view('superadmin/subscription/index',compact('subscriptions'));
     }
 
     /**
@@ -24,7 +27,7 @@ class SubscriptionsController extends Controller
      */
     public function create()
     {
-        return view('superadmin/subscription/addsubscription');
+        return view('superadmin/subscription/add');
     }
 
     /**
@@ -33,33 +36,26 @@ class SubscriptionsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreSubscriptionRequest $request)
     {
-        // $this->validate($request,[
-        //     'title'=>'required',
-        //     'description'=>'required',
-        //     'role_id'=>'required',
-        //     'students_allowed'=>'required',
-        //     'monthly_price'=>'required',
-        //     'quarterly_price'=>'required',
-        //     'halfyearly_price'=>'required',
-        //     'annually_price'=>'required',
-        //     'white_labelling_price'=>'required',
-        //     'mock_tests'=>'required',
-        //     'practice_tests'=>'required',
-        //     'videos'=>'required',
-        //     'prediction_files'=>'required',
-        //     'status'=>'required'
-        //  ]);
+        
         $input  = \Arr::except($request->all(),array('_token'));
-        $input['practice_questions'] = 10;
+        if(!isset($input['videos'])){
+            $input['videos'] = 'N';
+        }
+        if(!isset($input['prediction_files'])){
+            $input['prediction_files'] = 'N';
+        }
+        if(!isset($input['status'])){
+            $input['status'] = 'D';
+        }
         $result = Subscriptions::create($input);
         if($result){
             return redirect()->route('subscription.index')
                         ->with('success','Subscription created successfully');
         }else{
             return redirect()->route('subscription.index')
-                        ->with('error','Subscription created successfully');
+                        ->with('error','Sorry!Something wrong.Try again later!');
         }
     }
 
@@ -82,7 +78,7 @@ class SubscriptionsController extends Controller
      */
     public function edit($id)
     {
-        //
+        
     }
 
     /**
@@ -105,6 +101,16 @@ class SubscriptionsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $result = Subscriptions::where('id',$id)->delete();
+        if($result)
+        {
+            return redirect()->route('subscription.index')
+                        ->with('success','Subscription deleted successfully');
+        }
+        else
+        {
+            return redirect()->route('subscription.index')
+                        ->with('error','Sorry!Something wrong.Try again later!');
+        }
     }
 }

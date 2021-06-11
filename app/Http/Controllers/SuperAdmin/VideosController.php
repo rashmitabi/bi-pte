@@ -15,7 +15,7 @@ class VideosController extends Controller
      */
     public function index()
     {
-        //
+        return view('superadmin/videos/index');
     }
 
     /**
@@ -25,7 +25,7 @@ class VideosController extends Controller
      */
     public function create()
     {
-        //
+        return view('superadmin/videos/addvideos');
     }
 
     /**
