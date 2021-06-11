@@ -144,13 +144,10 @@
             <a href="#Subscriptionsubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"> <img src="{{ asset('assets/images/icons/dashboard.svg') }}" class=""> <span> Manage Subscription </span> </a>
             <ul class="collapse list-unstyled" id="Subscriptionsubmenu">
                <li>
-                  <a href="#">Page 1</a>
+                  <a href="{{ route('subscription.create')}}">Subscription Create</a>
                </li>
                <li>
-                  <a href="#">Page 2</a>
-               </li>
-               <li>
-                  <a href="#">Page 3</a>
+                  <a href="{{ route('subscription.index') }}">Subscription List</a>
                </li>
             </ul>
          </li>
