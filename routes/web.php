@@ -52,3 +52,19 @@ Route::group(['middleware' => ['auth', 'verified','student']], function () {
 
     Route::resource('superadmin/email', App\Http\Controllers\SuperAdmin\EmailTemplatesController::class);
 
+    Route::resource('superadmin/vouchers', App\Http\Controllers\SuperAdmin\VouchersController::class);
+
+    Route::resource('superadmin/predictionfiles', App\Http\Controllers\SuperAdmin\PredictionFilesController::class);
+
+    Route::resource('superadmin/videos', App\Http\Controllers\SuperAdmin\VideosController::class);
+
+    Route::resource('superadmin/questions', App\Http\Controllers\SuperAdmin\questionsController::class);
+
+    Route::resource('superadmin/subjects', App\Http\Controllers\SuperAdmin\SubjectsController::class);
+
+    Route::resource('superadmin/transactions', App\Http\Controllers\SuperAdmin\TransactionsController::class);
+
+    Route::resource('superadmin/certificates', App\Http\Controllers\SuperAdmin\CertificatesController::class);
+
+    Route::resource('superadmin/tests', App\Http\Controllers\SuperAdmin\TestsController::class);
+
