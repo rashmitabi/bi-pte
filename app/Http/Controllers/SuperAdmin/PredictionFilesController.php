@@ -14,7 +14,7 @@ class PredictionFilesController extends Controller
      */
     public function index()
     {
-        //
+        return view('superadmin/predictionfiles/index');
     }
 
     /**
@@ -24,7 +24,7 @@ class PredictionFilesController extends Controller
      */
     public function create()
     {
-        //
+        return view('superadmin/predictionfiles/addpredictionfiles');
     }
 
     /**

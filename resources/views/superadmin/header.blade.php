@@ -29,7 +29,8 @@
 <nav class="navbar navbar-expand-lg">
    <div class="container-fluid">
       <button type="button" id="sidebarCollapse" class="btn btn-toggle">
-         <i class="fas fa-align-center"></i>
+         <!-- <i class="fas fa-align-center"></i> -->
+         <img src="{{ asset('assets/images/icons/menu.svg') }}" class="">
       </button>
       <div class="main-content-heading">
          <h3> Australian Academy </h3>
