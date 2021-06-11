@@ -977,6 +977,12 @@ body {
   padding: 8px 30px;
 }
 
+.tab .nav-tabs .nav-item:focus {
+  background-color: #092950;
+  color: #fff;
+  border: none;
+}
+
 /* Subscription page */
 .subscription thead tr th {
   white-space: normal !important;
