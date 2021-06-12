@@ -5,9 +5,12 @@ use App\Models\Subscriptions;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreSubscriptionRequest;
+use App\Http\Requests\UpdateSubscriptionRequest;
 
 class SubscriptionsController extends Controller
 {
+    private $moduleTitleP = 'superadmin.subscription.';
+    
     /**
      * Display a listing of the resource.
      *
@@ -17,7 +20,7 @@ class SubscriptionsController extends Controller
     {
         $subscriptions = Subscriptions::get();
         
-        return view('superadmin/subscription/index',compact('subscriptions'));
+        return view($this->moduleTitleP.'index',compact('subscriptions'));
     }
 
     /**
@@ -27,7 +30,7 @@ class SubscriptionsController extends Controller
      */
     public function create()
     {
-        return view('superadmin/subscription/add');
+        return view($this->moduleTitleP.'add');
     }
 
     /**
@@ -52,7 +55,7 @@ class SubscriptionsController extends Controller
         $result = Subscriptions::create($input);
         if($result){
             return redirect()->route('subscription.index')
-                        ->with('success','Subscription created successfully');
+                        ->with('success','Subscription created successfully!');
         }else{
             return redirect()->route('subscription.index')
                         ->with('error','Sorry!Something wrong.Try again later!');
@@ -95,9 +98,28 @@ class SubscriptionsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateSubscriptionRequest $request, $id)
     {
-        //
+        $input  = \Arr::except($request->all(),array('_token'));
+        if(!isset($input['videos'])){
+            $input['videos'] = 'N';
+        }
+        if(!isset($input['prediction_files'])){
+            $input['prediction_files'] = 'N';
+        }
+        if(!isset($input['status'])){
+            $input['status'] = 'D';
+        }
+
+        $result = Subscriptions::where('id',$id)->update($input);
+        if($result){
+            \Session::put('success', 'Subscription update Successfully!');
+            return true;
+        }else{
+            \Session::put('error', 'Sorry!Something wrong.try Again.');
+            return false;
+        }
+
     }
     public function changeStatus($id)
     {
