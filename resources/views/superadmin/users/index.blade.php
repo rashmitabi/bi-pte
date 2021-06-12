@@ -8,8 +8,9 @@
                 <h1 class="title mb-4">Manage User</h1>
             </div>
             <div class="col-12 col-md-12 col-xl-4 col-sm-4 right">
-                <button type="button" class="btn btn-primary" onclick="location.href='{{ route('users.create') }}'"><i class="fas fa-plus-circle mr-1"></i> New
+                <a href="{{ route('users.create') }}"><button type="button" class="btn btn-primary" ><i class="fas fa-plus-circle mr-1"></i> New
                     User</button>
+                </a>
             </div>
         </div>
     </section>
@@ -19,8 +20,9 @@
                 <div class="tab">
                     <nav>
                         <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                            <input type="hidden" name="type" value="I">
                             <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Institute</a>
-                            <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false" >Students</a>
+                            <a class="nav-item nav-link" id="nav-student-tab" data-toggle="tab" href="#nav-student" role="tab" aria-controls="nav-student" aria-selected="false" >Students</a>
                         </div>
                     </nav>
                     <div class="tab-content" id="nav-tabContent">
@@ -38,118 +40,22 @@
                                 </thead>
                             </table>
                         </div>
-                        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                        <div class="tab-pane fade" id="nav-student" role="tabpanel" aria-labelledby="nav-student-tab">
                             <table id="students" class="table table-striped table-bordered dt-responsive nowrap" style="width:100%">
-                    <thead>
-                        <tr>
-                            <th> <input type="checkbox" class="form-check-input position-relative ml-0" id="exampleCheck1"> </th>
-                            <th>Sr No</th>
-                            <th>Full Name</th>
-                            <th>Email</th>
-                            <th>Mobile Number</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><input type="checkbox" class="form-check-input position-relative ml-0" id="exampleCheck1"></td>
-                            <td>1</td>
-                            <td>navneet kaur</td>
-                            <td>navneet394@gmail.com</td>
-                            <td>9842000106</td>
-                            <td>
-                                <ul class="actions-btns">
-                                <li class="action"><a href="#"><i class="fas fa-user"></i></a></li>
-                                    <li class="action"><a href="#"><i class="fas fa-pen"></i></a></li>
-                                    <li class="action"><a href="#"><i class="fas fa-trash"></i></a></li>
-                                    <li class="action shield green"><a href="#"><img src="{{ asset('assets/images/icons/blocked.svg') }}" class=""></a></li>
-                                    <li class="action"><a href="#"><i class="fas fa-unlock-alt"></i></a></li>
-                                    <li class="action"><a href="#"><i class="fas fa-clipboard-check"></i></a></li>
-                                    <li class="action"><a href="#"><i class="fas fa-clipboard-list"></i></a></li>
-                                    <li class="action"><a href="#"><i class="fas fa-clipboard-list"></i></a></li>
-                                </ul>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><input type="checkbox" class="form-check-input position-relative ml-0" id="exampleCheck1"></td>
-                            <td>2</td>
-                            <td>navneet kaur</td>
-                            <td>navneet394@gmail.com</td>
-                            <td>9842000106</td>
-                            <td>
-                                <ul class="actions-btns">
-                                    <li class="action"><a href="#"><i class="fas fa-user"></i></a></li>
-                                    <li class="action"><a href="#"><i class="fas fa-pen"></i></a></li>
-                                    <li class="action"><a href="#"><i class="fas fa-trash"></i></a></li>
-                                    <li class="action shield green"><a href="#"><img src="{{ asset('assets/images/icons/blocked.svg') }}" class=""></a></li>
-                                    <li class="action"><a href="#"><i class="fas fa-unlock-alt"></i></a></li>
-                                    <li class="action"><a href="#"><i class="fas fa-clipboard-check"></i></a></li>
-                                    <li class="action"><a href="#"><i class="fas fa-clipboard-list"></i></a></li>
-                                    <li class="action"><a href="#"><i class="fas fa-clipboard-list"></i></a></li>
-                                </ul>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><input type="checkbox" class="form-check-input position-relative ml-0" id="exampleCheck1"></td>
-                            <td>3</td>
-                            <td>navneet kaur</td>
-                            <td>navneet394@gmail.com</td>
-                            <td>9842000106</td>
-                            <td>
-                                <ul class="actions-btns">
-                                <li class="action"><a href="#"><i class="fas fa-user"></i></a></li>
-                                    <li class="action"><a href="#"><i class="fas fa-pen"></i></a></li>
-                                    <li class="action"><a href="#"><i class="fas fa-trash"></i></a></li>
-                                    <li class="action shield green"><a href="#"><img src="{{ asset('assets/images/icons/blocked.svg') }}" class=""></a></li>
-                                    <li class="action"><a href="#"><i class="fas fa-unlock-alt"></i></a></li>
-                                    <li class="action"><a href="#"><i class="fas fa-clipboard-check"></i></a></li>
-                                    <li class="action"><a href="#"><i class="fas fa-clipboard-list"></i></a></li>
-                                    <li class="action"><a href="#"><i class="fas fa-clipboard-list"></i></a></li>
-                                </ul>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><input type="checkbox" class="form-check-input position-relative ml-0" id="exampleCheck1"></td>
-                            <td>4</td>
-                            <td>navneet kaur</td>
-                            <td>navneet394@gmail.com</td>
-                            <td>9842000106</td>
-                            <td>
-                                <ul class="actions-btns">
-                                <li class="action"><a href="#"><i class="fas fa-user"></i></a></li>
-                                    <li class="action"><a href="#"><i class="fas fa-pen"></i></a></li>
-                                    <li class="action"><a href="#"><i class="fas fa-trash"></i></a></li>
-                                    <li class="action shield green"><a href="#"><img src="{{ asset('assets/images/icons/blocked.svg') }}" class=""></a></li>
-                                    <li class="action"><a href="#"><i class="fas fa-unlock-alt"></i></a></li>
-                                    <li class="action"><a href="#"><i class="fas fa-clipboard-check"></i></a></li>
-                                    <li class="action"><a href="#"><i class="fas fa-clipboard-list"></i></a></li>
-                                    <li class="action"><a href="#"><i class="fas fa-clipboard-list"></i></a></li>
-                                </ul>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><input type="checkbox" class="form-check-input position-relative ml-0" id="exampleCheck1"></td>
-                            <td>5</td>
-                            <td>navneet kaur</td>
-                            <td>navneet394@gmail.com</td>
-                            <td>9842000106</td>
-                            <td>
-                                <ul class="actions-btns">
-                                <li class="action"><a href="#"><i class="fas fa-user"></i></a></li>
-                                    <li class="action"><a href="#"><i class="fas fa-pen"></i></a></li>
-                                    <li class="action"><a href="#"><i class="fas fa-trash"></i></a></li>
-                                    <li class="action shield green"><a href="#"><img src="{{ asset('assets/images/icons/blocked.svg') }}" class=""></a></li>
-                                    <li class="action"><a href="#"><i class="fas fa-unlock-alt"></i></a></li>
-                                    <li class="action"><a href="#"><i class="fas fa-clipboard-check"></i></a></li>
-                                    <li class="action"><a href="#"><i class="fas fa-clipboard-list"></i></a></li>
-                                    <li class="action"><a href="#"><i class="fas fa-clipboard-list"></i></a></li>
-                                </ul>
-                            </td>
-                        </tr>
-                </table>
-                       </div>
-                  </div>
-               </div>
+                                <thead>
+                                    <tr>
+                                        <th> <input type="checkbox" class="form-check-input position-relative ml-0" id="exampleCheck1"> </th>
+                                        <th>Sr No</th>
+                                        <th>Full Name</th>
+                                        <th>Email</th>
+                                        <th>Mobile Number</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
    </section>
@@ -250,167 +156,167 @@
                                   <label class="form-check-label" for="example4">Test 04</label>
                                </div>
                                <div class="form-check  form-check-inline ">
-                                  <input type="checkbox" class="form-check-input" id="Check5">
+                                  <input type="checkbox" class="form-check-input" >
                                   <label class="form-check-label" for="example5">Test 05</label>
                                </div>
                                <div class="form-check  form-check-inline ">
-                                  <input type="checkbox" class="form-check-input" id="Check5">
+                                  <input type="checkbox" class="form-check-input" >
                                   <label class="form-check-label" for="example5">Test 06</label>
                                </div>
                                <div class="form-check  form-check-inline ">
-                                  <input type="checkbox" class="form-check-input" id="Check5">
+                                  <input type="checkbox" class="form-check-input" >
                                   <label class="form-check-label" for="example5">Test 07</label>
                                </div>
                                <div class="form-check  form-check-inline ">
-                                  <input type="checkbox" class="form-check-input" id="Check5">
+                                  <input type="checkbox" class="form-check-input" >
                                   <label class="form-check-label" for="example5">Test 08</label>
                                </div>
                                <div class="form-check  form-check-inline ">
-                                  <input type="checkbox" class="form-check-input" id="Check5">
+                                  <input type="checkbox" class="form-check-input" >
                                   <label class="form-check-label" for="example5">Test 09</label>
                                </div>
                                <div class="form-check  form-check-inline ">
-                                  <input type="checkbox" class="form-check-input" id="Check5">
+                                  <input type="checkbox" class="form-check-input" >
                                   <label class="form-check-label" for="example5">Test 10</label>
                                </div>
                                <div class="form-check  form-check-inline ">
-                                  <input type="checkbox" class="form-check-input" id="Check5">
+                                  <input type="checkbox" class="form-check-input" >
                                   <label class="form-check-label" for="example5">Test 11</label>
                                </div>
                                <div class="form-check  form-check-inline ">
-                                  <input type="checkbox" class="form-check-input" id="Check5">
+                                  <input type="checkbox" class="form-check-input" >
                                   <label class="form-check-label" for="example5">Test 12</label>
                                </div>
                                <div class="form-check  form-check-inline ">
-                                  <input type="checkbox" class="form-check-input" id="Check5">
+                                  <input type="checkbox" class="form-check-input" >
                                   <label class="form-check-label" for="example5">Test 13</label>
                                </div>
                                <div class="form-check  form-check-inline ">
-                                  <input type="checkbox" class="form-check-input" id="Check5">
+                                  <input type="checkbox" class="form-check-input" >
                                   <label class="form-check-label" for="example5">Test 14</label>
                                </div>
                                <div class="form-check  form-check-inline ">
-                                  <input type="checkbox" class="form-check-input" id="Check5">
+                                  <input type="checkbox" class="form-check-input" >
                                   <label class="form-check-label" for="example5">Test 15</label>
                                </div>
                                <div class="form-check  form-check-inline ">
-                                  <input type="checkbox" class="form-check-input" id="Check5">
+                                  <input type="checkbox" class="form-check-input" >
                                   <label class="form-check-label" for="example5">Test 16</label>
                                </div>
                                <div class="form-check  form-check-inline ">
-                                  <input type="checkbox" class="form-check-input" id="Check5">
+                                  <input type="checkbox" class="form-check-input" >
                                   <label class="form-check-label" for="example5">Test 17</label>
                                </div>
                                <div class="form-check  form-check-inline ">
-                                  <input type="checkbox" class="form-check-input" id="Check5">
+                                  <input type="checkbox" class="form-check-input" >
                                   <label class="form-check-label" for="example5">Test 18</label>
                                </div>
                                <div class="form-check  form-check-inline ">
-                                  <input type="checkbox" class="form-check-input" id="Check5">
+                                  <input type="checkbox" class="form-check-input" >
                                   <label class="form-check-label" for="example5">Test 19</label>
                                </div>
                                <div class="form-check  form-check-inline ">
-                                  <input type="checkbox" class="form-check-input" id="Check5">
+                                  <input type="checkbox" class="form-check-input" >
                                   <label class="form-check-label" for="example5">Test 20</label>
                                </div>
                                <div class="form-check  form-check-inline ">
-                                  <input type="checkbox" class="form-check-input" id="Check5">
+                                  <input type="checkbox" class="form-check-input" >
                                   <label class="form-check-label" for="example5">Test 21</label>
                                </div>
                                <div class="form-check  form-check-inline ">
-                                  <input type="checkbox" class="form-check-input" id="Check5">
+                                  <input type="checkbox" class="form-check-input" >
                                   <label class="form-check-label" for="example5">Test 22</label>
                                </div>
                                <div class="form-check  form-check-inline ">
-                                  <input type="checkbox" class="form-check-input" id="Check5">
+                                  <input type="checkbox" class="form-check-input" >
                                   <label class="form-check-label" for="example5">Test 23</label>
                                </div>
                                <div class="form-check  form-check-inline ">
-                                  <input type="checkbox" class="form-check-input" id="Check5">
+                                  <input type="checkbox" class="form-check-input" >
                                   <label class="form-check-label" for="example5">Test 24</label>
                                </div>
                                <div class="form-check  form-check-inline ">
-                                  <input type="checkbox" class="form-check-input" id="Check5">
+                                  <input type="checkbox" class="form-check-input" >
                                   <label class="form-check-label" for="example5">Test 25</label>
                                </div>
                                <div class="form-check  form-check-inline ">
-                                  <input type="checkbox" class="form-check-input" id="Check5">
+                                  <input type="checkbox" class="form-check-input" >
                                   <label class="form-check-label" for="example5">Test 26</label>
                                </div>
                                <div class="form-check  form-check-inline ">
-                                  <input type="checkbox" class="form-check-input" id="Check5">
+                                  <input type="checkbox" class="form-check-input" >
                                   <label class="form-check-label" for="example5">Test 27</label>
                                </div>
                                <div class="form-check  form-check-inline ">
-                                  <input type="checkbox" class="form-check-input" id="Check5">
+                                  <input type="checkbox" class="form-check-input" >
                                   <label class="form-check-label" for="example5">Test 28</label>
                                </div>
                                <div class="form-check  form-check-inline ">
-                                  <input type="checkbox" class="form-check-input" id="Check5">
+                                  <input type="checkbox" class="form-check-input" >
                                   <label class="form-check-label" for="example5">Test 29</label>
                                </div>
                                <div class="form-check  form-check-inline ">
-                                  <input type="checkbox" class="form-check-input" id="Check5">
+                                  <input type="checkbox" class="form-check-input" >
                                   <label class="form-check-label" for="example5">Test 30</label>
                                </div>
                                <div class="form-check  form-check-inline ">
-                                  <input type="checkbox" class="form-check-input" id="Check5">
+                                  <input type="checkbox" class="form-check-input" >
                                   <label class="form-check-label" for="example5">Test 31</label>
                                </div>
                                <div class="form-check  form-check-inline ">
-                                  <input type="checkbox" class="form-check-input" id="Check5">
+                                  <input type="checkbox" class="form-check-input" >
                                   <label class="form-check-label" for="example5">Test 32</label>
                                </div>
                                <div class="form-check  form-check-inline ">
-                                  <input type="checkbox" class="form-check-input" id="Check5">
+                                  <input type="checkbox" class="form-check-input" >
                                   <label class="form-check-label" for="example5">Test 33</label>
                                </div>
                                <div class="form-check  form-check-inline ">
-                                  <input type="checkbox" class="form-check-input" id="Check5">
+                                  <input type="checkbox" class="form-check-input" >
                                   <label class="form-check-label" for="example5">Test 34</label>
                                </div>
                                <div class="form-check  form-check-inline ">
-                                  <input type="checkbox" class="form-check-input" id="Check5">
+                                  <input type="checkbox" class="form-check-input" >
                                   <label class="form-check-label" for="example5">Test 35</label>
                                </div>
                                <div class="form-check  form-check-inline ">
-                                  <input type="checkbox" class="form-check-input" id="Check5">
+                                  <input type="checkbox" class="form-check-input" >
                                   <label class="form-check-label" for="example5">Test 36</label>
                                </div>
                                <div class="form-check  form-check-inline ">
-                                  <input type="checkbox" class="form-check-input" id="Check5">
+                                  <input type="checkbox" class="form-check-input" >
                                   <label class="form-check-label" for="example5">Test 37</label>
                                </div>
                                <div class="form-check  form-check-inline ">
-                                  <input type="checkbox" class="form-check-input" id="Check5">
+                                  <input type="checkbox" class="form-check-input" >
                                   <label class="form-check-label" for="example5">Test 38</label>
                                </div>
                                <div class="form-check  form-check-inline ">
-                                  <input type="checkbox" class="form-check-input" id="Check5">
+                                  <input type="checkbox" class="form-check-input" >
                                   <label class="form-check-label" for="example5">Test 39</label>
                                </div>
                                <div class="form-check  form-check-inline ">
-                                  <input type="checkbox" class="form-check-input" id="Check5">
+                                  <input type="checkbox" class="form-check-input" >
                                   <label class="form-check-label" for="example5">Test 40</label>
                                </div>
                                <div class="form-check  form-check-inline ">
-                                  <input type="checkbox" class="form-check-input" id="Check5">
+                                  <input type="checkbox" class="form-check-input" >
                                   <label class="form-check-label" for="example5">Test 41</label>
                                </div>
                                <div class="form-check  form-check-inline ">
-                                  <input type="checkbox" class="form-check-input" id="Check5">
+                                  <input type="checkbox" class="form-check-input" >
                                   <label class="form-check-label" for="example5">Test 42</label>
                                </div>
                                <div class="form-check  form-check-inline ">
-                                  <input type="checkbox" class="form-check-input" id="Check5">
+                                  <input type="checkbox" class="form-check-input" >
                                   <label class="form-check-label" for="example5">Test 43</label>
                                </div>
                                <div class="form-check  form-check-inline ">
-                                  <input type="checkbox" class="form-check-input" id="Check5">
+                                  <input type="checkbox" class="form-check-input" >
                                   <label class="form-check-label" for="example5">Test 44</label>
                                </div>
                                <div class="form-check  form-check-inline ">
-                                  <input type="checkbox" class="form-check-input" id="Check5">
+                                  <input type="checkbox" class="form-check-input" >
                                   <label class="form-check-label" for="example5">Test 45</label>
                                </div>
                                <div class="form-group row">
@@ -431,8 +337,8 @@
 @endsection
 @section('js-hooks')
 <script type="text/javascript" defer>
-  var url_users = "{{ route('users.index') }}";
-  var url_students = "{{ route('users.index') }}";
+  var url_users = "{{ route('users.index', 'type=I') }}";
+  var url_students = "{{ route('users.index', 'type=S') }}";
 </script>
 <script type="text/javascript" src="{{ asset('assets/js/users.js') }}" defer></script>
 @endsection

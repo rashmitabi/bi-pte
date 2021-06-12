@@ -26,4 +26,9 @@ class Institues extends Model
         'institute_name',
         'white_labelling'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }

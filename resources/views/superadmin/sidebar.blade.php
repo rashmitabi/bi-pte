@@ -10,7 +10,7 @@
             <a href="#Usersubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"> <img src="{{ asset('assets/images/icons/user.svg') }}" class=""> <span> Manage User </span></a>
             <ul class="collapse list-unstyled" id="Usersubmenu">
                <li>
-                  <a href="{{ route('users.index') }}">All Users</a>
+                  <a href="{{ route('users.index', 'type=I') }}">All Users</a>
                </li>
                <li>
                   <a href="{{ route('users.create') }}">Add New User</a>

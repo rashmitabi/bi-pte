@@ -1,8 +1,8 @@
- var table = $('#module').DataTable({
+ var table = $('#role').DataTable({
       language: {
          search: '',
-         searchPlaceholder: 'Search by module name, slug, created date, status',
-         "sLengthMenu": '<select name="module_length">'+
+         searchPlaceholder: 'Search by role name, created date, status',
+         "sLengthMenu": '<select name="role_length">'+
                '<option value="10">10 Per Page</option>'+
                '<option value="20">20 Per Page</option>'+
                '<option value="30">30 Per Page</option>'+
@@ -22,12 +22,11 @@
       serverSide: true,
       ajax: url,
       columns: [
-         {data: 'checkbox', name: 'checkbox', orderable: false, searchable: false},
          {data: 'DT_RowIndex', name: 'DT_RowIndex'},
-         {data: 'module_name', name: 'module_name'},
-         {data: 'module_slug', name: 'module_slug'},
-         {data: 'status', name: 'status'},
+         {data: 'name', name: 'name'},
+         {data: 'permission', name: 'permission'},
+         {data: 'totaluser', name: 'totaluser'},
          {data: 'action', name: 'action', orderable: false, searchable: false},
       ]
    });
-   $("#module_wrapper div.toolbar").html('Manage Module');
+   $("#role_wrapper div.toolbar").html('Manage Role');

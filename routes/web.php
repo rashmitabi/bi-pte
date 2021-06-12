@@ -25,9 +25,18 @@ Auth::routes();
 //start Super admin routes
 Route::group(['middleware' => ['auth', 'verified','superadmin']], function () { 
     Route::get('superadmin/dashboard', [App\Http\Controllers\SuperAdmin\DashboardController::class, 'index'])->name('dashboard');
+
     
     Route::resource('superadmin/users', App\Http\Controllers\SuperAdmin\UsersController::class)->names('users');
+    Route::get('superadmin/users/changestatus/{id}', [App\Http\Controllers\SuperAdmin\UsersController::class, 'changeStatus'])->name('superadmin-user-changestatus');
+   
+   
+
     Route::resource('superadmin/module', App\Http\Controllers\SuperAdmin\ModulesController::class)->names('modules');
+    Route::get('superadmin/module/changestatus/{id}', [App\Http\Controllers\SuperAdmin\ModulesController::class, 'changeStatus'])->name('superadmin-module-changestatus');
+
+    Route::resource('superadmin/roles', App\Http\Controllers\SuperAdmin\RolesController::class)->names('roles');
+    Route::get('superadmin/roles/changestatus/{id}', [App\Http\Controllers\SuperAdmin\RolesController::class, 'changeStatus'])->name('superadmin-roles-changestatus');
 
 });
 //end Super admin routes
@@ -54,9 +63,8 @@ Route::get('superadmin/subscription/changestatus/{id}', [App\Http\Controllers\Su
 
     Route::resource('superadmin/email', App\Http\Controllers\SuperAdmin\EmailTemplatesController::class);
 
-    Route::resource('superadmin/modules', App\Http\Controllers\SuperAdmin\ModulesController::class);
-
-    Route::resource('superadmin/roles', App\Http\Controllers\SuperAdmin\RolesController::class);
+    
+   
     
     Route::resource('superadmin/vouchers', App\Http\Controllers\SuperAdmin\VouchersController::class);
 

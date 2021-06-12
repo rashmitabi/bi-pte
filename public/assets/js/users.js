@@ -22,17 +22,18 @@
       serverSide: true,
       ajax: url_users,
       columns: [
-         {data: 'checkbox', name: 'checkbox'},
+         {data: 'checkbox', name: 'checkbox', orderable: false, searchable: false},
          {data: 'DT_RowIndex', name: 'DT_RowIndex'},
-         {data: 'module_name', name: 'module_name'},
-         {data: 'module_slug', name: 'module_slug'},
-         {data: 'status', name: 'status'},
+         {data: 'name', name: 'name'},
+         {data: 'email', name: 'email'},
+         {data: 'phone_number', name: 'phone_number'},
          {data: 'action', name: 'action', orderable: false, searchable: false},
       ]
    });
    $("#users_wrapper div.toolbar").html('Registered Users');
 
-
+   
+      
    $('#students').DataTable({
         language: {
             search: '',
@@ -57,12 +58,22 @@
       serverSide: true,
       ajax: url_students,
       columns: [
-         {data: 'checkbox', name: 'checkbox'},
+         {data: 'checkbox', name: 'checkbox', orderable: false, searchable: false},
          {data: 'DT_RowIndex', name: 'DT_RowIndex'},
-         {data: 'module_name', name: 'module_name'},
-         {data: 'module_slug', name: 'module_slug'},
-         {data: 'status', name: 'status'},
+         {data: 'name', name: 'name'},
+         {data: 'email', name: 'email'},
+         {data: 'mobile_no', name: 'mobile_no'},
          {data: 'action', name: 'action', orderable: false, searchable: false},
       ]
     });
     $("#students_wrapper div.toolbar").html('Registered Users');
+
+   $('body').on('change','.user-type',function(){
+      var role_id = $(this).val();
+      if(role_id == 2){
+         
+      }else{
+
+      }
+      
+   });
