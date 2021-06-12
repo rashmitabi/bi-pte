@@ -13,10 +13,11 @@
         <div class="row mx-0 align-items-center">
             <div class="col-12 col-md-12 col-xl-12 col-sm-8 left p-0">
                 <!-- <h1 class="title mb-4">Manage Subscription</h1> -->
-                <table id="managemodule" class="table table-striped table-bordered dt-responsive nowrap common"
+                <table id="module" class="table table-striped table-bordered dt-responsive nowrap common"
                     style="width:100%">
                     <thead>
                         <tr>
+                            <th><input type="checkbox" class="form-check-input position-relative ml-0" id="exampleCheck1"></th>
                             <th>SR No</th>
                             <th>Module Name</th>
                             <th>Module Slug</th>
