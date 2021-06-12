@@ -17,7 +17,7 @@ class ModulesController extends Controller
      */
     public function index(Request $request)
     {
-        if ($request->ajax()) {
+        if($request->ajax()) {
             $data = Modules::latest()->get();
             return Datatables::of($data)
                     ->addIndexColumn()
@@ -108,4 +108,5 @@ class ModulesController extends Controller
     {
         //
     }
+   
 }

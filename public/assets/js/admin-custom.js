@@ -123,6 +123,256 @@ $(document).ready(function() {
         "<'row'<'col-sm-12't>>" +
         "<'row'<'col-sm-12 col-md-12'p>>",
     });
+    $("#email_wrapper div.toolbar").html('Email Template');  
+
+    $('#vouchers').DataTable({
+        language: {
+            search: '',
+            searchPlaceholder: "Search by voucher name, voucher type, discount price, created date, expiry date",
+            "sLengthMenu": '<select>'+
+                '<option value="10">10 Per Page</option>'+
+                '<option value="20">20 Per Page</option>'+
+                '<option value="30">30 Per Page</option>'+
+                '<option value="40">40 Per Page</option>'+
+                '<option value="50">50 Per Page</option>'+
+                '<option value="-1">All</option>'+
+                '</select>',
+            paginate: {
+                next: '<i class="fas fa-chevron-right"></i>', // or '→'
+                previous: '<i class="fas fa-chevron-left"></i>' // or '←' 
+            }
+        },
+        "dom": "<'row'<'col-sm-12 col-md-3 top-label'<'toolbar'>><'col-sm-12 col-md-6 top-search'f><'col-sm-12 col-md-3 top-pagination'l>>" +
+        "<'row'<'col-sm-12't>>" +
+        "<'row'<'col-sm-12 col-md-12'p>>",
+    });
+    $("#vouchers_wrapper div.toolbar").html('Vouchers');  
+
+    $('#prediction').DataTable({
+        language: {
+            search: '',
+            searchPlaceholder: "Search by file title, created by, created date",
+            "sLengthMenu": '<select>'+
+                '<option value="10">10 Per Page</option>'+
+                '<option value="20">20 Per Page</option>'+
+                '<option value="30">30 Per Page</option>'+
+                '<option value="40">40 Per Page</option>'+
+                '<option value="50">50 Per Page</option>'+
+                '<option value="-1">All</option>'+
+                '</select>', 
+            paginate: {
+                next: '<i class="fas fa-chevron-right"></i>', // or '→'
+                previous: '<i class="fas fa-chevron-left"></i>' // or '←' 
+            }
+        }, 
+        "dom": "<'row'<'col-sm-12 col-md-3 top-label'<'toolbar'>><'col-sm-12 col-md-6 top-search'f><'col-sm-12 col-md-3 top-pagination'l>>" +
+        "<'row'<'col-sm-12't>>" +
+        "<'row'<'col-sm-12 col-md-12'p>>",
+    });
+    $("#prediction_wrapper div.toolbar").html('Manage Prediction Files');  
+
+    $('#videos').DataTable({
+        language: {
+            search: '',
+            searchPlaceholder: "Search by video title, created by, date",
+            "sLengthMenu": '<select>'+
+                '<option value="10">10 Per Page</option>'+
+                '<option value="20">20 Per Page</option>'+
+                '<option value="30">30 Per Page</option>'+
+                '<option value="40">40 Per Page</option>'+
+                '<option value="50">50 Per Page</option>'+
+                '<option value="-1">All</option>'+
+                '</select>', 
+            paginate: {
+                next: '<i class="fas fa-chevron-right"></i>', // or '→'
+                previous: '<i class="fas fa-chevron-left"></i>' // or '←' 
+            }
+        }, 
+        "dom": "<'row'<'col-sm-12 col-md-3 top-label'<'toolbar'>><'col-sm-12 col-md-6 top-search'f><'col-sm-12 col-md-3 top-pagination'l>>" +
+        "<'row'<'col-sm-12't>>" +
+        "<'row'<'col-sm-12 col-md-12'p>>",
+    });
+    $("#videos_wrapper div.toolbar").html('Manage Videos'); 
+
+    $('#questions').DataTable({
+        language: {
+            search: '',
+            searchPlaceholder: "Search by video title, created by, date",
+            "sLengthMenu": '<select>'+
+                '<option value="10">10 Per Page</option>'+
+                '<option value="20">20 Per Page</option>'+
+                '<option value="30">30 Per Page</option>'+
+                '<option value="40">40 Per Page</option>'+
+                '<option value="50">50 Per Page</option>'+
+                '<option value="-1">All</option>'+
+                '</select>', 
+            paginate: {
+                next: '<i class="fas fa-chevron-right"></i>', // or '→'
+                previous: '<i class="fas fa-chevron-left"></i>' // or '←' 
+            }
+        }, 
+        "dom": "<'row'<'col-sm-12 col-md-3 top-label'<'toolbar'>><'col-sm-12 col-md-6 top-search'f><'col-sm-12 col-md-3 top-pagination'l>>" +
+        "<'row'<'col-sm-12't>>" +
+        "<'row'<'col-sm-12 col-md-12'p>>",
+    });
+    $("#questions_wrapper div.toolbar").html('Practice Questions'); 
+
+    $('#subjects').DataTable({
+        language: {
+            search: '',
+            searchPlaceholder: "Search by subject name",
+            "sLengthMenu": '<select>'+
+                '<option value="10">10 Per Page</option>'+
+                '<option value="20">20 Per Page</option>'+
+                '<option value="30">30 Per Page</option>'+
+                '<option value="40">40 Per Page</option>'+
+                '<option value="50">50 Per Page</option>'+
+                '<option value="-1">All</option>'+
+                '</select>', 
+            paginate: {
+                next: '<i class="fas fa-chevron-right"></i>', // or '→'
+                previous: '<i class="fas fa-chevron-left"></i>' // or '←' 
+            }
+        }, 
+        "dom": "<'row'<'col-sm-12 col-md-3 top-label'<'toolbar'>><'col-sm-12 col-md-6 top-search'f><'col-sm-12 col-md-3 top-pagination'l>>" +
+        "<'row'<'col-sm-12't>>" +
+        "<'row'<'col-sm-12 col-md-12'p>>",
+    });
+    $("#subjects_wrapper div.toolbar").html('Manage Subject'); 
+
+    $('#transactions').DataTable({
+        language: {
+            search: '',
+            searchPlaceholder: "Search by user  name, user role, amount, subscription package, status",
+            "sLengthMenu": '<select>'+
+                '<option value="10">10 Per Page</option>'+
+                '<option value="20">20 Per Page</option>'+
+                '<option value="30">30 Per Page</option>'+
+                '<option value="40">40 Per Page</option>'+
+                '<option value="50">50 Per Page</option>'+
+                '<option value="-1">All</option>'+
+                '</select>', 
+            paginate: {
+                next: '<i class="fas fa-chevron-right"></i>', // or '→'
+                previous: '<i class="fas fa-chevron-left"></i>' // or '←' 
+            }
+        }, 
+        "dom": "<'row'<'col-sm-12 col-md-3 top-label'<'toolbar'>><'col-sm-12 col-md-6 top-search'f><'col-sm-12 col-md-3 top-pagination'l>>" +
+        "<'row'<'col-sm-12't>>" +
+        "<'row'<'col-sm-12 col-md-12'p>>",
+    });
+    $("#transactions_wrapper div.toolbar").html('Transactions');
+
+    $('#certificates').DataTable({
+        language: {
+            search: '',
+            searchPlaceholder: "Search by student name, test name",
+            "sLengthMenu": '<select>'+
+                '<option value="10">10 Per Page</option>'+
+                '<option value="20">20 Per Page</option>'+
+                '<option value="30">30 Per Page</option>'+
+                '<option value="40">40 Per Page</option>'+
+                '<option value="50">50 Per Page</option>'+
+                '<option value="-1">All</option>'+
+                '</select>', 
+            paginate: {
+                next: '<i class="fas fa-chevron-right"></i>', // or '→'
+                previous: '<i class="fas fa-chevron-left"></i>' // or '←' 
+            }
+        }, 
+        "dom": "<'row'<'col-sm-12 col-md-3 top-label'<'toolbar'>><'col-sm-12 col-md-6 top-search'f><'col-sm-12 col-md-3 top-pagination'l>>" +
+        "<'row'<'col-sm-12't>>" +
+        "<'row'<'col-sm-12 col-md-12'p>>",
+    });
+    $("#certificates_wrapper div.toolbar").html('Certificate'); 
+
+    $('#practice_test').DataTable({
+        language: {
+            search: '',
+            searchPlaceholder: "Search by test name, test subject",
+            "sLengthMenu": '<select>'+
+                '<option value="10">10 Per Page</option>'+
+                '<option value="20">20 Per Page</option>'+
+                '<option value="30">30 Per Page</option>'+
+                '<option value="40">40 Per Page</option>'+
+                '<option value="50">50 Per Page</option>'+
+                '<option value="-1">All</option>'+
+                '</select>', 
+            paginate: {
+                next: '<i class="fas fa-chevron-right"></i>', // or '→'
+                previous: '<i class="fas fa-chevron-left"></i>' // or '←' 
+            }
+        }, 
+        "dom": "<'row'<'col-sm-12 col-md-3 top-label'<'toolbar'>><'col-sm-12 col-md-6 top-search'f><'col-sm-12 col-md-3 top-pagination'l>>" +
+        "<'row'<'col-sm-12't>>" +
+        "<'row'<'col-sm-12 col-md-12'p>>",
+    });
+    $("#practice_test_wrapper div.toolbar").html('Manage Test'); 
+
+    $('#managemodule').DataTable({
+        language: {
+            search: '',
+            searchPlaceholder: "Search by module name",
+            "sLengthMenu": '<select>'+
+                '<option value="10">10 Per Page</option>'+
+                '<option value="20">20 Per Page</option>'+
+                '<option value="30">30 Per Page</option>'+
+                '<option value="40">40 Per Page</option>'+
+                '<option value="50">50 Per Page</option>'+
+                '<option value="-1">All</option>'+
+                '</select>',
+            paginate: {
+                next: '<i class="fas fa-chevron-right"></i>', // or '→'
+                previous: '<i class="fas fa-chevron-left"></i>' // or '←' 
+            }
+        },
+        "dom": "<'row'<'col-sm-12 col-md-3 top-label'<'toolbar'>><'col-sm-12 col-md-6 top-search'f><'col-sm-12 col-md-3 top-pagination'l>>" +
+        "<'row'<'col-sm-12't>>" +
+        "<'row'<'col-sm-12 col-md-12'p>>",
+    });
+    $("#managemodule_wrapper div.toolbar").html('Manage Module');  
+    
+    $('#role').DataTable({
+        language: {
+            search: '',
+            searchPlaceholder: "Search by role",
+            "sLengthMenu": '<select>'+
+                '<option value="10">10 Per Page</option>'+
+                '<option value="20">20 Per Page</option>'+
+                '<option value="30">30 Per Page</option>'+
+                '<option value="40">40 Per Page</option>'+
+                '<option value="50">50 Per Page</option>'+
+                '<option value="-1">All</option>'+
+                '</select>',
+            paginate: {
+                next: '<i class="fas fa-chevron-right"></i>', // or '→'
+                previous: '<i class="fas fa-chevron-left"></i>' // or '←' 
+            }
+        },
+        "dom": "<'row'<'col-sm-12 col-md-3 top-label'<'toolbar'>><'col-sm-12 col-md-6 top-search'f><'col-sm-12 col-md-3 top-pagination'l>>" +
+        "<'row'<'col-sm-12't>>" +
+        "<'row'<'col-sm-12 col-md-12'p>>",
+    });
+    $("#role_wrapper div.toolbar").html('Manage Role');  
+
+//     ClassicEditor
+// 		.create( document.querySelector( '#editor' ), {
+// 			// toolbar: [ 'heading', '|', 'bold', 'italic', 'link' ]
+            
+// 		} )
+// 		.then( editor => {
+// 			window.editor = editor;
+//             config.extraPlugins = 'sourcedialog';
+// config.removePlugins = 'sourcearea';
+
+// 		} )
+// 		.catch( err => {
+// 			console.error( err.stack );
+// 		} );
+
+    $("#editor").each(function(_, ckeditor) {
+        CKEDITOR.replace(ckeditor);
+    });
     $("#email_wrapper div.toolbar").html('Email Template');
     //Delete Model for SuperAdmin start
     $('body').on('click','.delete_modal',function() {
@@ -141,7 +391,22 @@ $(document).ready(function() {
       // $('body').find('.remove-record-model').find( "input" ).remove();
     });
     ////Delete Model for SuperAdmin End
-} );
+    $('body').on('click','.subscription-edit',function(){
+        var id = $(this).data('id');
+        var apiUrl = $(this).data('url');
+        $.ajax({
+            url: apiUrl,
+            type:'GET',
+            data:{'id' : id},
+            beforeSend: function(){
+                $('#sub-edit-body').html('<i class="fa fa-spinner fa-spin"></i>  Please Wait...');
+            },
+            success:function(data) {
+                $('#sub-edit-body').html(data.html);
+            },
+        });
+    });
+});
 
 // $(document).ready(function(){
 //     $("#sidebar").click(function(){

@@ -17,13 +17,13 @@
                 <form class="form mt-4 ml-3">
                     <div class="form-group row">
                         <label class="col-4 col-form-label ">Template Name</label>
-                        <div class="col-7">
+                        <div class="col-8">
                             <input type="text" class="form-control " placeholder="Enter Subscription Title">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-4 col-form-label ">Email Subject</label>
-                        <div class="col-7">
+                        <div class="col-8">
                             <input type="email" class="form-control " placeholder="Enter Email Subject">
                         </div>
                     </div>
@@ -31,9 +31,10 @@
                     <div class="form-group row">
                         <label class="col-12 col-form-label pt-0">Email Body</label>
                         <div class="col-12">
-                            <div id="editor">
+                            <!-- <div id="editor">
                                 <h2>The three greatest things you learn from traveling</h2>
-                            </div>
+                            </div> -->
+                            <textarea name="editor" id="editor"></textarea>
                         </div>
                     </div>
 
@@ -45,7 +46,7 @@
                     </div>
 
                     <div class="form-group row">
-                        <div class="col-11 save-btn">
+                        <div class="col-12 save-btn">
                             <button type="button" class="btn btn-outline-primary"><i
                                     class="far fa-save save-icon"></i>Save</button>
                         </div>
@@ -55,16 +56,4 @@
         </div>
     </section>
 </div>
-<script>
-	ClassicEditor
-		.create( document.querySelector( '#editor' ), {
-			// toolbar: [ 'heading', '|', 'bold', 'italic', 'link' ]
-		} )
-		.then( editor => {
-			window.editor = editor;
-		} )
-		.catch( err => {
-			console.error( err.stack );
-		} );
-</script>
 @endsection

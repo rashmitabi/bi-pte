@@ -78,7 +78,14 @@ class SubscriptionsController extends Controller
      */
     public function edit($id)
     {
-        
+        $subscription = Subscriptions::find($id);
+
+        $html_subscription = view('superadmin/subscription/edit', compact('subscription'))->render();
+
+        return response()->json([
+            'success' => 1,
+            'html'=>$html_subscription    
+        ]);
     }
 
     /**
@@ -92,7 +99,23 @@ class SubscriptionsController extends Controller
     {
         //
     }
-
+    public function changeStatus($id)
+    {
+        $subscription = Subscriptions::find($id);
+        if($subscription->status == 'D'){
+            $subscription->status = 'E';
+        }else{
+            $subscription->status = 'D';
+        }
+        $result = $subscription->update();
+        if($result){
+            return redirect()->route('subscription.index')
+                        ->with('success','Status Update successfully');
+        }else{
+            return redirect()->route('subscription.index')
+                        ->with('error','Status Not Updated!');
+        }
+    }
     /**
      * Remove the specified resource from storage.
      *

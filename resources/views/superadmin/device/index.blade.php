@@ -5,7 +5,7 @@
 
     <section class="top-title-button mb-3">
         <div class="row mx-0 align-items-center">
-            <div class="col-12 col-md-12 col-xl-12 col-sm-12 left">
+            <div class="col-12 left">
                 <h1 class="title mb-4">Manage Devices Log</h1>
             </div>
         </div>

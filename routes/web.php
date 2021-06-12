@@ -45,12 +45,31 @@ Route::group(['middleware' => ['auth', 'verified','student']], function () {
     //end student admin routes
 });
 
-
+Route::get('superadmin/subscription/changestatus/{id}', [App\Http\Controllers\SuperAdmin\SubscriptionsController::class, 'changeStatus'])
+->name('superadmin-subscription-changestatus');
     Route::resource('superadmin/subscription', App\Http\Controllers\SuperAdmin\SubscriptionsController::class);
-
-    
 
     Route::resource('superadmin/device', App\Http\Controllers\SuperAdmin\DeviceController::class);
 
     Route::resource('superadmin/email', App\Http\Controllers\SuperAdmin\EmailTemplatesController::class);
+
+    Route::resource('superadmin/modules', App\Http\Controllers\SuperAdmin\ModulesController::class);
+
+    Route::resource('superadmin/roles', App\Http\Controllers\SuperAdmin\RolesController::class);
+    
+    Route::resource('superadmin/vouchers', App\Http\Controllers\SuperAdmin\VouchersController::class);
+
+    Route::resource('superadmin/predictionfiles', App\Http\Controllers\SuperAdmin\PredictionFilesController::class);
+
+    Route::resource('superadmin/videos', App\Http\Controllers\SuperAdmin\VideosController::class);
+
+    Route::resource('superadmin/questions', App\Http\Controllers\SuperAdmin\questionsController::class);
+
+    Route::resource('superadmin/subjects', App\Http\Controllers\SuperAdmin\SubjectsController::class);
+
+    Route::resource('superadmin/transactions', App\Http\Controllers\SuperAdmin\TransactionsController::class);
+
+    Route::resource('superadmin/certificates', App\Http\Controllers\SuperAdmin\CertificatesController::class);
+
+    Route::resource('superadmin/tests', App\Http\Controllers\SuperAdmin\TestsController::class);
 

@@ -15,7 +15,7 @@ class SubjectsController extends Controller
      */
     public function index()
     {
-        //
+        return view('superadmin/subjects/index');
     }
 
     /**
@@ -25,7 +25,7 @@ class SubjectsController extends Controller
      */
     public function create()
     {
-        //
+        return view('superadmin/subjects/addsubjects');
     }
 
     /**

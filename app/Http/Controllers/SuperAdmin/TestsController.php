@@ -15,7 +15,7 @@ class TestsController extends Controller
      */
     public function index()
     {
-        //
+        return view('superadmin/tests/index');
     }
 
     /**
@@ -25,7 +25,7 @@ class TestsController extends Controller
      */
     public function create()
     {
-        //
+        return view('superadmin/tests/addtests');
     }
 
     /**
