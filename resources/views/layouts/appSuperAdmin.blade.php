@@ -11,20 +11,17 @@
 	    <meta content="width=device-width, initial-scale=1" name="viewport">
 	    <link href="favicon.png" rel="shortcut icon">
 	    <!-- Scripts -->
-	    <!-- <script src="{{ asset('js/app.js') }}" defer></script> -->
-	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+	    <script src="{{ asset('js/app.js') }}" defer></script>
 	    <script src="{{ asset('assets/fontawesome/js/all.min.js') }}" defer></script>
-	    <!-- <script src="{{ asset('assets/js/jquery.min.js') }}" defer></script> -->
-	    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-    	<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
-	    <!-- <script src="{{ asset('assets/js/jquery.dataTables.min.js') }}" defer></script>
-	    <script src="{{ asset('assets/js/dataTables.bootstrap4.min.js') }}" defer></script> -->
+	    <script src="{{ asset('assets/js/jquery.min.js') }}" defer></script>
+	
+	    <script src="{{ asset('assets/js/jquery.dataTables.min.js') }}" defer></script>
+	    <script src="{{ asset('assets/js/dataTables.bootstrap4.min.js') }}" defer></script>
 	    <script src="{{ asset('assets/js/dataTables.responsive.min.js') }}" defer></script>
 	    <script src="{{ asset('assets/js/responsive.bootstrap4.min.js') }}" defer></script>
 	    <!-- <script src="{{ asset('assets/js/ckeditor.js') }}" defer></script> -->
 		<!-- <script src="https://cdn.ckeditor.com/ckeditor5/28.0.0/classic/ckeditor.js"></script>   -->
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/ckeditor/4.12.1/ckeditor.js"></script>  
-	
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/ckeditor/4.12.1/ckeditor.js"></script>
 
 	    <script src="{{ asset('assets/js/admin-custom.js') }}" defer></script>
 
