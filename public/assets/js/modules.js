@@ -2,7 +2,7 @@
       language: {
          search: '',
          searchPlaceholder: 'Search by module name, slug, created date, status',
-         "sLengthMenu": '<select name="subscription_length">'+
+         "sLengthMenu": '<select name="module_length">'+
                '<option value="10">10 Per Page</option>'+
                '<option value="20">20 Per Page</option>'+
                '<option value="30">30 Per Page</option>'+

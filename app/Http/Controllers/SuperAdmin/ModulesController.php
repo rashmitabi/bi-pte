@@ -34,7 +34,10 @@ class ModulesController extends Controller
                         return $status;
                     })
                     ->addColumn('action', function($row){
-                        $btn = '<a href="javascript:void(0)" class="edit btn btn-primary btn-sm">View</a>';
+                        $btn = '<ul class="actions-btns">
+                            <li class="action"><a href="#"><i class="fas fa-pen"></i></a></li>
+                            <li class="action shield green"><a href="#"><img src="asset(\'assets/images/icons/blocked.svg\')" class=""></a></li>
+                            </ul>';
                         return $btn;
                     })
                     ->rawColumns(['checkbox','action'])

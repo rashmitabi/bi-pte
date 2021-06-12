@@ -34,8 +34,5 @@
 <script type="text/javascript" defer>
   var url="{{ route('modules.index') }}";
 </script>
-<script type="text/javascript" src="{{ asset('assets/js/module.js') }}" defer>
-  
-</script>
-
+<script type="text/javascript" src="{{ asset('assets/js/modules.js') }}" defer></script>
 @endsection

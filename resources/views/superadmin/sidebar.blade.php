@@ -15,6 +15,12 @@
                <li>
                   <a href="{{ route('users.create') }}">Add New User</a>
                </li>
+               <li>
+                  <a href="{{ route('modules.index') }}">Manage Modules</a>
+               </li>
+               <li>
+                  <a href="{{ route('roles.index') }}">Manage Roles</a>
+               </li>
             </ul>
          </li>
          <li>
