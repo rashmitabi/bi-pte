@@ -18,8 +18,8 @@ class CreateVouchers extends Migration
             $table->tinyInteger('role_id')->comment('Foreign key of roles table');
             $table->string('name',255);
             $table->string('code',50);
-            $table->float('discount_percentage',8,2);
-            $table->float('discount_price',8,2);
+            $table->float('discount_percentage',8,2)->nullable();
+            $table->float('discount_price',8,2)->nullable();
             $table->date('valid_till');
             $table->dateTime('created_at')->useCurrent();
             $table->timestamp('updated_at')->nullable();
