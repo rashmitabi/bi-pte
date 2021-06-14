@@ -52,6 +52,7 @@ class SubscriptionsController extends Controller
         if(!isset($input['status'])){
             $input['status'] = 'D';
         }
+        $input['practice_questions'] = 0;
         $result = Subscriptions::create($input);
         if($result){
             return redirect()->route('subscription.index')

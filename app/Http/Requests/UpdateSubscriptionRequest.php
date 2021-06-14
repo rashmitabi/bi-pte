@@ -35,7 +35,6 @@ class UpdateSubscriptionRequest extends FormRequest
             'white_labelling_price'=>'required|numeric',
             'mock_tests'=>'required|numeric',
             'practice_tests'=>'required|numeric',
-            'practice_questions'=>'required|numeric',
             'videos'=>'nullable|in:Y,N',
             'prediction_files'=>'nullable|in:Y,N',
             'status'=>'nullable|in:E,D'
