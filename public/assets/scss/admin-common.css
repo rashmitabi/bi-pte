@@ -1100,6 +1100,94 @@ body {
   margin-right: 13px;
 }
 
+.modal-body .row .profile-img img {
+  width: 150px !important;
+  height: 165px !important;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.modal-body .row .edit-profile-btn {
+  position: absolute;
+  right: 39%;
+  bottom: -10px;
+  cursor: pointer;
+}
+
+.modal-body .row .edit-profile-btn a {
+  width: 24px;
+  height: 24px;
+  background-color: #092950;
+  color: #fff;
+  border-radius: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+  font-size: 10px;
+}
+
+.modal-body .row .user-form {
+  padding: 25px 0px 0px 35px;
+}
+
+.modal-body .row .user-form .form-group {
+  margin-bottom: 0px;
+}
+
+.modal-body .row .user-form .form-group .col-form-label {
+  font-weight: 600;
+}
+
+.modal-body .row .user-form .form-input input {
+  border: none;
+}
+
+.modal-body .row .user-form .form-input .form-control:focus {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  border: none;
+}
+
+.modal-body .row .user-form .btn .icon {
+  margin-right: 13px;
+  width: 16px;
+}
+
+.modal-body .row .user-form .btn .edit-btn {
+  float: right !important;
+  background-color: #092950;
+  color: #fff;
+  border-color: #092950;
+  min-width: 120px;
+  margin-right: 5px;
+}
+
+.modal-body .row .user-form .btn .delete-btn {
+  float: right !important;
+  background-color: red;
+  color: #fff;
+  border-color: red;
+  min-width: 120px;
+}
+
+.modal-body .row .user-form .btn .shield-btn {
+  float: right !important;
+  background-color: red;
+  color: #fff;
+  border-color: red;
+  min-width: 120px;
+  margin-right: 5px;
+}
+
 /*table tab */
 .tab .nav-tabs .nav-item {
   color: #000000;

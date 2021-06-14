@@ -14,37 +14,33 @@
     <section class="top-title-button white-bg remove-main-margin mb-3">
         <div class="row mx-0 align-items-center">
             <div class="col-12 col-md-12 col-xl-8 col-sm-8 left">
-                <form class="form mt-4 ml-3" action="{{ route('users.store')}}">
+                <form class="form mt-4 ml-3">
                   <div class="form-group row">
                       <label class="col-4 col-form-label ">Select Role</label>
                        <div class="col-7">
-                          <select name="role" class="user-type custom-select">
-                              @if(count($roles) > 0)
-                                @foreach($roles as $role)
-                                  @if(Auth::user()->role_id != $role->id)
-                                    <option value="{{ $role->id }}">{{ $role->role_name }}</option>
-                                  @endif
-                                 @endforeach
-                              @endif
+                          <select class="user-type custom-select">
+                              <option selected>Select User Type</option>
+                              <option value="1">Student</option>
+                              <option value="2">Institute</option>
                            </select>
                       </div>
                    </div>
                    <div class="form-group row">
                       <label  class="col-4 col-form-label ">First Name</label>
-                      <div class="col-7">
-                        <input type="text" name="fname" class="form-control " placeholder="Enter First Name">
+                       <div class="col-7">
+                          <input type="text" class="form-control " placeholder="Enter First Name">
                       </div>
                    </div>
                    <div class="form-group row">
                       <label class="col-4 col-form-label ">Last Name</label>
                        <div class="col-7">
-                          <input type="text" name="lname" class="form-control " placeholder="Enter Last Name">
+                          <input type="text" class="form-control " placeholder="Enter Last Name">
                       </div>
                    </div>
                    <div class="form-group row">
                       <label class="col-4 col-form-label ">Email</label>
                        <div class="col-7">
-                          <input type="email" name="email" class="form-control " placeholder="Enter Email id">
+                          <input type="email" class="form-control " placeholder="Enter Email id">
                       </div>
                    </div>
                    <div class="form-group row">
@@ -345,11 +341,4 @@
         </div>
     </section>
 </div>
-@endsection
-@section('js-hooks')
-<script type="text/javascript" defer>
-  var url_users = "{{ route('users.index', 'type=I') }}";
-  var url_students = "{{ route('users.index', 'type=S') }}";
-</script>
-<script type="text/javascript" src="{{ asset('assets/js/users.js') }}" defer></script>
 @endsection

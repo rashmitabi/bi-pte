@@ -25,8 +25,14 @@
                        <div class="col-8">
                           <select class="user-type custom-select">
                               <option selected>Select Permissions</option>
-                              <option value="1">Student</option>
-                              <option value="2">Institute</option>
+                              <option value="1">Add Test</option>
+                              <option value="2">Add Videos</option>
+                              <option value="2">Take Test</option>
+                              <option value="2">View Videos</option>
+                              <option value="2">Mock Test</option>
+                              <option value="2">Practice Test</option>
+                              <option value="2">Practice Question</option>
+                              <option value="2">Add Predictions File</option>
                            </select>
                       </div>
                    </div>

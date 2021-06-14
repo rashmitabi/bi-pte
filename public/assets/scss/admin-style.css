@@ -1,1 +1,274 @@
-/* No CSS *//*# sourceMappingURL=admin-style.css.map */
+@import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css");
+@media (max-width: 575.98px) {
+  body #content {
+    margin-left: 0px;
+    margin-top: 50px;
+    width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  body .full_content {
+    margin-left: 0px !important;
+  }
+  body #sidebar {
+    margin-top: 48px;
+    padding-bottom: 40px;
+    z-index: 10;
+  }
+  body #sidebar.active {
+    width: 0px;
+    padding: 0px;
+  }
+  body .navbar {
+    z-index: 999;
+  }
+  body .navbar .container-fluid {
+    -webkit-box-pack: unset;
+        -ms-flex-pack: unset;
+            justify-content: unset;
+  }
+  body .navbar .btn-toggle {
+    font-size: 22px;
+  }
+  body .navbar .main-content-heading h3 {
+    margin-left: 0px;
+    font-size: 22px;
+  }
+  body .navbar .dropdown-toggle-wrap {
+    right: auto;
+  }
+  body .navbar .navbar-collapse .right-navbar-wrap {
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
+  }
+  body #sidebarCollapse img {
+    height: 15px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .navbar-collapse .right-navbar-wrap {
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
+  }
+}
+
+@media (min-width: 375px) and (max-width: 425px) {
+  body .navbar .main-content-heading h3 {
+    margin-left: 0px;
+    font-size: 18px;
+  }
+  body .dropdown-toggle-wrap {
+    min-width: 300px;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 374px) {
+  body .navbar .main-content-heading h3 {
+    margin-left: 0px;
+    font-size: 16px;
+    padding: 10px 8px;
+  }
+  body .navbar .btn-toggle {
+    font-size: 20px;
+    padding: 10px 4px;
+  }
+  body .responsive-toggle {
+    padding: 2px 8px;
+  }
+  body .dropdown-toggle-wrap {
+    min-width: 250px;
+  }
+}
+
+/* tablets devices (tablets, 768px and up)  */
+@media (min-width: 768px) and (max-width: 991.98px) {
+  body #content {
+    margin-left: 0px;
+    margin-top: 70px;
+    width: 100%;
+  }
+  body .full_content {
+    margin-left: 0px !important;
+  }
+  body #sidebar {
+    margin-top: 48px;
+    z-index: 10;
+  }
+  body #sidebar.active {
+    width: 0px;
+    padding: 0px;
+  }
+  body .navbar {
+    z-index: 999;
+  }
+  body .dropdown-toggle-wrap {
+    right: auto;
+  }
+  #sidebarCollapse img {
+    height: 20px;
+  }
+}
+
+/*dashboard*/
+#content .row {
+  margin-right: 0px;
+  margin-left: 0px;
+}
+
+#content .row .student-col {
+  background-image: -webkit-gradient(linear, left bottom, right top, from(#736dff), color-stop(#8371ff), color-stop(#9176ff), color-stop(#9d7aff), to(#a97fff));
+  background-image: linear-gradient(to right top, #736dff, #8371ff, #9176ff, #9d7aff, #a97fff);
+}
+
+#content .row .mocktest-col {
+  background-image: -webkit-gradient(linear, left bottom, right top, from(#f7c598), color-stop(#fab78e), color-stop(#fda887), color-stop(#ff9885), to(#ff8886));
+  background-image: linear-gradient(to right top, #f7c598, #fab78e, #fda887, #ff9885, #ff8886);
+}
+
+#content .row .practicetest-col {
+  background-image: -webkit-gradient(linear, left bottom, right top, from(#f9b4bd), color-stop(#f19dbc), color-stop(#e08ac3), color-stop(#c37bce), to(#9573db));
+  background-image: linear-gradient(to right top, #f9b4bd, #f19dbc, #e08ac3, #c37bce, #9573db);
+}
+
+#content .row .institute-col {
+  background-image: -webkit-gradient(linear, left bottom, right top, from(#44dec5), color-stop(#00d8da), color-stop(#00d0eb), color-stop(#05c7f6), to(#4ebcfa));
+  background-image: linear-gradient(to right top, #44dec5, #00d8da, #00d0eb, #05c7f6, #4ebcfa);
+}
+
+#content .row .col {
+  padding: 0px;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 15px 30px 5px Rgb(0 0 0/22%);
+          box-shadow: 0 15px 30px 5px Rgb(0 0 0/22%);
+  margin-right: 20px;
+}
+
+#content .row .col .common-wrap {
+  padding: 18px 25px;
+  border-bottom: 1px solid #fff;
+}
+
+#content .row .col .common-wrap .icon {
+  float: left;
+  border-radius: 50%;
+  background-color: transparent;
+  -webkit-box-shadow: 0 0px 10px 5px Rgb(0 0 0/22%);
+          box-shadow: 0 0px 10px 5px Rgb(0 0 0/22%);
+  width: 45px;
+  height: 45px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#content .row .col .common-wrap .icon img {
+  width: 18px;
+}
+
+#content .row .col .common-wrap .title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 40px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding-left: 15px;
+}
+
+#content .row .col .common-wrap .title h4 {
+  color: #fff;
+  margin: 0px;
+  font-size: 18px;
+}
+
+#content .row .col .text-wrap {
+  padding: 23px 17px 13px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+#content .row .col .text-wrap h3 {
+  color: #fff;
+  font-size: 20px;
+  margin: 0px;
+  font-weight: 300;
+}
+
+#content .row .col .text-wrap h2 {
+  color: #fff;
+  font-size: 35px;
+  font-weight: 600;
+  margin-top: -8px;
+  margin-right: 15px;
+}
+
+/*add new questions*/
+.accordion .card-header:after {
+  font-family: 'FontAwesome';
+  content: "\f068";
+  float: right;
+  font-size: 20px;
+  color: #fff;
+}
+
+.accordion .collapsed:after {
+  /* symbol for "collapsed" panels */
+  content: "\f067";
+}
+
+#content .container {
+  padding: 50px 15px;
+}
+
+#content .container .accordion .card {
+  border: 2px solid #9D1346;
+  border-radius: 5px;
+}
+
+#content .container .accordion .card .card-header {
+  background-color: #9D1346;
+}
+
+#content .container .accordion .card .card-header .card-title {
+  color: #fff;
+  font-size: 20px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+#content .container .accordion .card .card-body {
+  padding: 10px;
+}
+
+#content .container .accordion .card .card-body .reading-list button {
+  background-color: #092950;
+}
+
+#content .container .accordion .card .card-body .reading-list button:focus {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  border: none;
+}
+
+#content .container .accordion .card .card-body .reading-list .btn-primary {
+  border: none;
+}
+/*# sourceMappingURL=admin-style.css.map */

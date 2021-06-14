@@ -1,0 +1,153 @@
+@import "_variables";
+@import "_responsive";
+@import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css");
+/*dashboard*/
+#content{
+    .row{
+         margin-right: 0px;
+         margin-left: 0px;
+        .student-col{
+            background-image: linear-gradient(to right top, #736dff, #8371ff, #9176ff, #9d7aff, #a97fff);
+        }
+        .mocktest-col{
+            background-image: linear-gradient(to right top, #f7c598, #fab78e, #fda887, #ff9885, #ff8886);
+        }
+        .practicetest-col{
+            background-image: linear-gradient(to right top, #f9b4bd, #f19dbc, #e08ac3, #c37bce, #9573db);
+        }
+        .institute-col{
+            background-image: linear-gradient(to right top, #44dec5, #00d8da, #00d0eb, #05c7f6, #4ebcfa);
+        }
+        .col{
+            padding: 0px;
+            border-radius: 5px;
+            box-shadow: 0 15px 30px 5px Rgb(0 0 0/22%);
+            margin-right: 20px;
+            .common-wrap{
+                padding: 18px 25px;
+                border-bottom: 1px solid #fff;
+                .icon{
+                   float: left;
+                   border-radius: 50%;
+                   background-color: transparent;
+                   box-shadow: 0 0px 10px 5px Rgb(0 0 0 / 22%);
+                   width: 45px;
+                   height: 45px;
+                   display: flex;
+                   align-items: center;
+                   justify-content: center;
+                   img{
+                      width: 18px;
+                   }
+                }
+                .title{
+                    display: flex;
+                    flex-direction: column;
+                    height: 40px;
+                    justify-content: center;
+                    padding-left: 15px;
+                    h4{
+                        color:#fff;
+                        margin: 0px;
+                        font-size: 18px;
+                    }
+                }
+            }
+            .text-wrap{
+                padding: 23px 17px 13px;
+                display: flex;
+                justify-content: space-between;
+                h3{
+                    color: #fff;
+                    font-size: 20px;
+                    margin: 0px;
+                    font-weight: 300;
+                }
+                h2{
+                    color: #fff;
+                    font-size: 35px;
+                    font-weight: 600;
+                    margin-top: -8px;
+                    margin-right: 15px;
+                }
+
+            }
+            // .total-wrap{
+            //     padding: 18px 18px 5px 18px;
+            //     .heading-text{
+            //         padding: 10px 0px;
+            //         display: flex;
+            //         justify-content: space-between;
+            //         padding: 10px 0px;
+            //         h3{
+            //             color: #fff;
+            //             font-size: 20px;
+            //             align-items: center;
+            //         }
+            //     }
+            //     .text-wrap{
+            //         h2{
+            //             color: #fff;
+            //             font-size: 35px;
+            //             font-weight: 600;
+            //             margin-top: -8px;
+            //         }
+            //     }
+          
+        }
+    }
+}
+
+
+/*add new questions*/
+
+.accordion{
+    .card-header:after{
+       font-family: 'FontAwesome';  
+       content: "\f068";
+       float: right;
+       font-size: $fs-20;
+       color: $white-color;
+    }
+    .collapsed:after {
+       /* symbol for "collapsed" panels */
+       content: "\f067"; 
+    }
+} 
+
+
+#content{
+    .container{
+        padding: 50px 15px;
+        .accordion{
+            .card{
+                border: 2px solid $secondary-color;
+                border-radius: 5px;
+                .card-header{
+                    background-color: $secondary-color;
+                    .card-title{
+                        color: $white-color;
+                        font-size: $fs-20;
+                        font-weight: $fw-600;
+                        text-decoration: none;
+                    }
+                }
+                .card-body{
+                    padding: 10px;
+                    .reading-list{
+                       button{
+                        background-color: $primary-color;
+                       }
+                       button:focus{
+                           box-shadow: none;
+                           border: none;
+                        }
+                        .btn-primary{
+                            border: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
