@@ -27,6 +27,7 @@ class TestsController extends Controller
     {
         return view('superadmin/tests/addtests');
     }
+    
 
     /**
      * Store a newly created resource in storage.
@@ -47,7 +48,7 @@ class TestsController extends Controller
      */
     public function show(Tests $tests)
     {
-        //
+        return view ('superadmin/tests/addnewquestion');
     }
 
     /**

@@ -13,7 +13,7 @@
             </div>
         </div>
     </section>
-    <section class="top-title-button white-bg remove-main-margin mb-3">
+    <section class="top-title-button  remove-main-margin mb-3">
         <div class="row mx-0 align-items-center">
             <div class="col-12 col-md-12 col-xl-12 col-sm-8 p-0 left">
                 <div class="tab">
@@ -23,7 +23,7 @@
                             <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Students</a>
                       </div>
                   </nav>
-                  <div class="tab-content" id="nav-tabContent">
+                  <div class="tab-content white-bg" id="nav-tabContent">
                        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
                        <table id="users" class="table table-striped table-bordered dt-responsive nowrap" style="width:100%">
                     <thead>
@@ -48,12 +48,9 @@
                                     <li class="action" data-toggle="modal"
                                             data-target="#mocktest"><a href="#"><i class="fas fa-user"></i></a></li>
                                     <li class="action"><a href="#"><i class="fas fa-pen"></i></a></li>
-                                    <li class="action"><a href="#"><i class="fas fa-trash"></i></a></li>
+                                    <li class="action bg-danger"><a href="#"><i class="fas fa-trash"></i></a></li>
                                     <li class="action shield green"><a href="#"><img src="{{ asset('assets/images/icons/blocked.svg') }}" class=""></a></li>
                                     <li class="action"><a href="#"><i class="fas fa-unlock-alt"></i></a></li>
-                                    <li class="action"><a href="#"><i class="fas fa-clipboard-check"></i></a></li>
-                                    <li class="action"><a href="#"><i class="fas fa-clipboard-list"></i></a></li>
-                                    <li class="action"><a href="#"><i class="fas fa-clipboard-list"></i></a></li>
                                 </ul>
                             </td>
                         </tr>
@@ -65,15 +62,11 @@
                             <td>9842000106</td>
                             <td>
                                 <ul class="actions-btns">
-                                    <li class="action" data-toggle="modal"
-                                            data-target="#mocktest"><a href="#"><i class="fas fa-user"></i></a></li>
+                                    <li class="action"><a href="#"><i class="fas fa-user"></i></a></li>
                                     <li class="action"><a href="#"><i class="fas fa-pen"></i></a></li>
-                                    <li class="action"><a href="#"><i class="fas fa-trash"></i></a></li>
+                                    <li class="action bg-danger"><a href="#"><i class="fas fa-trash"></i></a></li>
                                     <li class="action shield green"><a href="#"><img src="{{ asset('assets/images/icons/blocked.svg') }}" class=""></a></li>
                                     <li class="action"><a href="#"><i class="fas fa-unlock-alt"></i></a></li>
-                                    <li class="action"><a href="#"><i class="fas fa-clipboard-check"></i></a></li>
-                                    <li class="action"><a href="#"><i class="fas fa-clipboard-list"></i></a></li>
-                                    <li class="action"><a href="#"><i class="fas fa-clipboard-list"></i></a></li>
                                 </ul>
                             </td>
                         </tr>
@@ -87,12 +80,9 @@
                                 <ul class="actions-btns">
                                 <li class="action"><a href="#"><i class="fas fa-user"></i></a></li>
                                     <li class="action"><a href="#"><i class="fas fa-pen"></i></a></li>
-                                    <li class="action"><a href="#"><i class="fas fa-trash"></i></a></li>
+                                    <li class="action bg-danger"><a href="#"><i class="fas fa-trash"></i></a></li>
                                     <li class="action shield green"><a href="#"><img src="{{ asset('assets/images/icons/blocked.svg') }}" class=""></a></li>
                                     <li class="action"><a href="#"><i class="fas fa-unlock-alt"></i></a></li>
-                                    <li class="action"><a href="#"><i class="fas fa-clipboard-check"></i></a></li>
-                                    <li class="action"><a href="#"><i class="fas fa-clipboard-list"></i></a></li>
-                                    <li class="action"><a href="#"><i class="fas fa-clipboard-list"></i></a></li>
                                 </ul>
                             </td>
                         </tr>
@@ -106,12 +96,9 @@
                                 <ul class="actions-btns">
                                 <li class="action"><a href="#"><i class="fas fa-user"></i></a></li>
                                     <li class="action"><a href="#"><i class="fas fa-pen"></i></a></li>
-                                    <li class="action"><a href="#"><i class="fas fa-trash"></i></a></li>
+                                    <li class="action bg-danger"><a href="#"><i class="fas fa-trash"></i></a></li>
                                     <li class="action shield green"><a href="#"><img src="{{ asset('assets/images/icons/blocked.svg') }}" class=""></a></li>
                                     <li class="action"><a href="#"><i class="fas fa-unlock-alt"></i></a></li>
-                                    <li class="action"><a href="#"><i class="fas fa-clipboard-check"></i></a></li>
-                                    <li class="action"><a href="#"><i class="fas fa-clipboard-list"></i></a></li>
-                                    <li class="action"><a href="#"><i class="fas fa-clipboard-list"></i></a></li>
                                 </ul>
                             </td>
                         </tr>
@@ -125,12 +112,9 @@
                                 <ul class="actions-btns">
                                 <li class="action"><a href="#"><i class="fas fa-user"></i></a></li>
                                     <li class="action"><a href="#"><i class="fas fa-pen"></i></a></li>
-                                    <li class="action"><a href="#"><i class="fas fa-trash"></i></a></li>
+                                    <li class="action bg-danger"><a href="#"><i class="fas fa-trash"></i></a></li>
                                     <li class="action shield green"><a href="#"><img src="{{ asset('assets/images/icons/blocked.svg') }}" class=""></a></li>
                                     <li class="action"><a href="#"><i class="fas fa-unlock-alt"></i></a></li>
-                                    <li class="action"><a href="#"><i class="fas fa-clipboard-check"></i></a></li>
-                                    <li class="action"><a href="#"><i class="fas fa-clipboard-list"></i></a></li>
-                                    <li class="action"><a href="#"><i class="fas fa-clipboard-list"></i></a></li>
                                 </ul>
                             </td>
                         </tr>
@@ -157,14 +141,15 @@
                             <td>9842000106</td>
                             <td>
                                 <ul class="actions-btns">
-                                <li class="action"><a href="#"><i class="fas fa-user"></i></a></li>
-                                    <li class="action"><a href="#"><i class="fas fa-pen"></i></a></li>
-                                    <li class="action"><a href="#"><i class="fas fa-trash"></i></a></li>
-                                    <li class="action shield green"><a href="#"><img src="{{ asset('assets/images/icons/blocked.svg') }}" class=""></a></li>
+                                <li class="action"data-toggle="modal"
+                                            data-target="#userdetail"><a href="#"><i class="fas fa-user"></i></a></li>
+                                    <li class="action"data-toggle="modal"
+                                            data-target="#editdetail"><a href="#"><i class="fas fa-pen"></i></a></li>
+                                    <li class="action bg-danger"><a href="#"><i class="fas fa-trash"></i></a></li>
+                                    <li class="action shield green"data-toggle="modal"
+                                            data-target="#editsecurity"><a href="#"><img src="{{ asset('assets/images/icons/blocked.svg') }}" class=""></a></li>
                                     <li class="action"><a href="#"><i class="fas fa-unlock-alt"></i></a></li>
                                     <li class="action"><a href="#"><i class="fas fa-clipboard-check"></i></a></li>
-                                    <li class="action"><a href="#"><i class="fas fa-clipboard-list"></i></a></li>
-                                    <li class="action"><a href="#"><i class="fas fa-clipboard-list"></i></a></li>
                                 </ul>
                             </td>
                         </tr>
@@ -176,14 +161,15 @@
                             <td>9842000106</td>
                             <td>
                                 <ul class="actions-btns">
-                                    <li class="action"><a href="#"><i class="fas fa-user"></i></a></li>
-                                    <li class="action"><a href="#"><i class="fas fa-pen"></i></a></li>
-                                    <li class="action"><a href="#"><i class="fas fa-trash"></i></a></li>
-                                    <li class="action shield green"><a href="#"><img src="{{ asset('assets/images/icons/blocked.svg') }}" class=""></a></li>
+                                    <li class="action" data-toggle="modal"
+                                            data-target="#userdetail"><a href="#"><i class="fas fa-user"></i></a></li>
+                                    <li class="action"data-toggle="modal"
+                                            data-target="#editdetail"><a href="#"><i class="fas fa-pen"></i></a></li>
+                                    <li class="action bg-danger"><a href="#"><i class="fas fa-trash"></i></a></li>
+                                    <li class="action shield green"data-toggle="modal"
+                                            data-target="#editsecurity"><a href="#"><img src="{{ asset('assets/images/icons/blocked.svg') }}" class=""></a></li>
                                     <li class="action"><a href="#"><i class="fas fa-unlock-alt"></i></a></li>
                                     <li class="action"><a href="#"><i class="fas fa-clipboard-check"></i></a></li>
-                                    <li class="action"><a href="#"><i class="fas fa-clipboard-list"></i></a></li>
-                                    <li class="action"><a href="#"><i class="fas fa-clipboard-list"></i></a></li>
                                 </ul>
                             </td>
                         </tr>
@@ -195,14 +181,15 @@
                             <td>9842000106</td>
                             <td>
                                 <ul class="actions-btns">
-                                <li class="action"><a href="#"><i class="fas fa-user"></i></a></li>
-                                    <li class="action"><a href="#"><i class="fas fa-pen"></i></a></li>
-                                    <li class="action"><a href="#"><i class="fas fa-trash"></i></a></li>
-                                    <li class="action shield green"><a href="#"><img src="{{ asset('assets/images/icons/blocked.svg') }}" class=""></a></li>
+                                <li class="action"data-toggle="modal"
+                                            data-target="#userdetail"><a href="#"><i class="fas fa-user"></i></a></li>
+                                    <li class="action"data-toggle="modal"
+                                            data-target="#editdetail"><a href="#"><i class="fas fa-pen"></i></a></li>
+                                    <li class="action bg-danger"><a href="#"><i class="fas fa-trash"></i></a></li>
+                                    <li class="action shield green"data-toggle="modal"
+                                            data-target="#editsecurity"><a href="#"><img src="{{ asset('assets/images/icons/blocked.svg') }}" class=""></a></li>
                                     <li class="action"><a href="#"><i class="fas fa-unlock-alt"></i></a></li>
                                     <li class="action"><a href="#"><i class="fas fa-clipboard-check"></i></a></li>
-                                    <li class="action"><a href="#"><i class="fas fa-clipboard-list"></i></a></li>
-                                    <li class="action"><a href="#"><i class="fas fa-clipboard-list"></i></a></li>
                                 </ul>
                             </td>
                         </tr>
@@ -214,14 +201,15 @@
                             <td>9842000106</td>
                             <td>
                                 <ul class="actions-btns">
-                                <li class="action"><a href="#"><i class="fas fa-user"></i></a></li>
-                                    <li class="action"><a href="#"><i class="fas fa-pen"></i></a></li>
-                                    <li class="action"><a href="#"><i class="fas fa-trash"></i></a></li>
-                                    <li class="action shield green"><a href="#"><img src="{{ asset('assets/images/icons/blocked.svg') }}" class=""></a></li>
+                                <li class="action"data-toggle="modal"
+                                            data-target="#userdetail"><a href="#"><i class="fas fa-user"></i></a></li>
+                                    <li class="action"data-toggle="modal"
+                                            data-target="#editdetail"><a href="#"><i class="fas fa-pen"></i></a></li>
+                                    <li class="action bg-danger"><a href="#"><i class="fas fa-trash"></i></a></li>
+                                    <li class="action shield green"data-toggle="modal"
+                                            data-target="#editsecurity"><a href="#"><img src="{{ asset('assets/images/icons/blocked.svg') }}" class=""></a></li>
                                     <li class="action"><a href="#"><i class="fas fa-unlock-alt"></i></a></li>
                                     <li class="action"><a href="#"><i class="fas fa-clipboard-check"></i></a></li>
-                                    <li class="action"><a href="#"><i class="fas fa-clipboard-list"></i></a></li>
-                                    <li class="action"><a href="#"><i class="fas fa-clipboard-list"></i></a></li>
                                 </ul>
                             </td>
                         </tr>
@@ -233,14 +221,15 @@
                             <td>9842000106</td>
                             <td>
                                 <ul class="actions-btns">
-                                <li class="action"><a href="#"><i class="fas fa-user"></i></a></li>
-                                    <li class="action"><a href="#"><i class="fas fa-pen"></i></a></li>
-                                    <li class="action"><a href="#"><i class="fas fa-trash"></i></a></li>
-                                    <li class="action shield green"><a href="#"><img src="{{ asset('assets/images/icons/blocked.svg') }}" class=""></a></li>
+                                <li class="action"data-toggle="modal"
+                                            data-target="#userdetail"><a href="#"><i class="fas fa-user"></i></a></li>
+                                    <li class="action"data-toggle="modal"
+                                            data-target="#editdetail"><a href="#"><i class="fas fa-pen"></i></a></li>
+                                    <li class="action bg-danger"><a href="#"><i class="fas fa-trash"></i></a></li>
+                                    <li class="action shield green"data-toggle="modal"
+                                            data-target="#editsecurity"><a href="#"><img src="{{ asset('assets/images/icons/blocked.svg') }}" class=""></a></li>
                                     <li class="action"><a href="#"><i class="fas fa-unlock-alt"></i></a></li>
                                     <li class="action"><a href="#"><i class="fas fa-clipboard-check"></i></a></li>
-                                    <li class="action"><a href="#"><i class="fas fa-clipboard-list"></i></a></li>
-                                    <li class="action"><a href="#"><i class="fas fa-clipboard-list"></i></a></li>
                                 </ul>
                             </td>
                         </tr>
@@ -524,6 +513,234 @@
             </div>
         </div>
     </div>
+    
 
+    <!-- security modal -->
+    <div class="modal fade" id="editsecurity" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered ">
+            <div class="modal-content">
+                <div class="modal-header pb-3">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true"><i class="fas fa-times"></i></span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                   <form class="form mt-5">
+                      <div class="form-group row">
+                        <label class="col-5 col-form-label ">Password</label>
+                        <div class="col-7">
+                        <input type="password" name="password" class="form-control" placeholder="**********">
+                        <i class="far fa-eye-slash lock-icon password-icon" onclick="password()"></i>
+                       </div>
+                      </div>
+                      <div class="form-group row">
+                      <label  class="col-5 col-form-label ">Confirm Password</label>
+                       <div class="col-7">
+                       <input type="password" name="password" class="form-control" placeholder="**********">
+                       <i class="far fa-eye-slash lock-icon password-icon" onclick="password()"></i>
+                      </div>
+                      </div>
+                      <div class="form-group row">
+                       <div class="col-12 save-btn">
+                         <button  type="button" class="btn btn-outline-primary"><i class="far fa-save save-icon"></i>Save Password</button>
+                      </div>
+                   </div>
+                   </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- users detail modal  -->
+    <div class="modal fade" id="userdetail" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered w-70">
+            <div class="modal-content">
+                <div class="modal-header pb-3">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true"><i class="fas fa-times"></i></span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                          <div class="col-12">
+                             <div class="profile-img">
+                                  <img src="{{ asset('assets/images/profile-img-2.png') }}">
+                              </div>
+                          </div>
+                      <div class="col-12 mt-3 modal-form">
+                       <form class="user-form">
+                           <div class="form-group row">
+                               <label class="col-sm-4 col-form-label">First Name</label>
+                               <div class=" form-input col-sm-7">
+                                  <input type="text" class="form-control" placeholder="AnkitKumar">
+                               </div>
+                           </div>
+                           <div class="form-group row">
+                               <label class="col-sm-4 col-form-label">Last Name</label>
+                                 <div class=" form-input col-sm-7">
+                                      <input type="text" class="form-control" placeholder="Jain">
+                                  </div>
+                           </div>
+                            <div class="form-group row">
+                                <label class="col-sm-4 col-form-label">Email</label>
+                                <div class=" form-input col-sm-8">
+                                <input type="email" class="form-control" placeholder="Ankitkumar30557@Gmail.Com">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-4 col-form-label">UserName</label>
+                                <div class=" form-input col-sm-7">
+                                    <input type="Phone" class="form-control" placeholder="AnkitKumar">
+                                </div>
+                           </div>
+                           <div class="form-group row">
+                                <label class="col-sm-4 col-form-label">Date of Birth</label>
+                                <div class=" form-input col-sm-7">
+                                    <input type="Phone" class="form-control" placeholder="26/5/1988">
+                                </div>
+                           </div>
+                            <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label">Mobile Number</label>
+                                    <div class=" form-input col-sm-7">
+                                        <input type="email" class="form-control" placeholder="9988774774">
+                                    </div>
+                            </div>
+                            <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label">Status</label>
+                                    <div class=" form-input col-sm-7">
+                                        <input type="email" class="form-control" placeholder="Active">
+                                    </div>
+                            </div>
+                            <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label">Country Citizen</label>
+                                    <div class=" form-input col-sm-7">
+                                        <input type="email" class="form-control" placeholder="India">
+                                    </div>
+                            </div>
+                            <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label">Country Residence</label>
+                                    <div class=" form-input col-sm-7">
+                                        <input type="email" class="form-control" placeholder="India">
+                                    </div>
+                            </div>
+                            <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label">Validity</label>
+                                    <div class=" form-input col-sm-7">
+                                        <input type="email" class="form-control" placeholder="23/6/2021">
+                                    </div>
+                            </div>
+                            <div class="form-group row">
+                                   <div class="col-11 btn mt-2">
+                                       <button  type="button" class="btn delete-btn btn-outline-primary"><i class="fas fa-trash icon"></i>Delete</button>
+                                       <button  type="button" class="btn edit-btn btn-outline-primary"><i class="fas fa-pen icon"></i>Edit</button>
+                                       <button  type="button" class="btn shield-btn btn-outline-primary"><a href="#"><img src="{{ asset('assets/images/icons/blocked.svg') }}" class="icon"></a></i>Block</button>
+                                   </div>
+                            </div>
+                     </form>
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- edit modal -->
+    <div class="modal fade" id="editdetail" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header pb-3">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true"><i class="fas fa-times"></i></span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="profile-img">
+                                  <img src="{{ asset('assets/images/profile-img-2.png') }}">
+                            </div>
+                            <div class="edit-profile-btn">
+                                    <a><i class="fas fa-pen icon"></i></a>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-12 col-xl-12 col-sm-8 left">
+                            <form class="form mt-5 ml-5">
+                               <div class="form-group row mb-2">
+                                   <label  class="col-4 col-form-label ">First Name</label>
+                                   <div class="col-7">
+                                        <input type="text" class="form-control " placeholder="AnkitKumar">
+                                    </div>
+                               </div>
+                               <div class="form-group row mb-2">
+                                  <label class="col-4 col-form-label ">Last Name</label>
+                                  <div class="col-7">
+                                       <input type="text" class="form-control " placeholder="jain">
+                                   </div>
+                              </div>
+                              <div class="form-group row mb-2">
+                                  <label class="col-4 col-form-label ">Email</label>
+                                  <div class="col-7">
+                                       <input type="text" class="form-control " placeholder="AnkitKumar30557@Gmail.com">
+                                   </div>
+                              </div>
+                              <div class="form-group row mb-2">
+                                  <label class="col-4 col-form-label ">User Name</label>
+                                  <div class="col-7">
+                                       <input type="text" class="form-control " placeholder="AnkitKumar">
+                                   </div>
+                              </div>
+                              <div class="form-group row mb-2">
+                                   <label  class="col-4 col-form-label ">Date of Birth</label>
+                                   <div class="col-7">
+                                      <input type="date" class="form-control " placeholder="26/5/1998">
+                                   </div>
+                              </div>
+                              <div class="form-group row mb-2">
+                                  <label class="col-4 col-form-label ">Mobile Number</label>
+                                  <div class="col-7">
+                                       <input type="text" class="form-control " placeholder="9988774774">
+                                   </div>
+                              </div>
+                              <div class="form-group row mb-2">
+                                   <label  class="col-4 col-form-label ">Status</label>
+                                   <div class="col-7 toggle-switch">
+                                      <input type="checkbox" id="switch" /><label for="switch">Toggle</label>
+                                   </div>
+                              </div>
+                              <div class="form-group row mb-2">
+                                  <label class="col-4 col-form-label ">Country Citizen</label>
+                                  <div class="col-7">
+                                       <input type="text" class="form-control " placeholder="India">
+                                   </div>
+                              </div>
+                              <div class="form-group row mb-2">
+                                  <label class="col-4 col-form-label ">Country Residence</label>
+                                  <div class="col-7">
+                                       <input type="text" class="form-control " placeholder="India">
+                                   </div>
+                              </div>
+                              <div class="form-group row mb-2">
+                                   <label  class="col-4 col-form-label ">Validity</label>
+                                   <div class="col-7">
+                                     <input type="date" class="form-control " placeholder="Validity">
+                                  </div>
+                              </div>
+                              <div class="form-group row mt-4">
+                                  <div class="col-11 save-btn">
+                                     <button  type="button" class="btn btn-outline-primary"><i class="far fa-save save-icon"></i>Save Profile</button>
+                                  </div>
+                              </div>
+                           </form>
+                       </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- trash modal -->
+     <div id="trash">
+         
+     </div>
 </div>
 @endsection

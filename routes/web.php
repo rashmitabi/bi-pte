@@ -49,6 +49,8 @@ Route::get('superadmin/subscription/changestatus/{id}', [App\Http\Controllers\Su
 ->name('superadmin-subscription-changestatus');
     Route::resource('superadmin/subscription', App\Http\Controllers\SuperAdmin\SubscriptionsController::class);
 
+    Route::resource('superadmin/users', App\Http\Controllers\SuperAdmin\ManageUserController::class);
+
     Route::resource('superadmin/device', App\Http\Controllers\SuperAdmin\DeviceController::class);
 
     Route::resource('superadmin/email', App\Http\Controllers\SuperAdmin\EmailTemplatesController::class);
@@ -73,3 +75,5 @@ Route::get('superadmin/subscription/changestatus/{id}', [App\Http\Controllers\Su
 
     Route::resource('superadmin/tests', App\Http\Controllers\SuperAdmin\TestsController::class);
 
+    Route::get('superadmin/tests/add', [App\Http\Controllers\SuperAdmin\TestsController::class, 'add'])
+    ->name('superadmin-tests-add');
