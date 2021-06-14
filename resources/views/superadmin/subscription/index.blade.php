@@ -58,7 +58,7 @@
                                         <li class="action" data-toggle="modal"
                                                 data-target="#editsubscription"><a href="javascript:void(0);" class="subscription-edit" data-id="{{ $subscription->id }}" data-url="{!! URL::route('subscription.edit', $subscription->id) !!}"><i class="fas fa-pen"></i></a></li>
                                         <li class="action"><a href="#" class="delete_modal" data-toggle="modal" data-target="#delete_modal"  data-url="{!! URL::route('subscription.destroy', $subscription->id) !!}" data-id="{{ $subscription->id }}"><i class="fas fa-trash"></i></a></li>
-                                        <li class="action shield green"><a href="{{route('superadmin-subscription-changestatus', $subscription->id )}}"><img
+                                        <li class="action shield {{ ($subscription->status == 'E')?'red':'green' }}"><a href="{{route('superadmin-subscription-changestatus', $subscription->id )}}"><img
                                                     src="{{ asset('assets/images/icons/blocked.svg') }}"></a></li>
                                     </ul>
                                 </td>

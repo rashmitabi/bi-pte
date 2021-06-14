@@ -102,13 +102,10 @@
             <a href="#Voucherssubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"> <img src="{{ asset('assets/images/icons/vouchers.svg') }}" class=""><span> Vouchers </span></a>
             <ul class="collapse list-unstyled" id="Voucherssubmenu">
                <li>
-                  <a href="#">Page 1</a>
+                  <a href="{{ route('vouchers.create')}}">Vouchers Create</a>
                </li>
                <li>
-                  <a href="#">Page 2</a>
-               </li>
-               <li>
-                  <a href="#">Page 3</a>
+                  <a href="{{ route('vouchers.index')}}">Vouchers List</a>
                </li>
             </ul>
          </li>
@@ -116,13 +113,10 @@
             <a href="#Emailsubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"> <img src="{{ asset('assets/images/icons/email.svg') }}" class=""><span> Email Templates </span></a>
             <ul class="collapse list-unstyled" id="Emailsubmenu">
                <li>
-                  <a href="#">Page 1</a>
+                  <a href="{{ route('email.create')}}">Email Template Create</a>
                </li>
                <li>
-                  <a href="#">Page 2</a>
-               </li>
-               <li>
-                  <a href="#">Page 3</a>
+                  <a href="{{ route('email.index')}}">Email Templates List</a>
                </li>
             </ul>
          </li>

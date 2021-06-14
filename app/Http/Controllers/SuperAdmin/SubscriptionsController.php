@@ -84,7 +84,7 @@ class SubscriptionsController extends Controller
     {
         $subscription = Subscriptions::find($id);
 
-        $html_subscription = view('superadmin/subscription/edit', compact('subscription'))->render();
+        $html_subscription = view($this->moduleTitleP.'edit', compact('subscription'))->render();
 
         return response()->json([
             'success' => 1,
