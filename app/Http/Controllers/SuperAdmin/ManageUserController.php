@@ -19,7 +19,7 @@ class ManageUserController extends Controller
 */
     public function create()
     {
-        return view('superadmin/users/addnewusers');
+        return view('superadmin/users/addusers');
     }
 
 }

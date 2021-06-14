@@ -48,7 +48,7 @@ class TestsController extends Controller
      */
     public function show(Tests $tests)
     {
-        return view ('superadmin/tests/addnewquestion');
+        return view ('superadmin/tests/addquestion');
     }
 
     /**
