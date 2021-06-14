@@ -4,9 +4,12 @@ namespace App\Http\Controllers\SuperAdmin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Requests\CreateVocuchersRequest;
+use App\Models\Vouchers;
 
 class VouchersController extends Controller
 {
+    private $moduleTitleP = 'superadmin.vouchers.';
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +17,7 @@ class VouchersController extends Controller
      */
     public function index()
     {
-        return view('superadmin/vouchers/index');
+        return view($this->moduleTitleP.'index');
     }
 
     /**
@@ -24,7 +27,7 @@ class VouchersController extends Controller
      */
     public function create()
     {
-        return view('superadmin/vouchers/addvouchers');
+        return view($this->moduleTitleP.'add');
     }
 
     /**
@@ -33,9 +36,30 @@ class VouchersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateVocuchersRequest $request)
     {
-        //
+        $input  = \Arr::except($request->all(),array('_token'));
+        $input['discount_type'] = $input['voucher_type'];
+        if($input['discount_type'] == 'P'){
+            $input['discount_percentage'] = $input['voucher_price'];
+            $input['discount_price'] = NULL;
+        }else{
+            $input['discount_price'] = $input['voucher_price'];
+            $input['discount_percentage'] = NULL;
+        }
+        unset($input['voucher_price']);
+        unset($input['voucher_type']);
+        if(!isset($input['status'])){
+            $input['status'] = 'D';
+        }
+        $result = Vouchers::create($input);
+        if($result){
+            return redirect()->route('vouchers.index')
+                        ->with('success','voucher created successfully');
+        }else{
+            return redirect()->route('vouchers.index')
+                        ->with('error','Sorry!Something wrong.Try again later!');
+        }
     }
 
     /**

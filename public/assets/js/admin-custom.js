@@ -53,53 +53,6 @@ $(document).ready(function() {
         "<'row'<'col-sm-12't>>" +
         "<'row'<'col-sm-12 col-md-12'p>>",
     });
-    $("#device_wrapper div.toolbar").html('Manage Device');
-
-    $('#users').DataTable({
-        language: {
-            search: '',
-            searchPlaceholder: "Search by name, email & mobile number",
-            "sLengthMenu": '<select>'+
-                '<option value="10">10 Per Page</option>'+
-                '<option value="20">20 Per Page</option>'+
-                '<option value="30">30 Per Page</option>'+
-                '<option value="40">40 Per Page</option>'+
-                '<option value="50">50 Per Page</option>'+
-                '<option value="-1">All</option>'+
-                '</select>',
-            paginate: {
-                next: '<i class="fas fa-chevron-right"></i>', // or '→'
-                previous: '<i class="fas fa-chevron-left"></i>' // or '←' 
-            }
-        },
-        "dom": "<'row'<'col-sm-12 col-md-3 top-label'<'toolbar'>><'col-sm-12 col-md-6 top-search'f><'col-sm-12 col-md-3 top-pagination'l>>" +
-        "<'row'<'col-sm-12't>>" +
-        "<'row'<'col-sm-12 col-md-12'p>>",
-    });
-    $("#users_wrapper div.toolbar").html('Registered Users');
-
-    $('#students').DataTable({
-        language: {
-            search: '',
-            searchPlaceholder: "Search by name, email & mobile number",
-            "sLengthMenu": '<select>'+
-                '<option value="10">10 Per Page</option>'+
-                '<option value="20">20 Per Page</option>'+
-                '<option value="30">30 Per Page</option>'+
-                '<option value="40">40 Per Page</option>'+
-                '<option value="50">50 Per Page</option>'+
-                '<option value="-1">All</option>'+
-                '</select>',
-            paginate: {
-                next: '<i class="fas fa-chevron-right"></i>', // or '→'
-                previous: '<i class="fas fa-chevron-left"></i>' // or '←' 
-            }
-        },
-        "dom": "<'row'<'col-sm-12 col-md-3 top-label'<'toolbar'>><'col-sm-12 col-md-6 top-search'f><'col-sm-12 col-md-3 top-pagination'l>>" +
-        "<'row'<'col-sm-12't>>" +
-        "<'row'<'col-sm-12 col-md-12'p>>",
-    });
-    $("#students_wrapper div.toolbar").html('Registered Users');
     $("#device_wrapper div.toolbar").html('Manage Device Log');  
     
     $('#email').DataTable({
@@ -309,51 +262,9 @@ $(document).ready(function() {
     });
     $("#practice_test_wrapper div.toolbar").html('Manage Test'); 
 
-    $('#managemodule').DataTable({
-        language: {
-            search: '',
-            searchPlaceholder: "Search by module name",
-            "sLengthMenu": '<select>'+
-                '<option value="10">10 Per Page</option>'+
-                '<option value="20">20 Per Page</option>'+
-                '<option value="30">30 Per Page</option>'+
-                '<option value="40">40 Per Page</option>'+
-                '<option value="50">50 Per Page</option>'+
-                '<option value="-1">All</option>'+
-                '</select>',
-            paginate: {
-                next: '<i class="fas fa-chevron-right"></i>', // or '→'
-                previous: '<i class="fas fa-chevron-left"></i>' // or '←' 
-            }
-        },
-        "dom": "<'row'<'col-sm-12 col-md-3 top-label'<'toolbar'>><'col-sm-12 col-md-6 top-search'f><'col-sm-12 col-md-3 top-pagination'l>>" +
-        "<'row'<'col-sm-12't>>" +
-        "<'row'<'col-sm-12 col-md-12'p>>",
-    });
-    $("#managemodule_wrapper div.toolbar").html('Manage Module');  
+     
     
-    $('#role').DataTable({
-        language: {
-            search: '',
-            searchPlaceholder: "Search by role",
-            "sLengthMenu": '<select>'+
-                '<option value="10">10 Per Page</option>'+
-                '<option value="20">20 Per Page</option>'+
-                '<option value="30">30 Per Page</option>'+
-                '<option value="40">40 Per Page</option>'+
-                '<option value="50">50 Per Page</option>'+
-                '<option value="-1">All</option>'+
-                '</select>',
-            paginate: {
-                next: '<i class="fas fa-chevron-right"></i>', // or '→'
-                previous: '<i class="fas fa-chevron-left"></i>' // or '←' 
-            }
-        },
-        "dom": "<'row'<'col-sm-12 col-md-3 top-label'<'toolbar'>><'col-sm-12 col-md-6 top-search'f><'col-sm-12 col-md-3 top-pagination'l>>" +
-        "<'row'<'col-sm-12't>>" +
-        "<'row'<'col-sm-12 col-md-12'p>>",
-    });
-    $("#role_wrapper div.toolbar").html('Manage Role');  
+    
 
 //     ClassicEditor
 // 		.create( document.querySelector( '#editor' ), {
@@ -391,21 +302,6 @@ $(document).ready(function() {
       // $('body').find('.remove-record-model').find( "input" ).remove();
     });
     ////Delete Model for SuperAdmin End
-    $('body').on('click','.subscription-edit',function(){
-        var id = $(this).data('id');
-        var apiUrl = $(this).data('url');
-        $.ajax({
-            url: apiUrl,
-            type:'GET',
-            data:{'id' : id},
-            beforeSend: function(){
-                $('#sub-edit-body').html('<i class="fa fa-spinner fa-spin"></i>  Please Wait...');
-            },
-            success:function(data) {
-                $('#sub-edit-body').html(data.html);
-            },
-        });
-    });
 });
 
 // $(document).ready(function(){

@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\SuperAdmin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Modules;
 use Illuminate\Http\Request;
+use App\Models\Modules;
+use DataTables;
+
 
 class ModulesController extends Controller
 {
@@ -13,8 +15,34 @@ class ModulesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        if($request->ajax()) {
+            $data = Modules::latest()->get();
+            return Datatables::of($data)
+                    ->addIndexColumn()
+                    ->addColumn('checkbox', function($row){
+                        $checkbox = '<input type="checkbox" class="form-check-input position-relative ml-0" id="exampleCheck1">';
+                        return $checkbox;
+                    })
+                    ->addColumn('status', function($row){
+                        if($row->status == "E"){
+                            $status = "Enable";
+                        }else{
+                            $status = "Disable";
+                        }
+                        return $status;
+                    })
+                    ->addColumn('action', function($row){
+                        $btn = '<ul class="actions-btns">
+                            <li class="action"><a href="#"><i class="fas fa-pen"></i></a></li>
+                            <li class="action shield green"><a href="'.route('superadmin-module-changestatus', $row->id ).'"><img src="'.asset('assets/images/icons/blocked.svg').'" class=""></a></li>
+                            </ul>';
+                        return $btn;
+                    })
+                    ->rawColumns(['checkbox','action'])
+                    ->make(true);
+        }
         return view('superadmin/modules/index');
     }
 
@@ -82,6 +110,24 @@ class ModulesController extends Controller
     public function destroy(Modules $modules)
     {
         //
+    }
+
+    public function changeStatus($id)
+    {
+        $module = Modules::find($id);
+        if($module->status == 'D'){
+            $module->status = 'E';
+        }else{
+            $module->status = 'D';
+        }
+        $result = $module->update();
+        if($result){
+            return redirect()->route('modules.index')
+                        ->with('success','Status Update successfully');
+        }else{
+            return redirect()->route('modules.index')
+                        ->with('error','Status Not Updated!');
+        }
     }
    
 }

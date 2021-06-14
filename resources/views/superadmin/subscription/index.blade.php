@@ -185,5 +185,7 @@
     </div>
 </div>
 @endsection
-
+@section('js-hooks')
+<script src="{{ asset('assets/js/subscriptions.js') }}" defer></script>
+@endsection
 
