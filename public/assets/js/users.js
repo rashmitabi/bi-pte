@@ -15,7 +15,7 @@
                 previous: '<i class="fas fa-chevron-left"></i>' // or '←' 
             }
         },
-        "dom": "<'row'<'col-sm-12 col-md-3 top-label'<'toolbar'>><'col-sm-12 col-md-6 top-search'f><'col-sm-12 col-md-3 top-pagination'l>>" +
+        "dom": "<'row'<'col-sm-12 col-md-3 top-label'<'toolbar'>><'col-sm-12 col-md-3 top-search'f><'col-sm-12 col-md-3 header_filter'><'col-sm-12 col-md-3 top-pagination'l>>" +
         "<'row'<'col-sm-12't>>" +
         "<'row'<'col-sm-12 col-md-12'p>>",
       processing: true,
@@ -31,7 +31,19 @@
       ]
    });
    $("#users_wrapper div.toolbar").html('Registered Users');
+   $('<div class="pull-right">' +
+   '<select class="form-control action-btn">'+
+   '<option value="volvo">Actions</option>'+
+   '<option value="volvo">Send Email</option>'+
+   '<option value="saab">Change Password</option>'+
+   '<option value="opel">BLock/unblock Users</option>'+
+   '<option value="opel">Export Users</option>'+
+   '<option value="opel">Assign Practice Tests</option>'+
+   '<option value="opel">Assign Mock Tests</option>'+
+   '</select>' +
+   '</div>').appendTo("#users_wrapper .header_filter");
 
+$(".dataTables_filter label").addClass("pull-right");
    
       
    $('#students').DataTable({

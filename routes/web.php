@@ -90,5 +90,7 @@ Route::resource('superadmin/vouchers', App\Http\Controllers\SuperAdmin\VouchersC
 
     Route::resource('superadmin/tests', App\Http\Controllers\SuperAdmin\TestsController::class);
 
+    Route::resource('superadmin/results', App\Http\Controllers\SuperAdmin\TestResultsController::class);
+
     Route::get('superadmin/tests/add', [App\Http\Controllers\SuperAdmin\TestsController::class, 'add'])
     ->name('superadmin-tests-add');

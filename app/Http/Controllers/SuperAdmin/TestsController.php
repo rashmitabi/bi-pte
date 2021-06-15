@@ -37,7 +37,7 @@ class TestsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       //
     }
 
     /**
@@ -59,7 +59,7 @@ class TestsController extends Controller
      */
     public function edit(Tests $tests)
     {
-        //
+       //
     }
 
     /**

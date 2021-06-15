@@ -56,8 +56,13 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-   public function institue()
+    public function institue()
     {
         return $this->hasOne(institues::class);
+    }
+
+    public function role()
+    {
+        return $this->belongsTo(roles::class,'id');
     }
 }

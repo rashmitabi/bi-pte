@@ -14,17 +14,23 @@
     <section class="top-title-button white-bg mb-3 remove-main-margin">
         <div class="row mx-0 align-items-center">
             <div class="col-12 col-md-12 col-xl-8 col-sm-8 left">
-                <form class="form mt-4 ml-3" method="post">
+                {!! Form::open(array('route' => 'subjects.store','method'=>'POST','class'=>'form mt-4 ml-3')) !!}
                     <div class="form-group row">
                         <label class="col-4 col-form-label ">Subject Name</label>
                         <div class="col-7">
-                            <input type="text" class="form-control "name="title" placeholder="Enter Subject Name">
+                            <input type="text" class="form-control "name="name" placeholder="Enter Subject Name" value="{{old('name')}}">
+                            @if($errors->has('name'))
+                                <span class="error-msg">{{$errors->first('name')}}</span>
+                            @endif
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-4 col-form-label ">Status</label>
                         <div class="col-7 toggle-switch">
-                            <input type="checkbox" id="status" name="status" value="Y" /><label for="status">Toggle</label>
+                            <input type="checkbox" id="status" name="status" value="E" {{ (old('status') == 'E')?'checked':'' }}/><label for="status">Toggle</label>
+                            @if($errors->has('status'))
+                                <span class="error-msg">{{$errors->first('status')}}</span>
+                            @endif
                         </div>
                     </div>
                     <div class="form-group row">
@@ -33,7 +39,7 @@
                                     class="far fa-save save-icon"></i>Save</button>
                         </div>
                     </div>
-                </form>
+                {!! Form::close() !!}
             </div>
         </div>
     </section>

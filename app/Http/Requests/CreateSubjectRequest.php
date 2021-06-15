@@ -4,14 +4,14 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreRolesRequest extends FormRequest
+class CreateSubjectRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      *
      * @return bool
      */
-    public function authorize() 
+    public function authorize()
     {
         return true;
     }
@@ -24,9 +24,8 @@ class StoreRolesRequest extends FormRequest
     public function rules()
     {
         return [
-            'role_name'=>'required',
-            'permission'=>'required',
-            'status'=>'nullable|in:E,D'
+            'name'=>'required|min:2|max:250',
+            'status'=>'nullable|in:E'
         ];
     }
-} 
+}

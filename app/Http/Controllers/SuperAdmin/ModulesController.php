@@ -4,8 +4,9 @@ namespace App\Http\Controllers\SuperAdmin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Modules;
+use App\Models\Modules; 
 use DataTables;
+use App\Http\Requests\UpdateModulesRequest;
 
 
 class ModulesController extends Controller
@@ -15,6 +16,8 @@ class ModulesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    private $moduleTitleP = 'superadmin.modules.';
+
     public function index(Request $request)
     {
         if($request->ajax())  {
@@ -35,7 +38,7 @@ class ModulesController extends Controller
                     })
                     ->addColumn('action', function($row){
                         $btn = '<ul class="actions-btns">
-                            <li class="action"><a href="#"><i class="fas fa-pen"></i></a></li>
+                            <li class="action" data-toggle="modal" data-target="#editmodules"><a href="javascript:void(0);" class="modules-edit" data-id="'.$row->id .'" data-url="'.route('modules.edit', $row->id).'"><i class="fas fa-pen"></i></a></li>
                             <li class="action shield green"><a href="'.route('superadmin-module-changestatus', $row->id ).'"><img src="'.asset('assets/images/icons/blocked.svg').'" class=""></a></li>
                             </ul>';
                         return $btn;
@@ -43,7 +46,7 @@ class ModulesController extends Controller
                     ->rawColumns(['checkbox','action'])
                     ->make(true);
         }
-        return view('superadmin/modules/index');
+        return view($this->moduleTitleP.'index');
     }
 
     /**
@@ -84,9 +87,15 @@ class ModulesController extends Controller
      * @param  \App\Models\Modules  $modules
      * @return \Illuminate\Http\Response
      */
-    public function edit(Modules $modules)
+    public function edit($id)
     {
-        //
+        $module = Modules::find($id);
+        $html_role = view($this->moduleTitleP.'edit', compact('module'))->render();
+
+        return response()->json([
+            'success' => 1,
+            'html'=>$html_role    
+        ]);
     }
 
     /**
@@ -96,9 +105,21 @@ class ModulesController extends Controller
      * @param  \App\Models\Modules  $modules
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Modules $modules)
+    public function update(UpdateModulesRequest $request, $id)
     {
-        //
+        $input  = \Arr::except($request->all(),array('_token'));
+        if(!isset($input['status'])){
+            $input['status'] = 'D';
+        }
+        $res = Modules::where('id',$id)->update($input);
+        
+        if($res){
+            \Session::put('success', 'Modules update Successfully!');
+            return true;
+        }else{
+            \Session::put('error', 'Sorry!Something wrong.try Again.');
+            return false;
+        }
     }
 
     /**
