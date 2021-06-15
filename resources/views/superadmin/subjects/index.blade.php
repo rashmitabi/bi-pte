@@ -9,8 +9,10 @@
                 <h1 class="title mb-4">Manage Subject</h1>
             </div>
             <div class="col-12 col-md-4 col-xl-4 col-sm-4 right">
-                <button type="button" class="btn btn-primary"><i class="fas fa-plus-circle mr-1"></i> New
+                <a href="{{ route('subjects.create')}}">
+                    <button type="button" class="btn btn-primary"><i class="fas fa-plus-circle mr-1"></i> New
                     Subject</button>
+                </a>
             </div>
         </div>
     </section>
