@@ -54,8 +54,7 @@ $(document).ready(function() {
    $('body').on('click','.modules-update',function(){
        var id = $(this).data('id');
        var apiUrl = $(this).data('url');
-       $('#role_nameError').text('');
-       $('#permissionError').text('');
+       $('#module_nameError').text('');
        $('#statusError').text('');
        $.ajax({
            url: apiUrl,
@@ -69,9 +68,8 @@ $(document).ready(function() {
                }
            },
            error: function(response) {
-               console.log(response.responseJSON.errors.role_name);
-                   $('#role_nameError').text(response.responseJSON.errors.role_name);
-                   $('#permissionError').text(response.responseJSON.errors.permission);
+               console.log(response.responseJSON.errors.module_name);
+                   $('#module_nameError').text(response.responseJSON.errors.module_name);
                    $('#statusError').text(response.responseJSON.errors.status);
                }
        });

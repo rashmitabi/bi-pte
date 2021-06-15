@@ -47,17 +47,13 @@ class UsersController extends Controller
                                 <li class="action"><a href="#"><i class="fas fa-user"></i></a></li>
                                     <li class="action"><a href="#"><i class="fas fa-pen"></i></a></li>
 
-                                    <li class="action"><a href="#" class="delete_modal" data-toggle="modal" data-target="#delete_modal"  data-url="'.route('users.destroy', $row->id).'" data-id="'.$row->id.'"><i class="fas fa-trash" ></i></a></li>
+                                    <li class="action bg-danger"><a href="#" class="delete_modal" data-toggle="modal" data-target="#delete_modal"  data-url="'.route('users.destroy', $row->id).'" data-id="'.$row->id.'"><i class="fas fa-trash" ></i></a></li>
 
                                     <li class="action shield green"><a href="'.route('superadmin-user-changestatus', $row->id ).'"><img src="'.asset('assets/images/icons/blocked.svg').'" class=""></a></li>
 
                                     <li class="action"><a href="#"><i class="fas fa-unlock-alt"></i></a></li>
 
                                     <li class="action"><a href="#"><i class="fas fa-clipboard-check"></i></a></li>
-
-                                    <li class="action"><a href="#"><i class="fas fa-clipboard-list"></i></a></li>
-
-                                    <li class="action"><a href="#"><i class="fas fa-clipboard-list"></i></a></li>
                                 </ul>';
                         return $btn;
                     })
@@ -89,20 +85,14 @@ class UsersController extends Controller
                     })
                     ->addColumn('action', function($row){
                         $btn = '<ul class="actions-btns">
-                                <li class="action"><a href="#"><i class="fas fa-user"></i></a></li>
+                                <li class="action" data-toggle="modal"                data-target="#mocktest"><a href="#"><i class="fas fa-user"></i></a></li>
                                     <li class="action"><a href="#"><i class="fas fa-pen"></i></a></li>
 
-                                    <li class="action"><a href="#" class="delete_modal" data-toggle="modal" data-target="#delete_modal"  data-url="'.route('users.destroy', $row->id).'" data-id="'.$row->id.'"><i class="fas fa-trash"></i></a></li>
+                                    <li class="action bg-danger"><a href="#" class="delete_modal" data-toggle="modal" data-target="#delete_modal"  data-url="'.route('users.destroy', $row->id).'" data-id="'.$row->id.'"><i class="fas fa-trash"></i></a></li>
 
                                     <li class="action shield green"><a href="'.route('superadmin-user-changestatus', $row->id ).'"><img src="'.asset('assets/images/icons/blocked.svg').'" class=""></a></li>
 
                                     <li class="action"><a href="#"><i class="fas fa-unlock-alt"></i></a></li>
-
-                                    <li class="action"><a href="#"><i class="fas fa-clipboard-check"></i></a></li>
-
-                                    <li class="action"><a href="#"><i class="fas fa-clipboard-list"></i></a></li>
-
-                                    <li class="action"><a href="#"><i class="fas fa-clipboard-list"></i></a></li>
                                 </ul>';
                         return $btn;
                     })
