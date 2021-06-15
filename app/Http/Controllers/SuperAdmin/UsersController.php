@@ -69,8 +69,11 @@ class UsersController extends Controller
                         return $checkbox;
                     })
                     ->addColumn('name', function($row){
-                        
-                        $name = $row->institue->institute_name;
+                        $name = '';
+                        if(isset($row->institue->institute_name)){
+
+                            $name = $row->institue->institute_name;
+                        }
                         return $name;
                     }) 
                     ->addColumn('email', function($row){
