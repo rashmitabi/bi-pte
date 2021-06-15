@@ -3,12 +3,18 @@
 namespace App\Http\Controllers\SuperAdmin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Roles;
 use Illuminate\Http\Request;
+
 use DataTables;
+use App\Models\Roles;
+use App\Models\Modules;
+use App\Models\RoleHasPermissions;
+use App\Http\Requests\StoreRolesRequest;
+use App\Http\Requests\UpdateRolesRequest;
 
 class RolesController extends Controller
 {
+    private $moduleTitleP = 'superadmin.roles.';
     /**
      * Display a listing of the resource.
      *
@@ -16,23 +22,34 @@ class RolesController extends Controller
      */
     public function index(Request $request)
     {   
+
+            // dd($data);
         if($request->ajax()) {
-            $data = Roles::latest()->get();
+            $data = Roles::with(['permission','user'])->latest()->get();
             return Datatables::of($data)
                     ->addIndexColumn()
                     ->addColumn('name', function($row){
                         return $row->role_name;
                     })
                     ->addColumn('permission', function($row){
-                        return 'abc';
+                        $slugs = '';
+                        foreach ($row->permission as $value) {
+                            if(isset($value->slug)){
+                                $slugs = $value->slug.",";
+                            }else{
+                                $slugs = '';
+                            }
+                        }
+                        return $slugs;
+                        
                     })
                     ->addColumn('totaluser', function($row){
-                        return "asdas";
+                        return count($row->user);
                     })
                     ->addColumn('action', function($row){
                         $btn = '<ul class="actions-btns">
-                                    <li class="action" data-toggle="modal" data-target="">
-                                        <a href="#"><i class="fas fa-pen"></i></a></li>
+                                    <li class="action" data-toggle="modal" data-target="#editroles">
+                                        <a href="javascript:void(0);" class="roles-edit" data-id="'.$row->id .'" data-url="'.route('roles.edit', $row->id).'"><i class="fas fa-pen"></i></a></li>
                                     <li class="action bg-danger"><a href="#"  class="delete_modal" data-toggle="modal" data-target="#delete_modal"  data-url="'.route('roles.destroy', $row->id).'" data-id="'.$row->id.'"><i class="fas fa-trash"></i></a></li>
                                     <li class="action shield">
                                         <a href="'.route('superadmin-roles-changestatus', $row->id ).'" ><img src="'.asset('assets/images/icons/blocked.svg').'" class=""></a></li>
@@ -42,7 +59,7 @@ class RolesController extends Controller
                     ->rawColumns(['action'])
                     ->make(true);
         }
-        return view('superadmin/roles/index');
+        return view($this->moduleTitleP.'index');
     }
     /**
      * Show the form for creating a new resource.
@@ -50,8 +67,9 @@ class RolesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        return view('superadmin/roles/addroles');
+    {   
+        $modules = Modules::all();
+        return view($this->moduleTitleP.'add',compact('modules'));
     }
 
     /**
@@ -60,9 +78,31 @@ class RolesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreRolesRequest $request)
     {
-        //
+        $input  = \Arr::except($request->all(),array('_token'));
+        
+        if(!isset($input['status'])){
+            $input['status'] = 'D';
+        }
+        
+        $id = Roles::create($input)->id;
+        if($id){
+            $module = explode("-",$input['permission']);
+            if(!empty($module)){
+                $input['role_id'] = $id;
+                $input['module_id'] = $module[0];
+                $input['slug'] = $module[1];
+            }
+            $result = RoleHasPermissions::create($input);
+        }
+        if($id){
+            return redirect()->route('roles.index')
+                        ->with('success','Role created successfully!');
+        }else{
+            return redirect()->route('roles.index')
+                        ->with('error','Sorry!Something wrong.Try again later!');
+        }
     }
 
     /**
@@ -82,9 +122,16 @@ class RolesController extends Controller
      * @param  \App\Models\Roles  $roles
      * @return \Illuminate\Http\Response
      */
-    public function edit(Roles $roles)
+    public function edit($id)
     {
-        //
+        $roleData = Roles::with(['permission'])->find($id);
+        $modules = Modules::all();
+        $html_role = view($this->moduleTitleP.'edit', compact('roleData','modules'))->render();
+
+        return response()->json([
+            'success' => 1,
+            'html'=>$html_role    
+        ]);
     }
 
     /**
@@ -94,9 +141,35 @@ class RolesController extends Controller
      * @param  \App\Models\Roles  $roles
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Roles $roles)
+    public function update(UpdateRolesRequest $request, $id)
     {
-        //
+        $input  = \Arr::except($request->all(),array('_token'));
+        if(!isset($input['status'])){
+            $input['status'] = 'D';
+        }
+        $input_role = array(
+            "role_name" => $input['role_name'],
+            "status" => $input['status'],
+             );
+        $roleres = Roles::where('id',$id)->update($input_role);
+        if($roleres){
+            $result = RoleHasPermissions::where('role_id',$id)->delete();
+
+            $module = explode("-",$input['permission']);
+            if(!empty($module)){
+                $input['role_id'] = $id;
+                $input['module_id'] = $module[0];
+                $input['slug'] = $module[1];
+            }
+            $result = RoleHasPermissions::create($input);
+        }
+        if($roleres){
+            \Session::put('success', 'Role update Successfully!');
+            return true;
+        }else{
+            \Session::put('error', 'Sorry!Something wrong.try Again.');
+            return false;
+        }
     }
 
     /**

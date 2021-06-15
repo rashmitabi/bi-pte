@@ -52,6 +52,7 @@ class SubscriptionsController extends Controller
         if(!isset($input['status'])){
             $input['status'] = 'D';
         }
+        $input['practice_questions'] = 0;
         $result = Subscriptions::create($input);
         if($result){
             return redirect()->route('subscription.index')
@@ -83,7 +84,7 @@ class SubscriptionsController extends Controller
     {
         $subscription = Subscriptions::find($id);
 
-        $html_subscription = view('superadmin/subscription/edit', compact('subscription'))->render();
+        $html_subscription = view($this->moduleTitleP.'edit', compact('subscription'))->render();
 
         return response()->json([
             'success' => 1,

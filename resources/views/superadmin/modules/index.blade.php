@@ -1,6 +1,6 @@
 @extends('layouts.appSuperAdmin')
 @section('content')
-<!-- Page Content  -->
+<!-- Page Content   -->
 <div id="content">
     <section class="top-title-button mb-3">
         <div class="row mx-0 align-items-center">
@@ -28,6 +28,21 @@
             </div>
         </div>
     </section>
+    <!-- Modal -->
+    <div class="modal fade" id="editmodules" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true"><i class="fas fa-times"></i></span>
+                    </button>
+                </div>
+                <div class="modal-body" id="module-edit-body">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 @endsection
 @section('js-hooks')

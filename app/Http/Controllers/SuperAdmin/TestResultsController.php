@@ -15,7 +15,7 @@ class TestResultsController extends Controller
      */
     public function index()
     {
-        //
+        return view('superadmin/results/index');
     }
 
     /**

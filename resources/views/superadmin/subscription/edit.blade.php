@@ -84,13 +84,6 @@
             </div>
         </div>
         <div class="form-group row">
-            <label class="col-4 col-form-label ">Practice Questions</label>
-            <div class="col-7">
-                <input type="text" class="form-control " name="practice_questions" placeholder="Number Of Practice Questions Allowed" value="{{ $subscription->practice_questions }}">
-                <span class="error-msg" id="practiceQuestionsError"></span>
-            </div>
-        </div>
-        <div class="form-group row">
             <label class="col-4 col-form-label ">Can Add Videos?</label>
             <div class="col-8 toggle-switch">
                 <input type="checkbox" id="video" name="videos" value="Y" {{ ($subscription->videos == 'Y')?'checked':''}} /><label for="video">Toggle</label>

@@ -55,20 +55,24 @@ Route::group(['middleware' => ['auth', 'verified','student']], function () {
     //end student admin routes
 });
 
+/*Subscription module start*/
 Route::get('superadmin/subscription/changestatus/{id}', [App\Http\Controllers\SuperAdmin\SubscriptionsController::class, 'changeStatus'])
-->name('superadmin-subscription-changestatus');
-    Route::resource('superadmin/subscription', App\Http\Controllers\SuperAdmin\SubscriptionsController::class);
+    ->name('superadmin-subscription-changestatus');
+Route::resource('superadmin/subscription', App\Http\Controllers\SuperAdmin\SubscriptionsController::class);
+/*Subscription module end*/
 
-    Route::resource('superadmin/users', App\Http\Controllers\SuperAdmin\ManageUserController::class);
+    
 
     Route::resource('superadmin/device', App\Http\Controllers\SuperAdmin\DeviceController::class);
 
     Route::resource('superadmin/email', App\Http\Controllers\SuperAdmin\EmailTemplatesController::class);
 
     
-   
-    
-    Route::resource('superadmin/vouchers', App\Http\Controllers\SuperAdmin\VouchersController::class);
+/*Vouchers module start*/
+Route::get('superadmin/vouchers/changestatus/{id}', [App\Http\Controllers\SuperAdmin\VouchersController::class, 'changeStatus'])
+    ->name('superadmin-vouchers-changestatus');
+Route::resource('superadmin/vouchers', App\Http\Controllers\SuperAdmin\VouchersController::class);
+/*Vouchers module end*/
 
     Route::resource('superadmin/predictionfiles', App\Http\Controllers\SuperAdmin\PredictionFilesController::class);
 
@@ -83,6 +87,8 @@ Route::get('superadmin/subscription/changestatus/{id}', [App\Http\Controllers\Su
     Route::resource('superadmin/certificates', App\Http\Controllers\SuperAdmin\CertificatesController::class);
 
     Route::resource('superadmin/tests', App\Http\Controllers\SuperAdmin\TestsController::class);
+
+    Route::resource('superadmin/results', App\Http\Controllers\SuperAdmin\TestResultsController::class);
 
     Route::get('superadmin/tests/add', [App\Http\Controllers\SuperAdmin\TestsController::class, 'add'])
     ->name('superadmin-tests-add');

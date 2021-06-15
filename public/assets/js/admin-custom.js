@@ -55,64 +55,64 @@ $(document).ready(function() {
     });
     $("#device_wrapper div.toolbar").html('Manage Device');
 
-    $('#users').DataTable({
-        language: {
-            search: '',
-            searchPlaceholder: "Search by name, email & mobile number",
-            "sLengthMenu": '<select>'+
-                '<option value="10">10 Per Page</option>'+
-                '<option value="20">20 Per Page</option>'+
-                '<option value="30">30 Per Page</option>'+
-                '<option value="40">40 Per Page</option>'+
-                '<option value="50">50 Per Page</option>'+
-                '<option value="-1">All</option>'+
-                '</select>',
-            paginate: {
-                next: '<i class="fas fa-chevron-right"></i>', // or '→'
-                previous: '<i class="fas fa-chevron-left"></i>' // or '←' 
-            }
-        },
-        "dom": "<'row'<'col-sm-12 col-md-3 top-label'<'toolbar'>><'col-sm-12 col-md-3 top-search'f><'col-sm-12 col-md-4 header_filter'><'col-sm-12 col-md-3 top-pagination'l>>" +
-        "<'row'<'col-sm-12't>>" +
-        "<'row'<'col-sm-12 col-md-12'p>>",
-    });
-    $("#users_wrapper div.toolbar").html('Registered Users');
-    $('<div class="pull-right">' +
-      '<select class="form-control">'+
-      '<option value="volvo">Send Email</option>'+
-      '<option value="saab">Change Password</option>'+
-      '<option value="opel">BLock/unblock Users</option>'+
-      '<option value="opel">Export Users</option>'+
-      '<option value="opel">Assign Practice Tests</option>'+
-      '<option value="opel">Assign Mock Tests</option>'+
-      '</select>' +
-      '</div>').appendTo("#users_wrapper .header_filter");
+//     $('#users').DataTable({
+//         language: {
+//             search: '',
+//             searchPlaceholder: "Search by name, email & mobile number",
+//             "sLengthMenu": '<select>'+
+//                 '<option value="10">10 Per Page</option>'+
+//                 '<option value="20">20 Per Page</option>'+
+//                 '<option value="30">30 Per Page</option>'+
+//                 '<option value="40">40 Per Page</option>'+
+//                 '<option value="50">50 Per Page</option>'+
+//                 '<option value="-1">All</option>'+
+//                 '</select>',
+//             paginate: {
+//                 next: '<i class="fas fa-chevron-right"></i>', // or '→'
+//                 previous: '<i class="fas fa-chevron-left"></i>' // or '←' 
+//             }
+//         },
+//         "dom": "<'row'<'col-sm-12 col-md-3 top-label'<'toolbar'>><'col-sm-12 col-md-3 top-search'f><'col-sm-12 col-md-4 header_filter'><'col-sm-12 col-md-3 top-pagination'l>>" +
+//         "<'row'<'col-sm-12't>>" +
+//         "<'row'<'col-sm-12 col-md-12'p>>",
+//     });
+//     $("#users_wrapper div.toolbar").html('Registered Users');
+//     $('<div class="pull-right">' +
+//       '<select class="form-control">'+
+//       '<option value="volvo">Send Email</option>'+
+//       '<option value="saab">Change Password</option>'+
+//       '<option value="opel">BLock/unblock Users</option>'+
+//       '<option value="opel">Export Users</option>'+
+//       '<option value="opel">Assign Practice Tests</option>'+
+//       '<option value="opel">Assign Mock Tests</option>'+
+//       '</select>' +
+//       '</div>').appendTo("#users_wrapper .header_filter");
 
-$(".dataTables_filter label").addClass("pull-right");
+// $(".dataTables_filter label").addClass("pull-right");
 
-    $('#students').DataTable({
-        language: {
-            search: '',
-            searchPlaceholder: "Search by name, email & mobile number",
-            "sLengthMenu": '<select>'+
-                '<option value="10">10 Per Page</option>'+
-                '<option value="20">20 Per Page</option>'+
-                '<option value="30">30 Per Page</option>'+
-                '<option value="40">40 Per Page</option>'+
-                '<option value="50">50 Per Page</option>'+
-                '<option value="-1">All</option>'+
-                '</select>',
-            paginate: {
-                next: '<i class="fas fa-chevron-right"></i>', // or '→'
-                previous: '<i class="fas fa-chevron-left"></i>' // or '←' 
-            }
-        },
-        "dom": "<'row'<'col-sm-12 col-md-3 top-label'<'toolbar'>><'col-sm-12 col-md-6 top-search'f><'col-sm-12 col-md-3 top-pagination'l>>" +
-        "<'row'<'col-sm-12't>>" +
-        "<'row'<'col-sm-12 col-md-12'p>>",
-    });
-    $("#students_wrapper div.toolbar").html('Registered Users');
-    $("#device_wrapper div.toolbar").html('Manage Device Log');  
+    // $('#students').DataTable({
+    //     language: {
+    //         search: '',
+    //         searchPlaceholder: "Search by name, email & mobile number",
+    //         "sLengthMenu": '<select>'+
+    //             '<option value="10">10 Per Page</option>'+
+    //             '<option value="20">20 Per Page</option>'+
+    //             '<option value="30">30 Per Page</option>'+
+    //             '<option value="40">40 Per Page</option>'+
+    //             '<option value="50">50 Per Page</option>'+
+    //             '<option value="-1">All</option>'+
+    //             '</select>',
+    //         paginate: {
+    //             next: '<i class="fas fa-chevron-right"></i>', // or '→'
+    //             previous: '<i class="fas fa-chevron-left"></i>' // or '←' 
+    //         }
+    //     },
+    //     "dom": "<'row'<'col-sm-12 col-md-3 top-label'<'toolbar'>><'col-sm-12 col-md-6 top-search'f><'col-sm-12 col-md-3 top-pagination'l>>" +
+    //     "<'row'<'col-sm-12't>>" +
+    //     "<'row'<'col-sm-12 col-md-12'p>>",
+    // });
+    // $("#students_wrapper div.toolbar").html('Registered Users');
+    // $("#device_wrapper div.toolbar").html('Manage Device Log');  
     
     $('#email').DataTable({
         language: {
@@ -321,10 +321,10 @@ $(".dataTables_filter label").addClass("pull-right");
     });
     $("#practice_test_wrapper div.toolbar").html('Manage Test'); 
 
-    $('#managemodule').DataTable({
+    $('#results').DataTable({
         language: {
             search: '',
-            searchPlaceholder: "Search by module name",
+            searchPlaceholder: "Search by test name, test subject,test type,user name",
             "sLengthMenu": '<select>'+
                 '<option value="10">10 Per Page</option>'+
                 '<option value="20">20 Per Page</option>'+
@@ -332,40 +332,63 @@ $(".dataTables_filter label").addClass("pull-right");
                 '<option value="40">40 Per Page</option>'+
                 '<option value="50">50 Per Page</option>'+
                 '<option value="-1">All</option>'+
-                '</select>',
+                '</select>', 
             paginate: {
                 next: '<i class="fas fa-chevron-right"></i>', // or '→'
                 previous: '<i class="fas fa-chevron-left"></i>' // or '←' 
             }
-        },
+        }, 
         "dom": "<'row'<'col-sm-12 col-md-3 top-label'<'toolbar'>><'col-sm-12 col-md-6 top-search'f><'col-sm-12 col-md-3 top-pagination'l>>" +
         "<'row'<'col-sm-12't>>" +
         "<'row'<'col-sm-12 col-md-12'p>>",
     });
-    $("#managemodule_wrapper div.toolbar").html('Manage Module');  
+    $("#results_wrapper div.toolbar").html('Manage Test Results'); 
+
+    // $('#managemodule').DataTable({
+    //     language: {
+    //         search: '',
+    //         searchPlaceholder: "Search by module name",
+    //         "sLengthMenu": '<select>'+
+    //             '<option value="10">10 Per Page</option>'+
+    //             '<option value="20">20 Per Page</option>'+
+    //             '<option value="30">30 Per Page</option>'+
+    //             '<option value="40">40 Per Page</option>'+
+    //             '<option value="50">50 Per Page</option>'+
+    //             '<option value="-1">All</option>'+
+    //             '</select>',
+    //         paginate: {
+    //             next: '<i class="fas fa-chevron-right"></i>', // or '→'
+    //             previous: '<i class="fas fa-chevron-left"></i>' // or '←' 
+    //         }
+    //     },
+    //     "dom": "<'row'<'col-sm-12 col-md-3 top-label'<'toolbar'>><'col-sm-12 col-md-6 top-search'f><'col-sm-12 col-md-3 top-pagination'l>>" +
+    //     "<'row'<'col-sm-12't>>" +
+    //     "<'row'<'col-sm-12 col-md-12'p>>",
+    // });
+    // $("#managemodule_wrapper div.toolbar").html('Manage Module');  
     
-    $('#role').DataTable({
-        language: {
-            search: '',
-            searchPlaceholder: "Search by role",
-            "sLengthMenu": '<select>'+
-                '<option value="10">10 Per Page</option>'+
-                '<option value="20">20 Per Page</option>'+
-                '<option value="30">30 Per Page</option>'+
-                '<option value="40">40 Per Page</option>'+
-                '<option value="50">50 Per Page</option>'+
-                '<option value="-1">All</option>'+
-                '</select>',
-            paginate: {
-                next: '<i class="fas fa-chevron-right"></i>', // or '→'
-                previous: '<i class="fas fa-chevron-left"></i>' // or '←' 
-            }
-        },
-        "dom": "<'row'<'col-sm-12 col-md-3 top-label'<'toolbar'>><'col-sm-12 col-md-6 top-search'f><'col-sm-12 col-md-3 top-pagination'l>>" +
-        "<'row'<'col-sm-12't>>" +
-        "<'row'<'col-sm-12 col-md-12'p>>",
-    });
-    $("#role_wrapper div.toolbar").html('Manage Role');  
+    // $('#role').DataTable({
+    //     language: {
+    //         search: '',
+    //         searchPlaceholder: "Search by role",
+    //         "sLengthMenu": '<select>'+
+    //             '<option value="10">10 Per Page</option>'+
+    //             '<option value="20">20 Per Page</option>'+
+    //             '<option value="30">30 Per Page</option>'+
+    //             '<option value="40">40 Per Page</option>'+
+    //             '<option value="50">50 Per Page</option>'+
+    //             '<option value="-1">All</option>'+
+    //             '</select>',
+    //         paginate: {
+    //             next: '<i class="fas fa-chevron-right"></i>', // or '→'
+    //             previous: '<i class="fas fa-chevron-left"></i>' // or '←' 
+    //         }
+    //     },
+    //     "dom": "<'row'<'col-sm-12 col-md-3 top-label'<'toolbar'>><'col-sm-12 col-md-6 top-search'f><'col-sm-12 col-md-3 top-pagination'l>>" +
+    //     "<'row'<'col-sm-12't>>" +
+    //     "<'row'<'col-sm-12 col-md-12'p>>",
+    // });
+    // $("#role_wrapper div.toolbar").html('Manage Role');  
 
 //     ClassicEditor
 // 		.create( document.querySelector( '#editor' ), {

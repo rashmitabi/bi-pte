@@ -714,6 +714,14 @@ body {
                }
           }
      }
+     .action-btn{
+          background-color:$primary-color;
+          color: $white-color;
+          option{
+              background-color: $white-color;
+              color: $black;
+          }
+     }
      .top-pagination{
           align-items: center;
           display: flex;
