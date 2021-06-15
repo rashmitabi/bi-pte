@@ -4,7 +4,7 @@
     <div class="form-group row">
       <label class="col-4 col-form-label ">Module Name</label>
       <div class="col-8">
-        <input type="text" id="role_name" name="role_name" value="{{ $module->module_name }}" class="form-control " placeholder="Enter Role Name" >
+        <input type="text" id="module_name" name="module_name" value="{{ $module->module_name }}" class="form-control " placeholder="Enter Module Name" >
         <span class="error-msg" id="module_nameError"></span>
       </div>
     </div>
