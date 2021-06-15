@@ -13,4 +13,15 @@ class Roles extends Model
     	'role_name',
     	'status'
     ];
+
+    public function permission()
+    {
+        return $this->hasMany(RoleHasPermissions::class,'role_id');
+    }
+
+    
+    public function user()
+    {
+        return $this->hasMany(user::class,'role_id');
+    }
 }

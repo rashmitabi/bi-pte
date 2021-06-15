@@ -31,3 +31,50 @@
       ]
    });
    $("#module_wrapper div.toolbar").html('Manage Module');
+
+$(document).ready(function() {
+    //Role Edit page data start
+   $('body').on('click','.modules-edit',function(){
+           var id = $(this).data('id');
+           var apiUrl = $(this).data('url');
+           $.ajax({
+               url: apiUrl,
+               type:'GET',
+               data:{'id' : id},
+               beforeSend: function(){
+                   $('#module-edit-body').html('<i class="fa fa-spinner fa-spin"></i>  Please Wait...');
+               },
+               success:function(data) {
+                   $('#module-edit-body').html(data.html);
+               },
+           }); 
+   });
+   //Role Edit page data start
+   //Role update data start
+   $('body').on('click','.modules-update',function(){
+       var id = $(this).data('id');
+       var apiUrl = $(this).data('url');
+       $('#role_nameError').text('');
+       $('#permissionError').text('');
+       $('#statusError').text('');
+       $.ajax({
+           url: apiUrl,
+           type:'PATCH',
+           data: $('form').serialize(),
+           success:function(data) {
+               if(data == 1){
+                   setTimeout(function(){
+                       location.reload();
+                   }, 2000);
+               }
+           },
+           error: function(response) {
+               console.log(response.responseJSON.errors.role_name);
+                   $('#role_nameError').text(response.responseJSON.errors.role_name);
+                   $('#permissionError').text(response.responseJSON.errors.permission);
+                   $('#statusError').text(response.responseJSON.errors.status);
+               }
+       });
+   });
+   //Role update data end
+});
