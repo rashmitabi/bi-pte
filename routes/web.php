@@ -62,10 +62,9 @@ Route::resource('superadmin/subscription', App\Http\Controllers\SuperAdmin\Subsc
 /*Subscription module end*/
 
     
+Route::resource('superadmin/device', App\Http\Controllers\SuperAdmin\DeviceController::class);
 
-    Route::resource('superadmin/device', App\Http\Controllers\SuperAdmin\DeviceController::class);
-
-    Route::resource('superadmin/email', App\Http\Controllers\SuperAdmin\EmailTemplatesController::class);
+Route::resource('superadmin/email', App\Http\Controllers\SuperAdmin\EmailTemplatesController::class);
 
     
 /*Vouchers module start*/

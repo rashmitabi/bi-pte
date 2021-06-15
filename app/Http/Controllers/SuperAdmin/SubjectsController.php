@@ -5,6 +5,7 @@ namespace App\Http\Controllers\SuperAdmin;
 use App\Http\Controllers\Controller;
 use App\Models\Subjects;
 use Illuminate\Http\Request;
+use App\Http\Requests\CreateSubjectRequest;
 
 class SubjectsController extends Controller
 {
@@ -34,9 +35,23 @@ class SubjectsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateSubjectRequest $request)
     {
-        //
+        $input  = \Arr::except($request->all(),array('_token'));
+        $subject = new Subjects;
+        $subject->subject_name = $input['name'];
+        if(!isset($input['status'])){
+            $subject->status = 'D';
+        }else{
+            $subject->status = $input['status'];
+        }
+        if($subject->save()){
+            return redirect()->route('subjects.index')
+                        ->with('success','Subject created successfully');
+        }else{
+            return redirect()->route('subjects.index')
+                        ->with('error','Sorry!Something wrong.Try again later!');
+        }
     }
 
     /**

@@ -45,18 +45,15 @@
             <a href="#Subjetsubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"> <img src="{{ asset('assets/images/icons/subject.svg') }}" class=""> <span> Manage Subject </span> </a>
             <ul class="collapse list-unstyled" id="Subjetsubmenu">
                <li>
-                  <a href="#">Page 1</a>
+                  <a href="{{ route('subjects.index')}}">List Subjects</a>
                </li>
                <li>
-                  <a href="#">Page 2</a>
-               </li>
-               <li>
-                  <a href="#">Page 3</a>
+                  <a href="{{ route('subjects.create')}}">Add Subject</a>
                </li>
             </ul>
          </li>
 
-         <li>
+         <!--<li>
             <a href="#Questionssubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"> <img src="{{ asset('assets/images/icons/questions.svg') }}" class=""> <span> Practice Questions </span></a>
             <ul class="collapse list-unstyled" id="Questionssubmenu">
                <li>
@@ -69,7 +66,7 @@
                   <a href="#">Page 3</a>
                </li>
             </ul>
-         </li>
+         </li>-->
          <li>
             <a href="#Videossubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"> <img src="{{ asset('assets/images/icons/video.svg') }}" class=""> <span> Manage Videos </span></a>
             <ul class="collapse list-unstyled" id="Videossubmenu">
