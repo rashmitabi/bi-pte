@@ -9,7 +9,7 @@ $(document).ready(function () {
 });
 
 $(document).ready(function() {
-    $('#subscription').DataTable({
+    /*$('#subscription').DataTable({
         language: {
             search: '',
             searchPlaceholder: "Search by subscription name, price, created date, status, type",
@@ -30,7 +30,7 @@ $(document).ready(function() {
         "<'row'<'col-sm-12't>>" +
         "<'row'<'col-sm-12 col-md-12'p>>",
     });
-    $("#subscription_wrapper div.toolbar").html('Manage Subscription');
+    $("#subscription_wrapper div.toolbar").html('Manage Subscription');*/
 
     $('#device').DataTable({
         language: {
@@ -102,7 +102,7 @@ $(document).ready(function() {
     // $("#students_wrapper div.toolbar").html('Registered Users');
     // $("#device_wrapper div.toolbar").html('Manage Device Log');  
     
-    $('#email').DataTable({
+    /*$('#email').DataTable({
         language: {
             search: '',
             searchPlaceholder: "Search by template  name, email subject, created date, status",
@@ -123,9 +123,9 @@ $(document).ready(function() {
         "<'row'<'col-sm-12't>>" +
         "<'row'<'col-sm-12 col-md-12'p>>",
     });
-    $("#email_wrapper div.toolbar").html('Email Template');  
+    $("#email_wrapper div.toolbar").html('Email Template');*/  
 
-    $('#vouchers').DataTable({
+    /*$('#vouchers').DataTable({
         language: {
             search: '',
             searchPlaceholder: "Search by voucher name, voucher type, discount price, created date, expiry date",
@@ -146,7 +146,7 @@ $(document).ready(function() {
         "<'row'<'col-sm-12't>>" +
         "<'row'<'col-sm-12 col-md-12'p>>",
     });
-    $("#vouchers_wrapper div.toolbar").html('Vouchers');  
+    $("#vouchers_wrapper div.toolbar").html('Vouchers');*/
 
     $('#prediction').DataTable({
         language: {

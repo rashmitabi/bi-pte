@@ -36,31 +36,7 @@
                             <th>Action</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        @if(count($vouchers) > 0)
-                            @foreach($vouchers as $voucher)
-                            <tr>
-                                <td>{{ $loop->index + 1 }}</td>
-                                <td>{{ $voucher->name }}</td>
-                                <td>{{ $voucher->code }}</td>
-                                <td>{{ ($voucher->discount_type == 'P')?'Percentage':'Fixed'}}</td>
-                                <td>{{ ($voucher->discount_type == 'P')?$voucher->discount_percentage:$voucher->discount_price}}</td>
-                                <td>{{ $voucher->created_at->format('d/m/Y') }}</td>
-                                <td>{{ \Carbon\Carbon::parse($voucher->valid_till)->format('d/m/Y') }}</td>
-                                <td>{{ ($voucher->status == 'E')?'Active':'not Active'}}</td>
-                                <td>
-                                    <ul class="actions-btns">
-                                        <li class="action" data-toggle="modal" data-target="#editvouchers"><a
-                                                href="javascript:void(0);" class="vouchers-edit" data-id="{{ $voucher->id }}" data-url="{!! URL::route('vouchers.edit', $voucher->id) !!}"><i class="fas fa-pen"></i></a></li>
-                                        <li class="action"><a href="#" class="delete_modal" data-toggle="modal" data-target="#delete_modal"  data-url="{!! URL::route('vouchers.destroy', $voucher->id) !!}" data-id="{{ $voucher->id }}"><i class="fas fa-trash"></i></a></li>
-                                        <li class="action shield {{ ($voucher->status == 'E')?'red':'green'}}"><a href="{{ route('superadmin-vouchers-changestatus', $voucher->id ) }}"><img
-                                                    src="{{ asset('assets/images/icons/blocked.svg') }}" class=""></a></li>
-                                    </ul>
-                                </td>
-                            </tr>
-                            @endforeach
-                        @endif
-                    </tbody>
+                    
                 </table>
             </div>
         </div>
@@ -85,5 +61,8 @@
 </div>
 @endsection
 @section('js-hooks')
+<script type="text/javascript" defer>
+  var url="{{ route('vouchers.index') }}";
+</script>
 <script src="{{ asset('assets/js/vouchers.js') }}" defer></script>
 @endsection

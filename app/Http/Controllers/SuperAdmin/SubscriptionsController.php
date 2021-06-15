@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreSubscriptionRequest;
 use App\Http\Requests\UpdateSubscriptionRequest;
+use DataTables;
 
 class SubscriptionsController extends Controller
 {
@@ -16,11 +17,55 @@ class SubscriptionsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $subscriptions = Subscriptions::get();
-        
-        return view($this->moduleTitleP.'index',compact('subscriptions'));
+        if($request->ajax())  {
+            $data = Subscriptions::latest()->get();
+            return Datatables::of($data)
+                    ->addIndexColumn()
+                    ->addColumn('title', function($row){
+                        return $row->title;
+                    })
+                    ->addColumn('monthly_price', function($row){
+                        return $row->monthly_price;
+                    })
+                    ->addColumn('quarterly_price', function($row){
+                        return $row->quarterly_price;
+                    })
+                    ->addColumn('halfyearly_price', function($row){
+                        return $row->halfyearly_price;
+                    })
+                    ->addColumn('annually_price', function($row){
+                        return $row->annually_price;
+                    })
+                    ->addColumn('white_labelling_price', function($row){
+                       
+                        return $row->white_labelling_price;
+                    })
+                    ->addColumn('students_allowed', function($row){
+                       
+                        return $row->students_allowed;
+                    })
+                    ->addColumn('mock_tests', function($row){
+                       
+                        return $row->mock_tests;
+                    })
+                    ->addColumn('practice_tests', function($row){
+                       
+                        return $row->practice_tests;
+                    })
+                    ->addColumn('action', function($row){
+                        $btn = '<ul class="actions-btns">
+                            <li class="action" data-toggle="modal" data-target="#editsubscription"><a href="javascript:void(0);" class="subscription-edit" data-id="'.$row->id.'" data-url="'.route('subscription.edit', $row->id).'"><i class="fas fa-pen"></i></a></li>
+                            <li class="action"><a href="#" class="delete_modal" data-toggle="modal" data-target="#delete_modal"  data-url="'.route('subscription.destroy', $row->id).'" data-id="'.$row->id.'"><i class="fas fa-trash"></i></a></li>
+                            <li class="action shield green"><a href="'.route('superadmin-subscription-changestatus', $row->id ).'"><img src="'.asset('assets/images/icons/blocked.svg').'" class=""></a></li>
+                            </ul>';
+                        return $btn;
+                    })
+                    ->rawColumns(['checkbox','action'])
+                    ->make(true);
+        }       
+        return view($this->moduleTitleP.'index');
     }
 
     /**

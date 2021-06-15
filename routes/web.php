@@ -61,12 +61,14 @@ Route::get('superadmin/subscription/changestatus/{id}', [App\Http\Controllers\Su
 Route::resource('superadmin/subscription', App\Http\Controllers\SuperAdmin\SubscriptionsController::class);
 /*Subscription module end*/
 
-    Route::resource('superadmin/users', App\Http\Controllers\SuperAdmin\ManageUserController::class);
+Route::resource('superadmin/users', App\Http\Controllers\SuperAdmin\ManageUserController::class);
 
-    Route::resource('superadmin/device', App\Http\Controllers\SuperAdmin\DeviceController::class);
-
-    Route::resource('superadmin/email', App\Http\Controllers\SuperAdmin\EmailTemplatesController::class);
-
+Route::resource('superadmin/device', App\Http\Controllers\SuperAdmin\DeviceController::class);
+/* Email templates module start*/
+Route::get('superadmin/email/changestatus/{id}', [App\Http\Controllers\SuperAdmin\EmailTemplatesController::class, 'changeStatus'])
+    ->name('superadmin-email-changestatus');
+Route::resource('superadmin/email', App\Http\Controllers\SuperAdmin\EmailTemplatesController::class);
+/* Email templates module start*/
     
 /*Vouchers module start*/
 Route::get('superadmin/vouchers/changestatus/{id}', [App\Http\Controllers\SuperAdmin\VouchersController::class, 'changeStatus'])

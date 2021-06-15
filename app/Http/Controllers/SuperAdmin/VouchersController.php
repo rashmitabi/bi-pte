@@ -7,7 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests\CreateVocuchersRequest;
 use App\Http\Requests\UpdateVouchersRequest;
 use App\Models\Vouchers;
-
+use Carbon\Carbon;
+use DataTables;
 class VouchersController extends Controller
 {
     private $moduleTitleP = 'superadmin.vouchers.';
@@ -16,11 +17,65 @@ class VouchersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $vouchers = Vouchers::all();
+        if($request->ajax())  {
+            $data = Vouchers::latest()->get();
+            return Datatables::of($data)
+                    ->addIndexColumn()
+                    ->addColumn('name', function($row){
+                        return $row->name;
+                    })
+                    ->addColumn('code', function($row){
+                        return $row->code;
+                    })
+                    ->addColumn('discount_type', function($row){
+                        if($row->discount_type == 'F')
+                        {
+                            $discount_type = 'Fixed';
+                        }else{
+                            $discount_type = 'Percentage';
+                        }
+                        return $discount_type;
+                    })
+                    ->addColumn('discount_price', function($row){
+                        if($row->discount_type == 'F')
+                        {
+                            $discount_price = $row->discount_price;
+                        }else{
+                            $discount_price = $row->discount_percentage;
+                        }
+                        return $discount_price;
+                    })
+                    ->addColumn('created_at', function($row){
+                        return $row->created_at->format('d/m/Y');
+                    })
+                    ->addColumn('valid_till', function($row){
+                        return Carbon::parse($row->valid_till)->format('d/m/Y');
+                    })
+                    ->addColumn('status', function($row){
+                        if($row->status == "E"){
+                            $status = "Enable";
+                            $iconClass = "red";
+                        }else{
+                            $status = "Disable";
+                            $iconClass = "green";
+                        }
+                        return $status;
+                    })
+                    ->addColumn('action', function($row){
+                        $btn = '<ul class="actions-btns">
+                            <li class="action" data-toggle="modal" data-target="#editvouchers"><a href="javascript:void(0);" class="email-edit" data-id="'.$row->id.'" data-url="'.route('vouchers.edit', $row->id).'"><i class="fas fa-pen"></i></a></li>
+                            <li class="action"><a href="#" class="delete_modal" data-toggle="modal" data-target="#delete_modal"  data-url="'.route('vouchers.destroy', $row->id).'" data-id="'.$row->id.'"><i class="fas fa-trash"></i></a></li>
+                            <li class="action shield green"><a href="'.route('superadmin-vouchers-changestatus', $row->id ).'"><img src="'.asset('assets/images/icons/blocked.svg').'" class=""></a></li>
+                            </ul>';
+                        return $btn;
+                    })
+                    ->rawColumns(['checkbox','action'])
+                    ->make(true);
+        }
 
-        return view($this->moduleTitleP.'index',compact('vouchers'));
+        return view($this->moduleTitleP.'index');
     }
 
     /**

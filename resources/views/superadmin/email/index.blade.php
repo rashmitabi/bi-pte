@@ -33,71 +33,6 @@
                             <th>Action</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Test Template Name 1</td>
-                            <td>Test Email Subject 1</td>
-                            <td>23/01/2021</td>
-                            <td>Active</td>
-                            <td>
-                                <ul class="actions-btns">
-                                    <li class="action" data-toggle="modal" data-target="#editemail"><a
-                                            href="#"><i class="fas fa-pen"></i></a></li>
-                                    <li class="action"><a href="#"><i class="fas fa-trash"></i></a></li>
-                                    <li class="action shield"><a href="#"><img
-                                                src="{{ asset('assets/images/icons/blocked.svg') }}" class=""></a></li>
-                                </ul>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>Test Template Name 1</td>
-                            <td>Test Email Subject 1</td>
-                            <td>23/01/2021</td>
-                            <td>Active</td>
-                            <td>
-                                <ul class="actions-btns">
-                                    <li class="action" data-toggle="modal" data-target="#editsubscription"><a
-                                            href="#"><i class="fas fa-pen"></i></a></li>
-                                    <li class="action"><a href="#"><i class="fas fa-trash"></i></a></li>
-                                    <li class="action shield"><a href="#"><img
-                                                src="{{ asset('assets/images/icons/blocked.svg') }}" class=""></a></li>
-                                </ul>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>Test Template Name 1</td>
-                            <td>Test Email Subject 1</td>
-                            <td>23/01/2021</td>
-                            <td>Active</td>
-                            <td>
-                                <ul class="actions-btns">
-                                    <li class="action" data-toggle="modal" data-target="#editsubscription"><a
-                                            href="#"><i class="fas fa-pen"></i></a></li>
-                                    <li class="action"><a href="#"><i class="fas fa-trash"></i></a></li>
-                                    <li class="action shield"><a href="#"><img
-                                                src="{{ asset('assets/images/icons/blocked.svg') }}" class=""></a></li>
-                                </ul>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>Test Template Name 1</td>
-                            <td>Test Email Subject 1</td>
-                            <td>23/01/2021</td>
-                            <td>Active</td>
-                            <td>
-                                <ul class="actions-btns">
-                                    <li class="action" data-toggle="modal" data-target="#editsubscription"><a
-                                            href="#"><i class="fas fa-pen"></i></a></li>
-                                    <li class="action"><a href="#"><i class="fas fa-trash"></i></a></li>
-                                    <li class="action shield"><a href="#"><img
-                                                src="{{ asset('assets/images/icons/blocked.svg') }}" class=""></a></li>
-                                </ul>
-                            </td>
-                        </tr>
                 </table>
             </div>
         </div>
@@ -113,7 +48,7 @@
                         <span aria-hidden="true"><i class="fas fa-times"></i></span>
                     </button>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body" id="email-edit-body">
                   <form class="form mt-4 ml-3">
                      <div class="form-group row">
                            <label class="col-4 col-form-label ">Template Name</label>
@@ -131,9 +66,6 @@
                      <div class="form-group row">
                            <label class="col-12 col-form-label pt-0">Email Body</label>
                            <div class="col-12">
-                              <!-- <div id="editor">
-                                 <h2>The three greatest things you learn from traveling</h2>
-                              </div> -->
                               <textarea name="editor" id="editor"></textarea>
                            </div>
                      </div>
@@ -158,4 +90,10 @@
     </div>
 
 </div>
+@endsection
+@section('js-hooks')
+<script type="text/javascript" defer>
+  var url="{{ route('email.index') }}";
+</script>
+<script src="{{ asset('assets/js/emailTemplates.js') }}" defer></script>
 @endsection
