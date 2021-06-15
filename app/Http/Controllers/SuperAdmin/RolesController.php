@@ -51,7 +51,7 @@ class RolesController extends Controller
      */
     public function create()
     {
-        return view('superadmin/roles/addroles');
+        return view('superadmin/roles/add');
     }
 
     /**

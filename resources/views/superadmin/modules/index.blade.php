@@ -1,6 +1,6 @@
 @extends('layouts.appSuperAdmin')
 @section('content')
-<!-- Page Content  -->
+<!-- Page Content   -->
 <div id="content">
     <section class="top-title-button mb-3">
         <div class="row mx-0 align-items-center">
