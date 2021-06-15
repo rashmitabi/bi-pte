@@ -1014,3 +1014,82 @@ body {
           }
      }
 }
+
+
+// question froms
+
+.question-forms{
+     .heading-text{
+          background-color: $secondary-color;
+          padding: 20px 22px;
+          border-radius: 8px 8px 0px 0px;
+          h5{
+               color: $white-color;
+               margin: 0px;
+          }
+     }
+     .sub-heading{
+          padding: 25px 22px;
+          h4{
+             span{
+                  font-size: $fs-16;
+                  font-weight: $fw-300;
+                  margin-left: 15px;
+               }
+          }
+          h5{
+               span{
+                    font-size: $fs-16;
+                    font-weight: $fw-300;
+                    margin-left: 15px;
+               }
+          }
+     }
+     .form{
+          .common-col{
+               padding: 13px 5px 1px 10px;
+               margin-bottom: 20px;
+               width: 910px;
+               .custom-label{
+                   max-width: 175px;
+               }
+               .add-icon{
+                    a{
+                         padding: 0px;
+                         background-color: $primary-color;
+                         color: $white-color;
+                         border-radius: 50%;
+                         font-size: $fs-24;
+                         position: absolute;
+                         right: 55px;
+                         top: 40px;
+                         width: 45px;
+                         height: 45px;
+                         display: flex;
+                         align-items: center;
+                         justify-content: center;
+                    }
+               }
+               .plus-icon{
+                    a{
+                         padding: 0px;
+                         background-color: $primary-color;
+                         color: $white-color;
+                         border-radius: 50%;
+                         font-size: $fs-16;
+                         width: 30px;
+                         height: 30px;
+                         display: flex;
+                         align-items: center;
+                         justify-content: center;
+                         margin-left: 20px;
+                         margin-top: 2px;
+                    }
+               }
+          }
+          .back-btn{
+              width: 14px;
+              margin-right: 10px;
+          }
+     }
+}

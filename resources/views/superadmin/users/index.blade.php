@@ -28,7 +28,7 @@
                        <table id="users" class="table table-striped table-bordered dt-responsive nowrap" style="width:100%">
                     <thead>
                         <tr>
-                            <th> <input type="checkbox" class="form-check-input position-relative ml-0" id="exampleCheck1"> </th>
+                            <th> <input type="checkbox" class="form-check-input position-relative ml-0" id="exampleCheck"> </th>
                             <th>Sr No</th>
                             <th>Institute Name</th>
                             <th>Email</th>
@@ -38,7 +38,7 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td><input type="checkbox" class="form-check-input position-relative ml-0" id="exampleCheck1"></td>
+                            <td><input type="checkbox" class="form-check-input position-relative ml-0" id="exampleCheck"></td>
                             <td>1</td>
                             <td>Abc Institute</td>
                             <td>navneet394@gmail.com</td>

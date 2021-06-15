@@ -72,11 +72,23 @@ $(document).ready(function() {
                 previous: '<i class="fas fa-chevron-left"></i>' // or '←' 
             }
         },
-        "dom": "<'row'<'col-sm-12 col-md-3 top-label'<'toolbar'>><'col-sm-12 col-md-6 top-search'f><'col-sm-12 col-md-3 top-pagination'l>>" +
+        "dom": "<'row'<'col-sm-12 col-md-3 top-label'<'toolbar'>><'col-sm-12 col-md-3 top-search'f><'col-sm-12 col-md-4 header_filter'><'col-sm-12 col-md-3 top-pagination'l>>" +
         "<'row'<'col-sm-12't>>" +
         "<'row'<'col-sm-12 col-md-12'p>>",
     });
     $("#users_wrapper div.toolbar").html('Registered Users');
+    $('<div class="pull-right">' +
+      '<select class="form-control">'+
+      '<option value="volvo">Send Email</option>'+
+      '<option value="saab">Change Password</option>'+
+      '<option value="opel">BLock/unblock Users</option>'+
+      '<option value="opel">Export Users</option>'+
+      '<option value="opel">Assign Practice Tests</option>'+
+      '<option value="opel">Assign Mock Tests</option>'+
+      '</select>' +
+      '</div>').appendTo("#users_wrapper .header_filter");
+
+$(".dataTables_filter label").addClass("pull-right");
 
     $('#students').DataTable({
         language: {
@@ -371,6 +383,827 @@ $(document).ready(function() {
 // 		} );
 
     $("#editor").each(function(_, ckeditor) {
+        CKEDITOR.replace(ckeditor);
+    });
+    $("#email_wrapper div.toolbar").html('Email Template');
+    //Delete Model for SuperAdmin start
+    $('body').on('click','.delete_modal',function() {
+        var id = $(this).attr('data-id');
+        var url = $(this).attr('data-url');
+        var token = CSRF_TOKEN;
+        $(".remove-record-model").attr("action",url);
+        $('body').find('.remove-record-model').append('<input name="_token" type="hidden" value="'+ token +'">');
+        $('body').find('.remove-record-model').append('<input name="_method" type="hidden" value="DELETE">');
+        $('body').find('.remove-record-model').append('<input name="id" type="hidden" value="'+ id +'">');
+    });
+    $('.remove-data-from-delete-form').click(function() {
+      $('body').find('.remove-record-model').find( "input" ).remove();
+    });
+    $('.modal').click(function() {
+      // $('body').find('.remove-record-model').find( "input" ).remove();
+    });
+    ////Delete Model for SuperAdmin End
+    $('body').on('click','.subscription-edit',function(){
+        var id = $(this).data('id');
+        var apiUrl = $(this).data('url');
+        $.ajax({
+            url: apiUrl,
+            type:'GET',
+            data:{'id' : id},
+            beforeSend: function(){
+                $('#sub-edit-body').html('<i class="fa fa-spinner fa-spin"></i>  Please Wait...');
+            },
+            success:function(data) {
+                $('#sub-edit-body').html(data.html);
+            },
+        });
+    });
+
+
+
+    $("#editor1").each(function(_, ckeditor) {
+        CKEDITOR.replace(ckeditor);
+    });
+    $("#email_wrapper div.toolbar").html('Email Template');
+    //Delete Model for SuperAdmin start
+    $('body').on('click','.delete_modal',function() {
+        var id = $(this).attr('data-id');
+        var url = $(this).attr('data-url');
+        var token = CSRF_TOKEN;
+        $(".remove-record-model").attr("action",url);
+        $('body').find('.remove-record-model').append('<input name="_token" type="hidden" value="'+ token +'">');
+        $('body').find('.remove-record-model').append('<input name="_method" type="hidden" value="DELETE">');
+        $('body').find('.remove-record-model').append('<input name="id" type="hidden" value="'+ id +'">');
+    });
+    $('.remove-data-from-delete-form').click(function() {
+      $('body').find('.remove-record-model').find( "input" ).remove();
+    });
+    $('.modal').click(function() {
+      // $('body').find('.remove-record-model').find( "input" ).remove();
+    });
+    ////Delete Model for SuperAdmin End
+    $('body').on('click','.subscription-edit',function(){
+        var id = $(this).data('id');
+        var apiUrl = $(this).data('url');
+        $.ajax({
+            url: apiUrl,
+            type:'GET',
+            data:{'id' : id},
+            beforeSend: function(){
+                $('#sub-edit-body').html('<i class="fa fa-spinner fa-spin"></i>  Please Wait...');
+            },
+            success:function(data) {
+                $('#sub-edit-body').html(data.html);
+            },
+        });
+    });
+
+
+
+    $("#editor2").each(function(_, ckeditor) {
+        CKEDITOR.replace(ckeditor);
+    });
+    $("#email_wrapper div.toolbar").html('Email Template');
+    //Delete Model for SuperAdmin start
+    $('body').on('click','.delete_modal',function() {
+        var id = $(this).attr('data-id');
+        var url = $(this).attr('data-url');
+        var token = CSRF_TOKEN;
+        $(".remove-record-model").attr("action",url);
+        $('body').find('.remove-record-model').append('<input name="_token" type="hidden" value="'+ token +'">');
+        $('body').find('.remove-record-model').append('<input name="_method" type="hidden" value="DELETE">');
+        $('body').find('.remove-record-model').append('<input name="id" type="hidden" value="'+ id +'">');
+    });
+    $('.remove-data-from-delete-form').click(function() {
+      $('body').find('.remove-record-model').find( "input" ).remove();
+    });
+    $('.modal').click(function() {
+      // $('body').find('.remove-record-model').find( "input" ).remove();
+    });
+    ////Delete Model for SuperAdmin End
+    $('body').on('click','.subscription-edit',function(){
+        var id = $(this).data('id');
+        var apiUrl = $(this).data('url');
+        $.ajax({
+            url: apiUrl,
+            type:'GET',
+            data:{'id' : id},
+            beforeSend: function(){
+                $('#sub-edit-body').html('<i class="fa fa-spinner fa-spin"></i>  Please Wait...');
+            },
+            success:function(data) {
+                $('#sub-edit-body').html(data.html);
+            },
+        });
+    });
+
+    $("#editor3").each(function(_, ckeditor) {
+        CKEDITOR.replace(ckeditor);
+    });
+    $("#email_wrapper div.toolbar").html('Email Template');
+    //Delete Model for SuperAdmin start
+    $('body').on('click','.delete_modal',function() {
+        var id = $(this).attr('data-id');
+        var url = $(this).attr('data-url');
+        var token = CSRF_TOKEN;
+        $(".remove-record-model").attr("action",url);
+        $('body').find('.remove-record-model').append('<input name="_token" type="hidden" value="'+ token +'">');
+        $('body').find('.remove-record-model').append('<input name="_method" type="hidden" value="DELETE">');
+        $('body').find('.remove-record-model').append('<input name="id" type="hidden" value="'+ id +'">');
+    });
+    $('.remove-data-from-delete-form').click(function() {
+      $('body').find('.remove-record-model').find( "input" ).remove();
+    });
+    $('.modal').click(function() {
+      // $('body').find('.remove-record-model').find( "input" ).remove();
+    });
+    ////Delete Model for SuperAdmin End
+    $('body').on('click','.subscription-edit',function(){
+        var id = $(this).data('id');
+        var apiUrl = $(this).data('url');
+        $.ajax({
+            url: apiUrl,
+            type:'GET',
+            data:{'id' : id},
+            beforeSend: function(){
+                $('#sub-edit-body').html('<i class="fa fa-spinner fa-spin"></i>  Please Wait...');
+            },
+            success:function(data) {
+                $('#sub-edit-body').html(data.html);
+            },
+        });
+    });
+
+    $("#editor4").each(function(_, ckeditor) {
+        CKEDITOR.replace(ckeditor);
+    });
+    $("#email_wrapper div.toolbar").html('Email Template');
+    //Delete Model for SuperAdmin start
+    $('body').on('click','.delete_modal',function() {
+        var id = $(this).attr('data-id');
+        var url = $(this).attr('data-url');
+        var token = CSRF_TOKEN;
+        $(".remove-record-model").attr("action",url);
+        $('body').find('.remove-record-model').append('<input name="_token" type="hidden" value="'+ token +'">');
+        $('body').find('.remove-record-model').append('<input name="_method" type="hidden" value="DELETE">');
+        $('body').find('.remove-record-model').append('<input name="id" type="hidden" value="'+ id +'">');
+    });
+    $('.remove-data-from-delete-form').click(function() {
+      $('body').find('.remove-record-model').find( "input" ).remove();
+    });
+    $('.modal').click(function() {
+      // $('body').find('.remove-record-model').find( "input" ).remove();
+    });
+    ////Delete Model for SuperAdmin End
+    $('body').on('click','.subscription-edit',function(){
+        var id = $(this).data('id');
+        var apiUrl = $(this).data('url');
+        $.ajax({
+            url: apiUrl,
+            type:'GET',
+            data:{'id' : id},
+            beforeSend: function(){
+                $('#sub-edit-body').html('<i class="fa fa-spinner fa-spin"></i>  Please Wait...');
+            },
+            success:function(data) {
+                $('#sub-edit-body').html(data.html);
+            },
+        });
+    });
+
+    $("#editor5").each(function(_, ckeditor) {
+        CKEDITOR.replace(ckeditor);
+    });
+    $("#email_wrapper div.toolbar").html('Email Template');
+    //Delete Model for SuperAdmin start
+    $('body').on('click','.delete_modal',function() {
+        var id = $(this).attr('data-id');
+        var url = $(this).attr('data-url');
+        var token = CSRF_TOKEN;
+        $(".remove-record-model").attr("action",url);
+        $('body').find('.remove-record-model').append('<input name="_token" type="hidden" value="'+ token +'">');
+        $('body').find('.remove-record-model').append('<input name="_method" type="hidden" value="DELETE">');
+        $('body').find('.remove-record-model').append('<input name="id" type="hidden" value="'+ id +'">');
+    });
+    $('.remove-data-from-delete-form').click(function() {
+      $('body').find('.remove-record-model').find( "input" ).remove();
+    });
+    $('.modal').click(function() {
+      // $('body').find('.remove-record-model').find( "input" ).remove();
+    });
+    ////Delete Model for SuperAdmin End
+    $('body').on('click','.subscription-edit',function(){
+        var id = $(this).data('id');
+        var apiUrl = $(this).data('url');
+        $.ajax({
+            url: apiUrl,
+            type:'GET',
+            data:{'id' : id},
+            beforeSend: function(){
+                $('#sub-edit-body').html('<i class="fa fa-spinner fa-spin"></i>  Please Wait...');
+            },
+            success:function(data) {
+                $('#sub-edit-body').html(data.html);
+            },
+        });
+    });
+
+    $("#editor6").each(function(_, ckeditor) {
+        CKEDITOR.replace(ckeditor);
+    });
+    $("#email_wrapper div.toolbar").html('Email Template');
+    //Delete Model for SuperAdmin start
+    $('body').on('click','.delete_modal',function() {
+        var id = $(this).attr('data-id');
+        var url = $(this).attr('data-url');
+        var token = CSRF_TOKEN;
+        $(".remove-record-model").attr("action",url);
+        $('body').find('.remove-record-model').append('<input name="_token" type="hidden" value="'+ token +'">');
+        $('body').find('.remove-record-model').append('<input name="_method" type="hidden" value="DELETE">');
+        $('body').find('.remove-record-model').append('<input name="id" type="hidden" value="'+ id +'">');
+    });
+    $('.remove-data-from-delete-form').click(function() {
+      $('body').find('.remove-record-model').find( "input" ).remove();
+    });
+    $('.modal').click(function() {
+      // $('body').find('.remove-record-model').find( "input" ).remove();
+    });
+    ////Delete Model for SuperAdmin End
+    $('body').on('click','.subscription-edit',function(){
+        var id = $(this).data('id');
+        var apiUrl = $(this).data('url');
+        $.ajax({
+            url: apiUrl,
+            type:'GET',
+            data:{'id' : id},
+            beforeSend: function(){
+                $('#sub-edit-body').html('<i class="fa fa-spinner fa-spin"></i>  Please Wait...');
+            },
+            success:function(data) {
+                $('#sub-edit-body').html(data.html);
+            },
+        });
+    });
+
+    $("#editor7").each(function(_, ckeditor) {
+        CKEDITOR.replace(ckeditor);
+    });
+    $("#email_wrapper div.toolbar").html('Email Template');
+    //Delete Model for SuperAdmin start
+    $('body').on('click','.delete_modal',function() {
+        var id = $(this).attr('data-id');
+        var url = $(this).attr('data-url');
+        var token = CSRF_TOKEN;
+        $(".remove-record-model").attr("action",url);
+        $('body').find('.remove-record-model').append('<input name="_token" type="hidden" value="'+ token +'">');
+        $('body').find('.remove-record-model').append('<input name="_method" type="hidden" value="DELETE">');
+        $('body').find('.remove-record-model').append('<input name="id" type="hidden" value="'+ id +'">');
+    });
+    $('.remove-data-from-delete-form').click(function() {
+      $('body').find('.remove-record-model').find( "input" ).remove();
+    });
+    $('.modal').click(function() {
+      // $('body').find('.remove-record-model').find( "input" ).remove();
+    });
+    ////Delete Model for SuperAdmin End
+    $('body').on('click','.subscription-edit',function(){
+        var id = $(this).data('id');
+        var apiUrl = $(this).data('url');
+        $.ajax({
+            url: apiUrl,
+            type:'GET',
+            data:{'id' : id},
+            beforeSend: function(){
+                $('#sub-edit-body').html('<i class="fa fa-spinner fa-spin"></i>  Please Wait...');
+            },
+            success:function(data) {
+                $('#sub-edit-body').html(data.html);
+            },
+        });
+    });
+
+    $("#editor8").each(function(_, ckeditor) {
+        CKEDITOR.replace(ckeditor);
+    });
+    $("#email_wrapper div.toolbar").html('Email Template');
+    //Delete Model for SuperAdmin start
+    $('body').on('click','.delete_modal',function() {
+        var id = $(this).attr('data-id');
+        var url = $(this).attr('data-url');
+        var token = CSRF_TOKEN;
+        $(".remove-record-model").attr("action",url);
+        $('body').find('.remove-record-model').append('<input name="_token" type="hidden" value="'+ token +'">');
+        $('body').find('.remove-record-model').append('<input name="_method" type="hidden" value="DELETE">');
+        $('body').find('.remove-record-model').append('<input name="id" type="hidden" value="'+ id +'">');
+    });
+    $('.remove-data-from-delete-form').click(function() {
+      $('body').find('.remove-record-model').find( "input" ).remove();
+    });
+    $('.modal').click(function() {
+      // $('body').find('.remove-record-model').find( "input" ).remove();
+    });
+    ////Delete Model for SuperAdmin End
+    $('body').on('click','.subscription-edit',function(){
+        var id = $(this).data('id');
+        var apiUrl = $(this).data('url');
+        $.ajax({
+            url: apiUrl,
+            type:'GET',
+            data:{'id' : id},
+            beforeSend: function(){
+                $('#sub-edit-body').html('<i class="fa fa-spinner fa-spin"></i>  Please Wait...');
+            },
+            success:function(data) {
+                $('#sub-edit-body').html(data.html);
+            },
+        });
+    });
+
+    $("#editor9").each(function(_, ckeditor) {
+        CKEDITOR.replace(ckeditor);
+    });
+    $("#email_wrapper div.toolbar").html('Email Template');
+    //Delete Model for SuperAdmin start
+    $('body').on('click','.delete_modal',function() {
+        var id = $(this).attr('data-id');
+        var url = $(this).attr('data-url');
+        var token = CSRF_TOKEN;
+        $(".remove-record-model").attr("action",url);
+        $('body').find('.remove-record-model').append('<input name="_token" type="hidden" value="'+ token +'">');
+        $('body').find('.remove-record-model').append('<input name="_method" type="hidden" value="DELETE">');
+        $('body').find('.remove-record-model').append('<input name="id" type="hidden" value="'+ id +'">');
+    });
+    $('.remove-data-from-delete-form').click(function() {
+      $('body').find('.remove-record-model').find( "input" ).remove();
+    });
+    $('.modal').click(function() {
+      // $('body').find('.remove-record-model').find( "input" ).remove();
+    });
+    ////Delete Model for SuperAdmin End
+    $('body').on('click','.subscription-edit',function(){
+        var id = $(this).data('id');
+        var apiUrl = $(this).data('url');
+        $.ajax({
+            url: apiUrl,
+            type:'GET',
+            data:{'id' : id},
+            beforeSend: function(){
+                $('#sub-edit-body').html('<i class="fa fa-spinner fa-spin"></i>  Please Wait...');
+            },
+            success:function(data) {
+                $('#sub-edit-body').html(data.html);
+            },
+        });
+    });
+
+    $("#editor10").each(function(_, ckeditor) {
+        CKEDITOR.replace(ckeditor);
+    });
+    $("#email_wrapper div.toolbar").html('Email Template');
+    //Delete Model for SuperAdmin start
+    $('body').on('click','.delete_modal',function() {
+        var id = $(this).attr('data-id');
+        var url = $(this).attr('data-url');
+        var token = CSRF_TOKEN;
+        $(".remove-record-model").attr("action",url);
+        $('body').find('.remove-record-model').append('<input name="_token" type="hidden" value="'+ token +'">');
+        $('body').find('.remove-record-model').append('<input name="_method" type="hidden" value="DELETE">');
+        $('body').find('.remove-record-model').append('<input name="id" type="hidden" value="'+ id +'">');
+    });
+    $('.remove-data-from-delete-form').click(function() {
+      $('body').find('.remove-record-model').find( "input" ).remove();
+    });
+    $('.modal').click(function() {
+      // $('body').find('.remove-record-model').find( "input" ).remove();
+    });
+    ////Delete Model for SuperAdmin End
+    $('body').on('click','.subscription-edit',function(){
+        var id = $(this).data('id');
+        var apiUrl = $(this).data('url');
+        $.ajax({
+            url: apiUrl,
+            type:'GET',
+            data:{'id' : id},
+            beforeSend: function(){
+                $('#sub-edit-body').html('<i class="fa fa-spinner fa-spin"></i>  Please Wait...');
+            },
+            success:function(data) {
+                $('#sub-edit-body').html(data.html);
+            },
+        });
+    });
+
+    $("#editor11").each(function(_, ckeditor) {
+        CKEDITOR.replace(ckeditor);
+    });
+    $("#email_wrapper div.toolbar").html('Email Template');
+    //Delete Model for SuperAdmin start
+    $('body').on('click','.delete_modal',function() {
+        var id = $(this).attr('data-id');
+        var url = $(this).attr('data-url');
+        var token = CSRF_TOKEN;
+        $(".remove-record-model").attr("action",url);
+        $('body').find('.remove-record-model').append('<input name="_token" type="hidden" value="'+ token +'">');
+        $('body').find('.remove-record-model').append('<input name="_method" type="hidden" value="DELETE">');
+        $('body').find('.remove-record-model').append('<input name="id" type="hidden" value="'+ id +'">');
+    });
+    $('.remove-data-from-delete-form').click(function() {
+      $('body').find('.remove-record-model').find( "input" ).remove();
+    });
+    $('.modal').click(function() {
+      // $('body').find('.remove-record-model').find( "input" ).remove();
+    });
+    ////Delete Model for SuperAdmin End
+    $('body').on('click','.subscription-edit',function(){
+        var id = $(this).data('id');
+        var apiUrl = $(this).data('url');
+        $.ajax({
+            url: apiUrl,
+            type:'GET',
+            data:{'id' : id},
+            beforeSend: function(){
+                $('#sub-edit-body').html('<i class="fa fa-spinner fa-spin"></i>  Please Wait...');
+            },
+            success:function(data) {
+                $('#sub-edit-body').html(data.html);
+            },
+        });
+    });
+
+    $("#editor12").each(function(_, ckeditor) {
+        CKEDITOR.replace(ckeditor);
+    });
+    $("#email_wrapper div.toolbar").html('Email Template');
+    //Delete Model for SuperAdmin start
+    $('body').on('click','.delete_modal',function() {
+        var id = $(this).attr('data-id');
+        var url = $(this).attr('data-url');
+        var token = CSRF_TOKEN;
+        $(".remove-record-model").attr("action",url);
+        $('body').find('.remove-record-model').append('<input name="_token" type="hidden" value="'+ token +'">');
+        $('body').find('.remove-record-model').append('<input name="_method" type="hidden" value="DELETE">');
+        $('body').find('.remove-record-model').append('<input name="id" type="hidden" value="'+ id +'">');
+    });
+    $('.remove-data-from-delete-form').click(function() {
+      $('body').find('.remove-record-model').find( "input" ).remove();
+    });
+    $('.modal').click(function() {
+      // $('body').find('.remove-record-model').find( "input" ).remove();
+    });
+    ////Delete Model for SuperAdmin End
+    $('body').on('click','.subscription-edit',function(){
+        var id = $(this).data('id');
+        var apiUrl = $(this).data('url');
+        $.ajax({
+            url: apiUrl,
+            type:'GET',
+            data:{'id' : id},
+            beforeSend: function(){
+                $('#sub-edit-body').html('<i class="fa fa-spinner fa-spin"></i>  Please Wait...');
+            },
+            success:function(data) {
+                $('#sub-edit-body').html(data.html);
+            },
+        });
+    });
+
+    $("#editor13").each(function(_, ckeditor) {
+        CKEDITOR.replace(ckeditor);
+    });
+    $("#email_wrapper div.toolbar").html('Email Template');
+    //Delete Model for SuperAdmin start
+    $('body').on('click','.delete_modal',function() {
+        var id = $(this).attr('data-id');
+        var url = $(this).attr('data-url');
+        var token = CSRF_TOKEN;
+        $(".remove-record-model").attr("action",url);
+        $('body').find('.remove-record-model').append('<input name="_token" type="hidden" value="'+ token +'">');
+        $('body').find('.remove-record-model').append('<input name="_method" type="hidden" value="DELETE">');
+        $('body').find('.remove-record-model').append('<input name="id" type="hidden" value="'+ id +'">');
+    });
+    $('.remove-data-from-delete-form').click(function() {
+      $('body').find('.remove-record-model').find( "input" ).remove();
+    });
+    $('.modal').click(function() {
+      // $('body').find('.remove-record-model').find( "input" ).remove();
+    });
+    ////Delete Model for SuperAdmin End
+    $('body').on('click','.subscription-edit',function(){
+        var id = $(this).data('id');
+        var apiUrl = $(this).data('url');
+        $.ajax({
+            url: apiUrl,
+            type:'GET',
+            data:{'id' : id},
+            beforeSend: function(){
+                $('#sub-edit-body').html('<i class="fa fa-spinner fa-spin"></i>  Please Wait...');
+            },
+            success:function(data) {
+                $('#sub-edit-body').html(data.html);
+            },
+        });
+    });
+
+    $("#editor14").each(function(_, ckeditor) {
+        CKEDITOR.replace(ckeditor);
+    });
+    $("#email_wrapper div.toolbar").html('Email Template');
+    //Delete Model for SuperAdmin start
+    $('body').on('click','.delete_modal',function() {
+        var id = $(this).attr('data-id');
+        var url = $(this).attr('data-url');
+        var token = CSRF_TOKEN;
+        $(".remove-record-model").attr("action",url);
+        $('body').find('.remove-record-model').append('<input name="_token" type="hidden" value="'+ token +'">');
+        $('body').find('.remove-record-model').append('<input name="_method" type="hidden" value="DELETE">');
+        $('body').find('.remove-record-model').append('<input name="id" type="hidden" value="'+ id +'">');
+    });
+    $('.remove-data-from-delete-form').click(function() {
+      $('body').find('.remove-record-model').find( "input" ).remove();
+    });
+    $('.modal').click(function() {
+      // $('body').find('.remove-record-model').find( "input" ).remove();
+    });
+    ////Delete Model for SuperAdmin End
+    $('body').on('click','.subscription-edit',function(){
+        var id = $(this).data('id');
+        var apiUrl = $(this).data('url');
+        $.ajax({
+            url: apiUrl,
+            type:'GET',
+            data:{'id' : id},
+            beforeSend: function(){
+                $('#sub-edit-body').html('<i class="fa fa-spinner fa-spin"></i>  Please Wait...');
+            },
+            success:function(data) {
+                $('#sub-edit-body').html(data.html);
+            },
+        });
+    });
+
+
+    $("#editor15").each(function(_, ckeditor) {
+        CKEDITOR.replace(ckeditor);
+    });
+    $("#email_wrapper div.toolbar").html('Email Template');
+    //Delete Model for SuperAdmin start
+    $('body').on('click','.delete_modal',function() {
+        var id = $(this).attr('data-id');
+        var url = $(this).attr('data-url');
+        var token = CSRF_TOKEN;
+        $(".remove-record-model").attr("action",url);
+        $('body').find('.remove-record-model').append('<input name="_token" type="hidden" value="'+ token +'">');
+        $('body').find('.remove-record-model').append('<input name="_method" type="hidden" value="DELETE">');
+        $('body').find('.remove-record-model').append('<input name="id" type="hidden" value="'+ id +'">');
+    });
+    $('.remove-data-from-delete-form').click(function() {
+      $('body').find('.remove-record-model').find( "input" ).remove();
+    });
+    $('.modal').click(function() {
+      // $('body').find('.remove-record-model').find( "input" ).remove();
+    });
+    ////Delete Model for SuperAdmin End
+    $('body').on('click','.subscription-edit',function(){
+        var id = $(this).data('id');
+        var apiUrl = $(this).data('url');
+        $.ajax({
+            url: apiUrl,
+            type:'GET',
+            data:{'id' : id},
+            beforeSend: function(){
+                $('#sub-edit-body').html('<i class="fa fa-spinner fa-spin"></i>  Please Wait...');
+            },
+            success:function(data) {
+                $('#sub-edit-body').html(data.html);
+            },
+        });
+    });
+
+    $("#editor16").each(function(_, ckeditor) {
+        CKEDITOR.replace(ckeditor);
+    });
+    $("#email_wrapper div.toolbar").html('Email Template');
+    //Delete Model for SuperAdmin start
+    $('body').on('click','.delete_modal',function() {
+        var id = $(this).attr('data-id');
+        var url = $(this).attr('data-url');
+        var token = CSRF_TOKEN;
+        $(".remove-record-model").attr("action",url);
+        $('body').find('.remove-record-model').append('<input name="_token" type="hidden" value="'+ token +'">');
+        $('body').find('.remove-record-model').append('<input name="_method" type="hidden" value="DELETE">');
+        $('body').find('.remove-record-model').append('<input name="id" type="hidden" value="'+ id +'">');
+    });
+    $('.remove-data-from-delete-form').click(function() {
+      $('body').find('.remove-record-model').find( "input" ).remove();
+    });
+    $('.modal').click(function() {
+      // $('body').find('.remove-record-model').find( "input" ).remove();
+    });
+    ////Delete Model for SuperAdmin End
+    $('body').on('click','.subscription-edit',function(){
+        var id = $(this).data('id');
+        var apiUrl = $(this).data('url');
+        $.ajax({
+            url: apiUrl,
+            type:'GET',
+            data:{'id' : id},
+            beforeSend: function(){
+                $('#sub-edit-body').html('<i class="fa fa-spinner fa-spin"></i>  Please Wait...');
+            },
+            success:function(data) {
+                $('#sub-edit-body').html(data.html);
+            },
+        });
+    });
+
+    $("#editor17").each(function(_, ckeditor) {
+        CKEDITOR.replace(ckeditor);
+    });
+    $("#email_wrapper div.toolbar").html('Email Template');
+    //Delete Model for SuperAdmin start
+    $('body').on('click','.delete_modal',function() {
+        var id = $(this).attr('data-id');
+        var url = $(this).attr('data-url');
+        var token = CSRF_TOKEN;
+        $(".remove-record-model").attr("action",url);
+        $('body').find('.remove-record-model').append('<input name="_token" type="hidden" value="'+ token +'">');
+        $('body').find('.remove-record-model').append('<input name="_method" type="hidden" value="DELETE">');
+        $('body').find('.remove-record-model').append('<input name="id" type="hidden" value="'+ id +'">');
+    });
+    $('.remove-data-from-delete-form').click(function() {
+      $('body').find('.remove-record-model').find( "input" ).remove();
+    });
+    $('.modal').click(function() {
+      // $('body').find('.remove-record-model').find( "input" ).remove();
+    });
+    ////Delete Model for SuperAdmin End
+    $('body').on('click','.subscription-edit',function(){
+        var id = $(this).data('id');
+        var apiUrl = $(this).data('url');
+        $.ajax({
+            url: apiUrl,
+            type:'GET',
+            data:{'id' : id},
+            beforeSend: function(){
+                $('#sub-edit-body').html('<i class="fa fa-spinner fa-spin"></i>  Please Wait...');
+            },
+            success:function(data) {
+                $('#sub-edit-body').html(data.html);
+            },
+        });
+    });
+
+    $("#editor18").each(function(_, ckeditor) {
+        CKEDITOR.replace(ckeditor);
+    });
+    $("#email_wrapper div.toolbar").html('Email Template');
+    //Delete Model for SuperAdmin start
+    $('body').on('click','.delete_modal',function() {
+        var id = $(this).attr('data-id');
+        var url = $(this).attr('data-url');
+        var token = CSRF_TOKEN;
+        $(".remove-record-model").attr("action",url);
+        $('body').find('.remove-record-model').append('<input name="_token" type="hidden" value="'+ token +'">');
+        $('body').find('.remove-record-model').append('<input name="_method" type="hidden" value="DELETE">');
+        $('body').find('.remove-record-model').append('<input name="id" type="hidden" value="'+ id +'">');
+    });
+    $('.remove-data-from-delete-form').click(function() {
+      $('body').find('.remove-record-model').find( "input" ).remove();
+    });
+    $('.modal').click(function() {
+      // $('body').find('.remove-record-model').find( "input" ).remove();
+    });
+    ////Delete Model for SuperAdmin End
+    $('body').on('click','.subscription-edit',function(){
+        var id = $(this).data('id');
+        var apiUrl = $(this).data('url');
+        $.ajax({
+            url: apiUrl,
+            type:'GET',
+            data:{'id' : id},
+            beforeSend: function(){
+                $('#sub-edit-body').html('<i class="fa fa-spinner fa-spin"></i>  Please Wait...');
+            },
+            success:function(data) {
+                $('#sub-edit-body').html(data.html);
+            },
+        });
+    });
+
+    $("#editor19").each(function(_, ckeditor) {
+        CKEDITOR.replace(ckeditor);
+    });
+    $("#email_wrapper div.toolbar").html('Email Template');
+    //Delete Model for SuperAdmin start
+    $('body').on('click','.delete_modal',function() {
+        var id = $(this).attr('data-id');
+        var url = $(this).attr('data-url');
+        var token = CSRF_TOKEN;
+        $(".remove-record-model").attr("action",url);
+        $('body').find('.remove-record-model').append('<input name="_token" type="hidden" value="'+ token +'">');
+        $('body').find('.remove-record-model').append('<input name="_method" type="hidden" value="DELETE">');
+        $('body').find('.remove-record-model').append('<input name="id" type="hidden" value="'+ id +'">');
+    });
+    $('.remove-data-from-delete-form').click(function() {
+      $('body').find('.remove-record-model').find( "input" ).remove();
+    });
+    $('.modal').click(function() {
+      // $('body').find('.remove-record-model').find( "input" ).remove();
+    });
+    ////Delete Model for SuperAdmin End
+    $('body').on('click','.subscription-edit',function(){
+        var id = $(this).data('id');
+        var apiUrl = $(this).data('url');
+        $.ajax({
+            url: apiUrl,
+            type:'GET',
+            data:{'id' : id},
+            beforeSend: function(){
+                $('#sub-edit-body').html('<i class="fa fa-spinner fa-spin"></i>  Please Wait...');
+            },
+            success:function(data) {
+                $('#sub-edit-body').html(data.html);
+            },
+        });
+    });
+
+    $("#editor20").each(function(_, ckeditor) {
+        CKEDITOR.replace(ckeditor);
+    });
+    $("#email_wrapper div.toolbar").html('Email Template');
+    //Delete Model for SuperAdmin start
+    $('body').on('click','.delete_modal',function() {
+        var id = $(this).attr('data-id');
+        var url = $(this).attr('data-url');
+        var token = CSRF_TOKEN;
+        $(".remove-record-model").attr("action",url);
+        $('body').find('.remove-record-model').append('<input name="_token" type="hidden" value="'+ token +'">');
+        $('body').find('.remove-record-model').append('<input name="_method" type="hidden" value="DELETE">');
+        $('body').find('.remove-record-model').append('<input name="id" type="hidden" value="'+ id +'">');
+    });
+    $('.remove-data-from-delete-form').click(function() {
+      $('body').find('.remove-record-model').find( "input" ).remove();
+    });
+    $('.modal').click(function() {
+      // $('body').find('.remove-record-model').find( "input" ).remove();
+    });
+    ////Delete Model for SuperAdmin End
+    $('body').on('click','.subscription-edit',function(){
+        var id = $(this).data('id');
+        var apiUrl = $(this).data('url');
+        $.ajax({
+            url: apiUrl,
+            type:'GET',
+            data:{'id' : id},
+            beforeSend: function(){
+                $('#sub-edit-body').html('<i class="fa fa-spinner fa-spin"></i>  Please Wait...');
+            },
+            success:function(data) {
+                $('#sub-edit-body').html(data.html);
+            },
+        });
+    });
+
+
+    $("#editor21").each(function(_, ckeditor) {
+        CKEDITOR.replace(ckeditor);
+    });
+    $("#email_wrapper div.toolbar").html('Email Template');
+    //Delete Model for SuperAdmin start
+    $('body').on('click','.delete_modal',function() {
+        var id = $(this).attr('data-id');
+        var url = $(this).attr('data-url');
+        var token = CSRF_TOKEN;
+        $(".remove-record-model").attr("action",url);
+        $('body').find('.remove-record-model').append('<input name="_token" type="hidden" value="'+ token +'">');
+        $('body').find('.remove-record-model').append('<input name="_method" type="hidden" value="DELETE">');
+        $('body').find('.remove-record-model').append('<input name="id" type="hidden" value="'+ id +'">');
+    });
+    $('.remove-data-from-delete-form').click(function() {
+      $('body').find('.remove-record-model').find( "input" ).remove();
+    });
+    $('.modal').click(function() {
+      // $('body').find('.remove-record-model').find( "input" ).remove();
+    });
+    ////Delete Model for SuperAdmin End
+    $('body').on('click','.subscription-edit',function(){
+        var id = $(this).data('id');
+        var apiUrl = $(this).data('url');
+        $.ajax({
+            url: apiUrl,
+            type:'GET',
+            data:{'id' : id},
+            beforeSend: function(){
+                $('#sub-edit-body').html('<i class="fa fa-spinner fa-spin"></i>  Please Wait...');
+            },
+            success:function(data) {
+                $('#sub-edit-body').html(data.html);
+            },
+        });
+    });
+
+
+    $("#editor22").each(function(_, ckeditor) {
         CKEDITOR.replace(ckeditor);
     });
     $("#email_wrapper div.toolbar").html('Email Template');
