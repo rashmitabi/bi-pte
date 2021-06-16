@@ -13,4 +13,9 @@ class Subjects extends Model
     	'subject_name',
     	'status'
     ];
+
+    // public function tests()
+    // {
+    //     return $this->hasOne('App\Models\Tests', 'subject_id');
+    // }
 }

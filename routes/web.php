@@ -76,6 +76,14 @@ Route::get('superadmin/vouchers/changestatus/{id}', [App\Http\Controllers\SuperA
 Route::resource('superadmin/vouchers', App\Http\Controllers\SuperAdmin\VouchersController::class);
 /*Vouchers module end*/
 
+/*Tests Modules start*/
+
+Route::get('superadmin/tests/mocktest', [App\Http\Controllers\SuperAdmin\TestsController::class, 'mockTests'])
+    ->name('superadmin-tests-mocktest');
+Route::get('superadmin/tests/changestatus/{id}', [App\Http\Controllers\SuperAdmin\TestsController::class, 'changeStatus'])
+    ->name('superadmin-tests-changestatus');
+Route::resource('superadmin/tests', App\Http\Controllers\SuperAdmin\TestsController::class);
+/*Tests Modules end*/
     Route::resource('superadmin/predictionfiles', App\Http\Controllers\SuperAdmin\PredictionFilesController::class);
 
     Route::resource('superadmin/videos', App\Http\Controllers\SuperAdmin\VideosController::class);
@@ -88,7 +96,7 @@ Route::resource('superadmin/vouchers', App\Http\Controllers\SuperAdmin\VouchersC
 
     Route::resource('superadmin/certificates', App\Http\Controllers\SuperAdmin\CertificatesController::class);
 
-    Route::resource('superadmin/tests', App\Http\Controllers\SuperAdmin\TestsController::class);
+    
 
     Route::resource('superadmin/results', App\Http\Controllers\SuperAdmin\TestResultsController::class);
 

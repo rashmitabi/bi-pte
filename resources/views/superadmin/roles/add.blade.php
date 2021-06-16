@@ -27,7 +27,7 @@
                     <div class="form-group row">
                       <label class="col-4 col-form-label ">Permissions</label>
                       <div class="col-8">
-                        <select id="permission" name="permission" class="user-type custom-select">
+                        <select id="permission" name="permission"  class="user-type custom-select">
                           <option value="" selected>Select Permissions</option>
                           @if(count($modules) > 0)
                             @foreach($modules as $module)

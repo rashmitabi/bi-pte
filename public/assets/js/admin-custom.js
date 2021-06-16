@@ -53,7 +53,7 @@ $(document).ready(function() {
         "<'row'<'col-sm-12't>>" +
         "<'row'<'col-sm-12 col-md-12'p>>",
     });
-    $("#device_wrapper div.toolbar").html('Manage Device');
+    $("#device_wrapper div.toolbar").html('Manage Device Log');
 
 //     $('#users').DataTable({
 //         language: {
@@ -298,7 +298,7 @@ $(document).ready(function() {
     });
     $("#certificates_wrapper div.toolbar").html('Certificate'); 
 
-    $('#practice_test').DataTable({
+    /*$('#practice_test').DataTable({
         language: {
             search: '',
             searchPlaceholder: "Search by test name, test subject",
@@ -319,7 +319,7 @@ $(document).ready(function() {
         "<'row'<'col-sm-12't>>" +
         "<'row'<'col-sm-12 col-md-12'p>>",
     });
-    $("#practice_test_wrapper div.toolbar").html('Manage Test'); 
+    $("#practice_test_wrapper div.toolbar").html('Manage Test');*/
 
     $('#results').DataTable({
         language: {
@@ -343,6 +343,47 @@ $(document).ready(function() {
         "<'row'<'col-sm-12 col-md-12'p>>",
     });
     $("#results_wrapper div.toolbar").html('Manage Test Results'); 
+
+
+    $('#activitylog').DataTable({
+        language: {
+            
+        }, 
+        "dom": "<'row'<'col-sm-12 col-md-3 top-label'<'toolbar'>>>" +
+        "<'row'<'col-sm-12't>>" +
+        "<'row'>",
+    });
+    $("#activitylog_wrapper div.toolbar").html(''); 
+
+    $('#transaction').DataTable({
+        language: {
+            
+        }, 
+        "dom": "<'row'<'col-sm-12 col-md-3 top-label'<'toolbar'>>>" +
+        "<'row'<'col-sm-12't>>" +
+        "<'row'>",
+    });
+    $("#transaction_wrapper div.toolbar").html(''); 
+
+    $('#institute').DataTable({
+        language: {
+            
+        }, 
+        "dom": "<'row'<'col-sm-12 col-md-3 top-label'<'toolbar'>>>" +
+        "<'row'<'col-sm-12't>>" +
+        "<'row'>",
+    });
+    $("#institute_wrapper div.toolbar").html(''); 
+
+    $('#ranking').DataTable({
+        language: {
+            
+        }, 
+        "dom": "<'row'<'col-sm-12 col-md-3 top-label'<'toolbar'>>>" +
+        "<'row'<'col-sm-12't>>" +
+        "<'row'>",
+    });
+    $("#ranking_wrapper div.toolbar").html(''); 
 
     // $('#managemodule').DataTable({
     //     language: {
@@ -1247,21 +1288,6 @@ $(document).ready(function() {
       // $('body').find('.remove-record-model').find( "input" ).remove();
     });
     ////Delete Model for SuperAdmin End
-    $('body').on('click','.subscription-edit',function(){
-        var id = $(this).data('id');
-        var apiUrl = $(this).data('url');
-        $.ajax({
-            url: apiUrl,
-            type:'GET',
-            data:{'id' : id},
-            beforeSend: function(){
-                $('#sub-edit-body').html('<i class="fa fa-spinner fa-spin"></i>  Please Wait...');
-            },
-            success:function(data) {
-                $('#sub-edit-body').html(data.html);
-            },
-        });
-    });
 });
 
 // $(document).ready(function(){
