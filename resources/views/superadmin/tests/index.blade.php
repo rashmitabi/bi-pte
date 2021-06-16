@@ -9,7 +9,9 @@
                 <h1 class="title mb-4">Manage Test</h1>
             </div>
             <div class="col-12 col-md-4 col-xl-4 col-sm-4 right">
-                <button type="button" class="btn btn-primary"><i class="fas fa-plus-circle mr-1"></i> New Test</button>
+                <a href="{{ route('tests.create') }}">
+                    <button type="button" class="btn btn-primary"><i class="fas fa-plus-circle mr-1"></i> New Test</button>
+                </a>
             </div>
         </div>
     </section>
@@ -41,89 +43,31 @@
                                         <th>Action</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Test2</td>
-                                        <td>Subject2</td>
-                                        <td>
-                                            <ul class="actions-btns">
-                                                <li class="action"><a href="#"><i class="fas fa-question"></i></a></li>
-                                                <li class="action" data-toggle="modal" data-target="#edit"><a
-                                                        href="#"><i class="fas fa-pen"></i></a></li>
-                                                <li class="action"><a href="#"><i class="fas fa-trash"></i></a></li>
-                                                <li class="action shield"><a href="#"><img
-                                                            src="{{ asset('assets/images/icons/blocked.svg') }}"
-                                                            class=""></a></li>
-                                            </ul>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Test2</td>
-                                        <td>Subject2</td>
-                                        <td>
-                                            <ul class="actions-btns">
-                                                <li class="action"><a href="#"><i class="fas fa-question"></i></a></li>
-                                                <li class="action" data-toggle="modal" data-target="#editvideos"><a
-                                                        href="#"><i class="fas fa-pen"></i></a></li>
-                                                <li class="action"><a href="#"><i class="fas fa-trash"></i></a></li>
-                                                <li class="action shield"><a href="#"><img
-                                                            src="{{ asset('assets/images/icons/blocked.svg') }}"
-                                                            class=""></a></li>
-                                            </ul>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Test2</td>
-                                        <td>Subject2</td>
-                                        <td>
-                                            <ul class="actions-btns">
-                                                <li class="action"><a href="#"><i class="fas fa-question"></i></a></li>
-                                                <li class="action" data-toggle="modal" data-target="#editvideos"><a
-                                                        href="#"><i class="fas fa-pen"></i></a></li>
-                                                <li class="action"><a href="#"><i class="fas fa-trash"></i></a></li>
-                                                <li class="action shield"><a href="#"><img
-                                                            src="{{ asset('assets/images/icons/blocked.svg') }}"
-                                                            class=""></a></li>
-                                            </ul>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Test2</td>
-                                        <td>Subject2</td>
-                                        <td>
-                                            <ul class="actions-btns">
-                                                <li class="action"><a href="#"><i class="fas fa-question"></i></a></li>
-                                                <li class="action" data-toggle="modal" data-target="#editvideos"><a
-                                                        href="#"><i class="fas fa-pen"></i></a></li>
-                                                <li class="action"><a href="#"><i class="fas fa-trash"></i></a></li>
-                                                <li class="action shield"><a href="#"><img
-                                                            src="{{ asset('assets/images/icons/blocked.svg') }}"
-                                                            class=""></a></li>
-                                            </ul>
-                                        </td>
-                                    </tr>
+                                
                             </table>
                         </div>
                         <div class="tab-pane white-bg  fade" id="nav-mock" role="tabpanel"
                             aria-labelledby="nav-mock-tab">
-                            asdad
+                            <table id="mock_test" class="table table-striped table-bordered dt-responsive nowrap"
+                                style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th>Sr No</th>
+                                        <th>Test Name</th>
+                                        <th>Test Subject</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                
+                            </table>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
-</div>
-@endsection
-
-
-<!-- edit modal -->
-<div class="modal fade" id="edit" tabindex="-1" aria-hidden="true">
+    <!-- edit modal -->
+    <div class="modal fade" id="edittest" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
                 <div class="modal-header pb-3">
@@ -131,7 +75,7 @@
                         <span aria-hidden="true"><i class="fas fa-times"></i></span>
                     </button>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body" id="test-edit-body">
                    <form class="form mt-4 ml-3" method="post" action="{{ route('subscription.store')}}">
                         <div class="form-group row">
                             <label class="col-4 col-form-label ">Select Test Type</label>
@@ -142,14 +86,14 @@
                                 <option value="2">Institute</option>
                                </select>
                            </div>
-                       </div>
+                        </div>
                         <div class="form-group row">
                             <label class="col-4 col-form-label ">Test Name</label>
                             <div class="col-7">
                                <input type="text" class="form-control " name="students_allowed"
                                 placeholder="Enter Test Name">
                            </div>
-                       </div>
+                        </div>
                         <div class="form-group row">
                             <label class="col-4 col-form-label ">Select Subject</label>
                             <div class="col-7">
@@ -159,15 +103,24 @@
                                 <option value="2">Institute</option>
                                </select>
                             </div>
-                       </div>
-                    <div class="form-group row">
-                        <div class="col-11 save-btn">
-                            <button type="submit" class="btn btn-outline-primary"><i
-                                    class="far fa-save save-icon"></i>Save</button>
                         </div>
-                    </div>
-                </form>
+                        <div class="form-group row">
+                            <div class="col-11 save-btn">
+                                <button type="submit" class="btn btn-outline-primary"><i
+                                        class="far fa-save save-icon"></i>Save</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
+</div>
+@endsection
+@section('js-hooks')
+<script type="text/javascript" defer>
+  var practiceUrl="{{ route('tests.index') }}";
+  var mockUrl    = "{{ route('superadmin-tests-mocktest') }}";
+</script>
+<script src="{{ asset('assets/js/tests.js') }}" defer></script>
+@endsection

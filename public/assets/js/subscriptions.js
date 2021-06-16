@@ -67,4 +67,42 @@ $(document).ready(function() {
        });
    });
    //Subscription update data end
+   var table = $('#subscription').DataTable({
+    language: {
+       search: '',
+       searchPlaceholder: 'Search by Subscription title, monthly price, created date, status',
+       "sLengthMenu": '<select name="module_length">'+
+             '<option value="10">10 Per Page</option>'+
+             '<option value="20">20 Per Page</option>'+
+             '<option value="30">30 Per Page</option>'+
+             '<option value="40">40 Per Page</option>'+
+             '<option value="50">50 Per Page</option>'+
+             '<option value="-1">All</option>'+
+          '</select>',
+       paginate: {
+          next: '<i class="fas fa-chevron-right"></i>', // or '→'
+          previous: '<i class="fas fa-chevron-left"></i>' // or '←' 
+       }
+    },
+    "dom": "<'row'<'col-sm-12 col-md-3 top-label'<'toolbar'>><'col-sm-12 col-md-6 top-search'f><'col-sm-12 col-md-3 top-pagination'l>>" +
+      "<'row'<'col-sm-12't>>" +
+      "<'row'<'col-sm-12 col-md-12'p>>",
+    processing: true,
+    serverSide: true,
+    ajax: url,
+    columns: [
+       {data: 'DT_RowIndex', name: 'DT_RowIndex'},
+       {data: 'title', name: 'title'},
+       {data: 'monthly_price', name: 'monthly_price'},
+       {data: 'quarterly_price', name: 'quarterly_price'},
+       {data: 'halfyearly_price', name: 'halfyearly_price'},
+       {data: 'annually_price', name: 'annually_price'},
+       {data: 'white_labelling_price', name: 'white_labelling_price'},
+       {data: 'students_allowed', name:'students_allowed'},
+       {data: 'mock_tests', name:'mock_tests'},
+       {data: 'practice_tests', name:'practice_tests'},
+       {data: 'action', name: 'action', orderable: false, searchable: false},
+    ]
+    });
+    $("#subscription_wrapper div.toolbar").html('Manage Subscription');
 });

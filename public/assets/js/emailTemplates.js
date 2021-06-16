@@ -1,6 +1,6 @@
 $(document).ready(function() {
-    //Subscription Edit page data start
-    $('body').on('click','.vouchers-edit',function(){
+    //Email Templates Edit page data start
+    $('body').on('click','.email-edit',function(){
            var id = $(this).data('id');
            var apiUrl = $(this).data('url');
            $.ajax({
@@ -8,24 +8,21 @@ $(document).ready(function() {
                type:'GET',
                data:{'id' : id},
                beforeSend: function(){
-                   $('#voucher-edit-body').html('<i class="fa fa-spinner fa-spin"></i>  Please Wait...');
+                   $('#email-edit-body').html('<i class="fa fa-spinner fa-spin"></i>  Please Wait...');
                },
                success:function(data) {
-                   $('#voucher-edit-body').html(data.html);
+                   $('#email-edit-body').html(data.html);
                },
            });
    });
-   //Subscription Edit page data start
-   //Subscription update data start
-   $('body').on('click','.voucher-update',function(){
+   //Email Templates Edit page data start
+   //Email Templates update data start
+   $('body').on('click','.email-update',function(){
        var id = $(this).data('id');
        var apiUrl = $(this).data('url');
        $('#nameError').text('');
-       $('#codeError').text('');
-       $('#roleIdError').text('');
-       $('#voucherTypeError').text('');
-       $('#voucherPriceError').text('');
-       $('#validTillError').text('');
+       $('#subjectError').text('');
+       $('#bodyError').text('');
        $('#statusError').text('');
        $.ajax({
            url: apiUrl,
@@ -41,20 +38,17 @@ $(document).ready(function() {
            error: function(response) {
                console.log(response.responseJSON.errors.name);
                    $('#nameError').text(response.responseJSON.errors.name);
-                   $('#codeError').text(response.responseJSON.errors.code);
-                   $('#roleIdError').text(response.responseJSON.errors.role_id);
-                   $('#voucherTypeError').text(response.responseJSON.errors.voucher_type);
-                   $('#voucherPriceError').text(response.responseJSON.errors.voucher_price);
-                   $('#validTillError').text(response.responseJSON.errors.valid_till);
+                   $('#subjectError').text(response.responseJSON.errors.subject);
+                   $('#bodyError').text(response.responseJSON.errors.body);
                    $('#statusError').text(response.responseJSON.errors.status);
                }
        });
    });
-   //Subscription update data end
-   var table = $('#vouchers').DataTable({
+   //Email Templates update data end
+   var table = $('#email').DataTable({
     language: {
        search: '',
-       searchPlaceholder: 'Search by vouchers name, code, created date, status',
+       searchPlaceholder: 'Search by template name, subject, created date, status',
        "sLengthMenu": '<select name="module_length">'+
              '<option value="10">10 Per Page</option>'+
              '<option value="20">20 Per Page</option>'+
@@ -77,14 +71,11 @@ $(document).ready(function() {
     columns: [
        {data: 'DT_RowIndex', name: 'DT_RowIndex'},
        {data: 'name', name: 'name'},
-       {data: 'code', name: 'code'},
-       {data: 'discount_type', name:'discount_type'},
-       {data: 'discount_price', name:'discount_price'},
+       {data: 'subject', name: 'subject'},
        {data:'created_at',name:'created_at'},
-       {data:'valid_till',name:'valid_till'},
        {data: 'status', name: 'status'},
        {data: 'action', name: 'action', orderable: false, searchable: false},
     ]
     });
-    $("#vouchers_wrapper div.toolbar").html('Vouchers');
+    $("#email_wrapper div.toolbar").html('Email Template');
 });

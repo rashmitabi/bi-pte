@@ -28,13 +28,10 @@
             <a href="#Testsubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"> <img src="{{ asset('assets/images/icons/test.svg') }}" class=""> <span> Manage Test </span></a>
             <ul class="collapse list-unstyled" id="Testsubmenu">
                <li>
-                  <a href="#">Page 1</a>
+                  <a href="{{ route('tests.create') }}">Tests Create</a>
                </li>
                <li>
-                  <a href="#">Page 2</a>
-               </li>
-               <li>
-                  <a href="#">Page 3</a>
+               <a href="{{ route('tests.index') }}">Tests List</a>
                </li>
             </ul>
          </li>

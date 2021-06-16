@@ -38,33 +38,7 @@
                             <th>Action</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        @if(count($subscriptions) > 0)
-                            
-                            @foreach($subscriptions as $subscription)
-                            <tr>
-                                <td>{{ $loop->index + 1 }}</td>
-                                <td>{{ $subscription->title }}</td>
-                                <td>{{ $subscription->monthly_price }}</td>
-                                <td>{{ $subscription->quarterly_price }}</td>
-                                <td>{{ $subscription->halfyearly_price }}</td>
-                                <td>{{ $subscription->annually_price }}</td>
-                                <td>{{ $subscription->white_labelling_price }}</td>
-                                <td>{{ $subscription->students_allowed }}</td>
-                                <td>{{ $subscription->mock_tests }}</td>
-                                <td>{{ $subscription->practice_tests }}</td>
-                                <td>
-                                    <ul class="actions-btns">
-                                        <li class="action" data-toggle="modal"
-                                                data-target="#editsubscription"><a href="javascript:void(0);" class="subscription-edit" data-id="{{ $subscription->id }}" data-url="{!! URL::route('subscription.edit', $subscription->id) !!}"><i class="fas fa-pen"></i></a></li>
-                                        <li class="action"><a href="#" class="delete_modal" data-toggle="modal" data-target="#delete_modal"  data-url="{!! URL::route('subscription.destroy', $subscription->id) !!}" data-id="{{ $subscription->id }}"><i class="fas fa-trash"></i></a></li>
-                                        <li class="action shield {{ ($subscription->status == 'E')?'red':'green' }}"><a href="{{route('superadmin-subscription-changestatus', $subscription->id )}}"><img
-                                                    src="{{ asset('assets/images/icons/blocked.svg') }}"></a></li>
-                                    </ul>
-                                </td>
-                            </tr>
-                            @endforeach
-                        @endif
+                    
                 </table>
             </div>
         </div>
@@ -186,6 +160,9 @@
 </div>
 @endsection
 @section('js-hooks')
+<script type="text/javascript" defer>
+  var url="{{ route('subscription.index') }}";
+</script>
 <script src="{{ asset('assets/js/subscriptions.js') }}" defer></script>
 @endsection
 
