@@ -65,7 +65,7 @@ class VouchersController extends Controller
                     })
                     ->addColumn('action', function($row){
                         $btn = '<ul class="actions-btns">
-                            <li class="action" data-toggle="modal" data-target="#editvouchers"><a href="javascript:void(0);" class="email-edit" data-id="'.$row->id.'" data-url="'.route('vouchers.edit', $row->id).'"><i class="fas fa-pen"></i></a></li>
+                            <li class="action" data-toggle="modal" data-target="#editvouchers"><a href="javascript:void(0);" class="vouchers-edit" data-id="'.$row->id.'" data-url="'.route('vouchers.edit', $row->id).'"><i class="fas fa-pen"></i></a></li>
                             <li class="action"><a href="#" class="delete_modal" data-toggle="modal" data-target="#delete_modal"  data-url="'.route('vouchers.destroy', $row->id).'" data-id="'.$row->id.'"><i class="fas fa-trash"></i></a></li>
                             <li class="action shield green"><a href="'.route('superadmin-vouchers-changestatus', $row->id ).'"><img src="'.asset('assets/images/icons/blocked.svg').'" class=""></a></li>
                             </ul>';

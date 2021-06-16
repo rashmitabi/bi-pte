@@ -19,4 +19,8 @@ class Tests extends Model
         'status',
         'expired_date'
     ];
+    public function subject() 
+    {
+        return  $this->belongsTo('App\Models\Subjects', 'subject_id');
+    }
 }

@@ -298,7 +298,7 @@ $(document).ready(function() {
     });
     $("#certificates_wrapper div.toolbar").html('Certificate'); 
 
-    $('#practice_test').DataTable({
+    /*$('#practice_test').DataTable({
         language: {
             search: '',
             searchPlaceholder: "Search by test name, test subject",
@@ -319,7 +319,7 @@ $(document).ready(function() {
         "<'row'<'col-sm-12't>>" +
         "<'row'<'col-sm-12 col-md-12'p>>",
     });
-    $("#practice_test_wrapper div.toolbar").html('Manage Test'); 
+    $("#practice_test_wrapper div.toolbar").html('Manage Test');*/
 
     $('#results').DataTable({
         language: {
