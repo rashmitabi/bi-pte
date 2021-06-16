@@ -10,7 +10,7 @@
             <a href="#Usersubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"> <img src="{{ asset('assets/images/icons/user.svg') }}" class=""> <span> Manage User </span></a>
             <ul class="collapse list-unstyled" id="Usersubmenu">
                <li>
-                  <a href="{{ route('users.index', 'type=I') }}">All Users</a>
+                  <a href="{{ route('users.index', 'type=I') }}">Users List</a>
                </li>
                <li>
                   <a href="{{ route('users.create') }}">Add New User</a>
@@ -28,10 +28,10 @@
             <a href="#Testsubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"> <img src="{{ asset('assets/images/icons/test.svg') }}" class=""> <span> Manage Test </span></a>
             <ul class="collapse list-unstyled" id="Testsubmenu">
                <li>
-                  <a href="#">Page 1</a>
+                  <a href="{{ route('tests.index') }}">Test List</a>
                </li>
                <li>
-                  <a href="#">Page 2</a>
+                  <a href="{{ route('tests.create') }}">Add New Test</a>
                </li>
                <li>
                   <a href="#">Page 3</a>

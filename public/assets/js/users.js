@@ -89,3 +89,80 @@ $(".dataTables_filter label").addClass("pull-right");
       }
       
    });
+
+function password(){
+    $(this).toggleClass("password-icon");
+    var input = $(".password");
+    if (input.attr("type") === "password") {
+        input.attr("type", "text");
+        $(".password-icon").addClass("fa-eye");
+        $(".password-icon").removeClass("fa-eye-slash");
+    } else {
+        
+        $(".password-icon").addClass("fa-eye-slash");
+        $(".password-icon").removeClass("fa-eye");
+        input.attr("type", "password");
+    }
+}
+
+function confirm_password(){
+    $(this).toggleClass("cpassword-icon");
+    var input = $(".confirm_password");
+    if (input.attr("type") === "password") {
+        input.attr("type", "text");
+        $(".cpassword-icon").addClass("fa-eye");
+        $(".cpassword-icon").removeClass("fa-eye-slash");
+    } else {
+        
+        $(".cpassword-icon").addClass("fa-eye-slash");
+        $(".cpassword-icon").removeClass("fa-eye");
+        input.attr("type", "password");
+    }
+}
+
+$(document).ready(function() {
+  //user password page data start
+  $('body').on('click','.user-setpassword',function(){
+    var id = $(this).data('id');
+    var apiUrl = $(this).data('url');
+    $.ajax({
+       url: apiUrl,
+       type:'GET',
+       data:{'id' : id},
+       beforeSend: function(){
+           $('#password-set-body').html('<i class="fa fa-spinner fa-spin"></i>  Please Wait...');
+       },
+       success:function(data) {
+           $('#password-set-body').html(data.html);
+       },
+    }); 
+  });
+  //user password page data start
+
+  //password update data start
+  $('body').on('click','.user-password-update',function(){
+       var id = $(this).data('id');
+       var apiUrl = $(this).data('url');
+       $('#passwordError').text('');
+       $('#confirm_passwordError').text('');
+       $.ajax({
+           url: apiUrl,
+           type:'PATCH',
+           data: $('form').serialize(),
+           success:function(data) {
+               if(data == 1){
+                   setTimeout(function(){
+                       location.reload();
+                   }, 2000);
+               }
+           },
+           error: function(response) {
+               console.log(response.responseJSON.errors.password);
+                   $('#passwordError').text(response.responseJSON.errors.password);
+                   $('#confirm_passwordError').text(response.responseJSON.errors.confirm_password);
+                   
+               }
+       });
+   });
+   //password update data end
+});
