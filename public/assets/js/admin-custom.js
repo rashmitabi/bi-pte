@@ -53,7 +53,7 @@ $(document).ready(function() {
         "<'row'<'col-sm-12't>>" +
         "<'row'<'col-sm-12 col-md-12'p>>",
     });
-    $("#device_wrapper div.toolbar").html('Manage Device');
+    $("#device_wrapper div.toolbar").html('Manage Device Log');
 
 //     $('#users').DataTable({
 //         language: {
@@ -343,6 +343,47 @@ $(document).ready(function() {
         "<'row'<'col-sm-12 col-md-12'p>>",
     });
     $("#results_wrapper div.toolbar").html('Manage Test Results'); 
+
+
+    $('#activitylog').DataTable({
+        language: {
+            
+        }, 
+        "dom": "<'row'<'col-sm-12 col-md-3 top-label'<'toolbar'>>>" +
+        "<'row'<'col-sm-12't>>" +
+        "<'row'>",
+    });
+    $("#activitylog_wrapper div.toolbar").html(''); 
+
+    $('#transaction').DataTable({
+        language: {
+            
+        }, 
+        "dom": "<'row'<'col-sm-12 col-md-3 top-label'<'toolbar'>>>" +
+        "<'row'<'col-sm-12't>>" +
+        "<'row'>",
+    });
+    $("#transaction_wrapper div.toolbar").html(''); 
+
+    $('#institute').DataTable({
+        language: {
+            
+        }, 
+        "dom": "<'row'<'col-sm-12 col-md-3 top-label'<'toolbar'>>>" +
+        "<'row'<'col-sm-12't>>" +
+        "<'row'>",
+    });
+    $("#institute_wrapper div.toolbar").html(''); 
+
+    $('#ranking').DataTable({
+        language: {
+            
+        }, 
+        "dom": "<'row'<'col-sm-12 col-md-3 top-label'<'toolbar'>>>" +
+        "<'row'<'col-sm-12't>>" +
+        "<'row'>",
+    });
+    $("#ranking_wrapper div.toolbar").html(''); 
 
     // $('#managemodule').DataTable({
     //     language: {

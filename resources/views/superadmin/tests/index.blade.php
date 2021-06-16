@@ -49,7 +49,7 @@
                                         <td>
                                             <ul class="actions-btns">
                                                 <li class="action"><a href="#"><i class="fas fa-question"></i></a></li>
-                                                <li class="action" data-toggle="modal" data-target="#editvideos"><a
+                                                <li class="action" data-toggle="modal" data-target="#edit"><a
                                                         href="#"><i class="fas fa-pen"></i></a></li>
                                                 <li class="action"><a href="#"><i class="fas fa-trash"></i></a></li>
                                                 <li class="action shield"><a href="#"><img
@@ -120,3 +120,54 @@
 
 </div>
 @endsection
+
+
+<!-- edit modal -->
+<div class="modal fade" id="edit" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header pb-3">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true"><i class="fas fa-times"></i></span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                   <form class="form mt-4 ml-3" method="post" action="{{ route('subscription.store')}}">
+                        <div class="form-group row">
+                            <label class="col-4 col-form-label ">Select Test Type</label>
+                            <div class="col-7">
+                               <select class="user-type custom-select" name="role_id">
+                                <option selected disabled>Select Test Type</option>
+                                <option value="1">Student</option>
+                                <option value="2">Institute</option>
+                               </select>
+                           </div>
+                       </div>
+                        <div class="form-group row">
+                            <label class="col-4 col-form-label ">Test Name</label>
+                            <div class="col-7">
+                               <input type="text" class="form-control " name="students_allowed"
+                                placeholder="Enter Test Name">
+                           </div>
+                       </div>
+                        <div class="form-group row">
+                            <label class="col-4 col-form-label ">Select Subject</label>
+                            <div class="col-7">
+                                <select class="user-type custom-select" name="role_id">
+                                <option selected disabled>Select Subject Type</option>
+                                <option value="1">Student</option>
+                                <option value="2">Institute</option>
+                               </select>
+                            </div>
+                       </div>
+                    <div class="form-group row">
+                        <div class="col-11 save-btn">
+                            <button type="submit" class="btn btn-outline-primary"><i
+                                    class="far fa-save save-icon"></i>Save</button>
+                        </div>
+                    </div>
+                </form>
+                </div>
+            </div>
+        </div>
+    </div>
