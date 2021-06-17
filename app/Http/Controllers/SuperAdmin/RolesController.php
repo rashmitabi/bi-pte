@@ -51,7 +51,7 @@ class RolesController extends Controller
                                     <li class="action" data-toggle="modal" data-target="#editroles">
                                         <a href="javascript:void(0);" class="roles-edit" data-id="'.$row->id .'" data-url="'.route('roles.edit', $row->id).'"><i class="fas fa-pen"></i></a></li>
                                     <li class="action bg-danger"><a href="#"  class="delete_modal" data-toggle="modal" data-target="#delete_modal"  data-url="'.route('roles.destroy', $row->id).'" data-id="'.$row->id.'"><i class="fas fa-trash"></i></a></li>
-                                    <li class="action shield">
+                                    <li class="action shield '.(($row->status == "E") ? "green" : "bg-danger").'">
                                         <a href="'.route('superadmin-roles-changestatus', $row->id ).'" ><img src="'.asset('assets/images/icons/blocked.svg').'" class=""></a></li>
                                 </ul>';
                         return $btn;

@@ -142,20 +142,18 @@
   border-radius: 5px;
   -webkit-box-shadow: 0 15px 30px 5px Rgb(0 0 0/22%);
           box-shadow: 0 15px 30px 5px Rgb(0 0 0/22%);
-  margin-right: 20px;
+  margin-right: 16px;
 }
 
 #content .row .col .common-wrap {
   padding: 18px 25px;
-  border-bottom: 1px solid #fff;
+  border-bottom: 1px solid #ccc;
 }
 
 #content .row .col .common-wrap .icon {
   float: left;
   border-radius: 50%;
-  background-color: transparent;
-  -webkit-box-shadow: 0 0px 10px 5px Rgb(0 0 0/22%);
-          box-shadow: 0 0px 10px 5px Rgb(0 0 0/22%);
+  background-color: #d0cdcd54;
   width: 45px;
   height: 45px;
   display: -webkit-box;
@@ -217,6 +215,72 @@
   font-weight: 600;
   margin-top: -8px;
   margin-right: 15px;
+}
+
+#content .common-wrap {
+  padding: 30px 0px 25px;
+}
+
+#content .common-wrap .table-head {
+  margin: 0 !important;
+  font-size: 16px;
+  color: #2D2F39;
+  font-weight: 600;
+}
+
+#content .common-wrap #activitylog_wrapper {
+  padding: 0px;
+}
+
+#content .common-wrap #transaction_wrapper {
+  padding: 0px;
+}
+
+#content .common-wrap #institute_wrapper {
+  padding: 0px;
+}
+
+#content .common-wrap #ranking_wrapper {
+  padding: 0px;
+}
+
+#content .common-wrap thead th {
+  padding-right: 10px;
+}
+
+#content .common-wrap .expired-btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+#content .common-wrap .expired-btn a:hover {
+  text-decoration: unset;
+}
+
+#content .common-wrap .expired-btn .expired-btn {
+  padding: 3px 25px;
+  margin-left: -94px;
+  border-radius: 0px;
+  background-color: #fff;
+  border-color: #092950;
+  color: #092950;
+}
+
+#content .common-wrap .expired-btn .near-expired {
+  padding: 3px 11px;
+  border-radius: 0px;
+  background-color: #fff;
+  border-color: #000000;
+  color: #092950;
+}
+
+#content .common-wrap .expired-btn .expired-btn:focus, #content .common-wrap .expired-btn .near-expired:focus {
+  background-color: #092950 !important;
+  color: #fff !important;
+  border: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
 }
 
 /*add new questions*/

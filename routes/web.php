@@ -29,6 +29,7 @@ Route::group(['middleware' => ['auth', 'verified','superadmin']], function () {
     
     Route::resource('superadmin/users', App\Http\Controllers\SuperAdmin\UsersController::class)->names('users');
     Route::get('superadmin/users/changestatus/{id}', [App\Http\Controllers\SuperAdmin\UsersController::class, 'changeStatus'])->name('superadmin-user-changestatus');
+    Route::patch('superadmin/users/setpassword/{id}', [App\Http\Controllers\SuperAdmin\UsersController::class, 'setPassword'])->name('superadmin-user-setpassword');
    
    
 
@@ -61,7 +62,6 @@ Route::get('superadmin/subscription/changestatus/{id}', [App\Http\Controllers\Su
 Route::resource('superadmin/subscription', App\Http\Controllers\SuperAdmin\SubscriptionsController::class);
 /*Subscription module end*/
 
-Route::resource('superadmin/users', App\Http\Controllers\SuperAdmin\ManageUserController::class);
 
 Route::resource('superadmin/device', App\Http\Controllers\SuperAdmin\DeviceController::class);
 /* Email templates module start*/

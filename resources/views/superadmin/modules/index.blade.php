@@ -16,7 +16,6 @@
                     style="width:100%">
                     <thead>
                         <tr>
-                            <th><input type="checkbox" class="form-check-input position-relative ml-0" id="exampleCheck1"></th>
                             <th>SR No</th>
                             <th>Module Name</th>
                             <th>Module Slug</th>

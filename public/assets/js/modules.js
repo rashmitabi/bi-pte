@@ -22,7 +22,6 @@
       serverSide: true,
       ajax: url,
       columns: [
-         {data: 'checkbox', name: 'checkbox', orderable: false, searchable: false},
          {data: 'DT_RowIndex', name: 'DT_RowIndex'},
          {data: 'module_name', name: 'module_name'},
          {data: 'module_slug', name: 'module_slug'},
