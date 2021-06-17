@@ -33,8 +33,8 @@ class UpdateSubscriptionRequest extends FormRequest
             'halfyearly_price'=>'required|numeric',
             'annually_price'=>'required|numeric',
             'white_labelling_price'=>'required|numeric',
-            'mock_tests'=>'required|numeric',
-            'practice_tests'=>'required|numeric',
+            'mock_tests'=>'required|numeric|between:1,500',
+            'practice_tests'=>'required|numeric|between:1,500',
             'videos'=>'nullable|in:Y,N',
             'prediction_files'=>'nullable|in:Y,N',
             'status'=>'nullable|in:E,D'
