@@ -79,7 +79,7 @@ Route::resource('superadmin/vouchers', App\Http\Controllers\SuperAdmin\VouchersC
 /*Subjects module start*/
 Route::get('superadmin/subjects/changestatus/{id}', [App\Http\Controllers\SuperAdmin\SubjectsController::class, 'changeStatus'])
     ->name('superadmin-subjects-changestatus');
-Route::resource('superadmin/vouchers', App\Http\Controllers\SuperAdmin\SubjectsController::class);
+Route::resource('superadmin/subjects', App\Http\Controllers\SuperAdmin\SubjectsController::class);
 /*Subjects module end*/
 
 
