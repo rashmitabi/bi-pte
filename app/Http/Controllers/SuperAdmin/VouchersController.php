@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\CreateVocuchersRequest;
 use App\Http\Requests\UpdateVouchersRequest;
 use App\Models\Vouchers;
+use App\Models\Roles;
 use Carbon\Carbon;
 use DataTables;
 class VouchersController extends Controller
@@ -85,7 +86,9 @@ class VouchersController extends Controller
      */
     public function create()
     {
-        return view($this->moduleTitleP.'add');
+        $roles = Roles::where('status','E')->get();
+
+        return view($this->moduleTitleP.'add',compact('roles'));
     }
 
     /**
@@ -142,10 +145,13 @@ class VouchersController extends Controller
      */
     public function edit($id)
     {
-        $voucher = Vouchers::find($id);
+        $voucher        = Vouchers::find($id);
 
-        $html_voucher = view($this->moduleTitleP.'edit', compact('voucher'))->render();
+        $roles          = Roles::where('status','E')->get();
 
+        $html_voucher   = view($this->moduleTitleP.'edit', compact('voucher','roles'))->render();
+
+        
         return response()->json([
             'success' => 1,
             'html'=>$html_voucher    

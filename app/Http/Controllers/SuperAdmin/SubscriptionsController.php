@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\SuperAdmin;
 use App\Models\Subscriptions;
+use App\Models\Roles;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreSubscriptionRequest;
@@ -75,7 +76,8 @@ class SubscriptionsController extends Controller
      */
     public function create()
     {
-        return view($this->moduleTitleP.'add');
+        $roles = Roles::where('status','E')->get();
+        return view($this->moduleTitleP.'add',compact('roles'));
     }
 
     /**
@@ -127,9 +129,9 @@ class SubscriptionsController extends Controller
      */
     public function edit($id)
     {
-        $subscription = Subscriptions::find($id);
-
-        $html_subscription = view($this->moduleTitleP.'edit', compact('subscription'))->render();
+        $subscription   = Subscriptions::find($id);
+        $roles          = Roles::where('status','E')->get();
+        $html_subscription = view($this->moduleTitleP.'edit', compact('subscription','roles'))->render();
 
         return response()->json([
             'success' => 1,

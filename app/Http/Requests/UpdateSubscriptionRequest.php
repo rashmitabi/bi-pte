@@ -26,7 +26,7 @@ class UpdateSubscriptionRequest extends FormRequest
         return [
             'title'=>'required',
             'description'=>'required|max:100',
-            'role_id'=>'required|in:1,2',
+            'role_id'=>'required|numeric',
             'students_allowed'=>'required|numeric',
             'monthly_price'=>'required|numeric',
             'quarterly_price'=>'required|numeric',

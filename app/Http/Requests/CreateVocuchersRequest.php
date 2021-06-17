@@ -24,7 +24,7 @@ class CreateVocuchersRequest extends FormRequest
     public function rules()
     {
         return [
-            'role_id'=>'required|in:1,2',
+            'role_id'=>'required|numeric',
             'name'=>'required|min:3|max:50',
             'code'=>'required|unique:vouchers,code',
             'voucher_type'=>'required|in:P,F',
