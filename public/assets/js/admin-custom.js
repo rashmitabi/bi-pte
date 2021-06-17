@@ -229,28 +229,28 @@ $(document).ready(function() {
     });
     $("#questions_wrapper div.toolbar").html('Practice Questions'); 
 
-    $('#subjects').DataTable({
-        language: {
-            search: '',
-            searchPlaceholder: "Search by subject name",
-            "sLengthMenu": '<select>'+
-                '<option value="10">10 Per Page</option>'+
-                '<option value="20">20 Per Page</option>'+
-                '<option value="30">30 Per Page</option>'+
-                '<option value="40">40 Per Page</option>'+
-                '<option value="50">50 Per Page</option>'+
-                '<option value="-1">All</option>'+
-                '</select>', 
-            paginate: {
-                next: '<i class="fas fa-chevron-right"></i>', // or '→'
-                previous: '<i class="fas fa-chevron-left"></i>' // or '←' 
-            }
-        }, 
-        "dom": "<'row'<'col-sm-12 col-md-3 top-label'<'toolbar'>><'col-sm-12 col-md-6 top-search'f><'col-sm-12 col-md-3 top-pagination'l>>" +
-        "<'row'<'col-sm-12't>>" +
-        "<'row'<'col-sm-12 col-md-12'p>>",
-    });
-    $("#subjects_wrapper div.toolbar").html('Manage Subject'); 
+    // $('#subjects').DataTable({
+    //     language: {
+    //         search: '',
+    //         searchPlaceholder: "Search by subject name",
+    //         "sLengthMenu": '<select>'+
+    //             '<option value="10">10 Per Page</option>'+
+    //             '<option value="20">20 Per Page</option>'+
+    //             '<option value="30">30 Per Page</option>'+
+    //             '<option value="40">40 Per Page</option>'+
+    //             '<option value="50">50 Per Page</option>'+
+    //             '<option value="-1">All</option>'+
+    //             '</select>', 
+    //         paginate: {
+    //             next: '<i class="fas fa-chevron-right"></i>', // or '→'
+    //             previous: '<i class="fas fa-chevron-left"></i>' // or '←' 
+    //         }
+    //     }, 
+    //     "dom": "<'row'<'col-sm-12 col-md-3 top-label'<'toolbar'>><'col-sm-12 col-md-6 top-search'f><'col-sm-12 col-md-3 top-pagination'l>>" +
+    //     "<'row'<'col-sm-12't>>" +
+    //     "<'row'<'col-sm-12 col-md-12'p>>",
+    // });
+    // $("#subjects_wrapper div.toolbar").html('Manage Subject'); 
 
     $('#transactions').DataTable({
         language: {
@@ -413,8 +413,12 @@ $(document).ready(function() {
     $('body').on('click','.delete_modal',function() {
         var id = $(this).attr('data-id');
         var url = $(this).attr('data-url');
+        var title = $(this).data('title');
         var token = CSRF_TOKEN;
-        $(".remove-record-model").attr("action",url);
+        if($(this).data('title')){
+            $('body').find('.remove-record-model span.module_title').text(title);
+        }
+        $(".remove-record-model").attr("action",url);        
         $('body').find('.remove-record-model').append('<input name="_token" type="hidden" value="'+ token +'">');
         $('body').find('.remove-record-model').append('<input name="_method" type="hidden" value="DELETE">');
         $('body').find('.remove-record-model').append('<input name="id" type="hidden" value="'+ id +'">');
