@@ -119,7 +119,7 @@ class VouchersController extends Controller
         $voucher->status = $input['status'];
         if($voucher->save()){
             return redirect()->route('vouchers.index')
-                        ->with('success','voucher created successfully');
+                        ->with('success','Voucher created successfully!');
         }else{
             return redirect()->route('vouchers.index')
                         ->with('error','Sorry!Something wrong.Try again later!');
@@ -168,10 +168,10 @@ class VouchersController extends Controller
         $result = $voucher->update();
         if($result){
             return redirect()->route('vouchers.index')
-                        ->with('success','Status Update successfully');
+                        ->with('success','Voucher Status Update successfully!');
         }else{
             return redirect()->route('vouchers.index')
-                        ->with('error','Status Not Updated!');
+                        ->with('error','Voucher Status Not Updated!');
         }
     }
     /**
@@ -202,7 +202,7 @@ class VouchersController extends Controller
         unset($input['voucher_price']);
         $result = Vouchers::where('id',$id)->update($input);
         if($result){
-            \Session::put('success', 'Voucher update Successfully!');
+            \Session::put('success', 'Voucher updated Successfully!');
             return true;
         }else{
             \Session::put('error', 'Sorry!Something wrong.try Again.');
@@ -222,7 +222,7 @@ class VouchersController extends Controller
         if($result)
         {
             return redirect()->route('vouchers.index')
-                        ->with('success','Vouchers deleted successfully');
+                        ->with('success','Voucher deleted successfully!');
         }
         else
         {
