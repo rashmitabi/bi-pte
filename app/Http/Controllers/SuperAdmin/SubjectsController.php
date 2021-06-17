@@ -81,7 +81,7 @@ class SubjectsController extends Controller
         }
         if($subject->save()){
             return redirect()->route('subjects.index')
-                        ->with('success','Subject created successfully');
+                        ->with('success','Subject created successfully!');
         }else{
             return redirect()->route('subjects.index')
                         ->with('error','Sorry!Something wrong.Try again later!');
@@ -130,7 +130,7 @@ class SubjectsController extends Controller
         $data['subject_name'] = $input['name'];
         $result = Subjects::where('id',$id)->update($data);
         if($result){
-            \Session::put('success', 'Subject update Successfully!');
+            \Session::put('success', 'Subject updated Successfully!');
             return true;
         }else{
             \Session::put('error', 'Sorry!Something wrong.try Again.');
@@ -150,7 +150,7 @@ class SubjectsController extends Controller
         if($result)
         {
             return redirect()->route('subjects.index')
-                        ->with('success','Subject deleted successfully');
+                        ->with('success','Subject deleted successfully!');
         }
         else
         {
@@ -176,7 +176,7 @@ class SubjectsController extends Controller
         $result = $subject->update();
         if($result){
             return redirect()->route('subjects.index')
-                        ->with('success','Status Update successfully');
+                        ->with('success','Subject status updated successfully!');
         }else{
             return redirect()->route('subjects.index')
                         ->with('error','Status Not Updated!');
