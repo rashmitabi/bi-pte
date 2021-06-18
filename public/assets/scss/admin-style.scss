@@ -80,7 +80,17 @@
             margin: 0 !important;
             font-size: 16px;
             color: #2D2F39;
-           font-weight: 600;
+            font-weight: 600;
+            padding-top: 8px;
+        }
+        .head-text{
+            padding-bottom: 10px;
+        }
+        .datapicker{
+            display: flex;
+            input{
+               
+            }
         }
         #activitylog_wrapper{
           padding: 0px;
@@ -119,7 +129,7 @@
               border-color: $black;
               color: $primary-color;
             }
-            .expired-btn:focus,.near-expired:focus{
+            .expired-btn:focus,.near-expired:focus,.active{
                 background-color: $primary-color !important;
                 color: $white-color !important;
                 border: none;
@@ -180,4 +190,28 @@
             }
         }
     }
+}
+
+
+//delete modal
+.modal-content{
+    .modal-title{
+       font-size: $fs-20;
+       padding: 25px 12px 5px;
+    }
+   .delete-text{
+      font-size: $fs-16;
+    }
+   .modal-footer{
+       .cancel-btn{
+            background-color: $primary-color;
+           color: $white-color;
+       }
+       .delete-btn{
+            background-color: $error;
+            color: $white-color;
+       }
+      
+    }
+
 }

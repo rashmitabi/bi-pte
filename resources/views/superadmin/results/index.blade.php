@@ -13,7 +13,7 @@
 
     <section class="top-title-button white-bg mb-3 remove-main-margin">
         <div class="row mx-0 align-items-center">
-            <div class="col-12 col-md-12 col-xl-12 col-sm-8 left p-0">
+            <div class="col-12 col-md-12 col-xl-12 col-sm-12 left p-0">
                 <!-- <h1 class="title mb-4">Manage Subscription</h1> -->
                 <table id="results" class="table table-striped table-bordered dt-responsive nowrap" style="width:100%">
                     <thead>
@@ -110,10 +110,10 @@
                         <span aria-hidden="true"><i class="fas fa-times"></i></span>
                     </button>
                 </div>
-                <div class="modal-body custom-body">
+                <div class="modal-body common-wrap">
                     <div class="tab white-bg">
                        <nav>
-                           <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                           <div class="nav nav-tabs results-tab" id="nav-tab" role="tablist">
                                 <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Listening</a>
                                 <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Speaking</a>
                                 <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Writing</a>
@@ -122,7 +122,7 @@
                         </nav>
                         <div class="tab-content" id="nav-tabContent">
                            <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                               <div class="mt-5 ml-5 mb-0">
+                               <div class="mt-5 ml-5 mb-0 score-heading">
                                   <h4>Score:</h4> 
                                </div>   
                                <div class="row d-flex justify-content-center mt-100">
@@ -134,7 +134,7 @@
                                </div>
                            </div>
                            <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                               <div class="mt-5 ml-5 mb-0">
+                               <div class="mt-5 ml-5 mb-0 score-heading">
                                   <h4>Score:</h4> 
                                 </div>   
                                <div class="row d-flex justify-content-center mt-100">
@@ -146,7 +146,7 @@
                                </div>
                            </div>
                            <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
-                               <div class="mt-5 ml-5 mb-0">
+                               <div class="mt-5 ml-5 mb-0 score-heading">
                                   <h4>Score:</h4> 
                                </div>   
                                <div class="row d-flex justify-content-center mt-100">
@@ -158,7 +158,7 @@
                                </div>
                            </div>
                            <div class="tab-pane fade" id="nav-speaking" role="tabpanel" aria-labelledby="nav-speaking-tab">
-                               <div class="mt-5 ml-5 mb-0">
+                               <div class="mt-5 ml-5 mb-0 score-heading">
                                   <h4>Score:</h4> 
                                </div>   
                                <div class="row d-flex justify-content-center mt-100">

@@ -29,6 +29,7 @@ Route::group(['middleware' => ['auth', 'verified','superadmin']], function () {
     
     Route::resource('superadmin/users', App\Http\Controllers\SuperAdmin\UsersController::class)->names('users');
     Route::get('superadmin/users/changestatus/{id}', [App\Http\Controllers\SuperAdmin\UsersController::class, 'changeStatus'])->name('superadmin-user-changestatus');
+    Route::get('superadmin/users/showpassword/{id}', [App\Http\Controllers\SuperAdmin\UsersController::class, 'showPassword'])->name('superadmin-user-showpassword');
     Route::patch('superadmin/users/setpassword/{id}', [App\Http\Controllers\SuperAdmin\UsersController::class, 'setPassword'])->name('superadmin-user-setpassword');
    
    

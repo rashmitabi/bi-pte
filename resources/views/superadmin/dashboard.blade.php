@@ -74,7 +74,7 @@
            <div class="col-6 pl-0">
                <section class="top-title-button white-bg common-wrap mb-3">
                    <div class="col-12 col-md-8 col-xl-8 col-sm-8 left">
-                     <h1 class="table-head mb-5">Activity Log</h1>
+                     <h1 class="table-head head-text">Activity Log</h1>
                    </div>
                    <div class="row mx-0 align-items-center">
                       <div class="col-12 col-md-12 col-xl-12 col-sm-8 left p-0">
@@ -125,9 +125,13 @@
             </div>
             <div class="col-6 pl-0">
                 <section class="top-title-button white-bg common-wrap mb-3">
-                   <div class="col-12 col-md-8 col-xl-8 col-sm-7 left">
-                     <h1 class="table-head mb-5">Transactions</h1>
+                   <div class="col-12 col-md-8 col-xl-6 col-sm-7 float-left left">
+                     <h1 class="table-head">Transactions</h1>
                    </div>
+                   <div class="col-3 datapicker">
+                          <input type="date" class="form-control ml-4" placeholder="Form">
+                          <input type="date" class="form-control" placeholder="To">
+                      </div>
                    <div class="row mx-0 align-items-center">
                       <div class="col-12 col-md-12 col-xl-12 col-sm-8 left p-0">
                            <table id="transaction" class="table  table-bordered dt-responsive nowrap" style="width:100%">
@@ -185,12 +189,12 @@
             <div class="col-6 pl-0">
                <section class="top-title-button white-bg common-wrap mb-3">
                    <div class="col-12 col-md-8 col-xl-8 col-sm-8 left float-left">
-                     <h4 class="table-head pt-2 mb-4">Institute Subscriptions</h4>
+                     <h4 class="table-head">Institute Subscriptions</h4>
                    </div>
                    <div class="col-12 col-md-12 col-xl-4 col-sm-2 expired-btn">
                        <div class="btn-group" role="group" aria-label="First group">
-                           <button type="button" class="btn btn-secondary expired-btn active">Expired</button>
-                           <button type="button" class="btn btn-secondary near-expired active">Near to Expired</button>
+                           <button type="button" class="btn btn-secondary expired-btn">Expired</button>
+                           <button type="button" class="btn btn-secondary near-expired ">Near to Expired</button>
                        </div>
                    </div>
                    <div class="row mx-0 align-items-center">
@@ -255,7 +259,7 @@
             <div class="col-6 pl-0">
                 <section class="top-title-button white-bg common-wrap mb-3">
                    <div class="col-12 col-md-8 col-xl-8 col-sm-7 left">
-                     <h1 class="table-head pt-2 mb-5">Top Ranking Institute</h1>
+                     <h1 class="table-head">Top Ranking Institute</h1>
                    </div>
                    <div class="row mx-0 align-items-center">
                       <div class="col-12 col-md-12 col-xl-12 col-sm-8 left pt-1 p-0">

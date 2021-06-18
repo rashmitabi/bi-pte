@@ -331,7 +331,7 @@
   </div>
     
 
-    <!-- security modal -->
+    <!-- set Password modal -->
     <div class="modal fade" id="setpassword" tabindex="-1" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered ">
         <div class="modal-content">
@@ -440,98 +440,18 @@
         </div>
     </div>
 
-    <!-- edit modal -->
+    <!-- edit User modal -->
     <div class="modal fade" id="editdetail" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-lg">
-            <div class="modal-content">
-                <div class="modal-header pb-3">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true"><i class="fas fa-times"></i></span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="profile-img">
-                                  <img src="{{ asset('assets/images/profile-img-2.png') }}">
-                            </div>
-                            <div class="edit-profile-btn">
-                                    <a><i class="fas fa-pen icon"></i></a>
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-12 col-xl-12 col-sm-8 left">
-                            <form class="form mt-5 ml-5">
-                               <div class="form-group row mb-2">
-                                   <label  class="col-4 col-form-label ">First Name</label>
-                                   <div class="col-7">
-                                        <input type="text" class="form-control " placeholder="AnkitKumar">
-                                    </div>
-                               </div>
-                               <div class="form-group row mb-2">
-                                  <label class="col-4 col-form-label ">Last Name</label>
-                                  <div class="col-7">
-                                       <input type="text" class="form-control " placeholder="jain">
-                                   </div>
-                              </div>
-                              <div class="form-group row mb-2">
-                                  <label class="col-4 col-form-label ">Email</label>
-                                  <div class="col-7">
-                                       <input type="text" class="form-control " placeholder="AnkitKumar30557@Gmail.com">
-                                   </div>
-                              </div>
-                              <div class="form-group row mb-2">
-                                  <label class="col-4 col-form-label ">User Name</label>
-                                  <div class="col-7">
-                                       <input type="text" class="form-control " placeholder="AnkitKumar">
-                                   </div>
-                              </div>
-                              <div class="form-group row mb-2">
-                                   <label  class="col-4 col-form-label ">Date of Birth</label>
-                                   <div class="col-7">
-                                      <input type="date" class="form-control " placeholder="26/5/1998">
-                                   </div>
-                              </div>
-                              <div class="form-group row mb-2">
-                                  <label class="col-4 col-form-label ">Mobile Number</label>
-                                  <div class="col-7">
-                                       <input type="text" class="form-control " placeholder="9988774774">
-                                   </div>
-                              </div>
-                              <div class="form-group row mb-2">
-                                   <label  class="col-4 col-form-label ">Status</label>
-                                   <div class="col-7 toggle-switch">
-                                      <input type="checkbox" id="switch" /><label for="switch">Toggle</label>
-                                   </div>
-                              </div>
-                              <div class="form-group row mb-2">
-                                  <label class="col-4 col-form-label ">Country Citizen</label>
-                                  <div class="col-7">
-                                       <input type="text" class="form-control " placeholder="India">
-                                   </div>
-                              </div>
-                              <div class="form-group row mb-2">
-                                  <label class="col-4 col-form-label ">Country Residence</label>
-                                  <div class="col-7">
-                                       <input type="text" class="form-control " placeholder="India">
-                                   </div>
-                              </div>
-                              <div class="form-group row mb-2">
-                                   <label  class="col-4 col-form-label ">Validity</label>
-                                   <div class="col-7">
-                                     <input type="date" class="form-control " placeholder="Validity">
-                                  </div>
-                              </div>
-                              <div class="form-group row mt-4">
-                                  <div class="col-11 save-btn">
-                                     <button  type="button" class="btn btn-outline-primary"><i class="far fa-save save-icon"></i>Save Profile</button>
-                                  </div>
-                              </div>
-                           </form>
-                       </div>
-                    </div>
-                </div>
-            </div>
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+          <div class="modal-header pb-3">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true"><i class="fas fa-times"></i></span>
+            </button>
+          </div>
+          <div class="modal-body" id="edit-user-body"></div>
         </div>
+      </div>
     </div>
 
 </div>

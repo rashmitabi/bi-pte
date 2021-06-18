@@ -16,7 +16,7 @@
 
     <section class="top-title-button white-bg mb-3 remove-main-margin">
         <div class="row mx-0 align-items-center">
-            <div class="col-12 col-md-12 col-xl-12 col-sm-8 left p-0">
+            <div class="col-12 col-md-12 col-xl-12 col-sm-12 left p-0">
                 <table id="role" class="table table-striped table-bordered dt-responsive nowrap common"
                     style="width:100%">
                     <thead>
@@ -48,6 +48,8 @@
             </div>
         </div>
     </div>
+
+    
 </div>
 @endsection
 @section('js-hooks')

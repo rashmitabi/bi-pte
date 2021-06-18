@@ -34,9 +34,6 @@
     margin-left: 0px;
     font-size: 22px;
   }
-  body .navbar .dropdown-toggle-wrap {
-    right: auto;
-  }
   body .navbar .navbar-collapse .right-navbar-wrap {
     -webkit-box-pack: end;
         -ms-flex-pack: end;
@@ -63,6 +60,75 @@
   body .dropdown-toggle-wrap {
     min-width: 300px;
   }
+  body .top-title-button .left {
+    margin-bottom: 15px;
+  }
+  body .dataTables_wrapper .top-pagination {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    margin-top: 15px;
+  }
+  body #subscription thead th {
+    padding-right: 8px;
+  }
+  body #transactions thead th {
+    padding-right: 22px !important;
+    white-space: unset !important;
+  }
+  body #role thead th {
+    white-space: unset !important;
+    padding-right: 12px !important;
+  }
+  body #email_wrapper thead th {
+    white-space: unset !important;
+    padding-right: 20px !important;
+  }
+  body .dataTables_wrapper {
+    padding: 20px 0px 0px;
+  }
+  body .pull-right {
+    margin-top: 10px;
+  }
+  body .form {
+    margin-left: 0px !important;
+  }
+  body .modal-body {
+    padding: 5px !important;
+  }
+  body .modal-body .delete-text {
+    padding-left: 22px;
+  }
+  body .custom-body {
+    padding: 5px !important;
+  }
+  body .score-heading {
+    margin-top: 0px !important;
+  }
+  body .common-wrap {
+    padding: 5px !important;
+  }
+  body .common-wrap .nav {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    margin-bottom: 15px;
+    border-radius: 0px;
+    -ms-flex-wrap: unset;
+        flex-wrap: unset;
+  }
+  body .common-wrap .nav .nav-item:focus, body .common-wrap .nav .active {
+    border-radius: 0px;
+    margin-bottom: 5px;
+  }
+  body .common-wrap .nav .nav-link {
+    border-radius: 0px;
+    margin-bottom: 5px;
+  }
 }
 
 @media (min-width: 320px) and (max-width: 374px) {
@@ -80,6 +146,130 @@
   }
   body .dropdown-toggle-wrap {
     min-width: 250px;
+  }
+  body .form {
+    margin-left: 0px !important;
+  }
+  body .top-title-button .left {
+    margin-bottom: 15px;
+  }
+  body .dataTables_wrapper {
+    padding: 20px 0px 0px;
+  }
+  body #subscription thead th {
+    padding-right: 8px;
+  }
+  body #subjects thead th {
+    padding-right: 18px !important;
+  }
+  body .dataTables_wrapper .top-pagination {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    margin-top: 15px;
+  }
+  body .dataTables_wrapper thead th {
+    white-space: unset !important;
+    padding-right: 22px !important;
+  }
+  body #role thead th {
+    white-space: unset !important;
+    padding-right: 14px !important;
+  }
+  body #certificates thead th {
+    white-space: unset !important;
+    padding-right: 11px !important;
+  }
+  body .pull-right {
+    float: none;
+    margin-top: 10px;
+  }
+  body #email_wrapper thead th {
+    white-space: unset !important;
+    padding-right: 8px !important;
+  }
+  body .modal-body {
+    padding: 5px !important;
+  }
+  body .modal-body .delete-text {
+    padding-left: 22px;
+  }
+  body .score-heading {
+    margin-top: 0px !important;
+  }
+  body .common-wrap {
+    padding: 5px !important;
+  }
+  body .common-wrap .nav {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    margin-bottom: 15px;
+    border-radius: 0px;
+    -ms-flex-wrap: unset;
+        flex-wrap: unset;
+  }
+  body .common-wrap .nav .nav-item:focus, body .common-wrap .nav .active {
+    border-radius: 0px;
+    margin-bottom: 5px;
+  }
+  body .common-wrap .nav .nav-link {
+    border-radius: 0px;
+    margin-bottom: 5px;
+  }
+}
+
+/*middle screen(425 up to 575 */
+@media (min-width: 425px) and (max-width: 575px) {
+  body .dataTables_wrapper .top-pagination {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    margin-top: 15px;
+  }
+  body .dataTables_wrapper thead th {
+    white-space: unset !important;
+    padding-right: 22px !important;
+  }
+  body .pull-right {
+    margin-top: 10px;
+  }
+  body .nav {
+    padding-bottom: 10px;
+  }
+  body .nav .nav-item {
+    padding: 8px 11px !important;
+    border-radius: 0px;
+  }
+  body #certificates thead th {
+    white-space: unset !important;
+    padding-right: 18px !important;
+  }
+  body #email_wrapper thead th {
+    white-space: unset !important;
+    padding-right: 5px !important;
+  }
+}
+
+/* all large mobile (575 up to 768)*/
+@media (min-width: 575px) and (max-width: 767px) {
+  body #sidebar {
+    margin-top: 48px;
+    padding-bottom: 40px;
+  }
+  body #content {
+    margin-top: 70px;
+    width: 100%;
+  }
+  body #content .dataTables_wrapper .top-pagination {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    margin-top: 15px;
   }
 }
 
@@ -106,8 +296,17 @@
   body .dropdown-toggle-wrap {
     right: auto;
   }
+  body #email_wrapper thead th {
+    white-space: unset !important;
+  }
   #sidebarCollapse img {
     height: 20px;
+  }
+  #sidebarCollapse .dataTables_wrapper .top-pagination {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    margin-top: 0px;
   }
 }
 
@@ -226,6 +425,17 @@
   font-size: 16px;
   color: #2D2F39;
   font-weight: 600;
+  padding-top: 8px;
+}
+
+#content .common-wrap .head-text {
+  padding-bottom: 10px;
+}
+
+#content .common-wrap .datapicker {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 #content .common-wrap #activitylog_wrapper {
@@ -275,7 +485,7 @@
   color: #092950;
 }
 
-#content .common-wrap .expired-btn .expired-btn:focus, #content .common-wrap .expired-btn .near-expired:focus {
+#content .common-wrap .expired-btn .expired-btn:focus, #content .common-wrap .expired-btn .near-expired:focus, #content .common-wrap .expired-btn .active {
   background-color: #092950 !important;
   color: #fff !important;
   border: none;
@@ -333,5 +543,24 @@
 
 #content .container .accordion .card .card-body .reading-list .btn-primary {
   border: none;
+}
+
+.modal-content .modal-title {
+  font-size: 20px;
+  padding: 25px 12px 5px;
+}
+
+.modal-content .delete-text {
+  font-size: 16px;
+}
+
+.modal-content .modal-footer .cancel-btn {
+  background-color: #092950;
+  color: #fff;
+}
+
+.modal-content .modal-footer .delete-btn {
+  background-color: red;
+  color: #fff;
 }
 /*# sourceMappingURL=admin-style.css.map */

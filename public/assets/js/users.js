@@ -79,17 +79,7 @@ $('#students').DataTable({
 });
 $("#students_wrapper div.toolbar").html('Registered Users');
 
-$('body').on('change','.user-type',function(){
-  var role_id = $(this).val();
-  // alert(role_id);
-  if(role_id == 3){
-    $("#student").css("display","block");
-    $("#breanchadmin").css("display","none");
-  }else{
-    $("#breanchadmin").css("display","block");
-    $("#student").css("display","none");
-  }
-});
+
 
 function password(){
   $(this).toggleClass("password-icon");
@@ -120,6 +110,20 @@ function confirm_password(){
 }
 
 $(document).ready(function() {
+  //add new user page data start
+  $('body').on('change','.user-type',function(){
+    var role_id = $(this).val();
+    // alert(role_id);
+    if(role_id == 3){
+      $("#student").css("display","block");
+      $("#breanchadmin").css("display","none");
+    }else{
+      $("#breanchadmin").css("display","block");
+      $("#student").css("display","none");
+    }
+  });
+  //add new user page data start
+
   //user password page data start
   $('body').on('click','.user-setpassword',function(){
     var id = $(this).data('id');
@@ -163,4 +167,67 @@ $(document).ready(function() {
     });
   });
   //password update data end
+
+  //user edit page data start
+  $('body').on('click','.user-edit',function(){
+    var id = $(this).data('id');
+    var apiUrl = $(this).data('url');
+    $.ajax({
+      url: apiUrl,
+      type:'GET',
+      data:{'id' : id},
+      beforeSend: function(){
+        $('#edit-user-body').html('<i class="fa fa-spinner fa-spin"></i>  Please Wait...');
+      },
+      success:function(data) {
+        $('#edit-user-body').html(data.html);
+      },
+    }); 
+  });
+  //user edit page data start
+
+  //password update data start
+  $('body').on('click','.user-update',function(){
+    var id = $(this).data('id');
+    var apiUrl = $(this).data('url');
+    $('#fnameError').text('');
+    $('#lnameError').text('');
+    $('#unameError').text('');
+    $('#passwordError').text('');
+    $('#confirm_passwordError').text('');
+    $('#semailError').text('');
+    $('#dobError').text('');
+    $('#mobilenoError').text('');
+    $('#scitizenError').text('');
+    $('#sresidenceError').text('');
+    $('#svalidityError').text('');
+    $.ajax({
+      url: apiUrl,
+      type:'PATCH',
+      data: $('form').serialize(),
+      success:function(data) {
+        if(data == 1){
+          setTimeout(function(){
+            location.reload();
+          }, 2000);
+        }
+      },
+      error: function(response) {
+        console.log(response.responseJSON.errors.password);
+        $('#fnameError').text(response.responseJSON.errors.fname);
+        $('#lnameError').text(response.responseJSON.errors.lname);
+        $('#unameError').text(response.responseJSON.errors.uname);
+        $('#passwordError').text(response.responseJSON.errors.password);
+        $('#confirm_passwordError').text(response.responseJSON.errors.confirm_password);
+        $('#semailError').text(response.responseJSON.errors.semail);
+        $('#dobError').text(response.responseJSON.errors.dob);
+        $('#mobilenoError').text(response.responseJSON.errors.mobileno);
+        $('#scitizenError').text(response.responseJSON.errors.scitizen);
+        $('#sresidenceError').text(response.responseJSON.errors.sresidence);
+        $('#svalidityError').text(response.responseJSON.errors.svalidity);
+      }
+    });
+  });
+  //password update data end
+  
 });

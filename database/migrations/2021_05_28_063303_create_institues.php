@@ -19,8 +19,8 @@ class CreateInstitues extends Migration
             $table->string('sub_domain',255);
             $table->string('domain',255);
             $table->tinyInteger('students_allowed');
-            $table->string('logo',100)->comment('File url / path');
-            $table->string('banner_image',100)->comment('File url / path');
+            $table->string('logo',100)->comment('File url / path')->nullable();
+            $table->string('banner_image',100)->comment('File url / path')->nullable();
             $table->enum('show_admin_videos',['Y','N'])->comment('Y=yes,N=no');
             $table->enum('show_admin_tests',['Y','N'])->comment('Y=yes,N=no');
             $table->enum('show_admin_files',['Y','N'])->comment('Y=yes,N=no');

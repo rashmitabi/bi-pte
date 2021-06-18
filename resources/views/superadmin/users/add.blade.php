@@ -21,11 +21,11 @@
                 <option selected>Select User Type</option>
                 <option value="2" >Branch Admin</option>
                 <option value="3" >Student</option>
-               
               </select>
             </div>
           </div>
-          <div id="student" style="display: none">
+
+          <div id="student" style="display: none;">
             <div class="form-group row">
               <label  class="col-4 col-form-label ">First Name</label>
               <div class="col-7">
@@ -94,7 +94,7 @@
             <div class="form-group row">
               <label  class="col-4 col-form-label ">Mobile Number</label>
               <div class="col-7">
-                <input type="text" name="mobileno" class="form-control " placeholder="Enter Mobile Number">
+                <input type="text" name="mobileno" value="{{ old('mobileno') }}" class="form-control " placeholder="Enter Mobile Number">
                 @if($errors->has('mobileno'))
                   <span class="error-msg">{{$errors->first('mobileno')}}</span>
                 @endif
@@ -114,7 +114,7 @@
               <label  class="col-4 col-form-label ">Gender</label>
               <div class="col-7">
                 <label for="rdo-8" class="btn-radio">
-                  <input type="radio" id="rdo-8" class="card_payment" name="gender" value="M" checked="true">
+                  <input type="radio" id="rdo-8" class="card_payment" name="gender" value="M" checked="true" {{ (old('gender') == 'M')?'checked':'' }}>
                   <svg width="20px" height="20px" viewBox="0 0 20 20">
                     <circle cx="10" cy="10" r="9"></circle>
                     <path d="M10,7 C8.34314575,7 7,8.34314575 7,10 C7,11.6568542 8.34314575,13 10,13 C11.6568542,13 13,11.6568542 13,10 C13,8.34314575 11.6568542,7 10,7 Z" class="inner"></path>
@@ -123,7 +123,7 @@
                   <span class="col-blue fw-500">Male</span>
                 </label>
                 <label for="rdo-9" class="btn-radio">
-                  <input type="radio" id="rdo-9" class="card_payment" name="gender" value="F">
+                  <input type="radio" id="rdo-9" class="card_payment" name="gender" value="F" {{ (old('gender') == 'F')?'checked':'' }}>
                   <svg width="20px" height="20px" viewBox="0 0 20 20">
                     <circle cx="10" cy="10" r="9"></circle>
                     <path d="M10,7 C8.34314575,7 7,8.34314575 7,10 C7,11.6568542 8.34314575,13 10,13 C11.6568542,13 13,11.6568542 13,10 C13,8.34314575 11.6568542,7 10,7 Z" class="inner"></path>
@@ -173,6 +173,256 @@
               </div>
             </div>
           </div>
+
+
+          <div id="breanchadmin" style="display: none;">
+            <div class="form-group row">
+              <label  class="col-4 col-form-label ">User Name</label>
+              <div class="col-7">
+                <input type="text" name="iuname" value="{{ old('iuname') }}" class="form-control " placeholder="Enter User Name">
+                @if($errors->has('iuname'))
+                  <span class="error-msg">{{$errors->first('iuname')}}</span>
+                @endif
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-4 col-form-label ">Institute Name</label>
+              <div class="col-7">
+                <input type="text" name="iname" value="{{ old('iname') }}" class="form-control " placeholder="Enter Institute Name">
+                @if($errors->has('iname'))
+                  <span class="error-msg">{{$errors->first('iname')}}</span>
+                @endif
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-4 col-form-label ">Email</label>
+              <div class="col-7">
+                <input type="email" name="iemail" value="{{ old('iemail') }}" class="form-control " placeholder="Enter Email id">
+                @if($errors->has('iemail'))
+                  <span class="error-msg">{{$errors->first('iemail')}}</span>
+                @endif
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-4 col-form-label ">Password</label>
+              <div class="col-7">
+                <input type="password" name="ipassword" class="form-control password" placeholder="**********">
+                <i class="far fa-eye-slash lock-icon password-icon" onclick="password()"></i>
+                @if($errors->has('ipassword'))
+                  <span class="error-msg">{{$errors->first('ipassword')}}</span>
+                @endif
+              </div>
+            </div>
+            <div class="form-group row">
+              <label  class="col-4 col-form-label ">Confirm Password</label>
+              <div class="col-7">
+                <input type="password" name="iconfirm_password" class="form-control cpassword-icon" placeholder="**********">
+                <i class="far fa-eye-slash lock-icon cpassword-icon" onclick="password()"></i>
+                @if($errors->has('iconfirm_password'))
+                  <span class="error-msg">{{$errors->first('iconfirm_password')}}</span>
+                @endif
+              </div>
+            </div>
+            <div class="form-group row">
+              <label  class="col-4 col-form-label ">Country Phone Code</label>
+              <div class="col-7">
+                <input type="text" name="country_code" value="{{ old('country_code') }}" class="form-control " placeholder="Enter Country Phone Code">
+                @if($errors->has('country_code'))
+                  <span class="error-msg">{{$errors->first('country_code')}}</span>
+                @endif
+              </div>
+            </div>
+            <div class="form-group row">
+              <label  class="col-4 col-form-label ">Phone Number</label>
+              <div class="col-7">
+                <input type="text" name="phone_no" value="{{ old('phone_no') }}" class="form-control " placeholder="Enter Phone Number">
+                @if($errors->has('phone_no'))
+                  <span class="error-msg">{{$errors->first('phone_no')}}</span>
+                @endif
+              </div>
+            </div>
+            <div class="form-group row">
+              <label  class="col-4 col-form-label ">Status</label>
+              <div class="col-7">
+                <select class="custom-select" name="status">
+                  <option value="P" {{ (old('status') == 'P')?'selected':'' }}>Pending</option>
+                  <option value="A"  {{ (old('status') == 'A')?'selected':'' }}>Active</option>
+                  <option value="R"  {{ (old('status') == 'R')?'selected':'' }}>Reject</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label  class="col-4 col-form-label ">Allowed Student</label>
+              <div class="col-7">
+                <input type="text" name="students_allowed" value="{{ old('students_allowed') }}" class="form-control " placeholder="Enter Allowed Student">
+                @if($errors->has('students_allowed'))
+                  <span class="error-msg">{{$errors->first('students_allowed')}}</span>
+                @endif
+              </div>
+            </div>
+            <div class="form-group row">
+              <label  class="col-4 col-form-label ">Subdomain</label>
+              <div class="col-7">
+                <input type="text" name="subdomain" value="{{ old('subdomain') }}" class="form-control " placeholder="Enter Subdomain">
+                @if($errors->has('subdomain'))
+                  <span class="error-msg">{{$errors->first('subdomain')}}</span>
+                @endif
+              </div>
+            </div>
+            <div class="form-group row">
+              <label  class="col-4 col-form-label ">Domain</label>
+              <div class="col-7">
+                <input type="text" name="domain" value="{{ old('domain') }}" class="form-control " placeholder="Enter Domain">
+                @if($errors->has('domain'))
+                  <span class="error-msg">{{$errors->first('domain')}}</span>
+                @endif
+              </div>
+            </div>
+            <div class="form-group row">
+              <label  class="col-4 col-form-label ">Welcome Message</label>
+              <div class="col-7">
+                <textarea name="welcome_msg" value="{{ old('welcome_msg') }}" class="form-control"  rows="3">Enter Welcome Message</textarea>
+                @if($errors->has('welcome_msg'))
+                  <span class="error-msg">{{$errors->first('welcome_msg')}}</span>
+                @endif
+              </div>
+            </div>
+            <div class="form-group row">
+              <label  class="col-4 col-form-label ">City</label>
+              <div class="col-7">
+                <input type="text" name="city" value="{{ old('city') }}" class="form-control " placeholder="Enter City">
+                @if($errors->has('city'))
+                  <span class="error-msg">{{$errors->first('city')}}</span>
+                @endif
+              </div>
+            </div>
+            <div class="form-group row">
+              <label  class="col-4 col-form-label ">Logo Image</label>
+              <div class="col-7">
+                <div class="custom-file">
+                  <input type="file" name="logo" value="{{ old('logo') }}" class="custom-file-input" id="customFile">
+                  <label class="custom-file-label" for="customFile">Select Logo Image</label>
+                  @if($errors->has('logo'))
+                    <span class="error-msg">{{$errors->first('logo')}}</span>
+                  @endif
+                </div>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label  class="col-4 col-form-label ">Banner Image</label>
+              <div class="col-7">
+                <div class="custom-file">
+                  <input type="file" name="banner" value="{{ old('banner') }}" class="custom-file-input" id="customFile">
+                  <label class="custom-file-label" for="customFile">Select Banner Image</label>
+                  @if($errors->has('banner'))
+                    <span class="error-msg">{{$errors->first('banner')}}</span>
+                  @endif
+                </div>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label  class="col-4 col-form-label ">Validity</label>
+              <div class="col-7">
+                <input type="date" name="validity" value="{{ old('validity') }}" class="form-control " placeholder="Validity">
+                @if($errors->has('validity'))
+                  <span class="error-msg">{{$errors->first('validity')}}</span>
+                @endif
+              </div>
+            </div>
+            <div class="form-group row">
+              <label  class="col-4 col-form-label ">Show Super Admin Videos</label>
+              <div class="col-7">
+                <label for="rdo-4" class="btn-radio">
+                  <input type="radio" id="rdo-4" class="card_payment" name="admin_video" value="Y" checked="true">
+                  <svg width="20px" height="20px" viewBox="0 0 20 20">
+                    <circle cx="10" cy="10" r="9"></circle>
+                    <path d="M10,7 C8.34314575,7 7,8.34314575 7,10 C7,11.6568542 8.34314575,13 10,13 C11.6568542,13 13,11.6568542 13,10 C13,8.34314575 11.6568542,7 10,7 Z" class="inner"></path>
+                    <path d="M10,1 L10,1 L10,1 C14.9705627,1 19,5.02943725 19,10 L19,10 L19,10 C19,14.9705627 14.9705627,19 10,19 L10,19 L10,19 C5.02943725,19 1,14.9705627 1,10 L1,10 L1,10 C1,5.02943725 5.02943725,1 10,1 L10,1 Z" class="outer"></path>
+                  </svg>
+                  <span class="col-blue fw-500">Yes</span>
+                </label>
+                <label for="rdo-5" class="btn-radio">
+                  <input type="radio" id="rdo-5" class="card_payment" name="admin_video" value="N">
+                  <svg width="20px" height="20px" viewBox="0 0 20 20">
+                    <circle cx="10" cy="10" r="9"></circle>
+                    <path d="M10,7 C8.34314575,7 7,8.34314575 7,10 C7,11.6568542 8.34314575,13 10,13 C11.6568542,13 13,11.6568542 13,10 C13,8.34314575 11.6568542,7 10,7 Z" class="inner"></path>
+                    <path d="M10,1 L10,1 L10,1 C14.9705627,1 19,5.02943725 19,10 L19,10 L19,10 C19,14.9705627 14.9705627,19 10,19 L10,19 L10,19 C5.02943725,19 1,14.9705627 1,10 L1,10 L1,10 C1,5.02943725 5.02943725,1 10,1 L10,1 Z" class="outer"></path>
+                  </svg>
+                  <span class="col-blue fw-500">No</span>
+                </label>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label  class="col-4 col-form-label ">Show Super Admin Predictions Files</label>
+              <div class="col-5">
+                <label for="rdo-3" class="btn-radio">
+                  <input type="radio" id="rdo-3" class="card_payment" name="admin_prediction_file" value="Y" checked="true">
+                  <svg width="20px" height="20px" viewBox="0 0 20 20">
+                    <circle cx="10" cy="10" r="9"></circle>
+                    <path d="M10,7 C8.34314575,7 7,8.34314575 7,10 C7,11.6568542 8.34314575,13 10,13 C11.6568542,13 13,11.6568542 13,10 C13,8.34314575 11.6568542,7 10,7 Z" class="inner"></path>
+                    <path d="M10,1 L10,1 L10,1 C14.9705627,1 19,5.02943725 19,10 L19,10 L19,10 C19,14.9705627 14.9705627,19 10,19 L10,19 L10,19 C5.02943725,19 1,14.9705627 1,10 L1,10 L1,10 C1,5.02943725 5.02943725,1 10,1 L10,1 Z" class="outer"></path>
+                  </svg>
+                  <span class="col-blue fw-500">Yes</span>
+                </label>
+                <label for="rdo-6" class="btn-radio">
+                  <input type="radio" id="rdo-6" class="card_payment" name="admin_prediction_file" value="N">
+                  <svg width="20px" height="20px" viewBox="0 0 20 20">
+                    <circle cx="10" cy="10" r="9"></circle>
+                    <path d="M10,7 C8.34314575,7 7,8.34314575 7,10 C7,11.6568542 8.34314575,13 10,13 C11.6568542,13 13,11.6568542 13,10 C13,8.34314575 11.6568542,7 10,7 Z" class="inner"></path>
+                    <path d="M10,1 L10,1 L10,1 C14.9705627,1 19,5.02943725 19,10 L19,10 L19,10 C19,14.9705627 14.9705627,19 10,19 L10,19 L10,19 C5.02943725,19 1,14.9705627 1,10 L1,10 L1,10 C1,5.02943725 5.02943725,1 10,1 L10,1 Z" class="outer"></path>
+                  </svg>
+                  <span class="col-blue fw-500">No</span>
+                </label>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label  class="col-4 col-form-label ">Show Super Admin Practice Questions</label>
+              <div class="col-7">
+                <label for="rdo-2" class="btn-radio">
+                  <input type="radio" id="rdo-2" class="card_payment" name="admin_practice_question" value="Y" checked="true">
+                  <svg width="20px" height="20px" viewBox="0 0 20 20">
+                    <circle cx="10" cy="10" r="9"></circle>
+                    <path d="M10,7 C8.34314575,7 7,8.34314575 7,10 C7,11.6568542 8.34314575,13 10,13 C11.6568542,13 13,11.6568542 13,10 C13,8.34314575 11.6568542,7 10,7 Z" class="inner"></path>
+                    <path d="M10,1 L10,1 L10,1 C14.9705627,1 19,5.02943725 19,10 L19,10 L19,10 C19,14.9705627 14.9705627,19 10,19 L10,19 L10,19 C5.02943725,19 1,14.9705627 1,10 L1,10 L1,10 C1,5.02943725 5.02943725,1 10,1 L10,1 Z" class="outer"></path>
+                  </svg>
+                  <span class="col-blue fw-500">Yes</span>
+                </label>
+                <label for="rdo-7" class="btn-radio">
+                  <input type="radio" id="rdo-7" class="card_payment" name="admin_practice_question" value="N">
+                  <svg width="20px" height="20px" viewBox="0 0 20 20">
+                    <circle cx="10" cy="10" r="9"></circle>
+                    <path d="M10,7 C8.34314575,7 7,8.34314575 7,10 C7,11.6568542 8.34314575,13 10,13 C11.6568542,13 13,11.6568542 13,10 C13,8.34314575 11.6568542,7 10,7 Z" class="inner"></path>
+                    <path d="M10,1 L10,1 L10,1 C14.9705627,1 19,5.02943725 19,10 L19,10 L19,10 C19,14.9705627 14.9705627,19 10,19 L10,19 L10,19 C5.02943725,19 1,14.9705627 1,10 L1,10 L1,10 C1,5.02943725 5.02943725,1 10,1 L10,1 Z" class="outer"></path>
+                  </svg>
+                  <span class="col-blue fw-500">No</span>
+                </label>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label  class="col-4 col-form-label ">Show Super Admin Tests</label>
+              <div class="col-7">
+                <label for="rdo-1" class="btn-radio">
+                  <input type="radio" id="rdo-1" class="card_payment" name="admin_test" value="Y" checked="true">
+                  <svg width="20px" height="20px" viewBox="0 0 20 20">
+                    <circle cx="10" cy="10" r="9"></circle>
+                    <path d="M10,7 C8.34314575,7 7,8.34314575 7,10 C7,11.6568542 8.34314575,13 10,13 C11.6568542,13 13,11.6568542 13,10 C13,8.34314575 11.6568542,7 10,7 Z" class="inner"></path>
+                    <path d="M10,1 L10,1 L10,1 C14.9705627,1 19,5.02943725 19,10 L19,10 L19,10 C19,14.9705627 14.9705627,19 10,19 L10,19 L10,19 C5.02943725,19 1,14.9705627 1,10 L1,10 L1,10 C1,5.02943725 5.02943725,1 10,1 L10,1 Z" class="outer"></path>
+                  </svg>
+                  <span class="col-blue fw-500">Yes</span>
+                </label>
+                <label for="rdo-10" class="btn-radio">
+                  <input type="radio" id="rdo-10" class="card_payment" name="admin_test" value="N">
+                  <svg width="20px" height="20px" viewBox="0 0 20 20">
+                    <circle cx="10" cy="10" r="9"></circle>
+                    <path d="M10,7 C8.34314575,7 7,8.34314575 7,10 C7,11.6568542 8.34314575,13 10,13 C11.6568542,13 13,11.6568542 13,10 C13,8.34314575 11.6568542,7 10,7 Z" class="inner"></path>
+                    <path d="M10,1 L10,1 L10,1 C14.9705627,1 19,5.02943725 19,10 L19,10 L19,10 C19,14.9705627 14.9705627,19 10,19 L10,19 L10,19 C5.02943725,19 1,14.9705627 1,10 L1,10 L1,10 C1,5.02943725 5.02943725,1 10,1 L10,1 Z" class="outer"></path>
+                  </svg>
+                  <span class="col-blue fw-500">No</span>
+                </label>
+              </div>
+            </div>
+          </div>
+          
           <div class="form-group row">
             <div class="col-11 save-btn">
               <button  type="submit" class="btn btn-outline-primary"><i class="far fa-save save-icon"></i>Save User</button>
