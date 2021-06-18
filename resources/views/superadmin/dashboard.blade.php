@@ -65,8 +65,12 @@
         </div>
         <!-- graph -->
         <div class="row">
-           <div class="col-8 mt-5"></div>
-           <div class="col-4 mt-5"></div>
+           <div class="col-6 mt-5">
+              <canvas id="myChart" width="50%" hight="500px"></canvas>
+           </div>
+           <div class="col-6 mt-5">
+           <canvas id="userSession" width="50%" hight="500px"></canvas>
+           </div>
         </div>
 
          <!-- tables -->
@@ -310,4 +314,7 @@
             </div>
       </div>
    </div>
+@endsection
+@section('js-hooks')
+<script src="{{ asset('assets/js/superAdminDashboard.js') }}" defer></script>
 @endsection
