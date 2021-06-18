@@ -20,75 +20,17 @@
     <section class="top-title-button white-bg mb-3 remove-main-margin">
         <div class="row mx-0 align-items-center">
             <div class="col-12 col-md-12 col-xl-12 col-sm-12 left p-0">
-                <!-- <h1 class="title mb-4">Manage Subscription</h1> -->
                 <table id="subjects" class="table table-striped table-bordered dt-responsive nowrap" style="width:100%">
                     <thead>
                         <tr>
                             <th>Sr No</th>
                             <th>Subject Name</th>
                             <th>Status</th>
-                            <th>Total Test</th>
+                            <!-- <th>Total Test</th> -->
                             <th>Action</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>IELTS</td>
-                            <td>Active</td>
-                            <td>5</td>
-                            <td>
-                                <ul class="actions-btns">
-                                    <li class="action" data-toggle="modal" data-target="#editsubjects"><a
-                                            href="#"><i class="fas fa-pen"></i></a></li>
-                                    <li class="action"><a href="#"><i class="fas fa-trash"></i></a></li>
-                                    <li class="action shield green"><a href="#"><img
-                                                src="{{ asset('assets/images/icons/blocked.svg') }}" class=""></a></li>
-                                </ul>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>IELTS</td>
-                            <td>Active</td>
-                            <td>5</td>
-                            <td>
-                                <ul class="actions-btns">
-                                    <li class="action"><a href="#"><i class="fas fa-pen"></i></a></li>
-                                    <li class="action"><a href="#"><i class="fas fa-trash"></i></a></li>
-                                    <li class="action shield red"><a href="#"><img
-                                                src="{{ asset('assets/images/icons/blocked.svg') }}" class=""></a></li>
-                                </ul>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>IELTS</td>
-                            <td>Active</td>
-                            <td>5</td>
-                            <td>
-                                <ul class="actions-btns">
-                                    <li class="action"><a href="#"><i class="fas fa-pen"></i></a></li>
-                                    <li class="action"><a href="#"><i class="fas fa-trash"></i></a></li>
-                                    <li class="action shield green"><a href="#"><img
-                                                src="{{ asset('assets/images/icons/blocked.svg') }}" class=""></a></li>
-                                </ul>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>IELTS</td>
-                            <td>Active</td>
-                            <td>5</td>
-                            <td>
-                                <ul class="actions-btns">
-                                    <li class="action"><a href="#"><i class="fas fa-pen"></i></a></li>
-                                    <li class="action"><a href="#"><i class="fas fa-trash"></i></a></li>
-                                    <li class="action shield green"><a href="#"><img
-                                                src="{{ asset('assets/images/icons/blocked.svg') }}" class=""></a></li>
-                                </ul>
-                            </td>
-                        </tr>
+                    
                 </table>
             </div>
         </div>
@@ -103,25 +45,18 @@
                         <span aria-hidden="true"><i class="fas fa-times"></i></span>
                     </button>
                 </div>
-                <div class="modal-body">
-                    <form class="form mt-4" method="post">
-                        <div class="form-group row">
-                            <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Subject Name</label>
-                            <div class="col-12 col-md-7 col-xl-7 col-sm-12">
-                                <input type="text" class="form-control " name="title" placeholder="Enter Subject Name">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-12 col-md-12 col-xl-11 col-sm-12 save-btn">
-                                <button type="submit" class="btn btn-outline-primary"><i
-                                        class="far fa-save save-icon"></i>Save</button>
-                            </div>
-                        </div>
-                    </form>
+                <div class="modal-body" id="subject-edit-body">
+                    
                 </div>
             </div>
         </div>
     </div>
 
 </div>
+@endsection
+@section('js-hooks')
+<script type="text/javascript" defer>
+  var url="{{ route('subjects.index') }}";
+</script>
+<script src="{{ asset('assets/js/subjects.js') }}" defer></script>
 @endsection

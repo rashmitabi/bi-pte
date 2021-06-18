@@ -4,13 +4,14 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                 <div class="modal-header">
-                    <h3 class="modal-title" id="exampleModalLabel">Delete Record </h3>
+                    <h3 class="modal-title" id="exampleModalLabel">Delete <span class="module_title">Record</span> </h3>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <h3 class="delete-text"> Are you sure you want to delete this record? </h3>
+                    <h3 class="delete-text"> Are you sure you want to delete this 
+                        <span class="module_title">record</span>? </h3>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn cancel-btn btn-blue remove-data-from-delete-form" data-dismiss="modal">Close</button>

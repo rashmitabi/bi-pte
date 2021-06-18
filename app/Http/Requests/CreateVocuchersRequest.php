@@ -23,14 +23,27 @@ class CreateVocuchersRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'role_id'=>'required|in:1,2',
+        $voucher_type = $this->request->get('voucher_type');
+        $rules = [
+            'role_id'=>'required|numeric',
             'name'=>'required|min:3|max:50',
             'code'=>'required|unique:vouchers,code',
             'voucher_type'=>'required|in:P,F',
-            'voucher_price'=>'required',
             'valid_till'=>'required|date',
             'status'=>'nullable|in:E'
         ];
+        if ($voucher_type == 'P') {
+            $rules['voucher_price'] = 'required|numeric|between:1,100';
+        }else{
+            $rules['voucher_price'] = 'required|numeric';
+        }
+        return $rules;
     }
+    // public function messages()
+    // {
+    //     return [
+    //         'title.required' => 'A title is required',
+    //         'body.required' => 'A message is required',
+    //     ];
+    // }
 }

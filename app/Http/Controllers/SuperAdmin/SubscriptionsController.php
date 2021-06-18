@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\SuperAdmin;
 use App\Models\Subscriptions;
+use App\Models\Roles;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreSubscriptionRequest;
@@ -58,7 +59,7 @@ class SubscriptionsController extends Controller
                         $btn = '<ul class="actions-btns">
                             <li class="action" data-toggle="modal" data-target="#editsubscription"><a href="javascript:void(0);" class="subscription-edit" data-id="'.$row->id.'" data-url="'.route('subscription.edit', $row->id).'"><i class="fas fa-pen"></i></a></li>
                             <li class="action"><a href="#" class="delete_modal" data-toggle="modal" data-target="#delete_modal"  data-url="'.route('subscription.destroy', $row->id).'" data-id="'.$row->id.'"><i class="fas fa-trash"></i></a></li>
-                            <li class="action shield green"><a href="'.route('superadmin-subscription-changestatus', $row->id ).'"><img src="'.asset('assets/images/icons/blocked.svg').'" class=""></a></li>
+                            <li class="action shield '.(($row->status == "E") ? "red" : "green").'"><a href="'.route('superadmin-subscription-changestatus', $row->id ).'"><img src="'.asset('assets/images/icons/blocked.svg').'" class=""></a></li>
                             </ul>';
                         return $btn;
                     })
@@ -75,7 +76,8 @@ class SubscriptionsController extends Controller
      */
     public function create()
     {
-        return view($this->moduleTitleP.'add');
+        $roles = Roles::where('status','E')->get();
+        return view($this->moduleTitleP.'add',compact('roles'));
     }
 
     /**
@@ -127,9 +129,9 @@ class SubscriptionsController extends Controller
      */
     public function edit($id)
     {
-        $subscription = Subscriptions::find($id);
-
-        $html_subscription = view($this->moduleTitleP.'edit', compact('subscription'))->render();
+        $subscription   = Subscriptions::find($id);
+        $roles          = Roles::where('status','E')->get();
+        $html_subscription = view($this->moduleTitleP.'edit', compact('subscription','roles'))->render();
 
         return response()->json([
             'success' => 1,
@@ -159,7 +161,7 @@ class SubscriptionsController extends Controller
 
         $result = Subscriptions::where('id',$id)->update($input);
         if($result){
-            \Session::put('success', 'Subscription update Successfully!');
+            \Session::put('success', 'Subscription updated Successfully!');
             return true;
         }else{
             \Session::put('error', 'Sorry!Something wrong.try Again.');
@@ -178,7 +180,7 @@ class SubscriptionsController extends Controller
         $result = $subscription->update();
         if($result){
             return redirect()->route('subscription.index')
-                        ->with('success','Status Update successfully');
+                        ->with('success','Subscription status updated successfully');
         }else{
             return redirect()->route('subscription.index')
                         ->with('error','Status Not Updated!');
@@ -196,7 +198,7 @@ class SubscriptionsController extends Controller
         if($result)
         {
             return redirect()->route('subscription.index')
-                        ->with('success','Subscription deleted successfully');
+                        ->with('success','Subscription deleted successfully!');
         }
         else
         {

@@ -17,10 +17,10 @@ class CreateQuestionTypes extends Migration
             $table->tinyInteger('id');
             $table->tinyInteger('section_id')->comment('Foreign key of sections table');
             $table->string('question_title',255)->comment('Read Aloud,Repeat Sentence etc...');
-            $table->tinyInteger('min_question');
-            $table->tinyInteger('max_question');
-            $table->float('score',8, 2);
-            $table->string('instructions',500);
+            $table->tinyInteger('min_question')->nullable();
+            $table->tinyInteger('max_question')->nullable();
+            $table->float('score',8, 2)->nullable();
+            $table->string('instructions',500)->nullable();
             
         });
 

@@ -7,6 +7,7 @@ use App\Models\Tests;
 use Illuminate\Http\Request;
 use App\Models\Subjects;
 use DataTables;
+use DB;
 class TestsController extends Controller
 {
     private $moduleTitleP = 'superadmin.tests.';
@@ -29,11 +30,11 @@ class TestsController extends Controller
                     })
                     ->addColumn('action', function($row){
                         $btn = '<ul class="actions-btns">
-                                <li class="action"><a href="#"><i class="fas fa-question"></i></a></li>
+                                <li class="action"><a href="'.route('tests.show',$row->id).'"><i class="fas fa-question"></i></a></li>
                                 <li class="action" data-toggle="modal" data-target="#edittest"><a
                                     href="javascript:void(0);" class="test-edit" data-id="'.$row->id.'" data-url="'.route('tests.edit', $row->id).'"><i class="fas fa-pen"></i></a></li>
                                 <li class="action"><a href="#" class="delete_modal" data-toggle="modal" data-target="#delete_modal"  data-url="'.route('tests.destroy', $row->id).'" data-id="'.$row->id.'"><i class="fas fa-trash"></i></a></li>
-                            <li class="action shield green"><a href="'.route('superadmin-tests-changestatus', $row->id ).'"><img src="'.asset('assets/images/icons/blocked.svg').'" class=""></a></li>
+                            <li class="action shield '.(($row->status == "E") ? "red" : "green").'"><a href="'.route('superadmin-tests-changestatus', $row->id ).'"><img src="'.asset('assets/images/icons/blocked.svg').'" class=""></a></li>
                             </ul>';
                         return $btn;
                     })
@@ -58,11 +59,11 @@ class TestsController extends Controller
                     })
                     ->addColumn('action', function($row){
                         $btn = '<ul class="actions-btns">
-                                <li class="action"><a href="#"><i class="fas fa-question"></i></a></li>
+                                <li class="action"><a href="'.route('tests.show',$row->id).'"><i class="fas fa-question"></i></a></li>
                                 <li class="action" data-toggle="modal" data-target="#edittest"><a
                                     href="javascript:void(0);" class="test-edit" data-id="'.$row->id.'" data-url="'.route('tests.edit', $row->id).'"><i class="fas fa-pen"></i></a></li>
                                 <li class="action"><a href="#" class="delete_modal" data-toggle="modal" data-target="#delete_modal"  data-url="'.route('tests.destroy', $row->id).'" data-id="'.$row->id.'"><i class="fas fa-trash"></i></a></li>
-                            <li class="action shield green"><a href="'.route('superadmin-tests-changestatus', $row->id ).'"><img src="'.asset('assets/images/icons/blocked.svg').'" class=""></a></li>
+                            <li class="action shield '.(($row->status == "E") ? "red" : "green").'"><a href="'.route('superadmin-tests-changestatus', $row->id ).'"><img src="'.asset('assets/images/icons/blocked.svg').'" class=""></a></li>
                             </ul>';
                         return $btn;
                     })
@@ -119,9 +120,15 @@ class TestsController extends Controller
      * @param  \App\Models\Tests  $tests
      * @return \Illuminate\Http\Response
      */
-    public function show(Tests $tests)
+    public function show($id)
     {
-        return view ('superadmin/tests/addquestion');
+        $sections            = DB::table('sections')->get();
+        $readingQuestions   = DB::table('question_types')->where('section_id', 1)->get();
+        $listeningQuestions = DB::table('question_types')->where('section_id', 2)->get();
+        $writingQuestions   = DB::table('question_types')->where('section_id', 3)->get();
+        $speakingQuestions  = DB::table('question_types')->where('section_id', 4)->get();
+        
+        return view ($this->moduleTitleP.'addquestion',compact('sections','readingQuestions','listeningQuestions','writingQuestions','speakingQuestions'));
     }
     public function changeStatus($id)
     {

@@ -16,87 +16,44 @@
             <div class="col-12 col-md-12 col-xl-7 col-sm-8 left">
             <div class="container">
     <div id="accordion" class="accordion">
-        <div class="card mb-3">
-            <div class="card-header collapsed" data-toggle="collapse" href="#collapseOne">
-                <a class="card-title">
-                    Reading
-                </a>
-            </div>
-            <div id="collapseOne" class="card-body collapse" data-parent="#accordion" >
+        @if(count($sections) > 0)
+            @foreach($sections as $section)
+            <div class="card mb-3">
+                <div class="card-header collapsed" data-toggle="collapse" href="#collapse{{ $section->id}}">
+                    <a class="card-title">{{ $section->section_name }}</a>
+                </div>
+            <div id="collapse{{ $section->id}}" class="card-body collapse" data-parent="#accordion" >
                  <div class="reading-list">
-                  <button type="button" class="btn mb-1 btn-primary btn-lg btn-block">Reading and Writing : Fill in the blanks(1)</button>
-                  <button type="button" class="btn mb-1 btn-primary btn-lg btn-block">Reading and Writing : Fill in the blanks(2)</button>
-                  <button type="button" class="btn mb-1 btn-primary btn-lg btn-block">Reading and Writing : Fill in the blanks(3)</button>
-                  <button type="button" class="btn mb-1 btn-primary btn-lg btn-block">Reading and Writing : Fill in the blanks(4)</button>
-                  <button type="button" class="btn mb-1 btn-primary btn-lg btn-block">Reading and Writing : Fill in the blanks(5)</button>
-                  <button type="button" class="btn mb-1 btn-primary btn-lg btn-block">Multiple-choice,Choose multiple answers(6)</button>
-                  <button type="button" class="btn mb-1 btn-primary btn-lg btn-block">Multiple-choice,Choose multiple answers(7)</button>
-                  <button type="button" class="btn mb-1 btn-primary btn-lg btn-block">Re-order Paragraphs(8)</button>
-                  <button type="button" class="btn mb-1 btn-primary btn-lg btn-block">Re-order Paragraphs(9)</button>
-                  <button type="button" class="btn mb-1 btn-primary btn-lg btn-block">Reading : Fill in the blanks(10)</button>
-                  <button type="button" class="btn mb-1 btn-primary btn-lg btn-block">Reading : Fill in the blanks(11)</button>
-                  <button type="button" class="btn mb-1 btn-primary btn-lg btn-block">Reading : Fill in the blanks(12)</button>
-                  <button type="button" class="btn mb-1 btn-primary btn-lg btn-block">Reading : Fill in the blanks(13)</button>
-                  <button type="button" class="btn mb-1 btn-primary btn-lg btn-block">Multiple-choice, choose single answers(14)</button>
-                  <button type="button" class="btn  btn-primary btn-lg btn-block">Multiple-choice, choose single answers(15)</button>
+                    @if($section->id == '1')
+                        @if(count($readingQuestions) > 0)
+                            @foreach($readingQuestions as $readingQuestion)
+                                <button type="button" class="btn mb-1 btn-primary btn-lg btn-block">{{ $readingQuestion->question_title }}</button>
+                            @endforeach
+                        @endif
+                    @elseif ($section->id == '2')
+                        @if(count($listeningQuestions) > 0)
+                            @foreach($listeningQuestions as $listeningQuestion)
+                                <button type="button" class="btn mb-1 btn-primary btn-lg btn-block">{{ $listeningQuestion->question_title }}</button>
+                            @endforeach
+                        @endif
+                    @elseif ($section->id == '3')
+                        @if(count($writingQuestions) > 0)
+                            @foreach($writingQuestions as $writingQuestion)
+                                <button type="button" class="btn mb-1 btn-primary btn-lg btn-block">{{ $writingQuestion->question_title }}</button>
+                            @endforeach
+                        @endif
+                    @else
+                        @if(count($speakingQuestions) > 0)
+                            @foreach($speakingQuestions as $speakingQuestion)
+                                <button type="button" class="btn mb-1 btn-primary btn-lg btn-block">{{ $speakingQuestion->question_title }}</button>
+                            @endforeach
+                        @endif
+                    @endif
                 </div>
             </div>
         </div>
-        <div class="card mb-3">
-            <div class="card-header collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
-                <a class="card-title">
-                 Listening
-                </a>
-            </div>
-            <div id="collapseTwo" class="card-body collapse" data-parent="#accordion" >
-            <div class="reading-list">
-                  <button type="button" class="btn mb-1 btn-primary btn-lg btn-block">Summarize Spoken Item (1-2)</button>
-                  <button type="button" class="btn mb-1 btn-primary btn-lg btn-block">Choose Multiple answers Item (3-4)</button>
-                  <button type="button" class="btn mb-1 btn-primary btn-lg btn-block">Fill in the blanks (5-6)</button>
-                  <button type="button" class="btn mb-1 btn-primary btn-lg btn-block">Highlight correct summary Item (7-8) </button>
-                  <button type="button" class="btn mb-1 btn-primary btn-lg btn-block">Multiple-choice,choose single answers Item (9-10)</button>
-                  <button type="button" class="btn mb-1 btn-primary btn-lg btn-block">Select missing word item (11-12)</button>
-                  <button type="button" class="btn mb-1 btn-primary btn-lg btn-block">Highlight Incorrect Word (13-14)</button>
-                  <button type="button" class="btn  btn-primary btn-lg btn-block">Write Form Dictations (15-17)</button>
-                </div>
-            </div>
-        </div>
-        <div class="card mb-3">
-            <div class="card-header collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
-                <a class="card-title">
-                 Writing
-                </a>
-            </div>
-            <div id="collapseThree" class="collapse" data-parent="#accordion" >
-                <div class="card-body">
-                   <div class="reading-list">
-                      <button type="button" class="btn mb-1 btn-primary btn-lg btn-block">Writing Instruction</button>
-                      <button type="button" class="btn mb-1 btn-primary btn-lg btn-block">Summarize Written</button>
-                      <button type="button" class="btn  btn-primary btn-lg btn-block">Essay Writing</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="card mb-3">
-            <div class="card-header collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapsefour">
-                <a class="card-title">
-                 Speaking
-                </a>
-            </div>
-            <div id="collapsefour" class="collapse" data-parent="#accordion" >
-                <div class="card-body">
-                    <div class="reading-list">
-                      <button type="button" class="btn mb-1 btn-primary btn-lg btn-block">Speaking Instruction</button>
-                      <button type="button" class="btn mb-1 btn-primary btn-lg btn-block">Read Aloud</button>
-                      <button type="button" class="btn mb-1 btn-primary btn-lg btn-block">Repeat Sentence</button>
-                      <button type="button" class="btn mb-1 btn-primary btn-lg btn-block">Describe Image</button>
-                      <button type="button" class="btn mb-1 btn-primary btn-lg btn-block">Re-tell lecture</button>
-                      <button type="button" class="btn mb-1 btn-primary btn-lg btn-block">Answer-short Question</button>
-                      <button type="button" class="btn bg-success btn-primary btn-lg btn-block">Update Audio Time</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+            @endforeach
+        @endif
     </div>
 </div>
             </div>

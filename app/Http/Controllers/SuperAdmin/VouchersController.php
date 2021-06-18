@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\CreateVocuchersRequest;
 use App\Http\Requests\UpdateVouchersRequest;
 use App\Models\Vouchers;
+use App\Models\Roles;
 use Carbon\Carbon;
 use DataTables;
 class VouchersController extends Controller
@@ -67,7 +68,7 @@ class VouchersController extends Controller
                         $btn = '<ul class="actions-btns">
                             <li class="action" data-toggle="modal" data-target="#editvouchers"><a href="javascript:void(0);" class="vouchers-edit" data-id="'.$row->id.'" data-url="'.route('vouchers.edit', $row->id).'"><i class="fas fa-pen"></i></a></li>
                             <li class="action"><a href="#" class="delete_modal" data-toggle="modal" data-target="#delete_modal"  data-url="'.route('vouchers.destroy', $row->id).'" data-id="'.$row->id.'"><i class="fas fa-trash"></i></a></li>
-                            <li class="action shield green"><a href="'.route('superadmin-vouchers-changestatus', $row->id ).'"><img src="'.asset('assets/images/icons/blocked.svg').'" class=""></a></li>
+                            <li class="action shield '. (($row->status == "E") ? "red" : "green").'"><a href="'.route('superadmin-vouchers-changestatus', $row->id ).'"><img src="'.asset('assets/images/icons/blocked.svg').'" class=""></a></li>
                             </ul>';
                         return $btn;
                     })
@@ -85,7 +86,9 @@ class VouchersController extends Controller
      */
     public function create()
     {
-        return view($this->moduleTitleP.'add');
+        $roles = Roles::where('status','E')->get();
+
+        return view($this->moduleTitleP.'add',compact('roles'));
     }
 
     /**
@@ -113,10 +116,10 @@ class VouchersController extends Controller
 
         $voucher->role_id = $input['role_id'];
         $voucher->valid_till = $input['valid_till'];
-        $voucher->status = $input['status'];
+        $voucher->status = (isset($input['status'])?$input['status']:'D');
         if($voucher->save()){
             return redirect()->route('vouchers.index')
-                        ->with('success','voucher created successfully');
+                        ->with('success','Voucher created successfully!');
         }else{
             return redirect()->route('vouchers.index')
                         ->with('error','Sorry!Something wrong.Try again later!');
@@ -142,10 +145,13 @@ class VouchersController extends Controller
      */
     public function edit($id)
     {
-        $voucher = Vouchers::find($id);
+        $voucher        = Vouchers::find($id);
 
-        $html_voucher = view($this->moduleTitleP.'edit', compact('voucher'))->render();
+        $roles          = Roles::where('status','E')->get();
 
+        $html_voucher   = view($this->moduleTitleP.'edit', compact('voucher','roles'))->render();
+
+        
         return response()->json([
             'success' => 1,
             'html'=>$html_voucher    
@@ -162,10 +168,10 @@ class VouchersController extends Controller
         $result = $voucher->update();
         if($result){
             return redirect()->route('vouchers.index')
-                        ->with('success','Status Update successfully');
+                        ->with('success','Voucher Status Update successfully!');
         }else{
             return redirect()->route('vouchers.index')
-                        ->with('error','Status Not Updated!');
+                        ->with('error','Voucher Status Not Updated!');
         }
     }
     /**
@@ -196,7 +202,7 @@ class VouchersController extends Controller
         unset($input['voucher_price']);
         $result = Vouchers::where('id',$id)->update($input);
         if($result){
-            \Session::put('success', 'Voucher update Successfully!');
+            \Session::put('success', 'Voucher updated Successfully!');
             return true;
         }else{
             \Session::put('error', 'Sorry!Something wrong.try Again.');
@@ -216,7 +222,7 @@ class VouchersController extends Controller
         if($result)
         {
             return redirect()->route('vouchers.index')
-                        ->with('success','Vouchers deleted successfully');
+                        ->with('success','Voucher deleted successfully!');
         }
         else
         {

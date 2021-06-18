@@ -6,10 +6,13 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Roles;
+use Illuminate\Support\Facades\Hash;
 use DataTables;
+use App\Http\Requests\StoreUserRequest;
 
 class UsersController extends Controller
 {
+    private $moduleTitleP = 'superadmin.users.';
     /**
      * Display a listing of the resource.
      *
@@ -49,9 +52,9 @@ class UsersController extends Controller
 
                                     <li class="action bg-danger"><a href="#" class="delete_modal" data-toggle="modal" data-target="#delete_modal"  data-url="'.route('users.destroy', $row->id).'" data-id="'.$row->id.'"><i class="fas fa-trash" ></i></a></li>
 
-                                    <li class="action shield green"><a href="'.route('superadmin-user-changestatus', $row->id ).'"><img src="'.asset('assets/images/icons/blocked.svg').'" class=""></a></li>
+                                    <li class="action shield '.(($row->status == "A") ? "green" : "bg-danger").'"><a href="'.route('superadmin-user-changestatus', $row->id ).'"><img src="'.asset('assets/images/icons/blocked.svg').'" class=""></a></li>
 
-                                    <li class="action"><a href="#"><i class="fas fa-unlock-alt"></i></a></li>
+                                    <li class="action" data-toggle="modal" data-target="#setpassword"><a href="javascript:void(0);" class="user-setpassword" data-id="'.$row->id .'" data-url="'.route('users.show', $row->id).'"><i class="fas fa-unlock-alt"></i></a></li>
 
                                     <li class="action"><a href="#"><i class="fas fa-clipboard-check"></i></a></li>
                                 </ul>';
@@ -93,9 +96,9 @@ class UsersController extends Controller
 
                                     <li class="action bg-danger"><a href="#" class="delete_modal" data-toggle="modal" data-target="#delete_modal"  data-url="'.route('users.destroy', $row->id).'" data-id="'.$row->id.'"><i class="fas fa-trash"></i></a></li>
 
-                                    <li class="action shield green"><a href="'.route('superadmin-user-changestatus', $row->id ).'"><img src="'.asset('assets/images/icons/blocked.svg').'" class=""></a></li>
+                                    <li class="action shield '.(($row->status == "A") ? "green" : "bg-danger").'"><a href="'.route('superadmin-user-changestatus', $row->id ).'"><img src="'.asset('assets/images/icons/blocked.svg').'" class=""></a></li>
 
-                                    <li class="action"data-toggle="modal"data-target="#editsecurity"><a href="#"><i class="fas fa-unlock-alt"></i></a></li>
+                                    <li class="action" data-toggle="modal" data-target="#setpassword"><a href="javascript:void(0);" class="user-setpassword" data-id="'.$row->id .'" data-url="'.route('users.show', $row->id).'"><i class="fas fa-unlock-alt"></i></a></li>
                                 </ul>';
                         return $btn;
                     })
@@ -103,7 +106,7 @@ class UsersController extends Controller
                     ->make(true);
             }
         }
-        return view('superadmin/users/index');
+        return view($this->moduleTitleP.'index');
     }
 
     
@@ -115,7 +118,7 @@ class UsersController extends Controller
     public function create()
     {
         $roles = Roles::all();
-        return view('superadmin/users/add',compact('roles'));
+        return view($this->moduleTitleP.'add',compact('roles'));
     }
 
     /**
@@ -125,23 +128,79 @@ class UsersController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        $input  = \Arr::except($request->all(),array('_token'));
-        if(!isset($input['videos'])){
-            $input['videos'] = 'N';
+    {   $type = $request->input('type');
+        
+        
+        if($type == 3){
+            $request->validate([
+                'type'=>'required',
+                'fname' => 'required',
+                'lname' => 'required',
+                'uname'=>'required',
+                'password'=>'required',
+                'confirm_password'=>'required|same:password',
+                'semail'=>'required',
+                'dob' =>'required',
+                'mobileno' =>'required',
+                'sstatus'=>'required|in:P,A,R',
+                'gender'=>'required|in:M,F',
+                'scitizen'=>'required',
+                'sresidence'=>'required',
+                'svalidity'=>'required',
+                'simage'=>'nullable'
+            ]);
+            $input  = \Arr::except($request->all(),array('_token'));
+            $user_input = array(
+                'role_id' => $input['type'],
+                'parent_user_id' => 0,
+                'first_name' => $input['fname'],
+                'last_name' => $input['lname'],
+                'name' => $input['uname'],
+                'email' => $input['semail'],
+                'password' => $input['password'],
+                'mobile_no' => $input['mobileno'],
+                'date_of_birth' => $input['dob'],
+                'profile_image' => '',
+                'gender' => $input['gender'],
+                'country_citizen' => $input['scitizen'],
+                'country_residence' => $input['sresidence'],
+                'validity' => $input['svalidity'],
+                'status' => $input['sstatus'],
+                'ip_address' => '',
+                'latitude' => '',
+                'longitude' => ''
+            );
+            $result = User::create($user_input);
+        }else if($type == 2){
+            $user_input = array(
+                'role_id' => $input['type'],
+                'parent_user_id' => 0,
+                'first_name' => $input['fname'],
+                'last_name' => $input['lname'],
+                'name' => $input['uname'],
+                'email' => $input['semail'],
+                'password' => $input['password'],
+                'mobile_no' => $input['mobileno'],
+                'date_of_birth' => $input['dob'],
+                'profile_image' => '',
+                'gender' => $input['gender'],
+                'country_citizen' => $input['scitizen'],
+                'country_residence' => $input['sresidence'],
+                'validity' => $input['svalidity'],
+                'status' => $input['sstatus'],
+                'ip_address' => '',
+                'latitude' => '',
+                'longitude' => ''
+            );
+           
+            $result = User::create($user_input);
         }
-        if(!isset($input['prediction_files'])){
-            $input['prediction_files'] = 'N';
-        }
-        if(!isset($input['status'])){
-            $input['status'] = 'D';
-        }
-        $result = User::create($input);
+
         if($result){
-            return redirect()->route('subscription.index')
-                        ->with('success','Subscription created successfully!');
+            return redirect()->route('users.index')
+                        ->with('success','User created successfully!');
         }else{
-            return redirect()->route('subscription.index')
+            return redirect()->route('users.index')
                         ->with('error','Sorry!Something wrong.Try again later!');
         }
     }
@@ -154,7 +213,13 @@ class UsersController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = User::find($id);
+        $html_password = view($this->moduleTitleP.'password', compact('user'))->render();
+
+        return response()->json([
+            'success' => 1,
+            'html'=>$html_password    
+        ]);
     }
 
     /**
@@ -216,6 +281,28 @@ class UsersController extends Controller
         }else{
             return redirect()->route('users.index')
                         ->with('error','Status Not Updated!');
+        }
+    }
+
+    public function setPassword(Request $request,$id){
+        
+        $request->validate([
+           'password' => 'required',
+           'confirm_password' => 'required|same:password'
+        ]);
+        $input  = \Arr::except($request->all(),array('_token'));
+
+        $input_password = array("password" => Hash::make($input['password']));
+
+        $result = User::where('id',$id)->update($input_password);
+        if($result){
+            \Session::put('success', 'Set Password Update successfully');
+            return true;
+            
+        }else{
+            \Session::put('error', 'Set Password Not Updated!');
+            return false;
+            
         }
     }
 }

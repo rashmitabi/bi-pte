@@ -1,3 +1,8 @@
+<?php 
+$currentPageURL = URL::current();
+$pageArray = explode('/', $currentPageURL);
+$pageActive = isset($pageArray[4]) ? $pageArray[4] : 'dashboard';
+?>
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 	<head>
@@ -13,7 +18,7 @@
 	    <!-- Scripts -->
 	    <script src="{{ asset('js/app.js') }}" defer></script>
 	    <script src="{{ asset('assets/fontawesome/js/all.min.js') }}" defer></script>
-	    <script src="{{ asset('assets/js/jquery.min.js') }}" defer></script>
+	    <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
 	
 	    <script src="{{ asset('assets/js/jquery.dataTables.min.js') }}" defer></script>
 	    <script src="{{ asset('assets/js/dataTables.bootstrap4.min.js') }}" defer></script>
@@ -39,6 +44,7 @@
 
 	    <link href="{{ asset('assets/css/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
 	    <link href="{{ asset('assets/css/responsive.bootstrap4.min.css') }}" rel="stylesheet">
+	    <link href="{{ asset('assets/css/jquery-confirm.css') }}" rel="stylesheet">
 
 	    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
 	      rel="stylesheet">
@@ -62,6 +68,7 @@
 		        @yield('content')
 		    </div>
 		</div>
+		<script src="{{ asset('assets/js/jquery-confirm.min.js') }}"></script>
 		@include('superadmin.deleteModel')
 		@include('superadmin.alert')
 		<script type="text/javascript">
@@ -69,7 +76,7 @@
     		var current_page_url = "<?php echo URL::current(); ?>";
     		var current_page_fullurl = "<?php echo URL::full(); ?>";
     		var CSRF_TOKEN= "{{ csrf_token() }}";
-		</script>
+		</script>		
 		@yield('js-hooks')
 	</body>
 </html>

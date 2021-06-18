@@ -24,10 +24,6 @@ class ModulesController extends Controller
             $data = Modules::latest()->get();
             return Datatables::of($data)
                     ->addIndexColumn()
-                    ->addColumn('checkbox', function($row){
-                        $checkbox = '<input type="checkbox" class="form-check-input position-relative ml-0" id="exampleCheck1">';
-                        return $checkbox;
-                    })
                     ->addColumn('status', function($row){
                         if($row->status == "E"){
                             $status = "Enable";
@@ -39,11 +35,11 @@ class ModulesController extends Controller
                     ->addColumn('action', function($row){
                         $btn = '<ul class="actions-btns">
                             <li class="action" data-toggle="modal" data-target="#editmodules"><a href="javascript:void(0);" class="modules-edit" data-id="'.$row->id .'" data-url="'.route('modules.edit', $row->id).'"><i class="fas fa-pen"></i></a></li>
-                            <li class="action shield green"><a href="'.route('superadmin-module-changestatus', $row->id ).'"><img src="'.asset('assets/images/icons/blocked.svg').'" class=""></a></li>
+                            <li class="action shield '.(($row->status == "E") ? "green" : "bg-danger").'"><a href="'.route('superadmin-module-changestatus', $row->id ).'"><img src="'.asset('assets/images/icons/blocked.svg').'" class=""></a></li>
                             </ul>';
                         return $btn;
                     })
-                    ->rawColumns(['checkbox','action'])
+                    ->rawColumns(['action'])
                     ->make(true);
         }
         return view($this->moduleTitleP.'index');
