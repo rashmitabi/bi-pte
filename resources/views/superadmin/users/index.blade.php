@@ -16,7 +16,7 @@
     </section>
     <section class="top-title-button remove-main-margin mb-3">
         <div class="row mx-0 align-items-center">
-            <div class="col-12 col-md-12 col-xl-12 col-sm-8 p-0 left">
+            <div class="col-12 col-md-12 col-xl-12 col-sm-12 p-0 left">
                 <div class="tab">
                     <nav>
                         <div class="nav nav-tabs" id="nav-tab" role="tablist">

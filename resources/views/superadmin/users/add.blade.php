@@ -5,7 +5,7 @@
 
     <section class="top-title-button mb-3">
         <div class="row mx-0 align-items-center">
-            <div class="col-12 col-md-12 col-xl-8 col-sm-8  left">
+            <div class="col-12 col-md-12 col-xl-8 col-sm-12  left">
                 <h1 class="title mb-4">Add New User</h1>
             </div>
         </div>
@@ -13,11 +13,11 @@
 
     <section class="top-title-button white-bg remove-main-margin mb-3">
         <div class="row mx-0 align-items-center">
-            <div class="col-12 col-md-12 col-xl-8 col-sm-8 left">
-                <form class="form mt-4 ml-3">
+            <div class="col-12 col-md-12 col-xl-8 col-sm-12 left">
+                <form class="form mt-4">
                   <div class="form-group row">
-                      <label class="col-4 col-form-label ">Select Role</label>
-                       <div class="col-7">
+                      <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Select Role</label>
+                       <div class="col-12 col-md-7 col-xl-7 col-sm-12">
                           <select class="user-type custom-select">
                               <option selected>Select User Type</option>
                               <option value="1">Student</option>
@@ -26,64 +26,64 @@
                       </div>
                    </div>
                    <div class="form-group row">
-                      <label  class="col-4 col-form-label ">First Name</label>
-                       <div class="col-7">
+                      <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">First Name</label>
+                       <div class="col-12 col-md-7 col-xl-7 col-sm-12">
                           <input type="text" class="form-control " placeholder="Enter First Name">
                       </div>
                    </div>
                    <div class="form-group row">
-                      <label class="col-4 col-form-label ">Last Name</label>
-                       <div class="col-7">
+                      <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Last Name</label>
+                       <div class="col-12 col-md-7 col-xl-7 col-sm-12">
                           <input type="text" class="form-control " placeholder="Enter Last Name">
                       </div>
                    </div>
                    <div class="form-group row">
-                      <label class="col-4 col-form-label ">Email</label>
-                       <div class="col-7">
+                      <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Email</label>
+                       <div class="col-12 col-md-7 col-xl-7 col-sm-12">
                           <input type="email" class="form-control " placeholder="Enter Email id">
                       </div>
                    </div>
                    <div class="form-group row">
-                      <label  class="col-4 col-form-label ">User Name</label>
-                       <div class="col-7">
+                      <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">User Name</label>
+                       <div class="col-12 col-md-7 col-xl-7 col-sm-12">
                           <input type="text" class="form-control " placeholder="Enter User Name">
                       </div>
                    </div>
                    <div class="form-group row">
-                      <label class="col-4 col-form-label ">Password</label>
-                       <div class="col-7">
+                      <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Password</label>
+                       <div class="col-12 col-md-7 col-xl-7 col-sm-12">
                        <input type="password" name="password" class="form-control" placeholder="**********">
                        <i class="far fa-eye-slash lock-icon password-icon" onclick="password()"></i>
                       </div>
                    </div>
                    <div class="form-group row">
-                      <label  class="col-4 col-form-label ">Confirm Password</label>
-                       <div class="col-7">
+                      <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Confirm Password</label>
+                       <div class="col-12 col-md-7 col-xl-7 col-sm-12">
                        <input type="password" name="password" class="form-control" placeholder="**********">
                        <i class="far fa-eye-slash lock-icon password-icon" onclick="password()"></i>
                       </div>
                    </div>
                    <div class="form-group row">
-                      <label  class="col-4 col-form-label ">Date of Birth</label>
-                       <div class="col-7">
+                      <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Date of Birth</label>
+                       <div class="col-12 col-md-7 col-xl-7 col-sm-12">
                           <input type="date" class="form-control " placeholder="Select Date of Birth">
                       </div>
                    </div>
                    <div class="form-group row">
-                      <label  class="col-4 col-form-label ">Mobile Number</label>
-                       <div class="col-7">
+                      <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Mobile Number</label>
+                       <div class="col-12 col-md-7 col-xl-7 col-sm-12">
                           <input type="text" class="form-control " placeholder="Enter Mobile Number">
                       </div>
                    </div>
                    <div class="form-group row">
-                      <label  class="col-4 col-form-label ">Status</label>
-                       <div class="col-7 toggle-switch">
+                      <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Status</label>
+                       <div class="col-12 col-md-7 col-xl-7 col-sm-12 toggle-switch">
                        <input type="checkbox" id="switch" /><label for="switch">Toggle</label>
                       </div>
                    </div>
                    <div class="form-group row">
-                      <label  class="col-4 col-form-label ">Gender</label>
-                       <div class="col-7">
+                      <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Gender</label>
+                       <div class="col-12 col-md-7 col-xl-7 col-sm-12">
                             <label for="rdo-8" class="btn-radio">
                                 <input type="radio" id="rdo-8" class="card_payment" name="payment_type" value="card_payment">
                                 <svg width="20px" height="20px" viewBox="0 0 20 20">
@@ -105,26 +105,26 @@
                       </div>
                    </div>
                    <div class="form-group row">
-                      <label  class="col-4 col-form-label ">Country Citizen</label>
-                       <div class="col-7">
+                      <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Country Citizen</label>
+                       <div class="col-12 col-md-7 col-xl-7 col-sm-12">
                           <input type="text" class="form-control " placeholder="Enter Country Citizen">
                       </div>
                    </div>
                    <div class="form-group row">
-                      <label  class="col-4 col-form-label ">Country Residence</label>
-                       <div class="col-7">
+                      <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Country Residence</label>
+                       <div class="col-12 col-md-7 col-xl-7 col-sm-12">
                           <input type="text" class="form-control " placeholder="Enter Country Residence">
                       </div>
                    </div>
                    <div class="form-group row">
-                      <label  class="col-4 col-form-label ">Validity</label>
-                       <div class="col-7">
+                      <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Validity</label>
+                       <div class="col-12 col-md-7 col-xl-7 col-sm-12">
                           <input type="date" class="form-control " placeholder="Validity">
                       </div>
                    </div>
                    <div class="form-group row">
-                      <label  class="col-4 col-form-label ">Profile Image</label>
-                       <div class="col-7">
+                      <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Profile Image</label>
+                       <div class="col-12 col-md-7 col-xl-7 col-sm-12">
                            <div class="custom-file">
                                <input type="file" class="custom-file-input" id="customFile">
                                <label class="custom-file-label" for="customFile">Select Profile Image</label>
@@ -132,7 +132,7 @@
                       </div>
                    </div>
                    <div class="form-group row">
-                       <div class="col-11 save-btn">
+                       <div class="col-12 col-md-12 col-xl-11 col-sm-12 save-btn">
                          <button  type="button" class="btn btn-outline-primary"><i class="far fa-save save-icon"></i>Save User</button>
                       </div>
                    </div>
@@ -142,82 +142,82 @@
                 <!-- institude form -->
                 <form class="form mt-4 ml-3">
                    <div class="form-group row">
-                      <label  class="col-4 col-form-label ">User Name</label>
-                       <div class="col-7">
+                      <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">User Name</label>
+                       <div class="col-12 col-md-7 col-xl-7 col-sm-12">
                           <input type="text" class="form-control " placeholder="Enter User Name">
                       </div>
                    </div>
                    <div class="form-group row">
-                      <label class="col-4 col-form-label ">Institute Name</label>
-                       <div class="col-7">
+                      <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Institute Name</label>
+                       <div class="col-12 col-md-7 col-xl-7 col-sm-12">
                           <input type="text" class="form-control " placeholder="Enter Institute Name">
                       </div>
                    </div>
                    <div class="form-group row">
-                      <label class="col-4 col-form-label ">Email</label>
-                       <div class="col-7">
+                      <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Email</label>
+                       <div class="col-12 col-md-7 col-xl-7 col-sm-12">
                           <input type="email" class="form-control " placeholder="Enter Email id">
                       </div>
                    </div>
                    <div class="form-group row">
-                      <label class="col-4 col-form-label ">Password</label>
-                       <div class="col-7">
+                      <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Password</label>
+                       <div class="col-12 col-md-7 col-xl-7 col-sm-12">
                        <input type="password" name="password" class="form-control" placeholder="**********">
                        <i class="far fa-eye-slash lock-icon password-icon" onclick="password()"></i>
                       </div>
                    </div>
                    <div class="form-group row">
-                      <label  class="col-4 col-form-label ">Confirm Password</label>
-                       <div class="col-7">
+                      <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Confirm Password</label>
+                       <div class="col-12 col-md-7 col-xl-7 col-sm-12">
                        <input type="password" name="password" class="form-control" placeholder="**********">
                        <i class="far fa-eye-slash lock-icon password-icon" onclick="password()"></i>
                       </div>
                    </div>
                    <div class="form-group row">
-                      <label  class="col-4 col-form-label ">Country Phone Code</label>
-                       <div class="col-7">
+                      <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Country Phone Code</label>
+                       <div class="col-12 col-md-7 col-xl-7 col-sm-12">
                           <input type="text" class="form-control " placeholder="Enter Country Phone Code">
                       </div>
                    </div>
                    <div class="form-group row">
-                      <label  class="col-4 col-form-label ">Phone Number</label>
-                       <div class="col-7">
+                      <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Phone Number</label>
+                       <div class="col-12 col-md-7 col-xl-7 col-sm-12">
                           <input type="text" class="form-control " placeholder="Enter Phone Number">
                       </div>
                    </div>
                    <div class="form-group row">
-                      <label  class="col-4 col-form-label ">Status</label>
-                      <div class="col-7 toggle-switch">
+                      <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Status</label>
+                      <div class="col-12 col-md-7 col-xl-7 col-sm-12 toggle-switch">
                        <input type="checkbox" id="switch-one" /><label for="switch-one">Toggle</label>
                       </div>
                    </div>
                    <div class="form-group row">
-                      <label  class="col-4 col-form-label ">Subdomain</label>
-                       <div class="col-7">
+                      <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Subdomain</label>
+                       <div class="col-12 col-md-7 col-xl-7 col-sm-12">
                           <input type="text" class="form-control " placeholder="Enter Subdomain">
                       </div>
                    </div>
                    <div class="form-group row">
-                      <label  class="col-4 col-form-label ">Domain</label>
-                       <div class="col-7">
+                      <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Domain</label>
+                       <div class="col-12 col-md-7 col-xl-7 col-sm-12">
                           <input type="text" class="form-control " placeholder="Enter Domain">
                       </div>
                    </div>
                    <div class="form-group row">
-                      <label  class="col-4 col-form-label ">Welcome Message</label>
-                       <div class="col-7">
+                      <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Welcome Message</label>
+                       <div class="col-12 col-md-7 col-xl-7 col-sm-12">
                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3">Enter Welcome Message</textarea>
                       </div>
                    </div>
                    <div class="form-group row">
-                      <label  class="col-4 col-form-label ">City</label>
-                       <div class="col-7">
+                      <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">City</label>
+                       <div class="col-12 col-md-7 col-xl-7 col-sm-12">
                           <input type="text" class="form-control " placeholder="Enter City">
                       </div>
                    </div>
                    <div class="form-group row">
-                      <label  class="col-4 col-form-label ">Logo Image</label>
-                       <div class="col-7">
+                      <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Logo Image</label>
+                       <div class="col-12 col-md-7 col-xl-7 col-sm-12">
                            <div class="custom-file">
                                <input type="file" class="custom-file-input" id="customFile">
                                <label class="custom-file-label" for="customFile">Select Logo Image</label>
@@ -225,8 +225,8 @@
                       </div>
                    </div>
                    <div class="form-group row">
-                      <label  class="col-4 col-form-label ">Banner Image</label>
-                       <div class="col-7">
+                      <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Banner Image</label>
+                       <div class="col-12 col-md-7 col-xl-7 col-sm-12">
                            <div class="custom-file">
                                <input type="file" class="custom-file-input" id="customFile">
                                <label class="custom-file-label" for="customFile">Select Banner Image</label>
@@ -234,14 +234,14 @@
                       </div>
                    </div>
                    <div class="form-group row">
-                      <label  class="col-4 col-form-label ">Validity</label>
-                       <div class="col-7">
+                      <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Validity</label>
+                       <div class="col-12 col-md-7 col-xl-7 col-sm-12">
                           <input type="date" class="form-control " placeholder="Validity">
                       </div>
                    </div>
                    <div class="form-group row">
-                      <label  class="col-4 col-form-label ">Show Super Admin Videos</label>
-                       <div class="col-7">
+                      <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Show Super Admin Videos</label>
+                       <div class="col-12 col-md-7 col-xl-7 col-sm-12">
                             <label for="rdo-4" class="btn-radio">
                                 <input type="radio" id="rdo-4" class="card_payment" name="payment_type" value="card_payment">
                                 <svg width="20px" height="20px" viewBox="0 0 20 20">
@@ -263,7 +263,7 @@
                       </div>
                    </div>
                    <div class="form-group row">
-                      <label  class="col-4 col-form-label ">Show Super Admin Predictions Files</label>
+                      <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Show Super Admin Predictions Files</label>
                        <div class="col-5">
                             <label for="rdo-3" class="btn-radio">
                                 <input type="radio" id="rdo-3" class="card_payment" name="payment_type" value="card_payment">
@@ -286,8 +286,8 @@
                       </div>
                    </div>
                    <div class="form-group row">
-                      <label  class="col-4 col-form-label ">Show Super Admin Practice Questions</label>
-                       <div class="col-7">
+                      <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Show Super Admin Practice Questions</label>
+                       <div class="col-12 col-md-7 col-xl-7 col-sm-12">
                             <label for="rdo-2" class="btn-radio">
                                 <input type="radio" id="rdo-2" class="card_payment" name="payment_type" value="card_payment">
                                 <svg width="20px" height="20px" viewBox="0 0 20 20">
@@ -309,8 +309,8 @@
                       </div>
                    </div>
                    <div class="form-group row">
-                      <label  class="col-4 col-form-label ">Show Super Admin Predictions Tests</label>
-                       <div class="col-7">
+                      <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Show Super Admin Predictions Tests</label>
+                       <div class="col-12 col-md-7 col-xl-7 col-sm-12">
                             <label for="rdo-1" class="btn-radio">
                                 <input type="radio" id="rdo-1" class="card_payment" name="payment_type" value="card_payment">
                                 <svg width="20px" height="20px" viewBox="0 0 20 20">
@@ -332,7 +332,7 @@
                       </div>
                    </div>
                    <div class="form-group row">
-                       <div class="col-11 save-btn">
+                       <div class="col-12 col-md-12 col-xl-11 col-sm-12 save-btn">
                          <button  type="button" class="btn btn-outline-primary"><i class="far fa-save save-icon"></i>Save User</button>
                       </div>
                    </div>

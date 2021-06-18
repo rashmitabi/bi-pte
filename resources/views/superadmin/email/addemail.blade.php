@@ -16,8 +16,8 @@
             <div class="col-12 col-md-12 col-xl-8 col-sm-8 left">
                 {!! Form::open(array('route' => 'email.store','method'=>'POST','class'=>'form mt-4 ml-3')) !!}
                     <div class="form-group row">
-                        <label class="col-4 col-form-label ">Template Name</label>
-                        <div class="col-8">
+                        <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Template Name</label>
+                        <div class="col-12 col-md-7 col-xl-7 col-sm-12">
                             <input type="text" class="form-control " name="name" placeholder="Enter Template Name" value="{{ old('name') }}">
                             @if($errors->has('name'))
                                 <span class="error-msg">{{$errors->first('name')}}</span>
@@ -25,8 +25,8 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-4 col-form-label ">Email Subject</label>
-                        <div class="col-8">
+                        <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Email Subject</label>
+                        <div class="col-12 col-md-7 col-xl-7 col-sm-12">
                             <input type="text" class="form-control " name="subject" placeholder="Enter Email Subject" value="{{ old('subject') }}">
                             @if($errors->has('subject'))
                                 <span class="error-msg">{{$errors->first('subject')}}</span>
@@ -48,7 +48,7 @@
                     </div>
 
                     <div class="form-group row">
-                        <label class="col-4 col-form-label ">Status</label>
+                        <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Status</label>
                         <div class="col-7 toggle-switch">
                             <input type="checkbox" id="files" name="status" value="E" {{ (old('status') == 'E')?'checked':'' }} /><label for="files">Status</label>
                             @if($errors->has('status'))
@@ -58,7 +58,7 @@
                     </div>
 
                     <div class="form-group row">
-                        <div class="col-12 save-btn">
+                        <div class="col-12 col-md-12 col-xl-11 col-sm-12 save-btn">
                             <button type="submit" class="btn btn-outline-primary"><i
                                     class="far fa-save save-icon"></i>Save</button>
                         </div>
