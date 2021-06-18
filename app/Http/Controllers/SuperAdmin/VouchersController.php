@@ -68,7 +68,7 @@ class VouchersController extends Controller
                         $btn = '<ul class="actions-btns">
                             <li class="action" data-toggle="modal" data-target="#editvouchers"><a href="javascript:void(0);" class="vouchers-edit" data-id="'.$row->id.'" data-url="'.route('vouchers.edit', $row->id).'"><i class="fas fa-pen"></i></a></li>
                             <li class="action"><a href="#" class="delete_modal" data-toggle="modal" data-target="#delete_modal"  data-url="'.route('vouchers.destroy', $row->id).'" data-id="'.$row->id.'"><i class="fas fa-trash"></i></a></li>
-                            <li class="action shield green"><a href="'.route('superadmin-vouchers-changestatus', $row->id ).'"><img src="'.asset('assets/images/icons/blocked.svg').'" class=""></a></li>
+                            <li class="action shield '. (($row->status == "E") ? "red" : "green").'"><a href="'.route('superadmin-vouchers-changestatus', $row->id ).'"><img src="'.asset('assets/images/icons/blocked.svg').'" class=""></a></li>
                             </ul>';
                         return $btn;
                     })
@@ -116,7 +116,7 @@ class VouchersController extends Controller
 
         $voucher->role_id = $input['role_id'];
         $voucher->valid_till = $input['valid_till'];
-        $voucher->status = $input['status'];
+        $voucher->status = (isset($input['status'])?$input['status']:'D');
         if($voucher->save()){
             return redirect()->route('vouchers.index')
                         ->with('success','Voucher created successfully!');

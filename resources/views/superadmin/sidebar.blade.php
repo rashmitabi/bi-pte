@@ -2,11 +2,11 @@
 <div>
   <nav id="sidebar">
       <ul class="list-unstyled components">
-         <li class="active">
+         <li class="{{ $pageActive == 'dashboard' ? 'active' : ''  }}">
             <a href="{{ route('dashboard') }}" > <img src="{{ asset('assets/images/icons/dashboard.svg') }}" class=""> <span> Dashboard </span> </a>
          </li>
 
-         <li>
+         <li class="{{ $pageActive == 'users' ? 'active' : ''  }}">
             <a href="#Usersubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"> <img src="{{ asset('assets/images/icons/user.svg') }}" class=""> <span> Manage User </span></a>
             <ul class="collapse list-unstyled" id="Usersubmenu">
                <li>
@@ -24,7 +24,7 @@
             </ul>
          </li>
          <li>
-         <li>
+         <li class="{{ $pageActive == 'tests' ? 'active' : ''  }}">
             <a href="#Testsubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"> <img src="{{ asset('assets/images/icons/test.svg') }}" class=""> <span> Manage Test </span></a>
             <ul class="collapse list-unstyled" id="Testsubmenu">
                <li>
@@ -38,7 +38,7 @@
          <li>
             <a href="#"> <img src="{{ asset('assets/images/icons/result.svg') }}" class=""><span> Manage Test Result </span></a>
          </li>
-         <li>
+         <li class="{{ $pageActive == 'subjects' ? 'active' : ''  }}">
             <a href="#Subjetsubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"> <img src="{{ asset('assets/images/icons/subject.svg') }}" class=""> <span> Manage Subject </span> </a>
             <ul class="collapse list-unstyled" id="Subjetsubmenu">
                <li>
@@ -92,7 +92,7 @@
                </li>
             </ul>
          </li>
-         <li>
+         <li class="{{ $pageActive == 'vouchers' ? 'active' : ''  }}">
             <a href="#Voucherssubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"> <img src="{{ asset('assets/images/icons/vouchers.svg') }}" class=""><span> Vouchers </span></a>
             <ul class="collapse list-unstyled" id="Voucherssubmenu">
                <li>
@@ -103,7 +103,7 @@
                </li>
             </ul>
          </li>
-         <li>
+         <li class="{{ $pageActive == 'email' ? 'active' : ''  }}">
             <a href="#Emailsubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"> <img src="{{ asset('assets/images/icons/email.svg') }}" class=""><span> Email Templates </span></a>
             <ul class="collapse list-unstyled" id="Emailsubmenu">
                <li>
@@ -120,7 +120,7 @@
          <li>
             <a href="#"> <img src="{{ asset('assets/images/icons/certificates.svg') }}" class=""><span> Certificate </span></a>
          </li>
-         <li>
+         <li class="{{ $pageActive == 'subscription' ? 'active' : ''  }}">
             <a href="#Subscriptionsubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"> <img src="{{ asset('assets/images/icons/subscription.svg') }}" class=""> <span> Manage Subscription </span> </a>
             <ul class="collapse list-unstyled" id="Subscriptionsubmenu">
                <li>

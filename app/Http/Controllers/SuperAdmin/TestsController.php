@@ -34,7 +34,7 @@ class TestsController extends Controller
                                 <li class="action" data-toggle="modal" data-target="#edittest"><a
                                     href="javascript:void(0);" class="test-edit" data-id="'.$row->id.'" data-url="'.route('tests.edit', $row->id).'"><i class="fas fa-pen"></i></a></li>
                                 <li class="action"><a href="#" class="delete_modal" data-toggle="modal" data-target="#delete_modal"  data-url="'.route('tests.destroy', $row->id).'" data-id="'.$row->id.'"><i class="fas fa-trash"></i></a></li>
-                            <li class="action shield green"><a href="'.route('superadmin-tests-changestatus', $row->id ).'"><img src="'.asset('assets/images/icons/blocked.svg').'" class=""></a></li>
+                            <li class="action shield '.(($row->status == "E") ? "red" : "green").'"><a href="'.route('superadmin-tests-changestatus', $row->id ).'"><img src="'.asset('assets/images/icons/blocked.svg').'" class=""></a></li>
                             </ul>';
                         return $btn;
                     })
@@ -63,7 +63,7 @@ class TestsController extends Controller
                                 <li class="action" data-toggle="modal" data-target="#edittest"><a
                                     href="javascript:void(0);" class="test-edit" data-id="'.$row->id.'" data-url="'.route('tests.edit', $row->id).'"><i class="fas fa-pen"></i></a></li>
                                 <li class="action"><a href="#" class="delete_modal" data-toggle="modal" data-target="#delete_modal"  data-url="'.route('tests.destroy', $row->id).'" data-id="'.$row->id.'"><i class="fas fa-trash"></i></a></li>
-                            <li class="action shield green"><a href="'.route('superadmin-tests-changestatus', $row->id ).'"><img src="'.asset('assets/images/icons/blocked.svg').'" class=""></a></li>
+                            <li class="action shield '.(($row->status == "E") ? "red" : "green").'"><a href="'.route('superadmin-tests-changestatus', $row->id ).'"><img src="'.asset('assets/images/icons/blocked.svg').'" class=""></a></li>
                             </ul>';
                         return $btn;
                     })

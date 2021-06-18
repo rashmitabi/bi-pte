@@ -14,8 +14,8 @@
                         <span class="module_title">record</span>? </h3>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-blue remove-data-from-delete-form" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-yellow">Delete</button>
+                    <button type="button" class="btn cancel-btn btn-blue remove-data-from-delete-form" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn delete-btn btn-yellow">Delete</button>
                 </div>
                 </div>
             </div>
