@@ -21,9 +21,10 @@
             <div class="col-8">
                 <select class="user-type custom-select" name="role_id">
                     <option selected disabled>Select User Type</option>
-                    @foreach($roles as $role)
+                    <option value="2" {{ ($subscription->role_id == '2')?'selected':''}}>Branch Admin</option>
+                    <!-- @foreach($roles as $role)
                         <option value="{{ $role->id }}" {{ ($subscription->role_id == $role->id)?'selected':''}}>{{ $role->role_name }}</option>
-                    @endforeach
+                    @endforeach -->
                 </select>
                 <span class="error-msg" id="roleidError"></span>
             </div>

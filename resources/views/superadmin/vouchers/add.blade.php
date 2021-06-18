@@ -38,9 +38,10 @@
                         <div class="col-7">
                             <select class="user-type custom-select" name="role_id">
                                 <option selected disabled>Select User Type</option>
-                                @foreach($roles as $role)
+                                <option value="2" {{ (old('role_id') == '2')?'selected':''}}>Branch Admin</option>
+                                <!-- @foreach($roles as $role)
                                     <option value="{{ $role->id }}" {{ (old('role_id') == $role->id)?'selected':''}}>{{ $role->role_name }}</option>
-                                @endforeach
+                                @endforeach -->
                             </select>
                                 @if($errors->has('role_id'))
                                     <span class="error-msg">{{$errors->first('role_id')}}</span>

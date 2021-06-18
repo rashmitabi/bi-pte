@@ -1,3 +1,8 @@
+<?php 
+$currentPageURL = URL::current();
+$pageArray = explode('/', $currentPageURL);
+$pageActive = isset($pageArray[4]) ? $pageArray[4] : 'dashboard';
+?>
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 	<head>

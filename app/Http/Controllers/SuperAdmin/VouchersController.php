@@ -116,7 +116,7 @@ class VouchersController extends Controller
 
         $voucher->role_id = $input['role_id'];
         $voucher->valid_till = $input['valid_till'];
-        $voucher->status = $input['status'];
+        $voucher->status = (isset($input['status'])?$input['status']:'D');
         if($voucher->save()){
             return redirect()->route('vouchers.index')
                         ->with('success','Voucher created successfully!');
