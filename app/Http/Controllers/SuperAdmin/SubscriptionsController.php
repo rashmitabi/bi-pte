@@ -161,7 +161,7 @@ class SubscriptionsController extends Controller
 
         $result = Subscriptions::where('id',$id)->update($input);
         if($result){
-            \Session::put('success', 'Subscription update Successfully!');
+            \Session::put('success', 'Subscription updated Successfully!');
             return true;
         }else{
             \Session::put('error', 'Sorry!Something wrong.try Again.');
@@ -180,7 +180,7 @@ class SubscriptionsController extends Controller
         $result = $subscription->update();
         if($result){
             return redirect()->route('subscription.index')
-                        ->with('success','Status Update successfully');
+                        ->with('success','Subscription status updated successfully');
         }else{
             return redirect()->route('subscription.index')
                         ->with('error','Status Not Updated!');
@@ -198,7 +198,7 @@ class SubscriptionsController extends Controller
         if($result)
         {
             return redirect()->route('subscription.index')
-                        ->with('success','Subscription deleted successfully');
+                        ->with('success','Subscription deleted successfully!');
         }
         else
         {

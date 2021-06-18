@@ -13,7 +13,7 @@ class StoreUserRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,21 +24,21 @@ class StoreUserRequest extends FormRequest
     public function rules()
     {
         return [
-            'title'=>'required',
-            'description'=>'required|max:100',
-            'role_id'=>'required|in:1,2',
-            'students_allowed'=>'required|numeric',
-            'monthly_price'=>'required|numeric',
-            'quarterly_price'=>'required|numeric',
-            'halfyearly_price'=>'required|numeric',
-            'annually_price'=>'required|numeric',
-            'white_labelling_price'=>'required|numeric',
-            'mock_tests'=>'required|numeric',
-            'practice_tests'=>'required|numeric',
-            'practice_questions'=>'required|numeric',
-            'videos'=>'nullable|in:Y,N',
-            'prediction_files'=>'nullable|in:Y,N',
-            'status'=>'nullable|in:E,D'
+            'type'=>'required',
+            'fname' => 'required',
+            'lname' => 'required',
+            'uname'=>'required',
+            'password'=>'required',
+            'confirm_password'=>'required|same:password',
+            'semail'=>'required',
+            'dob' =>'required',
+            'mobileno' =>'required',
+            'sstatus'=>'required|in:P,A,R',
+            'gender'=>'required|in:M,F',
+            'scitizen'=>'required',
+            'sresidence'=>'required',
+            'svalidity'=>'required',
+            'simage'=>'nullable'
         ];
     }
 }

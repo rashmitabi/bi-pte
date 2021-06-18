@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Roles;
 use Illuminate\Support\Facades\Hash;
 use DataTables;
+use App\Http\Requests\StoreUserRequest;
 
 class UsersController extends Controller
 {
@@ -127,23 +128,79 @@ class UsersController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        $input  = \Arr::except($request->all(),array('_token'));
-        if(!isset($input['videos'])){
-            $input['videos'] = 'N';
+    {   $type = $request->input('type');
+        
+        
+        if($type == 3){
+            $request->validate([
+                'type'=>'required',
+                'fname' => 'required',
+                'lname' => 'required',
+                'uname'=>'required',
+                'password'=>'required',
+                'confirm_password'=>'required|same:password',
+                'semail'=>'required',
+                'dob' =>'required',
+                'mobileno' =>'required',
+                'sstatus'=>'required|in:P,A,R',
+                'gender'=>'required|in:M,F',
+                'scitizen'=>'required',
+                'sresidence'=>'required',
+                'svalidity'=>'required',
+                'simage'=>'nullable'
+            ]);
+            $input  = \Arr::except($request->all(),array('_token'));
+            $user_input = array(
+                'role_id' => $input['type'],
+                'parent_user_id' => 0,
+                'first_name' => $input['fname'],
+                'last_name' => $input['lname'],
+                'name' => $input['uname'],
+                'email' => $input['semail'],
+                'password' => $input['password'],
+                'mobile_no' => $input['mobileno'],
+                'date_of_birth' => $input['dob'],
+                'profile_image' => '',
+                'gender' => $input['gender'],
+                'country_citizen' => $input['scitizen'],
+                'country_residence' => $input['sresidence'],
+                'validity' => $input['svalidity'],
+                'status' => $input['sstatus'],
+                'ip_address' => '',
+                'latitude' => '',
+                'longitude' => ''
+            );
+            $result = User::create($user_input);
+        }else if($type == 2){
+            $user_input = array(
+                'role_id' => $input['type'],
+                'parent_user_id' => 0,
+                'first_name' => $input['fname'],
+                'last_name' => $input['lname'],
+                'name' => $input['uname'],
+                'email' => $input['semail'],
+                'password' => $input['password'],
+                'mobile_no' => $input['mobileno'],
+                'date_of_birth' => $input['dob'],
+                'profile_image' => '',
+                'gender' => $input['gender'],
+                'country_citizen' => $input['scitizen'],
+                'country_residence' => $input['sresidence'],
+                'validity' => $input['svalidity'],
+                'status' => $input['sstatus'],
+                'ip_address' => '',
+                'latitude' => '',
+                'longitude' => ''
+            );
+           
+            $result = User::create($user_input);
         }
-        if(!isset($input['prediction_files'])){
-            $input['prediction_files'] = 'N';
-        }
-        if(!isset($input['status'])){
-            $input['status'] = 'D';
-        }
-        $result = User::create($input);
+
         if($result){
-            return redirect()->route('subscription.index')
-                        ->with('success','Subscription created successfully!');
+            return redirect()->route('users.index')
+                        ->with('success','User created successfully!');
         }else{
-            return redirect()->route('subscription.index')
+            return redirect()->route('users.index')
                         ->with('error','Sorry!Something wrong.Try again later!');
         }
     }
