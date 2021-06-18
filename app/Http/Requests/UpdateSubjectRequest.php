@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreateVocuchersRequest extends FormRequest
+class UpdateSubjectRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,13 +24,7 @@ class CreateVocuchersRequest extends FormRequest
     public function rules()
     {
         return [
-            'role_id'=>'required|numeric',
-            'name'=>'required|min:3|max:50',
-            'code'=>'required|unique:vouchers,code',
-            'voucher_type'=>'required|in:P,F',
-            'voucher_price'=>'required',
-            'valid_till'=>'required|date',
-            'status'=>'nullable|in:E'
+            'name'=>'required|min:2|max:250',
         ];
     }
 }

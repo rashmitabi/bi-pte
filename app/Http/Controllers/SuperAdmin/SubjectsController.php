@@ -6,17 +6,51 @@ use App\Http\Controllers\Controller;
 use App\Models\Subjects;
 use Illuminate\Http\Request;
 use App\Http\Requests\CreateSubjectRequest;
+use App\Http\Requests\UpdateSubjectRequest;
+use DataTables;
 
 class SubjectsController extends Controller
 {
+    private $moduleTitleP = 'superadmin.subjects.';
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('superadmin/subjects/index');
+        if($request->ajax())  {
+            $data = Subjects::latest()->get();
+            return Datatables::of($data)
+                    ->addIndexColumn()
+                    ->addColumn('subject_name', function($row){
+                        return $row->subject_name;
+                    })                    
+                    ->addColumn('status', function($row){
+                        if($row->status == "E"){
+                            $status = "Enabled";
+                        }else{
+                            $status = "Disabled";
+                        }
+                        return $status;
+                    })
+                    ->addColumn('action', function($row){
+                        if($row->status == "E"){
+                            $iconClass = "red";
+                        }else{
+                            $iconClass = "green";
+                        }
+                        $btn = '<ul class="actions-btns">
+                            <li class="action" data-toggle="modal" data-target="#editsubjects"><a href="javascript:void(0);" class="subject-edit" data-id="'.$row->id.'" data-url="'.route('subjects.edit', $row->id).'"><i class="fas fa-pen"></i></a></li>
+                            <li class="action"><a href="#" class="delete_modal" data-toggle="modal" data-target="#delete_modal"  data-url="'.route('subjects.destroy', $row->id).'" data-id="'.$row->id.'" data-title="Subject"><i class="fas fa-trash"></i></a></li>
+                            <li class="action shield '.$iconClass.'"><a href="'.route('superadmin-subjects-changestatus', $row->id ).'"><img src="'.asset('assets/images/icons/blocked.svg').'" class=""></a></li>
+                            </ul>';
+                        return $btn;
+                    })
+                    ->rawColumns(['checkbox','action'])
+                    ->make(true);
+        }
+        return view($this->moduleTitleP.'index');
     }
 
     /**
@@ -26,7 +60,7 @@ class SubjectsController extends Controller
      */
     public function create()
     {
-        return view('superadmin/subjects/addsubjects');
+        return view($this->moduleTitleP.'addsubjects');
     }
 
     /**
@@ -47,7 +81,7 @@ class SubjectsController extends Controller
         }
         if($subject->save()){
             return redirect()->route('subjects.index')
-                        ->with('success','Subject created successfully');
+                        ->with('success','Subject created successfully!');
         }else{
             return redirect()->route('subjects.index')
                         ->with('error','Sorry!Something wrong.Try again later!');
@@ -68,24 +102,40 @@ class SubjectsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Subjects  $subjects
+     * @param  int id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Subjects $subjects)
+    public function edit($id)
     {
-        //
+        $subject = Subjects::find($id);
+
+        $html_subject = view($this->moduleTitleP.'edit', compact('subject'))->render();
+
+        return response()->json([
+            'success' => 1,
+            'html'=>$html_subject    
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Subjects  $subjects
+     * @param  int id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Subjects $subjects)
+    public function update(UpdateSubjectRequest $request, $id)
     {
-        //
+        $input  = \Arr::except($request->all(),array('_token'));
+        $data['subject_name'] = $input['name'];
+        $result = Subjects::where('id',$id)->update($data);
+        if($result){
+            \Session::put('success', 'Subject updated Successfully!');
+            return true;
+        }else{
+            \Session::put('error', 'Sorry!Something wrong.try Again.');
+            return false;
+        }
     }
 
     /**
@@ -94,8 +144,42 @@ class SubjectsController extends Controller
      * @param  \App\Models\Subjects  $subjects
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Subjects $subjects)
+    public function destroy($id)
     {
-        //
+        $result = Subjects::where('id',$id)->delete();
+        if($result)
+        {
+            return redirect()->route('subjects.index')
+                        ->with('success','Subject deleted successfully!');
+        }
+        else
+        {
+            return redirect()->route('subjects.index')
+                        ->with('error','Sorry!Something wrong.Try again later!');
+        }
+    }
+
+    /**
+     * Change status field of the specified resource from storage.
+     *
+     * @param  \App\Models\Subjects  $subjects
+     * @return \Illuminate\Http\Response
+     */
+    public function changeStatus($id)
+    {
+        $subject = Subjects::find($id);
+        if($subject->status == 'D'){
+            $subject->status = 'E';
+        }else{
+            $subject->status = 'D';
+        }
+        $result = $subject->update();
+        if($result){
+            return redirect()->route('subjects.index')
+                        ->with('success','Subject status updated successfully!');
+        }else{
+            return redirect()->route('subjects.index')
+                        ->with('error','Status Not Updated!');
+        }
     }
 }
