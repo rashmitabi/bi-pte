@@ -27,10 +27,8 @@ $pageActive = isset($pageArray[4]) ? $pageArray[4] : 'dashboard';
 	    <!-- <script src="{{ asset('assets/js/ckeditor.js') }}" defer></script> -->
 		<!-- <script src="https://cdn.ckeditor.com/ckeditor5/28.0.0/classic/ckeditor.js"></script>   -->
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/ckeditor/4.12.1/ckeditor.js"></script>
-
 	    <script src="{{ asset('assets/js/admin-custom.js') }}" defer></script>
-
-
+  		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js" defer></script>
 	    <!-- Fonts -->
 	    <link rel="dns-prefetch" href="//fonts.gstatic.com">
 	    <link href="{{ asset('assets/css/font.css') }}" rel="stylesheet">
@@ -52,6 +50,9 @@ $pageActive = isset($pageArray[4]) ? $pageArray[4] : 'dashboard';
 		  		.error-msg{
 					  color:red;
 				  }
+				.error{
+					color:red;
+				}
 		  </style>
 	    @yield('css-hooks')
 	</head>
@@ -76,7 +77,7 @@ $pageActive = isset($pageArray[4]) ? $pageArray[4] : 'dashboard';
     		var current_page_url = "<?php echo URL::current(); ?>";
     		var current_page_fullurl = "<?php echo URL::full(); ?>";
     		var CSRF_TOKEN= "{{ csrf_token() }}";
-		</script>		
+		</script>
 		@yield('js-hooks')
 	</body>
 </html>

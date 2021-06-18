@@ -4,6 +4,7 @@ namespace App\Http\Controllers\SuperAdmin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Tests;
+use App\Models\Questions;
 use Illuminate\Http\Request;
 use App\Models\Subjects;
 use DataTables;
@@ -122,13 +123,17 @@ class TestsController extends Controller
      */
     public function show($id)
     {
-        $sections            = DB::table('sections')->get();
+        $sections           = DB::table('sections')->get();
         $readingQuestions   = DB::table('question_types')->where('section_id', 1)->get();
         $listeningQuestions = DB::table('question_types')->where('section_id', 2)->get();
         $writingQuestions   = DB::table('question_types')->where('section_id', 3)->get();
         $speakingQuestions  = DB::table('question_types')->where('section_id', 4)->get();
         
         return view ($this->moduleTitleP.'addquestion',compact('sections','readingQuestions','listeningQuestions','writingQuestions','speakingQuestions'));
+    }
+    public function addQuestions(Request $request)
+    {
+        return view ($this->moduleTitleP.'reading_and_writing_fill_in_the_blanks_1');
     }
     public function changeStatus($id)
     {

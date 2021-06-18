@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    //Subscription Edit page data start
+    //Vouchers Edit page data start
     $('body').on('click','.vouchers-edit',function(){
            var id = $(this).data('id');
            var apiUrl = $(this).data('url');
@@ -15,8 +15,8 @@ $(document).ready(function() {
                },
            });
    });
-   //Subscription Edit page data start
-   //Subscription update data start
+   //Vouchers Edit page data start
+   //Vouchers update data start
    $('body').on('click','.voucher-update',function(){
        var id = $(this).data('id');
        var apiUrl = $(this).data('url');
@@ -50,7 +50,7 @@ $(document).ready(function() {
                }
        });
    });
-   //Subscription update data end
+   //Vouchers update data end
    var table = $('#vouchers').DataTable({
     language: {
        search: '',
