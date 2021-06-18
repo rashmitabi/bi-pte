@@ -41,7 +41,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
          <div class="right-navbar-wrap">
             <div class="notificaiton-main">
-               <div class="budge-notificaiton-wrap">
+               <div class="budge-notificaiton-wrap" id="notify-box">
                   <i class="fas fa-bell"> </i> <span class="badge budge-notificaiton">2</span>
                </div>
                <div class="dropdown-toggle-wrap">

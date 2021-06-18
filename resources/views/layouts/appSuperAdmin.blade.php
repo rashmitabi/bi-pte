@@ -78,6 +78,13 @@ $pageActive = isset($pageArray[4]) ? $pageArray[4] : 'dashboard';
     		var current_page_fullurl = "<?php echo URL::full(); ?>";
     		var CSRF_TOKEN= "{{ csrf_token() }}";
 		</script>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$("#notify-box").click(function(){
+  					$(".dropdown-toggle-wrap").toggle();
+				});
+			});
+		</script>
 		@yield('js-hooks')
 	</body>
 </html>
