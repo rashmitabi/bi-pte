@@ -48,7 +48,7 @@ class UsersController extends Controller
                     })
                     ->addColumn('action', function($row){
                         $btn = '<ul class="actions-btns">
-                                <li class="action" data-toggle="modal" data-target="#userdetail12"><a href="javascript:void(0);" class="user-show" data-id="'.$row->id .'" data-url="'.route('users.show', $row->id).'"><i class="fas fa-user"></i></a></li>
+                                <li class="action" data-toggle="modal" data-target="#userdetail"><a href="javascript:void(0);" ><i class="fas fa-user"></i></a></li>
 
                                     <li class="action" data-toggle="modal" data-target="#editdetail"><a href="javascript:void(0);" class="user-edit" data-id="'.$row->id .'" data-url="'.route('users.edit', $row->id).'"><i class="fas fa-pen"></i></a></li>
 
@@ -94,7 +94,7 @@ class UsersController extends Controller
                     })
                     ->addColumn('action', function($row){
                         $btn = '<ul class="actions-btns">
-                                <li class="action" data-toggle="modal" data-target="#userdetail12"><a href="javascript:void(0);" class="user-show" data-id="'.$row->id .'" data-url="'.route('users.show', $row->id).'"><i class="fas fa-user"></i></a></li>
+                                <li class="action" data-toggle="modal" data-target="#userdetail"><a href="javascript:void(0);" ><i class="fas fa-user"></i></a></li>
 
                                     <li class="action" data-toggle="modal" data-target="#editdetail"><a href="javascript:void(0);" class="user-edit" data-id="'.$row->id .'" data-url="'.route('users.edit', $row->id).'"><i class="fas fa-pen"></i></a></li>
 
@@ -330,8 +330,6 @@ class UsersController extends Controller
                 'fname' => 'required',
                 'lname' => 'required',
                 'uname'=>'required',
-                'password'=>'',
-                'confirm_password'=>'same:password',
                 'semail'=>'required',
                 'dob' =>'required',
                 'mobileno' =>'required',
@@ -350,7 +348,6 @@ class UsersController extends Controller
                 'last_name' => $input['lname'],
                 'name' => $input['uname'],
                 'email' => $input['semail'],
-                'password' => Hash::make($input['password']),
                 'mobile_no' => $input['mobileno'],
                 'date_of_birth' => $input['dob'],
                 'profile_image' => '',
@@ -371,8 +368,6 @@ class UsersController extends Controller
                 'iuname' => 'required|unique:users,name,'.$id,
                 'iname'=>'required',
                 'iemail'=>'required|email|unique:users,email,'.$id,
-                'ipassword'=>'required',
-                'iconfirm_password'=>'required',
                 'country_code'=>'required|max:5',
                 'phone_no' =>'required',
                 'status'=>'required|in:P,A,R',
@@ -397,7 +392,6 @@ class UsersController extends Controller
                 // 'last_name' => '',
                 'name' => $input['iuname'],
                 'email' => $input['iemail'],
-                'password' => Hash::make($input['ipassword']),
                 'mobile_no' => $input['phone_no'],
                 // 'date_of_birth' => '',
                 'profile_image' => '',

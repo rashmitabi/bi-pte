@@ -33,22 +33,7 @@
             <span class="error-msg" id="unameError"></span>
           </div>
         </div>   
-        <div class="form-group row mb-2">
-          <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Password</label>
-          <div class="col-12 col-md-7 col-xl-7 col-sm-12">
-            <input type="password" name="password" class="form-control password" placeholder="Password">
-            <i class="far fa-eye-slash lock-icon password-icon" onclick="password()"></i>
-            <span class="error-msg" id="passwordError"></span>
-          </div>
-        </div>  
-        <div class="form-group row mb-2">
-          <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Confirm Password</label>
-          <div class="col-12 col-md-7 col-xl-7 col-sm-12">
-            <input type="password" name="confirm_password" class="form-control confirm_password" placeholder="Confirm Password">
-            <i class="far fa-eye-slash lock-icon cpassword-icon" onclick="confirm_password()"></i>
-            <span class="error-msg" id="confirm_passwordError"></span>
-          </div>
-        </div>
+        
         <div class="form-group row mb-2">
           <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Email</label>
           <div class="col-12 col-md-7 col-xl-7 col-sm-12">
@@ -149,22 +134,7 @@
             <span class="error-msg" id="iemailError"></span>
           </div>
         </div>
-        <div class="form-group row">
-          <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Password</label>
-          <div class="col-12 col-md-7 col-xl-7 col-sm-12">
-            <input type="password" name="ipassword" class="form-control password" placeholder="Password">
-            <i class="far fa-eye-slash lock-icon password-icon" onclick="password()"></i>
-            <span class="error-msg" id="ipasswordError"></span>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Confirm Password</label>
-          <div class="col-12 col-md-7 col-xl-7 col-sm-12">
-            <input type="password" name="iconfirm_password" class="form-control cpassword-icon" placeholder="Confirm Password">
-            <i class="far fa-eye-slash lock-icon cpassword-icon" onclick="password()"></i>
-            <span class="error-msg" id="iconfirm_passwordError"></span>
-          </div>
-        </div>
+       
         <div class="form-group row">
           <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Country Phone Code</label>
           <div class="col-12 col-md-7 col-xl-7 col-sm-12">

@@ -35,7 +35,7 @@ class ModulesController extends Controller
                     ->addColumn('action', function($row){
                         $btn = '<ul class="actions-btns">
                             <li class="action" data-toggle="modal" data-target="#editmodules"><a href="javascript:void(0);" class="modules-edit" data-id="'.$row->id .'" data-url="'.route('modules.edit', $row->id).'"><i class="fas fa-pen"></i></a></li>
-                            <li class="action shield '.(($row->status == "E") ? "green" : "bg-danger").'"><a href="'.route('superadmin-module-changestatus', $row->id ).'"><img src="'.asset('assets/images/icons/blocked.svg').'" class=""></a></li>
+                            <li class="action shield '.(($row->status == "D") ? "green" : "bg-danger").'"><a href="'.route('superadmin-module-changestatus', $row->id ).'"><img src="'.asset('assets/images/icons/blocked.svg').'" class=""></a></li>
                             </ul>';
                         return $btn;
                     })
