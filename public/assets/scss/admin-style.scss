@@ -18,12 +18,13 @@
         .institute-col{
             background-image: linear-gradient(to right top, #44dec5, #00d8da, #00d0eb, #05c7f6, #4ebcfa);
         }
-        .col{
+        .common-col{
             padding: 0px;
             border-radius: 5px;
             box-shadow: 0 15px 30px 5px Rgb(0 0 0/22%);
-            margin-right: 16px;
-            .common-wrap{
+            margin-right: 21px;
+            max-width: 23%;
+            .dashboard-common-wrap{
                 padding: 18px 25px;
                 border-bottom: 1px solid #ccc;
                 .icon{

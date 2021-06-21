@@ -20,7 +20,7 @@
             <!-- <div id="editor">
                 <h2>The three greatest things you learn from traveling</h2>
             </div> -->
-            <textarea name="editeditor" id="editeditor"></textarea>
+            <textarea name="editor23" id="editor23"></textarea>
             <span class="error-msg" id="bodyError"></span>
         </div>
     </div>

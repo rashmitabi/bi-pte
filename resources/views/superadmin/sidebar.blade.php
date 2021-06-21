@@ -35,8 +35,8 @@
                </li>
             </ul>
          </li>
-         <li>
-            <a href="#"> <img src="{{ asset('assets/images/icons/result.svg') }}" class=""><span> Manage Test Result </span></a>
+         <li class="{{ $pageActive == 'results' ? 'active' : ''  }}">
+            <a href="{{ route('results.index') }}"> <img src="{{ asset('assets/images/icons/result.svg') }}" class=""><span> Manage Test Result </span></a>
          </li>
          <li class="{{ $pageActive == 'subjects' ? 'active' : ''  }}">
             <a href="#Subjetsubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"> <img src="{{ asset('assets/images/icons/subject.svg') }}" class=""> <span> Manage Subject </span> </a>
@@ -64,31 +64,25 @@
                </li>
             </ul>
          </li>-->
-         <li>
+         <li class="{{ $pageActive == 'videos' ? 'active' : ''  }}">
             <a href="#Videossubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"> <img src="{{ asset('assets/images/icons/video.svg') }}" class=""> <span> Manage Videos </span></a>
             <ul class="collapse list-unstyled" id="Videossubmenu">
                <li>
-                  <a href="#">Page 1</a>
+                  <a href="{{ route('videos.create') }}">Videos Create</a>
                </li>
                <li>
-                  <a href="#">Page 2</a>
-               </li>
-               <li>
-                  <a href="#">Page 3</a>
+                  <a href="{{ route('videos.index') }}">Videos List</a>
                </li>
             </ul>
          </li>
-         <li>
+         <li class="{{ $pageActive == 'predictionfiles' ? 'active' : ''  }}">
             <a href="#Predictionsubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"> <img src="{{ asset('assets/images/icons/questions.svg') }}" class=""> <span> Manage Prediction Files </span></a>
             <ul class="collapse list-unstyled" id="Predictionsubmenu">
                <li>
-                  <a href="#">Page 1</a>
+                  <a href="{{ route('predictionfiles.create') }}">Prediction file Create</a>
                </li>
                <li>
-                  <a href="#">Page 2</a>
-               </li>
-               <li>
-                  <a href="#">Page 3</a>
+                  <a href="{{ route('predictionfiles.index') }}">Prediction file List</a>
                </li>
             </ul>
          </li>
@@ -114,11 +108,11 @@
                </li>
             </ul>
          </li>
-         <li>
-            <a href="#"> <img src="{{ asset('assets/images/icons/transaction.svg') }}" class=""> <span>Transactions</span></a>
+         <li class="{{ $pageActive == 'transactions' ? 'active' : ''  }}">
+            <a href="{{ route('transactions.index')}}"> <img src="{{ asset('assets/images/icons/transaction.svg') }}" class=""> <span>Transactions</span></a>
          </li>
-         <li>
-            <a href="#"> <img src="{{ asset('assets/images/icons/certificates.svg') }}" class=""><span> Certificate </span></a>
+         <li class="{{ $pageActive == 'certificates' ? 'active' : ''  }}">
+            <a href="{{ route('certificates.index') }}"> <img src="{{ asset('assets/images/icons/certificates.svg') }}" class=""><span> Certificate </span></a>
          </li>
          <li class="{{ $pageActive == 'subscription' ? 'active' : ''  }}">
             <a href="#Subscriptionsubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"> <img src="{{ asset('assets/images/icons/subscription.svg') }}" class=""> <span> Manage Subscription </span> </a>
@@ -131,8 +125,8 @@
                </li>
             </ul>
          </li>
-         <li>
-            <a href="#"> <img src="{{ asset('assets/images/icons/devices.svg') }}" class=""><span> Manage Devices Log </span></a>
+         <li class="{{ $pageActive == 'device' ? 'active' : ''  }}">
+            <a href="{{ route('device.index') }}"> <img src="{{ asset('assets/images/icons/devices.svg') }}" class=""><span> Manage Devices Log </span></a>
          </li>
       </ul>
    </nav>
