@@ -35,8 +35,8 @@
                </li>
             </ul>
          </li>
-         <li>
-            <a href="#"> <img src="{{ asset('assets/images/icons/result.svg') }}" class=""><span> Manage Test Result </span></a>
+         <li class="{{ $pageActive == 'results' ? 'active' : ''  }}">
+            <a href="{{ route('results.index') }}"> <img src="{{ asset('assets/images/icons/result.svg') }}" class=""><span> Manage Test Result </span></a>
          </li>
          <li class="{{ $pageActive == 'subjects' ? 'active' : ''  }}">
             <a href="#Subjetsubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"> <img src="{{ asset('assets/images/icons/subject.svg') }}" class=""> <span> Manage Subject </span> </a>
