@@ -22,12 +22,33 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Video Link</label>
+                        <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Video Description</label>
                         <div class="col-12 col-md-7 col-xl-7 col-sm-12">
-                            <input type="text" class="form-control" name="title" placeholder="Youtube Video Link">
+                            <input type="text" class="form-control" name="description" placeholder="Video Title">
                         </div>
                     </div>
-                    
+                    <div class="form-group row">
+                        <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Video Link</label>
+                        <div class="col-12 col-md-7 col-xl-7 col-sm-12">
+                            <input type="text" class="form-control" name="link" placeholder="Youtube Video Link">
+                        </div>
+                    </div>
+                    <?php /*<div class="form-group row">
+                      <label class="col-4 col-form-label ">Video Section</label>
+                      <div class="col-8">
+                        <select id="sections" name="section_id"  class="user-type custom-select">
+                          <option value="" selected>Select Section</option>
+                          @if(count($sections) > 0)
+                            @foreach($sections as $section)
+                              <option value="{{ $section->id }}{{ '-' }}{{ $module->module_slug }}" {{ ( old('section_id') == $section->id )?'selected':''}}>{{ $section->section_name }}</option>
+                            @endforeach
+                          @endif
+                        </select>
+                        @if($errors->has('section_id'))
+                          <span class="error-msg">{{$errors->first('section_id')}}</span>
+                        @endif
+                      </div>
+                    </div>*/ ?>
                     <div class="form-group row">
                         <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Status</label>
                         <div class="col-12 col-md-7 col-xl-7 col-sm-12 toggle-switch">
