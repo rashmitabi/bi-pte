@@ -1,4 +1,4 @@
-<div class="modal-body">
+
   <form class="form mt-4">
     @csrf
     <div class="form-group row">

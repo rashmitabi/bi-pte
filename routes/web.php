@@ -29,6 +29,7 @@ Route::group(['middleware' => ['auth', 'verified','superadmin']], function () {
     
     Route::resource('superadmin/users', App\Http\Controllers\SuperAdmin\UsersController::class)->names('users');
     Route::get('superadmin/users/changestatus/{id}', [App\Http\Controllers\SuperAdmin\UsersController::class, 'changeStatus'])->name('superadmin-user-changestatus');
+    Route::get('superadmin/users/showpassword/{id}', [App\Http\Controllers\SuperAdmin\UsersController::class, 'showPassword'])->name('superadmin-user-showpassword');
     Route::patch('superadmin/users/setpassword/{id}', [App\Http\Controllers\SuperAdmin\UsersController::class, 'setPassword'])->name('superadmin-user-setpassword');
    
    
@@ -84,18 +85,20 @@ Route::resource('superadmin/subjects', App\Http\Controllers\SuperAdmin\SubjectsC
 
 
 /*Tests Modules start*/
-
-Route::get('superadmin/tests/mocktest', [App\Http\Controllers\SuperAdmin\TestsController::class, 'mockTests'])
-    ->name('superadmin-tests-mocktest');
-Route::get('superadmin/tests/changestatus/{id}', [App\Http\Controllers\SuperAdmin\TestsController::class, 'changeStatus'])
-    ->name('superadmin-tests-changestatus');
+    Route::get('superadmin/tests/mocktest', [App\Http\Controllers\SuperAdmin\TestsController::class, 'mockTests'])
+        ->name('superadmin-tests-mocktest');
+    Route::get('superadmin/tests/changestatus/{id}', [App\Http\Controllers\SuperAdmin\TestsController::class, 'changeStatus'])
+        ->name('superadmin-tests-changestatus');
+    Route::get('superadmin/tests/addQuestions', [App\Http\Controllers\SuperAdmin\TestsController::class, 'addQuestions'])
+        ->name('superadmin-tests-addQuestions');
 Route::resource('superadmin/tests', App\Http\Controllers\SuperAdmin\TestsController::class);
 /*Tests Modules end*/
+/*Questions Modules start*/
+Route::resource('superadmin/questions', App\Http\Controllers\SuperAdmin\questionsController::class);
+/*Questions Modules end*/
     Route::resource('superadmin/predictionfiles', App\Http\Controllers\SuperAdmin\PredictionFilesController::class);
 
     Route::resource('superadmin/videos', App\Http\Controllers\SuperAdmin\VideosController::class);
-
-    Route::resource('superadmin/questions', App\Http\Controllers\SuperAdmin\questionsController::class);
 
     Route::resource('superadmin/subjects', App\Http\Controllers\SuperAdmin\SubjectsController::class);
 

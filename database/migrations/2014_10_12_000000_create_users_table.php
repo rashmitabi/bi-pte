@@ -17,8 +17,8 @@ class CreateUsersTable extends Migration
             $table->integer('id');
             $table->tinyInteger('role_id')->comment('Foreign key of roles table');
             $table->integer('parent_user_id')->nullable()->comment('Self join with parent id');
-            $table->string('first_name',100);
-            $table->string('last_name',100);
+            $table->string('first_name',100)->nullable();
+            $table->string('last_name',100)->nullable();
             $table->string('name')->unique()->comment(" this field is user name field");
             $table->string('email')->unique();
             $table->string('password',255);
@@ -29,8 +29,8 @@ class CreateUsersTable extends Migration
             $table->string('latitude',20);
             $table->string('longitude',20);
             $table->enum('gender',['M','F','O'])->comment('M=male,F=female,O=other')->nullable();
-            $table->string('country_citizen',255);
-            $table->string('country_residence',255);
+            $table->string('country_citizen',255)->nullable();
+            $table->string('country_residence',255)->nullable();
             $table->dateTime('validity')->nullable();
             $table->enum('status',['P','A','R'])->comment('P=pending,A=active,R=reject');
             $table->timestamp('email_verified_at')->nullable();
