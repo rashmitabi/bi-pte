@@ -6,7 +6,7 @@
           <h4>Admin DashBoard</h4>
       </div>
       <div class="row custom-row">
-           <div class="col-12 col-md-3 col-xl-3 col-sm-3 common-col student-col">
+           <div class="col-12 col-md-3 col-xl-3 col-sm-3 common-wrap-col student-col">
               <div class="dashboard-common-wrap">
                     <div class="icon">
                       <img src="{{ asset('assets/images/icons/reading.svg') }}">
@@ -20,7 +20,7 @@
                        <h2>81</h2>
                </div> 
            </div>
-           <div class="col-12 col-md-3 col-xl-3 col-sm-3 common-col mocktest-col">
+           <div class="col-12 col-md-3 col-xl-3 col-sm-3 common-wrap-col mocktest-col">
                <div class="dashboard-common-wrap">
                     <div class="icon">
                       <img src="{{ asset('assets/images/icons/exam.svg') }}">
@@ -34,7 +34,7 @@
                      <h2>81</h2>
                </div>
             </div>
-            <div class="col-12 col-md-3 col-xl-3 col-sm-3 common-col practicetest-col">
+            <div class="col-12 col-md-3 col-xl-3 col-sm-3 common-wrap-col practicetest-col">
                 <div class="dashboard-common-wrap">
                     <div class="icon">
                       <img src="{{ asset('assets/images/icons/exam.svg') }}">
@@ -48,7 +48,7 @@
                     <h2>81</h2>
                </div>
             </div>
-            <div class="col-12 col-md-3 col-xl-3 col-sm-3  common-col institute-col">
+            <div class="col-12 col-md-3 col-xl-3 col-sm-3  common-wrap-col institute-col">
                 <div class="dashboard-common-wrap">
                     <div class="icon">
                       <img src="{{ asset('assets/images/icons/request.svg') }}">
@@ -65,11 +65,11 @@
         </div>
         <!-- graph -->
         <div class="row">
-           <div class="col-12 col-md-6 col-xl-6 col-sm-12 mt-5 mb-4">
-              <canvas id="myChart" width="50%" hight="500px"></canvas>
+           <div class="col-12 col-md-6 col-xl-6 col-sm-12 mt-5 mb-4 white-bg">
+              <canvas id="myChart" width="49%" hight="500px"></canvas>
            </div>
-           <div class="col-12 col-md-6 col-xl-6 col-sm-12 mt-5 mb-4">
-           <canvas id="userSession" width="50%" hight="500px"></canvas>
+           <div class="col-12 col-md-6 col-xl-6 col-sm-12 mt-5 mb-4 white-bg">
+           <canvas id="userSession" width="49%" hight="500px"></canvas>
            </div>
         </div>
 
