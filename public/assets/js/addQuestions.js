@@ -117,10 +117,37 @@ $(document).ready(function() {
             });
         }
     });
-    // $('#fill_in_blanks').submit(function (e) {
-    //     e.preventDefault(); //**** to prevent normal form submission and page reload
-    //     $("#fill_in_blanks").validate({
-            
-    //     });
-    // });
+    $(".add-icon").click(function(){
+        console.log("hello");
+        var number = $(this).attr("data-id");
+        var newNumber = parseInt(number)+parseInt(1);
+        var ans_option_label = "Ans Options "+newNumber;
+        var ans_option_id = "ans_options"+newNumber;
+        var ans_placeholder = "Whole,Total,Very,Open";
+
+        var correct_option_label = "Correct Options "+newNumber;
+        var correct_option_id    = "correct_option"+newNumber;
+        var correct_placeholder  = "Whole";
+        var html = '';
+        var html = "<div class='col-11 mt-2 ml-3 white-bg common-col'>"
+                    +"<div class='form-group mb-3 row'>"
+            +"<label class='col-3 col-form-label custom-label'>"+ans_option_label+"</label>"
+          +"<div class='col-7 p-0'>"
+            +"<input type='text' class='form-control' name='"+ans_option_id+"' id='"+ans_option_id+"' placeholder='"+ans_placeholder+"'>"
+          +"</div>"
+       +"</div>"
+       +"<div class='form-group mb-3 row  btn-click'>"
+        +"<label class='col-3 col-form-label custom-label'>"+correct_option_label+"</label>"
+          +"<div class='col-7 p-0'>"
+        +"<input type='text' class='form-control' name='"+correct_option_id+"' id='"+correct_option_id+"' placeholder='"+correct_placeholder+"'>"
+          +"</div>"
+          +"<div class='add-icon' data-id='"+newNumber+"'>"
+              +"<a><i class='fas fa-plus'></i></a>"
+          +"</div>"
+       +"</div>"
+   +"</div>";
+    $(this).remove("div.add-icon");
+    $("#fill_in_blanks .white-bg:last").after(html);
+    });
+    
 });

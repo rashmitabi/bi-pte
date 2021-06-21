@@ -17,9 +17,14 @@ class SectionSeeder extends Seeder
     public function run()
     {
         $data = ['reading','listening','writing','speaking'];
-        foreach($data as $section)
-        DB::table('sections')->insert([
-            'section_name' => $section
-        ]);
+        $check = DB::table('sections')->count();
+        if($check < 1){
+            foreach($data as $section)
+            {
+                DB::table('sections')->insert([
+                    'section_name' => $section
+                ]); 
+            }  
+        }
     }
 }
