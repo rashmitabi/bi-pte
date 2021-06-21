@@ -1291,7 +1291,7 @@ $(document).ready(function() {
     });
     ////Delete Model for SuperAdmin End
 
-    $("#editeditor").each(function(_, ckeditor) {
+    $("#editor23").each(function(_, ckeditor) {
         CKEDITOR.replace(ckeditor);
     });
     $("#email_wrapper div.toolbar").html('Email Template');
