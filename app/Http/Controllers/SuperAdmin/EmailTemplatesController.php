@@ -42,7 +42,7 @@ class EmailTemplatesController extends Controller
                     })
                     ->addColumn('action', function($row){
                         $btn = '<ul class="actions-btns">
-                            <li class="action" data-toggle="modal" data-target="#editemail"><a href="javascript:void(0);" class="email-edit" data-id="'.$row->id.'" data-url="'.route('email.edit', $row->id).'"><i class="fas fa-pen"></i></a></li>
+                            <li class="action email-edit" data-toggle="modal" data-target="#editemail" data-id="'.$row->id.'" data-url="'.route('email.edit', $row->id).'"><a href="javascript:void(0);"><i class="fas fa-pen"></i></a></li>
                             <li class="action"><a href="#" class="delete_modal" data-toggle="modal" data-target="#delete_modal"  data-url="'.route('email.destroy', $row->id).'" data-id="'.$row->id.'"><i class="fas fa-trash"></i></a></li>
                             <li class="action shield '.(($row->status == "E") ? "red" : "green").'"><a href="'.route('superadmin-email-changestatus', $row->id ).'"><img src="'.asset('assets/images/icons/blocked.svg').'" class=""></a></li>
                             </ul>';
