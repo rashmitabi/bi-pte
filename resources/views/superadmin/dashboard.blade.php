@@ -65,10 +65,10 @@
         </div>
         <!-- graph -->
         <div class="row">
-           <div class="col-6 mt-5">
+           <div class="col-12 col-md-6 col-xl-6 col-sm-12 mt-5 mb-4">
               <canvas id="myChart" width="50%" hight="500px"></canvas>
            </div>
-           <div class="col-6 mt-5">
+           <div class="col-12 col-md-6 col-xl-6 col-sm-12 mt-5 mb-4">
            <canvas id="userSession" width="50%" hight="500px"></canvas>
            </div>
         </div>

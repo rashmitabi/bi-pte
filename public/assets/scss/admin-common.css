@@ -73,6 +73,10 @@
             justify-content: center;
     margin-top: 15px;
   }
+  body #prediction thead th {
+    white-space: unset !important;
+    padding-right: 7px !important;
+  }
   body #subscription thead th {
     padding-right: 8px;
   }
@@ -87,6 +91,10 @@
   body #email_wrapper thead th {
     white-space: unset !important;
     padding-right: 20px !important;
+  }
+  body #videos thead th {
+    white-space: unset !important;
+    padding-right: 25px !important;
   }
   body .dataTables_wrapper {
     padding: 20px 0px 0px;
@@ -193,6 +201,10 @@
   }
   body .dataTables_wrapper {
     padding: 20px 0px 0px;
+  }
+  body #prediction thead th {
+    white-space: unset !important;
+    padding-right: 13px !important;
   }
   body #subscription thead th {
     padding-right: 8px;
@@ -316,6 +328,10 @@
     padding: 8px 11px !important;
     border-radius: 0px;
   }
+  body #results thead th {
+    white-space: unset !important;
+    padding-right: 18px !important;
+  }
   body #certificates thead th {
     white-space: unset !important;
     padding-right: 18px !important;
@@ -323,6 +339,10 @@
   body #email_wrapper thead th {
     white-space: unset !important;
     padding-right: 5px !important;
+  }
+  body #videos thead th {
+    white-space: unset !important;
+    padding-right: 25px !important;
   }
   body .dashboard-heading {
     margin-left: 17px;
@@ -412,6 +432,9 @@
     padding-top: 20px !important;
     padding-bottom: 0px !important;
   }
+  body #content #results thead th {
+    white-space: unset !important;
+  }
 }
 
 /* tablets devices (tablets, 768px and up)  */
@@ -450,6 +473,13 @@
     right: auto;
   }
   body #email_wrapper thead th {
+    white-space: unset !important;
+  }
+  body #prediction thead th {
+    white-space: unset !important;
+    padding-right: 21px !important;
+  }
+  body #results thead th {
     white-space: unset !important;
   }
   body .custom-row {

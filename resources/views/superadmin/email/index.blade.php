@@ -66,7 +66,7 @@
                      <div class="form-group row">
                            <label class="col-12 col-form-label pt-0">Email Body</label>
                            <div class="col-12">
-                              <textarea name="editor" id="editor"></textarea>
+                              <textarea name="editeditor" id="editeditor"></textarea>
                            </div>
                      </div>
 

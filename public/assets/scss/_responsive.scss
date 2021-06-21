@@ -88,6 +88,14 @@
                     margin-top: 15px;
                }
           }
+          #prediction{
+               thead{
+                   th{
+                             white-space: unset!important;
+                             padding-right: 7px!important;
+                   }
+              }
+         }
           #subscription{
                thead{
                     th{
@@ -116,6 +124,14 @@
                     th{
                          white-space: unset!important;
                          padding-right: 20px!important;
+                    }
+               }
+          }
+          #videos{
+               thead{
+                    th{
+                         white-space: unset!important;
+                         padding-right: 25px!important;
                     }
                }
           }
@@ -236,6 +252,14 @@
           }
           .dataTables_wrapper{
                padding: 20px 0px 0px;
+          }
+          #prediction{
+                thead{
+                    th{
+                              white-space: unset!important;
+                              padding-right: 13px!important;
+                    }
+               }
           }
           #subscription{
                thead{
@@ -386,6 +410,14 @@
                   border-radius: 0px;
                }
           }
+          #results{
+               thead{
+                    th{
+                         white-space: unset!important;
+                         padding-right: 18px!important;
+                    }
+               }
+          }
           #certificates{
                thead{
                     th{
@@ -399,6 +431,14 @@
                     th{
                          white-space: unset!important;
                          padding-right: 5px!important;
+                    }
+               }
+          }
+          #videos{
+               thead{
+                    th{
+                         white-space: unset!important;
+                         padding-right: 25px!important;
                     }
                }
           }
@@ -492,6 +532,14 @@
                     padding-top: 20px!important;
                     padding-bottom: 0px!important;
                }
+               #results{
+                    thead{
+                         th{
+                              white-space: unset!important;
+                             
+                         }
+                    }
+               }
           }
      }
 }
@@ -542,6 +590,22 @@
                     }
                }
               
+          }
+          #prediction{
+               thead{
+                   th{
+                             white-space: unset!important;
+                             padding-right: 21px!important;
+                   }
+              }
+         }
+          #results{
+               thead{
+                    th{
+                         white-space: unset!important;
+                        
+                    }
+               }
           }
           .custom-row{
                justify-content: space-between;
