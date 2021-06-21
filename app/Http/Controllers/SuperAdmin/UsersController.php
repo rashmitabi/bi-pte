@@ -28,7 +28,7 @@ class UsersController extends Controller
                 return Datatables::of($data)
                     ->addIndexColumn()
                     ->addColumn('checkbox', function($row){
-                        $checkbox = '<input type="checkbox" class="form-check-input position-relative ml-0" >';
+                        $checkbox = '<input type="checkbox" class="form-check-input position-relative ml-0 checkSingleStudent" data-id="'.$row->id.'" value="0">';
                         return $checkbox;
                     })
                     ->addColumn('name', function($row){
@@ -69,7 +69,7 @@ class UsersController extends Controller
                 return Datatables::of($data)
                     ->addIndexColumn()
                     ->addColumn('checkbox', function($row){
-                        $checkbox = '<input type="checkbox" class="form-check-input position-relative ml-0" >';
+                        $checkbox = '<input type="checkbox" class="form-check-input position-relative ml-0 checkSingleInstitute" data-id="'.$row->id.'" value="0">';
                         return $checkbox;
                     })
                     ->addColumn('name', function($row){
@@ -318,7 +318,7 @@ class UsersController extends Controller
                 'last_name' => $input['lname'],
                 'name' => $input['uname'],
                 'email' => $input['semail'],
-                'password' => $input['password'],
+                'password' => Hash::make($input['password']),
                 'mobile_no' => $input['mobileno'],
                 'date_of_birth' => $input['dob'],
                 'profile_image' => '',
@@ -331,6 +331,7 @@ class UsersController extends Controller
                 'latitude' => '',
                 'longitude' => ''
             );
+
             $result = User::where('id',$id)->update($user_input);
         }else if($type == 2){
             $request->validate([
@@ -364,7 +365,7 @@ class UsersController extends Controller
                 // 'last_name' => '',
                 'name' => $input['iuname'],
                 'email' => $input['iemail'],
-                'password' => $input['ipassword'],
+                'password' => Hash::make($input['ipassword']),
                 'mobile_no' => $input['phone_no'],
                 // 'date_of_birth' => '',
                 'profile_image' => '',
@@ -433,26 +434,58 @@ class UsersController extends Controller
         }
     }
 
-    public function changeStatus($id)
+    public function changeStatus(Request $request,$id)
     {
-        $user = User::find($id);
-        if($user->status == 'R'){
-            $user->status = 'A';
+        if(is_array($request->user_ids)){
+            $users = User::whereIn('id',$request->user_ids)->get();
+            $status = 'P';
+            foreach ($users as $user) {
+                if($user->status == 'R'){
+                    $status = 'A';
+                }else if($user->status == 'P'){
+                    $status = 'A';    
+                }else{
+                    $status = 'R';
+                }
+                $result = User::where('id',$user->id)->update(array("status" => $status));
+            }
+            if($result){
+                \Session::put('success', 'Status Update successfully');
+                return true;
+                
+            }else{
+                \Session::put('error', 'Status Not Updated!');
+                return false;
+                
+            }
         }else{
-            $user->status = 'R';
+            $user = User::find($id);
+            if($user->status == 'R'){
+                $user->status = 'A';
+            }else if($user->status == 'P'){
+                    $status = 'A';    
+            }else{
+                $user->status = 'R';
+            }
+            $result = $user->update();
+            if($result){
+                return redirect()->route('users.index')
+                            ->with('success','Status Update successfully');
+            }else{
+                return redirect()->route('users.index')
+                            ->with('error','Status Not Updated!');
+            }
         }
-        $result = $user->update();
-        if($result){
-            return redirect()->route('users.index')
-                        ->with('success','Status Update successfully');
-        }else{
-            return redirect()->route('users.index')
-                        ->with('error','Status Not Updated!');
-        }
+       
+        
     }
 
-    public function showPassword($id){
-        $user = User::find($id);
+    public function showPassword(Request $request,$id){
+        if(is_array($request->id)){
+            $user = User::whereIn('id',$request->id)->get();
+        }else{
+            $user = User::find($id);
+        }
         $html_password = view($this->moduleTitleP.'password', compact('user'))->render();
 
         return response()->json([
@@ -470,8 +503,12 @@ class UsersController extends Controller
         $input  = \Arr::except($request->all(),array('_token'));
 
         $input_password = array("password" => Hash::make($input['password']));
-
-        $result = User::where('id',$id)->update($input_password);
+        
+        if(is_array($request->user_ids)){
+            $result = User::whereIn('id',$request->user_ids)->where('role_id',$request->role_id)->update($input_password);
+        }else{
+            $result = User::where('id',$id)->update($input_password);
+        }
         if($result){
             \Session::put('success', 'Set Password Update successfully');
             return true;
