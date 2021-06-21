@@ -41,7 +41,7 @@ class QuestionsController extends Controller
         $questions                  = new Questions;
         $questions->section_id      = $input['section_id'];
         $questions->test_id         = $input['test_id'];
-        $questions->design_id       = 0;
+        $questions->design_id       = 1;
         $questions->question_type_id= $input['question_type_id'];
         $questions->name            = $input['question_type_id'];
         $questions->short_desc      = "sort desc";
