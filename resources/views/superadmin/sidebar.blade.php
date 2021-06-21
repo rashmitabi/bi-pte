@@ -68,17 +68,10 @@
             <a href="#Videossubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"> <img src="{{ asset('assets/images/icons/video.svg') }}" class=""> <span> Manage Videos </span></a>
             <ul class="collapse list-unstyled" id="Videossubmenu">
                <li>
-<<<<<<< Updated upstream
                   <a href="{{ route('videos.create') }}">Videos Create</a>
                </li>
                <li>
                   <a href="{{ route('videos.index') }}">Videos List</a>
-=======
-                  <a href="{{ route('videos.index') }}">List Videos</a>
-               </li>
-               <li>
-                  <a href="{{ route('videos.create') }}">Add Video</a>
->>>>>>> Stashed changes
                </li>
             </ul>
          </li>

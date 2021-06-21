@@ -10,11 +10,7 @@
             </div>
             <div class="col-12 col-md-4 col-xl-4 col-sm-4 right">
                 <a href="{{ route('videos.create') }}">
-<<<<<<< Updated upstream
                 <button type="button" class="btn btn-primary"><i class="fas fa-plus-circle mr-1"></i> New
-=======
-                    <button type="button" class="btn btn-primary"><i class="fas fa-plus-circle mr-1"></i> New
->>>>>>> Stashed changes
                     Videos</button>
                 </a>
             </div>
