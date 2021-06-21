@@ -84,6 +84,9 @@ $pageActive = isset($pageArray[4]) ? $pageArray[4] : 'dashboard';
 				$("#notify-box").click(function(){
   					$(".dropdown-toggle-wrap").toggle();
 				});
+				$("#profile-box").click(function(){
+  					$(".logout-dropdown").toggle();
+				});
 			});
 		</script>
 		@yield('js-hooks')
