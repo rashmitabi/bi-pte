@@ -76,6 +76,10 @@
           .top-title-button{
                .left{
                   margin-bottom: 15px;
+                  .table-head{
+                    padding-top: 20px!important;
+                    padding-bottom: 0px!important;
+                 }
                }
           }
           .dataTables_wrapper{
@@ -155,6 +159,43 @@
                     }
                }
           }
+          .dashboard-heading{
+               margin-left: 17px;
+          }
+          #content{
+               .custom-row{
+                    padding: 15px;
+                    .common-col{
+                         max-width: 100%;
+                         margin-bottom: 10px;
+                         margin-right: 0px;
+                    }
+               }
+
+          }
+          .table-col{
+               .common-wrap{
+                    padding: 0px!important;
+                    .expired-btn{
+                      margin-left: 0px!important;
+                    }
+               }
+               padding-left: 15px!important;
+               .datapicker{
+                    max-width: 52%!important;
+                    input{
+                      margin-left: 0px!important;
+                    }
+               }
+               #transaction{
+                    thead{
+                         th{
+                              white-space: unset!important;
+                              padding-right: 5px!important;
+                         }
+                    }
+               }
+          }
      }
 }
 
@@ -187,6 +228,10 @@
           .top-title-button{
                .left{
                   margin-bottom: 15px;
+                  .table-head{
+                     padding-top: 20px!important;
+                     padding-bottom: 0px!important;
+                  }
                }
           }
           .dataTables_wrapper{
@@ -273,6 +318,46 @@
                     }
                }
           }
+          .dashboard-heading{
+               margin-left: 17px;
+          }
+          #content{
+               .custom-row{
+                    justify-content: space-between;
+                    padding: 15px;
+                    .common-col{
+                         max-width: 100%;
+                         margin-bottom: 10px;
+                         margin-right: 0px;
+                    }
+
+               }
+               .table-col{
+                    .common-wrap{
+                         padding: 0px!important;
+                         .expired-btn{
+                           margin-left: 0px;
+                         }
+                    }
+                    padding-left: 15px!important;
+                    .datapicker{
+                         max-width: 52%!important;
+                         input{
+                           margin-left: 0px!important;
+                         }
+                    }
+                    #transaction{
+                         thead{
+                              th{
+                                   white-space: unset!important;
+                                   padding-right: 17px!important;
+                              }
+                         }
+                    }
+
+               }
+
+          } 
      }
 }
 
@@ -317,6 +402,47 @@
                     }
                }
           }
+          .dashboard-heading{
+               margin-left: 17px;
+          }
+          #content{
+               .custom-row{
+                    justify-content: space-between;
+                    padding: 15px;
+                    .common-col{
+                         max-width: 48%;
+                         margin-bottom: 10px;
+                         margin-right: 0px;
+                    }
+               }
+          }
+          .table-head{
+               padding-top: 20px!important;
+               padding-bottom: 10px!important;
+          }
+          .table-col{
+               .common-wrap{
+                    padding: 0px!important;
+                    .expired-btn{
+                      margin-left: 0px!important;
+                    }
+               }
+               padding-left: 15px!important;
+               .datapicker{
+                    max-width: 52%!important;
+                    input{
+                      margin-left: 0px!important;
+                    }
+               }
+               #transaction{
+                    thead{
+                         th{
+                              white-space: unset!important;
+                              padding-right: 5px!important;
+                         }
+                    }
+               }
+          } 
      }
 }
 /* all large mobile (575 up to 768)*/
@@ -337,6 +463,35 @@
                          margin-top: 15px;
                     }
                }
+               .custom-row{
+                    justify-content: space-between;
+                    .common-col{
+                         max-width: 48%;
+                         margin-bottom: 10px;
+                         margin-right: 0px;
+                         flex: auto;
+                    }
+               }
+               .common-wrap{
+                    padding: 0px!important;
+                    .btn-group{
+                         margin-top: 20px;
+                         .expired-btn{
+                            margin-left: 0px!important;
+                         }
+                    }
+               }
+               .datapicker{
+                    max-width: 23%!important;
+                    input{
+                      margin-left: 0px!important;
+                      margin-top: 15px;
+                    }
+               }
+               .table-head{
+                    padding-top: 20px!important;
+                    padding-bottom: 0px!important;
+               }
           }
      }
 }
@@ -349,6 +504,18 @@
                // margin-left: 0px;
                margin-top: 70px;
                width: 100%;
+               .custom-wrap-p{
+                    padding-right: 0px!important;
+                    .datapicker{
+                         max-width: 27%!important;
+                         input{
+                           margin-left: 0px!important;
+                         }
+                    }
+               }
+               .table-head{
+                    padding-top: 10px!important
+               }
            }
            .full_content {
                margin-left: 0px !important;
@@ -374,6 +541,25 @@
                          white-space: unset!important;
                     }
                }
+              
+          }
+          .custom-row{
+               justify-content: space-between;
+               .common-col{
+                    max-width: 49%!important;
+                    margin-bottom: 10px;
+                    margin-right: 0px!important;
+                    flex: auto;
+               }
+          }
+          .common-wrap{
+               .btn-group{
+                    margin-top: 10px;
+                    .expired-btn{
+                       margin-left: 0px!important;
+
+                    }
+               }
           }
      }
      #sidebarCollapse{
@@ -384,6 +570,64 @@
                .top-pagination{
                     justify-content: center;
                     margin-top: 0px;
+               }
+          }
+     }
+}
+
+/*laptop devices 991 up devices */
+@media (min-width: 992px) and (max-width: 1199px) {
+   
+    body{
+          #content{
+               .custom-row{
+                   justify-content: space-between;
+                   .common-col{
+                      max-width: 24%!important;
+                      margin-bottom: 10px;
+                      margin-right: 0px!important;
+                      flex: auto;
+                    }
+               }
+               .custom-wrap-p{
+                    padding-right: 0px;
+                    .datapicker{
+                         max-width: 50% !important;
+                         justify-content: flex-end;
+                         input{
+                           margin-left: 0px!important;
+                           width: 23%;
+                         }
+                    }
+               }
+               .common-wrap{
+                    .btn-group{
+                         margin-top: 10px;
+                         .expired-btn{
+                            margin-left: 0px!important;
+     
+                         }
+                    }
+               }
+          }
+     }
+} 
+
+
+
+//xl laptop 1200 up to 1400
+@media (min-width: 1200px) and (max-width: 1440px) {
+     
+     body{
+          #content{
+               .custom-row{
+                   justify-content: space-between;
+                   .common-col{
+                      max-width: 24%!important;
+                      margin-bottom: 10px;
+                      margin-right: 0px!important;
+                      flex: auto;
+                    }
                }
           }
      }
