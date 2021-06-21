@@ -64,12 +64,18 @@
            </div>
         </div>
         <!-- graph -->
-        <div class="row">
-           <div class="col-12 col-md-6 col-xl-6 col-sm-12 mt-5 mb-4 white-bg">
-              <canvas id="myChart" width="49%" hight="500px"></canvas>
+        <div class="row graph-wrap-row ">
+           <div class="col-12 col-md-6 col-xl-6 col-sm-12 mt-5 mb-4 graph-common-1 white-bg ">
+              <div class="col-12 col-md-8 col-xl-8 col-sm-8 mt-1 left">
+                 <h5 class="table-head head-text">Total Subscriptions</h5>
+              </div>
+              <canvas id="myChart" width="50%" hight="500px"></canvas>
            </div>
-           <div class="col-12 col-md-6 col-xl-6 col-sm-12 mt-5 mb-4 white-bg">
-           <canvas id="userSession" width="49%" hight="500px"></canvas>
+           <div class="col-12 col-md-6 col-xl-6 col-sm-12 mt-5 mb-4 graph-common-2 white-bg">
+               <div class="col-12 col-md-8 col-xl-8 col-sm-8 mt-1 left">
+                  <h5 class="table-head head-text">User Session</h5>
+                </div>
+             <canvas id="userSession" width="50%" hight="500px"></canvas>
            </div>
         </div>
 
