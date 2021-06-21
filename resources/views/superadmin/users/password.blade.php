@@ -20,7 +20,16 @@
     </div>
     <div class="form-group row">
       <div class="col-12 save-btn">
-        <button  type="button" class="btn btn-outline-primary user-password-update" data-id="{{ $user->id }}" data-url="{{ route('superadmin-user-setpassword', $user->id) }}"><i class="far fa-save save-icon"></i>Save Password</button>
+        @if(isset($user->id))
+          <button  type="button" class="btn btn-outline-primary user-password-update" data-id="{{ $user->id }}" data-url="{{ route('superadmin-user-setpassword', $user->id) }}"><i class="far fa-save save-icon"></i>Save Password</button>
+        @else
+          @foreach($user as $row)
+            <input type="hidden" name="user_ids[]" value="{{$row->id}}">
+          @endforeach
+          <input type="hidden" name="role_id" value="{{$user[0]->role_id}}">
+          <button  type="button" class="btn btn-outline-primary user-password-update" data-id="" data-url="{{ route('superadmin-user-setpassword', $user[0]->id) }}"><i class="far fa-save save-icon"></i>Save Password</button>
+        @endif
+
       </div>
     </div>
   </form>

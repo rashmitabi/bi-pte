@@ -29,7 +29,7 @@
               <table id="users" class="table table-striped table-bordered dt-responsive nowrap" style="width:100%">
                 <thead>
                     <tr>
-                        <th> <input type="checkbox" class="form-check-input position-relative ml-0" id="exampleCheck1"> </th>
+                        <th> <input type="checkbox" class="form-check-input position-relative ml-0" id="checkedAllInstitute"> </th>
                         <th>Sr No</th>
                         <th>Institute Name</th>
                         <th>Email</th>
@@ -43,7 +43,7 @@
               <table id="students" class="table table-striped table-bordered dt-responsive nowrap" style="width:100%">
                 <thead>
                     <tr>
-                        <th> <input type="checkbox" class="form-check-input position-relative ml-0" id="exampleCheck1"> </th>
+                        <th> <input type="checkbox" class="form-check-input position-relative ml-0" id="checkedAllStudent"> </th>
                         <th>Sr No</th>
                         <th>Full Name</th>
                         <th>Email</th>
@@ -155,167 +155,167 @@
                   <label class="form-check-label" for="example4">Test 04</label>
                </div>
                <div class="form-check  form-check-inline ">
-                  <input type="checkbox" class="form-check-input" id="Check5">
+                  <input type="checkbox" class="form-check-input" >
                   <label class="form-check-label" for="example5">Test 05</label>
                </div>
                <div class="form-check  form-check-inline ">
-                  <input type="checkbox" class="form-check-input" id="Check5">
+                  <input type="checkbox" class="form-check-input" >
                   <label class="form-check-label" for="example5">Test 06</label>
                </div>
                <div class="form-check  form-check-inline ">
-                  <input type="checkbox" class="form-check-input" id="Check5">
+                  <input type="checkbox" class="form-check-input" >
                   <label class="form-check-label" for="example5">Test 07</label>
                </div>
                <div class="form-check  form-check-inline ">
-                  <input type="checkbox" class="form-check-input" id="Check5">
+                  <input type="checkbox" class="form-check-input" >
                   <label class="form-check-label" for="example5">Test 08</label>
                </div>
                <div class="form-check  form-check-inline ">
-                  <input type="checkbox" class="form-check-input" id="Check5">
+                  <input type="checkbox" class="form-check-input" >
                   <label class="form-check-label" for="example5">Test 09</label>
                </div>
                <div class="form-check  form-check-inline ">
-                  <input type="checkbox" class="form-check-input" id="Check5">
+                  <input type="checkbox" class="form-check-input" >
                   <label class="form-check-label" for="example5">Test 10</label>
                </div>
                <div class="form-check  form-check-inline ">
-                  <input type="checkbox" class="form-check-input" id="Check5">
+                  <input type="checkbox" class="form-check-input" >
                   <label class="form-check-label" for="example5">Test 11</label>
                </div>
                <div class="form-check  form-check-inline ">
-                  <input type="checkbox" class="form-check-input" id="Check5">
+                  <input type="checkbox" class="form-check-input" >
                   <label class="form-check-label" for="example5">Test 12</label>
                </div>
                <div class="form-check  form-check-inline ">
-                  <input type="checkbox" class="form-check-input" id="Check5">
+                  <input type="checkbox" class="form-check-input" >
                   <label class="form-check-label" for="example5">Test 13</label>
                </div>
                <div class="form-check  form-check-inline ">
-                  <input type="checkbox" class="form-check-input" id="Check5">
+                  <input type="checkbox" class="form-check-input" >
                   <label class="form-check-label" for="example5">Test 14</label>
                </div>
                <div class="form-check  form-check-inline ">
-                  <input type="checkbox" class="form-check-input" id="Check5">
+                  <input type="checkbox" class="form-check-input" >
                   <label class="form-check-label" for="example5">Test 15</label>
                </div>
                <div class="form-check  form-check-inline ">
-                  <input type="checkbox" class="form-check-input" id="Check5">
+                  <input type="checkbox" class="form-check-input" >
                   <label class="form-check-label" for="example5">Test 16</label>
                </div>
                <div class="form-check  form-check-inline ">
-                  <input type="checkbox" class="form-check-input" id="Check5">
+                  <input type="checkbox" class="form-check-input" >
                   <label class="form-check-label" for="example5">Test 17</label>
                </div>
                <div class="form-check  form-check-inline ">
-                  <input type="checkbox" class="form-check-input" id="Check5">
+                  <input type="checkbox" class="form-check-input" >
                   <label class="form-check-label" for="example5">Test 18</label>
                </div>
                <div class="form-check  form-check-inline ">
-                  <input type="checkbox" class="form-check-input" id="Check5">
+                  <input type="checkbox" class="form-check-input" >
                   <label class="form-check-label" for="example5">Test 19</label>
                </div>
                <div class="form-check  form-check-inline ">
-                  <input type="checkbox" class="form-check-input" id="Check5">
+                  <input type="checkbox" class="form-check-input" >
                   <label class="form-check-label" for="example5">Test 20</label>
                </div>
                <div class="form-check  form-check-inline ">
-                  <input type="checkbox" class="form-check-input" id="Check5">
+                  <input type="checkbox" class="form-check-input" >
                   <label class="form-check-label" for="example5">Test 21</label>
                </div>
                <div class="form-check  form-check-inline ">
-                  <input type="checkbox" class="form-check-input" id="Check5">
+                  <input type="checkbox" class="form-check-input" >
                   <label class="form-check-label" for="example5">Test 22</label>
                </div>
                <div class="form-check  form-check-inline ">
-                  <input type="checkbox" class="form-check-input" id="Check5">
+                  <input type="checkbox" class="form-check-input" >
                   <label class="form-check-label" for="example5">Test 23</label>
                </div>
                <div class="form-check  form-check-inline ">
-                  <input type="checkbox" class="form-check-input" id="Check5">
+                  <input type="checkbox" class="form-check-input" >
                   <label class="form-check-label" for="example5">Test 24</label>
                </div>
                <div class="form-check  form-check-inline ">
-                  <input type="checkbox" class="form-check-input" id="Check5">
+                  <input type="checkbox" class="form-check-input" >
                   <label class="form-check-label" for="example5">Test 25</label>
                </div>
                <div class="form-check  form-check-inline ">
-                  <input type="checkbox" class="form-check-input" id="Check5">
+                  <input type="checkbox" class="form-check-input" >
                   <label class="form-check-label" for="example5">Test 26</label>
                </div>
                <div class="form-check  form-check-inline ">
-                  <input type="checkbox" class="form-check-input" id="Check5">
+                  <input type="checkbox" class="form-check-input" >
                   <label class="form-check-label" for="example5">Test 27</label>
                </div>
                <div class="form-check  form-check-inline ">
-                  <input type="checkbox" class="form-check-input" id="Check5">
+                  <input type="checkbox" class="form-check-input" >
                   <label class="form-check-label" for="example5">Test 28</label>
                </div>
                <div class="form-check  form-check-inline ">
-                  <input type="checkbox" class="form-check-input" id="Check5">
+                  <input type="checkbox" class="form-check-input" >
                   <label class="form-check-label" for="example5">Test 29</label>
                </div>
                <div class="form-check  form-check-inline ">
-                  <input type="checkbox" class="form-check-input" id="Check5">
+                  <input type="checkbox" class="form-check-input" >
                   <label class="form-check-label" for="example5">Test 30</label>
                </div>
                <div class="form-check  form-check-inline ">
-                  <input type="checkbox" class="form-check-input" id="Check5">
+                  <input type="checkbox" class="form-check-input" >
                   <label class="form-check-label" for="example5">Test 31</label>
                </div>
                <div class="form-check  form-check-inline ">
-                  <input type="checkbox" class="form-check-input" id="Check5">
+                  <input type="checkbox" class="form-check-input" >
                   <label class="form-check-label" for="example5">Test 32</label>
                </div>
                <div class="form-check  form-check-inline ">
-                  <input type="checkbox" class="form-check-input" id="Check5">
+                  <input type="checkbox" class="form-check-input" >
                   <label class="form-check-label" for="example5">Test 33</label>
                </div>
                <div class="form-check  form-check-inline ">
-                  <input type="checkbox" class="form-check-input" id="Check5">
+                  <input type="checkbox" class="form-check-input" >
                   <label class="form-check-label" for="example5">Test 34</label>
                </div>
                <div class="form-check  form-check-inline ">
-                  <input type="checkbox" class="form-check-input" id="Check5">
+                  <input type="checkbox" class="form-check-input" >
                   <label class="form-check-label" for="example5">Test 35</label>
                </div>
                <div class="form-check  form-check-inline ">
-                  <input type="checkbox" class="form-check-input" id="Check5">
+                  <input type="checkbox" class="form-check-input" >
                   <label class="form-check-label" for="example5">Test 36</label>
                </div>
                <div class="form-check  form-check-inline ">
-                  <input type="checkbox" class="form-check-input" id="Check5">
+                  <input type="checkbox" class="form-check-input" >
                   <label class="form-check-label" for="example5">Test 37</label>
                </div>
                <div class="form-check  form-check-inline ">
-                  <input type="checkbox" class="form-check-input" id="Check5">
+                  <input type="checkbox" class="form-check-input" >
                   <label class="form-check-label" for="example5">Test 38</label>
                </div>
                <div class="form-check  form-check-inline ">
-                  <input type="checkbox" class="form-check-input" id="Check5">
+                  <input type="checkbox" class="form-check-input" >
                   <label class="form-check-label" for="example5">Test 39</label>
                </div>
                <div class="form-check  form-check-inline ">
-                  <input type="checkbox" class="form-check-input" id="Check5">
+                  <input type="checkbox" class="form-check-input" >
                   <label class="form-check-label" for="example5">Test 40</label>
                </div>
                <div class="form-check  form-check-inline ">
-                  <input type="checkbox" class="form-check-input" id="Check5">
+                  <input type="checkbox" class="form-check-input" >
                   <label class="form-check-label" for="example5">Test 41</label>
                </div>
                <div class="form-check  form-check-inline ">
-                  <input type="checkbox" class="form-check-input" id="Check5">
+                  <input type="checkbox" class="form-check-input" >
                   <label class="form-check-label" for="example5">Test 42</label>
                </div>
                <div class="form-check  form-check-inline ">
-                  <input type="checkbox" class="form-check-input" id="Check5">
+                  <input type="checkbox" class="form-check-input" >
                   <label class="form-check-label" for="example5">Test 43</label>
                </div>
                <div class="form-check  form-check-inline ">
-                  <input type="checkbox" class="form-check-input" id="Check5">
+                  <input type="checkbox" class="form-check-input" >
                   <label class="form-check-label" for="example5">Test 44</label>
                </div>
                <div class="form-check  form-check-inline ">
-                  <input type="checkbox" class="form-check-input" id="Check5">
+                  <input type="checkbox" class="form-check-input" >
                   <label class="form-check-label" for="example5">Test 45</label>
                </div>
                <div class="form-group row">
@@ -347,6 +347,8 @@
       </div>
     </div>
     
+    
+
     <!-- users detail modal  -->
     <div class="modal fade" id="userdetail" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered w-70">
@@ -460,6 +462,9 @@
 <script type="text/javascript" defer>
   var url_users = "{{ route('users.index', 'type=I') }}";
   var url_students = "{{ route('users.index', 'type=S') }}";
+  var password_url_route = "{{ route('superadmin-user-showpassword', 'all') }}";
+  var change_status_url_route = "{{ route('superadmin-user-changestatus', 'all') }}";
+ 
 </script>
 <script type="text/javascript" src="{{ asset('assets/js/users.js') }}" defer></script>
 @endsection
