@@ -88,6 +88,14 @@
                     margin-top: 15px;
                }
           }
+          #module{
+               thead{
+                    th{
+                         white-space: unset!important;
+                         padding-right: 27px!important;
+                    }
+               } 
+          }
           #prediction{
                thead{
                    th{
@@ -267,6 +275,14 @@
                          padding-right: 8px; 
                     }
                }
+          }
+          #module{
+               thead{
+                    th{
+                         white-space: unset!important;
+                         padding-right: 20px!important;
+                    }
+               } 
           }
           #subjects{
                thead{
@@ -591,6 +607,13 @@
                }
               
           }
+          #device{
+               thead{
+                    th{
+                         padding-right: 20px!important;
+                    }
+               }
+          }
           #prediction{
                thead{
                    th{
@@ -661,6 +684,13 @@
                          input{
                            margin-left: 0px!important;
                            width: 23%;
+                         }
+                    }
+               }
+               #device{
+                    thead{
+                         th{
+                              padding-right: 24px!important;
                          }
                     }
                }

@@ -73,6 +73,10 @@
             justify-content: center;
     margin-top: 15px;
   }
+  body #module thead th {
+    white-space: unset !important;
+    padding-right: 27px !important;
+  }
   body #prediction thead th {
     white-space: unset !important;
     padding-right: 7px !important;
@@ -208,6 +212,10 @@
   }
   body #subscription thead th {
     padding-right: 8px;
+  }
+  body #module thead th {
+    white-space: unset !important;
+    padding-right: 20px !important;
   }
   body #subjects thead th {
     padding-right: 18px !important;
@@ -475,6 +483,9 @@
   body #email_wrapper thead th {
     white-space: unset !important;
   }
+  body #device thead th {
+    padding-right: 20px !important;
+  }
   body #prediction thead th {
     white-space: unset !important;
     padding-right: 21px !important;
@@ -539,6 +550,9 @@
   body #content .custom-wrap-p .datapicker input {
     margin-left: 0px !important;
     width: 23%;
+  }
+  body #content #device thead th {
+    padding-right: 24px !important;
   }
   body #content .common-wrap .btn-group {
     margin-top: 10px;
