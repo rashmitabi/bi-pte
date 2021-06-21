@@ -189,7 +189,7 @@
           #content{
                .custom-row{
                     padding: 15px;
-                    .common-col{
+                    .common-wrap-col{
                          max-width: 100%;
                          margin-bottom: 10px;
                          margin-right: 0px;
@@ -219,6 +219,17 @@
                          }
                     }
                }
+               
+          }
+          .graph-wrap-row{
+               padding:15px;
+               .graph-common-1{
+                    margin-top: 0px!important;
+               }
+               .graph-common-2{
+                    margin-top: 0px!important;
+               }
+
           }
      }
 }
@@ -365,7 +376,7 @@
                .custom-row{
                     justify-content: space-between;
                     padding: 15px;
-                    .common-col{
+                    .common-wrap-col{
                          max-width: 100%;
                          margin-bottom: 10px;
                          margin-right: 0px;
@@ -393,6 +404,16 @@
                                    padding-right: 17px!important;
                               }
                          }
+                    }
+
+               }
+               .graph-wrap-row{
+                    padding:15px;
+                    .graph-common-1{
+                         margin-top: 0px!important;
+                    }
+                    .graph-common-2{
+                         margin-top: 0px!important;
                     }
 
                }
@@ -465,7 +486,7 @@
                .custom-row{
                     justify-content: space-between;
                     padding: 15px;
-                    .common-col{
+                    .common-wrap-col{
                          max-width: 48%;
                          margin-bottom: 10px;
                          margin-right: 0px;
@@ -498,6 +519,16 @@
                          }
                     }
                }
+          }
+          .graph-wrap-row{
+               padding:15px;
+               .graph-common-1{
+                    margin-top: 0px!important;
+               }
+               .graph-common-2{
+                    margin-top: 0px!important;
+               }
+
           } 
      }
 }
@@ -521,7 +552,7 @@
                }
                .custom-row{
                     justify-content: space-between;
-                    .common-col{
+                    .common-wrap-col{
                          max-width: 48%;
                          margin-bottom: 10px;
                          margin-right: 0px;
@@ -632,7 +663,7 @@
           }
           .custom-row{
                justify-content: space-between;
-               .common-col{
+               .common-wrap-col{
                     max-width: 49%!important;
                     margin-bottom: 10px;
                     margin-right: 0px!important;
@@ -647,6 +678,16 @@
 
                     }
                }
+          }
+     }
+     .graph-wrap-row{
+          .graph-common-1{
+               max-width: 348px!important;
+               margin-right: 15px;
+          }
+          .graph-common-2{
+               margin-right: 0px;
+               max-width: 348px!important;
           }
      }
      #sidebarCollapse{
@@ -669,7 +710,7 @@
           #content{
                .custom-row{
                    justify-content: space-between;
-                   .common-col{
+                   .common-wrap-col{
                       max-width: 24%!important;
                       margin-bottom: 10px;
                       margin-right: 0px!important;
@@ -694,6 +735,17 @@
                          }
                     }
                }
+               .graph-wrap-row{
+                    .graph-common-1{
+                         max-width: 443px!important;
+                         margin-right: 15px;
+                    }
+                    .graph-common-2{
+                         margin-right: 0px;
+                         max-width: 443px!important;
+                    }
+          
+               }
                .common-wrap{
                     .btn-group{
                          margin-top: 10px;
@@ -703,6 +755,7 @@
                          }
                     }
                }
+
           }
      }
 } 
@@ -716,7 +769,7 @@
           #content{
                .custom-row{
                    justify-content: space-between;
-                   .common-col{
+                   .common-wrap-col{
                       max-width: 24%!important;
                       margin-bottom: 10px;
                       margin-right: 0px!important;
