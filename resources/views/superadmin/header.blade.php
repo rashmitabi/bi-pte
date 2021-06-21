@@ -61,7 +61,7 @@
                   </div>
                </div>
             </div>
-            <div class="profile-user-wrap">
+            <div class="profile-user-wrap" id="profile-box">
                <a href="#" class="profile-name">
                   {{ Auth::user()->first_name }} {{ Auth::user()->last_name }} 
                   <i class="fas fa-chevron-down"></i> 
