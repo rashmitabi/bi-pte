@@ -48,7 +48,8 @@ class UsersController extends Controller
                     })
                     ->addColumn('action', function($row){
                         $btn = '<ul class="actions-btns">
-                                <li class="action"><a href="#"><i class="fas fa-user"></i></a></li>
+                                <li class="action" data-toggle="modal" data-target="#userdetail12"><a href="javascript:void(0);" class="user-show" data-id="'.$row->id .'" data-url="'.route('users.show', $row->id).'"><i class="fas fa-user"></i></a></li>
+
                                     <li class="action" data-toggle="modal" data-target="#editdetail"><a href="javascript:void(0);" class="user-edit" data-id="'.$row->id .'" data-url="'.route('users.edit', $row->id).'"><i class="fas fa-pen"></i></a></li>
 
                                     <li class="action bg-danger"><a href="#" class="delete_modal" data-toggle="modal" data-target="#delete_modal"  data-url="'.route('users.destroy', $row->id).'" data-id="'.$row->id.'"><i class="fas fa-trash" ></i></a></li>
@@ -57,7 +58,8 @@ class UsersController extends Controller
 
                                     <li class="action" data-toggle="modal" data-target="#setpassword"><a href="javascript:void(0);" class="user-setpassword" data-id="'.$row->id .'" data-url="'.route('superadmin-user-showpassword', $row->id).'"><i class="fas fa-unlock-alt"></i></a></li>
 
-                                    <li class="action"><a href="#"><i class="fas fa-clipboard-check"></i></a></li>
+                                    <li class="action" class="action" data-toggle="modal" data-target="#mocktest"><a href="#"><i class="fas fa-clipboard-check"></i></a></li>
+                                    <li class="action" class="action" data-toggle="modal" data-target="#practisetest"><a href="#"><i class="fas fa-clipboard-check"></i></a></li>
                                 </ul>';
                         return $btn;
                     })
@@ -92,7 +94,7 @@ class UsersController extends Controller
                     })
                     ->addColumn('action', function($row){
                         $btn = '<ul class="actions-btns">
-                                <li class="action" data-toggle="modal" data-target="#mocktest"><a href="#"><i class="fas fa-user"></i></a></li>
+                                <li class="action" data-toggle="modal" data-target="#userdetail12"><a href="javascript:void(0);" class="user-show" data-id="'.$row->id .'" data-url="'.route('users.show', $row->id).'"><i class="fas fa-user"></i></a></li>
 
                                     <li class="action" data-toggle="modal" data-target="#editdetail"><a href="javascript:void(0);" class="user-edit" data-id="'.$row->id .'" data-url="'.route('users.edit', $row->id).'"><i class="fas fa-pen"></i></a></li>
 
@@ -101,6 +103,9 @@ class UsersController extends Controller
                                     <li class="action shield '.(($row->status != "P")? (($row->status == "A") ? "green" : "bg-danger"):'').'"><a href="'.route('superadmin-user-changestatus', $row->id ).'"><img src="'.asset('assets/images/icons/blocked.svg').'" class=""></a></li>
 
                                     <li class="action" data-toggle="modal" data-target="#setpassword"><a href="javascript:void(0);" class="user-setpassword" data-id="'.$row->id .'" data-url="'.route('superadmin-user-showpassword', $row->id).'"><i class="fas fa-unlock-alt"></i></a></li>
+
+                                    <li class="action" class="action" data-toggle="modal" data-target="#mocktest"><a href="#"><i class="fas fa-clipboard-check"></i></a></li>
+                                    <li class="action" class="action" data-toggle="modal" data-target="#practisetest"><a href="#"><i class="fas fa-clipboard-check"></i></a></li>
                                 </ul>';
                         return $btn;
                     })
@@ -149,9 +154,29 @@ class UsersController extends Controller
                 'scitizen'=>'required',
                 'sresidence'=>'required',
                 'svalidity'=>'required',
-                'simage'=>'nullable'
+                'simage'=>'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
             ]);
             $input  = \Arr::except($request->all(),array('_token'));
+            // $imageName = time().'.'.$request->simage->extension();  
+            // $request->image->move(public_path('images'), $imageName);
+            // $fileNameToStore = $imageName;
+            // dd($fi);
+            $fileNameToStore = '';
+            // if ($request->hasFile('simage')) {
+            //     $filenameWithExt = $request->file('simage')->getClientOriginalName ();
+            //     // Get Filename
+            //     $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            //     // Get just Extension
+            //     $extension = $request->file('simage')->getClientOriginalExtension();
+            //     // Filename To store
+            //     $fileNameToStore = $filename. '_'. time().'.'.$extension;
+            //     //Upload Image
+            //     $request->image->move(public_path('assets/images/profile'), $fileNameToStore);
+            //     // $path = $request->file('simage')->storeAs('public/assets/images/profile', $fileNameToStore);
+            // } else { // Else add a dummy image
+            //     $fileNameToStore = '';
+            // }
+            // dd($fileNameToStore);
             $user_input = array(
                 'role_id' => $input['type'],
                 'parent_user_id' => 0,
@@ -162,7 +187,7 @@ class UsersController extends Controller
                 'password' => $input['password'],
                 'mobile_no' => $input['mobileno'],
                 'date_of_birth' => $input['dob'],
-                'profile_image' => '',
+                'profile_image' => $fileNameToStore,
                 'gender' => $input['gender'],
                 'country_citizen' => $input['scitizen'],
                 'country_residence' => $input['sresidence'],
@@ -261,7 +286,14 @@ class UsersController extends Controller
      */
     public function show($id)
     {
-       
+       $roles = Roles::all();
+       $user = User::with(['institue'])->find($id);
+       $html_user = view($this->moduleTitleP.'show', compact('roles','user'))->render();
+
+        return response()->json([
+            'success' => 1,
+            'html'=>$html_user    
+        ]);
     }
 
     /**
@@ -298,8 +330,8 @@ class UsersController extends Controller
                 'fname' => 'required',
                 'lname' => 'required',
                 'uname'=>'required',
-                'password'=>'required',
-                'confirm_password'=>'required|same:password',
+                'password'=>'',
+                'confirm_password'=>'same:password',
                 'semail'=>'required',
                 'dob' =>'required',
                 'mobileno' =>'required',
