@@ -54,26 +54,6 @@
               </div>
             </div>
             <div class="form-group row">
-              <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Password</label>
-              <div class="col-12 col-md-7 col-xl-7 col-sm-12">
-                <input type="password" name="password" class="form-control password" placeholder="Password">
-                <i class="far fa-eye-slash lock-icon password-icon" onclick="password()"></i>
-                @if($errors->has('password'))
-                  <span class="error-msg">{{$errors->first('password')}}</span>
-                @endif
-              </div>
-            </div>
-            <div class="form-group row">
-              <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Confirm Password</label>
-              <div class="col-12 col-md-7 col-xl-7 col-sm-12">
-                <input type="password" name="confirm_password" class="form-control confirm_password" placeholder="Confirm Password">
-                <i class="far fa-eye-slash lock-icon cpassword-icon" onclick="confirm_password()"></i>
-                @if($errors->has('confirm_password'))
-                  <span class="error-msg">{{$errors->first('confirm_password')}}</span>
-                @endif
-              </div>
-            </div>
-            <div class="form-group row">
               <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Email</label>
               <div class="col-12 col-md-7 col-xl-7 col-sm-12">
                 <input type="email" name="semail" value="{{old('semail')}}" class="form-control " placeholder="Enter Email id">
@@ -204,26 +184,6 @@
               </div>
             </div>
             <div class="form-group row">
-              <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Password</label>
-              <div class="col-12 col-md-7 col-xl-7 col-sm-12">
-                <input type="password" name="ipassword" class="form-control password" placeholder="**********">
-                <i class="far fa-eye-slash lock-icon password-icon" onclick="password()"></i>
-                @if($errors->has('ipassword'))
-                  <span class="error-msg">{{$errors->first('ipassword')}}</span>
-                @endif
-              </div>
-            </div>
-            <div class="form-group row">
-              <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Confirm Password</label>
-              <div class="col-12 col-md-7 col-xl-7 col-sm-12">
-                <input type="password" name="iconfirm_password" class="form-control cpassword-icon" placeholder="**********">
-                <i class="far fa-eye-slash lock-icon cpassword-icon" onclick="password()"></i>
-                @if($errors->has('iconfirm_password'))
-                  <span class="error-msg">{{$errors->first('iconfirm_password')}}</span>
-                @endif
-              </div>
-            </div>
-            <div class="form-group row">
               <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Country Phone Code</label>
               <div class="col-12 col-md-7 col-xl-7 col-sm-12">
                 <input type="text" name="country_code" value="{{ old('country_code') }}" class="form-control " placeholder="Enter Country Phone Code">
@@ -281,7 +241,7 @@
             <div class="form-group row">
               <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Welcome Message</label>
               <div class="col-12 col-md-7 col-xl-7 col-sm-12">
-                <textarea name="welcome_msg" value="{{ old('welcome_msg') }}" class="form-control"  rows="3">Enter Welcome Message</textarea>
+                <textarea name="welcome_msg" class="form-control"  rows="3" placeholder="Enter Welcome Message">{{ old('welcome_msg') }}</textarea>
                 @if($errors->has('welcome_msg'))
                   <span class="error-msg">{{$errors->first('welcome_msg')}}</span>
                 @endif
@@ -333,7 +293,7 @@
               <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Show Super Admin Videos</label>
               <div class="col-12 col-md-7 col-xl-7 col-sm-12">
                 <label for="rdo-4" class="btn-radio">
-                  <input type="radio" id="rdo-4" class="card_payment" name="admin_video" value="Y" checked="true">
+                  <input type="radio" id="rdo-4" class="card_payment" name="admin_video" value="Y"  {{ (old('admin_video') == 'Y')?'checked':'' }}>
                   <svg width="20px" height="20px" viewBox="0 0 20 20">
                     <circle cx="10" cy="10" r="9"></circle>
                     <path d="M10,7 C8.34314575,7 7,8.34314575 7,10 C7,11.6568542 8.34314575,13 10,13 C11.6568542,13 13,11.6568542 13,10 C13,8.34314575 11.6568542,7 10,7 Z" class="inner"></path>
@@ -342,7 +302,7 @@
                   <span class="col-blue fw-500">Yes</span>
                 </label>
                 <label for="rdo-5" class="btn-radio">
-                  <input type="radio" id="rdo-5" class="card_payment" name="admin_video" value="N">
+                  <input type="radio" id="rdo-5" class="card_payment" name="admin_video" value="N" checked="true" {{ (old('admin_video') == 'N')?'checked':'' }}>
                   <svg width="20px" height="20px" viewBox="0 0 20 20">
                     <circle cx="10" cy="10" r="9"></circle>
                     <path d="M10,7 C8.34314575,7 7,8.34314575 7,10 C7,11.6568542 8.34314575,13 10,13 C11.6568542,13 13,11.6568542 13,10 C13,8.34314575 11.6568542,7 10,7 Z" class="inner"></path>
@@ -356,7 +316,7 @@
               <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Show Super Admin Predictions Files</label>
               <div class="col-5">
                 <label for="rdo-3" class="btn-radio">
-                  <input type="radio" id="rdo-3" class="card_payment" name="admin_prediction_file" value="Y" checked="true">
+                  <input type="radio" id="rdo-3" class="card_payment" name="admin_prediction_file" value="Y"  {{ (old('admin_prediction_file') == 'Y')?'checked':'' }}>
                   <svg width="20px" height="20px" viewBox="0 0 20 20">
                     <circle cx="10" cy="10" r="9"></circle>
                     <path d="M10,7 C8.34314575,7 7,8.34314575 7,10 C7,11.6568542 8.34314575,13 10,13 C11.6568542,13 13,11.6568542 13,10 C13,8.34314575 11.6568542,7 10,7 Z" class="inner"></path>
@@ -365,7 +325,7 @@
                   <span class="col-blue fw-500">Yes</span>
                 </label>
                 <label for="rdo-6" class="btn-radio">
-                  <input type="radio" id="rdo-6" class="card_payment" name="admin_prediction_file" value="N">
+                  <input type="radio" id="rdo-6" class="card_payment" name="admin_prediction_file" value="N" checked="true" {{ (old('admin_prediction_file') == 'N')?'checked':'' }}>
                   <svg width="20px" height="20px" viewBox="0 0 20 20">
                     <circle cx="10" cy="10" r="9"></circle>
                     <path d="M10,7 C8.34314575,7 7,8.34314575 7,10 C7,11.6568542 8.34314575,13 10,13 C11.6568542,13 13,11.6568542 13,10 C13,8.34314575 11.6568542,7 10,7 Z" class="inner"></path>
@@ -379,7 +339,7 @@
               <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Show Super Admin Practice Questions</label>
               <div class="col-12 col-md-7 col-xl-7 col-sm-12">
                 <label for="rdo-2" class="btn-radio">
-                  <input type="radio" id="rdo-2" class="card_payment" name="admin_practice_question" value="Y" checked="true">
+                  <input type="radio" id="rdo-2" class="card_payment" name="admin_practice_question" value="Y"  {{ (old('admin_practice_question') == 'Y')?'checked':'' }}>
                   <svg width="20px" height="20px" viewBox="0 0 20 20">
                     <circle cx="10" cy="10" r="9"></circle>
                     <path d="M10,7 C8.34314575,7 7,8.34314575 7,10 C7,11.6568542 8.34314575,13 10,13 C11.6568542,13 13,11.6568542 13,10 C13,8.34314575 11.6568542,7 10,7 Z" class="inner"></path>
@@ -388,7 +348,7 @@
                   <span class="col-blue fw-500">Yes</span>
                 </label>
                 <label for="rdo-7" class="btn-radio">
-                  <input type="radio" id="rdo-7" class="card_payment" name="admin_practice_question" value="N">
+                  <input type="radio" id="rdo-7" class="card_payment" name="admin_practice_question" value="N" checked="true" {{ (old('admin_practice_question') == 'N')?'checked':'' }}>
                   <svg width="20px" height="20px" viewBox="0 0 20 20">
                     <circle cx="10" cy="10" r="9"></circle>
                     <path d="M10,7 C8.34314575,7 7,8.34314575 7,10 C7,11.6568542 8.34314575,13 10,13 C11.6568542,13 13,11.6568542 13,10 C13,8.34314575 11.6568542,7 10,7 Z" class="inner"></path>
@@ -402,7 +362,7 @@
               <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Show Super Admin Tests</label>
               <div class="col-12 col-md-7 col-xl-7 col-sm-12">
                 <label for="rdo-1" class="btn-radio">
-                  <input type="radio" id="rdo-1" class="card_payment" name="admin_test" value="Y" checked="true">
+                  <input type="radio" id="rdo-1" class="card_payment" name="admin_test" value="Y"  {{ (old('admin_test') == 'Y')?'checked':'' }}>
                   <svg width="20px" height="20px" viewBox="0 0 20 20">
                     <circle cx="10" cy="10" r="9"></circle>
                     <path d="M10,7 C8.34314575,7 7,8.34314575 7,10 C7,11.6568542 8.34314575,13 10,13 C11.6568542,13 13,11.6568542 13,10 C13,8.34314575 11.6568542,7 10,7 Z" class="inner"></path>
@@ -411,7 +371,7 @@
                   <span class="col-blue fw-500">Yes</span>
                 </label>
                 <label for="rdo-10" class="btn-radio">
-                  <input type="radio" id="rdo-10" class="card_payment" name="admin_test" value="N">
+                  <input type="radio" id="rdo-10" class="card_payment" name="admin_test" value="N" checked="true" {{ (old('admin_test') == 'N')?'checked':'' }}>
                   <svg width="20px" height="20px" viewBox="0 0 20 20">
                     <circle cx="10" cy="10" r="9"></circle>
                     <path d="M10,7 C8.34314575,7 7,8.34314575 7,10 C7,11.6568542 8.34314575,13 10,13 C11.6568542,13 13,11.6568542 13,10 C13,8.34314575 11.6568542,7 10,7 Z" class="inner"></path>

@@ -141,42 +141,22 @@ class UsersController extends Controller
         if($type == 3){
             $request->validate([
                 'type'=>'required',
-                'fname' => 'required',
-                'lname' => 'required',
-                'uname'=>'required|unique:users,name',
-                'password'=>'required',
-                'confirm_password'=>'required|same:password',
-                'semail'=>'required|email|unique:users,email',
-                'dob' =>'required',
-                'mobileno' =>'required',
+                'fname' => 'required|min:3|max:100',
+                'lname' => 'required|min:3|max:100',
+                'uname'=>'required|unique:users,name|max:255',
+                'semail'=>'required|email|unique:users,email|max:255',
+                'dob' =>'required|before:18 years ago',
+                'mobileno' =>'required|max:20',
                 'sstatus'=>'required|in:P,A,R',
                 'gender'=>'required|in:M,F',
-                'scitizen'=>'required',
-                'sresidence'=>'required',
-                'svalidity'=>'required',
-                'simage'=>'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+                'scitizen'=>'required|min:2|max:255',
+                'sresidence'=>'required|min:2|max:255',
+                'svalidity'=>'required|after:' . date('Y-m-d'),
+                'simage'=>'nullable|image|mimes:jpeg,png,jpg|max:2048'
             ]);
             $input  = \Arr::except($request->all(),array('_token'));
-            // $imageName = time().'.'.$request->simage->extension();  
-            // $request->image->move(public_path('images'), $imageName);
-            // $fileNameToStore = $imageName;
-            // dd($fi);
             $fileNameToStore = '';
-            // if ($request->hasFile('simage')) {
-            //     $filenameWithExt = $request->file('simage')->getClientOriginalName ();
-            //     // Get Filename
-            //     $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-            //     // Get just Extension
-            //     $extension = $request->file('simage')->getClientOriginalExtension();
-            //     // Filename To store
-            //     $fileNameToStore = $filename. '_'. time().'.'.$extension;
-            //     //Upload Image
-            //     $request->image->move(public_path('assets/images/profile'), $fileNameToStore);
-            //     // $path = $request->file('simage')->storeAs('public/assets/images/profile', $fileNameToStore);
-            // } else { // Else add a dummy image
-            //     $fileNameToStore = '';
-            // }
-            // dd($fileNameToStore);
+            
             $user_input = array(
                 'role_id' => $input['type'],
                 'parent_user_id' => 0,
@@ -184,7 +164,6 @@ class UsersController extends Controller
                 'last_name' => $input['lname'],
                 'name' => $input['uname'],
                 'email' => $input['semail'],
-                'password' => $input['password'],
                 'mobile_no' => $input['mobileno'],
                 'date_of_birth' => $input['dob'],
                 'profile_image' => $fileNameToStore,
@@ -202,22 +181,20 @@ class UsersController extends Controller
 
             $request->validate([
                 'type'=>'required',
-                'iuname' => 'required|unique:users,name',
-                'iname'=>'required',
-                'iemail'=>'required|email|unique:users,email',
-                'ipassword'=>'required',
-                'iconfirm_password'=>'required',
+                'iuname' => 'required|unique:users,name|max:255',
+                'iname'=>'required|min:2|max:255',
+                'iemail'=>'required|email|unique:users,email|max:255',
                 'country_code'=>'required|max:5',
-                'phone_no' =>'required',
+                'phone_no' =>'required|max:20',
                 'status'=>'required|in:P,A,R',
                 'students_allowed' =>'required',
-                'subdomain' =>'required',
-                'domain'=>'required',
-                'welcome_msg'=>'required',
-                'city'=>'required',
+                'subdomain' =>'required|max:255',
+                'domain'=>'required|max:255',
+                'welcome_msg'=>'required|max:500',
+                'city'=>'required|min:2|max:255',
                 'logo'=>'nullable',
                 'banner'=>'nullable',
-                'validity'=>'required',
+                'validity'=>'required|after:' . date('Y-m-d'),
                 'admin_video'=>'required|in:Y,N',
                 'admin_prediction_file'=>'required|in:Y,N',
                 'admin_practice_question'=>'required|in:Y,N',
@@ -231,7 +208,6 @@ class UsersController extends Controller
                 // 'last_name' => '',
                 'name' => $input['iuname'],
                 'email' => $input['iemail'],
-                'password' => $input['password'],
                 'mobile_no' => $input['phone_no'],
                 // 'date_of_birth' => '',
                 'profile_image' => '',
@@ -327,18 +303,18 @@ class UsersController extends Controller
         if($type == 3){
             $request->validate([
                 'type'=>'required',
-                'fname' => 'required',
-                'lname' => 'required',
-                'uname'=>'required',
-                'semail'=>'required',
-                'dob' =>'required',
-                'mobileno' =>'required',
+                'fname' => 'required|min:3|max:100',
+                'lname' => 'required|min:3|max:100',
+                'uname'=>'required|unique:users,name,'.$id.'|max:255',
+                'semail'=>'required|email|unique:users,email,'.$id.'|max:255',
+                'dob' =>'required|before:18 years ago',
+                'mobileno' =>'required|max:20',
                 'sstatus'=>'required|in:P,A,R',
                 'gender'=>'required|in:M,F',
-                'scitizen'=>'required',
-                'sresidence'=>'required',
-                'svalidity'=>'required',
-                'simage'=>'nullable'
+                'scitizen'=>'required|min:2|max:255',
+                'sresidence'=>'required|min:2|max:255',
+                'svalidity'=>'required|after:' . date('Y-m-d'),
+                'simage'=>'nullable|image|mimes:jpeg,png,jpg|max:2048'
             ]);
             $input  = \Arr::except($request->all(),array('_token'));
             $user_input = array(
@@ -363,22 +339,22 @@ class UsersController extends Controller
 
             $result = User::where('id',$id)->update($user_input);
         }else if($type == 2){
-            $request->validate([
+           $request->validate([
                 'type'=>'required',
-                'iuname' => 'required|unique:users,name,'.$id,
+                'iuname' => 'required|unique:users,name,'.$id.'|max:255',
                 'iname'=>'required',
-                'iemail'=>'required|email|unique:users,email,'.$id,
+                'iemail'=>'required|email|unique:users,email,'.$id.'|max:255',
                 'country_code'=>'required|max:5',
-                'phone_no' =>'required',
+                'phone_no' =>'required|max:20',
                 'status'=>'required|in:P,A,R',
                 'students_allowed' =>'required',
-                'subdomain' =>'required',
-                'domain'=>'required',
-                'welcome_msg'=>'required',
-                'city'=>'required',
+                'subdomain' =>'required|max:255',
+                'domain'=>'required|max:255',
+                'welcome_msg'=>'required|max:500',
+                'city'=>'required|min:2|max:255',
                 'logo'=>'nullable',
                 'banner'=>'nullable',
-                'validity'=>'required',
+                'validity'=>'required|after:' . date('Y-m-d'),
                 'admin_video'=>'required|in:Y,N',
                 'admin_prediction_file'=>'required|in:Y,N',
                 'admin_practice_question'=>'required|in:Y,N',

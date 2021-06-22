@@ -25,7 +25,7 @@ class RolesController extends Controller
 
             // dd($data);
         if($request->ajax()) {
-            $data = Roles::with(['permission','user'])->latest()->get();
+            $data = Roles::with(['permission','user'])->where('id','!=',1)->latest()->get();
             return Datatables::of($data)
                     ->addIndexColumn()
                     ->addColumn('name', function($row){
