@@ -78,14 +78,41 @@
     //graph
     .graph-wrap-row{
         justify-content: space-between;
+        .table-head{
+            margin-top: 6px;
+        }
         .form-select{
-            padding: 2px 10px;
-            background-color: $primary-color;
-            color: $white-color;
-            border-radius: 3px;
-            option{
-                background-color: $white-color;
-                color: $black;
+            width: 125px;
+            button{
+                background-color:$primary-color;
+                border: 1px solid $primary-color;
+                color: $white-color;
+                padding: 3px 15px;
+                font-size: $fs-16;
+            }
+            button:focus{
+                    outline: unset!important;
+                    box-shadow: unset;
+            }
+            button:hover{
+                     color: $white-color!important;
+            }
+            button::after{
+                    font-size: $fs-20;
+            }
+            .dropdown-menu{
+                padding: 0px;
+                margin: 0px;
+                 li{
+                    a:hover{
+                        color: $white-color!important;
+                        text-decoration: none;
+                        background-color: #3490dc;
+                    }
+                    a:active{
+                        background-color: $white-color!important;
+                    }
+                }
             }
         }
         .graph-common-1{
@@ -122,9 +149,6 @@
         }
         .datapicker{
             display: flex;
-            input{
-               
-            }
         }
         #activitylog_wrapper{
           padding: 0px;
@@ -249,3 +273,5 @@
     }
 
 }
+
+

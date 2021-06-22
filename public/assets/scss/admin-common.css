@@ -1108,11 +1108,43 @@ body {
 }
 
 .form .form-group .user-type {
-  border: 1px solid #0C213A;
-  border-radius: 5px;
-  font-size: 14px;
+  width: inherit !important;
+}
+
+.form .form-group .user-type button {
+  background-color: #fff;
+  border: 1px solid #000000;
   color: #000000;
-  line-height: 4;
+}
+
+.form .form-group .user-type button:focus {
+  outline: unset !important;
+  -webkit-box-shadow: unset;
+          box-shadow: unset;
+}
+
+.form .form-group .user-type button:hover {
+  color: #000000 !important;
+}
+
+.form .form-group .user-type button::after {
+  font-size: 28px;
+}
+
+.form .form-group .user-type .dropdown-menu {
+  padding: 0px;
+  margin: 0px;
+}
+
+.form .form-group .user-type .dropdown-menu li a:hover {
+  color: #fff !important;
+  text-decoration: none;
+  background-color: #3490dc;
+}
+
+.form .form-group .custom-select {
+  padding: 0px;
+  border: none;
 }
 
 .form .form-group .form-control {
@@ -1121,7 +1153,7 @@ body {
   font-size: 14px;
   color: #000000;
   line-height: 4;
-  font-weight: 500;
+  font-weight: 400;
 }
 
 .form .form-group .form-control::-webkit-input-placeholder {
