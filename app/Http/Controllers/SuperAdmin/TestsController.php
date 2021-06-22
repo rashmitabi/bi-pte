@@ -133,7 +133,13 @@ class TestsController extends Controller
     }
     public function addQuestions(Request $request)
     {
-        return view ($this->moduleTitleP.'reading_and_writing_fill_in_the_blanks_1');
+        $section_id         = $request->section_id;
+        $test_id            = $request->test_id;
+        $question_type_id   = $request->question_type_id;
+        $questionType = DB::table('question_types')->where('id',$question_type_id)->first();
+        $design       = DB::table('question_designs')->where('id',$questionType->desgin_id)->first();
+        
+        return view ($this->moduleTitleP.$design->file_name);
     }
     public function changeStatus($id)
     {

@@ -4,7 +4,7 @@ $(document).ready(function() {
         var id = $(this).data('id');
         var apiUrl = $(this).data('url');
         $.ajax({
-            url: apiUrl,
+            url: apiUrl, 
             type:'GET',
             data:{'id' : id},
             beforeSend: function(){

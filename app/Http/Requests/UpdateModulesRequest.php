@@ -24,7 +24,7 @@ class UpdateModulesRequest extends FormRequest
     public function rules()
     {
         return [
-            'module_name'=>'required',
+            'module_name'=>'required|min:3|max:255',
             'status'=>'nullable|in:E,D'
         ];
     }

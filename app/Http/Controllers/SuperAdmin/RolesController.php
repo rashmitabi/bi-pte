@@ -23,24 +23,23 @@ class RolesController extends Controller
     public function index(Request $request)
     {   
 
-            // dd($data);
         if($request->ajax()) {
-            $data = Roles::with(['permission','user'])->latest()->get();
+            $data = Roles::with(['permission','user'])->where('id','!=',1)->latest()->get();
             return Datatables::of($data)
                     ->addIndexColumn()
                     ->addColumn('name', function($row){
                         return $row->role_name;
                     })
                     ->addColumn('permission', function($row){
-                        $slugs = '';
+                        $slug = '';
+                        $slugs = array();
                         foreach ($row->permission as $value) {
                             if(isset($value->slug)){
-                                $slugs = $value->slug.",";
-                            }else{
-                                $slugs = '';
+                               array_push($slugs,$value->slug);
                             }
                         }
-                        return $slugs;
+                        $slug = implode(',',$slugs);
+                        return $slug;
                         
                     })
                     ->addColumn('totaluser', function($row){
@@ -51,7 +50,7 @@ class RolesController extends Controller
                                     <li class="action" data-toggle="modal" data-target="#editroles">
                                         <a href="javascript:void(0);" class="roles-edit" data-id="'.$row->id .'" data-url="'.route('roles.edit', $row->id).'"><i class="fas fa-pen"></i></a></li>
                                     <li class="action bg-danger"><a href="#"  class="delete_modal" data-toggle="modal" data-target="#delete_modal"  data-url="'.route('roles.destroy', $row->id).'" data-id="'.$row->id.'"><i class="fas fa-trash"></i></a></li>
-                                    <li class="action shield '.(($row->status == "E") ? "green" : "bg-danger").'">
+                                    <li class="action shield '.(($row->status == "D") ? "green" : "bg-danger").'">
                                         <a href="'.route('superadmin-roles-changestatus', $row->id ).'" ><img src="'.asset('assets/images/icons/blocked.svg').'" class=""></a></li>
                                 </ul>';
                         return $btn;
@@ -81,20 +80,24 @@ class RolesController extends Controller
     public function store(StoreRolesRequest $request)
     {
         $input  = \Arr::except($request->all(),array('_token'));
-        
+        // dd($input);
         if(!isset($input['status'])){
             $input['status'] = 'D';
         }
         
         $id = Roles::create($input)->id;
         if($id){
-            $module = explode("-",$input['permission']);
-            if(!empty($module)){
-                $input['role_id'] = $id;
-                $input['module_id'] = $module[0];
-                $input['slug'] = $module[1];
+            foreach ($input['permission'] as $permission) {
+                $module = explode("-",$permission);
+                if(!empty($module)){
+                    $input['role_id'] = $id;
+                    $input['module_id'] = $module[0];
+                    $input['slug'] = $module[1];
+                }
+                $result = RoleHasPermissions::create($input);
             }
-            $result = RoleHasPermissions::create($input);
+            
+            
         }
         if($id){
             return redirect()->route('roles.index')
@@ -144,6 +147,7 @@ class RolesController extends Controller
     public function update(UpdateRolesRequest $request, $id)
     {
         $input  = \Arr::except($request->all(),array('_token'));
+        // dd($input);
         if(!isset($input['status'])){
             $input['status'] = 'D';
         }
@@ -154,14 +158,15 @@ class RolesController extends Controller
         $roleres = Roles::where('id',$id)->update($input_role);
         if($roleres){
             $result = RoleHasPermissions::where('role_id',$id)->delete();
-
-            $module = explode("-",$input['permission']);
-            if(!empty($module)){
-                $input['role_id'] = $id;
-                $input['module_id'] = $module[0];
-                $input['slug'] = $module[1];
+            foreach ($input['permission'] as $permission) {
+                $module = explode("-",$permission);
+                if(!empty($module)){
+                    $input['role_id'] = $id;
+                    $input['module_id'] = $module[0];
+                    $input['slug'] = $module[1];
+                }
+                $result = RoleHasPermissions::create($input);
             }
-            $result = RoleHasPermissions::create($input);
         }
         if($roleres){
             \Session::put('success', 'Role update Successfully!');

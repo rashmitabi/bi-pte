@@ -48,7 +48,8 @@ class UsersController extends Controller
                     })
                     ->addColumn('action', function($row){
                         $btn = '<ul class="actions-btns">
-                                <li class="action"><a href="#"><i class="fas fa-user"></i></a></li>
+                                <li class="action" data-toggle="modal" data-target="#userdetail"><a href="javascript:void(0);" ><i class="fas fa-user"></i></a></li>
+
                                     <li class="action" data-toggle="modal" data-target="#editdetail"><a href="javascript:void(0);" class="user-edit" data-id="'.$row->id .'" data-url="'.route('users.edit', $row->id).'"><i class="fas fa-pen"></i></a></li>
 
                                     <li class="action bg-danger"><a href="#" class="delete_modal" data-toggle="modal" data-target="#delete_modal"  data-url="'.route('users.destroy', $row->id).'" data-id="'.$row->id.'"><i class="fas fa-trash" ></i></a></li>
@@ -57,7 +58,8 @@ class UsersController extends Controller
 
                                     <li class="action" data-toggle="modal" data-target="#setpassword"><a href="javascript:void(0);" class="user-setpassword" data-id="'.$row->id .'" data-url="'.route('superadmin-user-showpassword', $row->id).'"><i class="fas fa-unlock-alt"></i></a></li>
 
-                                    <li class="action"><a href="#"><i class="fas fa-clipboard-check"></i></a></li>
+                                    <li class="action" class="action" data-toggle="modal" data-target="#mocktest"><a href="#"><i class="fas fa-clipboard-check"></i></a></li>
+                                    <li class="action" class="action" data-toggle="modal" data-target="#practisetest"><a href="#"><i class="fas fa-clipboard-check"></i></a></li>
                                 </ul>';
                         return $btn;
                     })
@@ -92,7 +94,7 @@ class UsersController extends Controller
                     })
                     ->addColumn('action', function($row){
                         $btn = '<ul class="actions-btns">
-                                <li class="action" data-toggle="modal" data-target="#mocktest"><a href="#"><i class="fas fa-user"></i></a></li>
+                                <li class="action" data-toggle="modal" data-target="#userdetail"><a href="javascript:void(0);" ><i class="fas fa-user"></i></a></li>
 
                                     <li class="action" data-toggle="modal" data-target="#editdetail"><a href="javascript:void(0);" class="user-edit" data-id="'.$row->id .'" data-url="'.route('users.edit', $row->id).'"><i class="fas fa-pen"></i></a></li>
 
@@ -101,6 +103,9 @@ class UsersController extends Controller
                                     <li class="action shield '.(($row->status != "P")? (($row->status == "A") ? "green" : "bg-danger"):'').'"><a href="'.route('superadmin-user-changestatus', $row->id ).'"><img src="'.asset('assets/images/icons/blocked.svg').'" class=""></a></li>
 
                                     <li class="action" data-toggle="modal" data-target="#setpassword"><a href="javascript:void(0);" class="user-setpassword" data-id="'.$row->id .'" data-url="'.route('superadmin-user-showpassword', $row->id).'"><i class="fas fa-unlock-alt"></i></a></li>
+
+                                    <li class="action" class="action" data-toggle="modal" data-target="#mocktest"><a href="#"><i class="fas fa-clipboard-check"></i></a></li>
+                                    <li class="action" class="action" data-toggle="modal" data-target="#practisetest"><a href="#"><i class="fas fa-clipboard-check"></i></a></li>
                                 </ul>';
                         return $btn;
                     })
@@ -136,22 +141,22 @@ class UsersController extends Controller
         if($type == 3){
             $request->validate([
                 'type'=>'required',
-                'fname' => 'required',
-                'lname' => 'required',
-                'uname'=>'required|unique:users,name',
-                'password'=>'required',
-                'confirm_password'=>'required|same:password',
-                'semail'=>'required|email|unique:users,email',
-                'dob' =>'required',
-                'mobileno' =>'required',
+                'fname' => 'required|min:3|max:100',
+                'lname' => 'required|min:3|max:100',
+                'uname'=>'required|unique:users,name|max:255',
+                'semail'=>'required|email|unique:users,email|max:255',
+                'dob' =>'required|before:18 years ago',
+                'mobileno' =>'required|max:20',
                 'sstatus'=>'required|in:P,A,R',
                 'gender'=>'required|in:M,F',
-                'scitizen'=>'required',
-                'sresidence'=>'required',
-                'svalidity'=>'required',
-                'simage'=>'nullable'
+                'scitizen'=>'required|min:2|max:255',
+                'sresidence'=>'required|min:2|max:255',
+                'svalidity'=>'required|after:' . date('Y-m-d'),
+                'simage'=>'nullable|image|mimes:jpeg,png,jpg|max:2048'
             ]);
             $input  = \Arr::except($request->all(),array('_token'));
+            $fileNameToStore = '';
+            
             $user_input = array(
                 'role_id' => $input['type'],
                 'parent_user_id' => 0,
@@ -159,10 +164,9 @@ class UsersController extends Controller
                 'last_name' => $input['lname'],
                 'name' => $input['uname'],
                 'email' => $input['semail'],
-                'password' => $input['password'],
                 'mobile_no' => $input['mobileno'],
                 'date_of_birth' => $input['dob'],
-                'profile_image' => '',
+                'profile_image' => $fileNameToStore,
                 'gender' => $input['gender'],
                 'country_citizen' => $input['scitizen'],
                 'country_residence' => $input['sresidence'],
@@ -177,22 +181,20 @@ class UsersController extends Controller
 
             $request->validate([
                 'type'=>'required',
-                'iuname' => 'required|unique:users,name',
-                'iname'=>'required',
-                'iemail'=>'required|email|unique:users,email',
-                'ipassword'=>'required',
-                'iconfirm_password'=>'required',
+                'iuname' => 'required|unique:users,name|max:255',
+                'iname'=>'required|min:2|max:255',
+                'iemail'=>'required|email|unique:users,email|max:255',
                 'country_code'=>'required|max:5',
-                'phone_no' =>'required',
+                'phone_no' =>'required|max:20',
                 'status'=>'required|in:P,A,R',
                 'students_allowed' =>'required',
-                'subdomain' =>'required',
-                'domain'=>'required',
-                'welcome_msg'=>'required',
-                'city'=>'required',
+                'subdomain' =>'required|max:255',
+                'domain'=>'required|max:255',
+                'welcome_msg'=>'required|max:500',
+                'city'=>'required|min:2|max:255',
                 'logo'=>'nullable',
                 'banner'=>'nullable',
-                'validity'=>'required',
+                'validity'=>'required|after:' . date('Y-m-d'),
                 'admin_video'=>'required|in:Y,N',
                 'admin_prediction_file'=>'required|in:Y,N',
                 'admin_practice_question'=>'required|in:Y,N',
@@ -206,7 +208,6 @@ class UsersController extends Controller
                 // 'last_name' => '',
                 'name' => $input['iuname'],
                 'email' => $input['iemail'],
-                'password' => $input['password'],
                 'mobile_no' => $input['phone_no'],
                 // 'date_of_birth' => '',
                 'profile_image' => '',
@@ -261,7 +262,14 @@ class UsersController extends Controller
      */
     public function show($id)
     {
-       
+       $roles = Roles::all();
+       $user = User::with(['institue'])->find($id);
+       $html_user = view($this->moduleTitleP.'show', compact('roles','user'))->render();
+
+        return response()->json([
+            'success' => 1,
+            'html'=>$html_user    
+        ]);
     }
 
     /**
@@ -295,20 +303,18 @@ class UsersController extends Controller
         if($type == 3){
             $request->validate([
                 'type'=>'required',
-                'fname' => 'required',
-                'lname' => 'required',
-                'uname'=>'required',
-                'password'=>'required',
-                'confirm_password'=>'required|same:password',
-                'semail'=>'required',
-                'dob' =>'required',
-                'mobileno' =>'required',
+                'fname' => 'required|min:3|max:100',
+                'lname' => 'required|min:3|max:100',
+                'uname'=>'required|unique:users,name,'.$id.'|max:255',
+                'semail'=>'required|email|unique:users,email,'.$id.'|max:255',
+                'dob' =>'required|before:18 years ago',
+                'mobileno' =>'required|max:20',
                 'sstatus'=>'required|in:P,A,R',
                 'gender'=>'required|in:M,F',
-                'scitizen'=>'required',
-                'sresidence'=>'required',
-                'svalidity'=>'required',
-                'simage'=>'nullable'
+                'scitizen'=>'required|min:2|max:255',
+                'sresidence'=>'required|min:2|max:255',
+                'svalidity'=>'required|after:' . date('Y-m-d'),
+                'simage'=>'nullable|image|mimes:jpeg,png,jpg|max:2048'
             ]);
             $input  = \Arr::except($request->all(),array('_token'));
             $user_input = array(
@@ -318,7 +324,6 @@ class UsersController extends Controller
                 'last_name' => $input['lname'],
                 'name' => $input['uname'],
                 'email' => $input['semail'],
-                'password' => Hash::make($input['password']),
                 'mobile_no' => $input['mobileno'],
                 'date_of_birth' => $input['dob'],
                 'profile_image' => '',
@@ -334,24 +339,22 @@ class UsersController extends Controller
 
             $result = User::where('id',$id)->update($user_input);
         }else if($type == 2){
-            $request->validate([
+           $request->validate([
                 'type'=>'required',
-                'iuname' => 'required|unique:users,name,'.$id,
+                'iuname' => 'required|unique:users,name,'.$id.'|max:255',
                 'iname'=>'required',
-                'iemail'=>'required|email|unique:users,email,'.$id,
-                'ipassword'=>'required',
-                'iconfirm_password'=>'required',
+                'iemail'=>'required|email|unique:users,email,'.$id.'|max:255',
                 'country_code'=>'required|max:5',
-                'phone_no' =>'required',
+                'phone_no' =>'required|max:20',
                 'status'=>'required|in:P,A,R',
                 'students_allowed' =>'required',
-                'subdomain' =>'required',
-                'domain'=>'required',
-                'welcome_msg'=>'required',
-                'city'=>'required',
+                'subdomain' =>'required|max:255',
+                'domain'=>'required|max:255',
+                'welcome_msg'=>'required|max:500',
+                'city'=>'required|min:2|max:255',
                 'logo'=>'nullable',
                 'banner'=>'nullable',
-                'validity'=>'required',
+                'validity'=>'required|after:' . date('Y-m-d'),
                 'admin_video'=>'required|in:Y,N',
                 'admin_prediction_file'=>'required|in:Y,N',
                 'admin_practice_question'=>'required|in:Y,N',
@@ -365,7 +368,6 @@ class UsersController extends Controller
                 // 'last_name' => '',
                 'name' => $input['iuname'],
                 'email' => $input['iemail'],
-                'password' => Hash::make($input['ipassword']),
                 'mobile_no' => $input['phone_no'],
                 // 'date_of_birth' => '',
                 'profile_image' => '',

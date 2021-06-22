@@ -200,6 +200,24 @@ $(document).ready(function() {
   });
   //user edit page data start
 
+  //user edit page data start
+  $('body').on('click','.user-show',function(){
+    var id = $(this).data('id');
+    var apiUrl = $(this).data('url');
+    $.ajax({
+      url: apiUrl,
+      type:'GET',
+      data:{'id' : id},
+      beforeSend: function(){
+        $('#show-user-body').html('<i class="fa fa-spinner fa-spin"></i>  Please Wait...');
+      },
+      success:function(data) {
+        $('#show-user-body').html(data.html);
+      },
+    }); 
+  });
+  //user edit page data start
+
   //user  update data start
   $('body').on('click','.user-update',function(){
     var id = $(this).data('id');

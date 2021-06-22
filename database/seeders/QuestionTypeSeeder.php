@@ -57,33 +57,64 @@ class QuestionTypeSeeder extends Seeder
                         'Answer-short Question',
                         'Update Audio Time'
                     ];
-        foreach($readings as $reading)
-        {
-            DB::table('question_types')->insert([
-                'section_id' =>'1',
-                'question_title'=>$reading
-            ]);
-        }
-        foreach($listings as $listing)
-        {
-            DB::table('question_types')->insert([
-                'section_id' =>'2',
-                'question_title'=>$listing
-            ]);
-        }
-        foreach($writings as $writing)
-        {
-            DB::table('question_types')->insert([
-                'section_id' =>'3',
-                'question_title'=>$writing
-            ]);
-        }
-        foreach($speakings as $speaking)
-        {
-            DB::table('question_types')->insert([
-                'section_id' =>'4',
-                'question_title'=>$speaking
-            ]);
+    $check = DB::table('question_types')->count();
+        if($check < 1)
+        {   $readingTemp  = 0;
+            $listingTemp  = 5;
+            $writingTemp  = 13;
+            $speakingTemp = 16;
+            foreach($readings as $reading)
+            {
+                $readingTemp++;
+                $designid = 0;
+                if($readingTemp >= 1 && $readingTemp <= 5){
+                    $designid = 1;
+                }
+                if($readingTemp >= 6 && $readingTemp <= 7){
+                    $designid = 2;
+                }
+                if($readingTemp >= 8 && $readingTemp <= 9){
+                    $designid = 3;
+                }
+                if($readingTemp >= 10 && $readingTemp <= 13){
+                    $designid = 4;
+                }
+                if($readingTemp >= 14 && $readingTemp <= 15){
+                    $designid = 5;
+                }
+                DB::table('question_types')->insert([
+                    'section_id' =>'1',
+                    'question_title'=>$reading,
+                    'desgin_id'=>$designid
+                ]);
+            }
+            foreach($listings as $listing)
+            {
+                $listingTemp++;
+                DB::table('question_types')->insert([
+                    'section_id' =>'2',
+                    'question_title'=>$listing,
+                    'desgin_id'=>$listingTemp
+                ]);
+            }
+            foreach($writings as $writing)
+            {
+                $writingTemp++;
+                DB::table('question_types')->insert([
+                    'section_id' =>'3',
+                    'question_title'=>$writing,
+                    'desgin_id'=>$writingTemp
+                ]);
+            }
+            foreach($speakings as $speaking)
+            {
+                $speakingTemp++;
+                DB::table('question_types')->insert([
+                    'section_id' =>'4',
+                    'question_title'=>$speaking,
+                    'desgin_id'=>$speakingTemp
+                ]);
+            }
         }
     }
 }
