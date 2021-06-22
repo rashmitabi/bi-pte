@@ -144,7 +144,7 @@ $question_id = $_GET['question_type_id'];
                               <div class="col-7 p-0">
                                  <input type="text" class="form-control " name="correct_option8" id="correct_option8" placeholder="Whole">
                               </div>
-                              <div class="add-icon"  data-id="8">
+                              <div class="add-icon" onclick="addQuestionColumn()"  data-id="8">
                                   <a><i class="fas fa-plus"></i></a>
                               </div>
                            </div>
@@ -154,6 +154,7 @@ $question_id = $_GET['question_type_id'];
                                  <input type="hidden" name="section_id" value="{{ $section_id }}">
                                  <input type="hidden" name="test_id" value="{{ $test_id }}">
                                  <input type="hidden" name="question_type_id" value="{{ $question_id }}">
+                                 <input type="hidden" name="slug" id="slug" value="8">
                                  <button  type="button" class="btn btn-outline-primary"><a href="#"><img class="back-btn" src="{{ asset('assets/images/icons/back.svg') }}"></a>Cancel</button>
                                  <button  type="submit" class="btn btn-outline-primary mr-2" data-sectionid="{{ $section_id }}" data-testid="{{ $test_id }}" data-questionid="{{ $question_id }}"><i class="far fa-save save-icon"></i>Submit</button>
                            </div> 
