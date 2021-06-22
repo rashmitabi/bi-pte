@@ -62,21 +62,21 @@ class QuestionsController extends Controller
             
             foreach($ansArrry as $ans)
             {
-                $answerdata = new Answerdata;
-                $answerdata->question_id = $id;
-                $answerdata->answer_type = "fill in the blank";
-                $answerdata->answer_value = $input[$ans];
-                $answerdata->sample_answer = "no sample answer";
-                $answerdata->save();
+                $questiondata = new Questiondata;
+                $questiondata->question_id = $id;
+                $questiondata->data_type = "fill in the blank";
+                $questiondata->data_value = $input[$ans];
+                $questiondata->save();
             }
 
             foreach($correctArry as $corrAns)
             {
-                $questiondata = new Questiondata;
-                $questiondata->question_id = $id;
-                $questiondata->data_type = "fill in the blank";
-                $questiondata->data_value = $input[$corrAns];
-                $questiondata->save();
+                $answerdata = new Answerdata;
+                $answerdata->question_id = $id;
+                $answerdata->answer_type = "fill in the blank";
+                $answerdata->answer_value = $input[$corrAns];
+                $answerdata->sample_answer = "no sample answer";
+                $answerdata->save();
             }
             return redirect()->route('tests.index')->with('success','Questions added Successfully!');
         }else{
