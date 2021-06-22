@@ -67,8 +67,14 @@
         <div class="row graph-wrap-row ">
            <div class="col-12 col-md-6 col-xl-6 col-sm-12 mt-5 mb-4 graph-common-1 white-bg ">
               <div class="col-12 col-md-8 col-xl-8 col-sm-8 mt-1 left">
-                 <h5 class="table-head head-text">Total Subscriptions</h5>
+                 <h5 class="table-head head-text float-left">Total Subscriptions</h5>
               </div>
+              <select class="form-select form-select-sm float-right" aria-label=".form-select-sm example">
+                 <option selected>Yearly</option>
+                 <option value="1">Weekly</option> 
+                 <option value="2">Day</option>
+                 <option value="3">Monthly</option>
+              </select>
               <canvas id="myChart" width="50%" hight="500px"></canvas>
            </div>
            <div class="col-12 col-md-6 col-xl-6 col-sm-12 mt-5 mb-4 graph-common-2 white-bg">
@@ -133,7 +139,7 @@
                     </div>
                 </section>
             </div>
-            <div class="col-12 col-md-12 col-xl-6 col-sm-12 table-col pl-0 custom-wrap-p">
+            <div class="col-12 col-md-12 col-xl-6 col-sm-12 table-col pl-0 common-p custom-wrap-p">
                 <section class="top-title-button white-bg common-wrap mb-3">
                    <div class="col-12 col-md-6 col-xl-6 col-sm-7 float-left left">
                      <h1 class="table-head">Transactions</h1>
@@ -202,8 +208,8 @@
                      <h4 class="table-head">Institute Subscriptions</h4>
                    </div>
                    <div class="col-12 col-md-12 col-xl-4 col-sm-7 expired-btn">
-                       <div class="btn-group" role="group" aria-label="First group">
-                           <button type="button" class="btn btn-secondary expired-btn">Expired</button>
+                       <div id="myDIV" class="btn-group" role="group" aria-label="First group">
+                           <button type="button" class="btn btn-secondary active expired-btn ">Expired</button>
                            <button type="button" class="btn btn-secondary near-expired ">Near to Expired</button>
                        </div>
                    </div>
@@ -266,7 +272,7 @@
                     </div>
                 </section>
             </div>
-            <div class="col-12 col-md-12 col-xl-6 col-sm-12 table-col pl-0 custom-wrap-p">
+            <div class="col-12 col-md-12 col-xl-6 col-sm-12 table-col pl-0 common-p custom-wrap-p">
                 <section class="top-title-button white-bg common-wrap mb-3">
                    <div class="col-12 col-md-8 col-xl-8 col-sm-7 left">
                      <h1 class="table-head">Top Ranking Institute</h1>
