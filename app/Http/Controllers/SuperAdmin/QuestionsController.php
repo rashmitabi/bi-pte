@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Questions;
 use App\Models\Answerdata;
 use App\Models\Questiondata;
+use DB;
 class QuestionsController extends Controller
 {
     /**
@@ -38,12 +39,16 @@ class QuestionsController extends Controller
     public function store(Request $request)
     {
         $input = \Arr::except($request->all(),array('_token'));
+        
+        $question_type_id = $input['question_type_id'];
+        $questionType = DB::table('question_types')->where('id',$question_type_id)->first();
+
         $questions                  = new Questions;
         $questions->section_id      = $input['section_id'];
         $questions->test_id         = $input['test_id'];
-        $questions->design_id       = 1;
-        $questions->question_type_id= $input['question_type_id'];
-        $questions->name            = $input['question_type_id'];
+        $questions->design_id       = $questionType->desgin_id;
+        $questions->question_type_id= $question_type_id;
+        $questions->name            = $questionType->question_title;
         $questions->short_desc      = "sort desc";
         $questions->desc            = $input['editor'];
         $questions->order           = 0;
@@ -53,14 +58,18 @@ class QuestionsController extends Controller
         $questions->waiting_time    = 40;
         $questions->max_time        = 40;
         if($questions->save()){
-                $id = $questions->id;
-            $ansArrry = ['ans_options1','ans_options2','ans_options3','ans_options4',
-                                'ans_options5','ans_options6','ans_options7','ans_options8'];
-            
-            $correctArry = ['correct_option1','correct_option2','correct_option3','correct_option4',
-                            'correct_option5','correct_option6','correct_option7','correct_option8'];
-            
-            foreach($ansArrry as $ans)
+            $id = $questions->id;
+            $slug = $input['slug'];
+            $ansArrry = [];
+            $correctArry = [];
+            for($i=1;$i<=$slug;$i++)
+            {
+                $ansArrry[]='ans_options'.$i;
+                $correctArry[]='correct_option'.$i;
+            }
+            $newAnsData = array_values($ansArrry);
+            $newCorrectData = array_values($correctArry);
+            foreach($newAnsData as $ans)
             {
                 $questiondata = new Questiondata;
                 $questiondata->question_id = $id;
@@ -68,8 +77,7 @@ class QuestionsController extends Controller
                 $questiondata->data_value = $input[$ans];
                 $questiondata->save();
             }
-
-            foreach($correctArry as $corrAns)
+            foreach($newCorrectData as $corrAns)
             {
                 $answerdata = new Answerdata;
                 $answerdata->question_id = $id;
