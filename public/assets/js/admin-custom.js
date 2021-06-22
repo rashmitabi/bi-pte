@@ -9,6 +9,9 @@ $(document).ready(function () {
 });
 
 $(document).ready(function() {
+    //use for multiple select option
+    $('select').selectpicker();
+    
     /*$('#subscription').DataTable({
         language: {
             search: '',

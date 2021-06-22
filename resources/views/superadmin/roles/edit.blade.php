@@ -11,11 +11,21 @@
     <div class="form-group row">
       <label class="col-4 col-form-label ">Permissions</label>
       <div class="col-8">
-        <select id="permission" name="permission" class="user-type custom-select" >
-          <option selected disabled>Select User Type</option>
+        <?php 
+        $permission_array = array();
+        foreach ($roleData->permission as $permission) {
+          array_push($permission_array, $permission->module_id);
+        }
+        
+         ?>
+        <select id="permission" name="permission[]" class="user-type  selectpicker" multiple data-live-search="true" style="display: block !important;">
           @if(count($modules) > 0)
             @foreach($modules as $module)
-              <option value="{{ $module->id }}{{ '-' }}{{ $module->module_slug }}" {{ ($module->id == $roleData->module_id )?'selected':''}}>{{ $module->module_name }}</option>
+              @if(in_array($module->id,$permission_array))
+                <option value="{{ $module->id }}{{ '-' }}{{ $module->module_slug }}" selected>{{ $module->module_name }}</option>
+              @else
+                <option value="{{ $module->id }}{{ '-' }}{{ $module->module_slug }}" >{{ $module->module_name }}</option>
+              @endif
             @endforeach
           @endif
         </select>
