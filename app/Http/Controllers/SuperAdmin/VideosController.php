@@ -5,6 +5,7 @@ namespace App\Http\Controllers\SuperAdmin;
 use App\Http\Controllers\Controller;
 use App\Models\Videos;
 use Illuminate\Http\Request;
+use App\Http\Requests\CreateVideosRequest;
 use DataTables;
 use DB;
 
@@ -28,8 +29,12 @@ class VideosController extends Controller
     public function create()
     {
         $sections = DB::table('sections')->get();
-        $designs = DB::table('question_designs')->get();
-        return view('superadmin/videos/addvideos',compact('sections', 'designs'));
+        $designs = DB::table('question_designs')->select('id', 'section_id', 'design_name')->get();
+        $types = array();
+        foreach($designs as $des){
+            $types[$des->section_id][] = array('id' => $des->id, 'name' => $des->design_name);
+        }
+        return view('superadmin/videos/addvideos',compact('sections', 'types'));
     }
 
     /**
@@ -40,7 +45,27 @@ class VideosController extends Controller
      */
     public function store(CreateVideosRequest $request)
     {
-        //
+        $input = \Arr::except($request->all(),array('_token'));
+        $video = new Videos;
+        $video->user_id = \Auth::user()->id;
+        $video->section_id = $input['section_id'];
+        $video->design_id = $input['design_id'];
+        $video->title = $input['title'];
+        $video->description = $input['description'];
+        $video->link = $input['link'];
+        if(!isset($input['status'])){
+            $video->status = 'D';
+        }else{
+            $video->status = $input['status'];
+        }
+        
+        if($video->save()){
+            return redirect()->route('videos.index')
+            ->with('success','Video added successfully!');
+        }else{
+            return redirect()->route('videos.index')
+            ->with('error','Sorry!Something wrong.Try again later!');
+        }
     }
 
     /**
@@ -89,15 +114,26 @@ class VideosController extends Controller
     }
 
     /**
-     * get design types of the specified resource from storage.
+     * Change status field of the specified resource from storage.
      *
-     * @param  \App\Models\Videos  $videos
+     * @param  \App\Models\Subjects  $subjects
      * @return \Illuminate\Http\Response
      */
-    public function getType(){
-        $input = \Arr::except($request->all(),array('_token'));
-        $id = $input['sec'];
-        $designs = DB::table('question_designs')->where('section_id', $id)->get();
-        echo json_encode($designs);
+    public function changeStatus($id)
+    {
+        $video = Videos::find($id);
+        if($video->status == 'D'){
+            $video->status = 'E';
+        }else{
+            $video->status = 'D';
+        }
+        $result = $video->update();
+        if($result){
+            return redirect()->route('videos.index')
+                        ->with('success','Video status updated successfully!');
+        }else{
+            return redirect()->route('videos.index')
+                        ->with('error','Status Not Updated!');
+        }
     }
 }

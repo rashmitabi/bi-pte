@@ -104,10 +104,6 @@ Route::patch('superadmin/questions', [App\Http\Controllers\SuperAdmin\questionsC
 /*Questions Modules end*/
     Route::resource('superadmin/predictionfiles', App\Http\Controllers\SuperAdmin\PredictionFilesController::class);
 
-    Route::resource('superadmin/videos', App\Http\Controllers\SuperAdmin\VideosController::class);
-
-    Route::resource('superadmin/subjects', App\Http\Controllers\SuperAdmin\SubjectsController::class);
-
     Route::resource('superadmin/transactions', App\Http\Controllers\SuperAdmin\TransactionsController::class);
 
     Route::resource('superadmin/certificates', App\Http\Controllers\SuperAdmin\CertificatesController::class);
@@ -120,6 +116,7 @@ Route::patch('superadmin/questions', [App\Http\Controllers\SuperAdmin\questionsC
     ->name('superadmin-tests-add');
 
     /*Videos module start*/
-Route::get('superadmin/videos/getType}', [App\Http\Controllers\SuperAdmin\VideosController::class, 'getType']);
+Route::get('superadmin/videos/changestatus/{id}', [App\Http\Controllers\SuperAdmin\VideosController::class, 'changeStatus'])
+    ->name('superadmin-videos-changestatus');
 Route::resource('superadmin/videos', App\Http\Controllers\SuperAdmin\VideosController::class);
 /*Videos module end*/
