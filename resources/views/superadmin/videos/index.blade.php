@@ -26,74 +26,13 @@
                         <tr>
                             <th>Sr No</th>
                             <th>Video Title</th>
-                            <th>Date</th>
-                            <th>Added By</th>
+                            <th>Section</th>
+                            <th>Type</th>
                             <th>Status</th>
                             <th>Action</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Fill In The Blanks. Reading Tips For PTE</td>
-                            <td>23/01/2021</td>
-                            <td>Super Admin</td>
-                            <td>Active</td>
-                            <td>
-                                <ul class="actions-btns">
-                                    <li class="action" data-toggle="modal" data-target="#editvideos"><a href="#"><i
-                                                class="fas fa-pen"></i></a></li>
-                                    <li class="action"><a href="#"><i class="fas fa-trash"></i></a></li>
-                                    <li class="action shield"><a href="#"><img
-                                                src="{{ asset('assets/images/icons/blocked.svg') }}" class=""></a></li>
-                                </ul>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>Fill In The Blanks. Reading Tips For PTE</td>
-                            <td>23/01/2021</td>
-                            <td>Super Admin</td>
-                            <td>Active</td>
-                            <td>
-                                <ul class="actions-btns">
-                                    <li class="action"><a href="#"><i class="fas fa-pen"></i></a></li>
-                                    <li class="action"><a href="#"><i class="fas fa-trash"></i></a></li>
-                                    <li class="action shield"><a href="#"><img
-                                                src="{{ asset('assets/images/icons/blocked.svg') }}" class=""></a></li>
-                                </ul>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>Fill In The Blanks. Reading Tips For PTE</td>
-                            <td>23/01/2021</td>
-                            <td>Super Admin</td>
-                            <td>Active</td>
-                            <td>
-                                <ul class="actions-btns">
-                                    <li class="action"><a href="#"><i class="fas fa-pen"></i></a></li>
-                                    <li class="action"><a href="#"><i class="fas fa-trash"></i></a></li>
-                                    <li class="action shield"><a href="#"><img
-                                                src="{{ asset('assets/images/icons/blocked.svg') }}" class=""></a></li>
-                                </ul>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>Fill In The Blanks. Reading Tips For PTE</td>
-                            <td>23/01/2021</td>
-                            <td>Super Admin</td>
-                            <td>Active</td>
-                            <td>
-                                <ul class="actions-btns">
-                                    <li class="action"><a href="#"><i class="fas fa-pen"></i></a></li>
-                                    <li class="action"><a href="#"><i class="fas fa-trash"></i></a></li>
-                                    <li class="action shield"><a href="#"><img
-                                                src="{{ asset('assets/images/icons/blocked.svg') }}" class=""></a></li>
-                                </ul>
-                            </td>
-                        </tr>
+                    
                 </table>
             </div>
         </div>
@@ -142,4 +81,10 @@
         </div>
     </div>
 </div>
+@endsection
+@section('js-hooks')
+<script type="text/javascript" defer>
+  var url="{{ route('videos.index') }}";
+</script>
+<script src="{{ asset('assets/js/videos.js') }}" defer></script>
 @endsection

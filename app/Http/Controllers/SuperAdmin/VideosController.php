@@ -11,14 +11,58 @@ use DB;
 
 class VideosController extends Controller
 {
+    private $moduleTitleP = "superadmin.videos.";
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('superadmin/videos/index');
+        if($request->ajax())  {
+            $data = Videos::latest()->get();
+            return Datatables::of($data)
+                    ->addIndexColumn()
+                    ->addColumn('title', function($row){
+                        return $row->title;
+                    })                    
+                    ->addColumn('section', function($row){
+                        if($row->section_id != ""){
+                            $section = DB::table('sections')->select('section_name')->where('id',$row->section_id)->first();
+                        }
+                        return ucfirst($section->section_name);
+                    })
+                    ->addColumn('type', function($row){
+                        if($row->design_id != ""){
+                            $type = DB::table('question_designs')->select('design_name')->where('id',$row->design_id)->first();
+                        }
+                        return ucfirst($type->design_name);
+                    })
+                    ->addColumn('status', function($row){
+                        if($row->status == "E"){
+                            $status = "Enabled";
+                        }else{
+                            $status = "Disabled";
+                        }
+                        return $status;
+                    })
+                    ->addColumn('action', function($row){
+                        if($row->status == "E"){
+                            $iconClass = "red";
+                        }else{
+                            $iconClass = "green";
+                        }
+                        $btn = '<ul class="actions-btns">
+                            <li class="action" data-toggle="modal" data-target="#editvideos"><a href="javascript:void(0);" class="video-edit" data-id="'.$row->id.'" data-url="'.route('videos.edit', $row->id).'"><i class="fas fa-pen"></i></a></li>
+                            <li class="action"><a href="#" class="delete_modal" data-toggle="modal" data-target="#delete_modal"  data-url="'.route('videos.destroy', $row->id).'" data-id="'.$row->id.'" data-title="Video"><i class="fas fa-trash"></i></a></li>
+                            <li class="action shield '.$iconClass.'"><a href="'.route('superadmin-videos-changestatus', $row->id ).'"><img src="'.asset('assets/images/icons/blocked.svg').'" class=""></a></li>
+                            </ul>';
+                        return $btn;
+                    })
+                    ->rawColumns(['checkbox','action'])
+                    ->make(true);
+        }
+        return view($this->moduleTitleP.'index');
     }
 
     /**
@@ -85,9 +129,16 @@ class VideosController extends Controller
      * @param  \App\Models\Videos  $videos
      * @return \Illuminate\Http\Response
      */
-    public function edit(Videos $videos)
+    public function edit($id)
     {
-        //
+        $video = Videos::find($id);
+
+        $html_subject = view($this->moduleTitleP.'edit', compact('video'))->render();
+
+        return response()->json([
+            'success' => 1,
+            'html'=>$html_subject    
+        ]);
     }
 
     /**
@@ -108,9 +159,19 @@ class VideosController extends Controller
      * @param  \App\Models\Videos  $videos
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Videos $videos)
+    public function destroy($id)
     {
-        //
+        $result = Videos::where('id',$id)->delete();
+        if($result)
+        {
+            return redirect()->route('videos.index')
+                        ->with('success','Video deleted successfully!');
+        }
+        else
+        {
+            return redirect()->route('videos.index')
+                        ->with('error','Sorry!Something wrong.Try again later!');
+        }
     }
 
     /**
