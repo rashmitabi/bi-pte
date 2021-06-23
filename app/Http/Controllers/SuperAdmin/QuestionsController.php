@@ -92,6 +92,48 @@ class QuestionsController extends Controller
         }
     }
 
+    public function storeSummarizeWritten(Request $request){
+        $input  = \Arr::except($request->all(),array('_token'));
+
+        $question_type_id = $input['question_type_id'];
+        $questionType = DB::table('question_types')->where('id',$question_type_id)->first();
+
+        $questions                  = new Questions;
+        $questions->section_id      = $input['section_id'];
+        $questions->test_id         = $input['test_id'];
+        $questions->design_id       = $questionType->desgin_id;
+        $questions->question_type_id= $question_type_id;
+        $questions->name            = $questionType->question_title;
+        $questions->short_desc      = "-";
+        $questions->desc            = "-";
+        $questions->order           = 0;
+        $questions->status          = "E";
+        $questions->marks           = 50;
+        $questions->answer_time     = 40;
+        $questions->waiting_time    = 40;
+        $questions->max_time        = 40;
+        if($questions->save()){
+            $id = $questions->id;
+
+            $questiondata = new Questiondata;
+            $questiondata->question_id = $id;
+            $questiondata->data_type = "fill in the blank";
+            $questiondata->data_value = $input[$ans];
+            $questiondata->save();
+
+            $answerdata = new Answerdata;
+            $answerdata->question_id = $id;
+            $answerdata->answer_type = "fill in the blank";
+            $answerdata->answer_value = $input[$corrAns];
+            $answerdata->sample_answer = "no sample answer";
+            $answerdata->save();
+        
+        }else{
+            return redirect()->route('roles.index')
+                        ->with('error','Sorry!Something wrong.Try again later!');
+        }
+    }
+
     /**
      * Display the specified resource.
      *
