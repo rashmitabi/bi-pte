@@ -27,7 +27,7 @@
                     <div class="form-group row">
                       <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Permissions</label>
                       <div class="col-12 col-md-7 col-xl-7 col-sm-12">
-                        <select id="permission" name="permission[]"  class="user-type  selectpicker" multiple data-live-search="true">
+                        <select id="permission" name="permission[]"  class="user-type  form-select  selectpicker" multiple data-live-search="true">
                           @if(count($modules) > 0)
                             @foreach($modules as $module)
                               <option value="{{ $module->id }}{{ '-' }}{{ $module->module_slug }}" {{ ( old('permission') == $module->id )?'selected':''}}>{{ $module->module_name }}</option>

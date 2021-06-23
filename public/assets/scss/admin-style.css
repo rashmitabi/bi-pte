@@ -355,7 +355,6 @@
     padding-bottom: 10px;
   }
   body .nav .nav-item {
-    padding: 8px 11px !important;
     border-radius: 0px;
   }
   body #results thead th {
@@ -740,19 +739,19 @@
 }
 
 #content .graph-wrap-row .table-head {
-  margin-top: 6px;
+  margin-top: 5px;
 }
 
 #content .graph-wrap-row .form-select {
-  width: 125px;
+  width: 110px;
 }
 
 #content .graph-wrap-row .form-select button {
   background-color: #092950;
   border: 1px solid #092950;
   color: #fff;
-  padding: 3px 15px;
-  font-size: 16px;
+  padding: 4px 15px;
+  font-size: 12px;
 }
 
 #content .graph-wrap-row .form-select button:focus {
@@ -772,6 +771,11 @@
 #content .graph-wrap-row .form-select .dropdown-menu {
   padding: 0px;
   margin: 0px;
+  min-height: 100px !important;
+}
+
+#content .graph-wrap-row .form-select .dropdown-menu li a {
+  padding: 1px 23px;
 }
 
 #content .graph-wrap-row .form-select .dropdown-menu li a:hover {
