@@ -97,6 +97,10 @@ Route::resource('superadmin/tests', App\Http\Controllers\SuperAdmin\TestsControl
 
 Route::post('superadmin/questions/updateReadingWritingFillInTheBlanks', [App\Http\Controllers\SuperAdmin\questionsController::class,'updateReadingWirtingFillInTheBlanks'])
 ->name('superadmin-question-update-readingwriting-fillintheblanks');
+Route::post('superadmin/questions/storeReadingMultipleChoiceMultipleanswers', [App\Http\Controllers\SuperAdmin\questionsController::class,'storeMultipleChoiceMultipleanswers'])
+->name('superadmin-question-store-MultipleChoice-Multipleanswers');
+Route::post('superadmin/questions/updateReadingMultipleChoiceMultipleanswers', [App\Http\Controllers\SuperAdmin\questionsController::class,'updateMultipleChoiceMultipleanswers'])
+->name('superadmin-question-update-MultipleChoice-Multipleanswers');
 Route::resource('superadmin/questions', App\Http\Controllers\SuperAdmin\questionsController::class);
 
 Route::patch('superadmin/questions', [App\Http\Controllers\SuperAdmin\questionsController::class,'storeSummarizeWritten'])->name('add-summarize-written');
