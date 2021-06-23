@@ -94,6 +94,9 @@ Route::resource('superadmin/subjects', App\Http\Controllers\SuperAdmin\SubjectsC
 Route::resource('superadmin/tests', App\Http\Controllers\SuperAdmin\TestsController::class);
 /*Tests Modules end*/
 /*Questions Modules start*/
+
+Route::post('superadmin/questions/updateReadingWritingFillInTheBlanks', [App\Http\Controllers\SuperAdmin\questionsController::class,'updateReadingWirtingFillInTheBlanks'])
+->name('superadmin-question-update-readingwriting-fillintheblanks');
 Route::resource('superadmin/questions', App\Http\Controllers\SuperAdmin\questionsController::class);
 /*Questions Modules end*/
     Route::resource('superadmin/predictionfiles', App\Http\Controllers\SuperAdmin\PredictionFilesController::class);

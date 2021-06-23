@@ -91,7 +91,61 @@ class QuestionsController extends Controller
             return redirect()->route('tests.index')->with('error','Sorry!Something wrong.Try Again.');
         }
     }
+    public function updateReadingWirtingFillInTheBlanks(Request $request)
+    {
+        $input = \Arr::except($request->all(),array('_token'));
+        
+        $question_id        = $request->question_id;
+        $section_id         = $request->section_id;
+        $test_id            = $request->test_id;
+        $question_type_id   = $request->question_type_id;
+        $slug               = $request->slug;
 
+        $updateArry = [];
+        $updateArry['desc'] = $input['editor'];
+        $result = Questions::where('id',$question_id)->update($updateArry);
+        if($result)
+        {
+            $id = $question_id;
+            try{
+                Answerdata::where('question_id',$question_id)->delete();
+                Questiondata::where('question_id',$question_id)->delete();
+                $ansArrry = [];
+                $correctArry = [];
+                for($i=1;$i<=$slug;$i++)
+                {
+                    $ansArrry[]='ans_options'.$i;
+                    $correctArry[]='correct_option'.$i;
+                }
+                $newAnsData = array_values($ansArrry);
+                $newCorrectData = array_values($correctArry);
+                foreach($newAnsData as $ans)
+                {
+                    $questiondata = new Questiondata;
+                    $questiondata->question_id = $id;
+                    $questiondata->data_type = "fill in the blank";
+                    $questiondata->data_value = $input[$ans];
+                    $questiondata->save();
+                }
+                foreach($newCorrectData as $corrAns)
+                {
+                    $answerdata = new Answerdata;
+                    $answerdata->question_id = $id;
+                    $answerdata->answer_type = "fill in the blank";
+                    $answerdata->answer_value = $input[$corrAns];
+                    $answerdata->sample_answer = "no sample answer";
+                    $answerdata->save();
+                }
+                return redirect()->route('tests.index')->with('success','Questions Update Successfully!');
+            }catch(\Exception $e){
+                dd($e->getMessage());
+            }
+        }
+        else
+        {
+            return redirect()->route('tests.index')->with('error','Sorry!Something wrong.Try Again.');
+        }
+    }
     /**
      * Display the specified resource.
      *
