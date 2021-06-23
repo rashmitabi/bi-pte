@@ -138,7 +138,7 @@ class TestsController extends Controller
         $question_type_id   = $request->question_type_id;
         $questionType = DB::table('question_types')->where('id',$question_type_id)->first();
         $design       = DB::table('question_designs')->where('id',$questionType->desgin_id)->first();
-        
+        //dd($design);
         return view ($this->moduleTitleP.$design->file_name);
     }
     public function changeStatus($id)

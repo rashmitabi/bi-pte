@@ -93,12 +93,19 @@ Route::resource('superadmin/subjects', App\Http\Controllers\SuperAdmin\SubjectsC
         ->name('superadmin-tests-addQuestions');
 Route::resource('superadmin/tests', App\Http\Controllers\SuperAdmin\TestsController::class);
 /*Tests Modules end*/
+
 /*Questions Modules start*/
 Route::resource('superadmin/questions', App\Http\Controllers\SuperAdmin\questionsController::class);
+/* writing sesction */
+Route::post('superadmin/questions/summarize', [App\Http\Controllers\SuperAdmin\questionsController::class,'storeSummarizeWritten'])->name('add-summarize-written');
+Route::post('superadmin/questions/essay', [App\Http\Controllers\SuperAdmin\questionsController::class,'storeEssayWritting'])->name('add-essay-writting');
 
-Route::patch('superadmin/questions', [App\Http\Controllers\SuperAdmin\questionsController::class,'storeSummarizeWritten'])->name('add-summarize-written');
+/* speaking sesction */
+Route::post('superadmin/questions/readaloud', [App\Http\Controllers\SuperAdmin\questionsController::class,'storeReadAloud'])->name('add-read-aloud');
+Route::post('superadmin/questions/repeatsentence', [App\Http\Controllers\SuperAdmin\questionsController::class,'storeRepeatSentence'])->name('add-repeat-sentence');
 
 /*Questions Modules end*/
+
     Route::resource('superadmin/predictionfiles', App\Http\Controllers\SuperAdmin\PredictionFilesController::class);
 
     Route::resource('superadmin/videos', App\Http\Controllers\SuperAdmin\VideosController::class);

@@ -25,11 +25,14 @@
 	                   </div>
 	                    <!-- <form class="form ml-1"> -->
 	                    {!! Form::open(array('route' => 'add-summarize-written','method'=>'POST','class'=>'form ml-1')) !!}
+	                    	<input type="hidden" name="question_type_id" value="{{ $question_id }}">
+	                    	<input type="hidden" name="section_id" value="{{ $section_id }}">
+	                    	<input type="hidden" name="test_id" value="{{ $test_id }}">
 	                        <div class="form-group mb-3 row">
 	                            <div class="col-11">
 	                             	<textarea name="item-1" id="editor10">{{old('item-1')}}</textarea>
 	                             	@if($errors->has('item-1'))
-			                            <span class="error-msg">{{$errors->first('item-1')}}</span>
+			                            <span class="error-msg"> {{$errors->first('item-1')}}</span>
 			                        @endif
 	                           </div>
 	                        </div>
@@ -69,7 +72,7 @@
 	                        <div class="form-group row">
 	                            <div class="col-11 save-btn mt-5 ">
 	                                <button  type="button" class="btn btn-outline-primary"><a href="#"><img class="back-btn" src="{{ asset('assets/images/icons/back.svg') }}"></a>Cancel</button>
-	                                <button  type="button" class="btn btn-outline-primary mr-2"><i class="far fa-save save-icon"></i>Submit</button>
+	                                <button  type="submit" class="btn btn-outline-primary mr-2"><i class="far fa-save save-icon"></i>Submit</button>
 	                            </div> 
 	                        </div>
 	                    {!! Form::close() !!}
