@@ -24,4 +24,12 @@ class Questions extends Model
         'waiting_time',
         'max_time'
     ];
+    public function answerdata()
+    {
+        return $this->hasMany('App\Models\Answerdata','question_id','id');
+    }
+    public function questiondata()
+    {
+        return $this->hasMany('App\Models\Questiondata','question_id','id');
+    }
 }

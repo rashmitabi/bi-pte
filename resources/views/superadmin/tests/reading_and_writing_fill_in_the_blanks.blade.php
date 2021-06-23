@@ -24,21 +24,22 @@ $question_id = $_GET['question_type_id'];
                    <div class="sub-heading">
                        <h4>Paragraph<span>Enter the First Module Paragraph</span></h4>
                    </div>
-                   <form class="form ml-1" method="POST" id="fill_in_blanks" name="fill_in_blanks" action="{{ route('questions.store')}}">
+                   <form class="form ml-1" method="POST" id="fill_in_blanks" name="fill_in_blanks" action="{{ (isset($questions->desc))?route('superadmin-question-update-readingwriting-fillintheblanks'):route('questions.store')}}">
                       @csrf
                       <div class="form-group mb-5 row">
                            <div class="col-11">
                               <!-- <div id="editor">
                                  <h2>The three greatest things you learn from traveling</h2>
                               </div> -->
-                              <textarea name="editor" id="editor"></textarea>
+                              <textarea name="editor" id="editor">{{ (isset($questions->desc))?$questions->desc:''}}</textarea>
                            </div>
                        </div>
+                       @if(!isset($questions->desc))
                        <div class=" col-11 mt-2 ml-3 white-bg common-col">
                             <div class="form-group mb-3 row">
                               <label class="col-3 col-form-label custom-label ">Ans Options 1</label>
                               <div class="col-7 p-0">
-                                 <input type="text" class="form-control " name="ans_options1" id="ans_options1" placeholder="Whole,Total,Very,Open">
+                                 <input type="text" class="form-control " name="ans_options1" id="ans_options1" placeholder="Whole,Total,Very,Open" value="{{ (isset($questions->desc))?$questions->desc:''}}">
                               </div>
                            </div>
                            <div class="form-group mb-3 row">
@@ -149,7 +150,7 @@ $question_id = $_GET['question_type_id'];
                               </div>
                            </div>
                        </div>
-                       <div class="form-group row">
+                        <div class="form-group row">
                            <div class="col-11 save-btn mt-5 ">
                                  <input type="hidden" name="section_id" value="{{ $section_id }}">
                                  <input type="hidden" name="test_id" value="{{ $test_id }}">
@@ -159,6 +160,49 @@ $question_id = $_GET['question_type_id'];
                                  <button  type="submit" class="btn btn-outline-primary mr-2" data-sectionid="{{ $section_id }}" data-testid="{{ $test_id }}" data-questionid="{{ $question_id }}"><i class="far fa-save save-icon"></i>Submit</button>
                            </div> 
                         </div>
+                       @else
+                           @php 
+                              $count = count($questions->questiondata);
+                              $label = 0;
+                           @endphp
+                           @for($i=0;$i<$count;$i++)
+                              @php
+                                 $label++;
+                              @endphp
+                              <div class=" col-11 mt-2 ml-3 white-bg common-col">
+                                 <div class="form-group mb-3 row">
+                                    <label class="col-3 col-form-label custom-label ">Ans Options {{ $label }}</label>
+                                    <div class="col-7 p-0">
+                                       <input type="text" class="form-control " name="ans_options{{$label}}" id="ans_options{{$label}}" placeholder="Whole,Total,Very,Open" value="{{ (isset($questions->desc))?$questions->questiondata[$i]->data_value:''}}">
+                                    </div>
+                                 </div>
+                                 <div class="form-group mb-3 row">
+                                    <label class="col-3 col-form-label custom-label">Correct Options {{ $label }}</label>
+                                    <div class="col-7 p-0">
+                                       <input type="text" class="form-control " name="correct_option{{$label}}" id="correct_option{{$label}}" placeholder="Whole" value="{{ (isset($questions->desc))?$questions->answerdata[$i]->answer_value:''}}">
+                                    </div>
+                                    @if($label == $count)
+                                       <div class="add-icon" onclick="addQuestionColumn()"  data-id="{{$count}}">
+                                          <a><i class="fas fa-plus"></i></a>
+                                       </div>
+                                    @endif
+                                 </div>
+                              </div>
+                           @endfor
+                           <div class="form-group row">
+                              <div class="col-11 save-btn mt-5 ">
+                                    @if(isset($questions->desc))
+                                    <input type="hidden" name="question_id" value="{{ $questions->id }}">
+                                    @endif
+                                    <input type="hidden" name="section_id" value="{{ $section_id }}">
+                                    <input type="hidden" name="test_id" value="{{ $test_id }}">
+                                    <input type="hidden" name="question_type_id" value="{{ $question_id }}">
+                                    <input type="hidden" name="slug" id="slug" value="{{(isset($count))?$count:'8'}}">
+                                    <button  type="button" class="btn btn-outline-primary"><a href="#"><img class="back-btn" src="{{ asset('assets/images/icons/back.svg') }}"></a>Cancel</button>
+                                    <button  type="submit" class="btn btn-outline-primary mr-2" data-sectionid="{{ $section_id }}" data-testid="{{ $test_id }}" data-questionid="{{ $question_id }}"><i class="far fa-save save-icon"></i>Submit</button>
+                              </div> 
+                           </div>
+                       @endif
                    </form>
                </div>
             </div>

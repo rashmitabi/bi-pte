@@ -94,13 +94,19 @@ Route::resource('superadmin/subjects', App\Http\Controllers\SuperAdmin\SubjectsC
 Route::resource('superadmin/tests', App\Http\Controllers\SuperAdmin\TestsController::class);
 /*Tests Modules end*/
 /*Questions Modules start*/
+
+Route::post('superadmin/questions/updateReadingWritingFillInTheBlanks', [App\Http\Controllers\SuperAdmin\questionsController::class,'updateReadingWirtingFillInTheBlanks'])
+->name('superadmin-question-update-readingwriting-fillintheblanks');
+Route::post('superadmin/questions/storeReadingMultipleChoiceMultipleanswers', [App\Http\Controllers\SuperAdmin\questionsController::class,'storeMultipleChoiceMultipleanswers'])
+->name('superadmin-question-store-MultipleChoice-Multipleanswers');
+Route::post('superadmin/questions/updateReadingMultipleChoiceMultipleanswers', [App\Http\Controllers\SuperAdmin\questionsController::class,'updateMultipleChoiceMultipleanswers'])
+->name('superadmin-question-update-MultipleChoice-Multipleanswers');
 Route::resource('superadmin/questions', App\Http\Controllers\SuperAdmin\questionsController::class);
+
+Route::patch('superadmin/questions', [App\Http\Controllers\SuperAdmin\questionsController::class,'storeSummarizeWritten'])->name('add-summarize-written');
+
 /*Questions Modules end*/
     Route::resource('superadmin/predictionfiles', App\Http\Controllers\SuperAdmin\PredictionFilesController::class);
-
-    Route::resource('superadmin/videos', App\Http\Controllers\SuperAdmin\VideosController::class);
-
-    Route::resource('superadmin/subjects', App\Http\Controllers\SuperAdmin\SubjectsController::class);
 
     Route::resource('superadmin/transactions', App\Http\Controllers\SuperAdmin\TransactionsController::class);
 
@@ -112,3 +118,9 @@ Route::resource('superadmin/questions', App\Http\Controllers\SuperAdmin\question
 
     Route::get('superadmin/tests/add', [App\Http\Controllers\SuperAdmin\TestsController::class, 'add'])
     ->name('superadmin-tests-add');
+
+    /*Videos module start*/
+Route::get('superadmin/videos/changestatus/{id}', [App\Http\Controllers\SuperAdmin\VideosController::class, 'changeStatus'])
+    ->name('superadmin-videos-changestatus');
+Route::resource('superadmin/videos', App\Http\Controllers\SuperAdmin\VideosController::class);
+/*Videos module end*/

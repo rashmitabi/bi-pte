@@ -43,7 +43,9 @@ $pageArray = explode('/', $currentPageURL);
                     @elseif ($section->id == '3')
                         @if(count($writingQuestions) > 0)
                             @foreach($writingQuestions as $writingQuestion)
-                                <button type="button" class="btn mb-1 btn-primary btn-lg btn-block">{{ $writingQuestion->question_title }}</button>
+                                <a href="{{ route('superadmin-tests-addQuestions',['section_id'=>$section->id,'test_id'=>$pageArray[5],'question_type_id'=>$writingQuestion->id]) }}">
+                                    <button type="button" class="btn mb-1 btn-primary btn-lg btn-block">{{ $writingQuestion->question_title }}</button>
+                                </a>
                             @endforeach
                         @endif
                     @else
