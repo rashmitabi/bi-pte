@@ -1315,7 +1315,6 @@ $(document).ready(function() {
       // $('body').find('.remove-record-model').find( "input" ).remove();
     });
     ////Delete Model for SuperAdmin End
-
 });
 
 // $(document).ready(function(){

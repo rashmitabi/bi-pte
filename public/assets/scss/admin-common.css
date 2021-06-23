@@ -180,9 +180,11 @@
   }
   body .graph-wrap-row .graph-common-1 {
     margin-top: 0px !important;
+    max-width: 100% !important;
   }
   body .graph-wrap-row .graph-common-2 {
     margin-top: 0px !important;
+    max-width: 100% !important;
   }
 }
 
@@ -326,9 +328,11 @@
   }
   body #content .graph-wrap-row .graph-common-1 {
     margin-top: 0px !important;
+    max-width: 100% !important;
   }
   body #content .graph-wrap-row .graph-common-2 {
     margin-top: 0px !important;
+    max-width: 100% !important;
   }
 }
 
@@ -385,7 +389,7 @@
     margin-right: 0px;
   }
   body .table-head {
-    padding-top: 20px !important;
+    padding-top: 5px !important;
     padding-bottom: 10px !important;
   }
   body .table-col {
@@ -412,9 +416,11 @@
   }
   body .graph-wrap-row .graph-common-1 {
     margin-top: 0px !important;
+    max-width: 100% !important;
   }
   body .graph-wrap-row .graph-common-2 {
     margin-top: 0px !important;
+    max-width: 100% !important;
   }
 }
 
@@ -540,12 +546,10 @@
     margin-left: 0px !important;
   }
   .graph-wrap-row .graph-common-1 {
-    max-width: 348px !important;
-    margin-right: 15px;
+    max-width: 49% !important;
   }
   .graph-wrap-row .graph-common-2 {
-    margin-right: 0px;
-    max-width: 348px !important;
+    max-width: 49% !important;
   }
   #sidebarCollapse img {
     height: 20px;
@@ -590,12 +594,10 @@
     padding-right: 24px !important;
   }
   body #content .graph-wrap-row .graph-common-1 {
-    max-width: 443px !important;
-    margin-right: 15px;
+    max-width: 49% !important;
   }
   body #content .graph-wrap-row .graph-common-2 {
-    margin-right: 0px;
-    max-width: 443px !important;
+    max-width: 49% !important;
   }
   body #content .common-wrap .btn-group {
     margin-top: 10px;
@@ -618,6 +620,9 @@
     -webkit-box-flex: 1;
         -ms-flex: auto;
             flex: auto;
+  }
+  body #content .common-p {
+    padding-right: 0px !important;
   }
 }
 
@@ -1103,11 +1108,43 @@ body {
 }
 
 .form .form-group .user-type {
-  border: 1px solid #0C213A;
-  border-radius: 5px;
-  font-size: 14px;
+  width: inherit !important;
+}
+
+.form .form-group .user-type button {
+  background-color: #fff;
+  border: 1px solid #000000;
   color: #000000;
-  line-height: 4;
+}
+
+.form .form-group .user-type button:focus {
+  outline: unset !important;
+  -webkit-box-shadow: unset;
+          box-shadow: unset;
+}
+
+.form .form-group .user-type button:hover {
+  color: #000000 !important;
+}
+
+.form .form-group .user-type button::after {
+  font-size: 28px;
+}
+
+.form .form-group .user-type .dropdown-menu {
+  padding: 0px;
+  margin: 0px;
+}
+
+.form .form-group .user-type .dropdown-menu li a:hover {
+  color: #fff !important;
+  text-decoration: none;
+  background-color: #3490dc;
+}
+
+.form .form-group .custom-select {
+  padding: 0px;
+  border: none;
 }
 
 .form .form-group .form-control {
@@ -1116,7 +1153,7 @@ body {
   font-size: 14px;
   color: #000000;
   line-height: 4;
-  font-weight: 500;
+  font-weight: 400;
 }
 
 .form .form-group .form-control::-webkit-input-placeholder {

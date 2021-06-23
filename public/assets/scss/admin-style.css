@@ -180,9 +180,11 @@
   }
   body .graph-wrap-row .graph-common-1 {
     margin-top: 0px !important;
+    max-width: 100% !important;
   }
   body .graph-wrap-row .graph-common-2 {
     margin-top: 0px !important;
+    max-width: 100% !important;
   }
 }
 
@@ -326,9 +328,11 @@
   }
   body #content .graph-wrap-row .graph-common-1 {
     margin-top: 0px !important;
+    max-width: 100% !important;
   }
   body #content .graph-wrap-row .graph-common-2 {
     margin-top: 0px !important;
+    max-width: 100% !important;
   }
 }
 
@@ -385,7 +389,7 @@
     margin-right: 0px;
   }
   body .table-head {
-    padding-top: 20px !important;
+    padding-top: 5px !important;
     padding-bottom: 10px !important;
   }
   body .table-col {
@@ -412,9 +416,11 @@
   }
   body .graph-wrap-row .graph-common-1 {
     margin-top: 0px !important;
+    max-width: 100% !important;
   }
   body .graph-wrap-row .graph-common-2 {
     margin-top: 0px !important;
+    max-width: 100% !important;
   }
 }
 
@@ -540,12 +546,10 @@
     margin-left: 0px !important;
   }
   .graph-wrap-row .graph-common-1 {
-    max-width: 348px !important;
-    margin-right: 15px;
+    max-width: 49% !important;
   }
   .graph-wrap-row .graph-common-2 {
-    margin-right: 0px;
-    max-width: 348px !important;
+    max-width: 49% !important;
   }
   #sidebarCollapse img {
     height: 20px;
@@ -590,12 +594,10 @@
     padding-right: 24px !important;
   }
   body #content .graph-wrap-row .graph-common-1 {
-    max-width: 443px !important;
-    margin-right: 15px;
+    max-width: 49% !important;
   }
   body #content .graph-wrap-row .graph-common-2 {
-    margin-right: 0px;
-    max-width: 443px !important;
+    max-width: 49% !important;
   }
   body #content .common-wrap .btn-group {
     margin-top: 10px;
@@ -618,6 +620,9 @@
     -webkit-box-flex: 1;
         -ms-flex: auto;
             flex: auto;
+  }
+  body #content .common-p {
+    padding-right: 0px !important;
   }
 }
 
@@ -728,18 +733,69 @@
   margin-right: 15px;
 }
 
+#content .graph-wrap-row {
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+#content .graph-wrap-row .table-head {
+  margin-top: 6px;
+}
+
+#content .graph-wrap-row .form-select {
+  width: 125px;
+}
+
+#content .graph-wrap-row .form-select button {
+  background-color: #092950;
+  border: 1px solid #092950;
+  color: #fff;
+  padding: 3px 15px;
+  font-size: 16px;
+}
+
+#content .graph-wrap-row .form-select button:focus {
+  outline: unset !important;
+  -webkit-box-shadow: unset;
+          box-shadow: unset;
+}
+
+#content .graph-wrap-row .form-select button:hover {
+  color: #fff !important;
+}
+
+#content .graph-wrap-row .form-select button::after {
+  font-size: 20px;
+}
+
+#content .graph-wrap-row .form-select .dropdown-menu {
+  padding: 0px;
+  margin: 0px;
+}
+
+#content .graph-wrap-row .form-select .dropdown-menu li a:hover {
+  color: #fff !important;
+  text-decoration: none;
+  background-color: #3490dc;
+}
+
+#content .graph-wrap-row .form-select .dropdown-menu li a:active {
+  background-color: #fff !important;
+}
+
 #content .graph-wrap-row .graph-common-1 {
-  max-width: 517px;
   padding: 12px;
-  margin-right: 14px;
   border-radius: 5px;
+  width: auto;
+  max-width: 49%;
 }
 
 #content .graph-wrap-row .graph-common-2 {
-  max-width: 517px;
   padding: 12px;
-  margin-right: 14px;
   border-radius: 5px;
+  width: auto;
+  max-width: 50%;
 }
 
 #content .common-wrap {
