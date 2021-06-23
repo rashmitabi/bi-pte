@@ -118,3 +118,8 @@ Route::patch('superadmin/questions', [App\Http\Controllers\SuperAdmin\questionsC
 
     Route::get('superadmin/tests/add', [App\Http\Controllers\SuperAdmin\TestsController::class, 'add'])
     ->name('superadmin-tests-add');
+
+    /*Videos module start*/
+Route::get('superadmin/videos/getType}', [App\Http\Controllers\SuperAdmin\VideosController::class, 'getType']);
+Route::resource('superadmin/videos', App\Http\Controllers\SuperAdmin\VideosController::class);
+/*Videos module end*/
