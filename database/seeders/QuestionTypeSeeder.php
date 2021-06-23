@@ -44,18 +44,15 @@ class QuestionTypeSeeder extends Seeder
                         'Write Form Dictations (15-17)'
                     ];
         $writings = [
-                        'Writing Instruction',
                         'Summarize Written',
                         'Essay Writing'
                     ];
         $speakings = [
-                        'Speaking Instruction',
                         'Read Aloud',
                         'Repeat Sentence',
                         'Describe Image',
                         'Re-tell lecture',
-                        'Answer-short Question',
-                        'Update Audio Time'
+                        'Answer-short Question'
                     ];
     $check = DB::table('question_types')->count();
         if($check < 1)
