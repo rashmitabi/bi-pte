@@ -98,6 +98,9 @@ Route::resource('superadmin/tests', App\Http\Controllers\SuperAdmin\TestsControl
 Route::post('superadmin/questions/updateReadingWritingFillInTheBlanks', [App\Http\Controllers\SuperAdmin\questionsController::class,'updateReadingWirtingFillInTheBlanks'])
 ->name('superadmin-question-update-readingwriting-fillintheblanks');
 Route::resource('superadmin/questions', App\Http\Controllers\SuperAdmin\questionsController::class);
+
+Route::patch('superadmin/questions', [App\Http\Controllers\SuperAdmin\questionsController::class,'storeSummarizeWritten'])->name('add-summarize-written');
+
 /*Questions Modules end*/
     Route::resource('superadmin/predictionfiles', App\Http\Controllers\SuperAdmin\PredictionFilesController::class);
 
