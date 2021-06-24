@@ -104,28 +104,28 @@ Route::post('superadmin/questions/updateReadingMultipleChoiceMultipleanswers', [
 ->name('superadmin-question-update-MultipleChoice-Multipleanswers');
 Route::resource('superadmin/questions', App\Http\Controllers\SuperAdmin\questionsController::class);
 
-/* writing sesction */
-Route::post('superadmin/questions/summarize', [App\Http\Controllers\SuperAdmin\questionsController::class,'storeSummarizeWritten'])->name('add-summarize-written');
-Route::post('superadmin/questions/editsummarize', [App\Http\Controllers\SuperAdmin\questionsController::class,'updateSummarizeWritten'])->name('update-summarize-written');
+/* writing section */
+Route::post('superadmin/questions/summarize', [App\Http\Controllers\SuperAdmin\writingQuestionController::class,'storeSummarizeWritten'])->name('add-summarize-written');
+Route::post('superadmin/questions/editsummarize', [App\Http\Controllers\SuperAdmin\writingQuestionController::class,'updateSummarizeWritten'])->name('update-summarize-written');
 
-Route::post('superadmin/questions/essay', [App\Http\Controllers\SuperAdmin\questionsController::class,'storeEssayWritting'])->name('add-essay-writting');
-Route::post('superadmin/questions/editessay', [App\Http\Controllers\SuperAdmin\questionsController::class,'updateEssayWritting'])->name('update-essay-writting');
+Route::post('superadmin/questions/essay', [App\Http\Controllers\SuperAdmin\writingQuestionController::class,'storeEssayWritting'])->name('add-essay-writting');
+Route::post('superadmin/questions/editessay', [App\Http\Controllers\SuperAdmin\writingQuestionController::class,'updateEssayWritting'])->name('update-essay-writting');
 
-/* speaking sesction */
-Route::post('superadmin/questions/readaloud', [App\Http\Controllers\SuperAdmin\questionsController::class,'storeReadAloud'])->name('add-read-aloud');
-Route::post('superadmin/questions/editreadaloud', [App\Http\Controllers\SuperAdmin\questionsController::class,'updateReadAloud'])->name('update-read-aloud');
+/* speaking section */
+Route::post('superadmin/questions/readaloud', [App\Http\Controllers\SuperAdmin\speakingQuestionController::class,'storeReadAloud'])->name('add-read-aloud');
+Route::post('superadmin/questions/editreadaloud', [App\Http\Controllers\SuperAdmin\speakingQuestionController::class,'updateReadAloud'])->name('update-read-aloud');
 
-Route::post('superadmin/questions/repeatsentence', [App\Http\Controllers\SuperAdmin\questionsController::class,'storeRepeatSentence'])->name('add-repeat-sentence');
-Route::post('superadmin/questions/editrepeatsentence', [App\Http\Controllers\SuperAdmin\questionsController::class,'updateRepeatSentence'])->name('update-repeat-sentence');
+Route::post('superadmin/questions/repeatsentence', [App\Http\Controllers\SuperAdmin\speakingQuestionController::class,'storeRepeatSentence'])->name('add-repeat-sentence');
+Route::post('superadmin/questions/editrepeatsentence', [App\Http\Controllers\SuperAdmin\speakingQuestionController::class,'updateRepeatSentence'])->name('update-repeat-sentence');
 
-Route::post('superadmin/questions/describeimage', [App\Http\Controllers\SuperAdmin\questionsController::class,'storeDescribeImage'])->name('add-describe-image');
-Route::post('superadmin/questions/editdescribeimage', [App\Http\Controllers\SuperAdmin\questionsController::class,'updateDescribeImage'])->name('update-describe-image');
+Route::post('superadmin/questions/describeimage', [App\Http\Controllers\SuperAdmin\speakingQuestionController::class,'storeDescribeImage'])->name('add-describe-image');
+Route::post('superadmin/questions/editdescribeimage', [App\Http\Controllers\SuperAdmin\speakingQuestionController::class,'updateDescribeImage'])->name('update-describe-image');
 
-Route::post('superadmin/questions/retelllecture', [App\Http\Controllers\SuperAdmin\questionsController::class,'storeReTellLecture'])->name('add-re-tell-lecture');
-Route::post('superadmin/questions/editretelllecture', [App\Http\Controllers\SuperAdmin\questionsController::class,'updateReTellLecture'])->name('update-re-tell-lecture');
+Route::post('superadmin/questions/retelllecture', [App\Http\Controllers\SuperAdmin\speakingQuestionController::class,'storeReTellLecture'])->name('add-re-tell-lecture');
+Route::post('superadmin/questions/editretelllecture', [App\Http\Controllers\SuperAdmin\speakingQuestionController::class,'updateReTellLecture'])->name('update-re-tell-lecture');
 
-Route::post('superadmin/questions/answershortquestion', [App\Http\Controllers\SuperAdmin\questionsController::class,'storeAnswerShortQuestion'])->name('add-answer-short-question');
-Route::post('superadmin/questions/editanswershortquestion', [App\Http\Controllers\SuperAdmin\questionsController::class,'updateAnswerShortQuestion'])->name('update-answer-short-question');
+Route::post('superadmin/questions/answershortquestion', [App\Http\Controllers\SuperAdmin\speakingQuestionController::class,'storeAnswerShortQuestion'])->name('add-answer-short-question');
+Route::post('superadmin/questions/editanswershortquestion', [App\Http\Controllers\SuperAdmin\speakingQuestionController::class,'updateAnswerShortQuestion'])->name('update-answer-short-question');
 
 /*Questions Modules end*/
 
