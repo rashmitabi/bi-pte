@@ -129,6 +129,31 @@ Route::post('superadmin/questions/editanswershortquestion', [App\Http\Controller
 
 /*Questions Modules end*/
 
+Route::resource('superadmin/questions', App\Http\Controllers\SuperAdmin\questionsController::class);
+Route::patch('superadmin/questions', [App\Http\Controllers\SuperAdmin\questionsController::class,'storeSummarizeWritten'])->name('add-summarize-written');
+/*Questions Modules end*/
+
+/*Reading section questions start*/
+
+Route::post('superadmin/questions/readingStoreFillInTheBlanks', [App\Http\Controllers\SuperAdmin\ReadingQuestionController::class,'storeFillInTheBlanks'])
+    ->name('superadmin-reading-store-fill-in-the-blanks');
+
+Route::post('superadmin/questions/updateReadingWritingFillInTheBlanks', [App\Http\Controllers\SuperAdmin\ReadingQuestionController::class,'updateFillInTheBlanks'])
+    ->name('superadmin-question-update-readingwriting-fillintheblanks');
+
+Route::post('superadmin/questions/storeReadingMultipleChoiceMultipleanswers', [App\Http\Controllers\SuperAdmin\ReadingQuestionController::class,'storeMultipleChoiceMultipleanswers'])
+    ->name('superadmin-question-store-MultipleChoice-Multipleanswers');
+
+Route::post('superadmin/questions/updateReadingMultipleChoiceMultipleanswers', [App\Http\Controllers\SuperAdmin\ReadingQuestionController::class,'updateMultipleChoiceMultipleanswers'])
+    ->name('superadmin-question-update-MultipleChoice-Multipleanswers');
+
+Route::post('superadmin/questions/storeReOrderParagraphs', [App\Http\Controllers\SuperAdmin\ReadingQuestionController::class,'storeReOrderParagraph'])
+    ->name('superadmin-question-store-re-order-paragraph');
+
+Route::post('superadmin/questions/updateReOrderParagraphs', [App\Http\Controllers\SuperAdmin\ReadingQuestionController::class,'updateReOrderParagraph'])
+    ->name('superadmin-question-update-re-order-paragraph');
+    
+/*Reading section questions end*/
     Route::resource('superadmin/predictionfiles', App\Http\Controllers\SuperAdmin\PredictionFilesController::class);
 
     Route::resource('superadmin/transactions', App\Http\Controllers\SuperAdmin\TransactionsController::class);

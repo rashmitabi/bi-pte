@@ -38,7 +38,6 @@ class QuestionsController extends Controller
      */
     public function store(Request $request)
     {
-        $input = \Arr::except($request->all(),array('_token'));
         
         $question_type_id = $input['question_type_id'];
         $questionType = DB::table('question_types')->where('id',$question_type_id)->first();
