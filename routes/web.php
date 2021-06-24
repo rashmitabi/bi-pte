@@ -93,19 +93,30 @@ Route::resource('superadmin/subjects', App\Http\Controllers\SuperAdmin\SubjectsC
         ->name('superadmin-tests-addQuestions');
 Route::resource('superadmin/tests', App\Http\Controllers\SuperAdmin\TestsController::class);
 /*Tests Modules end*/
+
 /*Questions Modules start*/
-
-Route::post('superadmin/questions/updateReadingWritingFillInTheBlanks', [App\Http\Controllers\SuperAdmin\questionsController::class,'updateReadingWirtingFillInTheBlanks'])
-->name('superadmin-question-update-readingwriting-fillintheblanks');
-Route::post('superadmin/questions/storeReadingMultipleChoiceMultipleanswers', [App\Http\Controllers\SuperAdmin\questionsController::class,'storeMultipleChoiceMultipleanswers'])
-->name('superadmin-question-store-MultipleChoice-Multipleanswers');
-Route::post('superadmin/questions/updateReadingMultipleChoiceMultipleanswers', [App\Http\Controllers\SuperAdmin\questionsController::class,'updateMultipleChoiceMultipleanswers'])
-->name('superadmin-question-update-MultipleChoice-Multipleanswers');
 Route::resource('superadmin/questions', App\Http\Controllers\SuperAdmin\questionsController::class);
-
 Route::patch('superadmin/questions', [App\Http\Controllers\SuperAdmin\questionsController::class,'storeSummarizeWritten'])->name('add-summarize-written');
-
 /*Questions Modules end*/
+
+/*Reading section questions start*/
+
+Route::post('superadmin/questions/readingStoreFillInTheBlanks', [App\Http\Controllers\SuperAdmin\ReadingQuestionController::class,'storeFillInTheBlanks'])
+    ->name('superadmin-reading-store-fill-in-the-blanks');
+
+Route::post('superadmin/questions/updateReadingWritingFillInTheBlanks', [App\Http\Controllers\SuperAdmin\ReadingQuestionController::class,'updateFillInTheBlanks'])
+    ->name('superadmin-question-update-readingwriting-fillintheblanks');
+
+Route::post('superadmin/questions/storeReadingMultipleChoiceMultipleanswers', [App\Http\Controllers\SuperAdmin\ReadingQuestionController::class,'storeMultipleChoiceMultipleanswers'])
+    ->name('superadmin-question-store-MultipleChoice-Multipleanswers');
+
+Route::post('superadmin/questions/updateReadingMultipleChoiceMultipleanswers', [App\Http\Controllers\SuperAdmin\ReadingQuestionController::class,'updateMultipleChoiceMultipleanswers'])
+    ->name('superadmin-question-update-MultipleChoice-Multipleanswers');
+
+Route::post('superadmin/questions/storeReOrderParagraphs', [App\Http\Controllers\SuperAdmin\ReadingQuestionController::class,'storeReOrderParagraph'])
+    ->name('superadmin-question-store-re-order-paragraph');
+
+/*Reading section questions end*/
     Route::resource('superadmin/predictionfiles', App\Http\Controllers\SuperAdmin\PredictionFilesController::class);
 
     Route::resource('superadmin/transactions', App\Http\Controllers\SuperAdmin\TransactionsController::class);

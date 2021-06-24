@@ -21,7 +21,8 @@ $question_id = $_GET['question_type_id'];
                    <div class="col-12 heading-text">
                       <h5>Re-order Paragraphs(8)</h5>
                    </div>
-                   <form class="form ml-1">
+                   <form class="form ml-1" class="re_order" id="re_order" method="POST" action="{{ route('superadmin-question-store-re-order-paragraph') }}">
+                       @csrf
                        <div class=" col-11 mt-5 ml-3 white-bg common-col">
                            <div class="form-group mb-3 row">
                               <label class="col-3 col-form-label custom-label">Ans Options A</label>
@@ -95,7 +96,7 @@ $question_id = $_GET['question_type_id'];
                        <div class="form-group row">
                             <div class="col-11 save-btn mt-5 ">
                                 <button  type="button" class="btn btn-outline-primary"><a href="#"><img class="back-btn" src="{{ asset('assets/images/icons/back.svg') }}"></a>Cancel</button>
-                                <button  type="button" class="btn btn-outline-primary mr-2"><i class="far fa-save save-icon"></i>Submit</button>
+                                <button  type="submit" class="btn btn-outline-primary mr-2"><i class="far fa-save save-icon"></i>Submit</button>
                             </div> 
                         </div>
                    </form>
