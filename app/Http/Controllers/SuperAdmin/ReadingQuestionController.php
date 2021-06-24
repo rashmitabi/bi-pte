@@ -282,7 +282,7 @@ class ReadingQuestionController extends Controller
                     $correctValue = "correct_options".$a;
                     $answerdata = new Answerdata;
                     $answerdata->question_id = $id;
-                    $answerdata->answer_type = "multiple-choice-multiple-answer";
+                    $answerdata->answer_type = "re-order paragraph";
                     $answerdata->answer_value = $input[$correctValue];
                     $answerdata->sample_answer = "no sample answer";
                     $answerdata->save();
@@ -329,7 +329,7 @@ class ReadingQuestionController extends Controller
                     $correctValue = "correct_options".$a;
                     $answerdata = new Answerdata;
                     $answerdata->question_id = $id;
-                    $answerdata->answer_type = "multiple-choice-multiple-answer";
+                    $answerdata->answer_type = "re-order paragraph";
                     $answerdata->answer_value = $input[$correctValue];
                     $answerdata->sample_answer = "no sample answer";
                     $answerdata->save();
@@ -341,5 +341,127 @@ class ReadingQuestionController extends Controller
                 return redirect()->route('tests.index')
                 ->with('error','Sorry!Something wrong.Try again later!');
             }
+    }
+    public function storeReadingFillInTheBlanks(Request $request)/* Reading section fill in the blanks store*/
+    {
+        $input  = \Arr::except($request->all(),array('_token'));
+        
+        $section_id         = $request->section_id;
+        $test_id            = $request->test_id;
+        $question_type_id   = $request->question_type_id;
+        $slug               = $request->slug;
+        $questionType = DB::table('question_types')->where('id',$question_type_id)->first();
+
+        $questions                  = new Questions;
+        $questions->section_id      = $section_id;
+        $questions->test_id         = $test_id;
+        $questions->design_id       = $questionType->desgin_id;
+        $questions->question_type_id= $question_type_id;
+        $questions->name            = 'fill in the blanks';
+        $questions->short_desc      = "sort desc";
+        $questions->desc            = $input['editor2'];
+        $questions->order           =  10;
+        $questions->status          = "E";
+        $questions->marks           = 50;
+        $questions->answer_time     = 40;
+        $questions->waiting_time    = 40;
+        $questions->max_time        = 40;
+
+        if($questions->save())
+        {
+            $id = $questions->id;
+            $temp = 0;
+            try{
+                for($i=0;$i<$slug;$i++)
+                {
+                    $temp++;
+                    $string = 'ans_options'.$temp;
+                    $questiondata = new Questiondata;
+                    $questiondata->question_id = $id;
+                    $questiondata->data_type   = 'fill in the blanks';
+                    $questiondata->data_value  = $input[$string];
+                    $questiondata->save();
+                }
+                $correct = 0;
+                for($a=0;$a<$slug;$a++)
+                {
+                    $correct++;
+                    $correctValue = "correct_options".$correct;
+                    $answerdata = new Answerdata;
+                    $answerdata->question_id = $id;
+                    $answerdata->answer_type = "fill in the blanks";
+                    $answerdata->answer_value = $input[$correctValue];
+                    $answerdata->sample_answer = "no sample answer";
+                    $answerdata->save();
+                }
+                return redirect()->route('tests.index')
+                    ->with('success','Questions added Successfully!');
+
+            }catch(\Exception $e){
+                //dd($e->getMessage());
+                return redirect()->route('tests.index')
+                ->with('error','Sorry!Something wrong.Try again later!');
+            }
+        }
+        else
+        {
+            return redirect()->route('tests.index')
+                ->with('error','Sorry!Something wrong.Try again later!');
+        }
+    }
+    public function updateReadingFillInTheBlanks(Request $request)/* Reading section fill in the blanks update*/
+    {
+        $input  = \Arr::except($request->all(),array('_token'));
+
+        $section_id         = $request->section_id;
+        $test_id            = $request->test_id;
+        $question_type_id   = $request->question_type_id;
+        $slug               = $request->slug;
+        $question_id        = $request->question_id;
+
+        $result = Questions::where('id',$question_id)->update(['desc'=>$input['editor2']]);
+        if($result)
+        {
+            Answerdata::where('question_id',$question_id)->delete();
+            Questiondata::where('question_id',$question_id)->delete();
+            $id = $question_id;
+            $temp = 0;
+            try{
+                for($i=0;$i<$slug;$i++)
+                {
+                    $temp++;
+                    $string = 'ans_options'.$temp;
+                    $questiondata = new Questiondata;
+                    $questiondata->question_id = $id;
+                    $questiondata->data_type   = 'fill in the blanks';
+                    $questiondata->data_value  = $input[$string];
+                    $questiondata->save();
+                }
+                $correct = 0;
+                for($a=0;$a<$slug;$a++)
+                {
+                    $correct++;
+                    $correctValue = "correct_options".$correct;
+                    $answerdata = new Answerdata;
+                    $answerdata->question_id = $id;
+                    $answerdata->answer_type = "fill in the blanks";
+                    $answerdata->answer_value = $input[$correctValue];
+                    $answerdata->sample_answer = "no sample answer";
+                    $answerdata->save();
+                }
+                return redirect()->route('tests.index')
+                    ->with('success','Questions updated Successfully!');
+
+            }catch(\Exception $e){
+                //dd($e->getMessage());
+                return redirect()->route('tests.index')
+                ->with('error','Sorry!Something wrong.Try again later!');
+            }
+        }
+        else
+        {
+            return redirect()->route('tests.index')
+                ->with('error','Sorry!Something wrong.Try again later!');
+        }
     }
 }
