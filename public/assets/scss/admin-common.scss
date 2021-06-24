@@ -434,12 +434,13 @@ body {
             color: $black;
             font-weight: $fw-500;
           }
-         .user-type{
-              width: inherit!important;
+          .dropdown{
+              width: 100%!important;
               button{
                background-color:$white-color;
                border: 1px solid $black;
                color: $black;
+
               }
               button:focus{
                    outline: unset!important;
@@ -454,6 +455,8 @@ body {
               .dropdown-menu{
                    padding: 0px;
                    margin: 0px;
+                   background-clip:unset;
+                   min-width: 100%!important;
                    li{
                          a:hover{
                          color: $white-color!important;
@@ -464,8 +467,9 @@ body {
                }
           }
           .custom-select{
-               padding: 0px;
-               border: none;
+              padding: 0px;
+              margin: 0px;
+              border: none;
           }
          .form-control{
             border: 1px solid #0C213A;
@@ -740,14 +744,38 @@ body {
                }
           }
      }
-     .action-btn{
-          background-color:$primary-color;
-          color: $white-color;
-          option{
-              background-color: $white-color;
-              color: $black;
+     .pull-right{
+          float: none;
+          button{
+               background-color:$primary-color!important;
+               color: $white-color!important;
+          }
+          button:focus{
+                   outline: unset!important;
+                   box-shadow: unset!important;
+          }
+          button::after{
+                   font-size: $fs-28;
+          }
+          .dropdown-menu{
+               padding: 0px;
+               margin: 0px;
+               li{
+                    a{
+                         padding: 0px 13px;
+                    }
+                    a:hover{
+                      color: $white-color!important;
+                      text-decoration: none;
+                      background-color: #3490dc;
+                    }
+               }
           }
      }
+
+     
+    
+     
      .top-pagination{
           align-items: center;
           display: flex;
@@ -763,6 +791,33 @@ body {
                color: #0C213A;
                font-weight: 500;
                padding: 0px 8px;
+          }
+          .dropdown{
+               width: 135px!important;
+               button:focus{
+                 outline: unset;
+                 box-shadow: unset!important;
+                 color: $black!important;
+                 background-color: #f8f9fa!important;
+                 border-color: #f8f9fa!important;
+               }
+               .dropdown-toggle:focus{
+                 outline: unset;
+               }
+               .dropdown-menu{
+                  padding: 0px;
+                  margin: 0px;
+                   li{
+                        a{
+                           padding: 0px 13px;
+                        }
+                       a:hover{
+                           color: $white-color!important;
+                           text-decoration: none;
+                           background-color: #3490dc;
+                         }
+                    }
+               }
           }
      }
      table{

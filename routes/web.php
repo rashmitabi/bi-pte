@@ -115,10 +115,6 @@ Route::post('superadmin/questions/repeatsentence', [App\Http\Controllers\SuperAd
 
     Route::resource('superadmin/predictionfiles', App\Http\Controllers\SuperAdmin\PredictionFilesController::class);
 
-    Route::resource('superadmin/videos', App\Http\Controllers\SuperAdmin\VideosController::class);
-
-    Route::resource('superadmin/subjects', App\Http\Controllers\SuperAdmin\SubjectsController::class);
-
     Route::resource('superadmin/transactions', App\Http\Controllers\SuperAdmin\TransactionsController::class);
 
     Route::resource('superadmin/certificates', App\Http\Controllers\SuperAdmin\CertificatesController::class);
@@ -129,3 +125,9 @@ Route::post('superadmin/questions/repeatsentence', [App\Http\Controllers\SuperAd
 
     Route::get('superadmin/tests/add', [App\Http\Controllers\SuperAdmin\TestsController::class, 'add'])
     ->name('superadmin-tests-add');
+
+    /*Videos module start*/
+Route::get('superadmin/videos/changestatus/{id}', [App\Http\Controllers\SuperAdmin\VideosController::class, 'changeStatus'])
+    ->name('superadmin-videos-changestatus');
+Route::resource('superadmin/videos', App\Http\Controllers\SuperAdmin\VideosController::class);
+/*Videos module end*/
