@@ -237,6 +237,109 @@ class ReadingQuestionController extends Controller
     public function storeReOrderParagraph(Request $request)/* Reading section re-order paragraph store*/
     {
         $input  = \Arr::except($request->all(),array('_token'));
-        dd($input);
+        
+        $section_id         = $request->section_id;
+        $test_id            = $request->test_id;
+        $question_type_id   = $request->question_type_id;
+        $numberSlug         = $request->numberSlug;
+        $alphaSlug          = $request->alphaSlug;
+        $questionType = DB::table('question_types')->where('id',$question_type_id)->first();
+        $all = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
+        
+        $questions                  = new Questions;
+        $questions->section_id      = $section_id;
+        $questions->test_id         = $test_id;
+        $questions->design_id       = $questionType->desgin_id;
+        $questions->question_type_id= $question_type_id;
+        $questions->name            = 'Re-order paragraph';
+        $questions->short_desc      = "sort desc";
+        $questions->desc            = "";
+        $questions->order           =  8;
+        $questions->status          = "E";
+        $questions->marks           = 50;
+        $questions->answer_time     = 40;
+        $questions->waiting_time    = 40;
+        $questions->max_time        = 40;
+
+        if($questions->save())
+        {
+            $id = $questions->id;
+            $finalValue = array_search($alphaSlug,$all);
+            try{
+                for($i=0;$i<=$finalValue;$i++)
+                {
+                    $indexValue = $all[$i];
+                    $string = 'ans_options_'.$indexValue;
+                    $questiondata = new Questiondata;
+                    $questiondata->question_id = $id;
+                    $questiondata->data_type   = 're-order paragraph';
+                    $questiondata->data_value  = $input[$string];
+                    $questiondata->save();
+                }
+
+                for($a=1;$a<=$numberSlug;$a++)
+                {
+                    $correctValue = "correct_options".$a;
+                    $answerdata = new Answerdata;
+                    $answerdata->question_id = $id;
+                    $answerdata->answer_type = "multiple-choice-multiple-answer";
+                    $answerdata->answer_value = $input[$correctValue];
+                    $answerdata->sample_answer = "no sample answer";
+                    $answerdata->save();
+                }
+                return redirect()->route('tests.index')
+                    ->with('success','Questions added Successfully!');
+
+            }catch(\Exception $e){
+                return redirect()->route('tests.index')
+                ->with('error','Sorry!Something wrong.Try again later!');
+            }
+        }
+    }
+    public function updateReOrderParagraph(Request $request)/* Reading section re-order paragraph update*/
+    {
+        $input  = \Arr::except($request->all(),array('_token'));
+        
+        $section_id         = $request->section_id;
+        $test_id            = $request->test_id;
+        $question_type_id   = $request->question_type_id;
+        $numberSlug         = $request->numberSlug;
+        $alphaSlug          = $request->alphaSlug;
+        $question_id        = $request->question_id;
+        $all = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
+        Answerdata::where('question_id',$question_id)->delete();
+        Questiondata::where('question_id',$question_id)->delete();
+
+        $id = $question_id;
+        $finalValue = array_search($alphaSlug,$all);
+            try{
+                for($i=0;$i<=$finalValue;$i++)
+                {
+                    $indexValue = $all[$i];
+                    $string = 'ans_options_'.$indexValue;
+                    $questiondata = new Questiondata;
+                    $questiondata->question_id = $id;
+                    $questiondata->data_type   = 're-order paragraph';
+                    $questiondata->data_value  = $input[$string];
+                    $questiondata->save();
+                }
+
+                for($a=1;$a<=$numberSlug;$a++)
+                {
+                    $correctValue = "correct_options".$a;
+                    $answerdata = new Answerdata;
+                    $answerdata->question_id = $id;
+                    $answerdata->answer_type = "multiple-choice-multiple-answer";
+                    $answerdata->answer_value = $input[$correctValue];
+                    $answerdata->sample_answer = "no sample answer";
+                    $answerdata->save();
+                }
+                return redirect()->route('tests.index')
+                    ->with('success','Questions Updated Successfully!');
+
+            }catch(\Exception $e){
+                return redirect()->route('tests.index')
+                ->with('error','Sorry!Something wrong.Try again later!');
+            }
     }
 }

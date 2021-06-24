@@ -116,6 +116,9 @@ Route::post('superadmin/questions/updateReadingMultipleChoiceMultipleanswers', [
 Route::post('superadmin/questions/storeReOrderParagraphs', [App\Http\Controllers\SuperAdmin\ReadingQuestionController::class,'storeReOrderParagraph'])
     ->name('superadmin-question-store-re-order-paragraph');
 
+Route::post('superadmin/questions/updateReOrderParagraphs', [App\Http\Controllers\SuperAdmin\ReadingQuestionController::class,'updateReOrderParagraph'])
+    ->name('superadmin-question-update-re-order-paragraph');
+    
 /*Reading section questions end*/
     Route::resource('superadmin/predictionfiles', App\Http\Controllers\SuperAdmin\PredictionFilesController::class);
 

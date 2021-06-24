@@ -4,47 +4,63 @@ function addQuestionColumn()
     var alphabet = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
     var link = document.querySelector('.plus-icon');
         if (link) {
-            var target = link.getAttribute('data-id');
+            var target = link.getAttribute('data-qid');
+            var anstarget = link.getAttribute('data-aid');
             console.log(target);
         }
     var letterPosition = alphabet.indexOf(target)+1;
-    var number = alphabet[letterPosition];
-    //console.log(number);
-    var ans_option_label = "Ans Options "+number;
-    var ans_option_id = "ans_options_"+number;
-    var ans_placeholder = "Which of the Following Are True Statements?";
+    var alpha = alphabet[letterPosition];
+    var number = parseInt(anstarget)+parseInt(1);
+    
+    var ansOptionHtml = '';
+    var correctOptionHtml = '';
 
-    var html = '';
+    var ansOptionLabel = "Ans Options "+alpha;
+    var ansOptionId    = "ans_options_"+alpha;
+    
+    //correct_options5
+    var correctLabel   = "Correct Options";
+    var correctId      = "correct_options"+number;
     console.log(number);
-    var html = "<div class='form-group mb-3 row '>"
-                    +"<label class='col-3 col-form-label custom-label'>"+ans_option_label+"</label>"
-                    +"<div class='col-8 p-0'>"
-                        +"<input type='text' class='form-control' name='"+ans_option_id+"' id='"+ans_option_id+"' placeholder='"+ans_placeholder+"'>"
-                    +"</div>"
-                    +"<div class='plus-icon' onclick='addQuestionColumn()' data-id='"+number+"'>"
-                        +"<a><i class='fas fa-plus'></i></a>"
-                    +"</div>"
-                +"</div>";
+    console.log(correctId);
+    var ansOptionHtml = "<div class='form-group mb-3 row'>"
+                            +"<label class='col-3 col-form-label custom-label'>"+ansOptionLabel+"</label>"
+                            +"<div class='col-8 p-0'>"
+                                +"<input type='text' class='form-control' name='"+ansOptionId+"' id='"+ansOptionId+"' placeholder='Which of the Following Are True Statements?'>"
+                            +"</div>"
+                            +"<div class='plus-icon' onclick='addQuestionColumn()' data-qid='"+alpha+"' data-aid='"+number+"'>"
+                                +"<a><i class='fas fa-plus'></i></a>"
+                            +"</div>"
+                        +"</div>";
+    var correctOptionHtml = "<div class='form-group mb-3 row'>"
+                                +"<label class='col-3 col-form-label custom-label'>"+correctLabel+"</label>"
+                                +"<div class='col-8 p-0'>"
+                                    +"<input type='text' class='form-control ' name='"+correctId+"' id='"+correctId+"' placeholder='it Seems that The Lack of Psychological Reward is the Reason for their Disatisfaction.'>"
+                                +"</div>"
+                            +"</div>";
     $(".plus-icon").remove();
-    $(".finalAnswer").before(html);
-    $('#fill_in_blanks').validate();
-    $("#"+ans_option_id).rules( "add", {
+    $("#answerBlog").append(ansOptionHtml);
+    $("#correctBlog").append(correctOptionHtml);
+    //$("#re_order .white-bg:last").after(correctOptionHtml);
+    $('#re_order').validate();
+    $("#"+ansOptionId).rules( "add", {
         required: true,
         messages: {
-          required: ans_option_label+" is required",
+          required: ansOptionLabel+" is required",
         }
       });
-      $("#slug").val(number);
+    $("#"+correctId).rules( "add", {
+        required: true,
+        messages: {
+            required: correctLabel+" is required",
+        }
+    });
+    $("#numberSlug").val(number);
+    $("#alphaSlug").val(alpha);
 }
 $(document).ready(function() {
-    $('#mutli_choice').validate({ 
+    $('#re_order').validate({ 
         rules: {
-            editor1:{
-                required: true
-            },
-            options_title: {
-                required: true
-            },
             ans_options_A:{
                 required: true
             },
@@ -60,17 +76,23 @@ $(document).ready(function() {
             ans_options_E:{
                 required: true
             },
-            correct_options:{
+            correct_options1:{
+                required: true
+            },
+            correct_options2:{
+                required: true
+            },
+            correct_options3:{
+                required: true
+            },
+            correct_options4:{
+                required: true
+            },
+            correct_options5:{
                 required: true
             }
         },
         messages : {
-            editor1: {
-                required: "description is required"
-            },
-            options_title: {
-                required: "options title is required"
-            },
             ans_options_A: {
                 required: "Ans Options A is required"
             },
@@ -86,8 +108,20 @@ $(document).ready(function() {
             ans_options_E: {
                 required: "Ans Options E is required"
             },
-            correct_options: {
-                required: "Correct Options is required"
+            correct_options1: {
+                required: "Correct options is required"
+            },
+            correct_options2: {
+                required: "Correct options is required"
+            },
+            correct_options3: {
+                required: "Correct options is required"
+            },
+            correct_options4: {
+                required: "Correct options is required"
+            },
+            correct_options5: {
+                required: "Correct options is required"
             },
         },
         submitHandler: function(form) {
