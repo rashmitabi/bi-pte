@@ -12,7 +12,7 @@ class PredictionFiles extends Model
     protected $fillable = [
         'user_id',
         'section_id',
-        'question_type_id',
+        'design_id',
         'title',
         'description',
         'link',
