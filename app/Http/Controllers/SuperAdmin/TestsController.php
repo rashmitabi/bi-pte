@@ -4,6 +4,7 @@ namespace App\Http\Controllers\SuperAdmin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Tests;
+use App\Models\QuestionTypes;
 use App\Models\Questions;
 use Illuminate\Http\Request;
 use App\Models\Subjects;
@@ -136,10 +137,13 @@ class TestsController extends Controller
         $section_id         = $request->section_id;
         $test_id            = $request->test_id;
         $question_type_id   = $request->question_type_id;
-        $questionType = DB::table('question_types')->where('id',$question_type_id)->first();
+        
+        $questionType = QuestionTypes::where('id',$question_type_id)->first();
         $design       = DB::table('question_designs')->where('id',$questionType->desgin_id)->first();
-        //dd($design);
-        return view ($this->moduleTitleP.$design->file_name);
+        
+        $questions    = Questions::with('questiondata','answerdata')->where(['test_id'=>$test_id,'question_type_id'=>$question_type_id])->first();
+        
+        return view ($this->moduleTitleP.$design->file_name,compact('questions'));
     }
     public function changeStatus($id)
     {
