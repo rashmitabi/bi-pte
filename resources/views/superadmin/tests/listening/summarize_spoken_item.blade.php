@@ -16,7 +16,7 @@
 
     <section class="top-title-button white-bg mb-3 remove-main-margin">
       <div class="row mx-0 align-items-center">
-        <div class="col-12 col-md-12 col-xl-12 col-sm-8 p-0 left">
+        <div class="col-12 col-md-12 col-xl-12 col-sm-12 p-0 left">
           <div class="question-forms">
             <div class="col-12 heading-text">
               <h5>Summarize Spoken Item (1-2)</h5>
@@ -27,7 +27,7 @@
               <input type="hidden" name="section_id" value="{{ $section_id }}">
               <input type="hidden" name="test_id" value="{{ $test_id }}">
               <div class="row">
-                <div class="col-8">
+                <div class="col-12 col-md-8 col-xl-8 col-sm-12">
                   @if(isset($questions->desc))
                     @php
                       $count = count($questions->questiondata);
@@ -40,14 +40,14 @@
                           $data_value = json_decode($questions->questiondata[$i]->data_value);
                         @endphp
                         <div class="form-group mb-2 row">
-                          <label class="col-3 col-form-label">Q{{ $i+1 }} Audio</label>
-                          <div class="col-8 p-0">
+                          <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label">Q{{ $i+1 }} Audio</label>
+                          <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
                             <input type="text" name="question_audio[]" value="{{ (isset($data_value[0]) ? $data_value[0]:'') }}" class="form-control " placeholder="Whole,Total,Very,Open">
                           </div>
                         </div>
                         <div class="form-group mb-2 row">
-                          <label class="col-3 col-form-label ">Q{{ $i+1 }} Images</label>
-                          <div class="col-8 p-0">
+                          <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Q{{ $i+1 }} Images</label>
+                          <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
                             <input type="text" name="question_image[]" value="{{ (isset($data_value[1]) ? $data_value[1]:'') }}" class="form-control " placeholder="Whole">
                           </div>
                         </div>
@@ -74,14 +74,14 @@
                   @else
                     <div class=" col-12 mt-5 mb-1 ml-1 white-bg common-col">
                       <div class="form-group mb-2 row">
-                        <label class="col-3 col-form-label">Q1 Audio</label>
-                        <div class="col-8 p-0">
+                        <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label">Q1 Audio</label>
+                        <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
                           <input type="text" name="question_audio[]" class="form-control " placeholder="Whole,Total,Very,Open">
                         </div>
                       </div>
                       <div class="form-group mb-2 row">
-                        <label class="col-3 col-form-label ">Q1 Images</label>
-                        <div class="col-8 p-0">
+                        <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Q1 Images</label>
+                        <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
                           <input type="text" name="question_image[]" class="form-control " placeholder="Whole">
                         </div>
                       </div>
@@ -105,14 +105,14 @@
 
                     <div class=" col-12 mt-5 mb-1 ml-1 white-bg common-col">
                       <div class="form-group mb-2 row">
-                        <label class="col-3 col-form-label">Q2 Audio</label>
-                        <div class="col-8 p-0">
+                        <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label">Q2 Audio</label>
+                        <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
                           <input type="text" name="question_audio[]" class="form-control " placeholder="Whole,Total,Very,Open">
                         </div>
                       </div>
                       <div class="form-group mb-2 row">
-                        <label class="col-3 col-form-label ">Q2 Images</label>
-                        <div class="col-8 p-0">
+                        <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Q2 Images</label>
+                        <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
                           <input type="text" name="question_image[]" class="form-control " placeholder="Whole">
                         </div>
                       </div>
@@ -135,8 +135,8 @@
                     </div>
                   @endif
                 </div>
-                <div class="col-4">
-                  <h5>Images</h5>
+                <div class="col-12 col-md-4 col-xl-4 col-sm-12">
+                  <h5 class="mt-4">Images</h5>
                   <div class="form-group mb-2 row">
                     <div class="col-12 p-0">                              
                       <div class="custom-file mb-3">
@@ -159,7 +159,7 @@
                 </div>
               </div>
               <div class="form-group row">
-                <div class="col-11 save-btn mt-5 ">
+                <div class="col-12 col-md-12 col-xl-11 col-sm-12 save-btn mt-5 ">
                   <a href="{{ route('tests.index') }}"><button  type="button" class="btn btn-outline-primary"><img class="back-btn" src="{{ asset('assets/images/icons/back.svg') }}">Cancel</button></a>
                   <button  type="submit" class="btn btn-outline-primary mr-2"><i class="far fa-save save-icon"></i>Submit</button>
                 </div> 

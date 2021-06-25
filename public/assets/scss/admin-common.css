@@ -186,6 +186,50 @@
     margin-top: 0px !important;
     max-width: 100% !important;
   }
+  body .question-forms .form .common-col {
+    padding: 13px 12px 1px 12px;
+  }
+  body .question-forms .form .common-col .custom-label {
+    padding: 5px 3px;
+  }
+  body .question-forms .form .common-col .col-form-label {
+    padding: 5px 3px;
+  }
+  body .question-forms .form .common-col .add-icon a {
+    right: 140px !important;
+    top: 225px !important;
+  }
+  body .question-forms .form .common-col .plus-icon a {
+    margin-top: 30px;
+  }
+  body .question-forms .form .save-btn {
+    margin-top: 80px !important;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: space-evenly;
+        -ms-flex-pack: space-evenly;
+            justify-content: space-evenly;
+  }
+  body .question-forms .form .save-btn button {
+    margin: 0px !important;
+  }
+  body .question-forms .sub-heading h4 span {
+    font-size: 15px;
+    margin-left: 0px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin-top: 6px;
+  }
+  body .question-forms .sub-heading h5 span {
+    font-size: 15px;
+    margin-left: 0px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin-top: 6px;
+  }
 }
 
 @media (min-width: 320px) and (max-width: 374px) {
@@ -243,7 +287,7 @@
   }
   body #role thead th {
     white-space: unset !important;
-    padding-right: 14px !important;
+    padding-right: 48px !important;
   }
   body #certificates thead th {
     white-space: unset !important;
@@ -334,6 +378,50 @@
     margin-top: 0px !important;
     max-width: 100% !important;
   }
+  body .question-forms .form .common-col {
+    padding: 13px 12px 1px 12px;
+  }
+  body .question-forms .form .common-col .custom-label {
+    padding: 5px 3px;
+  }
+  body .question-forms .form .common-col .col-form-label {
+    padding: 5px 3px;
+  }
+  body .question-forms .form .common-col .add-icon a {
+    right: 110px !important;
+    top: 225px !important;
+  }
+  body .question-forms .form .common-col .plus-icon a {
+    margin-top: 30px;
+  }
+  body .question-forms .form .save-btn {
+    margin-top: 80px !important;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: space-evenly;
+        -ms-flex-pack: space-evenly;
+            justify-content: space-evenly;
+  }
+  body .question-forms .form .save-btn button {
+    margin: 0px !important;
+  }
+  body .question-forms .sub-heading h4 span {
+    font-size: 15px;
+    margin-left: 0px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin-top: 6px;
+  }
+  body .question-forms .sub-heading h5 span {
+    font-size: 15px;
+    margin-left: 0px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin-top: 6px;
+  }
 }
 
 /*middle screen(425 up to 575 */
@@ -421,6 +509,50 @@
     margin-top: 0px !important;
     max-width: 100% !important;
   }
+  body .question-forms .form .common-col {
+    padding: 13px 12px 1px 12px;
+  }
+  body .question-forms .form .common-col .custom-label {
+    padding: 5px 3px;
+  }
+  body .question-forms .form .common-col .col-form-label {
+    padding: 5px 3px;
+  }
+  body .question-forms .form .common-col .add-icon a {
+    right: 160px !important;
+    top: 225px !important;
+  }
+  body .question-forms .form .common-col .plus-icon a {
+    margin-top: 30px;
+  }
+  body .question-forms .form .save-btn {
+    margin-top: 80px !important;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: space-evenly;
+        -ms-flex-pack: space-evenly;
+            justify-content: space-evenly;
+  }
+  body .question-forms .form .save-btn button {
+    margin: 0px !important;
+  }
+  body .question-forms .sub-heading h4 span {
+    font-size: 18px;
+    margin-left: 0px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin-top: 6px;
+  }
+  body .question-forms .sub-heading h5 span {
+    font-size: 18px;
+    margin-left: 0px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin-top: 6px;
+  }
 }
 
 /* all large mobile (575 up to 768)*/
@@ -474,6 +606,50 @@
   }
   body #content #results thead th {
     white-space: unset !important;
+  }
+  body #content .question-forms .form .common-col {
+    padding: 13px 12px 1px 12px;
+  }
+  body #content .question-forms .form .common-col .custom-label {
+    padding: 5px 3px;
+  }
+  body #content .question-forms .form .common-col .col-form-label {
+    padding: 5px 3px;
+  }
+  body #content .question-forms .form .common-col .add-icon a {
+    right: 208px !important;
+    top: 225px !important;
+  }
+  body #content .question-forms .form .common-col .plus-icon a {
+    margin-top: 30px;
+  }
+  body #content .question-forms .form .save-btn {
+    margin-top: 80px !important;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: space-evenly;
+        -ms-flex-pack: space-evenly;
+            justify-content: space-evenly;
+  }
+  body #content .question-forms .form .save-btn button {
+    margin: 0px !important;
+  }
+  body #content .question-forms .sub-heading h4 span {
+    font-size: 15px;
+    margin-left: 0px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin-top: 6px;
+  }
+  body #content .question-forms .sub-heading h5 span {
+    font-size: 15px;
+    margin-left: 0px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin-top: 6px;
   }
 }
 
@@ -543,6 +719,10 @@
   }
   body .common-wrap .btn-group .expired-btn {
     margin-left: 0px !important;
+  }
+  body .add-icon a {
+    right: 20px !important;
+    top: 35px !important;
   }
   .graph-wrap-row .graph-common-1 {
     max-width: 49% !important;
@@ -1143,12 +1323,6 @@ body {
   background-color: #3490dc;
 }
 
-.form .form-group .custom-select {
-  padding: 0px;
-  margin: 0px;
-  border: none;
-}
-
 .form .form-group .form-control {
   border: 1px solid #0C213A;
   border-radius: 5px;
@@ -1181,11 +1355,15 @@ body {
 
 .form .form-group textarea, .form .form-group select {
   line-height: 1.6 !important;
-  font-weight: 500;
+  font-weight: 400;
 }
 
 .form .form-group select {
   background: #fff url(../images/icons/caret-down.svg) right 0.75rem center/15px 10px no-repeat;
+  width: 100%;
+  padding: 7px;
+  border-radius: 5px;
+  border: 1px solid #0C213A;
 }
 
 .form .form-group .form-control:focus {

@@ -17,7 +17,7 @@ $question_id = $_GET['question_type_id'];
 
     <section class="top-title-button white-bg mb-3 remove-main-margin">
         <div class="row mx-0 align-items-center">
-            <div class="col-12 col-md-12 col-xl-12 col-sm-8 p-0 left">
+            <div class="col-12 col-md-12 col-xl-12 col-sm-12 p-0 left">
                <div class="question-forms">
                    <div class="col-12 heading-text">
                       <h5>Reading : Fill in the blanks(10)</h5>
@@ -27,7 +27,7 @@ $question_id = $_GET['question_type_id'];
                    </div>
                    <form class="form ml-1" name="fill_in_blanks" id="fill_in_blanks" method="POST" action="{{ (isset($questions->desc))?route('superadmin-question-update-fill-in-the-blanks'):route('superadmin-question-store-fill-in-the-blanks') }}">
                       <div class="form-group mb-5 row">
-                           <div class="col-11">
+                           <div class="col-12 col-md-12 col-xl-11 col-sm-12">
                                @csrf
                               <!-- <div id="editor">
                                  <h2>The three greatest things you learn from traveling</h2>
@@ -38,14 +38,14 @@ $question_id = $_GET['question_type_id'];
                        <div class=" col-11 mt-2 ml-3 white-bg common-col" id="mainbox">
                             @if(!isset($questions->desc))
                             <div class="form-group mb-3 row">
-                              <label class="col-3 col-form-label custom-label ">Ans Options</label>
-                              <div class="col-7 p-0">
+                              <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label custom-label ">Ans Options</label>
+                              <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
                                  <input type="text" class="form-control " name="ans_options1" id="ans_options1" placeholder="Whole,Total,Very,Open">
                               </div>
                             </div>
                             <div class="form-group mb-3 row">
-                              <label class="col-3 col-form-label custom-label">Correct Options</label>
-                              <div class="col-7 p-0">
+                              <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label custom-label">Correct Options</label>
+                              <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
                                  <input type="text" class="form-control " name="correct_options1" id="correct_options1" placeholder="Whole">
                               </div>
                               <div class="add-icon" onclick="addQuestionColumn()" data-id="1">
@@ -62,14 +62,14 @@ $question_id = $_GET['question_type_id'];
                                         $temp++;
                                     @endphp
                                     <div class="form-group mb-3 row">
-                                        <label class="col-3 col-form-label custom-label ">Ans Options</label>
-                                        <div class="col-7 p-0">
+                                        <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label custom-label ">Ans Options</label>
+                                        <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
                                             <input type="text" class="form-control " name="ans_options{{$temp}}" id="ans_options{{$temp}}" placeholder="Whole,Total,Very,Open" value="{{ $questions->answerdata[$i]->answer_value}}">
                                         </div>
                                     </div>
                                     <div class="form-group mb-3 row">
-                                        <label class="col-3 col-form-label custom-label">Correct Options</label>
-                                        <div class="col-7 p-0">
+                                        <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label custom-label">Correct Options</label>
+                                        <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
                                             <input type="text" class="form-control " name="correct_options{{$temp}}" id="correct_options{{$temp}}" placeholder="Whole" value="{{ $questions->questiondata[$i]->data_value}}">
                                         </div>
                                         @if($temp == 1)
@@ -82,7 +82,7 @@ $question_id = $_GET['question_type_id'];
                             @endif
                        </div>
                        <div class="form-group row">
-                            <div class="col-11 save-btn mt-5 ">
+                            <div class="col-12 col-md-12 col-xl-11 col-sm-12 save-btn mt-5 ">
                                 <input type="hidden" name="section_id" value="{{ $section_id }}">
                                 <input type="hidden" name="test_id" value="{{ $test_id }}">
                                 <input type="hidden" name="question_type_id" value="{{ $question_id }}">

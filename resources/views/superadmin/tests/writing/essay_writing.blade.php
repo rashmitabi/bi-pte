@@ -16,7 +16,7 @@
 
 	    <section class="top-title-button white-bg mb-3 remove-main-margin">
 	        <div class="row mx-0 align-items-center">
-	            <div class="col-12 col-md-12 col-xl-12 col-sm-8 p-0 left">
+	            <div class="col-12 col-md-12 col-xl-12 col-sm-12 p-0 left">
 	               <div class="question-forms">
 	                    <div class="col-12 heading-text">
 	                      <h5>Essay Writing</h5>
@@ -37,7 +37,7 @@
 				                       <h4>Essay Title<span>Question</span></h4>
 				                    </div>
 				                    <div class="form-group mb-3 row">
-			                            <div class="col-11">
+			                            <div class="col-12 col-md-12 col-xl-11 col-sm-12">
 			                               <textarea name="essay_title" id="editor14">{{ $questions->questiondata[$i]->data_value }}</textarea>
 			                                @if($errors->has('essay_title'))
 					                            <span class="error-msg"> {{$errors->first('essay_title')}}</span>
@@ -49,7 +49,7 @@
 			                           <h4>Sample Essay<span>Question</span></h4>
 			                        </div>
 			                        <div class="form-group mb-3 row">
-			                           <div class="col-11">
+			                           <div class="col-12 col-md-12 col-xl-11 col-sm-12">
 			                               <textarea name="sample_essay" id="editor15">{{ $questions->answerdata[$i]->sample_answer }}</textarea>
 			                               @if($errors->has('sample_essay'))
 					                            <span class="error-msg">{{$errors->first('sample_essay')}}</span>
@@ -62,7 +62,7 @@
 			                       <h4>Essay Title<span>Question</span></h4>
 			                    </div>
 		                        <div class="form-group mb-3 row">
-		                            <div class="col-11">
+		                            <div class="col-12 col-md-12 col-xl-11 col-sm-12">
 		                               <textarea name="essay_title" id="editor14">{{ old('essay_title') }}</textarea>
 		                                @if($errors->has('essay_title'))
 				                            <span class="error-msg"> {{$errors->first('essay_title')}}</span>
@@ -73,7 +73,7 @@
 		                           <h4>Sample Essay<span>Question</span></h4>
 		                        </div>
 		                        <div class="form-group mb-3 row">
-		                           <div class="col-11">
+		                           <div class="col-12 col-md-12 col-xl-11 col-sm-12">
 		                               <textarea name="sample_essay" id="editor15">{{ old('sample_essay') }}</textarea>
 		                               @if($errors->has('sample_essay'))
 				                            <span class="error-msg">{{$errors->first('sample_essay')}}</span>
@@ -82,7 +82,7 @@
 		                        </div>
 		                    @endif
 		                    <div class="form-group row">
-	                            <div class="col-11 save-btn mt-5 ">
+	                            <div class="col-12 col-md-12 col-xl-11 col-sm-12 save-btn mt-5 ">
 	                                <a href="{{ route('tests.index') }}"><button  type="button" class="btn btn-outline-primary"><img class="back-btn" src="{{ asset('assets/images/icons/back.svg') }}">Cancel</button></a>
 	                                <button  type="submit" class="btn btn-outline-primary mr-2"><i class="far fa-save save-icon"></i>Submit</button>
 	                            </div> 

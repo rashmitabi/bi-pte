@@ -37,6 +37,8 @@ Route::group(['middleware' => ['auth', 'verified','superadmin']], function () {
     Route::resource('superadmin/roles', App\Http\Controllers\SuperAdmin\RolesController::class)->names('roles');
     Route::get('superadmin/roles/changestatus/{id}', [App\Http\Controllers\SuperAdmin\RolesController::class,'changeStatus'])->name('superadmin-roles-changestatus');
 
+    Route::get('superadmin/setting', [App\Http\Controllers\HomeController::class, 'setting'])->name('superadmin-setting');
+
 });
 //end Super admin routes
 

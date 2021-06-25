@@ -17,7 +17,7 @@ $question_id = $_GET['question_type_id'];
 
     <section class="top-title-button white-bg mb-3 remove-main-margin">
         <div class="row mx-0 align-items-center">
-            <div class="col-12 col-md-12 col-xl-12 col-sm-8 p-0 left">
+            <div class="col-12 col-md-12 col-xl-12 col-sm-12 p-0 left">
                <div class="question-forms">
                    <div class="col-12 heading-text">
                       <h5>Multiple-choice,Choose multiple answers(6)</h5>
@@ -28,7 +28,7 @@ $question_id = $_GET['question_type_id'];
                    <form class="form ml-1" method="POST" id="mutli_choice" name="mutli_choice" action="{{ (isset($questions->desc))?route('superadmin-question-update-MultipleChoice-Multipleanswers'):route('superadmin-question-store-MultipleChoice-Multipleanswers')}}">
                        @csrf
                       <div class="form-group mb-5 row">
-                           <div class="col-11">
+                           <div class="col-12 col-md-12 col-xl-11 col-sm-12">
                               <!-- <div id="editor">
                                  <h2>The three greatest things you learn from traveling</h2>
                               </div> -->
@@ -37,39 +37,39 @@ $question_id = $_GET['question_type_id'];
                        </div>
                        <div class=" col-11 mt-2 ml-3 white-bg common-col">
                             <div class="form-group mb-3 row">
-                              <label class="col-3 col-form-label custom-label ">Options Title</label>
-                              <div class="col-8 p-0">
+                              <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label custom-label ">Options Title</label>
+                              <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
                                  <input type="text" class="form-control " name="options_title" id="options_title" placeholder="Which of the Following Are True Statements?" value="{{(isset($questions->desc))?$questions->name:''}}">
                               </div>
                            </div>
                            @if(!isset($questions->desc))
                               <div class="form-group mb-3 row">
-                                 <label class="col-3 col-form-label custom-label">Ans Options A</label>
-                                 <div class="col-8 p-0">
+                                 <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label custom-label">Ans Options A</label>
+                                 <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
                                     <input type="text" class="form-control " name="ans_options_A" id="ans_options_A" placeholder="Which of the Following Are True Statements?">
                                  </div>
                               </div>
                               <div class="form-group mb-3 row">
-                                 <label class="col-3 col-form-label custom-label ">Ans Options B</label>
-                                 <div class="col-8 p-0">
+                                 <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label custom-label ">Ans Options B</label>
+                                 <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
                                     <input type="text" class="form-control " name="ans_options_B" id="ans_options_B" placeholder="Which of the Following Are True Statements?">
                                  </div>
                               </div>
                               <div class="form-group mb-3 row">
-                                 <label class="col-3 col-form-label custom-label">Ans Options C</label>
-                                 <div class="col-8 p-0">
+                                 <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label custom-label">Ans Options C</label>
+                                 <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
                                     <input type="text" class="form-control " name="ans_options_C" id="ans_options_C" placeholder="Which of the Following Are True Statements?">
                                  </div>
                               </div>
                               <div class="form-group mb-3 row">
-                                 <label class="col-3 col-form-label custom-label ">Ans Options D</label>
-                                 <div class="col-8 p-0">
+                                 <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label custom-label ">Ans Options D</label>
+                                 <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
                                     <input type="text" class="form-control " name="ans_options_D" id="ans_options_D" placeholder="Which of the Following Are True Statements?">
                                  </div>
                               </div>
                               <div class="form-group mb-3 row ">
-                                 <label class="col-3 col-form-label custom-label">Ans Options E</label>
-                                 <div class="col-8 p-0">
+                                 <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label custom-label">Ans Options E</label>
+                                 <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
                                     <input type="text" class="form-control " name="ans_options_E" id="ans_options_E" placeholder="Which of the Following Are True Statements?">
                                  </div>
                                  <div class="plus-icon" onclick="addQuestionColumn()" data-id="E">
@@ -88,8 +88,8 @@ $question_id = $_GET['question_type_id'];
                                     $label++;
                                  @endphp
                                  <div class="form-group mb-3 row ">
-                                    <label class="col-3 col-form-label custom-label">Ans Options {{$arrayValue}}</label>
-                                    <div class="col-8 p-0">
+                                    <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label custom-label">Ans Options {{$arrayValue}}</label>
+                                    <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
                                        <input type="text" class="form-control " name="ans_options_{{$arrayValue}}" id="ans_options_{{$arrayValue}}" placeholder="Which of the Following Are True Statements?" value="{{ $questions->questiondata[$i]->data_value }}">
                                     </div>
                                     @if($label == $count)
@@ -101,14 +101,14 @@ $question_id = $_GET['question_type_id'];
                               @endfor
                            @endif
                            <div class="form-group mb-3 row finalAnswer">
-                              <label class="col-3 col-form-label custom-label">Correct Options</label>
-                              <div class="col-8 p-0">
+                              <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label custom-label">Correct Options</label>
+                              <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
                                  <input type="text" class="form-control " name="correct_options" id="correct_options" placeholder="Whole" value="{{(isset($questions->desc))?$questions->answerdata[0]->answer_value:''}}">
                               </div>
                            </div>
                        </div>
                        <div class="form-group row">
-                            <div class="col-11 save-btn mt-5 ">
+                            <div class="col-12 col-md-12 col-xl-11 col-sm-12 save-btn mt-5 ">
                                 <input type="hidden" name="section_id" value="{{ $section_id }}">
                                 <input type="hidden" name="test_id" value="{{ $test_id }}">
                                 <input type="hidden" name="question_type_id" value="{{ $question_id }}">
