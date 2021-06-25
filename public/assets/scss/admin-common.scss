@@ -466,10 +466,11 @@ body {
                     }
                }
           }
+
           .custom-select{
-              padding: 0px;
-              margin: 0px;
-              border: none;
+          //     padding: 0px;
+          //     margin: 0px;
+          //     border: none;
           }
          .form-control{
             border: 1px solid #0C213A;
@@ -490,10 +491,14 @@ body {
          }
          textarea, select{
                line-height: 1.6 !important;
-               font-weight: 500;
+               font-weight: 400;
          }
          select{
                background: #fff url(../images/icons/caret-down.svg) right 0.75rem center/15px 10px no-repeat;
+               width: 100%;
+               padding: 7px;
+               border-radius: 5px;
+               border: 1px solid #0C213A;
          }
          .form-control:focus{
                box-shadow: none;

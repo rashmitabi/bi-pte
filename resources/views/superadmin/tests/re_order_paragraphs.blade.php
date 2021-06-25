@@ -16,7 +16,7 @@ $question_id = $_GET['question_type_id'];
 
     <section class="top-title-button white-bg mb-3 remove-main-margin">
         <div class="row mx-0 align-items-center">
-            <div class="col-12 col-md-12 col-xl-12 col-sm-8 p-0 left">
+            <div class="col-12 col-md-12 col-xl-12 col-sm-12 p-0 left">
                <div class="question-forms">
                    <div class="col-12 heading-text">
                       <h5>Re-order Paragraphs(8)</h5>
@@ -24,32 +24,32 @@ $question_id = $_GET['question_type_id'];
                    <form class="form ml-1">
                        <div class=" col-11 mt-5 ml-3 white-bg common-col">
                            <div class="form-group mb-3 row">
-                              <label class="col-3 col-form-label custom-label">Ans Options A</label>
-                              <div class="col-8 p-0">
+                              <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label custom-label">Ans Options A</label>
+                              <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
                                  <input type="text" class="form-control " placeholder="it Seems that The Lack of Psychological Reward is the Reason for their Disatisfaction.">
                               </div>
                            </div>
                            <div class="form-group mb-3 row">
-                              <label class="col-3 col-form-label custom-label ">Ans Options B</label>
-                              <div class="col-8 p-0">
+                              <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label custom-label ">Ans Options B</label>
+                              <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
                                  <input type="text" class="form-control " placeholder="it Seems that The Lack of Psychological Reward is the Reason for their Disatisfaction.">
                               </div>
                            </div>
                            <div class="form-group mb-3 row">
-                              <label class="col-3 col-form-label custom-label">Ans Options C</label>
-                              <div class="col-8 p-0">
+                              <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label custom-label">Ans Options C</label>
+                              <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
                                  <input type="text" class="form-control " placeholder="Which of the Following Are True Statements?">
                               </div>
                            </div>
                            <div class="form-group mb-3 row">
-                              <label class="col-3 col-form-label custom-label ">Ans Options D</label>
-                              <div class="col-8 p-0">
+                              <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label custom-label ">Ans Options D</label>
+                              <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
                                  <input type="text" class="form-control " placeholder="Which of the Following Are True Statements?">
                               </div>
                            </div>
                            <div class="form-group mb-3 row">
-                              <label class="col-3 col-form-label custom-label">Ans Options E</label>
-                              <div class="col-8 p-0">
+                              <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label custom-label">Ans Options E</label>
+                              <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
                                  <input type="text" class="form-control " placeholder="">
                               </div>
                               <div class="plus-icon">
@@ -59,32 +59,32 @@ $question_id = $_GET['question_type_id'];
                        </div>
                         <div class=" col-11 mt-4 ml-3 white-bg common-col">
                            <div class="form-group mb-3 row">
-                              <label class="col-3 col-form-label custom-label">Correct Options</label>
-                              <div class="col-8 p-0">
+                              <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label custom-label">Correct Options</label>
+                              <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
                                  <input type="text" class="form-control " placeholder="it Seems that The Lack of Psychological Reward is the Reason for their Disatisfaction.">
                               </div>
                            </div>
                            <div class="form-group mb-3 row">
-                              <label class="col-3 col-form-label custom-label ">Correct Options</label>
-                              <div class="col-8 p-0">
+                              <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label custom-label ">Correct Options</label>
+                              <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
                                  <input type="text" class="form-control " placeholder="it Seems that The Lack of Psychological Reward is the Reason for their Disatisfaction.">
                               </div>
                            </div>
                            <div class="form-group mb-3 row">
-                              <label class="col-3 col-form-label custom-label">Correct Options</label>
-                              <div class="col-8 p-0">
+                              <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label custom-label">Correct Options</label>
+                              <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
                                  <input type="text" class="form-control " placeholder="it Seems that The Lack of Psychological Reward is the Reason for their Disatisfaction.">
                               </div>
                            </div>
                            <div class="form-group mb-3 row">
-                              <label class="col-3 col-form-label custom-label ">Correct Options</label>
-                              <div class="col-8 p-0">
+                              <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label custom-label ">Correct Options</label>
+                              <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
                                  <input type="text" class="form-control " placeholder="it Seems that The Lack of Psychological Reward is the Reason for their Disatisfaction.">
                               </div>
                            </div>
                            <div class="form-group mb-3 row">
-                              <label class="col-3 col-form-label custom-label">Correct Options</label>
-                              <div class="col-8 p-0">
+                              <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label custom-label">Correct Options</label>
+                              <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
                                  <input type="text" class="form-control " placeholder="it Seems that The Lack of Psychological Reward is the Reason for their Disatisfaction.">
                               </div>
                               <div class="plus-icon">
@@ -93,7 +93,7 @@ $question_id = $_GET['question_type_id'];
                            </div>
                        </div>
                        <div class="form-group row">
-                            <div class="col-11 save-btn mt-5 ">
+                            <div class="col-12 col-md-12 col-xl-11 col-sm-12 save-btn mt-5 ">
                                 <button  type="button" class="btn btn-outline-primary"><a href="#"><img class="back-btn" src="{{ asset('assets/images/icons/back.svg') }}"></a>Cancel</button>
                                 <button  type="button" class="btn btn-outline-primary mr-2"><i class="far fa-save save-icon"></i>Submit</button>
                             </div> 

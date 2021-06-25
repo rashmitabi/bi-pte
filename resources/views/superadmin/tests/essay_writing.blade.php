@@ -16,7 +16,7 @@
 
 	    <section class="top-title-button white-bg mb-3 remove-main-margin">
 	        <div class="row mx-0 align-items-center">
-	            <div class="col-12 col-md-12 col-xl-12 col-sm-8 p-0 left">
+	            <div class="col-12 col-md-12 col-xl-12 col-sm-12 p-0 left">
 	               <div class="question-forms">
 	                   <div class="col-12 heading-text">
 	                      <h5>Essay Writing</h5>
@@ -26,7 +26,7 @@
 	                   </div>
 	                   <form class="form ml-1">
 	                      <div class="form-group mb-3 row">
-	                           <div class="col-11">
+	                           <div class="col-12 col-md-12 col-xl-11 col-sm-12">
 	                              <!-- <div id="editor">
 	                                 <h2>The three greatest things you learn from traveling</h2>
 	                              </div> -->
@@ -37,7 +37,7 @@
 	                           <h4>Sample Essay<span>Question</span></h4>
 	                        </div>
 	                        <div class="form-group mb-3 row">
-	                           <div class="col-11">
+	                           <div class="col-12 col-md-12 col-xl-11 col-sm-12">
 	                              <!-- <div id="editor">
 	                                 <h2>The three greatest things you learn from traveling</h2>
 	                              </div> -->
@@ -45,7 +45,7 @@
 	                           </div>
 	                        </div>
 	                       <div class="form-group row">
-	                            <div class="col-11 save-btn mt-5 ">
+	                            <div class="col-12 col-md-12 col-xl-11 col-sm-12 save-btn mt-5 ">
 	                                <button  type="button" class="btn btn-outline-primary"><a href="#"><img class="back-btn" src="{{ asset('assets/images/icons/back.svg') }}"></a>Cancel</button>
 	                                <button  type="button" class="btn btn-outline-primary mr-2"><i class="far fa-save save-icon"></i>Submit</button>
 	                            </div> 
