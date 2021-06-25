@@ -127,6 +127,9 @@ Route::post('superadmin/questions/updateListenMultipleChoiceChooseSingle', [App\
 
 Route::post('superadmin/questions/storeListenMissingWordItem', [App\Http\Controllers\SuperAdmin\ListeningQuestionController::class,'storeMissingWordItem'])->name('store-listen-missing-word-item');
 Route::post('superadmin/questions/updateListenMissingWordItem', [App\Http\Controllers\SuperAdmin\ListeningQuestionController::class,'updateMissingWordItem'])->name('update-listen-missing-word-item');
+
+Route::post('superadmin/questions/storeWriteFormDictations', [App\Http\Controllers\SuperAdmin\ListeningQuestionController::class,'storeWriteFormDictations'])->name('store-listen-write-form-dictations');
+Route::post('superadmin/questions/updateWriteFormDictations', [App\Http\Controllers\SuperAdmin\ListeningQuestionController::class,'updateWriteFormDictations'])->name('update-listen-write-form-dictations');
 /* end listening section */
 
 /* start writing section */
