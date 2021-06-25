@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Videos;
 use Illuminate\Http\Request;
 use App\Http\Requests\CreateVideosRequest;
+use App\Http\Requests\UpdateVideosRequest;
 use DataTables;
 use DB;
 
@@ -20,7 +21,7 @@ class VideosController extends Controller
     public function index(Request $request)
     {
         if($request->ajax())  {
-            $data = Videos::latest()->get();
+            $data = Videos::latest()->where('user_id',\Auth::user()->id)->get();
             return Datatables::of($data)
                     ->addIndexColumn()
                     ->addColumn('title', function($row){
@@ -37,6 +38,9 @@ class VideosController extends Controller
                             $type = DB::table('question_designs')->select('design_name')->where('id',$row->design_id)->first();
                         }
                         return ucfirst($type->design_name);
+                    })
+                    ->addColumn('created date', function($row){
+                        return date('Y-m-d', strtotime($row->created_at));
                     })
                     ->addColumn('status', function($row){
                         if($row->status == "E"){
@@ -132,8 +136,14 @@ class VideosController extends Controller
     public function edit($id)
     {
         $video = Videos::find($id);
+        $sections = DB::table('sections')->get();
+        $designs = DB::table('question_designs')->select('id', 'section_id', 'design_name')->get();
+        $types = array();
+        foreach($designs as $des){
+            $types[$des->section_id][] = array('id' => $des->id, 'name' => $des->design_name);
+        }
 
-        $html_subject = view($this->moduleTitleP.'edit', compact('video'))->render();
+        $html_subject = view($this->moduleTitleP.'edit', compact('video', 'sections', 'types'))->render();
 
         return response()->json([
             'success' => 1,
@@ -145,12 +155,20 @@ class VideosController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Videos  $videos
+     * @param  \App\Models\Videos  $video_id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Videos $videos)
+    public function update(UpdateVideosRequest $request, $id)
     {
-        //
+        $input  = \Arr::except($request->all(),array('_token'));
+        $result = Videos::where('id',$id)->update($input);
+        if($result){
+            \Session::put('success', 'Video updated Successfully!');
+            return true;
+        }else{
+            \Session::put('error', 'Sorry!Something wrong.try Again.');
+            return false;
+        }
     }
 
     /**

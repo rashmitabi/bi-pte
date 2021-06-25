@@ -161,6 +161,13 @@ Route::post('superadmin/questions/storeReOrderParagraphs', [App\Http\Controllers
     ->name('superadmin-question-store-re-order-paragraph');
 Route::post('superadmin/questions/updateReOrderParagraphs', [App\Http\Controllers\SuperAdmin\ReadingQuestionController::class,'updateReOrderParagraph'])
     ->name('superadmin-question-update-re-order-paragraph');
+
+Route::post('superadmin/questions/storeFillInTheBlanks', [App\Http\Controllers\SuperAdmin\ReadingQuestionController::class,'storeReadingFillInTheBlanks'])
+    ->name('superadmin-question-store-fill-in-the-blanks');
+
+Route::post('superadmin/questions/updateFillInTheBlanks', [App\Http\Controllers\SuperAdmin\ReadingQuestionController::class,'updateReadingFillInTheBlanks'])
+    ->name('superadmin-question-update-fill-in-the-blanks');
+    
 /*Reading section questions end*/
 
 
