@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\SuperAdmin;
 
 use App\Http\Controllers\Controller;
+use App\Models\PredictionFiles;
 use Illuminate\Http\Request;
+use App\Http\Requests\CreatePredictionRequest
+use DB;
 
 class PredictionFilesController extends Controller
 {
@@ -24,7 +27,13 @@ class PredictionFilesController extends Controller
      */
     public function create()
     {
-        return view('superadmin/predictionfiles/addpredictionfiles');
+        $sections = DB::table('sections')->get();
+        $designs = DB::table('question_designs')->select('id', 'section_id', 'design_name')->get();
+        $types = array();
+        foreach($designs as $des){
+            $types[$des->section_id][] = array('id' => $des->id, 'name' => $des->design_name);
+        }
+        return view('superadmin/predictionfiles/addpredictionfiles',compact('sections', 'types'));
     }
 
     /**

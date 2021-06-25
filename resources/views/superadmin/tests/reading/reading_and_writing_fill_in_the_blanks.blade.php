@@ -24,7 +24,7 @@ $question_id = $_GET['question_type_id'];
                    <div class="sub-heading">
                        <h4>Paragraph<span>Enter the First Module Paragraph</span></h4>
                    </div>
-                   <form class="form ml-1" method="POST" id="fill_in_blanks" name="fill_in_blanks" action="{{ (isset($questions->desc))?route('superadmin-question-update-readingwriting-fillintheblanks'):route('questions.store')}}">
+                   <form class="form ml-1" method="POST" id="fill_in_blanks" name="fill_in_blanks" action="{{ (isset($questions->desc))?route('superadmin-question-update-readingwriting-fillintheblanks'):route('superadmin-reading-store-fill-in-the-blanks')}}">
                       @csrf
                       <div class="form-group mb-5 row">
                            <div class="col-12 col-md-12 col-xl-11 col-sm-12">

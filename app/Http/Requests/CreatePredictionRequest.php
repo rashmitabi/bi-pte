@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreateVideosRequest extends FormRequest
+class CreatePredictionRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,7 +26,7 @@ class CreateVideosRequest extends FormRequest
         return [
             'title'=>'required|max:250',
             'description'=>'required|max:1000',
-            'link'=>'required|url|max:250',
+            'file'=>'required',
             'section_id'=>'required|numeric',
             'design_id'=>'required|numeric',
             'status'=>'nullable|in:E,D'

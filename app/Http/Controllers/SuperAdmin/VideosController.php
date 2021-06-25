@@ -6,19 +6,67 @@ use App\Http\Controllers\Controller;
 use App\Models\Videos;
 use Illuminate\Http\Request;
 use App\Http\Requests\CreateVideosRequest;
+use App\Http\Requests\UpdateVideosRequest;
 use DataTables;
 use DB;
 
 class VideosController extends Controller
 {
+    private $moduleTitleP = "superadmin.videos.";
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('superadmin/videos/index');
+        if($request->ajax())  {
+            $data = Videos::latest()->where('user_id',\Auth::user()->id)->get();
+            return Datatables::of($data)
+                    ->addIndexColumn()
+                    ->addColumn('title', function($row){
+                        return $row->title;
+                    })                    
+                    ->addColumn('section', function($row){
+                        if($row->section_id != ""){
+                            $section = DB::table('sections')->select('section_name')->where('id',$row->section_id)->first();
+                        }
+                        return ucfirst($section->section_name);
+                    })
+                    ->addColumn('type', function($row){
+                        if($row->design_id != ""){
+                            $type = DB::table('question_designs')->select('design_name')->where('id',$row->design_id)->first();
+                        }
+                        return ucfirst($type->design_name);
+                    })
+                    ->addColumn('created date', function($row){
+                        return date('Y-m-d', strtotime($row->created_at));
+                    })
+                    ->addColumn('status', function($row){
+                        if($row->status == "E"){
+                            $status = "Enabled";
+                        }else{
+                            $status = "Disabled";
+                        }
+                        return $status;
+                    })
+                    ->addColumn('action', function($row){
+                        if($row->status == "E"){
+                            $iconClass = "red";
+                        }else{
+                            $iconClass = "green";
+                        }
+                        $btn = '<ul class="actions-btns">
+                            <li class="action" data-toggle="modal" data-target="#editvideos"><a href="javascript:void(0);" class="video-edit" data-id="'.$row->id.'" data-url="'.route('videos.edit', $row->id).'"><i class="fas fa-pen"></i></a></li>
+                            <li class="action"><a href="#" class="delete_modal" data-toggle="modal" data-target="#delete_modal"  data-url="'.route('videos.destroy', $row->id).'" data-id="'.$row->id.'" data-title="Video"><i class="fas fa-trash"></i></a></li>
+                            <li class="action shield '.$iconClass.'"><a href="'.route('superadmin-videos-changestatus', $row->id ).'"><img src="'.asset('assets/images/icons/blocked.svg').'" class=""></a></li>
+                            </ul>';
+                        return $btn;
+                    })
+                    ->rawColumns(['checkbox','action'])
+                    ->make(true);
+        }
+        return view($this->moduleTitleP.'index');
     }
 
     /**
@@ -85,21 +133,42 @@ class VideosController extends Controller
      * @param  \App\Models\Videos  $videos
      * @return \Illuminate\Http\Response
      */
-    public function edit(Videos $videos)
+    public function edit($id)
     {
-        //
+        $video = Videos::find($id);
+        $sections = DB::table('sections')->get();
+        $designs = DB::table('question_designs')->select('id', 'section_id', 'design_name')->get();
+        $types = array();
+        foreach($designs as $des){
+            $types[$des->section_id][] = array('id' => $des->id, 'name' => $des->design_name);
+        }
+
+        $html_subject = view($this->moduleTitleP.'edit', compact('video', 'sections', 'types'))->render();
+
+        return response()->json([
+            'success' => 1,
+            'html'=>$html_subject    
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Videos  $videos
+     * @param  \App\Models\Videos  $video_id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Videos $videos)
+    public function update(UpdateVideosRequest $request, $id)
     {
-        //
+        $input  = \Arr::except($request->all(),array('_token'));
+        $result = Videos::where('id',$id)->update($input);
+        if($result){
+            \Session::put('success', 'Video updated Successfully!');
+            return true;
+        }else{
+            \Session::put('error', 'Sorry!Something wrong.try Again.');
+            return false;
+        }
     }
 
     /**
@@ -108,9 +177,19 @@ class VideosController extends Controller
      * @param  \App\Models\Videos  $videos
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Videos $videos)
+    public function destroy($id)
     {
-        //
+        $result = Videos::where('id',$id)->delete();
+        if($result)
+        {
+            return redirect()->route('videos.index')
+                        ->with('success','Video deleted successfully!');
+        }
+        else
+        {
+            return redirect()->route('videos.index')
+                        ->with('error','Sorry!Something wrong.Try again later!');
+        }
     }
 
     /**

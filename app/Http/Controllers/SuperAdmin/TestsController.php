@@ -142,8 +142,17 @@ class TestsController extends Controller
         $design       = DB::table('question_designs')->where('id',$questionType->desgin_id)->first();
         
         $questions    = Questions::with('questiondata','answerdata')->where(['test_id'=>$test_id,'question_type_id'=>$question_type_id])->first();
-        
-        return view ($this->moduleTitleP.$design->file_name,compact('questions'));
+        if($section_id == 4){
+            return view ($this->moduleTitleP."/speaking/".$design->file_name,compact('questions'));
+        }else if($section_id == 3){
+            return view ($this->moduleTitleP."/writing/".$design->file_name,compact('questions'));
+        }else if($section_id == 2){
+            return view ($this->moduleTitleP."/listening/".$design->file_name,compact('questions'));
+        }else if($section_id == 1){
+            return view ($this->moduleTitleP."/reading/".$design->file_name,compact('questions'));
+        }else{
+             return view ($this->moduleTitleP.$design->file_name,compact('questions'));
+        }
     }
     public function changeStatus($id)
     {

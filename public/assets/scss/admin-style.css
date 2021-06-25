@@ -192,6 +192,9 @@
   body .question-forms .form .common-col .custom-label {
     padding: 5px 3px;
   }
+  body .question-forms .form .common-col .col-form-label {
+    padding: 5px 3px;
+  }
   body .question-forms .form .common-col .add-icon a {
     right: 140px !important;
     top: 225px !important;
@@ -212,6 +215,14 @@
     margin: 0px !important;
   }
   body .question-forms .sub-heading h4 span {
+    font-size: 15px;
+    margin-left: 0px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin-top: 6px;
+  }
+  body .question-forms .sub-heading h5 span {
     font-size: 15px;
     margin-left: 0px;
     display: -webkit-box;
@@ -373,6 +384,9 @@
   body .question-forms .form .common-col .custom-label {
     padding: 5px 3px;
   }
+  body .question-forms .form .common-col .col-form-label {
+    padding: 5px 3px;
+  }
   body .question-forms .form .common-col .add-icon a {
     right: 110px !important;
     top: 225px !important;
@@ -393,6 +407,14 @@
     margin: 0px !important;
   }
   body .question-forms .sub-heading h4 span {
+    font-size: 15px;
+    margin-left: 0px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin-top: 6px;
+  }
+  body .question-forms .sub-heading h5 span {
     font-size: 15px;
     margin-left: 0px;
     display: -webkit-box;
@@ -493,6 +515,9 @@
   body .question-forms .form .common-col .custom-label {
     padding: 5px 3px;
   }
+  body .question-forms .form .common-col .col-form-label {
+    padding: 5px 3px;
+  }
   body .question-forms .form .common-col .add-icon a {
     right: 160px !important;
     top: 225px !important;
@@ -513,6 +538,14 @@
     margin: 0px !important;
   }
   body .question-forms .sub-heading h4 span {
+    font-size: 18px;
+    margin-left: 0px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin-top: 6px;
+  }
+  body .question-forms .sub-heading h5 span {
     font-size: 18px;
     margin-left: 0px;
     display: -webkit-box;
@@ -580,6 +613,9 @@
   body #content .question-forms .form .common-col .custom-label {
     padding: 5px 3px;
   }
+  body #content .question-forms .form .common-col .col-form-label {
+    padding: 5px 3px;
+  }
   body #content .question-forms .form .common-col .add-icon a {
     right: 208px !important;
     top: 225px !important;
@@ -600,6 +636,14 @@
     margin: 0px !important;
   }
   body #content .question-forms .sub-heading h4 span {
+    font-size: 15px;
+    margin-left: 0px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin-top: 6px;
+  }
+  body #content .question-forms .sub-heading h5 span {
     font-size: 15px;
     margin-left: 0px;
     display: -webkit-box;

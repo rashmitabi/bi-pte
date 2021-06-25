@@ -37,7 +37,7 @@ $pageArray = explode('/', $currentPageURL);
                     @elseif ($section->id == '2')
                         @if(count($listeningQuestions) > 0)
                             @foreach($listeningQuestions as $listeningQuestion)
-                                <button type="button" class="btn mb-1 btn-primary btn-lg btn-block">{{ $listeningQuestion->question_title }}</button>
+                                <a href="{{ route('superadmin-tests-addQuestions',['section_id'=>$section->id,'test_id'=>$pageArray[5],'question_type_id'=>$listeningQuestion->id]) }}"><button type="button" class="btn mb-1 btn-primary btn-lg btn-block">{{ $listeningQuestion->question_title }}</button></a>
                             @endforeach
                         @endif
                     @elseif ($section->id == '3')
@@ -51,7 +51,9 @@ $pageArray = explode('/', $currentPageURL);
                     @else
                         @if(count($speakingQuestions) > 0)
                             @foreach($speakingQuestions as $speakingQuestion)
-                                <button type="button" class="btn mb-1 btn-primary btn-lg btn-block">{{ $speakingQuestion->question_title }}</button>
+                                <a href="{{ route('superadmin-tests-addQuestions',['section_id'=>$section->id,'test_id'=>$pageArray[5],'question_type_id'=>$speakingQuestion->id]) }}">
+                                    <button type="button" class="btn mb-1 btn-primary btn-lg btn-block">{{ $speakingQuestion->question_title }}</button>
+                                </a>
                             @endforeach
                         @endif
                     @endif

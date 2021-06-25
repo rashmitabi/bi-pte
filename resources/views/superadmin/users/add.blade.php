@@ -12,7 +12,7 @@
 
   <section class="top-title-button white-bg remove-main-margin mb-3">
     <div class="row mx-0 align-items-center">
-      <div class="col-12 col-md-12 col-xl-8 col-sm-8 left">
+      <div class="col-12 col-md-12 col-xl-8 col-sm-12 left">
          {!! Form::open(array('route' => 'users.store','method'=>'POST','enctype' => 'multipart/form-data','class'=>'form mt-4 ml-3')) !!}
           <div class="form-group row">
             <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Select Role</label>

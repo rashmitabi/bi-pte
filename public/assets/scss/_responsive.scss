@@ -240,6 +240,9 @@
                          .custom-label{
                              padding: 5px 3px;
                          }
+                         .col-form-label{
+                              padding: 5px 3px; 
+                         }
                          .add-icon{
                               a{ 
                                 right: 140px!important;
@@ -268,6 +271,14 @@
                              margin-left: 0px;
                              display: flex;
                              margin-top: 6px;     
+                         }
+                    }
+                    h5{
+                         span{
+                              font-size: 15px;
+                              margin-left: 0px;
+                              display: flex;
+                              margin-top: 6px;     
                          }
                     }
                }
@@ -468,6 +479,9 @@
                         .custom-label{
                            padding: 5px 3px;
                          }
+                         .col-form-label{
+                           padding: 5px 3px; 
+                         }
                          .add-icon{
                             a{ 
                               right: 110px!important;
@@ -498,8 +512,15 @@
                            margin-top: 6px;     
                          }
                     }
+                    h5{
+                         span{
+                              font-size: 15px;
+                              margin-left: 0px;
+                              display: flex;
+                              margin-top: 6px;     
+                         }
+                    }
                }
-
           }
      }
 }
@@ -620,6 +641,9 @@
                          .custom-label{
                              padding: 5px 3px;
                          }
+                         .col-form-label{
+                              padding: 5px 3px; 
+                         }
                          .add-icon{
                               a{ 
                                 right: 160px!important;
@@ -648,6 +672,14 @@
                              margin-left: 0px;
                              display: flex;
                              margin-top: 6px;     
+                         }
+                    }
+                    h5{
+                         span{
+                              font-size: 18px;
+                              margin-left: 0px;
+                              display: flex;
+                              margin-top: 6px;     
                          }
                     }
                }
@@ -716,6 +748,9 @@
                               .custom-label{
                                   padding: 5px 3px;
                               }
+                              .col-form-label{
+                                   padding: 5px 3px; 
+                              }
                               .add-icon{
                                    a{ 
                                      right: 208px!important;
@@ -744,6 +779,14 @@
                                   margin-left: 0px;
                                   display: flex;
                                   margin-top: 6px;     
+                              }
+                         }
+                         h5{
+                              span{
+                                   font-size: 15px;
+                                   margin-left: 0px;
+                                   display: flex;
+                                   margin-top: 6px;     
                               }
                          }
                     }
