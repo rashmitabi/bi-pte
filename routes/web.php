@@ -123,6 +123,8 @@ Route::post('superadmin/questions/edithighlightcorrectsummaryitem', [App\Http\Co
 Route::post('superadmin/questions/storeListenMultipleChoiceChooseSingle', [App\Http\Controllers\SuperAdmin\ListeningQuestionController::class,'storeMultipleChoiceChooseSingle'])->name('store-listen-multiple-choice-choose-single');
 Route::post('superadmin/questions/updateListenMultipleChoiceChooseSingle', [App\Http\Controllers\SuperAdmin\ListeningQuestionController::class,'updateMultipleChoiceChooseSingle'])->name('update-listen-multiple-choice-choose-single');
 
+Route::post('superadmin/questions/storeListenMissingWordItem', [App\Http\Controllers\SuperAdmin\ListeningQuestionController::class,'storeMissingWordItem'])->name('store-listen-missing-word-item');
+Route::post('superadmin/questions/updateListenMissingWordItem', [App\Http\Controllers\SuperAdmin\ListeningQuestionController::class,'updateMissingWordItem'])->name('update-listen-missing-word-item');
 /* end listening section */
 
 /* start writing section */
