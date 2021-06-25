@@ -119,6 +119,10 @@ Route::post('superadmin/questions/editfillintheblanks', [App\Http\Controllers\Su
 
 Route::post('superadmin/questions/highlightcorrectsummaryitem', [App\Http\Controllers\SuperAdmin\ListeningQuestionController::class,'storeHighlightCorrectSummaryItem'])->name('add-highlight-correct-summary-item');
 Route::post('superadmin/questions/edithighlightcorrectsummaryitem', [App\Http\Controllers\SuperAdmin\ListeningQuestionController::class,'updateHighlightCorrectSummaryItem'])->name('update-highlight-correct-summary-item');
+
+Route::post('superadmin/questions/storeListenMultipleChoiceChooseSingle', [App\Http\Controllers\SuperAdmin\ListeningQuestionController::class,'storeMultipleChoiceChooseSingle'])->name('store-listen-multiple-choice-choose-single');
+Route::post('superadmin/questions/updateListenMultipleChoiceChooseSingle', [App\Http\Controllers\SuperAdmin\ListeningQuestionController::class,'updateMultipleChoiceChooseSingle'])->name('update-listen-multiple-choice-choose-single');
+
 /* end listening section */
 
 /* start writing section */
@@ -149,16 +153,19 @@ Route::post('superadmin/questions/editanswershortquestion', [App\Http\Controller
 /*Reading section questions start*/
 Route::post('superadmin/questions/readingStoreFillInTheBlanks', [App\Http\Controllers\SuperAdmin\ReadingQuestionController::class,'storeFillInTheBlanks'])
     ->name('superadmin-reading-store-fill-in-the-blanks');
+
 Route::post('superadmin/questions/updateReadingWritingFillInTheBlanks', [App\Http\Controllers\SuperAdmin\ReadingQuestionController::class,'updateFillInTheBlanks'])
     ->name('superadmin-question-update-readingwriting-fillintheblanks');
 
 Route::post('superadmin/questions/storeReadingMultipleChoiceMultipleanswers', [App\Http\Controllers\SuperAdmin\ReadingQuestionController::class,'storeMultipleChoiceMultipleanswers'])
     ->name('superadmin-question-store-MultipleChoice-Multipleanswers');
+
 Route::post('superadmin/questions/updateReadingMultipleChoiceMultipleanswers', [App\Http\Controllers\SuperAdmin\ReadingQuestionController::class,'updateMultipleChoiceMultipleanswers'])
     ->name('superadmin-question-update-MultipleChoice-Multipleanswers');
 
 Route::post('superadmin/questions/storeReOrderParagraphs', [App\Http\Controllers\SuperAdmin\ReadingQuestionController::class,'storeReOrderParagraph'])
     ->name('superadmin-question-store-re-order-paragraph');
+
 Route::post('superadmin/questions/updateReOrderParagraphs', [App\Http\Controllers\SuperAdmin\ReadingQuestionController::class,'updateReOrderParagraph'])
     ->name('superadmin-question-update-re-order-paragraph');
 
