@@ -89,7 +89,7 @@ Route::resource('superadmin/subjects', App\Http\Controllers\SuperAdmin\SubjectsC
         ->name('superadmin-tests-mocktest');
     Route::get('superadmin/tests/changestatus/{id}', [App\Http\Controllers\SuperAdmin\TestsController::class, 'changeStatus'])
         ->name('superadmin-tests-changestatus');
-    Route::get('superadmin/tests/addQuestions', [App\Http\Controllers\SuperAdmin\TestsController::class, 'addQuestions'])
+    Route::post('superadmin/tests/addQuestions', [App\Http\Controllers\SuperAdmin\TestsController::class, 'addQuestions'])
         ->name('superadmin-tests-addQuestions');
     Route::resource('superadmin/tests', App\Http\Controllers\SuperAdmin\TestsController::class);
     Route::get('superadmin/tests/add', [App\Http\Controllers\SuperAdmin\TestsController::class, 'add'])

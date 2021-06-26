@@ -134,22 +134,28 @@ class TestsController extends Controller
     }
     public function addQuestions(Request $request)
     {
-        $section_id         = $request->section_id;
-        $test_id            = $request->test_id;
-        $question_type_id   = $request->question_type_id;
+        $section_id         =  $request->input('section_id');
+        $test_id            = $request->input('test_id');
+        $question_type_id   = $request->input('question_type_id');
+        $question_id   = $request->input('question_type_id');
+        
+        // $section_id         = $request->section_id;
+        // $test_id            = $request->test_id;
+        // $question_type_id   = $request->question_type_id;
         
         $questionType = QuestionTypes::where('id',$question_type_id)->first();
         $design       = DB::table('question_designs')->where('id',$questionType->desgin_id)->first();
         
         $questions    = Questions::with('questiondata','answerdata')->where(['test_id'=>$test_id,'question_type_id'=>$question_type_id])->first();
+        
         if($section_id == 4){
-            return view ($this->moduleTitleP."/speaking/".$design->file_name,compact('questions'));
+            return view ($this->moduleTitleP."/speaking/".$design->file_name,compact('questions','section_id','test_id','question_id'));
         }else if($section_id == 3){
-            return view ($this->moduleTitleP."/writing/".$design->file_name,compact('questions'));
+            return view ($this->moduleTitleP."/writing/".$design->file_name,compact('questions','section_id','test_id','question_id'));
         }else if($section_id == 2){
-            return view ($this->moduleTitleP."/listening/".$design->file_name,compact('questions'));
+            return view ($this->moduleTitleP."/listening/".$design->file_name,compact('questions','section_id','test_id','question_id'));
         }else if($section_id == 1){
-            return view ($this->moduleTitleP."/reading/".$design->file_name,compact('questions'));
+            return view ($this->moduleTitleP."/reading/".$design->file_name,compact('questions','section_id','test_id','question_id'));
         }else{
              return view ($this->moduleTitleP.$design->file_name,compact('questions'));
         }

@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    $('#frm-read-aloud').validate({ 
+    $('#frm-describe-image').validate({ 
         rules: {
             'question[]': {
                 required: true

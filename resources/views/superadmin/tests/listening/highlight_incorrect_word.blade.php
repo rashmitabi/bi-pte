@@ -1,11 +1,5 @@
 @extends('layouts.appSuperAdmin')
 @section('content')
-  @php
-  $section_id = $_GET['section_id'];
-  $test_id    = $_GET['test_id'];
-  $question_id = $_GET['question_type_id'];
-
-  @endphp
   <div id="content">
   	<section class="top-title-button mb-3">
       <div class="row mx-0 align-items-center">
