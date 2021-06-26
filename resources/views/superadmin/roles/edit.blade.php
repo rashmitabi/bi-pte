@@ -18,7 +18,7 @@
         }
         
          ?>
-        <select id="permission" name="permission[]" class="user-type  selectpicker" multiple data-live-search="true" style="display: block !important;">
+        <select id="permission" name="permission[]" class="user-type custom-select  selectpicker" multiple data-live-search="true" style="display: block !important;">
           @if(count($modules) > 0)
             @foreach($modules as $module)
               @if(in_array($module->id,$permission_array))
