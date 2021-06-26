@@ -16,7 +16,7 @@ $question_id = $_GET['question_type_id'];
 
     <section class="top-title-button white-bg mb-3 remove-main-margin">
         <div class="row mx-0 align-items-center">
-            <div class="col-12 col-md-12 col-xl-12 col-sm-8 p-0 left">
+            <div class="col-12 col-md-12 col-xl-12 col-sm-12 p-0 left">
                <div class="question-forms">
                    <div class="col-12 heading-text">
                       <h5>Re-order Paragraphs(8)</h5>
@@ -26,32 +26,32 @@ $question_id = $_GET['question_type_id'];
                        <div class=" col-11 mt-5 ml-3 white-bg common-col" id="answerBlog">
                            @if(!isset($questions->name))
                               <div class="form-group mb-3 row">
-                                 <label class="col-3 col-form-label custom-label">Ans Options A</label>
-                                 <div class="col-8 p-0">
+                                 <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label custom-label">Ans Options A</label>
+                                 <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
                                     <input type="text" class="form-control " name="ans_options_A" id="ans_options_A" placeholder="it Seems that The Lack of Psychological Reward is the Reason for their Disatisfaction.">
                                  </div>
                               </div>
                               <div class="form-group mb-3 row">
-                                 <label class="col-3 col-form-label custom-label ">Ans Options B</label>
-                                 <div class="col-8 p-0">
+                                 <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label custom-label ">Ans Options B</label>
+                                 <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
                                     <input type="text" class="form-control " name="ans_options_B" id="ans_options_B" placeholder="it Seems that The Lack of Psychological Reward is the Reason for their Disatisfaction.">
                                  </div>
                               </div>
                               <div class="form-group mb-3 row">
-                                 <label class="col-3 col-form-label custom-label">Ans Options C</label>
-                                 <div class="col-8 p-0">
+                                 <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label custom-label">Ans Options C</label>
+                                 <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
                                     <input type="text" class="form-control " name="ans_options_C" id="ans_options_C" placeholder="Which of the Following Are True Statements?">
                                  </div>
                               </div>
                               <div class="form-group mb-3 row">
-                                 <label class="col-3 col-form-label custom-label ">Ans Options D</label>
-                                 <div class="col-8 p-0">
+                                 <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label custom-label ">Ans Options D</label>
+                                 <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
                                     <input type="text" class="form-control " name="ans_options_D" id="ans_options_D" placeholder="Which of the Following Are True Statements?">
                                  </div>
                               </div>
                               <div class="form-group mb-3 row">
-                                 <label class="col-3 col-form-label custom-label">Ans Options E</label>
-                                 <div class="col-8 p-0">
+                                 <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label custom-label">Ans Options E</label>
+                                 <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
                                     <input type="text" class="form-control " name="ans_options_E" id="ans_options_E" placeholder="Which of the Following Are True Statements?">
                                  </div>
                                  <div class="plus-icon" onclick="addQuestionColumn()" data-qid="E" data-aid="5">
@@ -70,8 +70,8 @@ $question_id = $_GET['question_type_id'];
                                     $label++;
                                  @endphp
                                  <div class="form-group mb-3 row">
-                                    <label class="col-3 col-form-label custom-label">Ans Options {{ $arrayValue }}</label>
-                                    <div class="col-8 p-0">
+                                    <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label custom-label">Ans Options {{ $arrayValue }}</label>
+                                    <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
                                        <input type="text" class="form-control " name="ans_options_{{$arrayValue}}" id="ans_options_{{$arrayValue}}" placeholder="Which of the Following Are True Statements?" value="{{ $questions->questiondata[$i]->data_value }}" required>
                                     </div>
                                     @if($label == $count)
@@ -86,32 +86,32 @@ $question_id = $_GET['question_type_id'];
                         <div class=" col-11 mt-4 ml-3 white-bg common-col" id="correctBlog">
                            @if(!isset($questions->name))
                               <div class="form-group mb-3 row">
-                                 <label class="col-3 col-form-label custom-label">Correct Options</label>
-                                 <div class="col-8 p-0">
+                                 <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label custom-label">Correct Options</label>
+                                 <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
                                     <input type="text" class="form-control " name="correct_options1" id="correct_options1" placeholder="it Seems that The Lack of Psychological Reward is the Reason for their Disatisfaction.">
                                  </div>
                               </div>
                               <div class="form-group mb-3 row">
-                                 <label class="col-3 col-form-label custom-label ">Correct Options</label>
-                                 <div class="col-8 p-0">
+                                 <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label custom-label ">Correct Options</label>
+                                 <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
                                     <input type="text" class="form-control " name="correct_options2" id="correct_options2" placeholder="it Seems that The Lack of Psychological Reward is the Reason for their Disatisfaction.">
                                  </div>
                               </div>
                               <div class="form-group mb-3 row">
-                                 <label class="col-3 col-form-label custom-label">Correct Options</label>
-                                 <div class="col-8 p-0">
+                                 <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label custom-label">Correct Options</label>
+                                 <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
                                     <input type="text" class="form-control " name="correct_options3" id="correct_options3" placeholder="it Seems that The Lack of Psychological Reward is the Reason for their Disatisfaction.">
                                  </div>
                               </div>
                               <div class="form-group mb-3 row">
-                                 <label class="col-3 col-form-label custom-label ">Correct Options</label>
-                                 <div class="col-8 p-0">
+                                 <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label custom-label ">Correct Options</label>
+                                 <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
                                     <input type="text" class="form-control " name="correct_options4" id="correct_options4" placeholder="it Seems that The Lack of Psychological Reward is the Reason for their Disatisfaction.">
                                  </div>
                               </div>
                               <div class="form-group mb-3 row">
-                                 <label class="col-3 col-form-label custom-label">Correct Options</label>
-                                 <div class="col-8 p-0">
+                                 <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label custom-label">Correct Options</label>
+                                 <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
                                     <input type="text" class="form-control " name="correct_options5" id="correct_options5" placeholder="it Seems that The Lack of Psychological Reward is the Reason for their Disatisfaction.">
                                  </div>
                               </div>
@@ -125,8 +125,8 @@ $question_id = $_GET['question_type_id'];
                                        $temp++;
                                     @endphp
                                     <div class="form-group mb-3 row">
-                                       <label class="col-3 col-form-label custom-label">Correct Options</label>
-                                       <div class="col-8 p-0">
+                                       <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label custom-label">Correct Options</label>
+                                       <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
                                           <input type="text" class="form-control " name="correct_options{{ $temp }}" id="correct_options{{ $temp }}" placeholder="it Seems that The Lack of Psychological Reward is the Reason for their Disatisfaction." value="{{ $questions->answerdata[$c]->answer_value}}" required>
                                        </div>
                                     </div>
@@ -134,7 +134,7 @@ $question_id = $_GET['question_type_id'];
                               @endif
                        </div>
                        <div class="form-group row">
-                            <div class="col-11 save-btn mt-5 ">
+                            <div class="col-12 col-md-12 col-xl-11 col-sm-12 save-btn mt-5 ">
                                  <input type="hidden" name="section_id" value="{{ $section_id }}">
                                  <input type="hidden" name="test_id" value="{{ $test_id }}">
                                  <input type="hidden" name="question_type_id" value="{{ $question_id }}">

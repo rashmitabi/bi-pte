@@ -233,6 +233,56 @@
                }
 
           }
+          .question-forms{
+               .form{
+                    .common-col{
+                        padding: 13px 12px 1px 12px;
+                         .custom-label{
+                             padding: 5px 3px;
+                         }
+                         .col-form-label{
+                              padding: 5px 3px; 
+                         }
+                         .add-icon{
+                              a{ 
+                                right: 140px!important;
+                                top: 225px!important;
+                              }
+                         }
+                         .plus-icon{
+                              a{
+                               margin-top: 30px;
+                              }
+                         }  
+                    }
+                    .save-btn{
+                         margin-top: 80px!important;
+                         display: flex;
+                         justify-content: space-evenly;
+                         button{
+                              margin: 0px!important;
+                         }
+                    }
+               }
+               .sub-heading{
+                    h4{
+                         span{
+                             font-size: 15px;
+                             margin-left: 0px;
+                             display: flex;
+                             margin-top: 6px;     
+                         }
+                    }
+                    h5{
+                         span{
+                              font-size: 15px;
+                              margin-left: 0px;
+                              display: flex;
+                              margin-top: 6px;     
+                         }
+                    }
+               }
+          }
      }
 }
 
@@ -320,7 +370,7 @@
                thead{
                     th{
                          white-space: unset!important;
-                         padding-right: 14px!important;
+                         padding-right: 48px!important;
                     }
                }
           }
@@ -420,7 +470,58 @@
                          max-width: 100%!important;
                     }
                }
-          } 
+
+          }
+          .question-forms{
+             .form{
+                  .common-col{
+                      padding: 13px 12px 1px 12px;
+                        .custom-label{
+                           padding: 5px 3px;
+                         }
+                         .col-form-label{
+                           padding: 5px 3px; 
+                         }
+                         .add-icon{
+                            a{ 
+                              right: 110px!important;
+                              top: 225px!important;
+                             }
+                         }
+                        .plus-icon{
+                             a{
+                              margin-top: 30px;
+                             }
+                         } 
+                    }
+                    .save-btn{
+                         margin-top: 80px!important;
+                         display: flex;
+                         justify-content: space-evenly;
+                         button{
+                              margin: 0px!important;
+                         }
+                    }
+               }
+               .sub-heading{
+                   h4{
+                        span{
+                           font-size: 15px;
+                           margin-left: 0px;
+                           display: flex;
+                           margin-top: 6px;     
+                         }
+                    }
+                    h5{
+                         span{
+                              font-size: 15px;
+                              margin-left: 0px;
+                              display: flex;
+                              margin-top: 6px;     
+                         }
+                    }
+               }
+          }
      }
 }
 
@@ -532,7 +633,57 @@
                     max-width: 100%!important;
                }
 
-          } 
+          }
+          .question-forms{
+               .form{
+                    .common-col{
+                        padding: 13px 12px 1px 12px;
+                         .custom-label{
+                             padding: 5px 3px;
+                         }
+                         .col-form-label{
+                              padding: 5px 3px; 
+                         }
+                         .add-icon{
+                              a{ 
+                                right: 160px!important;
+                                top: 225px!important;
+                              }
+                         }
+                         .plus-icon{
+                              a{
+                               margin-top: 30px;
+                              }
+                         }  
+                    }
+                    .save-btn{
+                         margin-top: 80px!important;
+                         display: flex;
+                         justify-content: space-evenly;
+                         button{
+                              margin: 0px!important;
+                         }
+                    }
+               }
+               .sub-heading{
+                    h4{
+                         span{
+                             font-size: 18px;
+                             margin-left: 0px;
+                             display: flex;
+                             margin-top: 6px;     
+                         }
+                    }
+                    h5{
+                         span{
+                              font-size: 18px;
+                              margin-left: 0px;
+                              display: flex;
+                              margin-top: 6px;     
+                         }
+                    }
+               }
+          }
      }
 }
 /* all large mobile (575 up to 768)*/
@@ -587,6 +738,56 @@
                          th{
                               white-space: unset!important;
                              
+                         }
+                    }
+               }
+               .question-forms{
+                    .form{
+                         .common-col{
+                             padding: 13px 12px 1px 12px;
+                              .custom-label{
+                                  padding: 5px 3px;
+                              }
+                              .col-form-label{
+                                   padding: 5px 3px; 
+                              }
+                              .add-icon{
+                                   a{ 
+                                     right: 208px!important;
+                                     top: 225px!important;
+                                   }
+                              }
+                              .plus-icon{
+                                   a{
+                                    margin-top: 30px;
+                                   }
+                              }   
+                         }
+                         .save-btn{
+                              margin-top: 80px!important;
+                              display: flex;
+                              justify-content: space-evenly;
+                              button{
+                                   margin: 0px!important;
+                              }
+                         }
+                    }
+                    .sub-heading{
+                         h4{
+                              span{
+                                  font-size: 15px;
+                                  margin-left: 0px;
+                                  display: flex;
+                                  margin-top: 6px;     
+                              }
+                         }
+                         h5{
+                              span{
+                                   font-size: 15px;
+                                   margin-left: 0px;
+                                   display: flex;
+                                   margin-top: 6px;     
+                              }
                          }
                     }
                }
@@ -682,6 +883,12 @@
                     }
                }
           }
+          .add-icon{
+               a{ 
+                    right: 20px !important;
+                    top: 35px !important;
+               }
+          }  
      }
      .graph-wrap-row{
           .graph-common-1{
