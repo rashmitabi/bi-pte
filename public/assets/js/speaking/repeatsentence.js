@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    $('#frm-read-aloud').validate({ 
+    $('#frm-repeat-sentence').validate({ 
         rules: {
             'question[]': {
                 required: true
@@ -10,14 +10,11 @@ $(document).ready(function() {
         },
         messages : {
             'question[]': {
-                required: "paragraph is required"
+                required: "question is required"
             },
             'sample_ans[]': {
                 required : "sample answer is required",
             }
-        },
-        submitHandler: function(form) {
-           alert("hii");
         }
     });
 });

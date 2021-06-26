@@ -1,7 +1,10 @@
 $(document).ready(function() {
-    $('#frm-read-aloud').validate({ 
+    $('#frm-re-tell-lecture').validate({ 
         rules: {
             'question[]': {
+                required: true
+            },
+            'image[]': {
                 required: true
             },
             'sample_ans[]': {
@@ -10,7 +13,10 @@ $(document).ready(function() {
         },
         messages : {
             'question[]': {
-                required: "paragraph is required"
+                required: "question is required"
+            },
+            'image[]': {
+                required: "image is required"
             },
             'sample_ans[]': {
                 required : "sample answer is required",

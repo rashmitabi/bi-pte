@@ -138,7 +138,7 @@ class TestsController extends Controller
         $test_id            = $request->input('test_id');
         $question_type_id   = $request->input('question_type_id');
         $question_id   = $request->input('question_type_id');
-
+        
         // $section_id         = $request->section_id;
         // $test_id            = $request->test_id;
         // $question_type_id   = $request->question_type_id;
