@@ -129,5 +129,5 @@ $question_id = $_GET['question_type_id'];
 
 @endsection
 @section('js-hooks')
-<script src="{{ asset('assets/js/readingMultipleChoiceMultipleAnswer.js') }}" defer></script>
+<script src="{{ asset('assets/js/reading/readingMultipleChoiceMultipleAnswer.js') }}" defer></script>
 @endsection
