@@ -426,6 +426,183 @@ class ListeningQuestionController extends Controller
             return redirect()->route('tests.index')->with('error','Sorry!Something wrong.Try Again.');
         }
     }
+    public function storeMissingWordItem(Request $request)/*Store listening missing word item*/
+    {
+        $input  = \Arr::except($request->all(),array('_token'));
 
+        $section_id         = $request->section_id;
+        $test_id            = $request->test_id;
+        $question_type_id   = $request->question_type_id;
+
+        $questionType = DB::table('question_types')->where('id',$question_type_id)->first();
+
+        $questions                  = new Questions;
+        $questions->section_id      = $section_id;
+        $questions->test_id         = $test_id;
+        $questions->design_id       = $questionType->desgin_id;
+        $questions->question_type_id= $question_type_id;
+        $questions->name            = $questionType->question_title;
+        $questions->short_desc      = "-";
+        $questions->desc            = "-";
+        $questions->order           = 0;
+        $questions->status          = "E";
+        $questions->marks           = 50;
+        $questions->answer_time     = 40;
+        $questions->waiting_time    = 40;
+        $questions->max_time        = 40;
+
+        if($questions->save())
+        {
+            $id = $questions->id;
+            for($i=11;$i<=12;$i++)
+            {
+                $questiondata = new Questiondata;
+	            $questiondata->question_id = $id;
+	            $questiondata->data_type = $questionType->question_title.$i;
+	            $questiondata->data_value = json_encode(
+                    array(
+                        'audio_q'.$i=>$input['audio_q'.$i],
+                        'choice_1_q'.$i=>$input['choice_1_q'.$i],
+                        'choice_2_q'.$i=>$input['choice_2_q'.$i],
+                        'choice_3_q'.$i=>$input['choice_3_q'.$i],
+                        'choice_4_q'.$i=>$input['choice_4_q'.$i]
+                        )
+	            	);
+	            $questiondata->save();
+            
+	            $answerdata = new Answerdata;
+	            $answerdata->question_id = $id;
+	            $answerdata->answer_type = $questionType->question_title.$i;
+	            $answerdata->answer_value = $input['correct_answers_q'.$i];
+	            $answerdata->sample_answer = '-';
+	            $answerdata->save();             
+            }
+            return redirect()->route('tests.index')->with('success','Questions added Successfully!');
+        }
+        else
+        {
+            return redirect()->route('tests.index')->with('error','Sorry!Something wrong.Try Again.');
+        }
+    }
+    public function updateMissingWordItem(Request $request)/*Update listening missing word item*/
+    {
+        $input  = \Arr::except($request->all(),array('_token'));
+
+        $section_id         = $request->section_id;
+        $test_id            = $request->test_id;
+        $question_type_id   = $request->question_type_id;
+        $question_id        = $request->question_id;
+        $question_data_id_11 = $request->question_data_id_1;
+        $question_data_id_12 = $request->question_data_id_2;
+        $answer_data_1      = $request->answer_data_1;
+        $answer_data_2      = $request->answer_data_2;
+
+        $result1 = Answerdata::where('id',$answer_data_1)->update(['answer_value'=>$input['correct_answers_q11']]);
+        $result2 = Answerdata::where('id',$answer_data_2)->update(['answer_value'=>$input['correct_answers_q12']]);
+
+        for($i=11;$i<=12;$i++)
+        {
+            $json  = json_encode(
+                array(
+                    'audio_q'.$i=>$input['audio_q'.$i],
+                    'choice_1_q'.$i=>$input['choice_1_q'.$i],
+                    'choice_2_q'.$i=>$input['choice_2_q'.$i],
+                    'choice_3_q'.$i=>$input['choice_3_q'.$i],
+                    'choice_4_q'.$i=>$input['choice_4_q'.$i]
+                    )
+                );
+            $id = $input['question_data_id_'.$i];
+            $finalResult = Questiondata::where('id',$id)->update(['data_value'=>$json]);
+        }
+
+        if($result1 && $result2 && $finalResult)
+        {
+            return redirect()->route('tests.index')->with('success','Questions updated Successfully!');
+        }
+        else
+        {
+            return redirect()->route('tests.index')->with('error','Sorry!Something wrong.Try Again.');
+        }
+
+
+    }
+    public function storeWriteFormDictations(Request $request)/*Store listening write form dictations*/
+    {
+        $input  = \Arr::except($request->all(),array('_token'));
+
+        $section_id         = $request->section_id;
+        $test_id            = $request->test_id;
+        $question_type_id   = $request->question_type_id;
+
+        $questionType = DB::table('question_types')->where('id',$question_type_id)->first();
+
+        $questions                  = new Questions;
+        $questions->section_id      = $section_id;
+        $questions->test_id         = $test_id;
+        $questions->design_id       = $questionType->desgin_id;
+        $questions->question_type_id= $question_type_id;
+        $questions->name            = $questionType->question_title;
+        $questions->short_desc      = "-";
+        $questions->desc            = "-";
+        $questions->order           = 0;
+        $questions->status          = "E";
+        $questions->marks           = 50;
+        $questions->answer_time     = 40;
+        $questions->waiting_time    = 40;
+        $questions->max_time        = 40;
+
+        if($questions->save())
+        {
+            $id = $questions->id;
+
+            for($i=15;$i<=17;$i++)
+            {
+                $questionString = 'audio_q'.$i;
+                $answerString   = 'correct_answers_q'.$i;
+
+                $questiondata = new Questiondata;
+	            $questiondata->question_id = $id;
+	            $questiondata->data_type = $questionType->question_title.$i;
+	            $questiondata->data_value = $input[$questionString];
+	            $questiondata->save();
+            
+	            $answerdata = new Answerdata;
+	            $answerdata->question_id = $id;
+	            $answerdata->answer_type = $questionType->question_title.$i;
+	            $answerdata->answer_value = $input[$answerString];
+	            $answerdata->sample_answer = '-';
+	            $answerdata->save();
+
+            }
+            return redirect()->route('tests.index')->with('success','Questions added Successfully!');
+        }
+        else
+        {
+            return redirect()->route('tests.index')->with('error','Sorry!Something wrong.Try Again.');
+        }
+    }
+    public function updateWriteFormDictations(Request $request)/*Update write form dictations*/
+    {
+        $input  = \Arr::except($request->all(),array('_token'));
+
+        try{
+            for($i=15;$i<=17;$i++)
+            {
+                $answerString = 'correct_answers_q'.$i;
+                $answer_id    = 'a'.$i;
+
+                $questionString = 'audio_q'.$i;
+                $question_id    = 'q'.$i;
+                
+                $secondResult   = Questiondata::where('id',$input[$question_id])->update(['data_value'=>$input[$questionString]]);
+                $firstResult    = Answerdata::where('id',$input[$answer_id])->update(['answer_value'=>$input[$answerString]]);
+            }
+            return redirect()->route('tests.index')->with('success','Questions updated Successfully!');
+        }catch(\Exception $e){
+            //dd($e->getMessage());
+            return redirect()->route('tests.index')->with('error','Sorry!Something wrong.Try Again.');
+        }
+        
+    }
 }
 ?>
