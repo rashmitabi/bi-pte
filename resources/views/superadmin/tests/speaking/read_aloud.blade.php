@@ -59,16 +59,21 @@
 		                               </div>
 		                                <div class="form-group mb-1 row">
 		                                   	<div class="col-12 pr-0">
-		                                      <textarea name="question[]" id="editor17"></textarea>
-		                                      	
+		                                      	<textarea name="question[]" id="editor17"></textarea>
+		                                      	@if($errors->has('question'))
+						                            <span class="error-msg"> {{$errors->first('question')}}</span>
+						                        @endif
 		                                  	</div>
 		                                </div>
 		                                <div class=" col-12 mt-4 ml-3 white-bg common-col">
 		                                    <div class="form-group mb-3 row">
 		                                       <label class="col-3 col-form-label">Sample Ans 1</label>
-		                                       <div class="col-9">
-		                                          <input type="text" name="sample_ans[]"  class="form-control " placeholder="Whole,Total,Very,Open">
-		                                       </div>
+		                                       	<div class="col-9">
+		                                          	<input type="text" name="sample_ans[]"  class="form-control " placeholder="Whole,Total,Very,Open">
+		                                          	@if($errors->has('sample_ans'))
+							                            <span class="error-msg"> {{$errors->first('sample_ans')}}</span>
+							                        @endif
+		                                       	</div>
 		                                    </div>
 		                                </div>
 		                                <div class="sub-heading">

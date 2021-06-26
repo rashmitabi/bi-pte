@@ -214,5 +214,5 @@ $question_id = $_GET['question_type_id'];
 <script type="text/javascript" defer>
    var url = "{{ route('questions.store') }}";
 </script>
-<script src="{{ asset('assets/js/addQuestions.js') }}" defer></script>
+<script src="{{ asset('assets/js/reading/addQuestions.js') }}" defer></script>
 @endsection

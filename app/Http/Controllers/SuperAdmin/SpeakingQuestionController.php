@@ -12,6 +12,12 @@ class SpeakingQuestionController extends Controller
 {
 
 	public function storeReadAloud(Request $request){
+        
+        $request->validate([
+            'question'=>'required|array',
+            'sample_ans'=>'required|array'
+        ]);
+
         $input  = \Arr::except($request->all(),array('_token'));
         
         $question_type_id = $input['question_type_id'];

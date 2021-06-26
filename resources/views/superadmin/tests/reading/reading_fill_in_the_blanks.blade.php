@@ -102,5 +102,5 @@ $question_id = $_GET['question_type_id'];
 </div>
 @endsection
 @section('js-hooks')
-<script src="{{ asset('assets/js/readingFillInTheBlanks.js') }}" defer></script>
+<script src="{{ asset('assets/js/reading/readingFillInTheBlanks.js') }}" defer></script>
 @endsection

@@ -156,5 +156,5 @@ $question_id = $_GET['question_type_id'];
 
 @endsection
 @section('js-hooks')
-<script src="{{ asset('assets/js/readingReOrderParagraph.js') }}" defer></script>
+<script src="{{ asset('assets/js/reading/readingReOrderParagraph.js') }}" defer></script>
 @endsection
