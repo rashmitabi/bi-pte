@@ -7,7 +7,7 @@
       <div class="col-12 col-md-12 col-xl-8 col-sm-8 left">
         <h1 class="title mb-4">Manage User</h1>
       </div>
-      <div class="col-12 col-md-12 col-xl-4 col-sm-4 right">
+      <div class="col-12 col-md-12 col-xl-4 col-12 col-md-5 col-xl-4 col-sm-12 right">
         <a href="{{ route('users.create') }}"><button type="button" class="btn btn-primary" ><i class="fas fa-plus-circle mr-1"></i> New
               User</button>
         </a>
@@ -635,67 +635,67 @@
                       <div class="col-12 mt-3 modal-form">
                        <form class="user-form">
                            <div class="form-group row">
-                               <label class="col-sm-4 col-form-label">First Name</label>
-                               <div class=" form-input col-sm-7">
+                               <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label">First Name</label>
+                               <div class=" form-input col-12 col-md-7 col-xl-7 col-sm-12">
                                   <input type="text" class="form-control" placeholder="AnkitKumar">
                                </div>
                            </div>
                            <div class="form-group row">
-                               <label class="col-sm-4 col-form-label">Last Name</label>
-                                 <div class=" form-input col-sm-7">
+                               <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label">Last Name</label>
+                                 <div class=" form-input col-12 col-md-7 col-xl-7 col-sm-12">
                                       <input type="text" class="form-control" placeholder="Jain">
                                   </div>
                            </div>
                             <div class="form-group row">
-                                <label class="col-sm-4 col-form-label">Email</label>
-                                <div class=" form-input col-sm-8">
+                                <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label">Email</label>
+                                <div class=" form-input col-12 col-md-7 col-xl-7 col-sm-12">
                                 <input type="email" class="form-control" placeholder="Ankitkumar30557@Gmail.Com">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-4 col-form-label">UserName</label>
-                                <div class=" form-input col-sm-7">
+                                <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label">UserName</label>
+                                <div class=" form-input col-12 col-md-7 col-xl-7 col-sm-12">
                                     <input type="Phone" class="form-control" placeholder="AnkitKumar">
                                 </div>
                            </div>
                            <div class="form-group row">
-                                <label class="col-sm-4 col-form-label">Date of Birth</label>
-                                <div class=" form-input col-sm-7">
+                                <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label">Date of Birth</label>
+                                <div class=" form-input col-12 col-md-7 col-xl-7 col-sm-12">
                                     <input type="Phone" class="form-control" placeholder="26/5/1988">
                                 </div>
                            </div>
                             <div class="form-group row">
-                                    <label class="col-sm-4 col-form-label">Mobile Number</label>
-                                    <div class=" form-input col-sm-7">
+                                    <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label">Mobile Number</label>
+                                    <div class=" form-input col-12 col-md-7 col-xl-7 col-sm-12">
                                         <input type="email" class="form-control" placeholder="9988774774">
                                     </div>
                             </div>
                             <div class="form-group row">
-                                    <label class="col-sm-4 col-form-label">Status</label>
-                                    <div class=" form-input col-sm-7">
+                                    <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label">Status</label>
+                                    <div class=" form-input col-12 col-md-7 col-xl-7 col-sm-12">
                                         <input type="email" class="form-control" placeholder="Active">
                                     </div>
                             </div>
                             <div class="form-group row">
-                                    <label class="col-sm-4 col-form-label">Country Citizen</label>
-                                    <div class=" form-input col-sm-7">
+                                    <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label">Country Citizen</label>
+                                    <div class=" form-input col-12 col-md-7 col-xl-7 col-sm-12">
                                         <input type="email" class="form-control" placeholder="India">
                                     </div>
                             </div>
                             <div class="form-group row">
-                                    <label class="col-sm-4 col-form-label">Country Residence</label>
-                                    <div class=" form-input col-sm-7">
+                                    <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label">Country Residence</label>
+                                    <div class=" form-input col-12 col-md-7 col-xl-7 col-sm-12">
                                         <input type="email" class="form-control" placeholder="India">
                                     </div>
                             </div>
                             <div class="form-group row">
-                                    <label class="col-sm-4 col-form-label">Validity</label>
-                                    <div class=" form-input col-sm-7">
+                                    <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label">Validity</label>
+                                    <div class=" form-input col-12 col-md-7 col-xl-7 col-sm-12">
                                         <input type="email" class="form-control" placeholder="23/6/2021">
                                     </div>
                             </div>
                             <div class="form-group row">
-                                   <div class="col-11 btn mt-2">
+                                   <div class="col-12 col-md-12 col-xl-11 col-sm-12 btn mt-2">
                                        <button  type="button" class="btn delete-btn btn-outline-primary"><i class="fas fa-trash icon"></i>Delete</button>
                                        <button  type="button" class="btn edit-btn btn-outline-primary"><i class="fas fa-pen icon"></i>Edit</button>
                                        <button  type="button" class="btn shield-btn btn-outline-primary"><a href="#"><img src="{{ asset('assets/images/icons/blocked.svg') }}" class="icon"></a></i>Block</button>
