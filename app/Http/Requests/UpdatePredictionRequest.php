@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreatePredictionRequest extends FormRequest
+class UpdatePredictionRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,10 +26,9 @@ class CreatePredictionRequest extends FormRequest
         return [
             'title'=>'required|max:250',
             'description'=>'required|max:1000',
-            'file'=>'required|max:10000',
+            'file'=>'max:10000',
             'section_id'=>'required|numeric',
-            'design_id'=>'required|numeric',
-            'status'=>'nullable|in:E,D'
+            'design_id'=>'required|numeric'
         ];
     }
 }

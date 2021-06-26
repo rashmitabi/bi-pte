@@ -26,7 +26,7 @@
                         <tr>
                             <th>Sr No</th>
                             <th>Video Title</th>
-                            <th>Section</th>
+                            <th>Video Link</th>
                             <th>Type</th>
                             <th>Created Date</th>
                             <th>Status</th>

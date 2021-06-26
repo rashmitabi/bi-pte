@@ -26,18 +26,18 @@ class VideosController extends Controller
                     ->addIndexColumn()
                     ->addColumn('title', function($row){
                         return $row->title;
-                    })                    
-                    ->addColumn('section', function($row){
+                    })  
+                    ->addColumn('link', function($row){
+                        return $row->link;
+                    })   
+                    ->addColumn('type', function($row){
                         if($row->section_id != ""){
                             $section = DB::table('sections')->select('section_name')->where('id',$row->section_id)->first();
                         }
-                        return ucfirst($section->section_name);
-                    })
-                    ->addColumn('type', function($row){
                         if($row->design_id != ""){
                             $type = DB::table('question_designs')->select('design_name')->where('id',$row->design_id)->first();
                         }
-                        return ucfirst($type->design_name);
+                        return ucfirst($section->section_name).' - '.ucfirst($type->design_name);
                     })
                     ->addColumn('created date', function($row){
                         return date('Y-m-d', strtotime($row->created_at));
@@ -195,7 +195,7 @@ class VideosController extends Controller
     /**
      * Change status field of the specified resource from storage.
      *
-     * @param  \App\Models\Subjects  $subjects
+     * @param  \App\Models\Videos  $video
      * @return \Illuminate\Http\Response
      */
     public function changeStatus($id)
