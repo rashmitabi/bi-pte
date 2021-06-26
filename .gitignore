@@ -3,6 +3,9 @@
 /public/storage
 /storage/*.key
 /vendor
+/index.php
+/.htaccess
+/server.php
 
 Shell.php
 .env.backup
