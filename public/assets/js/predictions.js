@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    //Videos Edit page data start
+    //Prediction Edit page data start
     $(document).on('change', '#sections', function(){
     var id = $(this).val();
     var json = $('#types').data('json');
@@ -30,42 +30,49 @@ $(document).ready(function() {
                },
            });
    });
-   //Subject Edit page data start
-   //Video update data start
-   $('body').on('click','.file-update',function(){
-    var file = $('#customFile').val();
-    console.log(file);
-    console.log($('form').serialize());
-       // var id = $(this).data('id');
-       // var apiUrl = $(this).data('url');
-       // $('#titleError').text('');
-       // $('#descriptionError').text('');
-       // $('#fileError').text('');
-       // $('#sectionError').text('');
-       // $('#typeError').text('');
-       // $.ajax({
-       //     url: apiUrl,
-       //     type:'PATCH',
-       //     enctype: 'multipart/form-data',
-       //     data: $('form').serialize(),
-       //     success:function(data) {
-       //         if(data == 1){
-       //             setTimeout(function(){
-       //                 location.reload();
-       //             }, 2000);
-       //         }
-       //     },
-       //     error: function(response) {
-       //      console.log(response.responseJSON.errors);
-       //            $('#titleError').text(response.responseJSON.errors.title);
-       //            $('#descriptionError').text(response.responseJSON.errors.description);
-       //            $('#fileError').text(response.responseJSON.errors.file);
-       //            $('#sectionError').text(response.responseJSON.errors.section_id);
-       //            $('#typeError').text(response.responseJSON.errors.design_id);
-       //         }
-       // });
+   //Prediction Edit page data start
+
+   $(document).on('change', '#customFile', function(){
+      var file = $('#customFile').prop('files')[0];
+      //console.log(file);
+      $('#filename').val(file.name);
+      $('#filetype').val(file.type);
+      $('#filesize').val(file.size);
    });
-   //Videos update data end
+   //Prediction update data start
+   $('body').on('click','.file-update',function(){
+    //console.log(file);
+    //console.log($('form').serialize());
+       var id = $(this).data('id');
+       var apiUrl = $(this).data('url');
+       $('#titleError').text('');
+       $('#descriptionError').text('');
+       $('#fileError').text('');
+       $('#sectionError').text('');
+       $('#typeError').text('');
+       $.ajax({
+           url: apiUrl,
+           type:'PATCH',
+           enctype: 'multipart/form-data',
+           data: $('form').serialize(),
+           success:function(data) {
+               if(data == 1){
+                   setTimeout(function(){
+                       location.reload();
+                   }, 2000);
+               }
+           },
+           error: function(response) {
+            console.log(response.responseJSON.errors);
+                  $('#titleError').text(response.responseJSON.errors.title);
+                  $('#descriptionError').text(response.responseJSON.errors.description);
+                  $('#fileError').text(response.responseJSON.errors.file);
+                  $('#sectionError').text(response.responseJSON.errors.section_id);
+                  $('#typeError').text(response.responseJSON.errors.design_id);
+               }
+       });
+   });
+   //Prediction update data end
 
    var table = $('#prediction').DataTable({
     language: {

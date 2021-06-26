@@ -14,17 +14,21 @@
         <span class="error-msg" id="descriptionError"></span>
     </div>
 </div>
-<div class="form-group row">
+<?php /*<div class="form-group row">
+    <input type="hidden" name="file['name']" id="filename" value="">
+    <input type="hidden" name="file['type']" id="filetype" value="">
+    <input type="hidden" name="file['size']" id="filesize" value="">
+    <!-- <input type="hidden" name="file['tmp_name']" id="file_tmp_name" value=""> -->
     <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Prediction File</label>
     <div class="col-12 col-md-7 col-xl-7 col-sm-12">
-        <input type="file" class="custom-file-input" name="file" id="customFile">
+        <input type="file" class="custom-file-input" id="customFile">
         <label class="custom-file-label" for="customFile">Please Upload Prediction File</label>
         <span class="info">
           <small><i>Please upload the file only if you want to change the document for this prediction.</i>
           <br><a href="{{ url('/'.$prediction->link) }}">Click Here</a> to check Current Document</span></small>
         <span class="error-msg" id="fileError"></span>
     </div>
-</div>
+</div>*/?>
 <div class="form-group row">
   <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label">Prediction Section</label>
   <div class="col-12 col-md-7 col-xl-7 col-sm-12">

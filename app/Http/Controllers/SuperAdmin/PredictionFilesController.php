@@ -176,14 +176,14 @@ class PredictionFilesController extends Controller
     public function update(UpdatePredictionRequest $request, $id)
     {
         $input  = \Arr::except($request->all(),array('_token'));
-        if($request->file()){
-            \Session::put('success', 'Prediction File got!');
-            return true;
-            $fileName = substr(time().'_'.str_replace(' ', '_', $request->file->getClientOriginalName()), 0, 250);  
-            if($request->file->move(public_path('files/predictions'), $fileName)){
-                $input['link'] = 'files/predictions/'.$fileName;
-            }
-        }
+        // if($request->file()){
+        //     \Session::put('success', 'Prediction File got!');
+        //     return true;
+        //     $fileName = substr(time().'_'.str_replace(' ', '_', $request->file->getClientOriginalName()), 0, 250);  
+        //     if($request->file->move(public_path('files/predictions'), $fileName)){
+        //         $input['link'] = 'files/predictions/'.$fileName;
+        //     }
+        // }
         $result = PredictionFiles::where('id',$id)->update($input);
         if($result){
             \Session::put('success', 'Prediction File updated Successfully!');
