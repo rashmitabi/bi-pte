@@ -15,7 +15,7 @@
             <div class="col-12 col-md-12 col-xl-12 col-sm-12 p-0 left">
                <div class="question-forms">
                    <div class="col-12 heading-text">
-                      <h5>Re-order Paragraphs(8)</h5>
+                      <h5>Re-order Paragraphs({{ $question_id }})</h5>
                    </div>
                    <form class="form ml-1" class="re_order" id="re_order" method="POST" action="{{ (isset($questions->name))?route('superadmin-question-update-re-order-paragraph'):route('superadmin-question-store-re-order-paragraph') }}">
                        @csrf

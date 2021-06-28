@@ -10,13 +10,18 @@
             </div>
         </div>
     </section>
-
     <section class="top-title-button white-bg mb-3 remove-main-margin">
         <div class="row mx-0 align-items-center">
             <div class="col-12 col-md-12 col-xl-12 col-sm-12 p-0 left">
                <div class="question-forms">
                    <div class="col-12 heading-text">
-                      <h5>Multiple-choice,Choose multiple answers(6)</h5>
+                      <h5>
+                        @if($question_id == 14 || $question_id == 15)
+                           <h5>Multiple-choice,Choose single answers({{$question_id}})</h5>
+                        @else
+                           <h5>Multiple-choice,Choose multiple answers({{$question_id}})</h5>
+                        @endif
+                      </h5>
                    </div>
                    <div class="sub-heading">
                        <h4>Paragraph<span>Enter the First Module Paragraph</span></h4>

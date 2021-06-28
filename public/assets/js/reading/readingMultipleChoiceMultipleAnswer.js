@@ -38,9 +38,14 @@ function addQuestionColumn()
 }
 $(document).ready(function() {
     $('#mutli_choice').validate({ 
+        ignore: [],
+        debug: false,
         rules: {
             editor1:{
-                required: true
+                required: function() 
+                {
+                    return CKEDITOR.instances.editor1.updateElement();
+                }
             },
             options_title: {
                 required: true
@@ -66,7 +71,7 @@ $(document).ready(function() {
         },
         messages : {
             editor1: {
-                required: "description is required"
+                required: "Paragraph is required"
             },
             options_title: {
                 required: "options title is required"
