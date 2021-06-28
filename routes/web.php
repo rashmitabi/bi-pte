@@ -110,6 +110,9 @@ Route::patch('superadmin/questions', [App\Http\Controllers\SuperAdmin\questionsC
 /*Questions Modules end*/
 
 /* start listening section */
+Route::post('superadmin/questions/uploadimage', [App\Http\Controllers\SuperAdmin\ListeningQuestionController::class,'uploadImage'])->name('upload-image');
+Route::post('superadmin/questions/uploadaudio', [App\Http\Controllers\SuperAdmin\ListeningQuestionController::class,'uploadAudio'])->name('upload-audio');
+
 Route::post('superadmin/questions/summarizespokenitem', [App\Http\Controllers\SuperAdmin\ListeningQuestionController::class,'storeSummarizeSpokenItem'])->name('add-summarize-spoken-item');
 Route::post('superadmin/questions/editsummarizespokenitem', [App\Http\Controllers\SuperAdmin\ListeningQuestionController::class,'updateSummarizeSpokenItem'])->name('update-summarize-spoken-item');
 
@@ -145,6 +148,7 @@ Route::post('superadmin/questions/editessay', [App\Http\Controllers\SuperAdmin\w
 /* end writing section */
 
 /* start speaking section */
+
 Route::post('superadmin/questions/readaloud', [App\Http\Controllers\SuperAdmin\speakingQuestionController::class,'storeReadAloud'])->name('add-read-aloud');
 Route::post('superadmin/questions/editreadaloud', [App\Http\Controllers\SuperAdmin\speakingQuestionController::class,'updateReadAloud'])->name('update-read-aloud');
 

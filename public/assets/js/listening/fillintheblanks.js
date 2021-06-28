@@ -1,21 +1,28 @@
 $(document).ready(function() {
-    $('#frm-repeat-sentence').validate({ 
+    $('#frm-fill-in-the-blanks').validate({ 
         rules: {
+            'audio[]': {
+                required: true,
+            },
             'question[]': {
                 required: true
             },
-            'sample_ans[]': {
+            'correct_ans[]': {
                 required: true,
             }
         },
         messages : {
+            'audio[]': {
+                required: "audio is required"
+            },
             'question[]': {
                 required: "question is required"
             },
-            'sample_ans[]': {
-                required : "sample answer is required",
+            'correct_ans[]': {
+                required : "correct answer is required",
             }
-        }
+        },
+        
     });
 });
 function uploadAduio(){
@@ -50,6 +57,8 @@ function uploadAduio(){
     });
         
 } 
+
+
 
 
 

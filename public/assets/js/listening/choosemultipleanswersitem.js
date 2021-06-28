@@ -1,10 +1,16 @@
 $(document).ready(function() {
-    $('#frm-repeat-sentence').validate({ 
+    $('#frm-choose-multiple-answers-item').validate({ 
         rules: {
             'question[]': {
                 required: true
             },
-            'sample_ans[]': {
+            'question_audio[]': {
+                required: true,
+            },
+            'question_option[]': {
+                required: true,
+            },
+            'correct_ans[]': {
                 required: true,
             }
         },
@@ -12,12 +18,20 @@ $(document).ready(function() {
             'question[]': {
                 required: "question is required"
             },
-            'sample_ans[]': {
-                required : "sample answer is required",
+            'question_audio[]': {
+                required: "audio is required"
+            },
+            'question_option[]': {
+                required: "option is required"
+            },
+            'correct_ans[]': {
+                required : "correct answer is required",
             }
-        }
+        },
+        
     });
 });
+
 function uploadAduio(){
     $('#upload-audioError').text('');
     $('#upload-audio').val('');
@@ -28,6 +42,7 @@ function uploadAduio(){
     var form_data2 = new FormData();
     form_data2.append('audio_file', file_data2);
     form_data2.append('_token', token2);
+   
    
     $.ajax({
         url: apiUrl2,

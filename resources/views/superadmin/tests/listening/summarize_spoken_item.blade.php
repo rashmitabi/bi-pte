@@ -8,7 +8,7 @@
         </div>
       </div>
     </section>
-
+ 
     <section class="top-title-button white-bg mb-3 remove-main-margin">
       <div class="row mx-0 align-items-center">
         <div class="col-12 col-md-12 col-xl-12 col-sm-12 p-0 left">
@@ -37,13 +37,13 @@
                         <div class="form-group mb-2 row">
                           <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label">Q{{ $i+1 }} Audio</label>
                           <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
-                            <input type="text" name="question_audio[]" value="{{ (isset($data_value[0]) ? $data_value[0]:'') }}" class="form-control " placeholder="Whole,Total,Very,Open">
+                            <input type="text" name="question_audio[]" id="question_audio{{ $i+1 }}" value="{{ (isset($data_value[0]) ? $data_value[0]:'') }}" class="form-control " placeholder="Whole,Total,Very,Open">
                           </div>
                         </div>
                         <div class="form-group mb-2 row">
                           <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Q{{ $i+1 }} Images</label>
                           <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
-                            <input type="text" name="question_image[]" value="{{ (isset($data_value[1]) ? $data_value[1]:'') }}" class="form-control " placeholder="Whole">
+                            <input type="text" name="question_image[]" id="question_image{{ $i+1 }}" value="{{ (isset($data_value[1]) ? $data_value[1]:'') }}" class="form-control " placeholder="Whole">
                           </div>
                         </div>
                       </div>
@@ -54,7 +54,7 @@
                       </div>
                       <div class="form-group mb-2 row">
                         <div class="col-12 pl-1 p-0">
-                          <textarea name="summary_script[]" id="editor{{ $i+1 }}">{{ $questions->answerdata[$i]->answer_value }}</textarea>
+                          <textarea name="summary_script[]" id="summary_script{{ $i+1 }}" class="ckeditor">{{ $questions->answerdata[$i]->answer_value }}</textarea>
                         </div>
                       </div>
                       <div class="sub-heading pl-1">
@@ -62,7 +62,7 @@
                       </div>
                       <div class="form-group mb-2 row">
                         <div class="col-12 pl-1 p-0">
-                          <textarea name="sample_ans[]" id="editor1{{ $i+1 }}">{{ $questions->answerdata[$i]->sample_answer }}</textarea>
+                          <textarea name="sample_ans[]" id="sample_ans{{ $i+1 }}" class="ckeditor">{{ $questions->answerdata[$i]->sample_answer }}</textarea>
                         </div>
                       </div>
                     @endfor
@@ -71,13 +71,13 @@
                       <div class="form-group mb-2 row">
                         <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label">Q1 Audio</label>
                         <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
-                          <input type="text" name="question_audio[]" class="form-control " placeholder="Whole,Total,Very,Open">
+                          <input type="text" name="question_audio[]" id="question_audio1" class="form-control " placeholder="Whole,Total,Very,Open">
                         </div>
                       </div>
                       <div class="form-group mb-2 row">
                         <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Q1 Images</label>
                         <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
-                          <input type="text" name="question_image[]" class="form-control " placeholder="Whole">
+                          <input type="text" name="question_image[]" id="question_image1" class="form-control " placeholder="Whole">
                         </div>
                       </div>
                     </div>
@@ -86,7 +86,7 @@
                     </div>
                     <div class="form-group mb-2 row">
                       <div class="col-12 pl-1 p-0">
-                        <textarea name="summary_script[]" id="editor3"></textarea>
+                        <textarea name="summary_script[]" id="summary_script1" class="ckeditor"></textarea>
                       </div>
                     </div>
                     <div class="sub-heading pl-1">
@@ -94,7 +94,8 @@
                     </div>
                     <div class="form-group mb-2 row">
                       <div class="col-12 pl-1 p-0">
-                        <textarea name="sample_ans[]" id="editor4"></textarea>
+                        <textarea name="sample_ans[]" id="sample_ans1" class="ckeditor"></textarea>
+                        <div id="error_check_editor"></div>
                       </div>
                     </div>
 
@@ -102,13 +103,13 @@
                       <div class="form-group mb-2 row">
                         <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label">Q2 Audio</label>
                         <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
-                          <input type="text" name="question_audio[]" class="form-control " placeholder="Whole,Total,Very,Open">
+                          <input type="text" name="question_audio[]" id="question_audio2" class="form-control " placeholder="Whole,Total,Very,Open">
                         </div>
                       </div>
                       <div class="form-group mb-2 row">
                         <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Q2 Images</label>
                         <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
-                          <input type="text" name="question_image[]" class="form-control " placeholder="Whole">
+                          <input type="text" name="question_image[]" id="question_image2" class="form-control " placeholder="Whole">
                         </div>
                       </div>
                     </div>
@@ -117,7 +118,7 @@
                     </div>
                     <div class="form-group mb-2 row">
                       <div class="col-12 pl-1 p-0">
-                        <textarea name="summary_script[]" id="editor5"></textarea>
+                        <textarea name="summary_script[]" id="summary_script2" class="ckeditor"></textarea>
                       </div>
                     </div>
                     <div class="sub-heading pl-1">
@@ -125,7 +126,7 @@
                     </div>
                     <div class="form-group mb-2 row">
                       <div class="col-12 pl-1 p-0">
-                        <textarea name="sample_ans[]" id="editor6"></textarea>
+                        <textarea name="sample_ans[]" id="sample_ans2" class="ckeditor"></textarea>
                       </div>
                     </div>
                   @endif
@@ -134,21 +135,23 @@
                   <h5 class="mt-4">Images</h5>
                   <div class="form-group mb-2 row">
                     <div class="col-12 p-0">                              
-                      <div class="custom-file mb-3">
-                          <input type="file" class="custom-file-input" id="customFile">
+                      <div class="custom-file mb-3" >
+                          <input type="file" class="custom-file-input" onchange="uploadImage()" id="customFile_image789" data-url="{{ route('upload-image') }}" data-token="{{ csrf_token() }}">
                           <label class="custom-file-label" for="customFile">Select Image</label>
                       </div>
-                      <input type="text" class="form-control " placeholder="">
+                      <input type="text" name="upload-image" id="upload-image" class="form-control">
+                      <span class="error-msg" id="upload-imageError"></span>
                     </div>
                   </div>
                   <h5 class="mt-4">Audio</h5>
                   <div class="form-group mb-2 row">
                     <div class="col-12 p-0">                              
                       <div class="custom-file mb-3">
-                        <input type="file" class="custom-file-input" id="customFile">
+                        <input type="file" class="custom-file-input " onchange ="uploadAduio()" id="customFile_audio123" data-url="{{ route('upload-audio') }}" data-token="{{ csrf_token() }}">
                         <label class="custom-file-label" for="customFile">Select Audio</label>
                       </div>
-                      <input type="text" class="form-control " placeholder="">
+                      <input type="text" name="upload-audio" id="upload-audio" class="form-control" >
+                      <span class="error-msg" id="upload-audioError"></span>
                     </div>
                   </div>
                 </div>
@@ -167,6 +170,5 @@
   </div>
 @endsection
 @section('js-hooks')
-
-<!-- <script src="{{ asset('assets/js/addQuestions.js') }}" defer></script> -->
+<script src="{{ asset('assets/js/listening/summarizespokenitem.js') }}" defer></script>
 @endsection

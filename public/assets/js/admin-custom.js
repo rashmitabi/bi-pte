@@ -11,6 +11,18 @@ $(document).ready(function () {
 $(document).ready(function() {
     //use for multiple select option
     $('select').selectpicker();
+
+    //Use for ckeditor than add .ckeditor class in textarea
+    $(".ckeditor").each(function(_, ckeditor) {
+
+        var editor = CKEDITOR.instances[name];
+        for(name in CKEDITOR.instances)
+        {
+            CKEDITOR.instances[name].destroy();
+            CKEDITOR.replace(name);
+        }
+        
+    }); 
     
     /*$('#subscription').DataTable({
         language: {

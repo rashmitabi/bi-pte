@@ -138,21 +138,23 @@
                   <h5 class="mt-4">Image</h5>
                   <div class="form-group mb-2 row">
                     <div class="col-12 p-0">                              
-                      <div class="custom-file mb-3">
-                          <input type="file" class="custom-file-input" id="customFile">
+                      <div class="custom-file mb-3" >
+                          <input type="file" class="custom-file-input" onchange="uploadImage()" id="customFile_image" data-url="{{ route('upload-image') }}" data-token="{{ csrf_token() }}">
                           <label class="custom-file-label" for="customFile">Select Image</label>
                       </div>
-                      <input type="text" class="form-control " placeholder="">
+                      <input type="text" name="upload-image" id="upload-image" class="form-control">
+                      <span class="error-msg" id="upload-imageError"></span>
                     </div>
                   </div>
                   <h5 class="mt-2">Audio</h5>
                   <div class="form-group mb-2 row">
                     <div class="col-12 p-0">                              
                       <div class="custom-file mb-3">
-                          <input type="file" class="custom-file-input" id="customFile">
-                          <label class="custom-file-label" for="customFile">Select Audio</label>
+                        <input type="file" class="custom-file-input " onchange ="uploadAduio()" id="customFile_audio" data-url="{{ route('upload-audio') }}" data-token="{{ csrf_token() }}">
+                        <label class="custom-file-label" for="customFile">Select Audio</label>
                       </div>
-                      <input type="text" class="form-control " placeholder="">
+                      <input type="text" name="upload-audio" id="upload-audio" class="form-control" >
+                      <span class="error-msg" id="upload-audioError"></span>
                     </div>
                   </div>
                 </div>

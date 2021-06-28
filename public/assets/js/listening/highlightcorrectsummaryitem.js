@@ -1,23 +1,49 @@
 $(document).ready(function() {
-    $('#frm-repeat-sentence').validate({ 
+    $('#frm-highlight-correct-summary-item').validate({ 
         rules: {
-            'question[]': {
+            'audio[]': {
+                required: true,
+            },
+            'choice_1[]': {
                 required: true
             },
-            'sample_ans[]': {
+            'choice_2[]': {
+                required: true
+            },
+            'choice_3[]': {
+                required: true
+            },
+            'choice_4[]': {
+                required: true
+            },
+            'correct_ans[]': {
                 required: true,
             }
         },
         messages : {
-            'question[]': {
-                required: "question is required"
+            'audio[]': {
+                required: "audio is required"
             },
-            'sample_ans[]': {
-                required : "sample answer is required",
+            'choice_1[]': {
+                required: "choice 1 is required"
+            },
+            'choice_2[]': {
+                required: "choice 2 is required"
+            },
+            'choice_3[]': {
+                required: "choice 3 is required"
+            },
+            'choice_4[]': {
+                required: "choice 4 is required"
+            },
+            'correct_ans[]': {
+                required : "correct answer is required",
             }
-        }
+        },
+        
     });
 });
+
 function uploadAduio(){
     $('#upload-audioError').text('');
     $('#upload-audio').val('');
@@ -50,6 +76,7 @@ function uploadAduio(){
     });
         
 } 
+
 
 
 

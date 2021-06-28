@@ -37,26 +37,26 @@
                         <div class="form-group mb-2 row">
                           <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label">Q3 Question</label>
                           <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
-                            <input type="text" name="question[]" value="{{ (isset($data_value->question) ? $data_value->question : '') }}" class="form-control " placeholder="Whole,Total,Very,Open">
+                            <input type="text" name="question[]" id="question{{ $i+1 }}" value="{{ (isset($data_value->question) ? $data_value->question : '') }}" class="form-control " placeholder="Whole,Total,Very,Open">
                           </div>
                         </div>
                         <div class="form-group mb-2 row">
                           <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Q3 Audio</label>
                           <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
-                            <input type="text" name="question_audio[]" value="{{ (isset($data_value->question_audio) ? $data_value->question_audio : '') }}" class="form-control " placeholder="Whole">
+                            <input type="text" name="question_audio[]" id="question_audio{{ $i+1 }}" value="{{ (isset($data_value->question_audio) ? $data_value->question_audio : '') }}" class="form-control " placeholder="Whole">
                           </div>
                         </div>
                         <div class="form-group mb-2 row">
                           <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Q3 Options</label>
                           <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
-                            <input type="text" name="question_option[]" value="{{ (isset($data_value->question_option) ? $data_value->question_option : '') }}" class="form-control " placeholder="Whole">
+                            <input type="text" name="question_option[]" id="question_option{{ $i+1 }}" value="{{ (isset($data_value->question_option) ? $data_value->question_option : '') }}" class="form-control " placeholder="Whole">
                           </div>
                         </div>
                         <input type="hidden" name="answer_data_id[]" value="{{ $questions->answerdata[$i]->id }}">
                         <div class="form-group mb-2 row">
                           <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Q3 Correct Answers</label>
                           <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
-                            <input type="text" name="correct_ans[]" value="{{ $questions->answerdata[$i]->answer_value }}" class="form-control " placeholder="Whole">
+                            <input type="text" name="correct_ans[]" id="correct_ans{{ $i+1 }}" value="{{ $questions->answerdata[$i]->answer_value }}" class="form-control " placeholder="Whole">
                           </div>
                         </div>
                       </div>
@@ -66,25 +66,25 @@
                       <div class="form-group mb-2 row">
                         <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label">Q3 Question</label>
                         <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
-                          <input type="text" name="question[]"  class="form-control " placeholder="Whole,Total,Very,Open">
+                          <input type="text" name="question[]" id="question1" class="form-control " placeholder="Whole,Total,Very,Open">
                         </div>
                       </div>
                       <div class="form-group mb-2 row">
                         <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Q3 Audio</label>
                         <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
-                          <input type="text" name="question_audio[]"  class="form-control " placeholder="Whole">
+                          <input type="text" name="question_audio[]" id="question_audio1" class="form-control " placeholder="Whole">
                         </div>
                       </div>
                       <div class="form-group mb-2 row">
                         <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Q3 Options</label>
                         <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
-                          <input type="text" name="question_option[]" class="form-control " placeholder="Whole">
+                          <input type="text" name="question_option[]" id="question_option1" class="form-control " placeholder="Whole">
                         </div>
                       </div>
                       <div class="form-group mb-2 row">
                         <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Q3 Correct Answers</label>
                         <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
-                          <input type="text" name="correct_ans[]" class="form-control " placeholder="Whole">
+                          <input type="text" name="correct_ans[]" id="correct_ans1" class="form-control " placeholder="Whole">
                         </div>
                       </div>
                     </div>
@@ -92,25 +92,25 @@
                       <div class="form-group mb-2 row">
                         <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label">Q4 Question</label>
                         <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
-                          <input type="text" name="question[]" class="form-control " placeholder="Whole,Total,Very,Open">
+                          <input type="text" name="question[]" id="question2" class="form-control " placeholder="Whole,Total,Very,Open">
                         </div>
                       </div>
                       <div class="form-group mb-2 row">
                         <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Q4 Audio</label>
                         <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
-                          <input type="text" name="question_audio[]" class="form-control " placeholder="Whole">
+                          <input type="text" name="question_audio[]" id="question_audio2" class="form-control " placeholder="Whole">
                         </div>
                       </div>
                       <div class="form-group mb-2 row">
                         <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Q4 Options</label>
                         <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
-                          <input type="text" name="question_option[]" class="form-control " placeholder="Whole">
+                          <input type="text" name="question_option[]" id="question_option2" class="form-control " placeholder="Whole">
                         </div>
                       </div>
                       <div class="form-group mb-2 row">
                         <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Q4 Correct Answers</label>
                         <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
-                          <input type="text" name="correct_ans[]" class="form-control " placeholder="Whole">
+                          <input type="text" name="correct_ans[]" id="correct_ans2" class="form-control " placeholder="Whole">
                         </div>
                       </div>
                     </div>
@@ -121,10 +121,11 @@
                   <div class="form-group mb-2 row">
                     <div class="col-12 p-0">                              
                       <div class="custom-file mb-3">
-                        <input type="file" class="custom-file-input" id="customFile">
+                        <input type="file" class="custom-file-input " onchange ="uploadAduio()" id="customFile_audio" data-url="{{ route('upload-audio') }}" data-token="{{ csrf_token() }}">
                         <label class="custom-file-label" for="customFile">Select Audio</label>
                       </div>
-                      <input type="text" class="form-control " placeholder="">
+                      <input type="text" name="upload-audio" id="upload-audio" class="form-control" >
+                      <span class="error-msg" id="upload-audioError"></span>
                     </div>
                   </div>
                 </div>
@@ -144,5 +145,5 @@
 @endsection
 @section('js-hooks')
 
-<!-- <script src="{{ asset('assets/js/addQuestions.js') }}" defer></script> -->
+<script src="{{ asset('assets/js/listening/choosemultipleanswersitem.js') }}" defer></script>
 @endsection

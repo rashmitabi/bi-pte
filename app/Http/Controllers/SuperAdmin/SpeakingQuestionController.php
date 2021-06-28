@@ -10,7 +10,7 @@ use DB;
 
 class SpeakingQuestionController extends Controller
 {
-
+    
 	public function storeReadAloud(Request $request){
         
         $request->validate([

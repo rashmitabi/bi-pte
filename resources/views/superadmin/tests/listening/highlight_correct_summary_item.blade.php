@@ -37,38 +37,38 @@
                         <div class="form-group mb-2 row">
                           <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label">Q{{ $i+7 }} Audio</label>
                           <div class="col-12 col-md-6 col-xl-7 col-sm-12 p-0">
-                            <input type="text" name="audio[]" value="{{ (isset($data_value->audio) ? $data_value->audio : '') }}" class="form-control " placeholder="Whole,Total,Very,Open">
+                            <input type="text" name="audio[]" id="audio{{ $i+1 }}" value="{{ (isset($data_value->audio) ? $data_value->audio : '') }}" class="form-control " placeholder="Whole,Total,Very,Open">
                           </div>
                         </div>
                         <div class="form-group mb-2 row">
                           <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Q{{ $i+7 }} choice 1</label>
                           <div class="col-12 col-md-6 col-xl-7 col-sm-12 p-0">
-                            <input type="text" name="choice_1[]" value="{{ (isset($data_value->choice_1) ? $data_value->choice_1 : '') }}" class="form-control " placeholder="Whole">
+                            <input type="text" name="choice_1[]" id="choice_1{{ $i+1 }}" value="{{ (isset($data_value->choice_1) ? $data_value->choice_1 : '') }}" class="form-control " placeholder="Whole">
                           </div>
                         </div>
                         <div class="form-group mb-2 row">
                           <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Q{{ $i+7 }} choice 2</label>
                           <div class="col-12 col-md-6 col-xl-7 col-sm-12 p-0">
-                            <input type="text" name="choice_2[]" value="{{ (isset($data_value->choice_2) ? $data_value->choice_2 : '') }}" class="form-control " placeholder="Whole">
+                            <input type="text" name="choice_2[]" id="choice_2{{ $i+1 }}" value="{{ (isset($data_value->choice_2) ? $data_value->choice_2 : '') }}" class="form-control " placeholder="Whole">
                           </div>
                         </div>
                         <div class="form-group mb-2 row">
                           <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Q{{ $i+7 }} choice 3</label>
                           <div class="col-12 col-md-6 col-xl-7 col-sm-12 p-0">
-                            <input type="text" name="choice_3[]" value="{{ (isset($data_value->choice_3) ? $data_value->choice_3 : '') }}" class="form-control" placeholder="Whole">
+                            <input type="text" name="choice_3[]" id="choice_3{{ $i+1 }}" value="{{ (isset($data_value->choice_3) ? $data_value->choice_3 : '') }}" class="form-control" placeholder="Whole">
                           </div>
                         </div>
                         <div class="form-group mb-2 row">
                           <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Q{{ $i+7 }} choice 4</label>
                           <div class="col-12 col-md-6 col-xl-7 col-sm-12 p-0">
-                            <input type="text" name="choice_4[]" value="{{ (isset($data_value->choice_4) ? $data_value->choice_4 : '') }}" class="form-control" placeholder="Whole">
+                            <input type="text" name="choice_4[]" id="choice_4{{ $i+1 }}" value="{{ (isset($data_value->choice_4) ? $data_value->choice_4 : '') }}" class="form-control" placeholder="Whole">
                           </div>
                         </div>
                         <input type="hidden" name="answer_data_id[]" value="{{ $questions->answerdata[$i]->id }}">
                         <div class="form-group mb-2 row">
                           <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label">Q{{ $i+7 }} Correct Answers</label>
                           <div class="col-12 col-md-6 col-xl-7 col-sm-12 p-0">
-                            <input type="text" name="correct_ans[]" value="{{ $questions->answerdata[$i]->answer_value }}" class="form-control" placeholder="Whole">
+                            <input type="text" name="correct_ans[]" id="correct_ans{{ $i+1 }}" value="{{ $questions->answerdata[$i]->answer_value }}" class="form-control" placeholder="Whole">
                           </div>
                         </div>
                       </div>
@@ -78,37 +78,37 @@
                       <div class="form-group mb-2 row">
                         <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label">Q7 Audio</label>
                         <div class="col-12 col-md-6 col-xl-7 col-sm-12 p-0">
-                          <input type="text" name="audio[]" class="form-control " placeholder="Whole,Total,Very,Open">
+                          <input type="text" name="audio[]" id="audio1" class="form-control " placeholder="Whole,Total,Very,Open">
                         </div>
                       </div>
                       <div class="form-group mb-2 row">
                         <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Q7 choice 1</label>
                         <div class="col-12 col-md-6 col-xl-7 col-sm-12 p-0">
-                          <input type="text" name="choice_1[]" class="form-control " placeholder="Whole">
+                          <input type="text" name="choice_1[]" id="choice_11" class="form-control " placeholder="Whole">
                         </div>
                       </div>
                       <div class="form-group mb-2 row">
                         <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Q7 choice 2</label>
                         <div class="col-12 col-md-6 col-xl-7 col-sm-12 p-0">
-                          <input type="text" name="choice_2[]" class="form-control " placeholder="Whole">
+                          <input type="text" name="choice_2[]" id="choice_21" class="form-control " placeholder="Whole">
                         </div>
                       </div>
                       <div class="form-group mb-2 row">
                         <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Q7 choice 3</label>
                         <div class="col-12 col-md-6 col-xl-7 col-sm-12 p-0">
-                          <input type="text" name="choice_3[]" class="form-control" placeholder="Whole">
+                          <input type="text" name="choice_3[]" id="choice_31" class="form-control" placeholder="Whole">
                         </div>
                       </div>
                       <div class="form-group mb-2 row">
                         <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Q7 choice 4</label>
                         <div class="col-12 col-md-6 col-xl-7 col-sm-12 p-0">
-                          <input type="text" name="choice_4[]" class="form-control" placeholder="Whole">
+                          <input type="text" name="choice_4[]" id="choice_41" class="form-control" placeholder="Whole">
                         </div>
                       </div>
                       <div class="form-group mb-2 row">
                         <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label">Q7 Correct Answers</label>
                         <div class="col-12 col-md-6 col-xl-7 col-sm-12 p-0">
-                          <input type="text" name="correct_ans[]" class="form-control" placeholder="Whole">
+                          <input type="text" name="correct_ans[]" id="correct_ans1" class="form-control" placeholder="Whole">
                         </div>
                       </div>
                     </div>
@@ -116,37 +116,37 @@
                       <div class="form-group mb-2 row">
                         <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label">Q8 Audio</label>
                         <div class="col-12 col-md-6 col-xl-7 col-sm-12 p-0">
-                          <input type="text" name="audio[]" class="form-control " placeholder="Whole,Total,Very,Open">
+                          <input type="text" name="audio[]" id="audio2" class="form-control " placeholder="Whole,Total,Very,Open">
                         </div>
                       </div>
                       <div class="form-group mb-2 row">
                         <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Q8 choice 1</label>
                         <div class="col-12 col-md-6 col-xl-7 col-sm-12 p-0">
-                          <input type="text" name="choice_1[]" class="form-control" placeholder="Whole">
+                          <input type="text" name="choice_1[]" id="choice_12" class="form-control" placeholder="Whole">
                         </div>
                       </div>
                       <div class="form-group mb-2 row">
                         <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Q8 choice 2</label>
                         <div class="col-12 col-md-6 col-xl-7 col-sm-12 p-0">
-                          <input type="text" name="choice_2[]" class="form-control" placeholder="Whole">
+                          <input type="text" name="choice_2[]" id="choice_22" class="form-control" placeholder="Whole">
                         </div>
                       </div>
                       <div class="form-group mb-2 row">
                         <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Q8 choice 3</label>
                         <div class="col-12 col-md-6 col-xl-7 col-sm-12 p-0">
-                          <input type="text" name="choice_3[]" class="form-control" placeholder="Whole">
+                          <input type="text" name="choice_3[]" id="choice_32" class="form-control" placeholder="Whole">
                         </div>
                       </div>
                       <div class="form-group mb-2 row">
                         <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Q8 choice 4</label>
                         <div class="col-12 col-md-6 col-xl-7 col-sm-12 p-0">
-                          <input type="text" name="choice_4[]" class="form-control" placeholder="Whole">
+                          <input type="text" name="choice_4[]" id="choice_42" class="form-control" placeholder="Whole">
                         </div>
                       </div>
                       <div class="form-group mb-2 row">
                         <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label">Q8 Correct Answers</label>
                         <div class="col-12 col-md-6 col-xl-7 col-sm-12 p-0">
-                          <input type="text" name="correct_ans[]" class="form-control" placeholder="Whole">
+                          <input type="text" name="correct_ans[]" id="correct_ans2" class="form-control" placeholder="Whole">
                         </div>
                       </div>
                     </div>
@@ -157,10 +157,11 @@
                   <div class="form-group mb-2 row">
                     <div class="col-12 p-0">                              
                       <div class="custom-file mb-3">
-                        <input type="file" class="custom-file-input" id="customFile">
+                        <input type="file" class="custom-file-input " onchange ="uploadAduio()" id="customFile_audio" data-url="{{ route('upload-audio') }}" data-token="{{ csrf_token() }}">
                         <label class="custom-file-label" for="customFile">Select Audio</label>
                       </div>
-                      <input type="text" class="form-control " placeholder="">
+                      <input type="text" name="upload-audio" id="upload-audio" class="form-control" >
+                      <span class="error-msg" id="upload-audioError"></span>
                     </div>
                   </div>
                 </div>
@@ -180,5 +181,5 @@
 @endsection
 @section('js-hooks')
 
-<!-- <script src="{{ asset('assets/js/addQuestions.js') }}" defer></script> -->
+<script src="{{ asset('assets/js/listening/highlightcorrectsummaryitem.js') }}" defer></script>
 @endsection

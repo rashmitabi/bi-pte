@@ -11,6 +11,51 @@ use DB;
 class ListeningQuestionController extends Controller
 {
 
+    public function uploadImage(Request $request){
+        $request->validate([
+            'image_file' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+        ]);
+  
+        $input = $request->all();
+  
+        if ($image = $request->file('image_file')) {
+            $destinationPath = 'assets/images/upload-image/';
+            $ImageName = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $image->move($destinationPath, $ImageName);
+        }
+
+        return response()->json([
+            'success' => 1,
+            'html'=>"<img src='".url($destinationPath.$ImageName)."'>"    
+        ]);
+    }
+
+    public function uploadAudio(Request $request){
+        $request->validate([
+            'audio_file' => 'required|file|mimes:audio/mpeg,mpga,mp3,wav,aac,ogg',
+        ]);
+  
+        $input = $request->all();
+        $image = $request->file('audio_file');
+        if ($image) {
+            $destinationPath = 'assets/images/upload-audio/';
+            $ImageName = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $image->move($destinationPath, $ImageName);
+        }
+
+        $html ='<audio controls >';
+            $html .='<source src="'.url($destinationPath.$ImageName).'" type="audio/'.$image->getClientOriginalExtension().'">';
+            $html .='Your browser does not support the audio element.';
+        $html .='</audio>';
+
+        return response()->json([
+            'success' => 1,
+            'html'=> $html    
+        ]);
+    }
+
+
+
 	public function storeSummarizeSpokenItem(Request $request){
 		$input  = \Arr::except($request->all(),array('_token'));
 		
