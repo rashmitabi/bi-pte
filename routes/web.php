@@ -39,6 +39,57 @@ Route::group(['middleware' => ['auth', 'verified','superadmin']], function () {
 
     Route::get('superadmin/setting', [App\Http\Controllers\HomeController::class, 'setting'])->name('superadmin-setting');
 
+    /*Subscription module start*/
+    Route::get('superadmin/subscription/changestatus/{id}', [App\Http\Controllers\SuperAdmin\SubscriptionsController::class, 'changeStatus'])
+        ->name('superadmin-subscription-changestatus');
+    Route::resource('superadmin/subscription', App\Http\Controllers\SuperAdmin\SubscriptionsController::class);
+    /*Subscription module end*/
+
+    /* Email templates module start*/
+    Route::get('superadmin/email/changestatus/{id}', [App\Http\Controllers\SuperAdmin\EmailTemplatesController::class, 'changeStatus'])
+        ->name('superadmin-email-changestatus');
+    Route::resource('superadmin/email', App\Http\Controllers\SuperAdmin\EmailTemplatesController::class);
+    /* Email templates module start*/
+        
+    /*Vouchers module start*/
+    Route::get('superadmin/vouchers/changestatus/{id}', [App\Http\Controllers\SuperAdmin\VouchersController::class, 'changeStatus'])
+        ->name('superadmin-vouchers-changestatus');
+    Route::resource('superadmin/vouchers', App\Http\Controllers\SuperAdmin\VouchersController::class);
+    /*Vouchers module end*/
+
+    /*Subjects module start*/
+    Route::get('superadmin/subjects/changestatus/{id}', [App\Http\Controllers\SuperAdmin\SubjectsController::class, 'changeStatus'])
+        ->name('superadmin-subjects-changestatus');
+    Route::resource('superadmin/subjects', App\Http\Controllers\SuperAdmin\SubjectsController::class);
+    /*Subjects module end*/
+
+    /* prediction files routes start *//* prediction files routes start */
+
+    Route::resource('superadmin/predictionfiles', App\Http\Controllers\SuperAdmin\PredictionFilesController::class);
+    Route::get('superadmin/predictionfiles/changestatus/{id}', [App\Http\Controllers\SuperAdmin\PredictionFilesController::class, 'changeStatus'])
+        ->name('superadmin-predictionfiles-changestatus');
+    /* prediction files routes ends */
+
+
+    Route::resource('superadmin/transactions', App\Http\Controllers\SuperAdmin\TransactionsController::class);
+
+    Route::resource('superadmin/certificates', App\Http\Controllers\SuperAdmin\CertificatesController::class);
+
+    Route::resource('superadmin/results', App\Http\Controllers\SuperAdmin\TestResultsController::class);
+
+
+    /*Device logs module start*/
+    Route::get('superadmin/device/changestatus/{id}', [App\Http\Controllers\SuperAdmin\DeviceController::class, 'changeStatus'])->name('superadmin-device-changestatus');
+    Route::resource('superadmin/device', App\Http\Controllers\SuperAdmin\DeviceController::class);
+    /*Device logs module end*/
+     
+
+    /*Videos module start*/
+    Route::resource('superadmin/videos', App\Http\Controllers\SuperAdmin\VideosController::class);
+    Route::get('superadmin/videos/changestatus/{id}', [App\Http\Controllers\SuperAdmin\VideosController::class, 'changeStatus'])
+        ->name('superadmin-videos-changestatus');
+    /*Videos module end*/
+
 });
 //end Super admin routes
 
@@ -56,32 +107,7 @@ Route::group(['middleware' => ['auth', 'verified','student']], function () {
     //end student admin routes
 });
 
-/*Subscription module start*/
-Route::get('superadmin/subscription/changestatus/{id}', [App\Http\Controllers\SuperAdmin\SubscriptionsController::class, 'changeStatus'])
-    ->name('superadmin-subscription-changestatus');
-Route::resource('superadmin/subscription', App\Http\Controllers\SuperAdmin\SubscriptionsController::class);
-/*Subscription module end*/
 
-
-
-
-/* Email templates module start*/
-Route::get('superadmin/email/changestatus/{id}', [App\Http\Controllers\SuperAdmin\EmailTemplatesController::class, 'changeStatus'])
-    ->name('superadmin-email-changestatus');
-Route::resource('superadmin/email', App\Http\Controllers\SuperAdmin\EmailTemplatesController::class);
-/* Email templates module start*/
-    
-/*Vouchers module start*/
-Route::get('superadmin/vouchers/changestatus/{id}', [App\Http\Controllers\SuperAdmin\VouchersController::class, 'changeStatus'])
-    ->name('superadmin-vouchers-changestatus');
-Route::resource('superadmin/vouchers', App\Http\Controllers\SuperAdmin\VouchersController::class);
-/*Vouchers module end*/
-
-/*Subjects module start*/
-Route::get('superadmin/subjects/changestatus/{id}', [App\Http\Controllers\SuperAdmin\SubjectsController::class, 'changeStatus'])
-    ->name('superadmin-subjects-changestatus');
-Route::resource('superadmin/subjects', App\Http\Controllers\SuperAdmin\SubjectsController::class);
-/*Subjects module end*/
 
 
 /*Tests Modules start*/
@@ -192,31 +218,4 @@ Route::post('superadmin/questions/updateFillInTheBlanks', [App\Http\Controllers\
     
 /*Reading section questions end*/
 
-/* prediction files routes start *//* prediction files routes start */
 
-Route::resource('superadmin/predictionfiles', App\Http\Controllers\SuperAdmin\PredictionFilesController::class);
-Route::get('superadmin/predictionfiles/changestatus/{id}', [App\Http\Controllers\SuperAdmin\PredictionFilesController::class, 'changeStatus'])
-    ->name('superadmin-predictionfiles-changestatus');
-/* prediction files routes ends */
-
-
-Route::resource('superadmin/transactions', App\Http\Controllers\SuperAdmin\TransactionsController::class);
-
-Route::resource('superadmin/certificates', App\Http\Controllers\SuperAdmin\CertificatesController::class);
-
-Route::resource('superadmin/results', App\Http\Controllers\SuperAdmin\TestResultsController::class);
-
-
-
-
-/*Device logs module start*/
-Route::get('superadmin/device/changestatus/{id}', [App\Http\Controllers\SuperAdmin\DeviceController::class, 'changeStatus'])->name('superadmin-device-changestatus');
-Route::resource('superadmin/device', App\Http\Controllers\SuperAdmin\DeviceController::class);
-/*Device logs module end*/
- 
-
-/*Videos module start*/
-Route::resource('superadmin/videos', App\Http\Controllers\SuperAdmin\VideosController::class);
-Route::get('superadmin/videos/changestatus/{id}', [App\Http\Controllers\SuperAdmin\VideosController::class, 'changeStatus'])
-    ->name('superadmin-videos-changestatus');
-/*Videos module end*/
