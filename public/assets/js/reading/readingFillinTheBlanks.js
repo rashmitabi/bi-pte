@@ -48,9 +48,14 @@ function addQuestionColumn()
 }
 $(document).ready(function() {
     $('#fill_in_blanks').validate({ 
+        ignore: [],
+        debug: false,
         rules: {
             editor2:{
-                required: true
+                required: function() 
+                {
+                    return CKEDITOR.instances.editor2.updateElement();
+                }
             },
             ans_options1:{
                 required: true

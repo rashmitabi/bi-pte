@@ -192,8 +192,13 @@ Route::post('superadmin/questions/updateFillInTheBlanks', [App\Http\Controllers\
     
 /*Reading section questions end*/
 
+/* prediction files routes start *//* prediction files routes start */
 
 Route::resource('superadmin/predictionfiles', App\Http\Controllers\SuperAdmin\PredictionFilesController::class);
+Route::get('superadmin/predictionfiles/changestatus/{id}', [App\Http\Controllers\SuperAdmin\PredictionFilesController::class, 'changeStatus'])
+    ->name('superadmin-predictionfiles-changestatus');
+/* prediction files routes ends */
+
 
 Route::resource('superadmin/transactions', App\Http\Controllers\SuperAdmin\TransactionsController::class);
 
@@ -201,10 +206,13 @@ Route::resource('superadmin/certificates', App\Http\Controllers\SuperAdmin\Certi
 
 Route::resource('superadmin/results', App\Http\Controllers\SuperAdmin\TestResultsController::class);
 
+
+
+
+/*Device logs module start*/
+Route::get('superadmin/device/changestatus/{id}', [App\Http\Controllers\SuperAdmin\DeviceController::class, 'changeStatus'])->name('superadmin-device-changestatus');
 Route::resource('superadmin/device', App\Http\Controllers\SuperAdmin\DeviceController::class);
-
-
-
+/*Device logs module end*/
  
 
 /*Videos module start*/

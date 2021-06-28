@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    //Videos Edit page data start
+    //Prediction Edit page data start
     $(document).on('change', '#sections', function(){
     var id = $(this).val();
     var json = $('#types').data('json');
@@ -13,7 +13,7 @@ $(document).ready(function() {
 
   
 
-    $('body').on('click','.video-edit',function(){
+    $('body').on('click','.file-edit',function(){
            var id = $(this).data('id');
            var apiUrl = $(this).data('url');
            $.ajax({
@@ -21,28 +21,39 @@ $(document).ready(function() {
                type:'GET',
                data:{'id' : id},
                beforeSend: function(){
-                   $('#video-edit-body').html('<i class="fa fa-spinner fa-spin"></i>  Please Wait...');
+                   $('#file-edit-body').html('<i class="fa fa-spinner fa-spin"></i>  Please Wait...');
                },
                success:function(data) {
-                   $('#video-edit-body').html(data.html);
+                   $('#file-edit-body').html(data.html);
                    $('#sections').selectpicker();
                    $('#types').selectpicker();
                },
            });
    });
-   //Subject Edit page data start
-   //Video update data start
-   $('body').on('click','.video-update',function(){
+   //Prediction Edit page data start
+
+   $(document).on('change', '#customFile', function(){
+      var file = $('#customFile').prop('files')[0];
+      //console.log(file);
+      $('#filename').val(file.name);
+      $('#filetype').val(file.type);
+      $('#filesize').val(file.size);
+   });
+   //Prediction update data start
+   $('body').on('click','.file-update',function(){
+    //console.log(file);
+    //console.log($('form').serialize());
        var id = $(this).data('id');
        var apiUrl = $(this).data('url');
        $('#titleError').text('');
        $('#descriptionError').text('');
-       $('#linkError').text('');
+       $('#fileError').text('');
        $('#sectionError').text('');
        $('#typeError').text('');
        $.ajax({
            url: apiUrl,
            type:'PATCH',
+           enctype: 'multipart/form-data',
            data: $('form').serialize(),
            success:function(data) {
                if(data == 1){
@@ -55,15 +66,15 @@ $(document).ready(function() {
             console.log(response.responseJSON.errors);
                   $('#titleError').text(response.responseJSON.errors.title);
                   $('#descriptionError').text(response.responseJSON.errors.description);
-                  $('#linkError').text(response.responseJSON.errors.link);
+                  $('#fileError').text(response.responseJSON.errors.file);
                   $('#sectionError').text(response.responseJSON.errors.section_id);
                   $('#typeError').text(response.responseJSON.errors.design_id);
                }
        });
    });
-   //Videos update data end
+   //Prediction update data end
 
-   var table = $('#videos').DataTable({
+   var table = $('#prediction').DataTable({
     language: {
        search: '',
        searchPlaceholder: 'Search by video title, section, type, date and status',
@@ -96,5 +107,5 @@ $(document).ready(function() {
        {data: 'action', name: 'action', orderable: false, searchable: false},
     ]
     });
-    $("#videos_wrapper div.toolbar").html('Videos');
+    $("#prediction_wrapper div.toolbar").html('Prediction Files');
 });

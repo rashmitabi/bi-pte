@@ -98,3 +98,9 @@
 
 </div>
 @endsection
+@section('js-hooks')
+<script type="text/javascript" defer>
+  var url="{{ route('device.index') }}";
+</script>
+<script src="{{ asset('assets/js/deviceLogs.js') }}" defer></script>
+@endsection

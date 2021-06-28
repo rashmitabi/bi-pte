@@ -53,8 +53,16 @@ function addQuestionColumn()
       $("#slug").val(newNumber);
 }
 $(document).ready(function() {
-    $('#fill_in_blanks').validate({ 
+    $('#fill_in_blanks').validate({
+        ignore: [],
+        debug: false,
         rules: {
+            editor:{
+                required: function() 
+                {
+                    return CKEDITOR.instances.editor.updateElement();
+                }
+            },
             ans_options1: {
                 required: true
             },
@@ -105,6 +113,9 @@ $(document).ready(function() {
             },
         },
         messages : {
+            editor:{
+                required: "Paragraph is required"
+            },
             ans_options1: {
                 required: "Ans Option 1 is required"
             },
@@ -171,8 +182,10 @@ $(document).ready(function() {
             });
         }
     });
-    // $(".add-icon").click(function(){
-            
-    // });
-    
+    $("#ans_options1").rules("add", { 
+        pattern: "^[a-zA-Z'.\\s]{1,40}$",
+        messages: {
+            pattern:"Please add comma seprate options",
+          }
+    });
 });

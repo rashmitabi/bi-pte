@@ -31,6 +31,7 @@ $pageActive = isset($pageArray[4]) ? $pageArray[4] : 'dashboard';
 
 		<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js" defer></script> -->
 		<script src="{{ asset('assets/js/jquery.validate.min.js') }}" defer></script>
+		<script src="http://jqueryvalidation.org/files/dist/additional-methods.min.js" defer></script>
 
 		<script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js" defer></script>

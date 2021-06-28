@@ -15,7 +15,7 @@
             <div class="col-12 col-md-12 col-xl-12 col-sm-12 p-0 left">
                <div class="question-forms">
                    <div class="col-12 heading-text">
-                      <h5>Reading and Writing : Fill in the blanks(1)</h5>
+                      <h5>Reading and Writing : Fill in the blanks({{ $question_id }})</h5>
                    </div>
                    <div class="sub-heading">
                        <h4>Paragraph<span>Enter the First Module Paragraph</span></h4>
@@ -210,5 +210,5 @@
 <script type="text/javascript" defer>
    var url = "{{ route('questions.store') }}";
 </script>
-<script src="{{ asset('assets/js/reading/addQuestions.js') }}" defer></script>
+<script src="{{ asset('assets/js/reading/readingAndWritingFillinTheBlanks.js') }}" defer></script>
 @endsection

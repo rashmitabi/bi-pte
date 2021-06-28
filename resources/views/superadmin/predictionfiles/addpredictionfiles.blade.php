@@ -14,7 +14,7 @@
     <section class="top-title-button white-bg mb-3 remove-main-margin">
         <div class="row mx-0 align-items-center">
             <div class="col-12 col-md-12 col-xl-8 col-sm-8 left">
-                {!! Form::open(array('route' => 'predictionfiles.store','method'=>'POST','class'=>'form mt-4 ml-3')) !!}
+                {!! Form::open(array('route' => 'predictionfiles.store','method'=>'POST','class'=>'form mt-4 ml-3', 'enctype' => 'multipart/form-data')) !!}
                     <div class="form-group row">
                         <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">File Title</label>
                         <div class="col-12 col-md-7 col-xl-7 col-sm-12">
@@ -37,8 +37,11 @@
                       <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Upload Prediction File</label>
                        <div class="col-12 col-md-7 col-xl-7 col-sm-12">
                            <div class="custom-file">
-                               <input type="file" class="custom-file-input" id="customFile">
+                               <input type="file" class="custom-file-input" name="file" id="customFile">
                                <label class="custom-file-label" for="customFile">Please Upload Prediction File</label>
+                               @if($errors->has('file'))
+                                  <span class="error-msg">{{$errors->first('file')}}</span>
+                                @endif
                            </div>
                       </div>
                    </div>
