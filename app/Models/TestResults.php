@@ -18,4 +18,29 @@ class TestResults extends Model
     	'question_id'
 
     ];
+
+    public function test() 
+    {
+        return  $this->belongsTo('App\Models\generate_tests', 'test_id');
+    }
+
+    public function question_type() 
+    {
+        return  $this->belongsTo('App\Models\QuestionTypes', 'question_type_id');
+    }
+
+    public function question() 
+    {
+        return  $this->belongsTo('App\Models\Questions', 'question_id');
+    }
+
+    public function section() 
+    {
+        return  $this->belongsTo('App\Models\Sections', 'section_id');
+    }
+
+    public function user() 
+    {
+        return  $this->belongsTo('App\Models\User', 'user_id');
+    }
 }
