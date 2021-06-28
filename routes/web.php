@@ -72,6 +72,8 @@ Route::group(['middleware' => ['auth', 'verified','superadmin']], function () {
 
 
     Route::resource('superadmin/transactions', App\Http\Controllers\SuperAdmin\TransactionsController::class);
+    Route::get('superadmin/transactions/download_invoice/{id}', [App\Http\Controllers\SuperAdmin\TransactionsController::class, 'download_invoice'])
+        ->name('transaction-download-invoice');
 
     Route::resource('superadmin/certificates', App\Http\Controllers\SuperAdmin\CertificatesController::class);
 

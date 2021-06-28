@@ -65,4 +65,9 @@ class User extends Authenticatable
     {
         return $this->belongsTo(roles::class,'id');
     }
+
+    public function userSubscriptions()
+    {
+        return $this->hasMany('App\Models\userSubscriptions');
+    }
 }

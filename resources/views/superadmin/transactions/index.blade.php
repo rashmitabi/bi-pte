@@ -25,60 +25,24 @@
                             <th>Amount</th>
                             <th>Subscription Package</th>
                             <th>Voucher Code</th>
-                            <th>Payment Method</th>
-                            <th>Status</th>
+                            <th>Payment Method</th>                            
                             <th>Transaction Id</th>
+                            <th>Created Date</th>
+                            <th>Status</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Study Care Institute </td>
-                            <td>Institute</td>
-                            <td>25000</td>
-                            <td>Demo Package 3</td>
-                            <td>Not Applied</td>
-                            <td>Online Payment</td>
-                            <td>Active</td>
-                            <td>T1006</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>Study Care Institute </td>
-                            <td>Institute</td>
-                            <td>25000</td>
-                            <td>Demo Package 3</td>
-                            <td>Not Applied</td>
-                            <td>Online Payment</td>
-                            <td>Active</td>
-                            <td>T1006</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>Study Care Institute </td>
-                            <td>Institute</td>
-                            <td>25000</td>
-                            <td>Demo Package 3</td>
-                            <td>Not Applied</td>
-                            <td>Online Payment</td>
-                            <td>Active</td>
-                            <td>T1006</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>Study Care Institute </td>
-                            <td>Institute</td>
-                            <td>25000</td>
-                            <td>Demo Package 3</td>
-                            <td>Not Applied</td>
-                            <td>Online Payment</td>
-                            <td>Active</td>
-                            <td>T1006</td>
-                        </tr>
+                    
                 </table>
             </div>
         </div>
     </section>
 
 </div>
+@endsection
+@section('js-hooks')
+<script type="text/javascript" defer>
+  var url="{{ route('transactions.index') }}";
+</script>
+<script src="{{ asset('assets/js/transactions.js') }}" defer></script>
 @endsection
