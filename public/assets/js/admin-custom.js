@@ -35,7 +35,7 @@ $(document).ready(function() {
     });
     $("#subscription_wrapper div.toolbar").html('Manage Subscription');*/
 
-    $('#device').DataTable({
+    /*$('#device').DataTable({
         language: {
             search: '',
             searchPlaceholder: "Search by browser name, user name",
@@ -55,8 +55,8 @@ $(document).ready(function() {
         "dom": "<'row'<'col-sm-12 col-md-3 top-label'<'toolbar'>><'col-sm-12 col-md-6 top-search'f><'col-sm-12 col-md-3 top-pagination'l>>" +
         "<'row'<'col-sm-12't>>" +
         "<'row'<'col-sm-12 col-md-12'p>>",
-    });
-    $("#device_wrapper div.toolbar").html('Manage Device Log');
+    });*/
+    //$("#device_wrapper div.toolbar").html('Manage Device Log');
 
 //     $('#users').DataTable({
 //         language: {

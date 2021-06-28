@@ -202,10 +202,13 @@ Route::resource('superadmin/certificates', App\Http\Controllers\SuperAdmin\Certi
 
 Route::resource('superadmin/results', App\Http\Controllers\SuperAdmin\TestResultsController::class);
 
+
+
+
+/*Device logs module start*/
+Route::get('superadmin/device/changestatus/{id}', [App\Http\Controllers\SuperAdmin\DeviceController::class, 'changeStatus'])->name('superadmin-device-changestatus');
 Route::resource('superadmin/device', App\Http\Controllers\SuperAdmin\DeviceController::class);
-
-
-
+/*Device logs module end*/
  
 
 /*Videos module start*/
