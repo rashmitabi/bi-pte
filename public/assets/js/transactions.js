@@ -1,16 +1,16 @@
 $(document).ready(function() {
 
-    $('body').on('click','.download_invoice',function(){
-        //var id = $(this).attr('data-id');
-        var apiUrl = $(this).attr('data-url');
-        $.ajax({
-               url: apiUrl,
-               type:'GET',
-               success:function(data) {
-                   console.log(data);
-               },
-           });
-    });
+    // $('body').on('click','.download_invoice',function(){
+    //     //var id = $(this).attr('data-id');
+    //     var apiUrl = $(this).attr('data-url');
+    //     $.ajax({
+    //            url: apiUrl,
+    //            type:'GET',
+    //            success:function(data) {
+    //                console.log(data);
+    //            },
+    //        });
+    // });
 
 
     $('#transactions').DataTable({
