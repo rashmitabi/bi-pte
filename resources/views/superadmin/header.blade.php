@@ -71,7 +71,7 @@
                   <div class="notifications-main-wrap">
                      <ul>
                         <li> 
-                           <a href="#"> <i class="fas fa-cog"></i> Settings </a>
+                           <a href="{{ route('settings.index') }}"> <i class="fas fa-cog"></i> Settings </a>
                         </li>
                         <li> 
                            <a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();"> <i class="fas fa-sign-out-alt"></i> Sign Out </a>
