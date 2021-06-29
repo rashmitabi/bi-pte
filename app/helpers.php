@@ -1,6 +1,7 @@
 <?php 
 
 use App\Models\User;
+use App\Models\Settings;
 use App\Models\Notifications;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Storage;
@@ -19,5 +20,14 @@ function getNotifications($limit = '5')
             ->get();
 
     return $notifications;
+}
+function getSingleSettingValue($label)
+{
+    $lastValue = '';
+    $result = Settings::where('label',$label)->first();
+    if($result){
+        $lastValue = $result->value;
+    }
+    return $lastValue;
 }
 ?>
