@@ -22,6 +22,11 @@ Route::get('/login', function () {
 Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 Auth::routes();
 
+/*Notifications module start*/
+    Route::get('notifications', [App\Http\Controllers\NotificationController::class, 'getNotifications'])->name('notifications');
+/*Notifications module end*/
+
+
 //start Super admin routes
 Route::group(['middleware' => ['auth', 'verified','superadmin']], function () { 
     Route::get('superadmin/dashboard', [App\Http\Controllers\SuperAdmin\DashboardController::class, 'index'])->name('dashboard');
@@ -209,6 +214,11 @@ Route::group(['middleware' => ['auth', 'verified','superadmin']], function () {
         ->name('superadmin-videos-changestatus');
     /*Videos module end*/
 
+    /*Super admin notification start*/
+        Route::get('superadmin/notifications', [App\Http\Controllers\SuperAdmin\NotificationController::class, 'index'])->name('superadmin-notifications');
+        Route::get('superadmin/notifications/{id}', [App\Http\Controllers\SuperAdmin\NotificationController::class, 'viewNotification'])->name('superadmin-view-notifications');
+        
+    /*Super admin notification end*/
 });
 //end Super admin routes
 

@@ -42,23 +42,10 @@
          <div class="right-navbar-wrap">
             <div class="notificaiton-main">
                <div class="budge-notificaiton-wrap" id="notify-box">
-                  <i class="fas fa-bell"> </i> <span class="badge budge-notificaiton">2</span>
+                  <i class="fas fa-bell"> </i> <span class="badge budge-notificaiton" id="countNotification">0</span>
                </div>
-               <div class="dropdown-toggle-wrap">
-                  <span class="heading"> Notifications </span>
-                  <div class="notifications-main-wrap">
-                     <ul>
-                        <li> A new institute with name "ABC" has been
-                           registered. Please check for approval. <span>Now </span>
-                        </li>
-                        <li> Institute "XYZ" has renewed his subscription.<span> 4h ago </span>
-                        </li>
-                        <li>Institute "ABC" subscription has been expired.<span> 6h ago </span>
-                        </li>
-                        <li> Institute "XYZ" has renewed his subscription.<span> 10h ago </span>
-                        </li>
-                     </ul>
-                  </div>
+               <div class="dropdown-toggle-wrap" id="notification-list">
+                  
                </div>
             </div>
             <div class="profile-user-wrap" id="profile-box">
