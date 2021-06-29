@@ -202,7 +202,9 @@ class PredictionFilesController extends Controller
      */
     public function destroy($id)
     {
+        $prediction = PredictionFiles::find($id);
         $result = PredictionFiles::where('id',$id)->delete();
+        unlink(public_path($prediction->link));
         if($result)
         {
             return redirect()->route('predictionfiles.index')

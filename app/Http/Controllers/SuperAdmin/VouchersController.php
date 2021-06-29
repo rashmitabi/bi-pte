@@ -157,6 +157,7 @@ class VouchersController extends Controller
             'html'=>$html_voucher    
         ]);
     }
+    
     public function changeStatus($id)
     {
         $voucher = Vouchers::find($id);

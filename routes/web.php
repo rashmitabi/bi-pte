@@ -150,6 +150,12 @@ Route::group(['middleware' => ['auth', 'verified','superadmin']], function () {
 
     Route::get('superadmin/setting', [App\Http\Controllers\HomeController::class, 'setting'])->name('superadmin-setting');
 
+    /*Superadmin settings start*/
+    
+    Route::post('superadmin/settings/changePassword', [App\Http\Controllers\SuperAdmin\SettingsController::class,'changePassword'])->name('superadmin-change-password');
+    Route::resource('superadmin/settings', App\Http\Controllers\SuperAdmin\SettingsController::class);
+    /*Superadmin settings end*/
+    
     /*Subscription module start*/
     Route::get('superadmin/subscription/changestatus/{id}', [App\Http\Controllers\SuperAdmin\SubscriptionsController::class, 'changeStatus'])
         ->name('superadmin-subscription-changestatus');
@@ -183,6 +189,8 @@ Route::group(['middleware' => ['auth', 'verified','superadmin']], function () {
 
 
     Route::resource('superadmin/transactions', App\Http\Controllers\SuperAdmin\TransactionsController::class);
+    Route::get('superadmin/transactions/download_invoice/{id}', [App\Http\Controllers\SuperAdmin\TransactionsController::class, 'download_invoice'])
+        ->name('transaction-download-invoice');
 
     Route::resource('superadmin/certificates', App\Http\Controllers\SuperAdmin\CertificatesController::class);
 

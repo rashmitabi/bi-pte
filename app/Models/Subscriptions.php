@@ -26,4 +26,10 @@ class Subscriptions extends Model
         'prediction_files',
         'status'
     ];
+
+    public function userSubscriptions()
+    {
+        return $this->hasMany('App\Models\userSubscriptions');
+    }
+
 }

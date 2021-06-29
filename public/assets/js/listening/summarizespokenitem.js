@@ -79,7 +79,6 @@ function uploadAduio(){
         var form_data2 = new FormData();
         form_data2.append('audio_file', file_data2);
         form_data2.append('_token', token2);
-        alert("audio");
        
         $.ajax({
             url: apiUrl2,
@@ -101,5 +100,5 @@ function uploadAduio(){
             }
         });
         
-    } 
+} 
 

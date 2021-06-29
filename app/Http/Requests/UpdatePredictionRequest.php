@@ -26,7 +26,6 @@ class UpdatePredictionRequest extends FormRequest
         return [
             'title'=>'required|max:250',
             'description'=>'required|max:1000',
-            'file'=>'max:10000',
             'section_id'=>'required|numeric',
             'design_id'=>'required|numeric'
         ];

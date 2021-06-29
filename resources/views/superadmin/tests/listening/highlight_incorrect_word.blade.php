@@ -86,13 +86,14 @@
                 <div class="col-12 col-md-4 col-xl-4 col-sm-12">
                   <h5 class="mt-4">Audio</h5>
                   <div class="form-group mb-2 row">
-                    <div class="col-12 p-0">                              
-                      <div class="custom-file mb-3">
-                        <input type="file" class="custom-file-input" id="customFile">
-                        <label class="custom-file-label" for="customFile">Select Audio</label>
+                      <div class="col-12 p-0">                              
+                          <div class="custom-file mb-3">
+                          <input type="file" class="custom-file-input " onchange ="uploadAduio()" id="customFile_audio123" data-url="{{ route('upload-audio') }}" data-token="{{ csrf_token() }}">
+                              <label class="custom-file-label" for="customFile">Select Audio</label>
+                          </div>
+                          <input type="text" name="upload-audio" id="upload-audio" class="form-control" >
+                          <span class="error-msg" id="upload-audioError"></span>
                       </div>
-                      <input type="text" class="form-control " placeholder="">
-                    </div>
                   </div>
                 </div>
               </div>

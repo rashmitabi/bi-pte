@@ -32,9 +32,4 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function setting()
-    {
-        return view('setting');
-        
-    }
 }
