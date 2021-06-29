@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Notifications;
+use DataTables;
 
 class NotificationController extends Controller
 {
@@ -20,4 +22,5 @@ class NotificationController extends Controller
             'html'=>$html_notifications    
         ]);
     }
+
 }

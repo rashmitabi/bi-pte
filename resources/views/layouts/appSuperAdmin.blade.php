@@ -85,6 +85,7 @@ $pageActive = isset($pageArray[4]) ? $pageArray[4] : 'dashboard';
     		var current_page_fullurl = "<?php echo URL::full(); ?>";
 			var CSRF_TOKEN= "{{ csrf_token() }}";
 			var notifyURL = "{{ route('notifications') }}";
+			var getSuperAdminNotification = "{{ route('superadmin-notifications') }}"
 		</script>
 		<script type="text/javascript">
 			$(document).ready(function(){

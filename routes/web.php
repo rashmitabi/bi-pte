@@ -100,6 +100,11 @@ Route::group(['middleware' => ['auth', 'verified','superadmin']], function () {
         ->name('superadmin-videos-changestatus');
     /*Videos module end*/
 
+    /*Super admin notification start*/
+        Route::get('superadmin/notifications', [App\Http\Controllers\SuperAdmin\NotificationController::class, 'index'])->name('superadmin-notifications');
+        Route::get('superadmin/notifications/{id}', [App\Http\Controllers\SuperAdmin\NotificationController::class, 'viewNotification'])->name('superadmin-view-notifications');
+        
+    /*Super admin notification end*/
 });
 //end Super admin routes
 

@@ -3,9 +3,9 @@
         <ul>
             @if(!empty($notifications))
                 @foreach($notifications as $newNotify)
-                <li>{{ $newNotify->title }}<span>{{ $newNotify->created_at->diffForHumans() }}</span></li>
+                    <li><a href="{{ route('superadmin-view-notifications', $newNotify->id) }}">{{ $newNotify->title }}<span>{{ $newNotify->created_at->diffForHumans() }}</span></a></li>
                 @endforeach
             @endif
-            <li>View All<span></span></li>
+            <a href="{{ route('superadmin-notifications') }}"><li> View All<span></span></li></a>
         </ul>
     </div>
