@@ -22,63 +22,11 @@
                             <th>Sr No</th>
                             <th>Student Name</th>
                             <th>Test Name</th>
-                            <th>Attempted Date</th>
+                            <!-- <th>Attempted Date</th> -->
                             <th>Action</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>test5</td>
-                            <td>Study Care Institute</td>
-                            <td>23/04/2021</td>
-                            <td>
-                                <ul class="actions-btns">
-                                    <li class="action" data-toggle="modal" data-target="#editcertificates"><a
-                                            href="#"><img src="{{ asset('assets/images/icons/certificate.svg') }}"
-                                                class=""></a></li>
-                                </ul>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>test5</td>
-                            <td>Study Care Institute</td>
-                            <td>23/04/2021</td>
-                            <td>
-                                <ul class="actions-btns">
-                                    <li class="action" data-toggle="modal" data-target="#editsubscription"><a
-                                            href="#"><img src="{{ asset('assets/images/icons/certificate.svg') }}"
-                                                class=""></a></li>
-                                </ul>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>test5</td>
-                            <td>Study Care Institute</td>
-                            <td>23/04/2021</td>
-                            <td>
-                                <ul class="actions-btns">
-                                    <li class="action" data-toggle="modal" data-target="#editsubscription"><a
-                                            href="#"><img src="{{ asset('assets/images/icons/certificate.svg') }}"
-                                                class=""></a></li>
-                                </ul>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>test5</td>
-                            <td>Study Care Institute</td>
-                            <td>23/04/2021</td>
-                            <td>
-                                <ul class="actions-btns">
-                                    <li class="action" data-toggle="modal" data-target="#editsubscription"><a
-                                            href="#"><img src="{{ asset('assets/images/icons/certificate.svg') }}"
-                                                class=""></a></li>
-                                </ul>
-                            </td>
-                        </tr>
+                    
                 </table>
             </div>
         </div>
@@ -176,4 +124,10 @@
     </div>
 
 </div>
+@endsection
+@section('js-hooks')
+<script type="text/javascript" defer>
+  var url="{{ route('certificates.index') }}";
+</script>
+<script src="{{ asset('assets/js/certificates.js') }}" defer></script>
 @endsection
