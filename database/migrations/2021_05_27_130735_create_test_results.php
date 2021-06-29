@@ -19,6 +19,7 @@ class CreateTestResults extends Migration
             $table->integer('user_id')->comment('Foreign key of users  table');
             $table->tinyInteger('section_id')->comment('Foreign key of sections table');
             $table->tinyInteger('question_type_id')->comment('Foreign key of question_types table');
+            $table->tinyInteger('subject_id')->comment('Foreign key of test subject table');
             $table->tinyInteger('get_score');
             $table->bigInteger('question_id')->comment('Foreign key of questions table');
             $table->dateTime('created_at')->useCurrent();

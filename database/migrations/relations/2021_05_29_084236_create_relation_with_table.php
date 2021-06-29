@@ -37,6 +37,7 @@ class CreateRelationWithTable extends Migration
        DB::statement("ALTER TABLE test_results ADD CONSTRAINT FK_SectionsTestResults FOREIGN KEY (section_id) REFERENCES sections(id) ON UPDATE CASCADE ON DELETE CASCADE");
         DB::statement("ALTER TABLE test_results ADD CONSTRAINT FK_QuestionTypesTestResults FOREIGN KEY (question_type_id) REFERENCES question_types(id) ON UPDATE CASCADE ON DELETE CASCADE");
         DB::statement("ALTER TABLE test_results ADD CONSTRAINT FK_QuestionsTestResults FOREIGN KEY (question_id) REFERENCES questions(id) ON UPDATE CASCADE ON DELETE CASCADE");
+        DB::statement("ALTER TABLE test_results ADD CONSTRAINT FK_TestSubjectsTestResults FOREIGN KEY (subject_id) REFERENCES test_subjects(id) ON UPDATE CASCADE ON DELETE CASCADE");
 
         DB::statement("ALTER TABLE question_data ADD CONSTRAINT FK_QuestionsQuestionData FOREIGN KEY (question_id) REFERENCES questions(id) ON UPDATE CASCADE ON DELETE CASCADE");
 
@@ -132,6 +133,7 @@ class CreateRelationWithTable extends Migration
         DB::statement("ALTER TABLE test_results DROP CONSTRAINT FK_SectionsTestResults");
         DB::statement("ALTER TABLE test_results DROP CONSTRAINT FK_QuestionTypesTestResults");
         DB::statement("ALTER TABLE test_results DROP CONSTRAINT FK_QuestionsTestResults");
+        DB::statement("ALTER TABLE test_results DROP CONSTRAINT FK_TestSubjectsTestResults");
 
         DB::statement("ALTER TABLE question_data DROP CONSTRAINT FK_QuestionsQuestionData");
 

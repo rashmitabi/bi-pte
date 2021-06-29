@@ -8,6 +8,7 @@ use App\Models\Transactions;
 use App\Models\Subscriptions;
 use App\Models\userSubscriptions;
 use DataTables;
+use PDF;
 
 class TransactionsController extends Controller
 {
@@ -64,7 +65,7 @@ class TransactionsController extends Controller
                     ->addColumn('action', function($row){
                         
                         $btn = '<ul class="actions-btns">
-                            <li class="action"><a href="javascript:void(0);" class="download_invoice" data-url="'.route('transaction-download-invoice', $row['payment_id']).'"><i class="fas fa-download"></i></a></li>                            
+                            <li class="action"><a href="'.route('transaction-download-invoice', $row['payment_id']).'" class="download_invoice" data-url="'.route('transaction-download-invoice', $row['payment_id']).'"><i class="fas fa-download"></i></a></li>                            
                             </ul>';
                         return $btn;
                     })
@@ -83,7 +84,37 @@ class TransactionsController extends Controller
     public function download_invoice($id)
     {
         $transaction = \App\Models\userSubscriptions::with(['user','subscription', 'transaction'])->where('payment_id',$id)->first();
-        echo json_encode($transaction);
+
+        $sub_start_date = strtotime($transaction->start_date); 
+		$sub_end_date = strtotime($transaction->end_date); 
+
+		// Formulate the Difference between two dates
+		$diff = abs($sub_end_date - $sub_start_date); 
+		$years = floor($diff / (365*60*60*24)); 
+		$months = floor(($diff - $years * 365*60*60*24)
+                               / (30*60*60*24));
+
+		$rate = round($transaction->transaction->amount * 100 / 118);
+        
+        $data = array(
+	    			'payment_id' => $transaction->transaction->id,
+	    			'billed_to' => $transaction->user->institue->institute_name,
+	    			'name' => $transaction->user->first_name." ".$transaction->user->last_name,
+	    			'validity' => $months,
+	    			'amount' => $transaction->transaction->amount,
+	    			'rate' => $rate,
+	    			'package' => $transaction->subscription->title,
+	    			'transaction_id' => $transaction->transaction->trancation_id,
+	    			'created' => date('Y-m-d', strtotime($transaction->transaction->created_at)),
+	    		);
+        //echo json_encode($data);die;
+        // share data to view
+      view()->share('data',$data);
+      $pdf = PDF::loadView('invoice', $data);
+
+      $filename = time().'_invoice.pdf';
+      // download PDF file with download method
+      return $pdf->download($filename);
     }
 }
     

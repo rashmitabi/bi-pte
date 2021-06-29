@@ -84,7 +84,7 @@
 	                                <button  type="submit" class="btn btn-outline-primary mr-2"><i class="far fa-save save-icon"></i>Submit</button>
 	                            </div> 
 	                        </div>
-	                   {!! Form::close() !!}
+	                   </form>
 	               </div>
 	            </div>
 	        </div>
@@ -92,6 +92,5 @@
 	</div>
 @endsection
 @section('js-hooks')
-
-<!-- <script src="{{ asset('assets/js/addQuestions.js') }}" defer></script> -->
+<!-- <script src="{{ asset('assets/js/writing/essaywriting.js') }}" defer></script> -->
 @endsection

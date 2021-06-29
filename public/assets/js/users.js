@@ -125,8 +125,8 @@ function confirm_password(){
 
 $(document).ready(function() {
   //add new user page data start
-  $('body').on('change','.user-type',function(){
-    var role_id = $(this).val();
+  $('body').on('change','.usertype_form',function(){
+    var role_id = $("#type").val();
     // alert(role_id);
     if(role_id == 3){
       $("#student").css("display","block");

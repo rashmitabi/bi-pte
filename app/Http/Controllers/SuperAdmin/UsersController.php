@@ -89,7 +89,7 @@ class UsersController extends Controller
                     }) 
                     ->addColumn('phone_number', function($row){
                         
-                        $phone_number = $row->institue->phone_number;
+                        $phone_number = isset($row->institue->phone_number) ? $row->institue->phone_number : '-';
                         return $phone_number;
                     })
                     ->addColumn('action', function($row){
@@ -155,8 +155,15 @@ class UsersController extends Controller
                 'simage'=>'nullable|image|mimes:jpeg,png,jpg|max:2048'
             ]);
             $input  = \Arr::except($request->all(),array('_token'));
-            $fileNameToStore = '';
             
+           
+  
+            if ($image = $request->file('simage')) {
+                $destinationPath = 'assets/images/profile/';
+                $fileNameToStore = date('YmdHis') . "." . $image->getClientOriginalExtension();
+                $image->move($destinationPath, $fileNameToStore);
+            }
+
             $user_input = array(
                 'role_id' => $input['type'],
                 'parent_user_id' => 0,
@@ -166,7 +173,7 @@ class UsersController extends Controller
                 'email' => $input['semail'],
                 'mobile_no' => $input['mobileno'],
                 'date_of_birth' => $input['dob'],
-                'profile_image' => $fileNameToStore,
+                'profile_image' => isset($fileNameToStore)?$fileNameToStore:'',
                 'gender' => $input['gender'],
                 'country_citizen' => $input['scitizen'],
                 'country_residence' => $input['sresidence'],
@@ -192,8 +199,9 @@ class UsersController extends Controller
                 'domain'=>'required|max:255',
                 'welcome_msg'=>'required|max:500',
                 'city'=>'required|min:2|max:255',
-                'logo'=>'nullable',
-                'banner'=>'nullable',
+                'logo'=>'nullable|image|mimes:jpeg,png,jpg|max:2048',
+                'banner'=>'nullable|image|mimes:jpeg,png,jpg|max:2048',
+                'bimage'=>'nullable|image|mimes:jpeg,png,jpg|max:2048',
                 'validity'=>'required|after:' . date('Y-m-d'),
                 'admin_video'=>'required|in:Y,N',
                 'admin_prediction_file'=>'required|in:Y,N',
@@ -201,25 +209,65 @@ class UsersController extends Controller
                 'admin_test'=>'required|in:Y,N'
             ]);
             $input  = \Arr::except($request->all(),array('_token'));
-            $user_input = array(
-                'role_id' => $input['type'],
-                'parent_user_id' => 0,
-                // 'first_name' => '',
-                // 'last_name' => '',
-                'name' => $input['iuname'],
-                'email' => $input['iemail'],
-                'mobile_no' => $input['phone_no'],
-                // 'date_of_birth' => '',
-                'profile_image' => '',
-                // 'gender' => '',
-                'country_citizen' => $input['city'],
-                // 'country_residence' => '',
-                'validity' => $input['validity'],
-                'status' => $input['status'],
-                'ip_address' => '',
-                'latitude' => '',
-                'longitude' => ''
-            );
+
+            if ($image = $request->file('logo')) {
+                $destinationPath = 'assets/images/institute/';
+                $logo = date('YmdHis') ."_logo". "." . $image->getClientOriginalExtension();
+                $image->move($destinationPath, $logo);
+            }
+
+            if ($image = $request->file('banner')) {
+                $destinationPath = 'assets/images/institute/';
+                $banner = date('YmdHis') ."_banner". "." . $image->getClientOriginalExtension();
+                $image->move($destinationPath, $banner);
+            }
+
+            if ($image = $request->file('bimage')) {
+                $destinationPath = 'assets/images/profile/';
+                $profile = date('YmdHis') ."_banner". "." . $image->getClientOriginalExtension();
+                $image->move($destinationPath, $profile);
+                $user_input = array(
+                    'role_id' => $input['type'],
+                    'parent_user_id' => 0,
+                    // 'first_name' => '',
+                    // 'last_name' => '',
+                    'name' => $input['iuname'],
+                    'email' => $input['iemail'],
+                    'mobile_no' => $input['phone_no'],
+                    // 'date_of_birth' => '',
+                    'profile_image' => $profile,
+                    // 'gender' => '',
+                    'country_citizen' => $input['city'],
+                    // 'country_residence' => '',
+                    'validity' => $input['validity'],
+                    'status' => $input['status'],
+                    'ip_address' => '',
+                    'latitude' => '',
+                    'longitude' => ''
+                );
+            }else{
+                $user_input = array(
+                    'role_id' => $input['type'],
+                    'parent_user_id' => 0,
+                    // 'first_name' => '',
+                    // 'last_name' => '',
+                    'name' => $input['iuname'],
+                    'email' => $input['iemail'],
+                    'mobile_no' => $input['phone_no'],
+                    // 'date_of_birth' => '',
+                    'profile_image' => '',
+                    // 'gender' => '',
+                    'country_citizen' => $input['city'],
+                    // 'country_residence' => '',
+                    'validity' => $input['validity'],
+                    'status' => $input['status'],
+                    'ip_address' => '',
+                    'latitude' => '',
+                    'longitude' => ''
+                );
+            }
+
+            
 
             $user_id = User::create($user_input)->id;
 
@@ -228,8 +276,8 @@ class UsersController extends Controller
                 'sub_domain' => $input['subdomain'],
                 'domain' => $input['domain'],
                 'students_allowed' => $input['students_allowed'],
-                'logo' => '',
-                'banner_image' => '',
+                'logo' => isset($logo) ? $logo : '',
+                'banner_image' => isset($banner) ? $banner : '',
                 'show_admin_videos' => $input['admin_video'],
                 'show_admin_tests' => $input['admin_test'],
                 'show_admin_files' => $input['admin_prediction_file'],
@@ -317,26 +365,54 @@ class UsersController extends Controller
                 'simage'=>'nullable|image|mimes:jpeg,png,jpg|max:2048'
             ]);
             $input  = \Arr::except($request->all(),array('_token'));
-            $user_input = array(
-                'role_id' => $input['type'],
-                'parent_user_id' => 0,
-                'first_name' => $input['fname'],
-                'last_name' => $input['lname'],
-                'name' => $input['uname'],
-                'email' => $input['semail'],
-                'mobile_no' => $input['mobileno'],
-                'date_of_birth' => $input['dob'],
-                'profile_image' => '',
-                'gender' => $input['gender'],
-                'country_citizen' => $input['scitizen'],
-                'country_residence' => $input['sresidence'],
-                'validity' => $input['svalidity'],
-                'status' => $input['sstatus'],
-                'ip_address' => '',
-                'latitude' => '',
-                'longitude' => ''
-            );
 
+            if ($image = $request->file('simage')) {
+                $destinationPath = 'assets/images/profile/';
+                $fileNameToStore = date('YmdHis') . "." . $image->getClientOriginalExtension();
+                $image->move($destinationPath, $fileNameToStore);
+                $user_input = array(
+                    'role_id' => $input['type'],
+                    'parent_user_id' => 0,
+                    'first_name' => $input['fname'],
+                    'last_name' => $input['lname'],
+                    'name' => $input['uname'],
+                    'email' => $input['semail'],
+                    'mobile_no' => $input['mobileno'],
+                    'date_of_birth' => $input['dob'],
+                    'profile_image' => $fileNameToStore,
+                    'gender' => $input['gender'],
+                    'country_citizen' => $input['scitizen'],
+                    'country_residence' => $input['sresidence'],
+                    'validity' => $input['svalidity'],
+                    'status' => $input['sstatus'],
+                    'ip_address' => '',
+                    'latitude' => '',
+                    'longitude' => ''
+                );
+
+            }else{
+                $user_input = array(
+                    'role_id' => $input['type'],
+                    'parent_user_id' => 0,
+                    'first_name' => $input['fname'],
+                    'last_name' => $input['lname'],
+                    'name' => $input['uname'],
+                    'email' => $input['semail'],
+                    'mobile_no' => $input['mobileno'],
+                    'date_of_birth' => $input['dob'],
+                    'gender' => $input['gender'],
+                    'country_citizen' => $input['scitizen'],
+                    'country_residence' => $input['sresidence'],
+                    'validity' => $input['svalidity'],
+                    'status' => $input['sstatus'],
+                    'ip_address' => '',
+                    'latitude' => '',
+                    'longitude' => ''
+                );
+
+            }
+
+            
             $result = User::where('id',$id)->update($user_input);
         }else if($type == 2){
            $request->validate([
@@ -352,8 +428,8 @@ class UsersController extends Controller
                 'domain'=>'required|max:255',
                 'welcome_msg'=>'required|max:500',
                 'city'=>'required|min:2|max:255',
-                'logo'=>'nullable',
-                'banner'=>'nullable',
+                'logo'=>'nullable|image|mimes:jpeg,png,jpg|max:2048',
+                'banner'=>'nullable|image|mimes:jpeg,png,jpg|max:2048',
                 'validity'=>'required|after:' . date('Y-m-d'),
                 'admin_video'=>'required|in:Y,N',
                 'admin_prediction_file'=>'required|in:Y,N',
@@ -361,6 +437,19 @@ class UsersController extends Controller
                 'admin_test'=>'required|in:Y,N'
             ]);
             $input  = \Arr::except($request->all(),array('_token'));
+
+            if ($image = $request->file('logo')) {
+                $destinationPath = 'assets/images/institute/';
+                $logo = date('YmdHis') ."_logo". "." . $image->getClientOriginalExtension();
+                $image->move($destinationPath, $logo);
+            }
+
+            if ($image = $request->file('banner')) {
+                $destinationPath = 'assets/images/institute/';
+                $banner = date('YmdHis') ."_banner". "." . $image->getClientOriginalExtension();
+                $image->move($destinationPath, $banner);
+            }
+
             $user_input = array(
                 'role_id' => $input['type'],
                 'parent_user_id' => 0,
@@ -382,25 +471,75 @@ class UsersController extends Controller
             );
 
             $result = User::where('id',$id)->update($user_input);
-
-            $institue = array(
-                'user_id' => $id,
-                'sub_domain' => $input['subdomain'],
-                'domain' => $input['domain'],
-                'students_allowed' => $input['students_allowed'],
-                'logo' => '',
-                'banner_image' => '',
-                'show_admin_videos' => $input['admin_video'],
-                'show_admin_tests' => $input['admin_test'],
-                'show_admin_files' => $input['admin_prediction_file'],
-                'show_practice_questions' => $input['admin_practice_question'],
-                'welcome_message'=> $input['welcome_msg'],
-                'country_phone_code'=> $input['country_code'],
-                'phone_number'=> $input['phone_no'],
-                'institute_name'=> $input['iname'],
-                'white_labelling'=> 'N'
-            );
-
+            if(isset($logo) && isset($banner)){
+                $institue = array(
+                    'user_id' => $id,
+                    'sub_domain' => $input['subdomain'],
+                    'domain' => $input['domain'],
+                    'students_allowed' => $input['students_allowed'],
+                    'logo' => $logo,
+                    'banner_image' => $banner,
+                    'show_admin_videos' => $input['admin_video'],
+                    'show_admin_tests' => $input['admin_test'],
+                    'show_admin_files' => $input['admin_prediction_file'],
+                    'show_practice_questions' => $input['admin_practice_question'],
+                    'welcome_message'=> $input['welcome_msg'],
+                    'country_phone_code'=> $input['country_code'],
+                    'phone_number'=> $input['phone_no'],
+                    'institute_name'=> $input['iname'],
+                    'white_labelling'=> 'N'
+                );
+            }elseif (isset($logo) && !isset($banner)) {
+                $institue = array(
+                    'user_id' => $id,
+                    'sub_domain' => $input['subdomain'],
+                    'domain' => $input['domain'],
+                    'students_allowed' => $input['students_allowed'],
+                    'logo' => $logo,
+                    'show_admin_videos' => $input['admin_video'],
+                    'show_admin_tests' => $input['admin_test'],
+                    'show_admin_files' => $input['admin_prediction_file'],
+                    'show_practice_questions' => $input['admin_practice_question'],
+                    'welcome_message'=> $input['welcome_msg'],
+                    'country_phone_code'=> $input['country_code'],
+                    'phone_number'=> $input['phone_no'],
+                    'institute_name'=> $input['iname'],
+                    'white_labelling'=> 'N'
+                );
+            }elseif (!isset($logo) && isset($banner)) {
+                $institue = array(
+                    'user_id' => $id,
+                    'sub_domain' => $input['subdomain'],
+                    'domain' => $input['domain'],
+                    'students_allowed' => $input['students_allowed'],
+                    'banner_image' => $banner,
+                    'show_admin_videos' => $input['admin_video'],
+                    'show_admin_tests' => $input['admin_test'],
+                    'show_admin_files' => $input['admin_prediction_file'],
+                    'show_practice_questions' => $input['admin_practice_question'],
+                    'welcome_message'=> $input['welcome_msg'],
+                    'country_phone_code'=> $input['country_code'],
+                    'phone_number'=> $input['phone_no'],
+                    'institute_name'=> $input['iname'],
+                    'white_labelling'=> 'N'
+                );
+            }else{
+                $institue = array(
+                    'user_id' => $id,
+                    'sub_domain' => $input['subdomain'],
+                    'domain' => $input['domain'],
+                    'students_allowed' => $input['students_allowed'],
+                    'show_admin_videos' => $input['admin_video'],
+                    'show_admin_tests' => $input['admin_test'],
+                    'show_admin_files' => $input['admin_prediction_file'],
+                    'show_practice_questions' => $input['admin_practice_question'],
+                    'welcome_message'=> $input['welcome_msg'],
+                    'country_phone_code'=> $input['country_code'],
+                    'phone_number'=> $input['phone_no'],
+                    'institute_name'=> $input['iname'],
+                    'white_labelling'=> 'N'
+                );
+            }
             $result = Institues::where('user_id',$id)->update($institue);
         }
 

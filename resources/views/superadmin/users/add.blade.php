@@ -17,7 +17,7 @@
           <div class="form-group row">
             <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Select Role</label>
             <div class="col-12 col-md-7 col-xl-7 col-sm-12">
-              <select class="user-type" name="type">
+              <select class="user-type usertype_form" id="type" name="type">
                 <option selected>Select User Type</option>
                 <option value="2" >Branch Admin</option>
                 <option value="3" >Student</option>
@@ -254,6 +254,18 @@
                 @if($errors->has('city'))
                   <span class="error-msg">{{$errors->first('city')}}</span>
                 @endif
+              </div>
+            </div>
+            <div class="form-group row">
+              <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Profile Image</label>
+              <div class="col-12 col-md-7 col-xl-7 col-sm-12">
+                <div class="custom-file">
+                  <input type="file" name="bimage" value="{{ old('bimage') }}" class="custom-file-input" id="customFile">
+                  <label class="custom-file-label" for="customFile">Select Profile Image</label>
+                  @if($errors->has('bimage'))
+                    <span class="error-msg">{{$errors->first('bimage')}}</span>
+                  @endif
+                </div>
               </div>
             </div>
             <div class="form-group row">
