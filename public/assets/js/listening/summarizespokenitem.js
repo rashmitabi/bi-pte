@@ -1,8 +1,6 @@
 $(document).ready(function() {
 
     $('#frm-summarize-spoken-item').validate({ 
-        ignore: [],
-        debug: false,
         rules: {
             'question_audio[]': {
                 required: true
@@ -10,63 +8,26 @@ $(document).ready(function() {
             'question_image[]': {
                 required: true,
             },
-            // 'summary_script[]': {
-            //     required: true,
-            // },
-            summary_script1:{
-                required: function() 
-                {
-                    return CKEDITOR.instances.summary_script1.updateElement();
-                }
+            'summary_script[]': {
+                required: true,
             },
-            summary_script2:{
-                required: function() 
-                {
-                    return CKEDITOR.instances.summary_script2.updateElement();
-                }
-            },
-            // 'sample_ans[]': {
-            //     required: true,
-            // }
-            sample_ans1:{
-                required: function() 
-                {
-                    return CKEDITOR.instances.sample_ans1.updateElement();
-                }
-            },
-            sample_ans2:{
-                required: function() 
-                {
-                    return CKEDITOR.instances.sample_ans2.updateElement();
-                }
+            'sample_ans[]': {
+                required: true,
             }
         },
-        messages : {
-             
+        messages : { 
             'question_audio[]': {
                 required: "audio is required"
             },
             'question_image[]': {
                 required: "images is required"
             },
-            // 'summary_script[]': {
-            //     required: "summary script is required"
-            // },
-            summary_script1: {
-                required: "paragraph is required"
+            'summary_script[]': {
+                required: "summary script is required"
             },
-            summary_script2: {
-                required: "paragraph is required"
-            },
-            // 'sample_ans[]': {
-            //     required : "sample answer is required",
-            // }
-            sample_ans1: {
-                required: "sample answer is required"
-            },
-            sample_ans2: {
-                required: "sample answer is required"
-            },
+            'sample_ans[]': {
+                required : "sample answer is required",
+            }
         },
         
     });

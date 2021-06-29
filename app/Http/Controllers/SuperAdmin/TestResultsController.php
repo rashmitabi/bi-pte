@@ -5,7 +5,7 @@ namespace App\Http\Controllers\SuperAdmin;
 use App\Http\Controllers\Controller;
 use App\Models\TestResults;
 use Illuminate\Http\Request;
-use use App\Models\TestResults
+use DataTables;
 
 class TestResultsController extends Controller
 {
@@ -16,38 +16,38 @@ class TestResultsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+            // dd($data);
         if($request->ajax()) {
-            $data = TestResults::with(['test'])->all();
+            $data = TestResults::with(['test','subject','user'])->get();
             return Datatables::of($data)
                     ->addIndexColumn()
-                    ->addColumn('name', function($row){
-                        return $row->role_name;
+                    ->addColumn('username', function($row){
+                        $name = $row->user->first_name." ".$row->user->last_name;
+                        return $name;
                     })
-                    ->addColumn('permission', function($row){
-                        $slug = '';
-                        $slugs = array();
-                        foreach ($row->permission as $value) {
-                            if(isset($value->slug)){
-                               array_push($slugs,$value->slug);
-                            }
-                        }
-                        $slug = implode(',',$slugs);
-                        return $slug;
+                    ->addColumn('test_name', function($row){
+                        return $row->test->test_name;
                         
                     })
-                    ->addColumn('totaluser', function($row){
-                        return count($row->user);
+                    ->addColumn('test_type', function($row){
+                        if($row->test->type == "P"){
+                            return "Practice";
+                        }else{
+                            return "Mock";
+                        }
+                        
+                    })
+                    ->addColumn('subject', function($row){
+                        return $row->subject->subject_name;
+                    })
+                    ->addColumn('score', function($row){
+                        return $row->get_score;
                     })
                     ->addColumn('action', function($row){
-                        $btn = '<ul class="actions-btns">
-                                    <li class="action" data-toggle="modal" data-target="#editroles">
-                                        <a href="javascript:void(0);" class="roles-edit" data-id="'.$row->id .'" data-url="'.route('roles.edit', $row->id).'"><i class="fas fa-pen"></i></a></li>
-                                    <li class="action bg-danger"><a href="#"  class="delete_modal" data-toggle="modal" data-target="#delete_modal"  data-url="'.route('roles.destroy', $row->id).'" data-id="'.$row->id.'"><i class="fas fa-trash"></i></a></li>
-                                    <li class="action shield '.(($row->status == "D") ? "green" : "bg-danger").'">
-                                        <a href="'.route('superadmin-roles-changestatus', $row->id ).'" ><img src="'.asset('assets/images/icons/blocked.svg').'" class=""></a></li>
-                                </ul>';
+                        $btn = '<ul class="actions-btns"><li data-toggle="modal" data-target="#testresults" class="action"><a href="javascript:void(0);" class="results-edit" data-id="'.$row->id .'" data-url="'.route('results.edit', $row->id).'"><i class="fas fa-eye"></i></a></li></ul>';
+                        
                         return $btn;
                     })
                     ->rawColumns(['action'])
@@ -94,9 +94,15 @@ class TestResultsController extends Controller
      * @param  \App\Models\TestResults  $testResults
      * @return \Illuminate\Http\Response
      */
-    public function edit(TestResults $testResults)
+    public function edit($id)
     {
-        //
+        $resultData = TestResults::find($id);
+        $html_role = view($this->moduleTitleP.'edit', compact('resultData'))->render();
+
+        return response()->json([
+            'success' => 1,
+            'html'=>$html_role    
+        ]);
     }
 
     /**

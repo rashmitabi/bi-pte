@@ -1,14 +1,18 @@
 <div class="row">
   <div class="col-12">
     <div class="profile-img">
-      <img src="{{ asset('assets/images/profile-img-2.png') }}">
+      @if($user->profile_image != '')
+        <img src="{{ asset('assets/images/profile/'.$user->profile_image) }}">
+      @else
+        <img src="{{ asset('assets/images/profile-img-2.png') }}">
+      @endif
     </div>
     <div class="edit-profile-btn">
       <a><i class="fas fa-pen icon"></i></a>
     </div>
   </div>
   <div class="col-12 col-md-12 col-xl-12 col-sm-8 left">
-    <form class="form mt-5 ml-5">
+    <form class="form mt-5 ml-5" enctype="multipart/form-data">
       @csrf
       @if($user->role_id == 3)
         <input type="hidden" name="type" value="{{ $user->role_id }}" >
@@ -198,8 +202,11 @@
           <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Logo Image</label>
           <div class="col-12 col-md-7 col-xl-7 col-sm-12">
             <div class="custom-file">
-              <input type="file" name="logo" value="{{ isset($user->institue->logo) ? $user->institue->logo : '' }}" class="custom-file-input" id="customFile">
+              <input type="file" name="logo"  class="custom-file-input" id="customFile">
               <label class="custom-file-label" for="customFile">Select Logo Image</label>
+              @if($user->institue->logo != '')
+                <img src="{{ asset('assets/images/institute/'.$user->institue->logo) }}" style="width:50px;height: 50px">
+              @endif
               <span class="error-msg" id="logoError"></span>
             </div>
           </div>
@@ -208,8 +215,11 @@
           <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Banner Image</label>
           <div class="col-12 col-md-7 col-xl-7 col-sm-12">
             <div class="custom-file">
-              <input type="file" name="banner" value="{{ isset($user->institue->banner_image) ? $user->institue->banner_image : '' }}" class="custom-file-input" id="customFile">
+              <input type="file" name="banner"  class="custom-file-input" id="customFile">
               <label class="custom-file-label" for="customFile">Select Banner Image</label>
+              @if($user->institue->banner_image != '')
+                <img src="{{ asset('assets/images/institute/'.$user->institue->banner_image) }}" style="width:50px;height: 50px">
+              @endif
               <span class="error-msg" id="bannerError"></span>
             </div>
           </div>
