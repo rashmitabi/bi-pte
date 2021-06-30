@@ -327,7 +327,8 @@
 
       <div class="form-group row mt-4">
         <div class="col-12 col-md-12 col-xl-11 col-sm-12 save-btn">
-          <button  type="button" class="btn btn-outline-primary user-update" data-id="{{ $user->id }}" data-url="{{ route('users.update', $user->id) }}"><i class="far fa-save save-icon"></i>Save Profile</button>
+          <a href="{{ route('users.index') }}"><button  type="button" class="btn btn-outline-primary "><img class="back-btn" src="{{ asset('assets/images/icons/back.svg') }}" style="width: 14px;margin-right: 10px">Cancel</button></a>
+          <button  type="button" class="btn btn-outline-primary user-update mr-2" data-id="{{ $user->id }}" data-url="{{ route('users.update', $user->id) }}"><i class="far fa-save save-icon"></i>Save Profile</button>
         </div>
       </div>
     </form>

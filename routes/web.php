@@ -259,17 +259,7 @@ Route::resource('superadmin/subjects', App\Http\Controllers\SuperAdmin\SubjectsC
 /*Subjects module end*/
 
 
-/*Tests Modules start*/
-    Route::get('superadmin/tests/mocktest', [App\Http\Controllers\SuperAdmin\TestsController::class, 'mockTests'])
-        ->name('superadmin-tests-mocktest');
-    Route::get('superadmin/tests/changestatus/{id}', [App\Http\Controllers\SuperAdmin\TestsController::class, 'changeStatus'])
-        ->name('superadmin-tests-changestatus');
-    Route::post('superadmin/tests/addQuestions', [App\Http\Controllers\SuperAdmin\TestsController::class, 'addQuestions'])
-        ->name('superadmin-tests-addQuestions');
-    Route::resource('superadmin/tests', App\Http\Controllers\SuperAdmin\TestsController::class);
-    Route::get('superadmin/tests/add', [App\Http\Controllers\SuperAdmin\TestsController::class, 'add'])
-    ->name('superadmin-tests-add');
-/*Tests Modules end*/
+
 
 
 /* prediction files routes start *//* prediction files routes start */

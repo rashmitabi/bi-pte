@@ -397,7 +397,9 @@
           
           <div class="form-group row">
             <div class="col-12 col-md-12 col-xl-11 col-sm-12 save-btn">
-              <button  type="submit" class="btn btn-outline-primary"><i class="far fa-save save-icon"></i>Save User</button>
+              <a href="{{ route('users.index') }}"><button  type="button" class="btn btn-outline-primary "><img class="back-btn" src="{{ asset('assets/images/icons/back.svg') }}" style="width: 14px;margin-right: 10px">Cancel</button></a>
+              <button  type="submit" class="btn btn-outline-primary mr-2"><i class="far fa-save save-icon"></i>Save User</button>
+              
             </div>
           </div>
         {!! Form::close() !!}
