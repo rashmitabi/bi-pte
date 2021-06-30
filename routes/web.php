@@ -57,16 +57,19 @@ Route::group(['middleware' => ['auth', 'verified','superadmin']], function () {
     /*Tests Modules end*/
 
     /*Questions Modules start*/
-        Route::post('superadmin/questions/updateReadingWritingFillInTheBlanks', [App\Http\Controllers\SuperAdmin\questionsController::class,'updateReadingWirtingFillInTheBlanks'])
-        ->name('superadmin-question-update-readingwriting-fillintheblanks');
-        Route::post('superadmin/questions/storeReadingMultipleChoiceMultipleanswers', [App\Http\Controllers\SuperAdmin\questionsController::class,'storeMultipleChoiceMultipleanswers'])
-        ->name('superadmin-question-store-MultipleChoice-Multipleanswers');
-        Route::post('superadmin/questions/updateReadingMultipleChoiceMultipleanswers', [App\Http\Controllers\SuperAdmin\questionsController::class,'updateMultipleChoiceMultipleanswers'])
-        ->name('superadmin-question-update-MultipleChoice-Multipleanswers');
-        Route::resource('superadmin/questions', App\Http\Controllers\SuperAdmin\questionsController::class);
+    Route::post('superadmin/questions/storeReadingInstructions', [App\Http\Controllers\SuperAdmin\questionsController::class,'storeReadingInstructions'])
+        ->name('superadmin-reading-questions-instructions');
 
-        Route::resource('superadmin/questions', App\Http\Controllers\SuperAdmin\questionsController::class);
-        Route::patch('superadmin/questions', [App\Http\Controllers\SuperAdmin\questionsController::class,'storeSummarizeWritten'])->name('add-summarize-written');
+    Route::post('superadmin/questions/storeListeningInstructions', [App\Http\Controllers\SuperAdmin\questionsController::class,'storeListeningInstructions'])
+        ->name('superadmin-listening-questions-instructions');
+
+    Route::post('superadmin/questions/storeWritingInstructions', [App\Http\Controllers\SuperAdmin\questionsController::class,'storeWritingInstructions'])
+        ->name('superadmin-writing-questions-instructions');
+
+    Route::post('superadmin/questions/storeSpeakingInstructions', [App\Http\Controllers\SuperAdmin\questionsController::class,'storeSpeakingInstructions'])
+        ->name('superadmin-speaking-questions-instructions');
+
+    Route::resource('superadmin/questions', App\Http\Controllers\SuperAdmin\questionsController::class);
     /*Questions Modules end*/
     
     /*Reading section questions start*/

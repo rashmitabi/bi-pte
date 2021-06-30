@@ -18,4 +18,5 @@ class QuestionTypes extends Model
         'score',
         'instructions'
     ];
+    public $timestamps = false;
 }

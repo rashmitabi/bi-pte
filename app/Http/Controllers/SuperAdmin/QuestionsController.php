@@ -5,6 +5,7 @@ use App\Models\Subscriptions;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Questions;
+use App\Models\QuestionTypes;
 use App\Models\Answerdata;
 use App\Models\Questiondata;
 use DB;
@@ -39,231 +40,8 @@ class QuestionsController extends Controller
     public function store(Request $request)
     {
         
-        $question_type_id = $input['question_type_id'];
-        $questionType = DB::table('question_types')->where('id',$question_type_id)->first();
-
-        $questions                  = new Questions;
-        $questions->section_id      = $input['section_id'];
-        $questions->test_id         = $input['test_id'];
-        $questions->design_id       = $questionType->desgin_id;
-        $questions->question_type_id= $question_type_id;
-        $questions->name            = $questionType->question_title;
-        $questions->short_desc      = "sort desc";
-        $questions->desc            = $input['editor'];
-        $questions->order           = 0;
-        $questions->status          = "E";
-        $questions->marks           = 50;
-        $questions->answer_time     = 40;
-        $questions->waiting_time    = 40;
-        $questions->max_time        = 40;
-        if($questions->save()){
-            $id = $questions->id;
-            $slug = $input['slug'];
-            $ansArrry = [];
-            $correctArry = [];
-            for($i=1;$i<=$slug;$i++)
-            {
-                $ansArrry[]='ans_options'.$i;
-                $correctArry[]='correct_option'.$i;
-            }
-            $newAnsData = array_values($ansArrry);
-            $newCorrectData = array_values($correctArry);
-            foreach($newAnsData as $ans)
-            {
-                $questiondata = new Questiondata;
-                $questiondata->question_id = $id;
-                $questiondata->data_type = "fill in the blank";
-                $questiondata->data_value = $input[$ans];
-                $questiondata->save();
-            }
-            foreach($newCorrectData as $corrAns)
-            {
-                $answerdata = new Answerdata;
-                $answerdata->question_id = $id;
-                $answerdata->answer_type = "fill in the blank";
-                $answerdata->answer_value = $input[$corrAns];
-                $answerdata->sample_answer = "no sample answer";
-                $answerdata->save();
-            }
-            return redirect()->route('tests.index')->with('success','Questions added Successfully!');
-        }else{
-            return redirect()->route('tests.index')->with('error','Sorry!Something wrong.Try Again.');
-        }
-    }
-
-    public function updateReadingWirtingFillInTheBlanks(Request $request)
-    {
-        $input = \Arr::except($request->all(),array('_token'));
         
-        $question_id        = $request->question_id;
-        $section_id         = $request->section_id;
-        $test_id            = $request->test_id;
-        $question_type_id   = $request->question_type_id;
-        $slug               = $request->slug;
-
-        $updateArry = [];
-        $updateArry['desc'] = $input['editor'];
-        $result = Questions::where('id',$question_id)->update($updateArry);
-        if($result)
-        {
-            $id = $question_id;
-            try{
-                Answerdata::where('question_id',$question_id)->delete();
-                Questiondata::where('question_id',$question_id)->delete();
-                $ansArrry = [];
-                $correctArry = [];
-                for($i=1;$i<=$slug;$i++)
-                {
-                    $ansArrry[]='ans_options'.$i;
-                    $correctArry[]='correct_option'.$i;
-                }
-                $newAnsData = array_values($ansArrry);
-                $newCorrectData = array_values($correctArry);
-                foreach($newAnsData as $ans)
-                {
-                    $questiondata = new Questiondata;
-                    $questiondata->question_id = $id;
-                    $questiondata->data_type = "fill in the blank";
-                    $questiondata->data_value = $input[$ans];
-                    $questiondata->save();
-                }
-                foreach($newCorrectData as $corrAns)
-                {
-                    $answerdata = new Answerdata;
-                    $answerdata->question_id = $id;
-                    $answerdata->answer_type = "fill in the blank";
-                    $answerdata->answer_value = $input[$corrAns];
-                    $answerdata->sample_answer = "no sample answer";
-                    $answerdata->save();
-                }
-                return redirect()->route('tests.index')->with('success','Questions Update Successfully!');
-            }catch(\Exception $e){
-                dd($e->getMessage());
-            }
-        }
-        else
-        {
-            return redirect()->route('tests.index')->with('error','Sorry!Something wrong.Try Again.');
-        }
     }
-
-    public function storeMultipleChoiceMultipleanswers(Request $request)
-    {
-        $input = \Arr::except($request->all(),array('_token'));
-        
-        $section_id         = $request->section_id;
-        $test_id            = $request->test_id;
-        $question_type_id   = $request->question_type_id;
-        $slug               = $request->slug;
-        $questionType = DB::table('question_types')->where('id',$question_type_id)->first();
-        $all = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
-        
-        $questions                  = new Questions;
-        $questions->section_id      = $section_id;
-        $questions->test_id         = $test_id;
-        $questions->design_id       = $questionType->desgin_id;
-        $questions->question_type_id= $question_type_id;
-        $questions->name            = $input['options_title'];
-        $questions->short_desc      = "sort desc";
-        $questions->desc            = $input['editor1'];
-        $questions->order           =  6;
-        $questions->status          = "E";
-        $questions->marks           = 50;
-        $questions->answer_time     = 40;
-        $questions->waiting_time    = 40;
-        $questions->max_time        = 40;
-        if($questions->save())
-        {
-            $id = $questions->id;
-            $finalValue = array_search($slug,$all);
-            try{
-                for($i=0;$i<=$finalValue;$i++)
-                {
-                    $indexValue = $all[$i];
-                    $string = 'ans_options_'.$indexValue;
-                    $questiondata = new Questiondata;
-                    $questiondata->question_id = $id;
-                    $questiondata->data_type   = 'multiple-choice-multiple-answer';
-                    $questiondata->data_value  = $input[$string];
-                    $questiondata->save();
-                }
-                $answerdata = new Answerdata;
-                $answerdata->question_id = $id;
-                $answerdata->answer_type = "multiple-choice-multiple-answer";
-                $answerdata->answer_value = $input['correct_options'];
-                $answerdata->sample_answer = "no sample answer";
-                $answerdata->save();
-                
-                return redirect()->route('tests.index')
-                    ->with('success','Questions added Successfully!');
-
-            }catch(\Exception $e){
-                return redirect()->route('tests.index')
-                ->with('error','Sorry!Something wrong.Try again later!');
-            }
-        }
-        else
-        {
-            return redirect()->route('tests.index')
-                        ->with('error','Sorry!Something wrong.Try again later!');
-        }
-    }
-    public function updateMultipleChoiceMultipleanswers(Request $request)
-    {
-        $input  = \Arr::except($request->all(),array('_token'));
-        
-        $section_id         = $request->section_id;
-        $test_id            = $request->test_id;
-        $question_type_id   = $request->question_type_id;
-        $slug               = $request->slug;
-        $question_id        = $request->question_id;
-        $all = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
-
-        $updateArry = [];
-        $updateArry['desc'] = $request->editor1;
-        $updateArry['name'] = $request->options_title;
-
-        $result = Questions::where('id',$question_id)->update($updateArry);
-
-        if($result)
-        {
-            $id = $question_id;
-            $finalValue = array_search($slug,$all);
-            try{
-                Answerdata::where('question_id',$question_id)->delete();
-                Questiondata::where('question_id',$question_id)->delete();
-                
-                for($i=0;$i<=$finalValue;$i++)
-                {
-                    $indexValue = $all[$i];
-                    $string = 'ans_options_'.$indexValue;
-                    $questiondata = new Questiondata;
-                    $questiondata->question_id = $id;
-                    $questiondata->data_type   = 'multiple-choice-multiple-answer';
-                    $questiondata->data_value  = $input[$string];
-                    $questiondata->save();
-                }
-                $answerdata = new Answerdata;
-                $answerdata->question_id = $id;
-                $answerdata->answer_type = "multiple-choice-multiple-answer";
-                $answerdata->answer_value = $input['correct_options'];
-                $answerdata->sample_answer = "no sample answer";
-                $answerdata->save();
-                return redirect()->route('tests.index')
-                    ->with('success','Questions Updated Successfully!');
-            }catch(\Exception $e){
-                dd($e->getMessage());
-            }
-        }
-        else
-        {
-            return redirect()->route('tests.index')->with('error','Sorry!Something wrong.Try Again.');
-        }
-    }
-
-
-    
-
     /**
      * Display the specified resource.
      *
@@ -307,5 +85,115 @@ class QuestionsController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function storeReadingInstructions(Request $request)
+    {
+        $request->validate([
+            'reading_writing_fill_in_the_blanks'        =>'required|max:500',
+            'multiple_choice_choose_multiple_answers'   =>'required|max:500',
+            're_order_paragraphs'                       =>'required|max:500',
+            'reading_fill_in_the_blanks'                =>'required|max:500',
+            'multiple_choice_choose_single_answers'     =>'required|max:500'
+
+        ]);
+        $input = \Arr::except($request->all(),array('_token'));
+        
+        try{
+            QuestionTypes::where('desgin_id',1)->update(['instructions'=>$input['reading_writing_fill_in_the_blanks']]);
+            QuestionTypes::where('desgin_id',2)->update(['instructions'=>$input['multiple_choice_choose_multiple_answers']]);
+            QuestionTypes::where('desgin_id',3)->update(['instructions'=>$input['re_order_paragraphs']]);
+            QuestionTypes::where('desgin_id',4)->update(['instructions'=>$input['reading_fill_in_the_blanks']]);
+            QuestionTypes::where('desgin_id',5)->update(['instructions'=>$input['multiple_choice_choose_single_answers']]);
+            \Session::put('success', 'Reading question instructions updated!');
+            return true;
+        }catch(\Exception $e){
+            //dd($e->getMessage());
+            \Session::put('error', 'Sorry!Something wrong.try Again.');
+            return false;
+        }
+    }
+    public function storeListeningInstructions(Request $request)
+    {
+        $request->validate([
+            'summarize_spoken_item'                         =>'required|max:500',
+            'choose_multiple_answers_item'                  =>'required|max:500',
+            'fill_in_the_blanks'                            =>'required|max:500',
+            'highlight_correct_summary_item'                =>'required|max:500',
+            'multiple_choice_choose_single_answers_item'    =>'required|max:500',
+            'select_missing_word_item'                      =>'required|max:500',
+            'highlight_incorrect_word'                      =>'required|max:500',
+            'write_form_dictations'                         =>'required|max:500'
+
+        ]);
+        $input = \Arr::except($request->all(),array('_token'));
+
+        try{
+            QuestionTypes::where('desgin_id',6)->update(['instructions'=>$input['summarize_spoken_item']]);
+            QuestionTypes::where('desgin_id',7)->update(['instructions'=>$input['choose_multiple_answers_item']]);
+            QuestionTypes::where('desgin_id',8)->update(['instructions'=>$input['fill_in_the_blanks']]);
+            QuestionTypes::where('desgin_id',9)->update(['instructions'=>$input['highlight_correct_summary_item']]);
+            QuestionTypes::where('desgin_id',10)->update(['instructions'=>$input['multiple_choice_choose_single_answers_item']]);
+            QuestionTypes::where('desgin_id',11)->update(['instructions'=>$input['select_missing_word_item']]);
+            QuestionTypes::where('desgin_id',12)->update(['instructions'=>$input['highlight_incorrect_word']]);
+            QuestionTypes::where('desgin_id',13)->update(['instructions'=>$input['write_form_dictations']]);
+
+            \Session::put('success', 'Listening question instructions updated!');
+            return true;
+        }catch(\Exception $e){
+            //dd($e->getMessage());
+            \Session::put('error', 'Sorry!Something wrong.try Again.');
+            return false;
+        }
+    }
+    public function storeWritingInstructions(Request $request)
+    {
+        $request->validate([
+            'summarize_written'=>'required|max:500',
+            'essay_writing'=>'required|max:500'
+        ]);
+
+        $input = \Arr::except($request->all(),array('_token'));
+
+        try{
+            QuestionTypes::where('desgin_id',15)->update(['instructions'=>$input['summarize_written']]);
+            QuestionTypes::where('desgin_id',16)->update(['instructions'=>$input['essay_writing']]);
+            
+            \Session::put('success', 'Writing question instructions updated!');
+            return true;
+        }catch(\Exception $e){
+            //dd($e->getMessage());
+            \Session::put('error', 'Sorry!Something wrong.try Again.');
+            return false;
+        }
+    }
+    public function storeSpeakingInstructions(Request $request)
+    {
+        $request->validate([
+            'read_aloud'=>'required|max:500',
+            'repeat_sentence'=>'required|max:500',
+            'describe_image'=>'required|max:500',
+            're_tell_lecture'=>'required|max:500',
+            'answer_short_question'=>'required|max:500'
+        ]);
+
+        $input = \Arr::except($request->all(),array('_token'));
+
+        try{
+
+            QuestionTypes::where('desgin_id',18)->update(['instructions'=>$input['read_aloud']]);
+            QuestionTypes::where('desgin_id',19)->update(['instructions'=>$input['repeat_sentence']]);
+            QuestionTypes::where('desgin_id',20)->update(['instructions'=>$input['describe_image']]);
+            QuestionTypes::where('desgin_id',21)->update(['instructions'=>$input['re_tell_lecture']]);
+            QuestionTypes::where('desgin_id',22)->update(['instructions'=>$input['answer_short_question']]);
+            
+            \Session::put('success', 'Speaking question instructions updated!');
+            return true;
+        }catch(\Exception $e){
+            //dd($e->getMessage());
+            \Session::put('error', 'Sorry!Something wrong.try Again.');
+            return false;
+        }
+
+
     }
 }
