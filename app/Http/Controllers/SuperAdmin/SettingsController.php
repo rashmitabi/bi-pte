@@ -40,15 +40,28 @@ class SettingsController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'currency'              => 'required',
-            'admin_email_address'   =>'required|email',
-            'customer_email_address'=> 'required|email'
+            'currency'                  => 'required',
+            'admin_email_address'       =>'required|email',
+            'customer_email_address'    => 'required|email',
+            'company_invoice_address'   =>'required',
+            'company_gst_number'        => 'required|max:15',
+            'hsn_code'                  => 'required',
+            'stgst'                     => 'required|numeric',
+            'cgst'                      => 'required',
+            'igst'                      => 'required'
+            //'digital_signature'         => 'required|file|mime:jpg,png,jpeg,gif'
+
         ]);
 
         $currency               = $request->currency;
         $admin_email_address    = $request->admin_email_address;
         $customer_email_address = $request->customer_email_address;
-        
+        $company_invoice_address= $request->company_invoice_address;
+        $company_gst_number     = $request->company_gst_number;
+        $hsn_code               = $request->hsn_code;
+        $stgst                  = $request->stgst;
+        $cgst                   = $request->cgst;
+        $igst                   = $request->igst;
         try{
             Settings::updateOrCreate([
                 'label'   => 'currency',
@@ -65,7 +78,36 @@ class SettingsController extends Controller
             ],[
                 'value'     => $customer_email_address,
             ]);
-
+            Settings::updateOrCreate([
+                'label'   => 'company_invoice_address',
+            ],[
+                'value'     => $company_invoice_address,
+            ]);
+            Settings::updateOrCreate([
+                'label'   => 'company_gst_number',
+            ],[
+                'value'     => $company_gst_number,
+            ]);
+            Settings::updateOrCreate([
+                'label'   => 'hsn_code',
+            ],[
+                'value'     => $hsn_code,
+            ]);
+            Settings::updateOrCreate([
+                'label'   => 'stgst',
+            ],[
+                'value'     => $stgst,
+            ]);
+            Settings::updateOrCreate([
+                'label'   => 'cgst',
+            ],[
+                'value'     => $cgst,
+            ]);
+            Settings::updateOrCreate([
+                'label'   => 'igst',
+            ],[
+                'value'     => $igst,
+            ]);
             \Session::put('success', 'Settings saved successfully!');
             return true;
         }catch(\Exception $e){

@@ -1,9 +1,26 @@
-$(document).ready(function() {
+$(document).ready(function(){
 
-    $('#transactions').DataTable({
+    $('body').on('click', '.generate_certificate', function(){
+        var user_id = $(this).data('user');
+        var test_id = $(this).data('test');
+        var apiUrl = $(this).data('url');
+           // $.ajax({
+           //     url: apiUrl,
+           //     type:'GET',
+           //     data:{'id' : id},
+           //     beforeSend: function(){
+           //         $('#subject-edit-body').html('<i class="fa fa-spinner fa-spin"></i>  Please Wait...');
+           //     },
+           //     success:function(data) {
+           //         $('#subject-edit-body').html(data.html);
+           //     },
+           // });
+    });
+
+    $('#certificates').DataTable({
         language: {
             search: '',
-            searchPlaceholder: "Search by user name, role, amount, subscription package, status",
+            searchPlaceholder: "Search by student name, test name",
             "sLengthMenu": '<select>'+
                 '<option value="10">10 Per Page</option>'+
                 '<option value="20">20 Per Page</option>'+
@@ -26,17 +43,10 @@ $(document).ready(function() {
         columns: [
            {data: 'DT_RowIndex', name: 'DT_RowIndex'},
            {data: 'username', name: 'username'},
-           {data: 'role', name: 'role'},
-           {data: 'amount', name: 'amount'},
-           {data: 'package', name: 'package'},
-           {data: 'voucher', name: 'voucher'},
-           {data: 'method', name: 'method'},
-           {data: 'transaction_id', name: 'transaction_id'},
-           {data: 'created', name: 'created'},
-           {data: 'status', name: 'status'},
+           {data: 'test_name', name: 'test_name'},
            {data: 'action', name: 'action', orderable: false, searchable: false},
         ]
     });
-    $("#transactions_wrapper div.toolbar").html('Transactions');
+    $("#certificates_wrapper div.toolbar").html('Certificates'); 
 
 });
