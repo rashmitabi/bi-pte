@@ -36,6 +36,8 @@ Route::group(['middleware' => ['auth', 'verified','superadmin']], function () {
     Route::get('superadmin/users/changestatus/{id}', [App\Http\Controllers\SuperAdmin\UsersController::class, 'changeStatus'])->name('superadmin-user-changestatus');
     Route::get('superadmin/users/showpassword/{id}', [App\Http\Controllers\SuperAdmin\UsersController::class, 'showPassword'])->name('superadmin-user-showpassword');
     Route::patch('superadmin/users/setpassword/{id}', [App\Http\Controllers\SuperAdmin\UsersController::class, 'setPassword'])->name('superadmin-user-setpassword');
+    Route::post('superadmin/users/showmocktest/{id}', [App\Http\Controllers\SuperAdmin\UsersController::class, 'showMockTest'])->name('superadmin-show-mock-test');
+    Route::post('superadmin/users/assignmocktest/{id}', [App\Http\Controllers\SuperAdmin\UsersController::class, 'assignMockTest'])->name('superadmin-assign-mock-test');
    
     Route::resource('superadmin/module', App\Http\Controllers\SuperAdmin\ModulesController::class)->names('modules');
     Route::get('superadmin/module/changestatus/{id}', [App\Http\Controllers\SuperAdmin\ModulesController::class, 'changeStatus'])->name('superadmin-module-changestatus');
@@ -218,7 +220,6 @@ Route::group(['middleware' => ['auth', 'verified','superadmin']], function () {
     /*Super admin notification start*/
         Route::get('superadmin/notifications', [App\Http\Controllers\SuperAdmin\NotificationController::class, 'index'])->name('superadmin-notifications');
         Route::get('superadmin/notifications/{id}', [App\Http\Controllers\SuperAdmin\NotificationController::class, 'viewNotification'])->name('superadmin-view-notifications');
-        
     /*Super admin notification end*/
 });
 //end Super admin routes

@@ -10,6 +10,7 @@ use App\Models\Institues;
 use Illuminate\Support\Facades\Hash;
 use DataTables;
 use App\Http\Requests\StoreUserRequest;
+use Stevebauman\Location\Facades\Location;
 
 class UsersController extends Controller
 {
@@ -48,7 +49,7 @@ class UsersController extends Controller
                     })
                     ->addColumn('action', function($row){
                         $btn = '<ul class="actions-btns">
-                                <li class="action" data-toggle="modal" data-target="#userdetail"><a href="javascript:void(0);" ><i class="fas fa-user"></i></a></li>
+                                <li class="action" data-toggle="modal" data-target="#userdetail"><a href="javascript:void(0);" class="user-show" data-id="'.$row->id .'" data-url="'.route('users.show', $row->id).'"><i class="fas fa-user"></i></a></li>
 
                                     <li class="action" data-toggle="modal" data-target="#editdetail"><a href="javascript:void(0);" class="user-edit" data-id="'.$row->id .'" data-url="'.route('users.edit', $row->id).'"><i class="fas fa-pen"></i></a></li>
 
@@ -58,7 +59,8 @@ class UsersController extends Controller
 
                                     <li class="action" data-toggle="modal" data-target="#setpassword"><a href="javascript:void(0);" class="user-setpassword" data-id="'.$row->id .'" data-url="'.route('superadmin-user-showpassword', $row->id).'"><i class="fas fa-unlock-alt"></i></a></li>
 
-                                    <li class="action" class="action" data-toggle="modal" data-target="#mocktest"><a href="#"><i class="fas fa-clipboard-check"></i></a></li>
+                                    <li class="action" class="action" data-toggle="modal" data-target="#mocktest"><a href="#" data-url="'.route('superadmin-show-mock-test', $row->id).'" data-id="'.$row->id.'"><i class="fas fa-clipboard-check"></i></a></li>
+
                                     <li class="action" class="action" data-toggle="modal" data-target="#practisetest"><a href="#"><i class="fas fa-clipboard-check"></i></a></li>
                                 </ul>';
                         return $btn;
@@ -94,7 +96,7 @@ class UsersController extends Controller
                     })
                     ->addColumn('action', function($row){
                         $btn = '<ul class="actions-btns">
-                                <li class="action" data-toggle="modal" data-target="#userdetail"><a href="javascript:void(0);" ><i class="fas fa-user"></i></a></li>
+                                <li class="action" data-toggle="modal" data-target="#userdetail"><a href="javascript:void(0);" class="user-show" data-id="'.$row->id .'" data-url="'.route('users.show', $row->id).'"><i class="fas fa-user"></i></a></li>
 
                                     <li class="action" data-toggle="modal" data-target="#editdetail"><a href="javascript:void(0);" class="user-edit" data-id="'.$row->id .'" data-url="'.route('users.edit', $row->id).'"><i class="fas fa-pen"></i></a></li>
 
@@ -104,7 +106,8 @@ class UsersController extends Controller
 
                                     <li class="action" data-toggle="modal" data-target="#setpassword"><a href="javascript:void(0);" class="user-setpassword" data-id="'.$row->id .'" data-url="'.route('superadmin-user-showpassword', $row->id).'"><i class="fas fa-unlock-alt"></i></a></li>
 
-                                    <li class="action" class="action" data-toggle="modal" data-target="#mocktest"><a href="#"><i class="fas fa-clipboard-check"></i></a></li>
+                                    <li class="action" class="action" data-toggle="modal" data-target="#mocktest"><a href="#" data-url="'.route('superadmin-show-mock-test', $row->id).'" class="user-mock-test" data-id="'.$row->id.'"><i class="fas fa-clipboard-check"></i></a></li>
+
                                     <li class="action" class="action" data-toggle="modal" data-target="#practisetest"><a href="#"><i class="fas fa-clipboard-check"></i></a></li>
                                 </ul>';
                         return $btn;
@@ -116,6 +119,17 @@ class UsersController extends Controller
         return view($this->moduleTitleP.'index');
     }
 
+    public function showMockTest(){
+        $roles = Roles::all();
+        $user = User::with(['institue'])->find($id);
+        $admins = User::where('role_id',2)->with(['institue'])->get();
+        $html_user = view($this->moduleTitleP.'edit', compact('roles','user','admins'))->render();
+
+        return response()->json([
+            'success' => 1,
+            'html'=>$html_user    
+        ]);
+    }
     
     /**
      * Show the form for creating a new resource.
@@ -125,7 +139,8 @@ class UsersController extends Controller
     public function create()
     {
         $roles = Roles::all();
-        return view($this->moduleTitleP.'add',compact('roles'));
+        $admins = User::where('role_id',2)->with(['institue'])->get();
+        return view($this->moduleTitleP.'add',compact('roles','admins'));
     }
 
     /**
@@ -136,11 +151,15 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {   
+        // $data = Location::get();
+       // dd($data);
+
         $result='';
         $type = $request->input('type');
         if($type == 3){
             $request->validate([
                 'type'=>'required',
+                'branch_admin'=>'required',
                 'fname' => 'required|min:3|max:100',
                 'lname' => 'required|min:3|max:100',
                 'uname'=>'required|unique:users,name|max:255',
@@ -151,6 +170,9 @@ class UsersController extends Controller
                 'gender'=>'required|in:M,F',
                 'scitizen'=>'required|min:2|max:255',
                 'sresidence'=>'required|min:2|max:255',
+                'sstate'=>'required|min:2|max:100',
+                'sstate_code'=>'required|min:2|max:100',
+                'sgstin'=>'required|min:2|max:100',
                 'svalidity'=>'required|after:' . date('Y-m-d'),
                 'simage'=>'nullable|image|mimes:jpeg,png,jpg|max:2048'
             ]);
@@ -166,7 +188,7 @@ class UsersController extends Controller
 
             $user_input = array(
                 'role_id' => $input['type'],
-                'parent_user_id' => 0,
+                'parent_user_id' => $input['branch_admin'],
                 'first_name' => $input['fname'],
                 'last_name' => $input['lname'],
                 'name' => $input['uname'],
@@ -177,6 +199,9 @@ class UsersController extends Controller
                 'gender' => $input['gender'],
                 'country_citizen' => $input['scitizen'],
                 'country_residence' => $input['sresidence'],
+                'state' => $input['sstate'],
+                'state_code' => $input['sstate_code'],
+                'gstin' => $input['sgstin'],
                 'validity' => $input['svalidity'],
                 'status' => $input['sstatus'],
                 'ip_address' => '',
@@ -198,7 +223,9 @@ class UsersController extends Controller
                 'subdomain' =>'required|max:255',
                 'domain'=>'required|max:255',
                 'welcome_msg'=>'required|max:500',
-                'city'=>'required|min:2|max:255',
+                'istate'=>'required|min:2|max:100',
+                'istate_code'=>'required|min:2|max:100',
+                'igstin'=>'required|min:2|max:100',
                 'logo'=>'nullable|image|mimes:jpeg,png,jpg|max:2048',
                 'banner'=>'nullable|image|mimes:jpeg,png,jpg|max:2048',
                 'bimage'=>'nullable|image|mimes:jpeg,png,jpg|max:2048',
@@ -229,16 +256,13 @@ class UsersController extends Controller
                 $user_input = array(
                     'role_id' => $input['type'],
                     'parent_user_id' => 0,
-                    // 'first_name' => '',
-                    // 'last_name' => '',
                     'name' => $input['iuname'],
                     'email' => $input['iemail'],
                     'mobile_no' => $input['phone_no'],
-                    // 'date_of_birth' => '',
                     'profile_image' => $profile,
-                    // 'gender' => '',
-                    'country_citizen' => $input['city'],
-                    // 'country_residence' => '',
+                    'state' => $input['istate'],
+                    'state_code' => $input['istate_code'],
+                    'gstin' => $input['igstin'],
                     'validity' => $input['validity'],
                     'status' => $input['status'],
                     'ip_address' => '',
@@ -249,16 +273,13 @@ class UsersController extends Controller
                 $user_input = array(
                     'role_id' => $input['type'],
                     'parent_user_id' => 0,
-                    // 'first_name' => '',
-                    // 'last_name' => '',
                     'name' => $input['iuname'],
                     'email' => $input['iemail'],
                     'mobile_no' => $input['phone_no'],
-                    // 'date_of_birth' => '',
                     'profile_image' => '',
-                    // 'gender' => '',
-                    'country_citizen' => $input['city'],
-                    // 'country_residence' => '',
+                    'state' => $input['istate'],
+                    'state_code' => $input['istate_code'],
+                    'gstin' => $input['igstin'],
                     'validity' => $input['validity'],
                     'status' => $input['status'],
                     'ip_address' => '',
@@ -330,7 +351,8 @@ class UsersController extends Controller
     {
         $roles = Roles::all();
         $user = User::with(['institue'])->find($id);
-        $html_user = view($this->moduleTitleP.'edit', compact('roles','user'))->render();
+        $admins = User::where('role_id',2)->with(['institue'])->get();
+        $html_user = view($this->moduleTitleP.'edit', compact('roles','user','admins'))->render();
 
         return response()->json([
             'success' => 1,
@@ -348,9 +370,11 @@ class UsersController extends Controller
     public function update(Request $request, $id)
     {
         $type = $request->input('type');
+        
         if($type == 3){
             $request->validate([
                 'type'=>'required',
+                'branch_admin'=>'required',
                 'fname' => 'required|min:3|max:100',
                 'lname' => 'required|min:3|max:100',
                 'uname'=>'required|unique:users,name,'.$id.'|max:255',
@@ -361,6 +385,9 @@ class UsersController extends Controller
                 'gender'=>'required|in:M,F',
                 'scitizen'=>'required|min:2|max:255',
                 'sresidence'=>'required|min:2|max:255',
+                'sstate'=>'required|min:2|max:100',
+                'sstate_code'=>'required|min:2|max:100',
+                'sgstin'=>'required|min:2|max:100',
                 'svalidity'=>'required|after:' . date('Y-m-d'),
                 'simage'=>'nullable|image|mimes:jpeg,png,jpg|max:2048'
             ]);
@@ -372,7 +399,7 @@ class UsersController extends Controller
                 $image->move($destinationPath, $fileNameToStore);
                 $user_input = array(
                     'role_id' => $input['type'],
-                    'parent_user_id' => 0,
+                    'parent_user_id' => $input['branch_admin'],
                     'first_name' => $input['fname'],
                     'last_name' => $input['lname'],
                     'name' => $input['uname'],
@@ -383,6 +410,9 @@ class UsersController extends Controller
                     'gender' => $input['gender'],
                     'country_citizen' => $input['scitizen'],
                     'country_residence' => $input['sresidence'],
+                    'state' => $input['sstate'],
+                    'state_code' => $input['sstate_code'],
+                    'gstin' => $input['sgstin'],
                     'validity' => $input['svalidity'],
                     'status' => $input['sstatus'],
                     'ip_address' => '',
@@ -393,7 +423,7 @@ class UsersController extends Controller
             }else{
                 $user_input = array(
                     'role_id' => $input['type'],
-                    'parent_user_id' => 0,
+                    'parent_user_id' => $input['branch_admin'],
                     'first_name' => $input['fname'],
                     'last_name' => $input['lname'],
                     'name' => $input['uname'],
@@ -403,6 +433,9 @@ class UsersController extends Controller
                     'gender' => $input['gender'],
                     'country_citizen' => $input['scitizen'],
                     'country_residence' => $input['sresidence'],
+                    'state' => $input['sstate'],
+                    'state_code' => $input['sstate_code'],
+                    'gstin' => $input['sgstin'],
                     'validity' => $input['svalidity'],
                     'status' => $input['sstatus'],
                     'ip_address' => '',
@@ -415,7 +448,7 @@ class UsersController extends Controller
             
             $result = User::where('id',$id)->update($user_input);
         }else if($type == 2){
-           $request->validate([
+            $request->validate([
                 'type'=>'required',
                 'iuname' => 'required|unique:users,name,'.$id.'|max:255',
                 'iname'=>'required',
@@ -427,7 +460,9 @@ class UsersController extends Controller
                 'subdomain' =>'required|max:255',
                 'domain'=>'required|max:255',
                 'welcome_msg'=>'required|max:500',
-                'city'=>'required|min:2|max:255',
+                'istate'=>'required|min:2|max:100',
+                'istate_code'=>'required|min:2|max:100',
+                'igstin'=>'required|min:2|max:100',
                 'logo'=>'nullable|image|mimes:jpeg,png,jpg|max:2048',
                 'banner'=>'nullable|image|mimes:jpeg,png,jpg|max:2048',
                 'validity'=>'required|after:' . date('Y-m-d'),
@@ -437,7 +472,6 @@ class UsersController extends Controller
                 'admin_test'=>'required|in:Y,N'
             ]);
             $input  = \Arr::except($request->all(),array('_token'));
-
             if ($image = $request->file('logo')) {
                 $destinationPath = 'assets/images/institute/';
                 $logo = date('YmdHis') ."_logo". "." . $image->getClientOriginalExtension();
@@ -450,27 +484,46 @@ class UsersController extends Controller
                 $image->move($destinationPath, $banner);
             }
 
-            $user_input = array(
-                'role_id' => $input['type'],
-                'parent_user_id' => 0,
-                // 'first_name' => '',
-                // 'last_name' => '',
-                'name' => $input['iuname'],
-                'email' => $input['iemail'],
-                'mobile_no' => $input['phone_no'],
-                // 'date_of_birth' => '',
-                'profile_image' => '',
-                // 'gender' => '',
-                'country_citizen' => $input['city'],
-                // 'country_residence' => '',
-                'validity' => $input['validity'],
-                'status' => $input['status'],
-                'ip_address' => '',
-                'latitude' => '',
-                'longitude' => ''
-            );
+            if ($image = $request->file('iimage')) {
+                $destinationPath = 'assets/images/profile/';
+                $fileNameToStore = date('YmdHis') . "." . $image->getClientOriginalExtension();
+                $image->move($destinationPath, $fileNameToStore);
+                $user_input = array(
+                    'role_id' => $input['type'],
+                    'parent_user_id' => 0,
+                    'name' => $input['iuname'],
+                    'email' => $input['iemail'],
+                    'mobile_no' => $input['phone_no'],
+                    'profile_image' => $fileNameToStore,
+                    'state' => $input['istate'],
+                    'state_code' => $input['istate_code'],
+                    'gstin' => $input['igstin'],
+                    'validity' => $input['validity'],
+                    'status' => $input['status'],
+                    'ip_address' => '',
+                    'latitude' => '',
+                    'longitude' => ''
+                );
+            }else{
+                $user_input = array(
+                    'role_id' => $input['type'],
+                    'parent_user_id' => 0,
+                    'name' => $input['iuname'],
+                    'email' => $input['iemail'],
+                    'mobile_no' => $input['phone_no'],
+                    'state' => $input['istate'],
+                    'state_code' => $input['istate_code'],
+                    'gstin' => $input['igstin'],
+                    'validity' => $input['validity'],
+                    'status' => $input['status'],
+                    'ip_address' => '',
+                    'latitude' => '',
+                    'longitude' => ''
+                );
+            }
 
             $result = User::where('id',$id)->update($user_input);
+
             if(isset($logo) && isset($banner)){
                 $institue = array(
                     'user_id' => $id,
@@ -540,6 +593,7 @@ class UsersController extends Controller
                     'white_labelling'=> 'N'
                 );
             }
+
             $result = Institues::where('user_id',$id)->update($institue);
         }
 
