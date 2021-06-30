@@ -27,6 +27,16 @@
 
           <div id="student" style="display: none;">
             <div class="form-group row">
+              <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Branch Admin</label>
+              <div class="col-12 col-md-7 col-xl-7 col-sm-12">
+                <select class="" name="branch_admin">
+                  @foreach($admins as $admin)
+                    <option value="{{ $admin->id }}" >{{ isset($admin->institue->institute_name)?$admin->institue->institute_name:'' }}</option>
+                  @endforeach
+                </select>
+              </div>
+            </div>
+            <div class="form-group row">
               <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">First Name</label>
               <div class="col-12 col-md-7 col-xl-7 col-sm-12">
                 <input type="text" name="fname" value="{{ old('fname') }}" class="form-control " placeholder="Enter First Name">
@@ -128,6 +138,33 @@
                 <input type="text" name="sresidence" value="{{ old('sresidence') }}" class="form-control " placeholder="Enter Country Residence">
                 @if($errors->has('sresidence'))
                   <span class="error-msg">{{$errors->first('sresidence')}}</span>
+                @endif
+              </div>
+            </div>
+            <div class="form-group row">
+              <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">State</label>
+              <div class="col-12 col-md-7 col-xl-7 col-sm-12">
+                <input type="text" name="sstate" value="{{ old('sstate') }}" class="form-control " placeholder="Enter State">
+                @if($errors->has('sstate'))
+                  <span class="error-msg">{{$errors->first('sstate')}}</span>
+                @endif
+              </div>
+            </div>
+            <div class="form-group row">
+              <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">State Code</label>
+              <div class="col-12 col-md-7 col-xl-7 col-sm-12">
+                <input type="text" name="sstate_code" value="{{ old('sstate_code') }}" class="form-control " placeholder="Enter State Code">
+                @if($errors->has('sstate_code'))
+                  <span class="error-msg">{{$errors->first('sstate_code')}}</span>
+                @endif
+              </div>
+            </div>
+            <div class="form-group row">
+              <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">GSTIN</label>
+              <div class="col-12 col-md-7 col-xl-7 col-sm-12">
+                <input type="text" name="sgstin" value="{{ old('sgstin') }}" class="form-control " placeholder="Enter State Code">
+                @if($errors->has('sgstin'))
+                  <span class="error-msg">{{$errors->first('sgstin')}}</span>
                 @endif
               </div>
             </div>
@@ -248,11 +285,29 @@
               </div>
             </div>
             <div class="form-group row">
-              <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">City</label>
+              <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">State</label>
               <div class="col-12 col-md-7 col-xl-7 col-sm-12">
-                <input type="text" name="city" value="{{ old('city') }}" class="form-control " placeholder="Enter City">
-                @if($errors->has('city'))
-                  <span class="error-msg">{{$errors->first('city')}}</span>
+                <input type="text" name="istate" value="{{ old('istate') }}" class="form-control " placeholder="Enter State">
+                @if($errors->has('istate'))
+                  <span class="error-msg">{{$errors->first('istate')}}</span>
+                @endif
+              </div>
+            </div>
+            <div class="form-group row">
+              <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">State Code</label>
+              <div class="col-12 col-md-7 col-xl-7 col-sm-12">
+                <input type="text" name="istate_code" value="{{ old('istate_code') }}" class="form-control " placeholder="Enter State Code">
+                @if($errors->has('istate_code'))
+                  <span class="error-msg">{{$errors->first('istate_code')}}</span>
+                @endif
+              </div>
+            </div>
+            <div class="form-group row">
+              <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">GSTIN</label>
+              <div class="col-12 col-md-7 col-xl-7 col-sm-12">
+                <input type="text" name="igstin" value="{{ old('igstin') }}" class="form-control " placeholder="Enter State Code">
+                @if($errors->has('igstin'))
+                  <span class="error-msg">{{$errors->first('igstin')}}</span>
                 @endif
               </div>
             </div>
@@ -397,7 +452,9 @@
           
           <div class="form-group row">
             <div class="col-12 col-md-12 col-xl-11 col-sm-12 save-btn">
-              <button  type="submit" class="btn btn-outline-primary"><i class="far fa-save save-icon"></i>Save User</button>
+              <a href="{{ route('users.index') }}"><button  type="button" class="btn btn-outline-primary "><img class="back-btn" src="{{ asset('assets/images/icons/back.svg') }}" style="width: 14px;margin-right: 10px">Cancel</button></a>
+              <button  type="submit" class="btn btn-outline-primary mr-2"><i class="far fa-save save-icon"></i>Save User</button>
+              
             </div>
           </div>
         {!! Form::close() !!}

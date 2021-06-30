@@ -21,7 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('last_name',100)->nullable();
             $table->string('name')->unique()->comment(" this field is user name field");
             $table->string('email')->unique();
-            $table->string('password',255);
+            $table->string('password',255)->nullable();
             $table->string('mobile_no',20);
             $table->date('date_of_birth')->nullable();
             $table->string('profile_image',255);
@@ -33,8 +33,11 @@ class CreateUsersTable extends Migration
             $table->string('country_residence',255)->nullable();
             $table->dateTime('validity')->nullable();
             $table->enum('status',['P','A','R'])->comment('P=pending,A=active,R=reject');
+            $table->string('state',100)->nullable();
+            $table->string('state_code',100)->nullable();
+            $table->string('gstin',100)->nullable();
             $table->timestamp('email_verified_at')->nullable();
-            $table->rememberToken();
+            $table->rememberToken()->nullable();
             $table->dateTime('created_at')->useCurrent();
             $table->timestamp('updated_at')->nullable();
         });

@@ -41,7 +41,9 @@
     </div>
     <div class="form-group row">
       <div class="col-12 col-md-12 col-xl-11 col-sm-1 save-btn">
-        <button type="button" class="btn btn-outline-primary roles-update" data-id="{{ $roleData->id }}" data-url="{{ route('roles.update', $roleData->id) }}"><i class="far fa-save save-icon"></i>Save</button>
+        <a href="{{ route('roles.index') }}"><button  type="button" class="btn btn-outline-primary "><img class="back-btn" src="{{ asset('assets/images/icons/back.svg') }}" style="width: 14px;margin-right: 10px">Cancel</button></a>
+        <button type="button" class="btn btn-outline-primary roles-update mr-2" data-id="{{ $roleData->id }}" data-url="{{ route('roles.update', $roleData->id) }}"><i class="far fa-save save-icon"></i>Save</button>
+
       </div>
     </div>
 </form>

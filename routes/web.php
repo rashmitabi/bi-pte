@@ -13,7 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::get('/', function () {
-    return view('page_not_found');
+    // return view('page_not_found');
+    return redirect('/login');
     //return view('welcome');
 });
 Route::get('/login', function () {
@@ -35,6 +36,8 @@ Route::group(['middleware' => ['auth', 'verified','superadmin']], function () {
     Route::get('superadmin/users/changestatus/{id}', [App\Http\Controllers\SuperAdmin\UsersController::class, 'changeStatus'])->name('superadmin-user-changestatus');
     Route::get('superadmin/users/showpassword/{id}', [App\Http\Controllers\SuperAdmin\UsersController::class, 'showPassword'])->name('superadmin-user-showpassword');
     Route::patch('superadmin/users/setpassword/{id}', [App\Http\Controllers\SuperAdmin\UsersController::class, 'setPassword'])->name('superadmin-user-setpassword');
+    Route::post('superadmin/users/showmocktest/{id}', [App\Http\Controllers\SuperAdmin\UsersController::class, 'showMockTest'])->name('superadmin-show-mock-test');
+    Route::post('superadmin/users/assignmocktest/{id}', [App\Http\Controllers\SuperAdmin\UsersController::class, 'assignMockTest'])->name('superadmin-assign-mock-test');
    
     Route::resource('superadmin/module', App\Http\Controllers\SuperAdmin\ModulesController::class)->names('modules');
     Route::get('superadmin/module/changestatus/{id}', [App\Http\Controllers\SuperAdmin\ModulesController::class, 'changeStatus'])->name('superadmin-module-changestatus');
@@ -220,7 +223,6 @@ Route::group(['middleware' => ['auth', 'verified','superadmin']], function () {
     /*Super admin notification start*/
         Route::get('superadmin/notifications', [App\Http\Controllers\SuperAdmin\NotificationController::class, 'index'])->name('superadmin-notifications');
         Route::get('superadmin/notifications/{id}', [App\Http\Controllers\SuperAdmin\NotificationController::class, 'viewNotification'])->name('superadmin-view-notifications');
-        
     /*Super admin notification end*/
 });
 //end Super admin routes
@@ -261,17 +263,7 @@ Route::resource('superadmin/subjects', App\Http\Controllers\SuperAdmin\SubjectsC
 /*Subjects module end*/
 
 
-/*Tests Modules start*/
-    Route::get('superadmin/tests/mocktest', [App\Http\Controllers\SuperAdmin\TestsController::class, 'mockTests'])
-        ->name('superadmin-tests-mocktest');
-    Route::get('superadmin/tests/changestatus/{id}', [App\Http\Controllers\SuperAdmin\TestsController::class, 'changeStatus'])
-        ->name('superadmin-tests-changestatus');
-    Route::post('superadmin/tests/addQuestions', [App\Http\Controllers\SuperAdmin\TestsController::class, 'addQuestions'])
-        ->name('superadmin-tests-addQuestions');
-    Route::resource('superadmin/tests', App\Http\Controllers\SuperAdmin\TestsController::class);
-    Route::get('superadmin/tests/add', [App\Http\Controllers\SuperAdmin\TestsController::class, 'add'])
-    ->name('superadmin-tests-add');
-/*Tests Modules end*/
+
 
 
 /* prediction files routes start *//* prediction files routes start */

@@ -200,7 +200,25 @@ $(document).ready(function() {
   });
   //user edit page data start
 
-  //user edit page data start
+  //user show mock test page data start
+  $('body').on('click','.user-edit',function(){
+    var id = $(this).data('id');
+    var apiUrl = $(this).data('url');
+    $.ajax({
+      url: apiUrl,
+      type:'GET',
+      data:{'id' : id},
+      beforeSend: function(){
+        $('#edit-user-body').html('<i class="fa fa-spinner fa-spin"></i>  Please Wait...');
+      },
+      success:function(data) {
+        $('#edit-user-body').html(data.html);
+      },
+    }); 
+  });
+  //user show mock test page data start
+
+  //user show page data start
   $('body').on('click','.user-show',function(){
     var id = $(this).data('id');
     var apiUrl = $(this).data('url');
@@ -216,7 +234,7 @@ $(document).ready(function() {
       },
     }); 
   });
-  //user edit page data start
+  //user show page data start
 
   //user  update data start
   $('body').on('click','.user-update',function(){
@@ -232,6 +250,9 @@ $(document).ready(function() {
     $('#mobilenoError').text('');
     $('#scitizenError').text('');
     $('#sresidenceError').text('');
+    $('#sstateError').text('');
+    $('#sstate_codeError').text('');
+    $('#sgstinError').text('');
     $('#svalidityError').text('');
 
     $('#iunameError').text('');
@@ -245,10 +266,14 @@ $(document).ready(function() {
     $('#subdomainError').text('');
     $('#domainError').text('');
     $('#welcome_msgError').text('');
-    $('#cityError').text('');
+    $('#istateError').text('');
+    $('#istate_codeError').text('');
+    $('#igstinError').text('');
     $('#logoError').text('');
     $('#bannerError').text('');
     $('#validityError').text('');
+
+
     $.ajax({
       url: apiUrl,
       type:'PATCH',
@@ -272,6 +297,9 @@ $(document).ready(function() {
         $('#mobilenoError').text(response.responseJSON.errors.mobileno);
         $('#scitizenError').text(response.responseJSON.errors.scitizen);
         $('#sresidenceError').text(response.responseJSON.errors.sresidence);
+        $('#sstateError').text(response.responseJSON.errors.sstate);
+        $('#sstate_codeError').text(response.responseJSON.errors.sstate_code);
+        $('#sgstinError').text(response.responseJSON.errors.sgstin);
         $('#svalidityError').text(response.responseJSON.errors.svalidity);
 
         $('#iunameError').text(response.responseJSON.errors.iuname);
@@ -285,7 +313,9 @@ $(document).ready(function() {
         $('#subdomainError').text(response.responseJSON.errors.subdomain);
         $('#domainError').text(response.responseJSON.errors.domain);
         $('#welcome_msgError').text(response.responseJSON.errors.welcome_msg);
-        $('#cityError').text(response.responseJSON.errors.city);
+        $('#istateError').text(response.responseJSON.errors.istate);
+        $('#istate_codeError').text(response.responseJSON.errors.istate_code);
+        $('#igstinError').text(response.responseJSON.errors.igstin);
         $('#logoError').text(response.responseJSON.errors.logo);
         $('#bannerError').text(response.responseJSON.errors.banner);
         $('#validityError').text(response.responseJSON.errors.validity);
