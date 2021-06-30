@@ -13,7 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::get('/', function () {
-    return view('page_not_found');
+    // return view('page_not_found');
+    return redirect('/login');
     //return view('welcome');
 });
 Route::get('/login', function () {
