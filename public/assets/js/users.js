@@ -521,20 +521,50 @@ $(document).ready(function() {
 
   //assign prectice test to users
   //user show page data start
-  $('body').on('click','.assign-prectice-test',function(){
-    var id = $(this).data('id');
+  $('body').on('click','.get-assign-test',function(){
     var url = $(this).data('url');
-    //console.log(url);
+    var type = $(this).data('test-type');
+    var randomString = '#prectice-test-body';
+    if(type == 'M'){
+        randomString = '#assign-mock-test-body';
+    }
     $.ajax({
       url: url,
       type:'GET',
-      data:{'id' : id},
+      data:{type:type},
       beforeSend: function(){
-        $('#show-user-body').html('<i class="fa fa-spinner fa-spin"></i>  Please Wait...');
+        $(randomString).html('<i class="fa fa-spinner fa-spin"></i>  Please Wait...');
       },
       success:function(data) {
-        $('#prectice-test-body').html(data.html);
+        $(randomString).html(data.html);
       },
     }); 
+  });
+  $('body').on('click','.store-assign-test',function(){
+    $("#checkError").text("");
+    var user_id = $(this).data('user-id');
+    var url     = $(this).data('url');
+    var type    = $(this).data('test-type');
+    var id = [];
+    $('.multitest:checked').each(function(){
+        id.push($(this).val());
+    });
+    if(id.length > 0){
+        $.ajax({
+          url: url,
+          type:'POST',
+          data:{
+              _token:CSRF_TOKEN,
+              user_id:user_id,
+              id:id,
+              type:type
+          },
+          success:function(data) {
+            location.reload();
+          },
+        }); 
+    }else{
+      $("#checkError").text("Please select any one test");
+    }
   });
 });
