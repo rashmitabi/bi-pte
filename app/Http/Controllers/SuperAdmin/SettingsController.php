@@ -215,7 +215,7 @@ class SettingsController extends Controller
             'confirm_password' =>'same:password'
         ]);
 
-        $result = User::find(auth()->user()->id)->update(['password'=> Hash::make($request->new_password)]);
+        $result = User::find(auth()->user()->id)->update(['password'=> Hash::make($request->password)]);
 
         if($result){
             \Session::put('success', 'Password Change Successfully!');
