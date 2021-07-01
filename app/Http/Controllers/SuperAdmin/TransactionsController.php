@@ -116,5 +116,10 @@ class TransactionsController extends Controller
       // download PDF file with download method
       return $pdf->download($filename);
     }
+
+    public function create()
+    {
+        return view('invoice');
+    }
 }
     

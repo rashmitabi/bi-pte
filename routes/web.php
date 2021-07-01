@@ -243,7 +243,6 @@ Route::group(['middleware' => ['auth', 'verified','student']], function () {
 
 
 
-
 /* Email templates module start*/
 Route::get('superadmin/email/changestatus/{id}', [App\Http\Controllers\SuperAdmin\EmailTemplatesController::class, 'changeStatus'])
     ->name('superadmin-email-changestatus');
