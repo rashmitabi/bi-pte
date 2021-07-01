@@ -12,6 +12,9 @@ $(document).ready(function() {
                },
                success:function(data) {
                    $('#email-edit-body').html(data.html);
+                   $("#editor23").each(function(_, ckeditor) {
+                    CKEDITOR.replace(ckeditor);
+                });
                },
            });
    });

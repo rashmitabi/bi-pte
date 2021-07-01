@@ -517,4 +517,54 @@ $(document).ready(function() {
         //   }
         // });
   //All common action end
+
+
+  //assign prectice test to users
+  //user show page data start
+  $('body').on('click','.get-assign-test',function(){
+    var url = $(this).data('url');
+    var type = $(this).data('test-type');
+    var randomString = '#prectice-test-body';
+    if(type == 'M'){
+        randomString = '#assign-mock-test-body';
+    }
+    $.ajax({
+      url: url,
+      type:'GET',
+      data:{type:type},
+      beforeSend: function(){
+        $(randomString).html('<i class="fa fa-spinner fa-spin"></i>  Please Wait...');
+      },
+      success:function(data) {
+        $(randomString).html(data.html);
+      },
+    }); 
+  });
+  $('body').on('click','.store-assign-test',function(){
+    $("#checkError").text("");
+    var user_id = $(this).data('user-id');
+    var url     = $(this).data('url');
+    var type    = $(this).data('test-type');
+    var id = [];
+    $('.multitest:checked').each(function(){
+        id.push($(this).val());
+    });
+    if(id.length > 0){
+        $.ajax({
+          url: url,
+          type:'POST',
+          data:{
+              _token:CSRF_TOKEN,
+              user_id:user_id,
+              id:id,
+              type:type
+          },
+          success:function(data) {
+            location.reload();
+          },
+        }); 
+    }else{
+      $("#checkError").text("Please select any one test");
+    }
+  });
 });

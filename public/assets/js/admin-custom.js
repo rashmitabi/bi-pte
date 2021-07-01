@@ -1190,11 +1190,8 @@ $(document).ready(function() {
     $('.modal').click(function() {
       // $('body').find('.remove-record-model').find( "input" ).remove();
     });
-    ////Delete Model for SuperAdmin End
+    //Delete Model for SuperAdmin End
 
-    $("#editor23").each(function(_, ckeditor) {
-        CKEDITOR.replace(ckeditor);
-    });
     $("#email_wrapper div.toolbar").html('Email Template');
     //Delete Model for SuperAdmin start
     $('body').on('click','.delete_modal',function() {

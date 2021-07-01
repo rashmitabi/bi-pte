@@ -47,7 +47,7 @@
                       </div>
                       <div class="form-group mb-2 row">
                         <div class="col-12 pl-1 p-0">
-                          <textarea name="editor13" id="editor">{{ (isset($json13))?$json13->editor13:''}}</textarea>
+                          <textarea name="editor13" id="editor13">{{ (isset($json13))?$json13->editor13:''}}</textarea>
                         </div>
                       </div>
                       <div class=" col-12 mt-4 mb-1 ml-1 white-bg common-col">
@@ -71,7 +71,7 @@
                     </div>
                     <div class="form-group mb-2 row">
                       <div class="col-12 pl-1 p-0">
-                        <textarea name="editor14" id="editor7">{{ (isset($json14))?$json14->editor14:''}}</textarea>
+                        <textarea name="editor14" id="editor14">{{ (isset($json14))?$json14->editor14:''}}</textarea>
                       </div>
                     </div>
                     <div class=" col-12 mt-4 mb-1 ml-1 white-bg common-col">
