@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Roles;
+use App\Models\Sections;
+use App\Models\Tests;
 use App\Models\Institues;
 use Illuminate\Support\Facades\Hash;
 use DataTables;
@@ -21,7 +23,7 @@ class UsersController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
-    { 
+    {
         $type = $request->input('type');
         if($request->ajax()) {
             if($type == "S"){
@@ -61,7 +63,7 @@ class UsersController extends Controller
 
                                     <li class="action" class="action" data-toggle="modal" data-target="#mocktest"><a href="#" data-url="'.route('superadmin-show-mock-test', $row->id).'" data-id="'.$row->id.'"><i class="fas fa-clipboard-check"></i></a></li>
 
-                                    <li class="action" class="action" data-toggle="modal" data-target="#practisetest"><a href="#"><i class="fas fa-clipboard-check"></i></a></li>
+                                    <li class="action" data-toggle="modal" data-target="#practisetest" ><a href="javascript:void(0);" class="assign-prectice-test" data-id="'.$row->id.'" data-url="'.route('superadmin-user-get-prectice-test',$row->id).'"><i class="fas fa-clipboard-check"></i></a></li>
                                 </ul>';
                         return $btn;
                     })
@@ -130,7 +132,11 @@ class UsersController extends Controller
             'html'=>$html_user    
         ]);
     }
-    
+    public function getPrecticeTest($id)
+    {
+        $section = Sections::all();
+        
+    }
     /**
      * Show the form for creating a new resource.
      *

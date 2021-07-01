@@ -79,6 +79,7 @@
     </div>
   </div>
     
+
   <div class="modal fade" id="practisetest" tabindex="-1" 
       aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
@@ -89,7 +90,7 @@
             <span aria-hidden="true"><i class="fas fa-times"></i></span>
           </button>
         </div>
-        <div class="modal-body">
+        <div class="modal-body" id="prectice-test-body">
           <form class="form">
             <div class="form-check form-check-inline common-heading">
               <input type="checkbox" class="form-check-input" id="exampleCheck1">

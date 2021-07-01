@@ -38,7 +38,9 @@ Route::group(['middleware' => ['auth', 'verified','superadmin']], function () {
     Route::patch('superadmin/users/setpassword/{id}', [App\Http\Controllers\SuperAdmin\UsersController::class, 'setPassword'])->name('superadmin-user-setpassword');
     Route::post('superadmin/users/showmocktest/{id}', [App\Http\Controllers\SuperAdmin\UsersController::class, 'showMockTest'])->name('superadmin-show-mock-test');
     Route::post('superadmin/users/assignmocktest/{id}', [App\Http\Controllers\SuperAdmin\UsersController::class, 'assignMockTest'])->name('superadmin-assign-mock-test');
-   
+    Route::get('superadmin/users/getPrecticeTest/{id}', [App\Http\Controllers\SuperAdmin\UsersController::class, 'getPrecticeTest'])->name('superadmin-user-get-prectice-test');
+    
+
     Route::resource('superadmin/module', App\Http\Controllers\SuperAdmin\ModulesController::class)->names('modules');
     Route::get('superadmin/module/changestatus/{id}', [App\Http\Controllers\SuperAdmin\ModulesController::class, 'changeStatus'])->name('superadmin-module-changestatus');
 

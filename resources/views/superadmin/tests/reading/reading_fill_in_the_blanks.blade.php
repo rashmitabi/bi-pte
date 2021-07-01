@@ -98,5 +98,5 @@
 </div>
 @endsection
 @section('js-hooks')
-<script src="{{ asset('assets/js/reading/readingFillInTheBlanks.js') }}" defer></script>
+<script src="{{ asset('assets/js/reading/readingFillinTheBlanks.js') }}" defer></script>
 @endsection

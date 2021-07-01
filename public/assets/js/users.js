@@ -517,4 +517,24 @@ $(document).ready(function() {
         //   }
         // });
   //All common action end
+
+
+  //assign prectice test to users
+  //user show page data start
+  $('body').on('click','.assign-prectice-test',function(){
+    var id = $(this).data('id');
+    var url = $(this).data('url');
+    //console.log(url);
+    $.ajax({
+      url: url,
+      type:'GET',
+      data:{'id' : id},
+      beforeSend: function(){
+        $('#show-user-body').html('<i class="fa fa-spinner fa-spin"></i>  Please Wait...');
+      },
+      success:function(data) {
+        $('#prectice-test-body').html(data.html);
+      },
+    }); 
+  });
 });
