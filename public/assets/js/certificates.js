@@ -1,20 +1,17 @@
 $(document).ready(function(){
 
     $('body').on('click', '.generate_certificate', function(){
-        var user_id = $(this).data('user');
-        var test_id = $(this).data('test');
         var apiUrl = $(this).data('url');
-           // $.ajax({
-           //     url: apiUrl,
-           //     type:'GET',
-           //     data:{'id' : id},
-           //     beforeSend: function(){
-           //         $('#subject-edit-body').html('<i class="fa fa-spinner fa-spin"></i>  Please Wait...');
-           //     },
-           //     success:function(data) {
-           //         $('#subject-edit-body').html(data.html);
-           //     },
-           // });
+           $.ajax({
+               url: apiUrl,
+               type:'GET',
+               beforeSend: function(){
+                   $('#certificate-edit-body').html('<i class="fa fa-spinner fa-spin"></i>  Please Wait...');
+               },
+               success:function(data) {
+                   $('#certificate-edit-body').html(data.html);
+               },
+           });
     });
 
     $('#certificates').DataTable({

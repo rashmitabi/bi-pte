@@ -423,8 +423,9 @@ Route::group(['middleware' => ['auth', 'verified','superadmin']], function () {
 
     Route::resource('superadmin/certificates', App\Http\Controllers\SuperAdmin\CertificatesController::class);
 
+    Route::get('superadmin/certificates/edit/{aid}/{bid}', [App\Http\Controllers\SuperAdmin\CertificatesController::class, 'edit'])->name('generate-certificate');
 
-
+    
     Route::resource('superadmin/results', App\Http\Controllers\SuperAdmin\TestResultsController::class);
 
 

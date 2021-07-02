@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Transactions;
 use App\Models\Subscriptions;
 use App\Models\userSubscriptions;
+use App\Models\Settings;
 use DataTables;
 use PDF;
 
@@ -95,31 +96,50 @@ class TransactionsController extends Controller
                                / (30*60*60*24));
 
 		$rate = round($transaction->transaction->amount * 100 / 118);
+
+		$settings = Settings::all();
+		$setting = array();
+		foreach($settings as $set){
+			$setting[$set->label] = $set->value;
+		}
         
         $data = array(
 	    			'payment_id' => $transaction->transaction->id,
 	    			'billed_to' => $transaction->user->institue->institute_name,
 	    			'name' => $transaction->user->first_name." ".$transaction->user->last_name,
+	    			'state' => $transaction->user->state,
+	    			'state_code' => $transaction->user->state_code,
+	    			'customer_address' => $transaction->user->country_citizen,
+	    			'customer_GSTIN' => $transaction->user->gstin,
 	    			'validity' => $months,
 	    			'amount' => $transaction->transaction->amount,
 	    			'rate' => $rate,
 	    			'package' => $transaction->subscription->title,
 	    			'transaction_id' => $transaction->transaction->trancation_id,
 	    			'created' => date('Y-m-d', strtotime($transaction->transaction->created_at)),
+	    			'company_name' => (isset($setting['company_name']))?$setting['company_name']:'',
+	    			'company_address' => (isset($setting['company_invoice_address']))?$setting['company_invoice_address']:'',
+	    			'company_gst_number' => (isset($setting['company_gst_number']))?$setting['company_gst_number']:'',
+	    			'hsn_code' => (isset($setting['hsn_code']))?$setting['hsn_code']:'',
+	    			'company_mobile_number' => (isset($setting['company_mobile_number']))?$setting['company_mobile_number']:'',
+	    			'digital_signature' => (isset($setting['digital_signature']))?url('/assets/images/'.$setting["digital_signature"]):'',
+	    			'stgst' => (isset($setting['stgst']))?$setting['stgst']:9,
+	    			'cgst' => (isset($setting['cgst']))?$setting['cgst']:9,
+	    			'igst' => (isset($setting['igst']))?$setting['igst']:18
 	    		);
-        //echo json_encode($data);die;
+        //return view('downloadinvoice',compact('data'));
         // share data to view
-      view()->share('data',$data);
-      $pdf = PDF::loadView('invoice', $data);
+       view()->share('data', $data);
+       $pdf = PDF::loadView('downloadinvoice', $data);
 
-      $filename = time().'_invoice.pdf';
-      // download PDF file with download method
-      return $pdf->download($filename);
+       $filename = time().'_invoice.pdf';
+       // download PDF file with download method
+       return $pdf->download($filename);
     }
 
     public function create()
     {
-        return view('invoice');
+    	return view('invoice');
     }
 }
     
