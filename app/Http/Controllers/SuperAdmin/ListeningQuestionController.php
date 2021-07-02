@@ -447,6 +447,7 @@ class ListeningQuestionController extends Controller
             $result1 = Answerdata::where('id',$answer_data_1)->update(['answer_value'=>$input['correct_answers_q9']]);
             $result2 = Answerdata::where('id',$answer_data_2)->update(['answer_value'=>$input['correct_answers_q10']]);
 
+    
             for($i=9;$i<=10;$i++)
             {
                 $json  = json_encode(
@@ -538,10 +539,12 @@ class ListeningQuestionController extends Controller
         $answer_data_1      = $request->answer_data_1;
         $answer_data_2      = $request->answer_data_2;
 
+        
+
         try{
             $result1 = Answerdata::where('id',$answer_data_1)->update(['answer_value'=>$input['correct_answers_q11']]);
             $result2 = Answerdata::where('id',$answer_data_2)->update(['answer_value'=>$input['correct_answers_q12']]);
-
+    
             for($i=11;$i<=12;$i++)
             {
                 $json  = json_encode(

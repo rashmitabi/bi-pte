@@ -90,6 +90,10 @@ Route::group(['middleware' => ['auth', 'verified','superadmin']], function () {
     
     Route::post('superadmin/users/postMultipleAssignTest', [App\Http\Controllers\SuperAdmin\UsersController::class, 'postMultipleAssignTest'])->name('superadmin-user-post-multiple-assign-test');
    
+    Route::get('superadmin/users/getAssignTest/{id}', [App\Http\Controllers\SuperAdmin\UsersController::class, 'getAssignTest'])->name('superadmin-user-get-assign-test');
+    Route::post('superadmin/users/postAssignTest', [App\Http\Controllers\SuperAdmin\UsersController::class, 'postAssignTest'])->name('superadmin-user-post-assign-test');
+    Route::post('superadmin/users/getMultipleAssignTest', [App\Http\Controllers\SuperAdmin\UsersController::class, 'getMultipleAssignTest'])->name('superadmin-user-get-multiple-assign-test');
+    Route::post('superadmin/users/postMultipleAssignTest', [App\Http\Controllers\SuperAdmin\UsersController::class, 'postMultipleAssignTest'])->name('superadmin-user-post-multiple-assign-test');
 
     Route::resource('superadmin/module', App\Http\Controllers\SuperAdmin\ModulesController::class)->names('modules');
 
@@ -472,6 +476,17 @@ Route::group(['middleware' => ['auth', 'verified','branchadmin']], function () {
     Route::get('branchadmin/dashboard', [App\Http\Controllers\BranchAdmin\DashboardController::class, 'index'])->name('dashboard');
 
 
+/* Email templates module start*/
+Route::get('superadmin/email/changestatus/{id}', [App\Http\Controllers\SuperAdmin\EmailTemplatesController::class, 'changeStatus'])
+    ->name('superadmin-email-changestatus');
+Route::resource('superadmin/email', App\Http\Controllers\SuperAdmin\EmailTemplatesController::class);
+/* Email templates module start*/
+    
+/*Vouchers module start*/
+Route::get('superadmin/vouchers/changestatus/{id}', [App\Http\Controllers\SuperAdmin\VouchersController::class, 'changeStatus'])
+    ->name('superadmin-vouchers-changestatus');
+Route::resource('superadmin/vouchers', App\Http\Controllers\SuperAdmin\VouchersController::class);
+/*Vouchers module end*/
 
     //end branch admin routes
 

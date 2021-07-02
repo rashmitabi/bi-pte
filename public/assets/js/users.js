@@ -409,6 +409,19 @@ $(document).ready(function() {
       $(this).val(0);    
     }
   });
+
+
+  $('body').on('change',"#selectAllTest", function(){
+    if(this.checked){
+      $(".multitest").each(function(){
+        this.checked = true;
+      })            
+    }else{
+      $(".multitest").each(function(){
+        this.checked = false;
+      })             
+    }
+  });
   // institute all check functionality end
 
   //All common action start
@@ -444,6 +457,7 @@ $(document).ready(function() {
 
             },
           }); 
+
         }else if(selectedValue == "blockUnblock" && chekedInstituteIds != ''){
           $.ajax({
             url: change_status_url_route,
@@ -514,6 +528,7 @@ $(document).ready(function() {
       }
 
 
+      
       if(isAnyChecked == 1 && chekedStudentsIds != ''){
         if(selectedValue == "password"){
           $('#setpassword').modal('toggle');
@@ -574,7 +589,8 @@ $(document).ready(function() {
             },
           }); 
         }
-      }else{
+      }
+      else{
         alert("Please select any student.");
         $(this).val('');
       }
@@ -596,6 +612,8 @@ $(document).ready(function() {
         //   }
         // });
   //All common action end
+
+
   /*user single tests assign get and update start*/
   $('body').on('click','.get-assign-test',function(){
     var url = $(this).data('url');

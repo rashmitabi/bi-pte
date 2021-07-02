@@ -279,3 +279,63 @@
 }
 
 
+// invoice 
+
+.tax-invoice{
+    border: 1px solid #000;
+    display: block;
+    margin: auto;
+    width: 80%;
+    margin-top: 25px;
+    background-color: #fff;
+    .header{
+       display: flex;
+       justify-content: space-between;
+       padding: 0px 15px;
+       p{
+         font-size: 16px;
+         font-weight: 500;
+       }
+    }
+    .main-heading{
+        margin-top: 15px;
+        border-bottom: 1px solid #000;
+        h4{
+            text-align: center;
+        }
+    }
+    .invoice-detail{
+        p{
+            border-bottom: 1px solid #000;
+            margin: 0px;
+            padding-left: 15px;
+            font-weight: 500;
+            color: #000;
+            span{
+                padding-left: 80px;
+            }
+        }
+    }
+    .table{
+        border: 0px;
+        margin: 0px;
+        thead{
+           th{
+            border-top: none;
+             vertical-align: top;
+             border-bottom: 1px solid #000;
+             border-right: 1px solid #000;
+             padding: 0px;
+             padding-left: 10px;
+           }
+        }
+        tbody{
+            td{
+                border-right: 1px solid #000;
+                border-bottom: 1px solid #000;
+                padding-left: 10px!important;
+                padding: 0px;
+            }
+        }
+    } 
+}

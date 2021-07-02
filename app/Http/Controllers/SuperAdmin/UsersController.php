@@ -8,7 +8,10 @@ use App\Models\User;
 use App\Models\Tests;
 use App\Models\UserAssignTests;
 use App\Models\Roles;
+use App\Models\Sections;
+use App\Models\Tests;
 use App\Models\Institues;
+use App\Models\UserAssignTests;
 use Illuminate\Support\Facades\Hash;
 use DataTables;
 use App\Http\Requests\StoreUserRequest;
@@ -26,7 +29,7 @@ class UsersController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
-    { 
+    {
         $type = $request->input('type');
         if($request->ajax()) {
             if($type == "S"){
@@ -67,6 +70,7 @@ class UsersController extends Controller
                                     <li class="action" class="action" data-toggle="modal" data-target="#mocktest"><a href="javascript:void(0);" class="get-assign-test" data-test-type="M" data-id="'.$row->id.'" data-url="'.route('superadmin-user-get-assign-test',$row->id).'"><i class="fas fa-clipboard-check"></i></a></li>
 
                                     <li class="action" class="action" data-toggle="modal" data-target="#practisetest"><a href="javascript:void(0);" class="get-assign-test" data-test-type="P" data-id="'.$row->id.'" data-url="'.route('superadmin-user-get-assign-test',$row->id).'"><i class="fas fa-clipboard-check"></i></a></li>
+                                    <li class="action" data-toggle="modal" data-target="#practisetest" ><a href="javascript:void(0);" class="get-assign-test" data-test-type="P" data-id="'.$row->id.'" data-url="'.route('superadmin-user-get-assign-test',$row->id).'"><i class="fas fa-clipboard-check"></i></a></li>
                                 </ul>';
                         return $btn;
                     })
@@ -144,6 +148,7 @@ class UsersController extends Controller
             'html'=>$html_user    
         ]);
     }
+    /* single user assign tests start*/
     public function getAssignTest(Request $request,$id)
     {
         $type = $request->type;

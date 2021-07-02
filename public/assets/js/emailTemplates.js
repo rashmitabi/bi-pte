@@ -15,6 +15,8 @@ $(document).ready(function() {
                    $("#editor23").each(function(_, ckeditor) {
                       CKEDITOR.replace(ckeditor);
                   });
+                    CKEDITOR.replace(ckeditor);
+                });
                },
            });
    });
