@@ -396,6 +396,19 @@ $(document).ready(function() {
       $(this).val(0);    
     }
   });
+
+
+  $('body').on('change',"#selectAllTest", function(){
+    if(this.checked){
+      $(".multitest").each(function(){
+        this.checked = true;
+      })            
+    }else{
+      $(".multitest").each(function(){
+        this.checked = false;
+      })             
+    }
+  });
   // institute all check functionality end
 
   //All common action start

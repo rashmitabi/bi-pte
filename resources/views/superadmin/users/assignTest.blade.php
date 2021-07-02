@@ -1,7 +1,7 @@
 <form class="form" id="precticeForm" name="precticeForm">
             <div class="form-check form-check-inline common-heading">
-              <input type="checkbox" class="form-check-input" id="exampleCheck1">
-              <label class="form-check-label" for="exampleCheck1">Select All</label>
+              <input type="checkbox" class="form-check-input" id="selectAllTest">
+              <label class="form-check-label" for="selectAllTest">Select All</label>
             </div>
             <div class="form-check form-check-inline">
               <label class="form-check-label" for="inlineRadio1">Tests</label>
