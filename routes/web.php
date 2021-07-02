@@ -40,6 +40,8 @@ Route::group(['middleware' => ['auth', 'verified','superadmin']], function () {
     Route::post('superadmin/users/assignmocktest/{id}', [App\Http\Controllers\SuperAdmin\UsersController::class, 'assignMockTest'])->name('superadmin-assign-mock-test');
     Route::get('superadmin/users/getAssignTest/{id}', [App\Http\Controllers\SuperAdmin\UsersController::class, 'getAssignTest'])->name('superadmin-user-get-assign-test');
     Route::post('superadmin/users/postAssignTest', [App\Http\Controllers\SuperAdmin\UsersController::class, 'postAssignTest'])->name('superadmin-user-post-assign-test');
+    Route::post('superadmin/users/getMultipleAssignTest', [App\Http\Controllers\SuperAdmin\UsersController::class, 'getMultipleAssignTest'])->name('superadmin-user-get-multiple-assign-test');
+    Route::post('superadmin/users/postMultipleAssignTest', [App\Http\Controllers\SuperAdmin\UsersController::class, 'postMultipleAssignTest'])->name('superadmin-user-post-multiple-assign-test');
 
     Route::resource('superadmin/module', App\Http\Controllers\SuperAdmin\ModulesController::class)->names('modules');
     Route::get('superadmin/module/changestatus/{id}', [App\Http\Controllers\SuperAdmin\ModulesController::class, 'changeStatus'])->name('superadmin-module-changestatus');

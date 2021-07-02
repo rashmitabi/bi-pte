@@ -164,7 +164,7 @@
   var url_students = "{{ route('users.index', 'type=S') }}";
   var password_url_route = "{{ route('superadmin-user-showpassword', 'all') }}";
   var change_status_url_route = "{{ route('superadmin-user-changestatus', 'all') }}";
- 
+  var get_multiple_assign_test = "{{ route('superadmin-user-get-multiple-assign-test') }}";
 </script>
 <script type="text/javascript" src="{{ asset('assets/js/users.js') }}" defer></script>
 @endsection

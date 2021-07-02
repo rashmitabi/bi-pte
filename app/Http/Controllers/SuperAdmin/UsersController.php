@@ -133,6 +133,7 @@ class UsersController extends Controller
             'html'=>$html_user    
         ]);
     }
+    /* single user assign tests start*/
     public function getAssignTest(Request $request,$id)
     {
         $type = $request->type;
@@ -177,6 +178,47 @@ class UsersController extends Controller
             return false;
         }
     }
+    /* single user assign tests end*/
+
+    /* multiple user assign tests start*/
+    public function getMultipleAssignTest(Request $request)
+    {
+        $type = $request->type;
+        $tests = Tests::where(['type'=>$type])->latest()->get();
+        $user_id = implode(",",$request->id);
+        $html_Prectice = view($this->moduleTitleP.'assignMultipleUserTests', compact('tests','user_id','type'))->render();
+        return response()->json([
+            'success' => 1,
+            'html'=>$html_Prectice   
+        ]);
+    }
+    public function postMultipleAssignTest(Request $request)
+    {
+        $user_id = explode(",",$request->user_id);
+        $test_id = implode(",",$request->id);
+        $type    = $request->type;
+        if($type == 'P'){
+            foreach($user_id as $new_user)
+            {
+                $result = UserAssignTests::updateOrCreate(['user_id'   => $new_user,],
+                        ['practise_test_id'   => $test_id,]);
+            }
+        }else{
+            foreach($user_id as $new_user)
+            {
+                $result = UserAssignTests::updateOrCreate(['user_id'   => $new_user,],
+                ['mock_test_id'   => $test_id,]);
+            }
+        }
+        if($result){
+            \Session::put('success', 'Tests Assiged successfully!');
+            return true;
+        }else{
+            \Session::put('error', 'Sorry!Something wrong.try Again.');
+            return false;
+        }
+    }
+    /* multiple user assign tests end*/
     /**
      * Show the form for creating a new resource.
      *
