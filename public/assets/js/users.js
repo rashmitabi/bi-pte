@@ -361,7 +361,7 @@ $(document).ready(function() {
   });
   // student all check functionality end
 
-
+  //select all apply in mock test and prectice test model
   $('body').on('change',"#selectAllTest", function(){
     if(this.checked){
       $(".multitest").each(function(){
@@ -373,6 +373,17 @@ $(document).ready(function() {
       })             
     }
   });
+
+  $('body').on('change',"#sstate", function(){
+      var state_code = $('option:selected', this).attr('data-code');
+      console.log(state_code);
+      $("#sstate_code").val(state_code);
+  });
+  $('body').on('change',"#istate", function(){
+    var state_code = $('option:selected', this).attr('data-code');
+    console.log(state_code);
+    $("#istate_code").val(state_code);
+});
   
   // institute all check functionality start
   $('body').on('change',"#checkedAllInstitute", function(){

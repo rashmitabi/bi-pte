@@ -9,9 +9,7 @@ use App\Models\Tests;
 use App\Models\UserAssignTests;
 use App\Models\Roles;
 use App\Models\Sections;
-use App\Models\Tests;
 use App\Models\Institues;
-use App\Models\UserAssignTests;
 use Illuminate\Support\Facades\Hash;
 use DataTables;
 use App\Http\Requests\StoreUserRequest;
@@ -274,7 +272,7 @@ class UsersController extends Controller
                 'scitizen'=>'required|min:2|max:255',
                 'sresidence'=>'required|min:2|max:255',
                 'sstate'=>'required|min:2|max:100',
-                'sstate_code'=>'required|min:2|max:100',
+                'sstate_code'=>'required|min:1|max:100',
                 'sgstin'=>'required|min:2|max:100',
                 'svalidity'=>'required|after:' . date('Y-m-d'),
                 'simage'=>'nullable|image|mimes:jpeg,png,jpg|max:2048'
@@ -322,12 +320,11 @@ class UsersController extends Controller
                 'country_code'=>'required|max:5',
                 'phone_no' =>'required|max:20',
                 'status'=>'required|in:P,A,R',
-                'students_allowed' =>'required',
                 'subdomain' =>'required|max:255',
                 'domain'=>'required|max:255',
                 'welcome_msg'=>'required|max:500',
                 'istate'=>'required|min:2|max:100',
-                'istate_code'=>'required|min:2|max:100',
+                'istate_code'=>'required|min:1|max:100',
                 'igstin'=>'required|min:2|max:100',
                 'logo'=>'nullable|image|mimes:jpeg,png,jpg|max:2048',
                 'banner'=>'nullable|image|mimes:jpeg,png,jpg|max:2048',
@@ -399,7 +396,6 @@ class UsersController extends Controller
                 'user_id' => $user_id,
                 'sub_domain' => $input['subdomain'],
                 'domain' => $input['domain'],
-                'students_allowed' => $input['students_allowed'],
                 'logo' => isset($logo) ? $logo : '',
                 'banner_image' => isset($banner) ? $banner : '',
                 'show_admin_videos' => $input['admin_video'],
