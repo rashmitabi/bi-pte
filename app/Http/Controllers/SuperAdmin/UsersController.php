@@ -5,12 +5,17 @@ namespace App\Http\Controllers\SuperAdmin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Tests;
+use App\Models\UserAssignTests;
 use App\Models\Roles;
 use App\Models\Institues;
 use Illuminate\Support\Facades\Hash;
 use DataTables;
 use App\Http\Requests\StoreUserRequest;
 use Stevebauman\Location\Facades\Location;
+use App\Exports\InstituteExport;
+use App\Exports\studentExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class UsersController extends Controller
 {
@@ -59,9 +64,9 @@ class UsersController extends Controller
 
                                     <li class="action" data-toggle="modal" data-target="#setpassword"><a href="javascript:void(0);" class="user-setpassword" data-id="'.$row->id .'" data-url="'.route('superadmin-user-showpassword', $row->id).'"><i class="fas fa-unlock-alt"></i></a></li>
 
-                                    <li class="action" class="action" data-toggle="modal" data-target="#mocktest"><a href="#" data-url="'.route('superadmin-show-mock-test', $row->id).'" data-id="'.$row->id.'"><i class="fas fa-clipboard-check"></i></a></li>
+                                    <li class="action" class="action" data-toggle="modal" data-target="#mocktest"><a href="javascript:void(0);" class="get-assign-test" data-test-type="M" data-id="'.$row->id.'" data-url="'.route('superadmin-user-get-assign-test',$row->id).'"><i class="fas fa-clipboard-check"></i></a></li>
 
-                                    <li class="action" class="action" data-toggle="modal" data-target="#practisetest"><a href="#"><i class="fas fa-clipboard-check"></i></a></li>
+                                    <li class="action" class="action" data-toggle="modal" data-target="#practisetest"><a href="javascript:void(0);" class="get-assign-test" data-test-type="P" data-id="'.$row->id.'" data-url="'.route('superadmin-user-get-assign-test',$row->id).'"><i class="fas fa-clipboard-check"></i></a></li>
                                 </ul>';
                         return $btn;
                     })
@@ -106,9 +111,9 @@ class UsersController extends Controller
 
                                     <li class="action" data-toggle="modal" data-target="#setpassword"><a href="javascript:void(0);" class="user-setpassword" data-id="'.$row->id .'" data-url="'.route('superadmin-user-showpassword', $row->id).'"><i class="fas fa-unlock-alt"></i></a></li>
 
-                                    <li class="action" class="action" data-toggle="modal" data-target="#mocktest"><a href="#" data-url="'.route('superadmin-show-mock-test', $row->id).'" class="user-mock-test" data-id="'.$row->id.'"><i class="fas fa-clipboard-check"></i></a></li>
+                                    <li class="action" class="action" data-toggle="modal" data-target="#mocktest"><a href="javascript:void(0);" class="get-assign-test" data-test-type="M" data-id="'.$row->id.'" data-url="'.route('superadmin-user-get-assign-test',$row->id).'"><i class="fas fa-clipboard-check"></i></a></li>
 
-                                    <li class="action" class="action" data-toggle="modal" data-target="#practisetest"><a href="#"><i class="fas fa-clipboard-check"></i></a></li>
+                                    <li class="action" class="action" data-toggle="modal" data-target="#practisetest"><a href="javascript:void(0);" class="get-assign-test" data-test-type="P" data-id="'.$row->id.'" data-url="'.route('superadmin-user-get-assign-test',$row->id).'"><i class="fas fa-clipboard-check"></i></a></li>
                                 </ul>';
                         return $btn;
                     })
@@ -117,6 +122,15 @@ class UsersController extends Controller
             }
         }
         return view($this->moduleTitleP.'index');
+    }
+
+    public function instituteExport() 
+    {
+        return Excel::download(new InstituteExport, 'institue.xlsx');
+    } 
+    public function studentExport() 
+    {
+        return Excel::download(new studentExport, 'student.xlsx');
     }
 
     public function showMockTest(){
@@ -130,7 +144,91 @@ class UsersController extends Controller
             'html'=>$html_user    
         ]);
     }
-    
+    public function getAssignTest(Request $request,$id)
+    {
+        $type = $request->type;
+        $tests = Tests::where(['type'=>$type])->latest()->get();
+        $user_id = $id;
+        $userAssignTests = UserAssignTests::where('user_id',$user_id)->first();
+        if($type == 'P'){
+            $alreadyAssign = [];
+            if(isset($userAssignTests->practise_test_id) && !empty($userAssignTests->practise_test_id)){
+                $alreadyAssign = explode(",",$userAssignTests->practise_test_id);
+            }
+        }else{
+            $alreadyAssign = [];
+            if(isset($userAssignTests->mock_test_id) && !empty($userAssignTests->mock_test_id)){
+                $alreadyAssign = explode(",",$userAssignTests->mock_test_id);
+            }
+        }
+        $html_Prectice = view($this->moduleTitleP.'assignTest', compact('tests','user_id','alreadyAssign','type'))->render();
+
+        return response()->json([
+            'success' => 1,
+            'html'=>$html_Prectice   
+        ]);
+    }
+    public function postAssignTest(Request $request)
+    {
+        $user_id = $request->user_id;
+        $test_id = implode(",",$request->id);
+        $type    = $request->type;
+        if($type == 'P'){
+            $result = UserAssignTests::updateOrCreate(['user_id'   => $user_id,],
+            ['practise_test_id'   => $test_id,]);
+        }else{
+            $result = UserAssignTests::updateOrCreate(['user_id'   => $user_id,],
+                    ['mock_test_id'   => $test_id,]);
+        }
+        if($result){
+            \Session::put('success', 'Tests Assiged successfully!');
+            return true;
+        }else{
+            \Session::put('error', 'Sorry!Something wrong.try Again.');
+            return false;
+        }
+    }
+    /* single user assign tests end*/
+
+    /* multiple user assign tests start*/
+    public function getMultipleAssignTest(Request $request)
+    {
+        $type = $request->type;
+        $tests = Tests::where(['type'=>$type])->latest()->get();
+        $user_id = implode(",",$request->id);
+        $html_Prectice = view($this->moduleTitleP.'assignMultipleUserTests', compact('tests','user_id','type'))->render();
+        return response()->json([
+            'success' => 1,
+            'html'=>$html_Prectice   
+        ]);
+    }
+    public function postMultipleAssignTest(Request $request)
+    {
+        $user_id = explode(",",$request->user_id);
+        $test_id = implode(",",$request->id);
+        $type    = $request->type;
+        if($type == 'P'){
+            foreach($user_id as $new_user)
+            {
+                $result = UserAssignTests::updateOrCreate(['user_id'   => $new_user,],
+                        ['practise_test_id'   => $test_id,]);
+            }
+        }else{
+            foreach($user_id as $new_user)
+            {
+                $result = UserAssignTests::updateOrCreate(['user_id'   => $new_user,],
+                ['mock_test_id'   => $test_id,]);
+            }
+        }
+        if($result){
+            \Session::put('success', 'Tests Assiged successfully!');
+            return true;
+        }else{
+            \Session::put('error', 'Sorry!Something wrong.try Again.');
+            return false;
+        }
+    }
+    /* multiple user assign tests end*/
     /**
      * Show the form for creating a new resource.
      *

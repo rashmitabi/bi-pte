@@ -25,7 +25,7 @@ function addQuestionColumn()
     console.log(correctId);
     var ansOptionHtml = "<div class='form-group mb-3 row'>"
                             +"<label class='col-3 col-form-label custom-label'>"+ansOptionLabel+"</label>"
-                            +"<div class='col-8 p-0'>"
+                            +"<div class='col-12 col-md-7 col-xl-7 col-sm-12 p-0'>"
                                 +"<input type='text' class='form-control' name='"+ansOptionId+"' id='"+ansOptionId+"' placeholder='Which of the Following Are True Statements?'>"
                             +"</div>"
                             +"<div class='plus-icon' onclick='addQuestionColumn()' data-qid='"+alpha+"' data-aid='"+number+"'>"
@@ -34,7 +34,7 @@ function addQuestionColumn()
                         +"</div>";
     var correctOptionHtml = "<div class='form-group mb-3 row'>"
                                 +"<label class='col-3 col-form-label custom-label'>"+correctLabel+"</label>"
-                                +"<div class='col-8 p-0'>"
+                                +"<div class='col-12 col-md-7 col-xl-7 col-sm-12 p-0'>"
                                     +"<input type='text' class='form-control ' name='"+correctId+"' id='"+correctId+"' placeholder='it Seems that The Lack of Psychological Reward is the Reason for their Disatisfaction.'>"
                                 +"</div>"
                             +"</div>";

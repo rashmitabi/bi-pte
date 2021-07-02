@@ -28,7 +28,7 @@ class CertificatesController extends Controller
 
                         $btn = '<ul class="actions-btns">
                                     <li class="action" data-toggle="modal" data-target="#editcertificates">
-                                    <a href="javascript:void(0)" class="generate_certificate" data-test="'.$row->test_id.'" data-user="'.$row->user_id.'" data-url="'.route('certificates.edit').'">
+                                    <a href="javascript:void(0)" class="generate_certificate" data-test="'.$row->test_id.'" data-user="'.$row->user_id.'" data-url="">
                                     <img src="'. asset('assets/images/icons/certificate.svg').'"
                                                 class=""></a></li>
                                 </ul>';

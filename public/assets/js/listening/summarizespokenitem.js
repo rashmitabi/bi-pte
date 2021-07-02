@@ -1,37 +1,90 @@
 $(document).ready(function() {
-
-    $('#frm-summarize-spoken-item').validate({ 
+     $('#frm-summarize-spoken-item').validate({ 
+        ignore: [],
+        debug: false,
         rules: {
-            'question_audio[]': {
+            question_audio1:{ 
                 required: true
             },
-            'question_image[]': {
-                required: true,
+            question_image1:{
+                required: true
             },
-            'summary_script[]': {
-                required: true,
+            summary_script1:{
+                required: function() 
+                {
+                    return CKEDITOR.instances.summary_script1.updateElement();
+                }
             },
-            'sample_ans[]': {
-                required: true,
+            sample_ans1:{
+                required: function() 
+                {
+                    return CKEDITOR.instances.sample_ans1.updateElement();
+                }
+            },
+            question_audio2:{ 
+                required: true
+            },
+            question_image2:{
+                required: true
+            },
+            summary_script2:{
+                required: function() 
+                {
+                    return CKEDITOR.instances.summary_script2.updateElement();
+                }
+            },
+            sample_ans2:{
+                required: function() 
+                {
+                    return CKEDITOR.instances.sample_ans2.updateElement();
+                }
             }
+            
         },
-        messages : { 
-            'question_audio[]': {
+        messages : {
+            question_audio1: {
                 required: "audio is required"
             },
-            'question_image[]': {
+            question_image1: {
                 required: "images is required"
             },
-            'summary_script[]': {
+            summary_script1: {
                 required: "summary script is required"
             },
-            'sample_ans[]': {
+            sample_ans1: {
+                required : "sample answer is required",
+            },
+            question_audio2: {
+                required: "audio is required"
+            },
+            question_image2: {
+                required: "images is required"
+            },
+            summary_script2: {
+                required: "summary script is required"
+            },
+            sample_ans2: {
                 required : "sample answer is required",
             }
         },
-        
-    });
-
+        submitHandler: function(form) {
+            console.log(section_id);
+            $.ajax({
+                type : 'POST',
+                url : url,
+                data : $('form').serialize(),
+                success: function(result){
+                    console.log(result);
+                    // $('#head').text(result.status);
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    //alert(xhr.status);
+                    //alert(thrownError);
+                }
+            });
+        }
+    }); 
+   
 });
 
 function  uploadImage(){

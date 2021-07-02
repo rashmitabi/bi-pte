@@ -79,12 +79,12 @@ class ListeningQuestionController extends Controller
 
         if($questions->save()){
             $id = $questions->id;
-            for($i=0;$i< count($input['summary_script']);$i++){
+            for($i=1;$i<= 2;$i++){
 	            $questiondata = new Questiondata;
 	            $questiondata->question_id = $id;
 	            $questiondata->data_type = $questionType->question_title.$i;
 	            $questiondata->data_value = json_encode(
-	            		array($input['question_audio'][$i],$input['question_image'][$i])
+	            		array($input['question_audio'.$i],$input['question_image'.$i])
 	            	);
 	            $questiondata->save();
 
@@ -92,8 +92,8 @@ class ListeningQuestionController extends Controller
 	            $answerdata = new Answerdata;
 	            $answerdata->question_id = $id;
 	            $answerdata->answer_type = $questionType->question_title.$i;
-	            $answerdata->answer_value = $input['summary_script'][$i];
-	            $answerdata->sample_answer = $input['sample_ans'][$i];
+	            $answerdata->answer_value = $input['summary_script'.$i];
+	            $answerdata->sample_answer = $input['sample_ans'.$i];
 	            $answerdata->save();
 	        }
 
@@ -105,19 +105,19 @@ class ListeningQuestionController extends Controller
 	public function updateSummarizeSpokenItem(Request $request){
 		$input  = \Arr::except($request->all(),array('_token'));
 		
-	    for($i=0;$i< count($input['summary_script']);$i++){
+	    for($i=1;$i<= 2;$i++){
            
-            $questiondata = Questiondata::where('id',$input['question_data_id'][$i])->update(
+            $questiondata = Questiondata::where('id',$input['question_data_id'.$i])->update(
                 array(
                     "data_value" => json_encode(
-	            			array($input['question_audio'][$i],$input['question_image'][$i])
+	            			array($input['question_audio'.$i],$input['question_image'.$i])
 	            		)
                 )
             );
-            $answerdata = Answerdata::where('id',$input['answer_data_id'][$i])->update(
+            $answerdata = Answerdata::where('id',$input['answer_data_id'.$i])->update(
                 array(
-                    "answer_value" => $input['summary_script'][$i],
-                    "sample_answer" => $input['sample_ans'][$i]
+                    "answer_value" => $input['summary_script'.$i],
+                    "sample_answer" => $input['sample_ans'.$i]
                 )
             );
            
@@ -233,14 +233,14 @@ class ListeningQuestionController extends Controller
 
         if($questions->save()){
             $id = $questions->id;
-            for($i=0;$i< count($input['question']);$i++){
+            for($i=1;$i<= 2;$i++){
 	            $questiondata = new Questiondata;
 	            $questiondata->question_id = $id;
 	            $questiondata->data_type = $questionType->question_title.$i;
 	            $questiondata->data_value = json_encode(
 	            		array(
-	            			'audio' => $input['audio'][$i],
-	            			'question' => $input['question'][$i]
+	            			'audio' => $input['audio'.$i],
+	            			'question' => $input['question'.$i]
 	            		)
 	            	);
 	            $questiondata->save();
@@ -248,7 +248,7 @@ class ListeningQuestionController extends Controller
 	            $answerdata = new Answerdata;
 	            $answerdata->question_id = $id;
 	            $answerdata->answer_type = $questionType->question_title.$i;
-	            $answerdata->answer_value = $input['correct_ans'][$i];
+	            $answerdata->answer_value = $input['correct_ans'.$i];
 	            $answerdata->sample_answer = '-';
 	            $answerdata->save();
 	        }
@@ -261,21 +261,21 @@ class ListeningQuestionController extends Controller
 	public function updateFillInTheBlanks(Request $request){
 		$input  = \Arr::except($request->all(),array('_token'));
 		
-	    for($i=0;$i< count($input['question']);$i++){
+	    for($i=1;$i<= 2;$i++){
            
-            $questiondata = Questiondata::where('id',$input['question_data_id'][$i])->update(
+            $questiondata = Questiondata::where('id',$input['question_data_id'.$i])->update(
                 array(
                     "data_value" => json_encode(
 	            		array(
-	            			'question' => $input['question'][$i],
-	            			'audio' => $input['audio'][$i]
+	            			'question' => $input['question'.$i],
+	            			'audio' => $input['audio'.$i]
 	            		)
 	            	)
                 )
             );
-            $answerdata = Answerdata::where('id',$input['answer_data_id'][$i])->update(
+            $answerdata = Answerdata::where('id',$input['answer_data_id'.$i])->update(
                 array(
-                    "answer_value" => $input['correct_ans'][$i]
+                    "answer_value" => $input['correct_ans'.$i]
                 )
             );
            
@@ -443,31 +443,27 @@ class ListeningQuestionController extends Controller
         $answer_data_1      = $request->answer_data_1;
         $answer_data_2      = $request->answer_data_2;
 
-        $result1 = Answerdata::where('id',$answer_data_1)->update(['answer_value'=>$input['correct_answers_q9']]);
-        $result2 = Answerdata::where('id',$answer_data_2)->update(['answer_value'=>$input['correct_answers_q10']]);
+        try{
+            $result1 = Answerdata::where('id',$answer_data_1)->update(['answer_value'=>$input['correct_answers_q9']]);
+            $result2 = Answerdata::where('id',$answer_data_2)->update(['answer_value'=>$input['correct_answers_q10']]);
 
-        for($i=9;$i<=10;$i++)
-        {
-            $json  = json_encode(
-                array(
-                    'question_q'.$i=>$input['question_q'.$i],
-                    'audio_q'.$i=>$input['audio_q'.$i],
-                    'choice_1_q'.$i=>$input['choice_1_q'.$i],
-                    'choice_2_q'.$i=>$input['choice_2_q'.$i],
-                    'choice_3_q'.$i=>$input['choice_3_q'.$i],
-                    'choice_4_q'.$i=>$input['choice_4_q'.$i]
-                    )
-                );
-            $id = $input['question_data_id_'.$i];
-            $finalResult = Questiondata::where('id',$id)->update(['data_value'=>$json]);
-        }
-
-        if($result1 && $result2 && $finalResult)
-        {
+            for($i=9;$i<=10;$i++)
+            {
+                $json  = json_encode(
+                    array(
+                        'question_q'.$i=>$input['question_q'.$i],
+                        'audio_q'.$i=>$input['audio_q'.$i],
+                        'choice_1_q'.$i=>$input['choice_1_q'.$i],
+                        'choice_2_q'.$i=>$input['choice_2_q'.$i],
+                        'choice_3_q'.$i=>$input['choice_3_q'.$i],
+                        'choice_4_q'.$i=>$input['choice_4_q'.$i]
+                        )
+                    );
+                $id = $input['question_data_id_'.$i];
+                $finalResult = Questiondata::where('id',$id)->update(['data_value'=>$json]);
+            }
             return redirect()->route('tests.index')->with('success','Questions updated Successfully!');
-        }
-        else
-        {
+        }catch(\Exception $e){
             return redirect()->route('tests.index')->with('error','Sorry!Something wrong.Try Again.');
         }
     }
@@ -542,34 +538,28 @@ class ListeningQuestionController extends Controller
         $answer_data_1      = $request->answer_data_1;
         $answer_data_2      = $request->answer_data_2;
 
-        $result1 = Answerdata::where('id',$answer_data_1)->update(['answer_value'=>$input['correct_answers_q11']]);
-        $result2 = Answerdata::where('id',$answer_data_2)->update(['answer_value'=>$input['correct_answers_q12']]);
+        try{
+            $result1 = Answerdata::where('id',$answer_data_1)->update(['answer_value'=>$input['correct_answers_q11']]);
+            $result2 = Answerdata::where('id',$answer_data_2)->update(['answer_value'=>$input['correct_answers_q12']]);
 
-        for($i=11;$i<=12;$i++)
-        {
-            $json  = json_encode(
-                array(
-                    'audio_q'.$i=>$input['audio_q'.$i],
-                    'choice_1_q'.$i=>$input['choice_1_q'.$i],
-                    'choice_2_q'.$i=>$input['choice_2_q'.$i],
-                    'choice_3_q'.$i=>$input['choice_3_q'.$i],
-                    'choice_4_q'.$i=>$input['choice_4_q'.$i]
-                    )
-                );
-            $id = $input['question_data_id_'.$i];
-            $finalResult = Questiondata::where('id',$id)->update(['data_value'=>$json]);
-        }
-
-        if($result1 && $result2 && $finalResult)
-        {
+            for($i=11;$i<=12;$i++)
+            {
+                $json  = json_encode(
+                    array(
+                        'audio_q'.$i=>$input['audio_q'.$i],
+                        'choice_1_q'.$i=>$input['choice_1_q'.$i],
+                        'choice_2_q'.$i=>$input['choice_2_q'.$i],
+                        'choice_3_q'.$i=>$input['choice_3_q'.$i],
+                        'choice_4_q'.$i=>$input['choice_4_q'.$i]
+                        )
+                    );
+                $id = $input['question_data_id_'.$i];
+                $finalResult = Questiondata::where('id',$id)->update(['data_value'=>$json]);
+            }
             return redirect()->route('tests.index')->with('success','Questions updated Successfully!');
-        }
-        else
-        {
+        }catch(\Exception $e){
             return redirect()->route('tests.index')->with('error','Sorry!Something wrong.Try Again.');
         }
-
-
     }
     public function storeHighlightIncorrectWords(Request $request)/*Store listening highlight incorrect words*/
     {
@@ -636,27 +626,23 @@ class ListeningQuestionController extends Controller
         $test_id            = $request->test_id;
         $question_id        = $request->question_id;
 
-        for($i=13;$i<=14;$i++)
-        {
-            $qid = 'q'.$i.'_id';
-            $aid = 'a'.$i.'_id';
-            $answer = 'correct_ans'.$i;
-            $data_value = json_encode(
-                array(
-                    'audio'.$i=>$input['audio'.$i],
-                    'editor'.$i=>$input['editor'.$i]
-                    )
-                );
-            $firstResult = Questiondata::where('id',$input[$qid])->update(['data_value'=>$data_value]);
-            $secondResult= Answerdata::where('id',$input[$aid])->update(['answer_value'=>$input[$answer]]);
-        }
-
-        if($firstResult && $secondResult)
-        {
+        try{
+            for($i=13;$i<=14;$i++)
+            {
+                $qid = 'q'.$i.'_id';
+                $aid = 'a'.$i.'_id';
+                $answer = 'correct_ans'.$i;
+                $data_value = json_encode(
+                    array(
+                        'audio'.$i=>$input['audio'.$i],
+                        'editor'.$i=>$input['editor'.$i]
+                        )
+                    );
+                $firstResult = Questiondata::where('id',$input[$qid])->update(['data_value'=>$data_value]);
+                $secondResult= Answerdata::where('id',$input[$aid])->update(['answer_value'=>$input[$answer]]);
+            }
             return redirect()->route('tests.index')->with('success','Questions updated Successfully!');
-        }
-        else
-        {
+        }catch(\Exception $e){
             return redirect()->route('tests.index')->with('error','Sorry!Something wrong.Try Again.');
         }
     }

@@ -193,7 +193,5 @@ class QuestionsController extends Controller
             \Session::put('error', 'Sorry!Something wrong.try Again.');
             return false;
         }
-
-
     }
 }

@@ -13,10 +13,10 @@ class SpeakingQuestionController extends Controller
     
 	public function storeReadAloud(Request $request){
         
-        $request->validate([
-            'question'=>'required|array',
-            'sample_ans'=>'required|array'
-        ]);
+        // $request->validate([
+        //     'question'=>'required|array',
+        //     'sample_ans'=>'required|array'
+        // ]);
 
         $input  = \Arr::except($request->all(),array('_token'));
         
@@ -40,11 +40,11 @@ class SpeakingQuestionController extends Controller
         if($questions->save()){
             $id = $questions->id;
 
-            for($i=0;$i< count($input['question']);$i++){
+            for($i=1;$i<= 6;$i++){
                 $questiondata = new Questiondata;
                 $questiondata->question_id = $id;
                 $questiondata->data_type = $questionType->question_title.$i;
-                $questiondata->data_value = $input['question'][$i];
+                $questiondata->data_value = $input['editor'.$i];
                 $questiondata->save();
                
 
@@ -52,7 +52,7 @@ class SpeakingQuestionController extends Controller
                 $answerdata->question_id = $id;
                 $answerdata->answer_type = $questionType->question_title.$i;
                 $answerdata->answer_value = "-";
-                $answerdata->sample_answer = $input['sample_ans'][$i];
+                $answerdata->sample_answer = $input['sample_ans'.$i];
                 $answerdata->save();
             }
             
@@ -66,16 +66,16 @@ class SpeakingQuestionController extends Controller
         $input  = \Arr::except($request->all(),array('_token'));
         $questiondata = 1;
         $answerdata = 1; 
-        for($i=0;$i< count($input['question']);$i++){
+        for($i=1;$i< 6;$i++){
            
-            $questiondata = Questiondata::where('id',$input['question_data_id'][$i])->update(
+            $questiondata = Questiondata::where('id',$input['question_data_id'.$i])->update(
                 array(
-                    "data_value" => $input['question'][$i]
+                    "data_value" => $input['editor'.$i]
                 )
             );
-            $answerdata = Answerdata::where('id',$input['answer_data_id'][$i])->update(
+            $answerdata = Answerdata::where('id',$input['answer_data_id'.$i])->update(
                 array(
-                    "sample_answer" => $input['sample_ans'][$i]
+                    "sample_answer" => $input['sample_ans'.$i]
                 )
             );
            

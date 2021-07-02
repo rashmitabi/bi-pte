@@ -30,14 +30,14 @@
                     <input type="hidden" name="question_id" value="{{ $questions->id }}">
                     @for($i=0;$i<$count;$i++)
                       <div class=" col-12 mt-5 mb-1 ml-1 white-bg common-col">
-                        <input type="hidden" name="question_data_id[]" value="{{ $questions->questiondata[$i]->id }}">
+                        <input type="hidden" name="question_data_id{{ $i+1 }}" id="question_data_id{{ $i+1 }}" value="{{ $questions->questiondata[$i]->id }}">
                         @php
                           $data_value = json_decode($questions->questiondata[$i]->data_value);
                         @endphp
                         <div class="form-group mb-2 row">
                             <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label pl-1 ">Q{{ $i+5 }} Audio</label>
                             <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
-                                <input type="text" name="audio[]" id="audio{{ $i+1 }}" value="{{ (isset($data_value->audio) ? $data_value->audio : '') }}" class="form-control " placeholder="Whole">
+                                <input type="text" name="audio{{ $i+1 }}" id="audio{{ $i+1 }}" value="{{ (isset($data_value->audio) ? $data_value->audio : '') }}" class="form-control " placeholder="Whole">
                             </div>
                         </div>
                       </div>
@@ -46,15 +46,15 @@
                       </div>
                       <div class="form-group mb-2 row">
                         <div class="col-12 pl-1 p-0">
-                          <textarea name="question[]" id="question{{ $i+1 }}" class="ckeditor">{{ (isset($data_value->question) ? $data_value->question : '') }}</textarea>
+                          <textarea name="question{{ $i+1 }}" id="question{{ $i+1 }}" class="ckeditor">{{ (isset($data_value->question) ? $data_value->question : '') }}</textarea>
                         </div>
                       </div>
-                      <input type="hidden" name="answer_data_id[]" value="{{ $questions->answerdata[$i]->id }}">
+                      <input type="hidden" name="answer_data_id{{ $i+1 }}" id="answer_data_id{{ $i+1 }}" value="{{ $questions->answerdata[$i]->id }}">
                       <div class=" col-12 mt-4 mb-1 ml-1 white-bg common-col">
                         <div class="form-group mb-2 row">
                           <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label pl-1 ">Q{{ $i+5 }} Correct Answers</label>
                           <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
-                            <input type="text" name="correct_ans[]" id="correct_ans{{ $i+1 }}" value="{{ $questions->answerdata[$i]->answer_value }}" class="form-control " placeholder="Whole">
+                            <input type="text" name="correct_ans{{ $i+1 }}" id="correct_ans{{ $i+1 }}" value="{{ $questions->answerdata[$i]->answer_value }}" class="form-control " placeholder="Whole">
                           </div>
                         </div>
                       </div>
@@ -64,7 +64,7 @@
                       <div class="form-group mb-2 row">
                           <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label pl-1 ">Q5 Audio</label>
                           <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
-                              <input type="text" name="audio[]" id="audio1" class="form-control " placeholder="Whole">
+                              <input type="text" name="audio1" id="audio1" class="form-control " placeholder="Whole">
                           </div>
                        </div>
                     </div>
@@ -73,14 +73,14 @@
                     </div>
                     <div class="form-group mb-2 row">
                       <div class="col-12 pl-1 p-0">
-                        <textarea name="question[]" id="question1" class="ckeditor"></textarea>
+                        <textarea name="question1" id="question1" class="ckeditor"></textarea>
                       </div>
                     </div>
                     <div class=" col-12 mt-4 mb-1 ml-1 white-bg common-col">
                       <div class="form-group mb-2 row">
                         <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label pl-1 ">Q5 Correct Answers</label>
                         <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
-                          <input type="text" name="correct_ans[]" id="correct_ans1" class="form-control " placeholder="Whole">
+                          <input type="text" name="correct_ans1" id="correct_ans1" class="form-control " placeholder="Whole">
                         </div>
                       </div>
                     </div>
@@ -89,7 +89,7 @@
                       <div class="form-group mb-2 row">
                         <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label pl-1 ">Q6 Audio</label>
                         <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
-                          <input type="text" name="audio[]" id="audio2" class="form-control " placeholder="Whole">
+                          <input type="text" name="audio2" id="audio2" class="form-control " placeholder="Whole">
                         </div>
                       </div>
                     </div>
@@ -98,14 +98,14 @@
                     </div>
                     <div class="form-group mb-2 row">
                       <div class="col-12 pl-1 p-0">
-                        <textarea name="question[]" id="question2" class="ckeditor"></textarea>
+                        <textarea name="question2" id="question2" class="ckeditor"></textarea>
                       </div>
                     </div>
                     <div class=" col-12 mt-4 mb-1 ml-1 white-bg common-col">
                       <div class="form-group mb-2 row">
                         <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label pl-1 ">Q6 Correct Answers</label>
                         <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
-                          <input type="text" name="correct_ans[]" id="correct_ans2" class="form-control " placeholder="Whole">
+                          <input type="text" name="correct_ans2" id="correct_ans2" class="form-control " placeholder="Whole">
                         </div>
                       </div>
                     </div>
@@ -137,7 +137,7 @@
       </div>
     </section>
   </div>
-@endsection
+@endsection 
 @section('js-hooks')
 <script src="{{ asset('assets/js/listening/fillintheblanks.js') }}" defer></script>
 @endsection

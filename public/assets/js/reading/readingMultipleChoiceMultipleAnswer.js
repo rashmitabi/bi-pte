@@ -18,7 +18,7 @@ function addQuestionColumn()
     console.log(number);
     var html = "<div class='form-group mb-3 row '>"
                     +"<label class='col-3 col-form-label custom-label'>"+ans_option_label+"</label>"
-                    +"<div class='col-8 p-0'>"
+                    +"<div class='col-12 col-md-7 col-xl-7 col-sm-12 p-0'>"
                         +"<input type='text' class='form-control' name='"+ans_option_id+"' id='"+ans_option_id+"' placeholder='"+ans_placeholder+"'>"
                     +"</div>"
                     +"<div class='plus-icon' onclick='addQuestionColumn()' data-id='"+number+"'>"

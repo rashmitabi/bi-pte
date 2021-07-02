@@ -163,9 +163,9 @@
       @endif
       <div class="form-group row">
         <div class="col-12 col-md-12 col-xl-11 col-sm-12 btn mt-2">
-          <button  type="button" class="btn delete-btn btn-outline-primary"><i class="fas fa-trash icon"></i>Delete</button>
-          <button  type="button" class="btn edit-btn btn-outline-primary"><i class="fas fa-pen icon"></i>Edit</button>
-          <button  type="button" class="btn shield-btn btn-outline-primary"><a href="#"><img src="{{ asset('assets/images/icons/blocked.svg') }}" class="icon"></a></i>Block</button>
+          <button  type="button" class="btn delete-btn btn-outline-primary" style="    min-width: auto;"><i class="fas fa-trash icon"></i>Delete</button>
+          <button  type="button" class="btn edit-btn btn-outline-primary" style="    min-width: auto;"><i class="fas fa-pen icon"></i>Edit</button>
+          <button  type="button" class="btn shield-btn btn-outline-primary" style="    min-width: auto;"><a href="#"><img src="{{ asset('assets/images/icons/blocked.svg') }}" class="icon"></a></i>Block</button>
         </div>
       </div>
     </form>

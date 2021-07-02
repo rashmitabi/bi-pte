@@ -27,26 +27,26 @@
 	                    		@endphp
 	                    		<input type="hidden" name="question_id" value="{{ $questions->id }}">
 	                    		@for($i=0;$i<$count;$i++)
-	                    			<input type="hidden" name="question_data_id{{ $i+1 }}" value="{{ $questions->questiondata[$i]->id }}">
+	                    			<input type="hidden" name="question_data_id{{ $i+1 }}" id="question_data_id{{ $i+1 }}" value="{{ $questions->questiondata[$i]->id }}">
 	                                <div class="sub-heading">
 				                       <h4>Item-{{ $i+1 }}<span>Question</span></h4>
 				                    </div>
 			                        <div class="form-group mb-3 row">
 			                            <div class="col-12 col-md-12 col-xl-11 col-sm-12">
-			                             	<textarea name="item-{{ $i+1 }}" id="editor{{ $i+1 }}">{{ $questions->questiondata[$i]->data_value }}
+			                             	<textarea name="editor{{ $i+1 }}" id="editor{{ $i+1 }}">{{ $questions->questiondata[$i]->data_value }}
 			                             	</textarea>
 			                             	@if($errors->has('item-'.($i+1)))
 					                            <span class="error-msg"> {{$errors->first('item-'.($i+1))}}</span>
 					                        @endif
 			                           </div>
 			                        </div>
-			                        <input type="hidden" name="answer_data_id{{ $i+1 }}" value="{{ $questions->answerdata[$i]->id }}">
+			                        <input type="hidden" name="answer_data_id{{ $i+1 }}" id="answer_data_id{{ $i+1 }}" value="{{ $questions->answerdata[$i]->id }}">
 			                        <div class="sub-heading">
 			                           <h4>Sample Item-{{ $i+1 }}<span>Question</span></h4>
 			                        </div>
 			                        <div class="form-group mb-3 row">
 			                            <div class="col-12 col-md-12 col-xl-11 col-sm-12">
-			                                <textarea name="sample-item-{{ $i+1 }}" id="editor1{{ $i+1 }}">{{ $questions->answerdata[$i]->sample_answer }}</textarea>
+			                                <textarea name="sample_editor{{ $i+1 }}" id="sample_editor{{ $i+1 }}" class="ckeditor">{{ $questions->answerdata[$i]->sample_answer }}</textarea>
 			                                @if($errors->has('sample-item-'.($i+1)))
 					                            <span class="error-msg">{{$errors->first('sample-item-'.($i+1))}}</span>
 					                        @endif
@@ -59,7 +59,7 @@
 			                    </div>
 		                        <div class="form-group mb-3 row">
 		                            <div class="col-12 col-md-12 col-xl-11 col-sm-12">
-		                             	<textarea name="item-1" id="editor10">
+		                             	<textarea name="editor1" id="editor1">
 		                             		{{old('item-1')}}
 		                             	</textarea>
 		                             	@if($errors->has('item-1'))
@@ -72,7 +72,7 @@
 		                        </div>
 		                        <div class="form-group mb-3 row">
 		                            <div class="col-12 col-md-12 col-xl-11 col-sm-12">
-		                                <textarea name="sample-item-1" id="editor11">{{old('sample-item-1')}}</textarea>
+		                                <textarea name="sample_editor1" id="sample_editor1" class="ckeditor">{{old('sample-item-1')}}</textarea>
 		                                @if($errors->has('sample-item-1'))
 				                            <span class="error-msg">{{$errors->first('sample-item-1')}}</span>
 				                        @endif
@@ -83,7 +83,7 @@
 		                        </div>
 		                        <div class="form-group mb-3 row">
 		                            <div class="col-12 col-md-12 col-xl-11 col-sm-12">
-		                                <textarea name="item-2" id="editor12">{{ old('item-2') }}</textarea>
+		                                <textarea name="editor2" id="editor2">{{ old('item-2') }}</textarea>
 		                                @if($errors->has('item-2'))
 				                            <span class="error-msg">{{$errors->first('item-2')}}</span>
 				                        @endif
@@ -94,7 +94,7 @@
 		                        </div>
 		                        <div class="form-group mb-3 row">
 		                            <div class="col-12 col-md-12 col-xl-11 col-sm-12">
-		                               <textarea name="sample-item-2" id="editor13">{{ old('sample-item-2') }}</textarea>
+		                               <textarea name="sample_editor2" id="sample_editor2" class="ckeditor">{{ old('sample-item-2') }}</textarea>
 		                                @if($errors->has('sample-item-2'))
 				                            <span class="error-msg">{{$errors->first('sample-item-2')}}</span>
 				                        @endif
@@ -116,5 +116,5 @@
 @endsection
 @section('js-hooks')
 
-<!-- <script src="" defer></script> -->
+<script src="{{ asset('assets/js/writing/summarizewritten.js') }}" defer></script>
 @endsection

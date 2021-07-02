@@ -15,7 +15,7 @@
 	               <div class="question-forms">
 	                   <div class="col-12 heading-text">
 	                      <h5>Speaking Task 1: Read Aloud</h5>
-	                   </div>
+	                   </div>  
 	                   <form class="form ml-1" method="POST" id="frm-read-aloud" name="frm-read-aloud" action="{{ (isset($questions->desc))?route('update-read-aloud'):route('add-read-aloud')}}">
 	                   		@csrf
 	                    	<input type="hidden" name="question_type_id" value="{{ $question_id }}">
@@ -29,21 +29,21 @@
 			                    		@endphp
 			                    		<input type="hidden" name="question_id" value="{{ $questions->id }}">
 			                    		@for($i=0;$i<$count;$i++)
-			                    			<input type="hidden" name="question_data_id[]" value="{{ $questions->questiondata[$i]->id }}">
+			                    			<input type="hidden" name="question_data_id{{ $i+1 }}" id="question_data_id{{ $i+1 }}" value="{{ $questions->questiondata[$i]->id }}">
 			                    			<div class="sub-heading">
 		                                    	<h4>Speaking Question {{$i+1}}<span>Paragraph</span></h4>
 		                               		</div>
 			                                <div class="form-group mb-1 row">
 			                                   	<div class="col-12 pr-0">
-			                                      <textarea name="question[]" id="editor{{$i+1}}">{{ $questions->questiondata[$i]->data_value }}</textarea>
+			                                      <textarea name="editor{{$i+1}}" id="editor{{$i+1}}">{{ $questions->questiondata[$i]->data_value }}</textarea>
 			                                    </div>
 			                                </div>
-			                                <input type="hidden" name="answer_data_id[]" value="{{ $questions->answerdata[$i]->id }}">
+			                                <input type="hidden" name="answer_data_id{{$i+1}}" id="answer_data_id{{$i+1}}" value="{{ $questions->answerdata[$i]->id }}">
 			                                <div class=" col-12 mt-4 ml-3 white-bg common-col">
 			                                    <div class="form-group mb-3 row">
 			                                       <label class="col-3 col-form-label">Sample Ans {{$i+1}}</label>
 			                                       <div class="col-9">
-			                                          <input type="text" name="sample_ans[]" id="sample_ans{{$i+1}}" value="{{ $questions->answerdata[$i]->sample_answer }}" class="form-control " placeholder="Whole,Total,Very,Open">
+			                                          <input type="text" name="sample_ans{{$i+1}}" id="sample_ans{{$i+1}}" value="{{ $questions->answerdata[$i]->sample_answer }}" class="form-control " placeholder="Whole,Total,Very,Open">
 			                                       </div>
 			                                    </div>
 			                                </div>
@@ -54,7 +54,7 @@
 		                               </div>
 		                                <div class="form-group mb-1 row">
 		                                   	<div class="col-12 pr-0">
-		                                      	<textarea name="question[]" id="editor1"></textarea>
+		                                      	<textarea name="editor1" id="editor1"></textarea>
 		                                      	@if($errors->has('question'))
 						                            <span class="error-msg"> {{$errors->first('question')}}</span>
 						                        @endif
@@ -64,7 +64,7 @@
 		                                    <div class="form-group mb-3 row">
 		                                       <label class="col-3 col-form-label">Sample Ans 1</label>
 		                                       	<div class="col-9">
-		                                          	<input type="text" name="sample_ans[]" id="sample_ans1" class="form-control sample_ans" placeholder="Whole,Total,Very,Open">
+		                                          	<input type="text" name="sample_ans1" id="sample_ans1" class="form-control sample_ans" placeholder="Whole,Total,Very,Open">
 		                                          	@if($errors->has('sample_ans'))
 							                            <span class="error-msg"> {{$errors->first('sample_ans')}}</span>
 							                        @endif
@@ -76,14 +76,14 @@
 		                                </div>
 		                                <div class="form-group mb-1 row">
 		                                   <div class="col-12 pr-0">
-		                                      <textarea name="question[]" id="editor2"></textarea>
+		                                      <textarea name="editor2" id="editor2"></textarea>
 		                                  </div>
 		                                </div>
 		                                <div class=" col-12 mt-4 ml-3 white-bg common-col">
 		                                    <div class="form-group mb-2 row">
 		                                       <label class="col-3 col-form-label">Sample Ans 2</label>
 		                                       <div class="col-9">
-		                                          <input type="text" name="sample_ans[]" id="sample_ans2"  class="form-control sample_ans" placeholder="Whole,Total,Very,Open">
+		                                          <input type="text" name="sample_ans2" id="sample_ans2"  class="form-control sample_ans" placeholder="Whole,Total,Very,Open">
 		                                       </div>
 		                                    </div>
 		                                </div>
@@ -92,14 +92,14 @@
 		                                </div>
 		                                <div class="form-group mb-1 row">
 		                                    <div class="col-12 pr-0">
-		                                      <textarea name="question[]" id="editor3"></textarea>
+		                                      <textarea name="editor3" id="editor3"></textarea>
 		                                    </div>
 		                                </div>
 		                                <div class=" col-12 mt-4 ml-3  white-bg common-col">
 		                                    <div class="form-group mb-2 row">
 		                                       <label class="col-3 col-form-label">Sample Ans 3</label>
 		                                       <div class="col-9">
-		                                          <input type="text" name="sample_ans[]" id="sample_ans3" class="form-control sample_ans" placeholder="Whole,Total,Very,Open">
+		                                          <input type="text" name="sample_ans3" id="sample_ans3" class="form-control sample_ans" placeholder="Whole,Total,Very,Open">
 		                                       </div>
 		                                    </div>
 		                                </div>
@@ -108,14 +108,14 @@
 		                                </div>
 		                                <div class="form-group mb-1 row">
 		                                   <div class="col-12 pr-0">
-		                                      <textarea name="question[]" id="editor4"></textarea>
+		                                      <textarea name="editor4" id="editor4"></textarea>
 		                                  </div>
 		                                </div>
 		                                <div class=" col-12 mt-4 ml-3 white-bg common-col">
 		                                    <div class="form-group mb-2 row">
 		                                       <label class="col-3 col-form-label">Sample Ans 4</label>
 		                                       <div class="col-9">
-		                                          <input type="text" name="sample_ans[]" id="sample_ans4" class="form-control sample_ans" placeholder="Whole,Total,Very,Open">
+		                                          <input type="text" name="sample_ans4" id="sample_ans4" class="form-control sample_ans" placeholder="Whole,Total,Very,Open">
 		                                       </div>
 		                                    </div>
 		                                </div>
@@ -124,14 +124,14 @@
 		                                </div>
 		                                <div class="form-group mb-1 row">
 		                                   <div class="col-12 pr-0">
-		                                      <textarea name="question[]" id="editor5"></textarea>
+		                                      <textarea name="editor5" id="editor5"></textarea>
 		                                  </div>
 		                                </div>
 		                                <div class=" col-12 mt-4 ml-3 white-bg common-col">
 		                                    <div class="form-group mb-2 row">
 		                                       <label class="col-3 col-form-label">Sample Ans 5</label>
 		                                       <div class="col-9">
-		                                          <input type="text" name="sample_ans[]"  id="sample_ans5" class="form-control sample_ans" placeholder="Whole,Total,Very,Open">
+		                                          <input type="text" name="sample_ans5"  id="sample_ans5" class="form-control sample_ans" placeholder="Whole,Total,Very,Open">
 		                                       </div>
 		                                    </div>
 		                                </div>
@@ -140,14 +140,14 @@
 		                                </div>
 		                                <div class="form-group mb-1 row">
 		                                   <div class="col-12 pr-0">
-		                                      <textarea name="question[]" id="editor6"></textarea>
+		                                      <textarea name="editor6" id="editor6"></textarea>
 		                                  </div>
 		                                </div>
 		                                <div class=" col-12 mt-4 ml-3 white-bg common-col">
 		                                    <div class="form-group mb-2 row">
 		                                       <label class="col-3 col-form-label">Sample Ans 6</label>
 		                                       <div class="col-9">
-		                                          <input type="text" name="sample_ans[]" id="sample_ans6" class="form-control sample_ans" placeholder="Whole,Total,Very,Open">
+		                                          <input type="text" name="sample_ans6" id="sample_ans6" class="form-control sample_ans" placeholder="Whole,Total,Very,Open">
 		                                       </div>
 		                                    </div>
 		                                </div>

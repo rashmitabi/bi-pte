@@ -361,6 +361,19 @@ $(document).ready(function() {
   });
   // student all check functionality end
 
+
+  $('body').on('change',"#selectAllTest", function(){
+    if(this.checked){
+      $(".multitest").each(function(){
+        this.checked = true;
+      })            
+    }else{
+      $(".multitest").each(function(){
+        this.checked = false;
+      })             
+    }
+  });
+  
   // institute all check functionality start
   $('body').on('change',"#checkedAllInstitute", function(){
     if(this.checked){
@@ -411,8 +424,13 @@ $(document).ready(function() {
       var idSelector = function() { return $(this).attr("data-id"); };
       var chekedInstituteIds = $(":checkbox:checked").map(idSelector).get();
       
-      if(AllChecked == 1 ){
-        if(selectedValue == "password" || chekedInstituteIds != ''){
+      if(selectedValue == "export"){
+        window.location = institute_export_url_route;
+        return false; 
+      }
+
+      if(isAnyChecked == 1 ){
+        if(selectedValue == "password" && chekedInstituteIds != ''){
           $('#setpassword').modal('toggle');
           $.ajax({
             url: password_url_route,
@@ -426,8 +444,7 @@ $(document).ready(function() {
 
             },
           }); 
-
-        }else if(selectedValue == "blockUnblock"){
+        }else if(selectedValue == "blockUnblock" && chekedInstituteIds != ''){
           $.ajax({
             url: change_status_url_route,
             type:'GET',
@@ -443,6 +460,34 @@ $(document).ready(function() {
               console.log(response.responseJSON.errors);
             }
           }); 
+        }else if(selectedValue == "assignPracticeTest" && chekedInstituteIds != ''){
+            $('#practisetest').modal('toggle');
+            $.ajax({
+              url: get_multiple_assign_test,
+              type:'POST',
+              data:{'_token':CSRF_TOKEN, 'id' : chekedInstituteIds,'type':'P'},
+              beforeSend: function(){
+                $('#prectice-test-body').html('<i class="fa fa-spinner fa-spin"></i>  Please Wait...');
+              },
+              success:function(data) {
+                $('#prectice-test-body').html(data.html);
+  
+              },
+            }); 
+        }else if(selectedValue == "assignMockTest" && chekedInstituteIds != ''){
+            $('#mocktest').modal('toggle');
+            $.ajax({
+              url: get_multiple_assign_test,
+              type:'POST',
+              data:{'_token':CSRF_TOKEN, 'id' : chekedInstituteIds,'type':'M'},
+              beforeSend: function(){
+                $('#assign-mock-test-body').html('<i class="fa fa-spinner fa-spin"></i>  Please Wait...');
+              },
+              success:function(data) {
+                $('#assign-mock-test-body').html(data.html);
+
+              },
+            }); 
         }
       }else{
         alert("Please select any institute.");
@@ -461,8 +506,15 @@ $(document).ready(function() {
       });    
       var idSelector = function() { return $(this).attr("data-id"); };
       var chekedStudentsIds = $(":checkbox:checked").map(idSelector).get();
-      
-      if(AllChecked == 1 || chekedStudentsIds != ''){
+
+      if(selectedValue == "export"){
+          
+        window.location = student_export_url_route;
+        return false;  
+      }
+
+
+      if(isAnyChecked == 1 && chekedStudentsIds != ''){
         if(selectedValue == "password"){
           $('#setpassword').modal('toggle');
           $.ajax({
@@ -477,7 +529,6 @@ $(document).ready(function() {
 
             },
           }); 
-
         }else if(selectedValue == "blockUnblock"){
           $.ajax({
             url: change_status_url_route,
@@ -493,6 +544,34 @@ $(document).ready(function() {
             error: function(response) {
               console.log(response.responseJSON.errors);
             }
+          }); 
+        }else if(selectedValue == "assignPracticeTest"){
+          $('#practisetest').modal('toggle');
+          $.ajax({
+            url: get_multiple_assign_test,
+            type:'POST',
+            data:{'_token':CSRF_TOKEN, 'id' : chekedStudentsIds,'type':'P'},
+            beforeSend: function(){
+              $('#prectice-test-body').html('<i class="fa fa-spinner fa-spin"></i>  Please Wait...');
+            },
+            success:function(data) {
+              $('#prectice-test-body').html(data.html);
+
+            },
+          }); 
+        }else if(selectedValue == "assignMockTest"){
+          $('#mocktest').modal('toggle');
+          $.ajax({
+            url: get_multiple_assign_test,
+            type:'POST',
+            data:{'_token':CSRF_TOKEN, 'id' : chekedStudentsIds,'type':'M'},
+            beforeSend: function(){
+              $('#assign-mock-test-body').html('<i class="fa fa-spinner fa-spin"></i>  Please Wait...');
+            },
+            success:function(data) {
+              $('#assign-mock-test-body').html(data.html);
+
+            },
           }); 
         }
       }else{
@@ -517,4 +596,82 @@ $(document).ready(function() {
         //   }
         // });
   //All common action end
+  /*user single tests assign get and update start*/
+  $('body').on('click','.get-assign-test',function(){
+    var url = $(this).data('url');
+    var type = $(this).data('test-type');
+    var randomString = '#prectice-test-body';
+    if(type == 'M'){
+        randomString = '#assign-mock-test-body';
+    }
+    $.ajax({
+      url: url,
+      type:'GET',
+      data:{type:type},
+      beforeSend: function(){
+        $(randomString).html('<i class="fa fa-spinner fa-spin"></i>  Please Wait...');
+      },
+      success:function(data) {
+        $(randomString).html(data.html);
+      },
+    }); 
+  });
+  $('body').on('click','.store-assign-test',function(){
+    $("#checkError").text("");
+    var user_id = $(this).data('user-id');
+    var url     = $(this).data('url');
+    var type    = $(this).data('test-type');
+    var id = [];
+    $('.multitest:checked').each(function(){
+        id.push($(this).val());
+    });
+    if(id.length > 0){
+        $.ajax({
+          url: url,
+          type:'POST',
+          data:{
+              _token:CSRF_TOKEN,
+              user_id:user_id,
+              id:id,
+              type:type
+          },
+          success:function(data) {
+            location.reload();
+          },
+        }); 
+    }else{
+      $("#checkError").text("Please select any one test");
+    }
+  });
+  /*user single tests assign get and update end*/
+
+  /*multiple user tests assign get and update start*/
+  $('body').on('click','.store-multiple-assign-test',function(){
+    $("#checkError").text("");
+    var user_id = $(this).data('user-id');
+    var url     = $(this).data('url');
+    var type    = $(this).data('test-type');
+    var id = [];
+    $('.multitest:checked').each(function(){
+        id.push($(this).val());
+    });
+    if(id.length > 0){
+        $.ajax({
+          url: url,
+          type:'POST',
+          data:{
+              _token:CSRF_TOKEN,
+              user_id:user_id,
+              id:id,
+              type:type
+          },
+          success:function(data) {
+            location.reload();
+          },
+        }); 
+    }else{
+      $("#checkError").text("Please select any one tests");
+    }
+  });
+  /*multiple user tests assign get and update end*/
 });

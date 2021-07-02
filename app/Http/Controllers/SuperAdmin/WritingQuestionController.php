@@ -13,12 +13,12 @@ class WritingQuestionController extends Controller
 
 	public function storeSummarizeWritten(Request $request){
 
-        $request->validate([
-            'item-1'=>'required',
-            'item-2'=>'required',
-            'sample-item-1'=>'required',
-            'sample-item-2'=>'required'
-        ]);
+        // $request->validate([
+        //     'item-1'=>'required',
+        //     'item-2'=>'required',
+        //     'sample-item-1'=>'required',
+        //     'sample-item-2'=>'required'
+        // ]);
 
         $input  = \Arr::except($request->all(),array('_token'));
 
@@ -45,27 +45,27 @@ class WritingQuestionController extends Controller
             $questiondata = new Questiondata;
             $questiondata->question_id = $id;
             $questiondata->data_type = $questionType->question_title."1";
-            $questiondata->data_value = $input['item-1'];
+            $questiondata->data_value = $input['editor1'];
             $questiondata->save();
 
             $questiondata = new Questiondata;
             $questiondata->question_id = $id;
             $questiondata->data_type = $questionType->question_title."2";
-            $questiondata->data_value = $input['item-2'];
+            $questiondata->data_value = $input['editor2'];
             $questiondata->save();
 
             $answerdata = new Answerdata;
             $answerdata->question_id = $id;
             $answerdata->answer_type = $questionType->question_title."1";
             $answerdata->answer_value = "-";
-            $answerdata->sample_answer = $input['sample-item-1'];
+            $answerdata->sample_answer = $input['sample_editor1'];
             $answerdata->save();
 
             $answerdata = new Answerdata;
             $answerdata->question_id = $id;
             $answerdata->answer_type = $questionType->question_title."2";
             $answerdata->answer_value = "-";
-            $answerdata->sample_answer = $input['sample-item-2'];
+            $answerdata->sample_answer = $input['sample_editor2'];
             $answerdata->save();
 
             return redirect()->route('tests.index')->with('success','Questions added Successfully!');
@@ -76,33 +76,33 @@ class WritingQuestionController extends Controller
 
     public function updateSummarizeWritten(Request $request){
 
-        $request->validate([
-            'item-1'=>'required',
-            'item-2'=>'required',
-            'sample-item-1'=>'required',
-            'sample-item-2'=>'required'
-        ]);
+        // $request->validate([
+        //     'item-1'=>'required',
+        //     'item-2'=>'required',
+        //     'sample-item-1'=>'required',
+        //     'sample-item-2'=>'required'
+        // ]);
 
         $input  = \Arr::except($request->all(),array('_token'));
 
         $questiondata = Questiondata::where('id',$input['question_data_id1'])->update(
                 array(
-                    "data_value" => $input['item-1']
+                    "data_value" => $input['editor1']
                 )
             );
         $questiondata = Questiondata::where('id',$input['question_data_id2'])->update(
                 array(
-                    "data_value" => $input['item-2']
+                    "data_value" => $input['editor2']
                 )
             );
         $answerdata = Answerdata::where('id',$input['answer_data_id1'])->update(
                 array(
-                    "sample_answer" => $input['sample-item-1']
+                    "sample_answer" => $input['sample_editor1']
                 )
             );
         $answerdata = Answerdata::where('id',$input['answer_data_id2'])->update(
                 array(
-                    "sample_answer" => $input['sample-item-2']
+                    "sample_answer" => $input['sample_editor2']
                 )
             );
 
@@ -115,10 +115,10 @@ class WritingQuestionController extends Controller
     }
 
     public function storeEssayWritting(Request $request){
-        $request->validate([
-            'essay_title'=>'required',
-            'sample_essay'=>'required'
-        ]);
+        // $request->validate([
+        //     'essay_title'=>'required',
+        //     'sample_essay'=>'required'
+        // ]);
         $input  = \Arr::except($request->all(),array('_token'));
 
         $question_type_id = $input['question_type_id'];
@@ -144,7 +144,7 @@ class WritingQuestionController extends Controller
             $questiondata = new Questiondata;
             $questiondata->question_id = $id;
             $questiondata->data_type = $questionType->question_title;
-            $questiondata->data_value = $input['essay_title'];
+            $questiondata->data_value = $input['essay_title1'];
             $questiondata->save();
            
 
@@ -152,7 +152,7 @@ class WritingQuestionController extends Controller
             $answerdata->question_id = $id;
             $answerdata->answer_type = $questionType->question_title;
             $answerdata->answer_value = "-";
-            $answerdata->sample_answer = $input['sample_essay'];
+            $answerdata->sample_answer = $input['sample_essay1'];
             $answerdata->save();
             
 
@@ -163,21 +163,21 @@ class WritingQuestionController extends Controller
     }
 
     public function updateEssayWritting(Request $request){
-        $request->validate([
-            'essay_title'=>'required',
-            'sample_essay'=>'required'
-        ]);
+        // $request->validate([
+        //     'essay_title'=>'required',
+        //     'sample_essay'=>'required'
+        // ]);
         $input  = \Arr::except($request->all(),array('_token'));
 
         
-        $questiondata = Questiondata::where('id',$input['question_data_id'])->update(
+        $questiondata = Questiondata::where('id',$input['question_data_id1'])->update(
             array(
-                "data_value" => $input['essay_title']
+                "data_value" => $input['essay_title1']
             )
         );
-        $answerdata = Answerdata::where('id',$input['answer_data_id'])->update(
+        $answerdata = Answerdata::where('id',$input['answer_data_id1'])->update(
                 array(
-                    "sample_answer" => $input['sample_essay']
+                    "sample_answer" => $input['sample_essay1']
                 )
             );
 

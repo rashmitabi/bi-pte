@@ -16,9 +16,7 @@ $(document).ready(function() {
                 required : "sample answer is required",
             }
         },
-        submitHandler: function(form) {
-           alert("hii");
-        }
+        
     });
 });
 

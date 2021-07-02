@@ -1,12 +1,16 @@
 $(document).ready(function() {
-    $('#hightlight_words').validate({ 
+    $('#hightlight_words').validate({
+        ignore: [],
+        debug: false,
         rules: {
+            editor13:{
+                required: function() 
+                {
+                    return CKEDITOR.instances.editor13.updateElement();
+                }
+            },
             audio13: {
                 required: true
-            },
-            editor13: {
-                required: true,
-                minlength:3
             },
             correct_ans13: {
                 required: true
@@ -14,9 +18,11 @@ $(document).ready(function() {
             audio14: {
                 required: true
             },
-            editor14: {
-                required: true,
-                minlength:3
+            editor14:{
+                required: function() 
+                {
+                    return CKEDITOR.instances.editor14.updateElement();
+                }
             },
             correct_ans14: {
                 required: true
@@ -27,8 +33,7 @@ $(document).ready(function() {
                 required: "Audio is required"
             },
             editor13: {
-                required : "paragraph is required",
-                minlength: "paragraph is required"
+                required : "paragraph is required"
             },
             correct_ans13: {
                 required: "Correct answers is required"
@@ -37,8 +42,7 @@ $(document).ready(function() {
                 required: "Audio is required"
             },
             editor14: {
-                required: "paragraph is required",
-                minlength: "paragraph is required"
+                required: "paragraph is required"
             },
             correct_ans14: {
                 required: "Correct answers is required"

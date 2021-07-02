@@ -1,27 +1,41 @@
 $(document).ready(function() {
-     $('#frm-essay-writting').validate({ 
+     $('#frm-summarize-written').validate({ 
         ignore: [],
         debug: false,
         rules: {
-            essay_title1:{
+            editor1:{
                 required: function() 
                 {
-                    return CKEDITOR.instances.essay_title1.updateElement();
+                    return CKEDITOR.instances.editor1.updateElement();
                 }
             },
-            sample_essay1:{
+            sample_editor1:{
+                required: true
+            },
+            editor2:{
                 required: function() 
                 {
-                    return CKEDITOR.instances.sample_essay1.updateElement();
+                    return CKEDITOR.instances.editor2.updateElement();
                 }
+            },
+            sample_editor2:{
+                required: true
             }
         },
         messages : {
-            essay_title1: {
-                required: "Paragraph is required"
+
+            editor1: {
+                required: "Paragraph1 is required"
             },
-            sample_essay1:{
-                required: "Sample essay is required"
+            sample_editor1: {
+                required: "Sample Ans1 is required"
+            },
+
+            editor2: {
+                required: "Paragraph2 is required"
+            },
+            sample_editor2: {
+                required: "Sample Ans2 is required"
             }
         },
         submitHandler: function(form) {

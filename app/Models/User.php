@@ -34,6 +34,9 @@ class User extends Authenticatable
         'country_citizen',
         'country_residence',
         'validity',
+        'state',
+        'state_code',
+        'gstin',
         'status'
     ];
 
@@ -58,12 +61,12 @@ class User extends Authenticatable
 
     public function institue()
     {
-        return $this->hasOne(institues::class);
+        return $this->hasOne(Institues::class);
     }
 
     public function role()
     {
-        return $this->belongsTo(roles::class,'id');
+        return $this->belongsTo(Roles::class,'id');
     }
 
     public function userSubscriptions()

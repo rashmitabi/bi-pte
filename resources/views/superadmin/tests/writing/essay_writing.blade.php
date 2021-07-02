@@ -29,25 +29,25 @@
 	                    		@endphp
 	                    		<input type="hidden" name="question_id" value="{{ $questions->id }}">
 	                    		@for($i=0;$i<$count;$i++)
-		                    		<input type="hidden" name="question_data_id" value="{{ $questions->questiondata[$i]->id }}">
+		                    		<input type="hidden" name="question_data_id{{ $i+1 }}" id="question_data_id{{ $i+1 }}" value="{{ $questions->questiondata[$i]->id }}">
 		                            <div class="sub-heading">
 				                       <h4>Essay Title<span>Question</span></h4>
 				                    </div>
 				                    <div class="form-group mb-3 row">
 			                            <div class="col-12 col-md-12 col-xl-11 col-sm-12">
-			                               <textarea name="essay_title" id="editor14">{{ $questions->questiondata[$i]->data_value }}</textarea>
+			                               <textarea name="essay_title{{ $i+1 }}" id="essay_title{{ $i+1 }}" class="ckeditor">{{ $questions->questiondata[$i]->data_value }}</textarea>
 			                                @if($errors->has('essay_title'))
 					                            <span class="error-msg"> {{$errors->first('essay_title')}}</span>
 					                        @endif
 			                            </div>
 			                        </div>
-			                        <input type="hidden" name="answer_data_id" value="{{ $questions->answerdata[$i]->id }}">
+			                        <input type="hidden" name="answer_data_id{{$i+1}}" id="answer_data_id{{$i+1}}" value="{{ $questions->answerdata[$i]->id }}">
 			                        <div class="sub-heading">
 			                           <h4>Sample Essay<span>Question</span></h4>
 			                        </div>
 			                        <div class="form-group mb-3 row">
 			                           <div class="col-12 col-md-12 col-xl-11 col-sm-12">
-			                               <textarea name="sample_essay" id="editor15">{{ $questions->answerdata[$i]->sample_answer }}</textarea>
+			                               <textarea name="sample_essay{{ $i+1 }}" id="sample_essay{{ $i+1 }}" class="ckeditor">{{ $questions->answerdata[$i]->sample_answer }}</textarea>
 			                               @if($errors->has('sample_essay'))
 					                            <span class="error-msg">{{$errors->first('sample_essay')}}</span>
 					                        @endif
@@ -60,7 +60,7 @@
 			                    </div>
 		                        <div class="form-group mb-3 row">
 		                            <div class="col-12 col-md-12 col-xl-11 col-sm-12">
-		                               <textarea name="essay_title" id="editor14">{{ old('essay_title') }}</textarea>
+		                               <textarea name="essay_title1" id="essay_title1" class="ckeditor">{{ old('essay_title') }}</textarea>
 		                                @if($errors->has('essay_title'))
 				                            <span class="error-msg"> {{$errors->first('essay_title')}}</span>
 				                        @endif
@@ -71,7 +71,7 @@
 		                        </div>
 		                        <div class="form-group mb-3 row">
 		                           <div class="col-12 col-md-12 col-xl-11 col-sm-12">
-		                               <textarea name="sample_essay" id="editor15">{{ old('sample_essay') }}</textarea>
+		                               <textarea name="sample_essay1" id="sample_essay1" class="ckeditor">{{ old('sample_essay') }}</textarea>
 		                               @if($errors->has('sample_essay'))
 				                            <span class="error-msg">{{$errors->first('sample_essay')}}</span>
 				                        @endif
@@ -92,5 +92,5 @@
 	</div>
 @endsection
 @section('js-hooks')
-<!-- <script src="{{ asset('assets/js/writing/essaywriting.js') }}" defer></script> -->
+<script src="{{ asset('assets/js/writing/essaywriting.js') }}" defer></script>
 @endsection
