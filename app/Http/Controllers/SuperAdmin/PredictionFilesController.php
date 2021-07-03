@@ -189,7 +189,7 @@ class PredictionFilesController extends Controller
             \Session::put('success', 'Prediction File updated Successfully!');
             return true;
         }else{
-            \Session::put('error', 'Sorry!Something wrong.try Again.');
+            \Session::put('error', 'Sorry!Something went wrong. Please try Again.');
             return false;
         }
     }

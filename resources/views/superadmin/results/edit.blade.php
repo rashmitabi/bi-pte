@@ -1,5 +1,5 @@
 <div class="tab white-bg">
-                       <nav>
+                         <nav>
                            <div class="nav nav-tabs results-tab" id="nav-tab" role="tablist">
                                 <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Listening</a>
                                 <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Speaking</a>
@@ -14,8 +14,14 @@
                                </div>   
                                <div class="row d-flex justify-content-center mt-100">
                                  <div class="col-md-6">
-                                       <div class="progress blue"> <span class="progress-left"> <span class="progress-bar"></span> </span> <span class="progress-right"> <span class="progress-bar"></span> </span>
-                                           <div class="progress-value">70</div>
+                                       <div class="progress blue" id="listening"> 
+                                        <span class="progress-left"> 
+                                          <span class="progress-bar"></span> 
+                                        </span> 
+                                        <span class="progress-right"> 
+                                          <span class="progress-bar"></span> 
+                                        </span>
+                                           <div class="progress-value">{{ $resultData[2] }}</div>
                                        </div>
                                  </div>
                                </div>
@@ -26,8 +32,8 @@
                                 </div>   
                                <div class="row d-flex justify-content-center mt-100">
                                  <div class="col-md-6">
-                                       <div class="progress blue"> <span class="progress-left"> <span class="progress-bar"></span> </span> <span class="progress-right"> <span class="progress-bar"></span> </span>
-                                           <div class="progress-value">90</div>
+                                       <div class="progress blue" id="speaking"> <span class="progress-left"> <span class="progress-bar"></span> </span> <span class="progress-right"> <span class="progress-bar"></span> </span>
+                                           <div class="progress-value">{{ $resultData[4] }}</div>
                                        </div>
                                  </div>
                                </div>
@@ -38,8 +44,8 @@
                                </div>   
                                <div class="row d-flex justify-content-center mt-100">
                                  <div class="col-md-6">
-                                       <div class="progress blue"> <span class="progress-left"> <span class="progress-bar"></span> </span> <span class="progress-right"> <span class="progress-bar"></span> </span>
-                                           <div class="progress-value">90</div>
+                                       <div class="progress blue" id="writing"> <span class="progress-left"> <span class="progress-bar"></span> </span> <span class="progress-right"> <span class="progress-bar"></span> </span>
+                                           <div class="progress-value">{{ $resultData[3] }}</div>
                                        </div>
                                  </div>
                                </div>
@@ -50,8 +56,8 @@
                                </div>   
                                <div class="row d-flex justify-content-center mt-100">
                                  <div class="col-md-6">
-                                       <div class="progress blue"> <span class="progress-left"> <span class="progress-bar"></span> </span> <span class="progress-right"> <span class="progress-bar"></span> </span>
-                                           <div class="progress-value">90</div>
+                                       <div class="progress blue" id="reading"> <span class="progress-left"> <span class="progress-bar"></span> </span> <span class="progress-right"> <span class="progress-bar"></span> </span>
+                                           <div class="progress-value">{{ $resultData[1] }}</div>
                                        </div>
                                  </div>
                                </div>

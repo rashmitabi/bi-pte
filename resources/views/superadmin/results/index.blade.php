@@ -23,7 +23,7 @@
                             <th>Test Name</th>
                             <th>Test Type</th>
                             <th>Test Subject</th>
-                            <th>Score</th>
+                            <th>Total Score</th>
                             <th>Action</th>
                         </tr>
                     </thead>

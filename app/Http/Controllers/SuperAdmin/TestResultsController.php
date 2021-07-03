@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\TestResults;
 use Illuminate\Http\Request;
 use DataTables;
+use DB;
 
 class TestResultsController extends Controller
 {
@@ -20,7 +21,8 @@ class TestResultsController extends Controller
     {
             // dd($data);
         if($request->ajax()) {
-            $data = TestResults::with(['test','subject','user'])->get();
+            //$data = TestResults::with(['test','subject','user'])->get();
+            $data = TestResults::with(['test','subject','user'])->select('test_id','user_id', 'subject_id', DB::raw('SUM(get_score) AS score'))->groupBy('test_id', 'user_id', 'subject_id')->get(); 
             return Datatables::of($data)
                     ->addIndexColumn()
                     ->addColumn('username', function($row){
@@ -43,10 +45,10 @@ class TestResultsController extends Controller
                         return $row->subject->subject_name;
                     })
                     ->addColumn('score', function($row){
-                        return $row->get_score;
+                        return $row->score;
                     })
                     ->addColumn('action', function($row){
-                        $btn = '<ul class="actions-btns"><li data-toggle="modal" data-target="#testresults" class="action"><a href="javascript:void(0);" class="results-edit" data-id="'.$row->id .'" data-url="'.route('results.edit', $row->id).'"><i class="fas fa-eye"></i></a></li></ul>';
+                        $btn = '<ul class="actions-btns"><li data-toggle="modal" data-target="#testresults" class="action"><a href="javascript:void(0);" class="results-edit" data-url="'.route('generate-result', ['aid' => $row->test_id, 'bid' => $row->user_id]).'"><i class="fas fa-eye"></i></a></li></ul>';
                         
                         return $btn;
                     })
@@ -94,9 +96,13 @@ class TestResultsController extends Controller
      * @param  \App\Models\TestResults  $testResults
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($tid, $uid)
     {
-        $resultData = TestResults::find($id);
+        $data = TestResults::select(DB::raw('SUM(get_score) AS score'),'section_id')->groupBy('test_id', 'user_id', 'section_id')->where(['test_id' => $tid, 'user_id' => $uid])->get(); 
+        $resultData = array();
+        foreach($data as $d){
+            $resultData[$d->section_id] = $d->score;
+        }
         $html_role = view($this->moduleTitleP.'edit', compact('resultData'))->render();
 
         return response()->json([

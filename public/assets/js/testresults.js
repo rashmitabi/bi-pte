@@ -38,12 +38,10 @@ var table = $('#results').DataTable({
    $(document).ready(function() {
     //Role Edit page data start
    $('body').on('click','.results-edit',function(){
-           var id = $(this).data('id');
            var apiUrl = $(this).data('url');
            $.ajax({
                url: apiUrl,
                type:'GET',
-               data:{'id' : id},
                beforeSend: function(){
                    $('#result-edit-body').html('<i class="fa fa-spinner fa-spin"></i>  Please Wait...');
                },
