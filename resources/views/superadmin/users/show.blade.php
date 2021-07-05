@@ -149,12 +149,6 @@
           </div>
         </div>
         <div class="form-group row">
-          <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label">Country Residence</label>
-          <div class=" form-input col-12 col-md-7 col-xl-7 col-sm-12">
-            <input type="email" class="form-control" placeholder="{{ $user->country_residence }}">
-          </div>
-        </div>
-        <div class="form-group row">
           <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label">Validity</label>
           <div class=" form-input col-12 col-md-7 col-xl-7 col-sm-12">
             <input type="email" class="form-control" placeholder="{{ $user->validity }}">
