@@ -47,6 +47,16 @@ var table = $('#results').DataTable({
                },
                success:function(data) {
                    $('#result-edit-body').html(data.html);
+                   $('.progress-pie-chart').each(function(){
+                      var $ppc = $(this),
+                      percent = parseInt($ppc.data('percent')),
+                        deg = 360*percent/90;
+                      if (percent > 50) {
+                        $ppc.addClass('gt-50');
+                      }
+                      $(this).find('.ppc-progress-fill').css('transform','rotate('+ deg +'deg)');
+                      $(this).find('.ppc-percents span').html(percent);
+                   });
                },
            }); 
    });

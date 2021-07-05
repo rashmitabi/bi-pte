@@ -481,6 +481,24 @@ body {
                     color: #000000;
                     font-weight: 500;
               }
+              &::after{
+                content: attr(data-text);
+                font-size: 18px;
+                position: absolute;
+                top: 0;
+                left: 0;
+                background: #fff;
+                padding: 10px 15px;
+                display: block;
+                width: calc(100% - 40px);
+                pointer-events: none;
+                z-index: 20;
+                height: 40px;
+                line-height: 40px;
+                color: #999;
+                border-radius: 5px 10px 10px 5px;
+                font-weight: 300;
+              }
          }
          textarea, select{
                line-height: 1.6 !important;

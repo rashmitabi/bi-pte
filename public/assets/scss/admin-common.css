@@ -2212,4 +2212,13 @@ body {
 .progress-pie-chart, .progress-pie-chart1, .progress-pie-chart2, .progress-pie-chart3 {
   margin: 0px auto 20px;
 }
+.custom-file:after{
+                content: attr(data-text);
+                position: absolute;
+                top: 0;
+                left: 0;                
+                padding: 10px 15px;
+                display: block;
+                z-index: 20;
+         }
 /*# sourceMappingURL=admin-common.css.map */

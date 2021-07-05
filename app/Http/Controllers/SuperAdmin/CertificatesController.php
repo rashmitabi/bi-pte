@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\TestResults;
 use App\Models\Certificates;
+use App\Models\Notifications;
+use App\Models\Tests;
 use App\Http\Requests\CreateCertificateRequest;
 use DataTables;
 use DB;
@@ -91,6 +93,23 @@ class CertificatesController extends Controller
         if($count == 0){
             $result = Certificates::create($input);
             if($result){
+                //send notification
+                $test = Tests::find($input['test_id']);
+                if($test->type == "M"){
+                    $type = "Mock Test";
+                }
+                else if($test->type == "P"){
+                    $type = "Practice Test";
+                }
+                $notification_data = array(
+                    'user_id' => $input['student_user_id'],
+                    'sender_id' => $input['generate_by_user_id'],
+                    'type' => "student",
+                    'title' => "New certificate has been generated",
+                    'body' => "A new certificate has been generated for ".$type." - ".$test->test_name." attempted by you.",
+                    'url' => ""
+                );
+                $notification = Notifications::create($notification_data);
                 \Session::put('success', 'Certificate generated successfully!');
                 return true;
             }else{

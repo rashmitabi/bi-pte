@@ -14,25 +14,16 @@
           </div>   
           <div class="row d-flex justify-content-center mt-100">
             <div class="col-md-6">
-                <div class="progress-pie-chart" data-percent="60">
+                <div class="progress-pie-chart" data-percent="{{ $resultData[2] }}">
                     <div class="ppc-progress">
                         <div class="ppc-progress-fill"></div>
                     </div>
                     <div class="ppc-percents">
                       <div class="pcc-percents-wrapper">
-                          <span>%</span>
+                          <span></span>
                       </div>
                     </div>
                 </div>
-                  <!-- <div class="progress blue" id="listening"> 
-                  <span class="progress-left"> 
-                    <span class="progress-bar"></span> 
-                  </span> 
-                  <span class="progress-right"> 
-                    <span class="progress-bar"></span> 
-                  </span>
-                      <div class="progress-value">{{ $resultData[2] }}</div>
-                  </div> -->
             </div>
           </div>
       </div>
@@ -42,9 +33,16 @@
           </div>   
           <div class="row d-flex justify-content-center mt-100">
             <div class="col-md-6">
-                  <!-- <div class="progress blue" id="speaking"> <span class="progress-left"> <span class="progress-bar"></span> </span> <span class="progress-right"> <span class="progress-bar"></span> </span>
-                      <div class="progress-value">{{ $resultData[4] }}</div>
-                  </div> -->
+              <div class="progress-pie-chart" data-percent="{{ $resultData[4] }}">
+                   <div class="ppc-progress">
+                      <div class="ppc-progress-fill"></div>
+                   </div>
+                   <div class="ppc-percents">
+                      <div class="pcc-percents-wrapper">
+                          <span></span>
+                      </div>
+                   </div>
+                </div>
             </div>
           </div>
       </div>
@@ -54,9 +52,16 @@
           </div>   
           <div class="row d-flex justify-content-center mt-100">
             <div class="col-md-6">
-                  <!-- <div class="progress blue" id="writing"> <span class="progress-left"> <span class="progress-bar"></span> </span> <span class="progress-right"> <span class="progress-bar"></span> </span>
-                      <div class="progress-value">{{ $resultData[3] }}</div>
-                  </div> -->
+              <div class="progress-pie-chart" data-percent="{{ $resultData[3] }}">
+                   <div class="ppc-progress">
+                      <div class="ppc-progress-fill"></div>
+                   </div>
+                   <div class="ppc-percents">
+                      <div class="pcc-percents-wrapper">
+                          <span></span>
+                      </div>
+                   </div>
+                </div>
             </div>
           </div>
       </div>
@@ -66,9 +71,16 @@
           </div>   
           <div class="row d-flex justify-content-center mt-100">
             <div class="col-md-6">
-                  <!-- <div class="progress blue" id="reading"> <span class="progress-left"> <span class="progress-bar"></span> </span> <span class="progress-right"> <span class="progress-bar"></span> </span>
-                      <div class="progress-value">{{ $resultData[1] }}</div>
-                  </div> -->
+              <div class="progress-pie-chart" data-percent="{{ $resultData[1] }}">
+                   <div class="ppc-progress">
+                      <div class="ppc-progress-fill"></div>
+                   </div>
+                   <div class="ppc-percents">
+                      <div class="pcc-percents-wrapper">
+                          <span></span>
+                      </div>
+                   </div>
+                </div>
             </div>
           </div>
       </div>
