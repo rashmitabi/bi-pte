@@ -21,7 +21,7 @@ $(document).ready(function() {
                type:'GET',
                data:{'id' : id},
                beforeSend: function(){
-                   $('#video-edit-body').html('<i class="fa fa-spinner fa-spin"></i>  Please Wait...');
+                   $('#video-edit-body').html('<div class="mb-5 text-center"><i class="fa fa-spinner fa-spin"></i>  Please Wait...</div>');
                },
                success:function(data) {
                    $('#video-edit-body').html(data.html);
@@ -91,6 +91,7 @@ $(document).ready(function() {
        {data: 'title', name: 'title'},
        {data: 'link', name: 'link'},
        {data: 'type', name: 'type'},
+       {data: 'created by', name: 'created by'},
        {data: 'created date', name: 'created date'},
        {data: 'status', name: 'status'},
        {data: 'action', name: 'action', orderable: false, searchable: false},

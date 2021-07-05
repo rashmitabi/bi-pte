@@ -18,4 +18,9 @@ class Videos extends Model
     	'link',
     	'status'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }

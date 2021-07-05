@@ -32,4 +32,20 @@ class CreatePredictionRequest extends FormRequest
             'status'=>'nullable|in:E,D'
         ];
     }
+
+    /**
+     * Get the error messages for the defined validation rules.
+     *
+     * @return array
+     */
+    public function messages()
+    {
+        return [
+            'section_id.required' => 'Please select file section',
+            'design_id.required' => 'Please select file type',
+            'title.required' => 'Please enter file title',
+            'description.required' => 'Please enter file description',
+            'file.required' => 'Please upload the prediction file'
+        ];
+    }
 }

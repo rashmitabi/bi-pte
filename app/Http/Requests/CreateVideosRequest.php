@@ -32,4 +32,20 @@ class CreateVideosRequest extends FormRequest
             'status'=>'nullable|in:E,D'
         ];
     }
+
+    /**
+     * Get the error messages for the defined validation rules.
+     *
+     * @return array
+     */
+    public function messages()
+    {
+        return [
+            'section_id.required' => 'Please select the video section',
+            'design_id.required' => 'Please select the video type',
+            'title.required' => 'Please enter the video title',
+            'description.required' => 'Please enter the video description',
+            'link.required' => 'Please enter the video link'
+        ];
+    }
 }

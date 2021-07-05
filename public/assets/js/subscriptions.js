@@ -8,7 +8,7 @@ $(document).ready(function() {
                type:'GET',
                data:{'id' : id},
                beforeSend: function(){
-                   $('#sub-edit-body').html('<i class="fa fa-spinner fa-spin"></i>  Please Wait...');
+                   $('#sub-edit-body').html('<div class="mb-5 text-center"><i class="fa fa-spinner fa-spin"></i>  Please Wait...</div>');
                },
                success:function(data) {
                    $('#sub-edit-body').html(data.html);

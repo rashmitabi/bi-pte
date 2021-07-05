@@ -147,7 +147,7 @@ $(document).ready(function() {
       type:'GET',
       data:{'id' : id},
       beforeSend: function(){
-        $('#password-set-body').html('<i class="fa fa-spinner fa-spin"></i>  Please Wait...');
+        $('#password-set-body').html('<div class="mb-5 text-center"><i class="fa fa-spinner fa-spin"></i>  Please Wait...</div>');
       },
       success:function(data) {
         $('#password-set-body').html(data.html);
@@ -191,7 +191,7 @@ $(document).ready(function() {
       type:'GET',
       data:{'id' : id},
       beforeSend: function(){
-        $('#edit-user-body').html('<i class="fa fa-spinner fa-spin"></i>  Please Wait...');
+        $('#edit-user-body').html('<div class="mb-5 text-center"><i class="fa fa-spinner fa-spin"></i>  Please Wait...</div>');
       },
       success:function(data) {
         $('#edit-user-body').html(data.html);
@@ -209,7 +209,7 @@ $(document).ready(function() {
       type:'GET',
       data:{'id' : id},
       beforeSend: function(){
-        $('#edit-user-body').html('<i class="fa fa-spinner fa-spin"></i>  Please Wait...');
+        $('#edit-user-body').html('<div class="mb-5 text-center"><i class="fa fa-spinner fa-spin"></i>  Please Wait...</div>');
       },
       success:function(data) {
         $('#edit-user-body').html(data.html);
@@ -227,7 +227,7 @@ $(document).ready(function() {
       type:'GET',
       data:{'id' : id},
       beforeSend: function(){
-        $('#show-user-body').html('<i class="fa fa-spinner fa-spin"></i>  Please Wait...');
+        $('#show-user-body').html('<div class="mb-5 text-center"><i class="fa fa-spinner fa-spin"></i>  Please Wait...</div>');
       },
       success:function(data) {
         $('#show-user-body').html(data.html);
@@ -578,7 +578,7 @@ $(document).ready(function() {
             type:'POST',
             data:{'_token':CSRF_TOKEN, 'id' : chekedStudentsIds,'type':'P'},
             beforeSend: function(){
-              $('#prectice-test-body').html('<i class="fa fa-spinner fa-spin"></i>  Please Wait...');
+              $('#prectice-test-body').html('<div class="mb-5 text-center"><i class="fa fa-spinner fa-spin"></i>  Please Wait...</div>');
             },
             success:function(data) {
               $('#prectice-test-body').html(data.html);
@@ -592,7 +592,7 @@ $(document).ready(function() {
             type:'POST',
             data:{'_token':CSRF_TOKEN, 'id' : chekedStudentsIds,'type':'M'},
             beforeSend: function(){
-              $('#assign-mock-test-body').html('<i class="fa fa-spinner fa-spin"></i>  Please Wait...');
+              $('#assign-mock-test-body').html('<div class="mb-5 text-center"><i class="fa fa-spinner fa-spin"></i>  Please Wait...</div>');
             },
             success:function(data) {
               $('#assign-mock-test-body').html(data.html);
@@ -638,7 +638,7 @@ $(document).ready(function() {
       type:'GET',
       data:{type:type},
       beforeSend: function(){
-        $(randomString).html('<i class="fa fa-spinner fa-spin"></i>  Please Wait...');
+        $(randomString).html('<div class="mb-5 text-center"><i class="fa fa-spinner fa-spin"></i>  Please Wait...</div>');
       },
       success:function(data) {
         $(randomString).html(data.html);

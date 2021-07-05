@@ -1213,6 +1213,7 @@ $(document).ready(function() {
 
     $("form").on("change", ".custom-file-input", function(){ 
         $(this).parent(".custom-file").attr("data-text", $(this).val().replace(/.*(\/|\\)/, '') );
+        $(this).next('.custom-file-label').text('');
     });
 });
 

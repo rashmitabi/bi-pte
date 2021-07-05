@@ -6,7 +6,7 @@ $(document).ready(function(){
                url: apiUrl,
                type:'GET',
                beforeSend: function(){
-                   $('#certificate-edit-body').html('<i class="fa fa-spinner fa-spin"></i>  Please Wait...');
+                   $('#certificate-edit-body').html('<div class="mb-5 text-center"><i class="fa fa-spinner fa-spin"></i>  Please Wait...</div>');
                },
                success:function(data) {
                    $('#certificate-edit-body').html(data.html);

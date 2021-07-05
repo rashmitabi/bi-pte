@@ -28,6 +28,7 @@
                             <th>Video Title</th>
                             <th>Video Link</th>
                             <th>Type</th>
+                            <th>Created By</th>
                             <th>Created Date</th>
                             <th>Status</th>
                             <th>Action</th>

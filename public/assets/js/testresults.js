@@ -43,7 +43,7 @@ var table = $('#results').DataTable({
                url: apiUrl,
                type:'GET',
                beforeSend: function(){
-                   $('#result-edit-body').html('<i class="fa fa-spinner fa-spin"></i>  Please Wait...');
+                   $('#result-edit-body').html('<div class="mb-5 text-center"><i class="fa fa-spinner fa-spin"></i>  Please Wait...</div>');
                },
                success:function(data) {
                    $('#result-edit-body').html(data.html);

@@ -2234,12 +2234,14 @@ body {
   margin: 0px auto 20px;
 }
 .custom-file:after{
-                content: attr(data-text);
-                position: absolute;
-                top: 0;
-                left: 0;                
-                padding: 10px 15px;
-                display: block;
-                z-index: 20;
-         }
+        content: attr(data-text);
+        position: absolute;
+        top: 0;
+        left: 0;                
+        padding: 10px 15px;
+        display: block;
+        z-index: 20;
+        color: #000;
+      font-weight: 600;
+ }
 /*# sourceMappingURL=admin-common.css.map */

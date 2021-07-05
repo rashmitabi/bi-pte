@@ -29,6 +29,7 @@
                             <th>Prediction File Title</th>
                             <th>Prediction File URL</th>
                             <th>Type</th>
+                            <th>Created By</th>
                             <th>Created Date</th>
                             <th>Status</th>
                             <th>Action</th>
