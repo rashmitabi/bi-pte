@@ -55,5 +55,6 @@
 <script type="text/javascript" defer>
   var url="{{ route('certificates.index') }}";
 </script>
+<script src="{{ asset('assets/js/waitMe.min.js') }}"></script>
 <script src="{{ asset('assets/js/certificates.js') }}" defer></script>
 @endsection

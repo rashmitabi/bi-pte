@@ -1210,6 +1210,10 @@ $(document).ready(function() {
       // $('body').find('.remove-record-model').find( "input" ).remove();
     });
     ////Delete Model for SuperAdmin End
+
+    $("form").on("change", ".custom-file-input", function(){ 
+        $(this).parent(".custom-file").attr("data-text", $(this).val().replace(/.*(\/|\\)/, '') );
+    });
 });
 
 // $(document).ready(function(){
@@ -1222,7 +1226,7 @@ $(document).ready(function() {
 //   });
 
 //progress bar
-$(function(){
+/*$(function(){
   var $ppc = $('.progress-pie-chart'),
     percent = parseInt($ppc.data('percent')),
     deg = 360*percent/100;
@@ -1267,4 +1271,4 @@ $(function(){
     $('.ppc-progress-fill3').css('transform','rotate('+ deg +'deg)');
     $('.ppc-percents3 span').html(percent+'%');
   });
-  
+  */

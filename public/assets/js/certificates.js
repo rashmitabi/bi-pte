@@ -16,6 +16,7 @@ $(document).ready(function(){
 
     $('body').on('click', '#add_certificate', function(){
          var apiUrl = $(this).data('url');
+         $(this).attr('disabled', 'disabled');
          $.ajax({
              url: apiUrl,
              type:'POST',   
@@ -28,7 +29,7 @@ $(document).ready(function(){
                 }
              },             
              error: function(response) {
-              //console.log(response);
+                $('#add_certificate').removeAttr('disabled');
                 $('#scoreError').text(response.responseJSON.errors.score);
                 $('#speakingError').text(response.responseJSON.errors.speaking);
                 $('#listeningError').text(response.responseJSON.errors.listening);
