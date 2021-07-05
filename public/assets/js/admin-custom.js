@@ -1221,4 +1221,50 @@ $(document).ready(function() {
 //     });
 //   });
 
+//progress bar
+$(function(){
+  var $ppc = $('.progress-pie-chart'),
+    percent = parseInt($ppc.data('percent')),
+    deg = 360*percent/100;
+  if (percent > 50) {
+    $ppc.addClass('gt-50');
+  }
+  $('.ppc-progress-fill').css('transform','rotate('+ deg +'deg)');
+  $('.ppc-percents span').html(percent+'%');
+});
 
+
+$(function(){
+    var $ppc1 = $('.progress-pie-chart1'),
+      percent = parseInt($ppc1.data('percent')),
+      deg = 360*percent/100;
+    if (percent > 50) {
+      $ppc1.addClass('gt-50');
+    }
+    $('.ppc-progress-fill1').css('transform','rotate('+ deg +'deg)');
+    $('.ppc-percents1 span').html(percent+'%');
+  });
+  
+  $(function(){
+    var $ppc2 = $('.progress-pie-chart2'),
+      percent = parseInt($ppc2.data('percent')),
+      deg = 360*percent/100;
+    if (percent > 50) {
+      $ppc2.addClass('gt-50');
+    }
+    $('.ppc-progress-fill2').css('transform','rotate('+ deg +'deg)');
+    $('.ppc-percents2 span').html(percent+'%');
+  });
+  
+
+  $(function(){
+    var $ppc3 = $('.progress-pie-chart3'),
+      percent = parseInt($ppc3.data('percent')),
+      deg = 360*percent/100;
+    if (percent > 50) {
+      $ppc3.addClass('gt-50');
+    }
+    $('.ppc-progress-fill3').css('transform','rotate('+ deg +'deg)');
+    $('.ppc-percents3 span').html(percent+'%');
+  });
+  

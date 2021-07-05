@@ -60,7 +60,17 @@
           </div>   
           <div class="row d-flex justify-content-center mt-100">
             <div class="col-md-6">
-                  <div class="progress blue" id="listening"> 
+                <div class="progress-pie-chart " data-percent="50">
+                   <div class="ppc-progress">
+                      <div class="ppc-progress-fill"></div>
+                   </div>
+                   <div class="ppc-percents">
+                      <div class="pcc-percents-wrapper">
+                          <span>%</span>
+                      </div>
+                   </div>
+                </div>
+                  <!-- <div class="progress blue" id="listening"> 
                   <span class="progress-left"> 
                     <span class="progress-bar"></span> 
                   </span> 
@@ -68,7 +78,7 @@
                     <span class="progress-bar"></span> 
                   </span>
                       <div class="progress-value"></div>
-                  </div>
+                  </div> -->
             </div>
           </div>
       </div>
@@ -78,9 +88,19 @@
           </div>   
           <div class="row d-flex justify-content-center mt-100">
             <div class="col-md-6">
-                  <div class="progress blue" id="speaking"> <span class="progress-left"> <span class="progress-bar"></span> </span> <span class="progress-right"> <span class="progress-bar"></span> </span>
+                <div class="progress-pie-chart1" data-percent="60">
+                   <div class="ppc-progress1">
+                      <div class="ppc-progress-fill1"></div>
+                   </div>
+                   <div class="ppc-percents1">
+                      <div class="pcc-percents-wrapper">
+                          <span>%</span>
+                      </div>
+                   </div>
+                </div>
+                  <!-- <div class="progress blue" id="speaking"> <span class="progress-left"> <span class="progress-bar"></span> </span> <span class="progress-right"> <span class="progress-bar"></span> </span>
                       <div class="progress-value">30</div>
-                  </div>
+                  </div> -->
             </div>
           </div>
       </div>
@@ -90,9 +110,19 @@
           </div>   
           <div class="row d-flex justify-content-center mt-100">
             <div class="col-md-6">
-                  <div class="progress blue" id="writing"> <span class="progress-left"> <span class="progress-bar"></span> </span> <span class="progress-right"> <span class="progress-bar"></span> </span>
+                 <div class="progress-pie-chart2" data-percent="30">
+                   <div class="ppc-progress2">
+                      <div class="ppc-progress-fill2"></div>
+                   </div>
+                   <div class="ppc-percents2">
+                      <div class="pcc-percents-wrapper">
+                          <span>%</span>
+                      </div>
+                   </div>
+                </div>
+                  <!-- <div class="progress blue" id="writing"> <span class="progress-left"> <span class="progress-bar"></span> </span> <span class="progress-right"> <span class="progress-bar"></span> </span>
                       <div class="progress-value">20</div>
-                  </div>
+                  </div> -->
             </div>
           </div>
       </div>
@@ -102,9 +132,19 @@
           </div>   
           <div class="row d-flex justify-content-center mt-100">
             <div class="col-md-6">
-                  <div class="progress blue" id="reading"> <span class="progress-left"> <span class="progress-bar"></span> </span> <span class="progress-right"> <span class="progress-bar"></span> </span>
+                 <div class="progress-pie-chart3" data-percent="80">
+                   <div class="ppc-progress3">
+                      <div class="ppc-progress-fill3"></div>
+                   </div>
+                   <div class="ppc-percents3">
+                      <div class="pcc-percents-wrapper">
+                          <span>%</span>
+                      </div>
+                   </div>
+                </div>
+                  <!-- <div class="progress blue" id="reading"> <span class="progress-left"> <span class="progress-bar"></span> </span> <span class="progress-right"> <span class="progress-bar"></span> </span>
                       <div class="progress-value">10</div>
-                  </div>
+                  </div> -->
             </div>
           </div>
       </div>
