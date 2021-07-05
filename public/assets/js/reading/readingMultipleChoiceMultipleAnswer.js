@@ -16,7 +16,7 @@ function addQuestionColumn()
 
     var html = '';
     console.log(number);
-    var html = "<div class='form-group mb-3 row '>"
+    var html = "<div class='form-group mb-3 row question-block"+number+"'>"
                     +"<label class='col-3 col-form-label custom-label'>"+ans_option_label+"</label>"
                     +"<div class='col-12 col-md-7 col-xl-7 col-sm-12 p-0'>"
                         +"<input type='text' class='form-control' name='"+ans_option_id+"' id='"+ans_option_id+"' placeholder='"+ans_placeholder+"'>"
@@ -24,7 +24,11 @@ function addQuestionColumn()
                     +"<div class='plus-icon' onclick='addQuestionColumn()' data-id='"+number+"'>"
                         +"<a><i class='fas fa-plus'></i></a>"
                     +"</div>"
+                    +"<div class='minus-icon' onclick='removeQuestionColumn()' data-id='"+number+"'>"
+                        +"<a><i class='fas fa-minus'></i></a>"
+                    +"</div>"
                 +"</div>";
+    $(".minus-icon").remove();
     $(".plus-icon").remove();
     $(".finalAnswer").before(html);
     $('#fill_in_blanks').validate();
@@ -35,6 +39,37 @@ function addQuestionColumn()
         }
       });
       $("#slug").val(number);
+}
+function removeQuestionColumn(){
+    //console.log("hello");
+    var alphabet = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
+    var link = document.querySelector('.plus-icon');
+        if (link) {
+            var target = link.getAttribute('data-id');
+            //console.log(target);
+        }
+    var letterPosition = alphabet.indexOf(target)-1;
+    var number = alphabet[letterPosition];
+    //var plus_html = '';
+    console.log(number);
+    console.log(target);
+    var plus_html =     "<div class='plus-icon' onclick='addQuestionColumn()' data-id='"+number+"'>"
+                            +"<a><i class='fas fa-plus'></i></a>"
+                        +"</div>";
+    
+        minus_html = "<div class='minus-icon' onclick='removeQuestionColumn()' data-id='"+number+"'>"
+                        +"<a><i class='fas fa-minus'></i></a>"
+                    +"</div>";
+    
+    $("#ans_options_"+target).rules("remove", "required");
+    $(".question-block"+target).remove();
+    if(number == 'E'){
+        $(".question-block"+number).append(plus_html);
+    }else{
+        $(".question-block"+number).append(plus_html);
+        $(".question-block"+number).append(minus_html);
+    }
+    $("#slug").val(number);
 }
 $(document).ready(function() {
     $('#mutli_choice').validate({ 

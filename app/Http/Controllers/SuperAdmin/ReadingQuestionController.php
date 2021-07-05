@@ -124,7 +124,7 @@ class ReadingQuestionController extends Controller
     public function storeMultipleChoiceMultipleanswers(Request $request)/* Reading section multiple choice and multiple answers store*/
     {
         $input = \Arr::except($request->all(),array('_token'));
-        
+
         $section_id         = $request->section_id;
         $test_id            = $request->test_id;
         $question_type_id   = $request->question_type_id;
