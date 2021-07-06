@@ -17,7 +17,8 @@ class Tests extends Model
         'type',
         'free_test',
         'status',
-        'expired_date'
+        'expired_date',
+        'image'
     ];
     public function subject() 
     {

@@ -1,4 +1,9 @@
 $(document).ready(function() {
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
     /*Tests Edit page data start*/
     $('body').on('click','.test-edit',function(){
         var id = $(this).data('id');
@@ -24,10 +29,25 @@ $(document).ready(function() {
         $('#typeError').text('');
         $('#nameError').text('');
         $('#subjectError').text('');
+        $('#imageError').text('');
+        var test_type   = $("#type :selected").val();
+        var test_name   = $("input[name=test_name]").val();
+        var test_subject= $("#subject :selected").val();
+        var image       = $('#image')[0].files;
+        var test = new FormData();
+            test.append('_token',CSRF_TOKEN);
+            test.append('test_name',test_name);
+            test.append('subject',test_subject);
+            test.append('type',test_type);
+        if(image.length > 0 ){
+            test.append('image',image[0]);
+        }
         $.ajax({
             url: apiUrl,
+            contentType: false,
+            processData: false,
             type:'PATCH',
-            data: $('form').serialize(),
+            data: test,
             success:function(data) {
                 if(data == 1){
                     setTimeout(function(){
@@ -36,10 +56,11 @@ $(document).ready(function() {
                 }
             },
             error: function(response) {
-                console.log(response.responseJSON.errors.name);
+                //console.log(response.responseJSON.errors.name);
                     $('#typeError').text(response.responseJSON.errors.type);
                     $('#nameError').text(response.responseJSON.errors.test_name);
                     $('#subjectError').text(response.responseJSON.errors.subject);
+                    $('#imageError').text(response.responseJSON.errors.image);
                 }
         });
     });

@@ -97,14 +97,23 @@ class TestsController extends Controller
         $request->validate([
             'test_name' =>'required|min:3|max:50',
             'subject'   =>'required',
-            'type'      =>'required|in:M,P'
+            'type'      =>'required|in:M,P',
+            'image'     =>'required|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
 
         $input = \Arr::except($request->all(),array('_token'));
+        
+        $filePath = '';
         $input['subject_id'] = $input['subject'];
         $input['generated_by_user_id'] = \Auth::user()->id;
         $input['generated_by_role_id'] = \Auth::user()->role_id;
         unset($input['subject']);
+
+        $fileName = substr(time().'_'.str_replace(' ', '_', $request->image->getClientOriginalName()), 0, 250);  
+        if($request->image->move(public_path('assets/images/test-images'), $fileName)){
+            $filePath = $fileName;
+        }
+        $input['image'] = $filePath;
         $result = Tests::create($input);
         
         if($result){
@@ -213,13 +222,22 @@ class TestsController extends Controller
         $request->validate([
             'test_name' =>'required|min:3|max:50',
             'subject'   =>'required',
-            'type'      =>'required|in:M,P'
+            'type'      =>'required|in:M,P',
+            'image'     =>'nullable|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
+
         $input  = \Arr::except($request->all(),array('_token'));
         $input['subject_id'] = $input['subject'];
         $input['generated_by_user_id'] = \Auth::user()->id;
         $input['generated_by_role_id'] = \Auth::user()->role_id;
         unset($input['subject']);
+        if($request->file()){
+            $fileName = substr(time().'_'.str_replace(' ', '_', $request->image->getClientOriginalName()), 0, 250);  
+            if($request->image->move(public_path('assets/images/test-images'), $fileName)){
+                $filePath = $fileName;
+            }
+            $input['image'] = $filePath;
+        }
         $result = Tests::where('id',$id)->update($input);
         if($result){
             \Session::put('success', 'Test update Successfully!');
