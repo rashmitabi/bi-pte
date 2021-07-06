@@ -10,7 +10,7 @@
             <a href="#Usersubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"> <img src="{{ asset('assets/images/icons/user.svg') }}" class=""> <span> Manage User </span></a>
             <ul class="collapse list-unstyled" id="Usersubmenu">
                <li>
-                  <a href="{{ route('users.index', 'type=I') }}">Users List</a>
+                  <a href="{{ route('users.index', 'type=I') }}">List Users</a>
                </li>
                <li>
                   <a href="{{ route('users.create') }}">Add New User</a>
@@ -28,10 +28,10 @@
             <a href="#Testsubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"> <img src="{{ asset('assets/images/icons/test.svg') }}" class=""> <span> Manage Test </span></a>
             <ul class="collapse list-unstyled" id="Testsubmenu">
                <li>
-                  <a href="{{ route('tests.create') }}">Tests Create</a>
+                  <a href="{{ route('tests.create') }}">Create Test</a>
                </li>
                <li>
-               <a href="{{ route('tests.index') }}">Tests List</a>
+               <a href="{{ route('tests.index') }}">List Tests</a>
                </li>
             </ul>
          </li>
@@ -68,10 +68,10 @@
             <a href="#Videossubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"> <img src="{{ asset('assets/images/icons/video.svg') }}" class=""> <span> Manage Videos </span></a>
             <ul class="collapse list-unstyled" id="Videossubmenu">
                <li>
-                  <a href="{{ route('videos.create') }}">Videos Create</a>
+                  <a href="{{ route('videos.create') }}">Create Video</a>
                </li>
                <li>
-                  <a href="{{ route('videos.index') }}">Videos List</a>
+                  <a href="{{ route('videos.index') }}">List Videos</a>
                </li>
             </ul>
          </li>
@@ -79,10 +79,10 @@
             <a href="#Predictionsubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"> <img src="{{ asset('assets/images/icons/questions.svg') }}" class=""> <span> Manage Prediction Files </span></a>
             <ul class="collapse list-unstyled" id="Predictionsubmenu">
                <li>
-                  <a href="{{ route('predictionfiles.create') }}">Prediction file Create</a>
+                  <a href="{{ route('predictionfiles.create') }}">Create Prediction file</a>
                </li>
                <li>
-                  <a href="{{ route('predictionfiles.index') }}">Prediction file List</a>
+                  <a href="{{ route('predictionfiles.index') }}">List Prediction files</a>
                </li>
             </ul>
          </li>
@@ -90,10 +90,10 @@
             <a href="#Voucherssubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"> <img src="{{ asset('assets/images/icons/vouchers.svg') }}" class=""><span> Vouchers </span></a>
             <ul class="collapse list-unstyled" id="Voucherssubmenu">
                <li>
-                  <a href="{{ route('vouchers.create')}}">Vouchers Create</a>
+                  <a href="{{ route('vouchers.create')}}">Create Voucher</a>
                </li>
                <li>
-                  <a href="{{ route('vouchers.index')}}">Vouchers List</a>
+                  <a href="{{ route('vouchers.index')}}">List Vouchers</a>
                </li>
             </ul>
          </li>
@@ -101,10 +101,10 @@
             <a href="#Emailsubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"> <img src="{{ asset('assets/images/icons/email.svg') }}" class=""><span> Email Templates </span></a>
             <ul class="collapse list-unstyled" id="Emailsubmenu">
                <li>
-                  <a href="{{ route('email.create')}}">Email Template Create</a>
+                  <a href="{{ route('email.create')}}">Create Email Template</a>
                </li>
                <li>
-                  <a href="{{ route('email.index')}}">Email Templates List</a>
+                  <a href="{{ route('email.index')}}">List Email Templates</a>
                </li>
             </ul>
          </li>
@@ -118,15 +118,15 @@
             <a href="#Subscriptionsubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"> <img src="{{ asset('assets/images/icons/subscription.svg') }}" class=""> <span> Manage Subscription </span> </a>
             <ul class="collapse list-unstyled" id="Subscriptionsubmenu">
                <li>
-                  <a href="{{ route('subscription.create')}}">Subscription Create</a>
+                  <a href="{{ route('subscription.create')}}">Create Subscription</a>
                </li>
                <li>
-                  <a href="{{ route('subscription.index') }}">Subscription List</a>
+                  <a href="{{ route('subscription.index') }}">List Subscriptions</a>
                </li>
             </ul>
          </li>
          <li class="{{ $pageActive == 'device' ? 'active' : ''  }}">
-            <a href="{{ route('device.index') }}"> <img src="{{ asset('assets/images/icons/devices.svg') }}" class=""><span> Manage Devices Log </span></a>
+            <a href="{{ route('device.index') }}"> <img src="{{ asset('assets/images/icons/devices.svg') }}" class=""><span> Manage Devices Logs </span></a>
          </li>
       </ul>
    </nav>

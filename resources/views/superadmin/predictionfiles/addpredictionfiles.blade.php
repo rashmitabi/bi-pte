@@ -6,7 +6,7 @@
     <section class="top-title-button mb-3">
         <div class="row mx-0 align-items-center">
             <div class="col-12 col-md-12 col-xl-8 col-sm-8 left">
-                <h1 class="title mb-4">Add Prediction Files</h1>
+                <h1 class="title mb-4">Add Prediction File</h1>
             </div>
         </div>
     </section>
@@ -76,7 +76,7 @@
                     <div class="form-group row">
                         <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Status</label>
                         <div class="col-12 col-md-7 col-xl-7 col-sm-12 toggle-switch">
-                            <input type="checkbox" id="status" name="status" value="E" {{ (old('status') == 'E')?'checked':'' }}/><label for="status">Toggle</label>
+                            <input type="checkbox" id="status" name="status" value="E" checked {{ (old('status') == 'E')?'checked':'' }}/><label for="status">Toggle</label>
                             @if($errors->has('status'))
                                 <span class="error-msg">{{$errors->first('status')}}</span>
                             @endif

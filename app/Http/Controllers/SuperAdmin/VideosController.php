@@ -21,7 +21,8 @@ class VideosController extends Controller
     public function index(Request $request)
     {
         if($request->ajax())  {
-            $data = Videos::latest()->where('user_id',\Auth::user()->id)->get();
+            //$data = Videos::latest()->where('user_id',\Auth::user()->id)->get();
+            $data = Videos::with(['user'])->latest()->get();
             return Datatables::of($data)
                     ->addIndexColumn()
                     ->addColumn('title', function($row){
@@ -38,6 +39,9 @@ class VideosController extends Controller
                             $type = DB::table('question_designs')->select('design_name')->where('id',$row->design_id)->first();
                         }
                         return ucfirst($section->section_name).' - '.ucfirst($type->design_name);
+                    })
+                    ->addColumn('created by', function($row){
+                        return $row->user->first_name.' '.$row->user->last_name.' ('.$row->user->role->role_name.')';
                     })
                     ->addColumn('created date', function($row){
                         return date('Y-m-d', strtotime($row->created_at));

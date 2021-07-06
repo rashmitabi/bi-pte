@@ -1,3 +1,9 @@
+<style>
+.jconfirm .jconfirm-box div.jconfirm-content-pane .jconfirm-content{
+	color: green;
+	font-weight: 600;
+}
+</style>
 @if ($message = Session::get('success'))
 <script type="text/javascript">
 	$.alert({

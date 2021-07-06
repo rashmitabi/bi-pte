@@ -48,7 +48,7 @@ class TestResultsController extends Controller
                         return $row->score;
                     })
                     ->addColumn('action', function($row){
-                        $btn = '<ul class="actions-btns"><li data-toggle="modal" data-target="#testresults" class="action"><a href="javascript:void(0);" class="" data-url="'.route('generate-result', ['aid' => $row->test_id, 'bid' => $row->user_id]).'"><i class="fas fa-eye"></i></a></li></ul>';
+                        $btn = '<ul class="actions-btns"><li data-toggle="modal" data-target="#testresults" class="action"><a href="javascript:void(0);" class="results-edit" data-url="'.route('generate-result', ['aid' => $row->test_id, 'bid' => $row->user_id]).'"><i class="fas fa-eye"></i></a></li></ul>';
                         
                         return $btn;
                     })

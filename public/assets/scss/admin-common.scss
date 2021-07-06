@@ -481,6 +481,17 @@ body {
                     color: #000000;
                     font-weight: 500;
               }
+              &::after{
+                content: attr(data-text);
+                position: absolute;
+                top: 0;
+                left: 0;                
+                padding: 10px 15px;
+                display: block;
+                z-index: 20;
+                color: #000;
+                font-weight: 600;
+              }
          }
          textarea, select{
                line-height: 1.6 !important;
@@ -1176,6 +1187,22 @@ body {
                     a{
                          padding: 0px;
                          background-color: $primary-color;
+                         color: $white-color;
+                         border-radius: 50%;
+                         font-size: $fs-16;
+                         width: 30px;
+                         height: 30px;
+                         display: flex;
+                         align-items: center;
+                         justify-content: center;
+                         margin-left: 20px;
+                         margin-top: 2px;
+                    }
+               }
+               .minus-icon{
+                    a{
+                         padding: 0px;
+                         background-color:#9D1346;
                          color: $white-color;
                          border-radius: 50%;
                          font-size: $fs-16;

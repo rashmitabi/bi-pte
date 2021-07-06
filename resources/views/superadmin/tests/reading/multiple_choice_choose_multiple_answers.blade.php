@@ -68,7 +68,7 @@
                                     <input type="text" class="form-control " name="ans_options_D" id="ans_options_D" placeholder="Which of the Following Are True Statements?">
                                  </div>
                               </div>
-                              <div class="form-group mb-3 row ">
+                              <div class="form-group mb-3 row question-blockE">
                                  <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label custom-label">Ans Options E</label>
                                  <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
                                     <input type="text" class="form-control " name="ans_options_E" id="ans_options_E" placeholder="Which of the Following Are True Statements?">
@@ -104,6 +104,7 @@
                            <div class="form-group mb-3 row finalAnswer">
                               <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label custom-label">Correct Options</label>
                               <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
+                                 <span style="color:green;">Answer Example "abc@@xyz@@pqr" use @@ for separation.</span>
                                  <input type="text" class="form-control " name="correct_options" id="correct_options" placeholder="Whole" value="{{(isset($questions->desc))?$questions->answerdata[0]->answer_value:''}}">
                               </div>
                            </div>
@@ -117,7 +118,7 @@
                                 @if(isset($questions->desc))
                                  <input type="hidden" name="question_id" value="{{ $questions->id }}">
                                 @endif
-                                <button  type="button" class="btn btn-outline-primary"><a href="#"><img class="back-btn" src="{{ asset('assets/images/icons/back.svg') }}"></a>Cancel</button>
+                                <a href="{{ route('tests.show',$test_id )}}"><button  type="button" class="btn btn-outline-primary"><img class="back-btn" src="{{ asset('assets/images/icons/back.svg') }}">Cancel</button></a>
                                 <button  type="submit" class="btn btn-outline-primary mr-2"><i class="far fa-save save-icon"></i>Submit</button>
                             </div> 
                         </div>

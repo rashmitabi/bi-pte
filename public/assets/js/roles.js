@@ -41,7 +41,7 @@ $(document).ready(function() {
                type:'GET',
                data:{'id' : id},
                beforeSend: function(){
-                   $('#role-edit-body').html('<i class="fa fa-spinner fa-spin"></i>  Please Wait...');
+                   $('#role-edit-body').html('<div class="mb-5 text-center"><i class="fa fa-spinner fa-spin"></i>  Please Wait...</div>');
                },
                success:function(data) {
                    $('#role-edit-body').html(data.html);

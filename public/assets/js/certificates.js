@@ -6,7 +6,7 @@ $(document).ready(function(){
                url: apiUrl,
                type:'GET',
                beforeSend: function(){
-                   $('#certificate-edit-body').html('<i class="fa fa-spinner fa-spin"></i>  Please Wait...');
+                   $('#certificate-edit-body').html('<div class="mb-5 text-center"><i class="fa fa-spinner fa-spin"></i>  Please Wait...</div>');
                },
                success:function(data) {
                    $('#certificate-edit-body').html(data.html);
@@ -16,6 +16,7 @@ $(document).ready(function(){
 
     $('body').on('click', '#add_certificate', function(){
          var apiUrl = $(this).data('url');
+         $(this).attr('disabled', 'disabled');
          $.ajax({
              url: apiUrl,
              type:'POST',   
@@ -28,7 +29,7 @@ $(document).ready(function(){
                 }
              },             
              error: function(response) {
-              //console.log(response);
+                $('#add_certificate').removeAttr('disabled');
                 $('#scoreError').text(response.responseJSON.errors.score);
                 $('#speakingError').text(response.responseJSON.errors.speaking);
                 $('#listeningError').text(response.responseJSON.errors.listening);

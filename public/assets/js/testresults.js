@@ -43,10 +43,20 @@ var table = $('#results').DataTable({
                url: apiUrl,
                type:'GET',
                beforeSend: function(){
-                   $('#result-edit-body').html('<i class="fa fa-spinner fa-spin"></i>  Please Wait...');
+                   $('#result-edit-body').html('<div class="mb-5 text-center"><i class="fa fa-spinner fa-spin"></i>  Please Wait...</div>');
                },
                success:function(data) {
                    $('#result-edit-body').html(data.html);
+                   $('.progress-pie-chart').each(function(){
+                      var $ppc = $(this),
+                      percent = parseInt($ppc.data('percent')),
+                        deg = 360*percent/90;
+                      if (percent > 50) {
+                        $ppc.addClass('gt-50');
+                      }
+                      $(this).find('.ppc-progress-fill').css('transform','rotate('+ deg +'deg)');
+                      $(this).find('.ppc-percents span').html(percent);
+                   });
                },
            }); 
    });

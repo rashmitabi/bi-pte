@@ -49,7 +49,7 @@ $pageActive = isset($pageArray[4]) ? $pageArray[4] : 'dashboard';
 	    <link href="{{ asset('assets/css/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
 	    <link href="{{ asset('assets/css/responsive.bootstrap4.min.css') }}" rel="stylesheet">
 	    <link href="{{ asset('assets/css/jquery-confirm.css') }}" rel="stylesheet">
-
+  		<!-- <link href="{{ asset('assets/css/waitMe.min.css') }}" rel="stylesheet"> -->
 	    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
 	      rel="stylesheet">
 	    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
@@ -77,6 +77,7 @@ $pageActive = isset($pageArray[4]) ? $pageArray[4] : 'dashboard';
 		    </div>
 		</div>
 		<script src="{{ asset('assets/js/jquery-confirm.min.js') }}"></script>
+		
 		@include('superadmin.deleteModel')
 		@include('superadmin.alert')
 		<script type="text/javascript">
