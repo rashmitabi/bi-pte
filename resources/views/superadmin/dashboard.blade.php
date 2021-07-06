@@ -17,7 +17,7 @@
                </div>
                <div class="text-wrap"> 
                        <h3>Total</h3>
-                       <h2>81</h2>
+                       <h2>{{$data['students']}}</h2>
                </div> 
            </div>
            <div class="col-12 col-md-3 col-xl-3 col-sm-3 common-wrap-col mocktest-col">
@@ -31,7 +31,7 @@
                </div>
                <div class="text-wrap"> 
                     <h3>Total</h3>
-                     <h2>81</h2>
+                     <h2>{{$data['mock_tests']}}</h2>
                </div>
             </div>
             <div class="col-12 col-md-3 col-xl-3 col-sm-3 common-wrap-col practicetest-col">
@@ -45,7 +45,7 @@
                </div>
                <div class="text-wrap"> 
                     <h3>Total</h3>
-                    <h2>81</h2>
+                    <h2>{{$data['practice_tests']}}</h2>
                </div>
             </div>
             <div class="col-12 col-md-3 col-xl-3 col-sm-3  common-wrap-col institute-col">
@@ -59,7 +59,7 @@
                </div>
                <div class="text-wrap"> 
                     <h3>Total</h3>
-                    <h2>81</h2>
+                    <h2>{{$data['institutes']}}</h2>
                </div>
            </div>
         </div>
@@ -104,36 +104,22 @@
                                    </tr>
                                </thead>
                                <tbody>
-                                    <tr>
-                                      <td>1</td>
-                                      <td>new student</td>
-                                      <td>Institute</td>
-                                      <td>22/05/12:00PM</td>
-                                    </tr>
-                                    <tr>
-                                      <td>2</td>
-                                      <td>new student</td>
-                                      <td>Student</td>
-                                      <td>22/05/12:00PM</td>
-                                    </tr>
-                                    <tr>
-                                      <td>3</td>
-                                      <td>new student</td>
-                                      <td>Institute</td>
-                                      <td>22/05/12:00PM</td>
-                                    </tr>
-                                    <tr>
-                                      <td>4</td>
-                                      <td>new student</td>
-                                      <td>Student</td>
-                                      <td>22/05/12:00PM</td>
-                                    </tr>
-                                    <tr>
-                                      <td>5</td>
-                                      <td>new student</td>
-                                      <td>Institute</td>
-                                      <td>22/05/12:00PM</td>
-                                    </tr>
+                                <?php
+                                if(count($data['activities']) > 0){
+                                  $a = 1;
+                                  foreach($data['activities'] as $activity){
+                                ?>
+                                <tr>
+                                  <td><?php echo $a; ?></td>
+                                  <td><?php echo $activity->subject ?></td>
+                                  <td><?php echo $activity->user->first_name." ".$activity->user->last_name.' ('.$activity->role->role_name.')'; ?></td>
+                                  <td><?php echo date('Y-m-d', strtotime($activity->created_at)); ?></td>
+                                </tr>
+                                <?php    
+                                    $a++;
+                                  }
+                                }
+                                ?>
                             </table>
                         </div>
                     </div>
@@ -161,42 +147,25 @@
                                    </tr>
                                </thead>
                                <tbody>
+                                <?php
+                                if(count($data['transactions']) > 0){
+                                  $t = 1;
+                                  foreach($data['transactions'] as $transaction){
+                                ?>
                                     <tr>
-                                      <td>1</td>
-                                      <td>1001</td>
-                                      <td>Navneet Kaur</td>
-                                      <td>3000</td>
-                                      <td>26/06/2021</td>
+                                      <td><?php echo $t; ?></td>
+                                      <td><?php echo $transaction->transaction->trancation_id; ?></td>
+                                      <td><?php echo $transaction->user->first_name." ".$transaction->user->last_name ?></td>
+                                      <td><?php echo $transaction->transaction->amount; ?></td>
+                                      <td><?php echo date('Y-m-d', strtotime($transaction->transaction->created_at)); ?></td>
                                     </tr>
-                                    <tr>
-                                      <td>2</td>
-                                      <td>1001</td>
-                                      <td>Navneet Kaur</td>
-                                      <td>3000</td>
-                                      <td>26/06/2021</td>
-                                    </tr>
-                                    <tr>
-                                      <td>3</td>
-                                      <td>1001</td>
-                                      <td>Navneet Kaur</td>
-                                      <td>3000</td>
-                                      <td>26/06/2021</td>
-                                    </tr>
-                                    <tr>
-                                      <td>4</td>
-                                      <td>1001</td>
-                                      <td>Navneet Kaur</td>
-                                      <td>3000</td>
-                                      <td>26/06/2021</td>
-                                    </tr>
-                                    <tr>
-                                      <td>5</td>
-                                      <td>1001</td>
-                                      <td>Navneet Kaur</td>
-                                      <td>3000</td>
-                                      <td>26/06/2021</td>
-                                    </tr>                              
-                            </table>
+                                <?php
+                                  }
+                                  $t++;
+                                }                                  
+                                ?>     
+                                </tbody>                  
+                            </table>                            
                         </div>
                     </div>
                 </section>
@@ -209,13 +178,13 @@
                    </div>
                    <div class="col-12 col-md-12 col-xl-4 col-sm-7 expired-btn">
                        <div id="myDIV" class="btn-group" role="group" aria-label="First group">
-                           <button type="button" class="btn btn-secondary active expired-btn ">Expired</button>
+                           <button type="button" class="btn btn-secondary active expired-btn">Expired</button>
                            <button type="button" class="btn btn-secondary near-expired ">Near to Expired</button>
                        </div>
                    </div>
                    <div class="row mx-0 align-items-center">
                       <div class="col-12 col-md-12 col-xl-12 col-sm-12 left p-0">
-                           <table id="institute" class="table  table-bordered dt-responsive nowrap" style="width:100%">
+                           <table id="expired" class="table  table-bordered dt-responsive nowrap" style="width:100%">
                                <thead>
                                    <tr>
                                       <th>Sr No</th>
@@ -227,46 +196,57 @@
                                    </tr>
                                </thead>
                                <tbody>
-                                    <tr>
-                                      <td>1</td>
-                                      <td>subscription 1</td>
-                                      <td>Expired</td>
-                                      <td>3000</td>
-                                      <td>Student</td>
-                                      <td>26/06/2021</td>
-                                    </tr>
-                                    <tr>
-                                      <td>2</td>
-                                      <td>subscription 1</td>
-                                      <td>Expired</td>
-                                      <td>3000</td>
-                                      <td>Student</td>
-                                      <td>26/06/2021</td>
-                                    </tr>
-                                    <tr>
-                                      <td>3</td>
-                                      <td>subscription 1</td>
-                                      <td>Expired</td>
-                                      <td>3000</td>
-                                      <td>Student</td>
-                                      <td>26/06/2021</td>
-                                    </tr>
-                                    <tr>
-                                      <td>4</td>
-                                      <td>subscription 1</td>
-                                      <td>Expired</td>
-                                      <td>3000</td>
-                                      <td>Student</td>
-                                      <td>26/06/2021</td>
-                                    </tr>
-                                    <tr>
-                                      <td>5</td>
-                                      <td>subscription 1</td>
-                                      <td>Expired</td>
-                                      <td>3000</td>
-                                      <td>Student</td>
-                                      <td>26/06/2021</td>
-                                    </tr>
+                                <?php
+                                if(count($data['expired_subscriptions']) > 0){
+                                  $e = 1;
+                                  foreach($data['expired_subscriptions'] as $sub){
+                                ?>
+                                <tr>
+                                  <td><?php echo $e; ?></td>
+                                  <td><?php echo $sub->subscription->title; ?></td>
+                                  <td>Expired</td>
+                                  <td><?php echo $sub->transaction->amount; ?></td>
+                                  <td><?php echo $sub->user->role->role_name.' ('.$sub->user->first_name.' '.$sub->user->last_name.')'; ?></td>
+                                  <td><?php echo date('Y-m-d', strtotime($sub->end_date)); ?></td>
+                                </tr>
+                                <?php
+                                    $e++;
+                                  }
+                                }
+                                ?>
+                                  
+                            </table>
+                            <table id="near-to-expire" class="table table-bordered dt-responsive nowrap" style="width:100%; display:none;">
+                               <thead>
+                                   <tr>
+                                      <th>Sr No</th>
+                                      <th>Name</th>
+                                      <th>Status</th>
+                                      <th>Price</th>
+                                      <th>Type</th>
+                                      <th>Date</th>
+                                   </tr>
+                               </thead>
+                               <tbody>
+                                <?php
+                                if(count($data['near_to_expire_subscriptions']) > 0){
+                                  $n = 1;
+                                  foreach($data['near_to_expire_subscriptions'] as $sub){
+                                ?>
+                                <tr>
+                                  <td><?php echo $n; ?></td>
+                                  <td><?php echo $sub->subscription->title; ?></td>
+                                  <td>Expired</td>
+                                  <td><?php echo $sub->transaction->amount; ?></td>
+                                  <td><?php echo $sub->user->role->role_name.' ('.$sub->user->first_name.' '.$sub->user->last_name.')'; ?></td>
+                                  <td><?php echo date('Y-m-d', strtotime($sub->end_date)); ?></td>
+                                </tr>
+                                <?php
+                                    $n++;
+                                  }
+                                }
+                                ?>
+                                  
                             </table>
                         </div>
                     </div>
