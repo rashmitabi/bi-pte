@@ -1357,6 +1357,18 @@ body {
   font-weight: 500;
 }
 
+.form .form-group .custom-file::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 10px 15px;
+  display: block;
+  z-index: 20;
+  color: #000;
+  font-weight: 600;
+}
+
 .form .form-group textarea, .form .form-group select {
   line-height: 1.6 !important;
   font-weight: 400;
@@ -1790,6 +1802,20 @@ body {
       -ms-flex-pack: center;
           justify-content: center;
   cursor: pointer;
+}
+
+.dataTables_wrapper table tbody td .actions-btns .action a {
+  width: 27px;
+  height: 27px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .dataTables_wrapper table tbody td .actions-btns .action a svg path {
@@ -2233,15 +2259,4 @@ body {
 .progress-pie-chart, .progress-pie-chart1, .progress-pie-chart2, .progress-pie-chart3 {
   margin: 0px auto 20px;
 }
-.custom-file:after{
-        content: attr(data-text);
-        position: absolute;
-        top: 0;
-        left: 0;                
-        padding: 10px 15px;
-        display: block;
-        z-index: 20;
-        color: #000;
-      font-weight: 600;
- }
 /*# sourceMappingURL=admin-common.css.map */
