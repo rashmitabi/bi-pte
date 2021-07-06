@@ -46,9 +46,9 @@
                       </div>
                    </div>
                     <div class="form-group row">
-                      <label class="col-4 col-form-label ">File Section</label>
-                      <div class="col-8">
-                        <select id="sections" name="section_id"  class="form-select">
+                      <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">File Section</label>
+                      <div class="col-12 col-md-7 col-xl-7 col-sm-12">
+                        <select id="sections" name="section_id"  class="user-type ">
                           <option value="" selected>Select Section</option>
                           @if(count($sections) > 0)
                             @foreach($sections as $section)
@@ -62,9 +62,9 @@
                       </div>
                     </div>
                     <div class="form-group row">
-                      <label class="col-4 col-form-label ">File Type</label>
-                      <div class="col-8">
-                        <select id="types" name="design_id" class="form-select" data-json="{{ json_encode($types) }}">
+                      <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">File Type</label>
+                      <div class="col-12 col-md-7 col-xl-7 col-sm-12">
+                        <select id="types" name="design_id" class="user-type" data-json="{{ json_encode($types) }}">
                           <option value="" selected>Select Type</option>
                           
                         </select>
