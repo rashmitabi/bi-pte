@@ -57,7 +57,7 @@
             <div class="form-group row">
               <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">User Name</label>
               <div class="col-12 col-md-7 col-xl-7 col-sm-12">
-                <input type="text" name="uname" value="{{old('uname')}}" class="form-control " placeholder="Enter User Name">
+                <input type="text" name="uname" value="{{old('uname')}}" data-id="" data-action="store" data-unique-type="username" data-url="{{ route('superadmin-check-unique-validation') }}" class="form-control unique-susername" placeholder="Enter User Name">
                 @if($errors->has('uname'))
                   <span class="error-msg">{{$errors->first('uname')}}</span>
                 @endif
@@ -66,7 +66,7 @@
             <div class="form-group row">
               <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Email</label>
               <div class="col-12 col-md-7 col-xl-7 col-sm-12">
-                <input type="email" name="semail" value="{{old('semail')}}" class="form-control " placeholder="Enter Email id">
+                <input type="email" name="semail" value="{{old('semail')}}" data-id="" data-action="store" data-unique-type="email" data-url="{{ route('superadmin-check-unique-validation') }}" class="form-control unique-semail" placeholder="Enter Email id">
                 @if($errors->has('semail'))
                   <span class="error-msg">{{$errors->first('semail')}}</span>
                 @endif
@@ -198,7 +198,7 @@
             <div class="form-group row">
               <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">User Name</label>
               <div class="col-12 col-md-7 col-xl-7 col-sm-12">
-                <input type="text" name="iuname" value="{{ old('iuname') }}" class="form-control " placeholder="Enter User Name">
+                <input type="text" name="iuname" value="{{ old('iuname') }}" data-id="" data-action="store" data-unique-type="username" data-url="{{ route('superadmin-check-unique-validation') }}" class="form-control unique-iusername" placeholder="Enter User Name">
                 @if($errors->has('iuname'))
                   <span class="error-msg">{{$errors->first('iuname')}}</span>
                 @endif
@@ -216,7 +216,7 @@
             <div class="form-group row">
               <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Email</label>
               <div class="col-12 col-md-7 col-xl-7 col-sm-12">
-                <input type="email" name="iemail" value="{{ old('iemail') }}" class="form-control " placeholder="Enter Email id">
+                <input type="email" name="iemail" value="{{ old('iemail') }}" data-id="" class="form-control unique-iemail" data-action="store" data-unique-type="email" data-url="{{ route('superadmin-check-unique-validation') }}"  placeholder="Enter Email id">
                 @if($errors->has('iemail'))
                   <span class="error-msg">{{$errors->first('iemail')}}</span>
                 @endif
@@ -451,7 +451,7 @@
           <div class="form-group row">
             <div class="col-12 col-md-12 col-xl-11 col-sm-12 save-btn">
               <a href="{{ route('users.index') }}"><button  type="button" class="btn btn-outline-primary "><img class="back-btn" src="{{ asset('assets/images/icons/back.svg') }}" style="width: 14px;margin-right: 10px">Cancel</button></a>
-              <button  type="submit" class="btn btn-outline-primary mr-2"><i class="far fa-save save-icon"></i>Save User</button>
+              <button  type="submit" class="btn btn-outline-primary mr-2 final-button"><i class="far fa-save save-icon"></i>Save User</button>
               
             </div>
           </div>

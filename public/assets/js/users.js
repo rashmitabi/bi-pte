@@ -703,4 +703,151 @@ $(document).ready(function() {
     }
   });
   /*multiple user tests assign get and update end*/
+
+  /*Check user unique validation at store start*/
+  $(".unique-susername").keyup(function() {
+    var uname       = $(this).val();
+    var url         = $(this).attr("data-url");
+    var unique_type = $(this).attr("data-unique-type");
+    var action      = $(this).attr("data-action");
+    var id          = $(this).attr("data-id");
+    var msg = 'username already exists!';
+    console.log(uname);
+    $.ajax({
+      url: url,
+      type:'POST',
+      data:{
+          _token:CSRF_TOKEN,
+          uname       :uname,
+          unique_type :unique_type,
+          action      :action,
+          id          :id
+      },
+      success:function(data) {
+        if(data == false){
+          $(".unique-susername").after("<span class='error-msg' id='suname-unique-msg'>"+msg+"</span>");
+          $(':input[type="submit"]').prop('disabled', true);
+        }else{
+          $("#suname-unique-msg").text('');
+          var checkMsg = $("#semail-unique-msg").text();
+          if(checkMsg == ''){
+            $(':input[type="submit"]').prop('disabled', false);
+          }
+        }
+      },
+    });
+  });
+  $(".unique-semail").keyup(function() {
+    var email       = $(this).val();
+    var url         = $(this).attr("data-url");
+    var unique_type = $(this).attr("data-unique-type");
+    var action      = $(this).attr("data-action");
+    var id          = $(this).attr("data-id");
+    var msg = 'Email already exists!';
+    if(email == ''){
+      $(':input[type="submit"]').prop('disabled', true);
+    }else{
+      $.ajax({
+        url: url,
+        type:'POST',
+        data:{
+            _token:CSRF_TOKEN,
+            uname       :email,
+            unique_type :unique_type,
+            action      :action,
+            id          :id
+        },
+        success:function(data) {
+          if(data == false){
+            $(".unique-semail").after("<span class='error-msg' id='semail-unique-msg'>"+msg+"</span>");
+            $(':input[type="submit"]').prop('disabled', true);
+          }else{
+            $("#semail-unique-msg").text('');
+            var checkMsg = $("#suname-unique-msg").text();
+            if(checkMsg == ''){
+              $(':input[type="submit"]').prop('disabled', false);
+            }
+          }
+        },
+      }); 
+    }
+  });
+  /*Check user unique validation at store end*/
+
+  /*Check institude unique validation start*/
+  $(".unique-iusername").keyup(function() {
+    $("#iuname-unique-msg").text('');
+    var uname       = $(this).val();
+    var url         = $(this).attr("data-url");
+    var unique_type = $(this).attr("data-unique-type");
+    var action      = $(this).attr("data-action");
+    var id          = $(this).attr("data-id");
+    var msg = 'username already exists!';
+    if(uname == ''){
+      $(':input[type="submit"]').prop('disabled', true);     
+    }else{
+      $.ajax({
+        url: url,
+        type:'POST',
+        data:{
+            _token:CSRF_TOKEN,
+            uname       :uname,
+            unique_type :unique_type,
+            action      :action,
+            id          :id
+        },
+        success:function(data) {
+          if(data == false){
+            $(".unique-iusername").after("<span class='error-msg' id='iuname-unique-msg'>"+msg+"</span>");
+            $(':input[type="submit"]').prop('disabled', true);
+            console.log('false');
+          }else{
+            $("#iuname-unique-msg").text('');
+            var checkMsg = $("#iemail-unique-msg").text();
+            if(checkMsg == ''){
+              $(':input[type="submit"]').prop('disabled', false);
+            }
+            console.log('true');
+          }
+        },
+      }); 
+    }
+  });
+  $(".unique-iemail").keyup(function() {
+    $("#iemail-unique-msg").text('');
+    var email       = $(this).val();
+    var url         = $(this).attr("data-url");
+    var unique_type = $(this).attr("data-unique-type");
+    var action      = $(this).attr("data-action");
+    var id          = $(this).attr("data-id");
+    var msg = 'Email already exists!';
+    if(email == ''){
+      $(':input[type="submit"]').prop('disabled', true);
+    }else{
+      $.ajax({
+        url: url,
+        type:'POST',
+        data:{
+            _token:CSRF_TOKEN,
+            uname       :email,
+            unique_type :unique_type,
+            action      :action,
+            id          :id
+        },
+        success:function(data) {
+          if(data == false){
+            $(".unique-iemail").after("<span class='error-msg' id='iemail-unique-msg'>"+msg+"</span>");
+            $(':input[type="submit"]').prop('disabled', true);
+          }else{
+            $("#iemail-unique-msg").text('');
+            var checkMsg = $("#iuname-unique-msg").text();
+            if(checkMsg == ''){
+              $(':input[type="submit"]').prop('disabled', false);
+            }
+          }
+        },
+      }); 
+    }
+  });
+  /*Check institude unique validation end*/
 });

@@ -257,6 +257,7 @@ class UsersController extends Controller
 
         $result='';
         $type = $request->input('type');
+        $regexUrl = '/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/';
         if($type == 3){
             $request->validate([
                 'type'=>'required',
@@ -320,8 +321,8 @@ class UsersController extends Controller
                 'country_code'=>'required|max:5',
                 'phone_no' =>'required|max:20',
                 'status'=>'required|in:P,A,R',
-                'subdomain' =>'required|max:255',
-                'domain'=>'required|max:255',
+                'subdomain' =>'required|max:255|regex:'.$regexUrl,
+                'domain'=>'required|max:255|regex:'.$regexUrl,
                 'welcome_msg'=>'required|max:500',
                 'istate'=>'required|min:2|max:100',
                 'istate_code'=>'required|min:1|max:100',
@@ -811,6 +812,48 @@ class UsersController extends Controller
             \Session::put('error', 'Set Password Not Updated!');
             return false;
             
+        }
+    }
+
+    public function checkUniqueUsername(Request $request)
+    {
+        $username = $request->uname;
+        $unique_type = $request->unique_type;
+        $action      = $request->action;
+
+        if($unique_type == 'username')
+        {
+            if($action == 'store'){
+                if(User::where('name',$username)->exists()){
+                    return false;
+                }else{
+                    return true;
+                }
+            }else{
+                $id = $request->id;
+                if(User::where('name',$username)->where('id','!=',$id)->exists()){
+                    return false;
+                }else{
+                    return true;
+                } 
+            }
+        }
+        else
+        {
+            if($action == 'store'){
+                if(User::where('email',$username)->exists()){
+                    return false;
+                }else{
+                    return true;
+                }
+            }else{
+                $id = $request->id;
+                if(User::where('email',$username)->where('id','!=',$id)->exists()){
+                    return false;
+                }else{
+                    return true;
+                }
+            }
         }
     }
 }
