@@ -23,6 +23,7 @@ class Certificates extends Model
         'vocabulary',
         'oral_fluency',
         'spelling',
-        'written_discourse'
+        'written_discourse',
+        'file_path'
     ];
 }

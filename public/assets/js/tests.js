@@ -1,4 +1,9 @@
 $(document).ready(function() {
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
     /*Tests Edit page data start*/
     $('body').on('click','.test-edit',function(){
         var id = $(this).data('id');
@@ -24,10 +29,14 @@ $(document).ready(function() {
         $('#typeError').text('');
         $('#nameError').text('');
         $('#subjectError').text('');
+        $('#imageError').text('');
+        var test_type   = $("#type :selected").val();
+        var test_name   = $("input[name=test_name]").val();
+        var test_subject= $("#subject :selected").val();
         $.ajax({
             url: apiUrl,
             type:'PATCH',
-            data: $('form').serialize(),
+            data: {_token:CSRF_TOKEN,test_name:test_name,subject:test_subject,type:test_type},
             success:function(data) {
                 if(data == 1){
                     setTimeout(function(){
@@ -36,10 +45,11 @@ $(document).ready(function() {
                 }
             },
             error: function(response) {
-                console.log(response.responseJSON.errors.name);
+                //console.log(response.responseJSON.errors.name);
                     $('#typeError').text(response.responseJSON.errors.type);
                     $('#nameError').text(response.responseJSON.errors.test_name);
                     $('#subjectError').text(response.responseJSON.errors.subject);
+                    $('#imageError').text(response.responseJSON.errors.image);
                 }
         });
     });

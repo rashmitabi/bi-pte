@@ -47,4 +47,19 @@ $(document).ready(function() {
             }
         }
     });
+
+    $(document).on('click', '.expired-btn', function(){
+      $('.near-expired').removeClass('active');
+      $(this).addClass('active');
+      $('#near-to-expire').hide();
+      $('#expired').show();
+    });
+
+    $(document).on('click', '.near-expired', function(){
+      $('.expired-btn').removeClass('active');
+      $(this).addClass('active');     
+      $('#expired').hide(); 
+      $('#near-to-expire').show();
+    });
+
 });

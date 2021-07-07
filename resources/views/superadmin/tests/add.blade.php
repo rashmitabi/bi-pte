@@ -14,7 +14,7 @@
     <section class="top-title-button white-bg mb-3 remove-main-margin">
         <div class="row mx-0 align-items-center">
             <div class="col-12 col-md-12 col-xl-8 col-sm-12 left">
-                {!! Form::open(array('route' => 'tests.store','method'=>'POST','class'=>'form mt-4 ml-3')) !!}
+                {!! Form::open(array('route' => 'tests.store','method'=>'POST','class'=>'form mt-4 ml-3','enctype'=>'multipart/form-data')) !!}
                     <div class="form-group row">
                         <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Select Test Type</label>
                         <div class="col-12 col-md-7 col-xl-7 col-sm-12">
@@ -49,6 +49,18 @@
                             </select>
                             @if($errors->has('subject'))
                                 <span class="error-msg">{{$errors->first('subject')}}</span>
+                            @endif
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Test Image</label>
+                        <div class="col-12 col-md-7 col-xl-7 col-sm-12">
+                            <div class="custom-file mb-3">
+                                <input type="file" class="custom-file-input" name="image" id="image">
+                                    <label class="custom-file-label" for="customFile">Select file</label>
+                            </div> 
+                            @if($errors->has('image'))
+                                <span class="error-msg">{{$errors->first('image')}}</span>
                             @endif
                         </div>
                     </div>

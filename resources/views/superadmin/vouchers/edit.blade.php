@@ -29,7 +29,7 @@
 <div class="form-group row">
     <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Voucher Type</label>
     <div class="col-12 col-md-7 col-xl-7 col-sm-12">
-        <select class="user-type custom-select" name="voucher_type">
+        <select class="user-type custom-select voucher-type" name="voucher_type">
             <option selected disabled>Select Voucher Type</option>
             <option value="P" {{ ($voucher->discount_type == 'P')?'selected':''}}>Percentage Amount</option>
             <option value="F" {{ ($voucher->discount_type == 'F')?'selected':''}}>Fixed Amount</option>
@@ -38,7 +38,7 @@
     </div>
 </div>
 <div class="form-group row">
-    <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Voucher Price</label>
+    <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label voucher-price-label">{{ ($voucher->discount_type == 'P')?'Percentage Price':'Fixed Price'}}</label>
     <div class="col-12 col-md-7 col-xl-7 col-sm-12">
         <input type="text" class="form-control " name="voucher_price" placeholder="Enter Voucher Price" value="{{ ($voucher->discount_type == 'P')?$voucher->discount_percentage:$voucher->discount_price }}">
         <span class="error-msg" id="voucherPriceError"></span>

@@ -66,7 +66,7 @@ class TransactionsController extends Controller
                     ->addColumn('action', function($row){
                         
                         $btn = '<ul class="actions-btns">
-                            <li class="action"><a href="'.route('transaction-download-invoice', $row['payment_id']).'" class="download_invoice" data-url="'.route('transaction-download-invoice', $row['payment_id']).'"><i class="fas fa-download"></i></a></li>                            
+                            <li class="action"><a target="_blank" href="'.route('transaction-download-invoice', $row['payment_id']).'" class="download_invoice" data-url="'.route('transaction-download-invoice', $row['payment_id']).'"><i class="fas fa-download"></i></a></li>                            
                             </ul>';
                         return $btn;
                     })
@@ -84,6 +84,7 @@ class TransactionsController extends Controller
      */
     public function download_invoice($id)
     {
+        ini_set('max_execution_time', 300);
         $transaction = \App\Models\userSubscriptions::with(['user','subscription', 'transaction'])->where('payment_id',$id)->first();
 
         $sub_start_date = strtotime($transaction->start_date); 
