@@ -131,7 +131,7 @@ class EmailTemplatesController extends Controller
         $result = $email->update();
         if($result){
             return redirect()->route('email.index')
-                        ->with('success','Status Update successfully');
+                        ->with('success','Status updated successfully');
         }else{
             return redirect()->route('email.index')
                         ->with('error','Status Not Updated!');
@@ -157,7 +157,7 @@ class EmailTemplatesController extends Controller
 
         $result = EmailTemplates::where('id',$id)->update($input);
         if($result){
-            \Session::put('success', 'Email update Successfully!');
+            \Session::put('success', 'Email updated successfully!');
             return true;
         }else{
             \Session::put('error', 'Sorry!Something wrong.try Again.');

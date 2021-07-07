@@ -28,4 +28,16 @@ class CreateSubjectRequest extends FormRequest
             'status'=>'nullable|in:E'
         ];
     }
+
+    /**
+     * Get the error messages for the defined validation rules.
+     *
+     * @return array
+     */
+    public function messages()
+    {
+        return [
+            'name.required' => 'Please enter the subject name'
+        ];
+    }
 }

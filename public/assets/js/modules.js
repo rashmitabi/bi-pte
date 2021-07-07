@@ -1,7 +1,7 @@
  var table = $('#module').DataTable({
       language: {
          search: '',
-         searchPlaceholder: 'Search by module name, slug, created date, status',
+         searchPlaceholder: 'Search by module name, slug, status',
          "sLengthMenu": '<select name="module_length">'+
                '<option value="10">10 Per Page</option>'+
                '<option value="20">20 Per Page</option>'+

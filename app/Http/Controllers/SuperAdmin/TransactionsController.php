@@ -15,14 +15,14 @@ class TransactionsController extends Controller
 {
     public function index(Request $request)
     {
-    	if($request->ajax())  {
+       if($request->ajax())  {
             $data = array();
 	    	$transactions = \App\Models\userSubscriptions::with(['user','subscription', 'transaction'])->get();
 	    	foreach($transactions as $transaction){
 	    		$data[] = array(
 	    			'payment_id' => $transaction->transaction->id,
 	    			'user_subscription_id' => $transaction->id,
-	    			'name' => $transaction->user->first_name." ".$transaction->user->last_name,
+	    			'name' => $transaction->user->name,
 	    			'role' => $transaction->user->role->role_name,
 	    			'amount' => $transaction->transaction->amount,
 	    			'package' => $transaction->subscription->title,

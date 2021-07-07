@@ -169,7 +169,7 @@ class RolesController extends Controller
             }
         }
         if($roleres){
-            \Session::put('success', 'Role update Successfully!');
+            \Session::put('success', 'Role updated successfully!');
             return true;
         }else{
             \Session::put('error', 'Sorry!Something wrong.try Again.');
@@ -209,7 +209,7 @@ class RolesController extends Controller
         $result = $role->update();
         if($result){
             return redirect()->route('roles.index')
-                        ->with('success','Status Update successfully');
+                        ->with('success','Status Updated successfully');
         }else{
             return redirect()->route('roles.index')
                         ->with('error','Status Not Updated!');

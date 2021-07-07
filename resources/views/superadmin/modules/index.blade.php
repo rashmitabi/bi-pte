@@ -19,7 +19,7 @@
                             <th>SR No</th>
                             <th>Module Name</th>
                             <th>Module Slug</th>
-                            <th>Module status</th>
+                            <th>Module Status</th>
                             <th>Action</th>
                         </tr>
                     </thead>

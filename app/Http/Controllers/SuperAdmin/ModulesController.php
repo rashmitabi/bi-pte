@@ -140,7 +140,7 @@ class ModulesController extends Controller
         $result = $module->update();
         if($result){
             return redirect()->route('modules.index')
-                        ->with('success','Status Update successfully');
+                        ->with('success','Status updated successfully');
         }else{
             return redirect()->route('modules.index')
                         ->with('error','Status Not Updated!');

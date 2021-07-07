@@ -72,7 +72,7 @@ class DeviceController extends Controller
         $result = $device->update();
         if($result){
             return redirect()->route('device.index')
-                        ->with('success','Status Update successfully');
+                        ->with('success','Status updated successfully');
         }else{
             return redirect()->route('device.index')
                         ->with('error','Status Not Updated!');

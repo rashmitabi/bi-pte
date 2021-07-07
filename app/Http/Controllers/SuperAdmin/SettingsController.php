@@ -218,7 +218,7 @@ class SettingsController extends Controller
         $result = User::find(auth()->user()->id)->update(['password'=> Hash::make($request->password)]);
 
         if($result){
-            \Session::put('success', 'Password Change Successfully!');
+            \Session::put('success', 'Password Changed Successfully!');
             return true;
         }else{
             \Session::put('error', 'Sorry!Something wrong.try Again.');

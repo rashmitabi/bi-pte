@@ -745,7 +745,7 @@ class UsersController extends Controller
                 $result = User::where('id',$user->id)->update(array("status" => $status));
             }
             if($result){
-                \Session::put('success', 'Status Update successfully');
+                \Session::put('success', 'Status Updated successfully');
                 return true;
                 
             }else{
@@ -765,7 +765,7 @@ class UsersController extends Controller
             $result = $user->update();
             if($result){
                 return redirect()->route('users.index')
-                            ->with('success','Status Update successfully');
+                            ->with('success','Status Updated successfully');
             }else{
                 return redirect()->route('users.index')
                             ->with('error','Status Not Updated!');
@@ -805,7 +805,7 @@ class UsersController extends Controller
             $result = User::where('id',$id)->update($input_password);
         }
         if($result){
-            \Session::put('success', 'Set Password Update successfully');
+            \Session::put('success', 'Password Updated successfully');
             return true;
             
         }else{

@@ -27,4 +27,16 @@ class UpdateSubjectRequest extends FormRequest
             'name'=>'required|min:2|max:250',
         ];
     }
+
+    /**
+     * Get the error messages for the defined validation rules.
+     *
+     * @return array
+     */
+    public function messages()
+    {
+        return [
+            'name.required' => 'Please enter the subject name'
+        ];
+    }
 }

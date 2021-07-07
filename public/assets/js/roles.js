@@ -1,7 +1,7 @@
  var table = $('#role').DataTable({
       language: {
          search: '',
-         searchPlaceholder: 'Search by role name, created date, status',
+         searchPlaceholder: 'Search by role name and permissions',
          "sLengthMenu": '<select name="role_length">'+
                '<option value="10">10 Per Page</option>'+
                '<option value="20">20 Per Page</option>'+

@@ -169,7 +169,7 @@ class VouchersController extends Controller
         $result = $voucher->update();
         if($result){
             return redirect()->route('vouchers.index')
-                        ->with('success','Voucher Status Update successfully!');
+                        ->with('success','Voucher Status Updated successfully!');
         }else{
             return redirect()->route('vouchers.index')
                         ->with('error','Voucher Status Not Updated!');
