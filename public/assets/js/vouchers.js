@@ -1,4 +1,17 @@
+function setPriceLabel(){
+    var p1 = $( ".voucher-type option:selected" ).val()
+    if(p1 != '')
+    {
+        console.log(p1);
+        if(p1 == 'P'){
+            $(".voucher-price-label").text("Percentage Price");
+        }else{
+            $(".voucher-price-label").text("Fixed Price");
+        }
+    }
+}
 $(document).ready(function() {
+    setPriceLabel();
     //Vouchers Edit page data start
     $('body').on('click','.vouchers-edit',function(){
            var id = $(this).data('id');
@@ -51,6 +64,17 @@ $(document).ready(function() {
        });
    });
    //Vouchers update data end
+
+   //voucher price label change start
+   $('body').on('change','.voucher-type',function(){
+        var value = $(this).val();
+        if(value == 'P'){
+            $(".voucher-price-label").text("Percentage Price");
+        }else{
+            $(".voucher-price-label").text("Fixed Price");
+        }
+    });
+   //voucher price label change end
    var table = $('#vouchers').DataTable({
     language: {
        search: '',
