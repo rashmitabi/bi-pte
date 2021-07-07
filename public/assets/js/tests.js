@@ -33,21 +33,10 @@ $(document).ready(function() {
         var test_type   = $("#type :selected").val();
         var test_name   = $("input[name=test_name]").val();
         var test_subject= $("#subject :selected").val();
-        var image       = $('#image')[0].files;
-        var test = new FormData();
-            test.append('_token',CSRF_TOKEN);
-            test.append('test_name',test_name);
-            test.append('subject',test_subject);
-            test.append('type',test_type);
-        if(image.length > 0 ){
-            test.append('image',image[0]);
-        }
         $.ajax({
             url: apiUrl,
-            contentType: false,
-            processData: false,
             type:'PATCH',
-            data: test,
+            data: {_token:CSRF_TOKEN,test_name:test_name,subject:test_subject,type:test_type},
             success:function(data) {
                 if(data == 1){
                     setTimeout(function(){
