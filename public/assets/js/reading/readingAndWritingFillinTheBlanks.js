@@ -10,11 +10,11 @@ function addQuestionColumn()
     var newNumber = parseInt(number)+parseInt(1);
     var ans_option_label = "Ans Options "+newNumber;
     var ans_option_id = "ans_options"+newNumber;
-    var ans_placeholder = "Whole,Total,Very,Open";
+    var ans_placeholder = "Please Enter options"+newNumber+" like Whole,Total,Very,Open";
 
     var correct_option_label = "Correct Options "+newNumber;
     var correct_option_id    = "correct_option"+newNumber;
-    var correct_placeholder  = "Whole";
+    var correct_placeholder  = "Please Enter Correct options"+newNumber;
     var html = '';
     console.log(newNumber);
     var html = "<div class='col-11 mt-2 ml-3 white-bg common-col'>"

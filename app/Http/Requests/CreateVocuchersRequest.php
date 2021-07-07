@@ -29,7 +29,7 @@ class CreateVocuchersRequest extends FormRequest
             'name'=>'required|min:3|max:50',
             'code'=>'required|unique:vouchers,code',
             'voucher_type'=>'required|in:P,F',
-            'valid_till'=>'required|date',
+            'valid_till'=>'required|date|after:'.date('Y-m-d'),
             'status'=>'nullable|in:E'
         ];
         if ($voucher_type == 'P') {
