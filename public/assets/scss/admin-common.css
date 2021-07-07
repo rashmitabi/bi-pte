@@ -2123,6 +2123,7 @@ body {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  cursor: pointer;
 }
 
 .question-forms .form .common-col .plus-icon a {
@@ -2144,6 +2145,7 @@ body {
           justify-content: center;
   margin-left: 20px;
   margin-top: 2px;
+  cursor: pointer;
 }
 
 .question-forms .form .common-col .minus-icon a {
@@ -2165,6 +2167,7 @@ body {
           justify-content: center;
   margin-left: 20px;
   margin-top: 2px;
+  cursor: pointer;
 }
 
 .question-forms .form .back-btn {
