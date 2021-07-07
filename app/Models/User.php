@@ -73,4 +73,14 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Models\userSubscriptions');
     }
+
+    public function parent()
+    {
+        return $this->belongsTo(User::class, 'parent_user_id');
+    }
+
+    public function children()
+    {
+        return $this->hasMany(User::class, 'parent_user_id');
+    }
 }

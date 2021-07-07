@@ -1,12 +1,13 @@
 $(document).ready(function() {
     var ctx = document.getElementById('myChart').getContext('2d');
     var sctx = document.getElementById('userSession').getContext('2d');
-    const labels = ['Jan','Fab','Mar','Apr','May','Jun'];
-    const data = {
-        labels: labels,
+    var months = $('#myChart').data('label');
+    var count = $('#myChart').data('values');        
+    var data = {
+        labels: months,
         datasets: [{
-          label: 'My First Dataset',
-          data: [65, 59, 80, 81, 56, 55, 40],
+          label: 'Subscriptions',
+          data: count,
           fill: false,
           borderColor: 'rgb(75, 192, 192)',
           backgroundColor:'rgb(75, 192, 192)',
@@ -24,12 +25,13 @@ $(document).ready(function() {
             }
         }
     });
-    const sessionlabels = ['9:00 AM','10:00 AM','11:00 AM','12:00 PM','01:00 PM','02:00 PM','03:00 PM'];
+    var sessionlabels = $('#userSession').data('label');
+    var num = $('#userSession').data('values');
     const sessiondata = {
         labels: sessionlabels,
         datasets: [{
-          label: 'My First Dataset',
-          data: [65, 59, 80, 81, 56, 55, 40],
+          label: 'Users',
+          data: num,
           fill: false,
           borderColor: 'rgb(75, 192, 192)',
           backgroundColor:'rgb(75, 192, 192)',

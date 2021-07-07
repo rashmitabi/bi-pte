@@ -70,18 +70,38 @@
                  <h5 class="table-head head-text float-left">Total Subscriptions</h5>
               </div>
               <select class="form-select form-select-sm float-right" aria-label=".form-select-sm example">
-                 <option selected>Yearly</option>
-                 <option value="1">Weekly</option> 
+                 <option selected>Monthly</option>
+                 <!-- <option value="1">Weekly</option> 
                  <option value="2">Day</option>
-                 <option value="3">Monthly</option>
+                 <option value="3">Monthly</option> -->
               </select>
-              <canvas id="myChart" width="50%" hight="500px"></canvas>
+              <?php 
+                $months = [];
+                $count = [];
+                 if(count($data['chartSubs']) > 0){
+                    foreach($data['chartSubs'] as $sub){
+                      array_push($months, $sub['month']);
+                      array_push($count, $sub['count']);                      
+                    }
+                 }
+              ?>
+              <canvas id="myChart" width="50%" hight="500px" data-label='<?php echo json_encode($months); ?>' data-values='<?php echo json_encode($count); ?>'></canvas>
            </div>
            <div class="col-12 col-md-6 col-xl-6 col-sm-12 mt-5 mb-4 graph-common-2 white-bg">
                <div class="col-12 col-md-8 col-xl-8 col-sm-8 mt-1 left">
                   <h5 class="table-head head-text">User Session</h5>
                 </div>
-             <canvas id="userSession" width="50%" hight="500px"></canvas>
+                <?php
+                if(count($data['userSession']) > 0){
+                  $time = [];
+                  $num = [];
+                  foreach($data['userSession'] as $sess){
+                    array_push($time, $sess['time']);
+                    array_push($num, $sess['count']);                      
+                  }
+                }
+                ?>
+             <canvas id="userSession" width="50%" hight="500px" data-label='<?php echo json_encode($time); ?>' data-values='<?php echo json_encode($num); ?>'></canvas>
            </div>
         </div>
 
@@ -264,41 +284,27 @@
                                    <tr>
                                       <th>Sr No</th>
                                       <th>Institute Name</th>
-                                      <th>Name of Students</th>
+                                      <th>Number of Students</th>
                                       <th>Mobile Number</th>                                  
                                    </tr>
                                </thead>
                                <tbody>
-                                    <tr>
-                                      <td>1</td>
-                                      <td>Abc Institute</td>
-                                      <td>200</td>
-                                      <td>9842000106</td>                         
-                                    </tr>
-                                    <tr>
-                                      <td>2</td>
-                                      <td>Abc Institute</td>
-                                      <td>200</td>
-                                      <td>9842000106</td>      
-                                    </tr>
-                                    <tr>
-                                      <td>3</td>
-                                      <td>Abc Institute</td>
-                                      <td>200</td>
-                                      <td>9842000106</td>      
-                                    </tr>
-                                    <tr>
-                                      <td>4</td>
-                                      <td>Abc Institute</td>
-                                      <td>200</td>
-                                      <td>9842000106</td>      
-                                    </tr>
-                                    <tr>
-                                      <td>5</td>
-                                      <td>Abc Institute</td>
-                                      <td>200</td>
-                                      <td>9842000106</td>      
-                                    </tr>                              
+                                <?php
+                                if(count($data['top_institutes']) > 0){
+                                  $ti = 1;
+                                  foreach($data['top_institutes'] as $inst){
+                                ?>
+                                <tr>
+                                  <td><?php echo $ti; ?></td>
+                                  <td><?php echo $inst->name; ?></td>
+                                  <td><?php echo $inst->children_count; ?></td>
+                                  <td><?php echo $inst->mobile_no; ?></td>                         
+                                </tr>
+                                <?php
+                                    $ti++;
+                                  }
+                                }
+                                ?>                             
                             </table>
                         </div>
                     </div>
@@ -306,6 +312,8 @@
             </div>
       </div>
    </div>
+
+   
 @endsection
 @section('js-hooks')
 <script src="{{ asset('assets/js/superAdminDashboard.js') }}" defer></script>

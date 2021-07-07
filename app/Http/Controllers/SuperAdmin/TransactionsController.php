@@ -143,7 +143,7 @@ class TransactionsController extends Controller
         //return view('downloadinvoice',compact('data'));
         // share data to view
        view()->share('data', $data);
-       $pdf = PDF::loadView('downloadinvoice', $data);
+       $pdf = PDF::setOptions(['isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true])->loadView('downloadinvoice', $data);
 
        $filename = time().'_invoice.pdf';
        // download PDF file with download method
