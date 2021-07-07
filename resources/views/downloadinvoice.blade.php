@@ -44,12 +44,42 @@
             </table>
 
     </div> -->
-   
-    <div style="border: 1px solid #000;">
-        <div style="display: flex; justify-content:space-between; padding: 6px;">
-            <p>GSTIN:03BMAPK3343M1Z8</p>
-            <p>TAX INVOICE</p>
-            <p>M: +91 70097 83468</p>
+    
+<style>
+    * {
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
+    }
+
+    table,th,td {
+        border-bottom: 1px solid #000;
+        border-right: 1px solid #000;
+        border-collapse: collapse;
+    }
+
+    th,td {
+        padding: 5px;
+        text-align: left;
+    }
+    th {
+        border-bottom: 1px solid #000;
+        border-right: 1px solid #000;
+    }
+</style>
+
+<body>
+    <div style="border: 1px solid #000; margin:20px'">
+        <div style="display:flex; justify-content:space-between; padding: 6px;">
+           <div>
+              <p>GSTIN:03BMAPK3343M1Z8</p>
+           <div>
+           <div>
+              <p>TAX INVOICE</p>
+           <div>
+           <div>
+              <p>M: +91 70097 83468</p>
+           <div>
         </div>
         <div style="border-bottom: 1px solid #000;">
             <h2 style="text-align: center; margin-top: 20px;">AONE SOLUTIONS</h2>
@@ -136,3 +166,6 @@
             </tr>
         </table>
     </div>
+</body>
+
+</html>

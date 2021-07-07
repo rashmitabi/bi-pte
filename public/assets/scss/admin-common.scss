@@ -520,6 +520,9 @@ body {
                color: #fff !important;
                background-color: $primary-color;
           }
+          .custom-file-input{
+              cursor: pointer;
+          }
           .custom-file-input:focus ~ .custom-file-label{
                border-color: $black;
                box-shadow: none;
