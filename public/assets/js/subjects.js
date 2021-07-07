@@ -41,6 +41,7 @@ $(document).ready(function() {
 
    var table = $('#subjects').DataTable({
     language: {
+        processing: 'Loading...',
        search: '',
        searchPlaceholder: 'Search by subject name',
        sLengthMenu: '<select name="module_length">'+
