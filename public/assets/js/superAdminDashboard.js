@@ -48,18 +48,20 @@ $(document).ready(function() {
         }
     });
 
-    $(document).on('click', '.expired-btn', function(){
-      $('.near-expired').removeClass('active');
+    $('#near-to-expire_wrapper').css('display', 'none');
+
+    $('body').on('click', '#expiredSub', function(){
+      $('#nearToExpireSub').removeClass('active');
       $(this).addClass('active');
-      $('#near-to-expire').hide();
-      $('#expired').show();
+      $('#near-to-expire_wrapper').css('display', 'none');
+      $('#expired_wrapper').css('display', 'block');
     });
 
-    $(document).on('click', '.near-expired', function(){
-      $('.expired-btn').removeClass('active');
+    $('body').on('click', '#nearToExpireSub', function(){
+      $('#expiredSub').removeClass('active');
       $(this).addClass('active');     
-      $('#expired').hide(); 
-      $('#near-to-expire').show();
+      $('#expired_wrapper').css('display', 'none'); 
+      $('#near-to-expire_wrapper').css('display', 'block');
     });
 
 });

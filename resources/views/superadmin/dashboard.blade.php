@@ -178,8 +178,8 @@
                    </div>
                    <div class="col-12 col-md-12 col-xl-4 col-sm-7 expired-btn">
                        <div id="myDIV" class="btn-group" role="group" aria-label="First group">
-                           <button type="button" class="btn btn-secondary active expired-btn">Expired</button>
-                           <button type="button" class="btn btn-secondary near-expired ">Near to Expired</button>
+                           <button type="button" id="expiredSub" class="btn btn-secondary active expired-btn">Expired</button>
+                           <button type="button" id="nearToExpireSub" class="btn btn-secondary near-expired ">Near to Expire</button>
                        </div>
                    </div>
                    <div class="row mx-0 align-items-center">
@@ -216,7 +216,7 @@
                                 ?>
                                   
                             </table>
-                            <table id="near-to-expire" class="table table-bordered dt-responsive nowrap" style="width:100%; display:none;">
+                            <table id="near-to-expire" class="table table-bordered dt-responsive nowrap" style="width:100%;">
                                <thead>
                                    <tr>
                                       <th>Sr No</th>
@@ -236,7 +236,7 @@
                                 <tr>
                                   <td><?php echo $n; ?></td>
                                   <td><?php echo $sub->subscription->title; ?></td>
-                                  <td>Expired</td>
+                                  <td>Near to expire</td>
                                   <td><?php echo $sub->transaction->amount; ?></td>
                                   <td><?php echo $sub->user->role->role_name.' ('.$sub->user->first_name.' '.$sub->user->last_name.')'; ?></td>
                                   <td><?php echo date('Y-m-d', strtotime($sub->end_date)); ?></td>

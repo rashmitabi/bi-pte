@@ -284,7 +284,7 @@ $(document).ready(function() {
         "<'row'<'col-sm-12't>>" +
         "<'row'>",
     });
-    $("#near-to-expire_wrapper div.toolbar").html('Near to expire'); 
+    $("#near-to-expire_wrapper div.toolbar").html(''); 
 
     $('#expired').DataTable({
         language: {
@@ -294,7 +294,7 @@ $(document).ready(function() {
         "<'row'<'col-sm-12't>>" +
         "<'row'>",
     });
-    $("#expired_wrapper div.toolbar").html('Expired'); 
+    $("#expired_wrapper div.toolbar").html(''); 
 
     $('#ranking').DataTable({
         language: {

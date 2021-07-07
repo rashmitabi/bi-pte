@@ -96,13 +96,23 @@ class TransactionsController extends Controller
 		$months = floor(($diff - $years * 365*60*60*24)
                                / (30*60*60*24));
 
-		$rate = round($transaction->transaction->amount * 100 / 118);
-
 		$settings = Settings::all();
 		$setting = array();
 		foreach($settings as $set){
 			$setting[$set->label] = $set->value;
 		}
+
+        $stgst = (isset($setting['stgst']))?$setting['stgst']:9;
+        $cgst = (isset($setting['cgst']))?$setting['cgst']:9;
+        $igst = (isset($setting['igst']))?$setting['igst']:9;
+
+        if($transaction->user->state_code == 3){
+            $rate = round($transaction->transaction->amount * 100 / (100+$stgst+$cgst));
+        }
+        else{
+            $rate = round($transaction->transaction->amount * 100 / (100+$igst));
+        }
+        
         
         $data = array(
 	    			'payment_id' => $transaction->transaction->id,
@@ -128,6 +138,8 @@ class TransactionsController extends Controller
 	    			'cgst' => (isset($setting['cgst']))?$setting['cgst']:9,
 	    			'igst' => (isset($setting['igst']))?$setting['igst']:18
 	    		);
+
+       // echo '<pre>';print_r($data);echo '</pre>';die;
         //return view('downloadinvoice',compact('data'));
         // share data to view
        view()->share('data', $data);
