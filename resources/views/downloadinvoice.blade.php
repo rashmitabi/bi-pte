@@ -45,6 +45,7 @@
 
     </div> -->
     
+   
 <style>
     * {
         margin: 0px;
@@ -70,36 +71,29 @@
 
 <body>
     <div style="border: 1px solid #000; margin:20px'">
-        <div style="display:flex; justify-content:space-between; padding: 6px;">
-           <div>
-              <p>GSTIN:03BMAPK3343M1Z8</p>
-           <div>
-           <div>
-              <p>TAX INVOICE</p>
-           <div>
-           <div>
-              <p>M: +91 70097 83468</p>
-           <div>
+        <div style="padding:6px;margin-bottom:40px;">
+            <p style="float:left;">GSTIN:{{ $data['company_gst_number'] }}</p>
+            <p style="float:left; width: 50%;text-align: center;">TAX INVOICE</p>
+            <p style="float:left;width: 22%;text-align: right;">M: {{ $data['company_mobile_number'] }}</p>
         </div>
         <div style="border-bottom: 1px solid #000;">
-            <h2 style="text-align: center; margin-top: 20px;">AONE SOLUTIONS</h2>
-            <h2 style="text-align: center;">1648, Sector 60, Phase- 3B2, SAS Nagar, Punjab, 160059</h2>
+            <h2 style="text-align: center; margin-top: 20px;">{{ $data['company_name'] }}</h2>
+            <h2 style="text-align: center;">{{ $data['company_address'] }}</h2>
         </div>
         <div>
-            <p style="border-bottom: 1px solid #000;padding-left: 10px;font-size: 17px;">Invoice No.: 02 <span
+            <p style="border-bottom: 1px solid #000;padding-left: 10px;font-size: 17px;">Invoice No.:{{ $data ['payment_id'] }} <span
                     style="margin-left: 50px;">Reverse Charge (Y/N): N</span></p>
-            <p style="border-bottom: 1px solid #000;padding-left: 10px;font-size: 17px;">Invoice Date: 11-10-2020</p>
-            <p style="border-bottom: 1px solid #000;padding-left: 10px;font-size: 17px;">State:Code:</p>
-            <p style="border-bottom: 1px solid #000;padding-left: 10px;font-size: 17px;">Billed To: MOHIT ACADEMY OF PTE
-            </p>
-            <p style="border-bottom: 1px solid #000;padding-left: 10px;font-size: 17px;">Name: MOHIT ACADEMY OF PTE</p>
-            <p style="border-bottom: 1px solid #000;padding-left: 10px;font-size: 17px;">Address: PATIALA</p>
-            <p style="border-bottom: 1px solid #000;padding-left: 10px;font-size: 17px;">GSTIN:</p>
+            <p style="border-bottom: 1px solid #000;padding-left: 10px;font-size: 17px;">Invoice Date: {{ $data['created'] }}</p>
+            <p style="border-bottom: 1px solid #000;padding-left: 10px;font-size: 17px;">State:{{ $data['state'] }}&nbsp;Code:{{ $data['state_code'] }}</p>
+            <p style="border-bottom: 1px solid #000;padding-left: 10px;font-size: 17px;">Billed To: {{ $data['billed_to'] }}</p>
+            <p style="border-bottom: 1px solid #000;padding-left: 10px;font-size: 17px;">Name:{{ $data['name'] }}</p>
+            <p style="border-bottom: 1px solid #000;padding-left: 10px;font-size: 17px;">Address: {{ $data['customer_address'] }}</p>
+            <p style="border-bottom: 1px solid #000;padding-left: 10px;font-size: 17px;">GSTIN:{{ $data['customer_GSTIN'] }}</p>
         </div>
-        <div style="display: flex; justify-content:space-between; padding: 0px 10px;border-bottom: 1px solid #000;">
-            <p>State:</p>
-            <p>PUNJAB</p>
-            <p>Code:</p>
+        <div style="height: 21px;border-bottom: 1px solid #000;padding:6px;">
+            <p style="float:left;width: 22%;">State:</p>
+            <p style="float:left; width: 50%;text-align: center;">PUNJAB</p>
+            <p style="float:left;width: 22%;text-align: right;">Code:</p>
         </div>
         <table style="width:100%;">
             <tr>
@@ -113,12 +107,12 @@
             <tr>
                 <td style="padding-bottom: 230px;">1</td>
                 <td style="padding-bottom: 230px;">PTE SOFWARE SUBSCRIPTION
-                    1 year
+                {{ $data['package'] }}<br>{{ $data['validity'] }} months
                 </td>
-                <td style="padding-bottom: 230px;">Sac 9983</td>
+                <td style="padding-bottom: 230px;">{{ $data['hsn_code'] }}</td>
                 <td style="padding-bottom: 230px;">1</td>
-                <td style="padding-bottom: 230px;">4238/-</td>
-                <td style="padding-bottom: 230px;">4238</td> <!-- rowspan="2" -->
+                <td style="padding-bottom: 230px;">{{ $data['rate'] }}/-</td>
+                <td style="padding-bottom: 230px;">{{ $data['rate'] }}</td> <!-- rowspan="2" -->
             </tr>
             <tr>
                 <th colspan="2">Amount in Words</th>
@@ -154,18 +148,16 @@
                 <td colspan="3">Grand Total</td>
                 <td colspan="3">5000</td>
             </tr>
-            <tr>
-                <td colspan="2" rowspan="3">Terms & Conditions:<br>
+            <tr style="border-bottom: 0px;">
+                <td style="margin-top:0px" colspan="2">Terms & Conditions:<br>
                     All disputes subject to Mohali jurisdiction only.<br>
                     <span>Receiver’s Customer’s Signature</span>
                 </td>
                 <td style="border-bottom: 0px;" colspan="4">Certified that the particulars given above are true and correct<br>
-                    <span style="display: flex;justify-content: center;margin-top: 18px;font-size: 18px;"><strong>Aone Solutions</strong></span><br>
-                    <span style="display: flex;justify-content: center;margin-top: 10px;font-size: 18px;">Authorised Signatory</span>
+                    <span ><strong>Aone Solutions</strong></span><br>
+                    <span >Authorised Signatory</span>
                 </td>
             </tr>
         </table>
     </div>
 </body>
-
-</html>
