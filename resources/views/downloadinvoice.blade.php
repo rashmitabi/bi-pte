@@ -73,7 +73,7 @@
             </tr>
             @if($data['state_code'] == 3)
             <tr>
-                <td colspan="2" rowspan="3"></td>
+                <td colspan="2" rowspan="2"></td>
                 <td colspan="3">Add: CGST @ {{ $data['cgst'] }}%</td>
                 <td colspan="3">{{ round($data['rate'] * $data['cgst'] / 100) }}</td>
             </tr>
@@ -116,7 +116,7 @@
                     <span ><strong>Aone Solutions</strong></span><br>
                     <span >Authorised Signatory</span>
                     @if ($data['digital_signature'] != '')
-                      <img width="100" src="{{ $data['digital_signature'] }}">
+                      <!-- <img width="100" src="{{ $data['digital_signature'] }}"> -->
                     @endif                    
                 </td>
             </tr>
