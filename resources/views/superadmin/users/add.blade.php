@@ -164,7 +164,7 @@
             <div class="form-group row">
               <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">GSTIN</label>
               <div class="col-12 col-md-7 col-xl-7 col-sm-12">
-                <input type="text" name="sgstin" value="{{ old('sgstin') }}" class="form-control " placeholder="Enter State Code">
+                <input type="text" name="sgstin" value="{{ old('sgstin') }}" class="form-control " placeholder="Enter GST NO">
                 @if($errors->has('sgstin'))
                   <span class="error-msg">{{$errors->first('sgstin')}}</span>
                 @endif
