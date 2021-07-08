@@ -252,7 +252,7 @@ $(document).ready(function() {
     $('#sresidenceError').text('');
     $('#sstateError').text('');
     $('#sstate_codeError').text('');
-    $('#sgstinError').text('');
+    // $('#sgstinError').text('');
     $('#svalidityError').text('');
 
     $('#iunameError').text('');
@@ -299,7 +299,7 @@ $(document).ready(function() {
         $('#sresidenceError').text(response.responseJSON.errors.sresidence);
         $('#sstateError').text(response.responseJSON.errors.sstate);
         $('#sstate_codeError').text(response.responseJSON.errors.sstate_code);
-        $('#sgstinError').text(response.responseJSON.errors.sgstin);
+        // $('#sgstinError').text(response.responseJSON.errors.sgstin);
         $('#svalidityError').text(response.responseJSON.errors.svalidity);
 
         $('#iunameError').text(response.responseJSON.errors.iuname);
