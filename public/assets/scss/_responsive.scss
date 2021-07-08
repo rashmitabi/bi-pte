@@ -332,6 +332,14 @@
                     }
                }
           }
+          #vouchers{
+               thead{
+                    th{
+                              white-space: unset!important;
+                              padding-right: 7px!important;
+                    }
+               }
+          }
           #mock_test{
                thead{
                     th{
@@ -377,8 +385,8 @@
           #role{
                thead{
                     th{
-                         white-space: unset!important;
-                         padding-right: 48px!important;
+                         white-space: nowrap!important;
+                         padding-right: 28px!important;
                     }
                }
           }
@@ -593,7 +601,14 @@
                thead{
                     th{
                          white-space: unset!important;
-                         padding-right: 25px!important;
+                         padding-right:60px!important;
+                    }
+               }
+          }
+          #module{
+               thead{
+                    th{
+                         padding-right: 45px!important;
                     }
                }
           }
@@ -882,6 +897,13 @@
                     }
                }
           }
+          #videos{
+               thead{
+                    th{
+                         padding-right: 50px!important;
+                    }
+               }
+          }
           .custom-row{
                justify-content: space-between;
                .common-wrap-col{
@@ -1005,5 +1027,13 @@
                     padding-right: 0px!important;
                }
           }
+          #videos{
+               thead{
+                    th{
+                         padding-right: 50px!important;
+                    }
+               }
+          }
      }
+
 }
