@@ -45,7 +45,7 @@
                                     <input type="text" class="form-control " name="ans_options_D" id="ans_options_D" placeholder="Which of the Following Are True Statements?">
                                  </div>
                               </div>
-                              <div class="form-group mb-3 row">
+                              <div class="form-group mb-3 row dynamicblockE">
                                  <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label custom-label">Ans Options E</label>
                                  <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
                                     <input type="text" class="form-control " name="ans_options_E" id="ans_options_E" placeholder="Which of the Following Are True Statements?">
@@ -65,7 +65,7 @@
                                     $arrayValue = $list[$i];
                                     $label++;
                                  @endphp
-                                 <div class="form-group mb-3 row">
+                                 <div class="form-group mb-3 row dynamicblock{{$arrayValue}}">
                                     <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label custom-label">Ans Options {{ $arrayValue }}</label>
                                     <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
                                        <input type="text" class="form-control " name="ans_options_{{$arrayValue}}" id="ans_options_{{$arrayValue}}" placeholder="Which of the Following Are True Statements?" value="{{ $questions->questiondata[$i]->data_value }}" required>
@@ -73,6 +73,9 @@
                                     @if($label == $count)
                                        <div class="plus-icon" onclick="addQuestionColumn()" data-qid="{{$arrayValue}}" data-aid="{{$label}}">
                                           <a><i class="fas fa-plus"></i></a>
+                                       </div>
+                                       <div class="minus-icon" onclick="minusQuestionColumn()" data-qid="{{$arrayValue}}" data-aid="{{$label}}">
+                                          <a><i class="fas fa-minus"></i></a>
                                        </div>
                                     @endif
                                  </div>
@@ -105,7 +108,7 @@
                                     <input type="text" class="form-control " name="correct_options4" id="correct_options4" placeholder="it Seems that The Lack of Psychological Reward is the Reason for their Disatisfaction.">
                                  </div>
                               </div>
-                              <div class="form-group mb-3 row">
+                              <div class="form-group mb-3 row dynamicblock5">
                                  <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label custom-label">Correct Options</label>
                                  <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
                                     <input type="text" class="form-control " name="correct_options5" id="correct_options5" placeholder="it Seems that The Lack of Psychological Reward is the Reason for their Disatisfaction.">
@@ -120,7 +123,7 @@
                                     @php
                                        $temp++;
                                     @endphp
-                                    <div class="form-group mb-3 row">
+                                    <div class="form-group mb-3 row dynamicblock{{ $temp }}">
                                        <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label custom-label">Correct Options</label>
                                        <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
                                           <input type="text" class="form-control " name="correct_options{{ $temp }}" id="correct_options{{ $temp }}" placeholder="it Seems that The Lack of Psychological Reward is the Reason for their Disatisfaction." value="{{ $questions->answerdata[$c]->answer_value}}" required>

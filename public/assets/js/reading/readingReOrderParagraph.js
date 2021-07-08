@@ -23,7 +23,7 @@ function addQuestionColumn()
     var correctId      = "correct_options"+number;
     console.log(number);
     console.log(correctId);
-    var ansOptionHtml = "<div class='form-group mb-3 row'>"
+    var ansOptionHtml = "<div class='form-group mb-3 row dynamicblock"+alpha+"'>"
                             +"<label class='col-3 col-form-label custom-label'>"+ansOptionLabel+"</label>"
                             +"<div class='col-12 col-md-7 col-xl-7 col-sm-12 p-0'>"
                                 +"<input type='text' class='form-control' name='"+ansOptionId+"' id='"+ansOptionId+"' placeholder='Which of the Following Are True Statements?'>"
@@ -31,14 +31,18 @@ function addQuestionColumn()
                             +"<div class='plus-icon' onclick='addQuestionColumn()' data-qid='"+alpha+"' data-aid='"+number+"'>"
                                 +"<a><i class='fas fa-plus'></i></a>"
                             +"</div>"
+                            +"<div class='minus-icon' onclick='minusQuestionColumn()' data-qid='"+alpha+"' data-aid='"+number+"'>"
+                                    +"<a><i class='fas fa-minus'></i></a>"
+                            +"</div>"
                         +"</div>";
-    var correctOptionHtml = "<div class='form-group mb-3 row'>"
+    var correctOptionHtml = "<div class='form-group mb-3 row dynamicblock"+number+"'>"
                                 +"<label class='col-3 col-form-label custom-label'>"+correctLabel+"</label>"
                                 +"<div class='col-12 col-md-7 col-xl-7 col-sm-12 p-0'>"
                                     +"<input type='text' class='form-control ' name='"+correctId+"' id='"+correctId+"' placeholder='it Seems that The Lack of Psychological Reward is the Reason for their Disatisfaction.'>"
                                 +"</div>"
                             +"</div>";
     $(".plus-icon").remove();
+    $(".minus-icon").remove();
     $("#answerBlog").append(ansOptionHtml);
     $("#correctBlog").append(correctOptionHtml);
     //$("#re_order .white-bg:last").after(correctOptionHtml);
@@ -55,6 +59,49 @@ function addQuestionColumn()
             required: correctLabel+" is required",
         }
     });
+    $("#numberSlug").val(number);
+    $("#alphaSlug").val(alpha);
+}
+function minusQuestionColumn()
+{
+    console.log("hello");
+    var alphabet = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
+    var link = document.querySelector('.minus-icon');
+        if (link) {
+            var target = link.getAttribute('data-qid');
+            var anstarget = link.getAttribute('data-aid');
+            console.log(target);
+            console.log(anstarget);
+        }
+    var letterPosition = alphabet.indexOf(target)-1;
+    var alpha = alphabet[letterPosition];
+    var number = parseInt(anstarget)-parseInt(1);
+
+    var ansOptionId    = "ans_options_"+target;
+    var correctId      = "correct_options"+anstarget;
+
+    var plus_html = '';
+    var minus_html = '';
+   
+    minus_html = "<div class='minus-icon' onclick='minusQuestionColumn()' data-qid='"+alpha+"' data-aid='"+number+"'>"
+                    +"<a><i class='fas fa-minus'></i></a>"
+                +"</div>";
+    plus_html = "<div class='plus-icon' onclick='addQuestionColumn()' data-qid='"+alpha+"' data-aid='"+number+"'>"
+                    +"<a><i class='fas fa-plus'></i></a>"
+                +"</div>";
+    
+    $(ansOptionId).rules("remove", "required");
+    $(correctId).rules("remove", "required");
+
+    $(".dynamicblock"+target).remove();
+    $(".dynamicblock"+anstarget).remove();
+
+    if(alpha == 'E'){
+        $(".dynamicblock"+alpha).append(plus_html);
+    }else{
+        $(".dynamicblock"+alpha).append(plus_html);
+        $(".dynamicblock"+alpha).append(minus_html);
+    }
     $("#numberSlug").val(number);
     $("#alphaSlug").val(alpha);
 }
