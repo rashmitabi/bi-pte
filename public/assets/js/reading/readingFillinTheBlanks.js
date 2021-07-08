@@ -15,22 +15,29 @@ function addQuestionColumn()
 
     var html = '';
 
-    var html =  "<div class='form-group mb-3 row'>"
-                    +"<label class='col-3 col-form-label custom-label '>"+ansLabel+"</label>"
-                    +"<div class='col-7 p-0'>"
-                        +"<input type='text' class='form-control ' name='"+ansId+"' id='"+ansId+"' placeholder='Whole,Total,Very,Open'>"
+    var html =  "<div class='col-11 mt-2 ml-3 white-bg common-col mainbox"+number+"'>"
+                    +"<div class='form-group mb-3 row'>"
+                        +"<label class='col-3 col-form-label custom-label '>"+ansLabel+"</label>"
+                        +"<div class='col-7 p-0'>"
+                            +"<input type='text' class='form-control ' name='"+ansId+"' id='"+ansId+"' placeholder='Whole,Total,Very,Open'>"
+                        +"</div>"
                     +"</div>"
-                +"</div>"
-                +"<div class='form-group mb-3 row'>"
-                    +"<label class='col-3 col-form-label custom-label'>"+correctLabel+"</label>"
-                    +"<div class='col-7 p-0'>"
-                        +"<input type='text' class='form-control ' name='"+correctId+"' id='"+correctId+"' placeholder='Whole'>"
-                    +"</div>"
-                    +"<div class='add-icon' onclick='addQuestionColumn()' data-id='"+number+"'>"
-                        +"<a><i class='fas fa-plus'></i></a>"
-                    +"</div>"
+                    +"<div class='form-group mb-3 row subbox"+number+"'>"
+                        +"<label class='col-3 col-form-label custom-label'>"+correctLabel+"</label>"
+                        +"<div class='col-7 p-0'>"
+                            +"<input type='text' class='form-control ' name='"+correctId+"' id='"+correctId+"' placeholder='Whole'>"
+                        +"</div>"
+                        +"<div class='add-icon' onclick='addQuestionColumn()' data-id='"+number+"'>"
+                            +"<a><i class='fas fa-plus'></i></a>"
+                        +"</div>"
+                        +"<div class='minus-icon' onclick='minusQuestionColumn()' data-id='"+number+"'>"
+                            +"<a><i class='fas fa-minus'></i></a>"
+                        +"</div>"
+                    +"</div>";
                 +"</div>";
-    $("#mainbox").append(html);
+    $(".add-icon").remove();
+    $(".minus-icon").remove();
+    $(".mainbox"+target).after(html);
     $('#re_order').validate();
     $("#"+ansId).rules( "add", {
         required: true,
@@ -44,6 +51,40 @@ function addQuestionColumn()
             required: correctLabel+" is required",
         }
     });
+    $("#slug").val(number);
+}
+function minusQuestionColumn()
+{
+    var link = document.querySelector('.minus-icon');
+        if (link) {
+            var target = link.getAttribute('data-id');
+            console.log(target);
+        }
+    var number = parseInt(target)-parseInt(1);
+    var plus_html = '';
+    var minus_html = '';
+
+    var ansId        = 'ans_options'+target;
+    var correctId    = 'correct_options'+target;
+
+    plus_html = "<div class='add-icon' onclick='addQuestionColumn()' data-id='"+number+"'>"
+                    +"<a><i class='fas fa-plus'></i></a>"
+                +"</div>";
+    minus_html = "<div class='minus-icon' onclick='minusQuestionColumn()' data-id='"+number+"'>"
+                    +"<a><i class='fas fa-minus'></i></a>"
+                +"</div>";
+
+    $(ansId).rules("remove", "required");
+    $(correctId).rules("remove", "required");
+    
+    $(".mainbox"+target).remove();
+
+    if(number == '1'){
+        $(".subbox"+number).append(plus_html);
+    }else{
+        $(".subbox"+number).append(plus_html);
+        $(".subbox"+number).append(minus_html);
+    }
     $("#slug").val(number);
 }
 $(document).ready(function() {
