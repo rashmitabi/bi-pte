@@ -24,4 +24,14 @@ class PredictionFiles extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
+    public function section()
+    {
+        return $this->belongsTo(Sections::class, 'section_id');
+    }
+
+    public function design()
+    {
+        return $this->belongsTo(QuestionDesigns::class, 'design_id');
+    }
+
 }

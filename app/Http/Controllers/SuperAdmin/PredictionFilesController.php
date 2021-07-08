@@ -4,10 +4,11 @@ namespace App\Http\Controllers\SuperAdmin;
 
 use App\Http\Controllers\Controller;
 use App\Models\PredictionFiles;
+use App\Models\Sections;
+use App\Models\QuestionDesigns;
 use Illuminate\Http\Request;
 use App\Http\Requests\CreatePredictionRequest;
 use App\Http\Requests\UpdatePredictionRequest;
-use DB;
 use DataTables;
 
 class PredictionFilesController extends Controller
@@ -37,13 +38,7 @@ class PredictionFilesController extends Controller
                         }                        
                     })   
                     ->addColumn('type', function($row){
-                        if($row->section_id != ""){
-                            $section = DB::table('sections')->select('section_name')->where('id',$row->section_id)->first();
-                        }
-                        if($row->design_id != ""){
-                            $type = DB::table('question_designs')->select('design_name')->where('id',$row->design_id)->first();
-                        }
-                        return ucfirst($section->section_name).' - '.ucfirst($type->design_name);
+                        return ucfirst($row->section->section_name).' - '.ucfirst($row->design->design_name);
                     })
                     ->addColumn('created by', function($row){
                         return $row->user->first_name.' '.$row->user->last_name.' ('.$row->user->role->role_name.')';
@@ -85,8 +80,8 @@ class PredictionFilesController extends Controller
      */
     public function create()
     {
-        $sections = DB::table('sections')->get();
-        $designs = DB::table('question_designs')->select('id', 'section_id', 'design_name')->get();
+        $sections = Sections::all();
+        $designs = QuestionDesigns::all();
         $types = array();
         foreach($designs as $des){
             $types[$des->section_id][] = array('id' => $des->id, 'name' => $des->design_name);
@@ -155,8 +150,8 @@ class PredictionFilesController extends Controller
     public function edit($id)
     {
         $prediction = PredictionFiles::find($id);
-        $sections = DB::table('sections')->get();
-        $designs = DB::table('question_designs')->select('id', 'section_id', 'design_name')->get();
+        $sections = Sections::all();
+        $designs = QuestionDesigns::all();
         $types = array();
         foreach($designs as $des){
             $types[$des->section_id][] = array('id' => $des->id, 'name' => $des->design_name);
