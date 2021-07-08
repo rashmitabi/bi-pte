@@ -38,7 +38,7 @@
                         <div class="form-group mb-2 row">
                             <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label pl-1 ">Q13 Audio</label>
                             <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
-                                <input type="text" name="audio13" id="audio13" class="form-control " placeholder="Whole" value="{{ (isset($json13))?$json13->audio13:''}}">
+                                <input type="text" name="audio13" id="audio13" class="form-control " placeholder="Please Enter audio13" value="{{ (isset($json13))?$json13->audio13:''}}">
                             </div>
                         </div>
                       </div>
@@ -54,7 +54,7 @@
                         <div class="form-group mb-2 row">
                           <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label pl-1 ">Q13 Correct Answers</label>
                           <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
-                            <input type="text" name="correct_ans13" id="correct_ans13" class="form-control " placeholder="Whole" value="{{ (isset($json13))?$questions->answerdata[0]->answer_value:''}}">
+                            <input type="text" name="correct_ans13" id="correct_ans13" class="form-control " placeholder="Please Enter Correct Answers13" value="{{ (isset($json13))?$questions->answerdata[0]->answer_value:''}}">
                           </div>
                         </div>
                       </div>
@@ -62,7 +62,7 @@
                       <div class="form-group mb-2 row">
                           <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label pl-1 ">Q14 Audio</label>
                           <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
-                              <input type="text" name="audio14" id="audio14"  class="form-control " placeholder="Whole" value="{{ (isset($json14))?$json14->audio14:''}}">
+                              <input type="text" name="audio14" id="audio14"  class="form-control " placeholder="Please Enter audio14" value="{{ (isset($json14))?$json14->audio14:''}}">
                           </div>
                        </div>
                     </div>
@@ -78,7 +78,7 @@
                       <div class="form-group mb-2 row">
                         <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label pl-1 ">Q14 Correct Answers</label>
                         <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
-                          <input type="text" name="correct_ans14" id="correct_ans14" class="form-control " placeholder="Whole" value="{{ (isset($json14))?$questions->answerdata[1]->answer_value:''}}">
+                          <input type="text" name="correct_ans14" id="correct_ans14" class="form-control " placeholder="Please Enter Correct Answers14" value="{{ (isset($json14))?$questions->answerdata[1]->answer_value:''}}">
                         </div>
                       </div>
                     </div>

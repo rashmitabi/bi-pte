@@ -129,13 +129,13 @@
             <span class="error-msg" id="sstate_codeError"></span>
           </div>
         </div>
-        <div class="form-group row">
+        <!-- <div class="form-group row">
           <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">GSTIN</label>
           <div class="col-12 col-md-7 col-xl-7 col-sm-12">
             <input type="text" name="sgstin" id="sgstin" value="{{ $user->gstin }}" class="form-control " placeholder="Enter State Code">
             <span class="error-msg" id="sgstinError"></span>
           </div>
-        </div>
+        </div> -->
         <div class="form-group row mb-2">
           <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Validity</label>
           <div class="col-12 col-md-7 col-xl-7 col-sm-12">

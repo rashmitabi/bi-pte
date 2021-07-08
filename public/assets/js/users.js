@@ -252,7 +252,7 @@ $(document).ready(function() {
     $('#sresidenceError').text('');
     $('#sstateError').text('');
     $('#sstate_codeError').text('');
-    $('#sgstinError').text('');
+    // $('#sgstinError').text('');
     $('#svalidityError').text('');
 
     $('#iunameError').text('');
@@ -299,7 +299,7 @@ $(document).ready(function() {
         $('#sresidenceError').text(response.responseJSON.errors.sresidence);
         $('#sstateError').text(response.responseJSON.errors.sstate);
         $('#sstate_codeError').text(response.responseJSON.errors.sstate_code);
-        $('#sgstinError').text(response.responseJSON.errors.sgstin);
+        // $('#sgstinError').text(response.responseJSON.errors.sgstin);
         $('#svalidityError').text(response.responseJSON.errors.svalidity);
 
         $('#iunameError').text(response.responseJSON.errors.iuname);
@@ -704,6 +704,14 @@ $(document).ready(function() {
   });
   /*multiple user tests assign get and update end*/
 
+  /* select test filter*/
+  $('body').on('click','.test_select',function(){
+      var testCount = $('input:radio[name=test_select]:checked').val();
+      for(var i=1;i<=testCount;i++)
+      {
+        $(".singletest"+i).prop("checked", true);
+      }
+  });
   /*Check user unique validation at store start*/
   $(".unique-susername").keyup(function() {
     var uname       = $(this).val();

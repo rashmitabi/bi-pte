@@ -34,7 +34,7 @@
                           <div class="form-group mb-2 row">
                              <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label">Question {{ $i+17 }}</label>
                              <div class="col-12 col-md-7 col-xl-8 col-sm-12 p-0">
-                                <input type="text" name="question[]" id="question{{ $i+1 }}" value="{{ $questions->questiondata[$i]->data_value }}" class="form-control " placeholder="Whole,Total,Very,Open">
+                                <input type="text" name="question[]" id="question{{ $i+1 }}" value="{{ $questions->questiondata[$i]->data_value }}" class="form-control " placeholder="Please Enter question{{ $i+17 }} like Whole,Total,Very,Open">
                              </div>
                           </div>
 
@@ -42,7 +42,7 @@
                           <div class="form-group mb-2 row">
                             <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Sample Ans {{ $i+17 }}</label>
                             <div class="col-12 col-md-7 col-xl-8 col-sm-12 p-0">
-                                <input type="text" name="sample_ans[]" id="sample_ans{{ $i+1 }}" value="{{ $questions->answerdata[$i]->sample_answer }}" class="form-control " placeholder="Whole">
+                                <input type="text" name="sample_ans[]" id="sample_ans{{ $i+1 }}" value="{{ $questions->answerdata[$i]->sample_answer }}" class="form-control " placeholder="Please Enter sample answer{{ $i+17 }}">
                             </div>
                           </div>
                       </div>
@@ -52,13 +52,13 @@
                           <div class="form-group mb-2 row">
                              <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label">Question 17</label>
                              <div class="col-12 col-md-7 col-xl-8 col-sm-12 p-0">
-                                <input type="text" name="question[]" id="question1" class="form-control " placeholder="Whole,Total,Very,Open">
+                                <input type="text" name="question[]" id="question1" class="form-control " placeholder="Please Enter question17 like Whole,Total,Very,Open">
                              </div>
                           </div>
                          <div class="form-group mb-2 row">
                             <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Sample Ans 17</label>
                             <div class="col-12 col-md-7 col-xl-8 col-sm-12 p-0">
-                                <input type="text" name="sample_ans[]" id="sample_ans1" class="form-control " placeholder="Whole">
+                                <input type="text" name="sample_ans[]" id="sample_ans1" class="form-control " placeholder="Please Enter sample answer17">
                             </div>
                          </div>
                     </div>
@@ -66,13 +66,13 @@
                         <div class="form-group mb-2 row">
                              <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label">Question 18</label>
                              <div class="col-12 col-md-7 col-xl-8 col-sm-12 p-0">
-                                <input type="text" name="question[]" id="question2" class="form-control " placeholder="Whole,Total,Very,Open">
+                                <input type="text" name="question[]" id="question2" class="form-control " placeholder="Please Enter question18 like Whole,Total,Very,Open">
                              </div>
                         </div>
                         <div class="form-group mb-2 row">
                             <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Sample Ans 18</label>
                             <div class="col-12 col-md-7 col-xl-8 col-sm-12 p-0">
-                                <input type="text" name="sample_ans[]" id="sample_ans2" class="form-control " placeholder="Whole">
+                                <input type="text" name="sample_ans[]" id="sample_ans2" class="form-control " placeholder="Please Enter sample answer18">
                             </div>
                         </div>
                     </div>
@@ -80,13 +80,13 @@
                         <div class="form-group mb-2 row">
                              <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label">Question 19</label>
                              <div class="col-12 col-md-7 col-xl-8 col-sm-12 p-0">
-                                <input type="text" name="question[]" id="question3" class="form-control " placeholder="Whole,Total,Very,Open">
+                                <input type="text" name="question[]" id="question3" class="form-control " placeholder="Please Enter question19 like Whole,Total,Very,Open">
                              </div>
                         </div>
                         <div class="form-group mb-2 row">
                             <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Sample Ans 19</label>
                             <div class="col-12 col-md-7 col-xl-8 col-sm-12 p-0">
-                                <input type="text" name="sample_ans[]" id="sample_ans3" class="form-control " placeholder="Whole">
+                                <input type="text" name="sample_ans[]" id="sample_ans3" class="form-control " placeholder="Please Enter sample answer19">
                             </div>
                         </div>
                     </div>
@@ -94,13 +94,13 @@
                         <div class="form-group mb-2 row">
                              <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label">Question 20</label>
                              <div class="col-12 col-md-7 col-xl-8 col-sm-12 p-0">
-                                <input type="text" name="question[]" id="question4" class="form-control " placeholder="Whole,Total,Very,Open">
+                                <input type="text" name="question[]" id="question4" class="form-control " placeholder="Please Enter question20 like Whole,Total,Very,Open">
                              </div>
                         </div>
                         <div class="form-group mb-2 row">
                             <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Sample Ans 20</label>
                             <div class="col-12 col-md-7 col-xl-8 col-sm-12 p-0">
-                                <input type="text" name="sample_ans[]" id="sample_ans4" class="form-control " placeholder="Whole">
+                                <input type="text" name="sample_ans[]" id="sample_ans4" class="form-control " placeholder="Please Enter sample answer20">
                             </div>
                         </div>
                     </div>
@@ -108,13 +108,13 @@
                         <div class="form-group mb-2 row">
                              <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label">Question 21</label>
                              <div class="col-12 col-md-7 col-xl-8 col-sm-12 p-0">
-                                <input type="text" name="question[]" id="question5" class="form-control " placeholder="Whole,Total,Very,Open">
+                                <input type="text" name="question[]" id="question5" class="form-control " placeholder="Please Enter question21 like Whole,Total,Very,Open">
                              </div>
                         </div>
                         <div class="form-group mb-2 row">
                             <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Sample Ans 21</label>
                             <div class="col-12 col-md-7 col-xl-8 col-sm-12 p-0">
-                                <input type="text" name="sample_ans[]" id="sample_ans5" class="form-control " placeholder="Whole">
+                                <input type="text" name="sample_ans[]" id="sample_ans5" class="form-control " placeholder="Please Enter sample answer21">
                             </div>
                         </div>
                     </div>
@@ -122,13 +122,13 @@
                         <div class="form-group mb-2 row">
                              <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label">Question 22</label>
                              <div class="col-12 col-md-7 col-xl-8 col-sm-12 p-0">
-                                <input type="text" name="question[]" id="question6" class="form-control " placeholder="Whole,Total,Very,Open">
+                                <input type="text" name="question[]" id="question6" class="form-control " placeholder="Please Enter question22 like Whole,Total,Very,Open">
                              </div>
                         </div>
                         <div class="form-group mb-2 row">
                             <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Sample Ans 22</label>
                             <div class="col-12 col-md-7 col-xl-8 col-sm-12 p-0">
-                                <input type="text" name="sample_ans[]" id="sample_ans6" class="form-control " placeholder="Whole">
+                                <input type="text" name="sample_ans[]" id="sample_ans6" class="form-control " placeholder="Please Enter sample answer22">
                             </div>
                         </div>
                     </div>

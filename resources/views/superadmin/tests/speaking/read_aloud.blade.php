@@ -43,7 +43,7 @@
 			                                    <div class="form-group mb-3 row">
 			                                       <label class="col-3 col-form-label">Sample Ans {{$i+1}}</label>
 			                                       <div class="col-9">
-			                                          <input type="text" name="sample_ans{{$i+1}}" id="sample_ans{{$i+1}}" value="{{ $questions->answerdata[$i]->sample_answer }}" class="form-control " placeholder="Whole,Total,Very,Open">
+			                                          <input type="text" name="sample_ans{{$i+1}}" id="sample_ans{{$i+1}}" value="{{ $questions->answerdata[$i]->sample_answer }}" class="form-control " placeholder="Please Enter sample answer{{$i+1}} like Whole,Total,Very,Open">
 			                                       </div>
 			                                    </div>
 			                                </div>
@@ -64,7 +64,7 @@
 		                                    <div class="form-group mb-3 row">
 		                                       <label class="col-3 col-form-label">Sample Ans 1</label>
 		                                       	<div class="col-9">
-		                                          	<input type="text" name="sample_ans1" id="sample_ans1" class="form-control sample_ans" placeholder="Whole,Total,Very,Open">
+		                                          	<input type="text" name="sample_ans1" id="sample_ans1" class="form-control sample_ans" placeholder="Please Enter sample answer1 like Whole,Total,Very,Open">
 		                                          	@if($errors->has('sample_ans'))
 							                            <span class="error-msg"> {{$errors->first('sample_ans')}}</span>
 							                        @endif
@@ -83,7 +83,7 @@
 		                                    <div class="form-group mb-2 row">
 		                                       <label class="col-3 col-form-label">Sample Ans 2</label>
 		                                       <div class="col-9">
-		                                          <input type="text" name="sample_ans2" id="sample_ans2"  class="form-control sample_ans" placeholder="Whole,Total,Very,Open">
+		                                          <input type="text" name="sample_ans2" id="sample_ans2"  class="form-control sample_ans" placeholder="Please Enter sample answer2 like Whole,Total,Very,Open">
 		                                       </div>
 		                                    </div>
 		                                </div>
@@ -99,7 +99,7 @@
 		                                    <div class="form-group mb-2 row">
 		                                       <label class="col-3 col-form-label">Sample Ans 3</label>
 		                                       <div class="col-9">
-		                                          <input type="text" name="sample_ans3" id="sample_ans3" class="form-control sample_ans" placeholder="Whole,Total,Very,Open">
+		                                          <input type="text" name="sample_ans3" id="sample_ans3" class="form-control sample_ans" placeholder="Please Enter sample answer3 like Whole,Total,Very,Open">
 		                                       </div>
 		                                    </div>
 		                                </div>
@@ -115,7 +115,7 @@
 		                                    <div class="form-group mb-2 row">
 		                                       <label class="col-3 col-form-label">Sample Ans 4</label>
 		                                       <div class="col-9">
-		                                          <input type="text" name="sample_ans4" id="sample_ans4" class="form-control sample_ans" placeholder="Whole,Total,Very,Open">
+		                                          <input type="text" name="sample_ans4" id="sample_ans4" class="form-control sample_ans" placeholder="Please Enter sample answer4 like Whole,Total,Very,Open">
 		                                       </div>
 		                                    </div>
 		                                </div>
@@ -131,7 +131,7 @@
 		                                    <div class="form-group mb-2 row">
 		                                       <label class="col-3 col-form-label">Sample Ans 5</label>
 		                                       <div class="col-9">
-		                                          <input type="text" name="sample_ans5"  id="sample_ans5" class="form-control sample_ans" placeholder="Whole,Total,Very,Open">
+		                                          <input type="text" name="sample_ans5"  id="sample_ans5" class="form-control sample_ans" placeholder="Please Enter sample answer5 like Whole,Total,Very,Open">
 		                                       </div>
 		                                    </div>
 		                                </div>
@@ -147,7 +147,7 @@
 		                                    <div class="form-group mb-2 row">
 		                                       <label class="col-3 col-form-label">Sample Ans 6</label>
 		                                       <div class="col-9">
-		                                          <input type="text" name="sample_ans6" id="sample_ans6" class="form-control sample_ans" placeholder="Whole,Total,Very,Open">
+		                                          <input type="text" name="sample_ans6" id="sample_ans6" class="form-control sample_ans" placeholder="Please Enter sample answer6 like Whole,Total,Very,Open">
 		                                       </div>
 		                                    </div>
 		                                </div>

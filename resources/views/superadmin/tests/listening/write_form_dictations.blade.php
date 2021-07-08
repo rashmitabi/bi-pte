@@ -25,26 +25,26 @@
                                     <div class="form-group mb-2 row">
                                        <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label">Q15 Audio</label>
                                        <div class="col-12 col-md-6 col-xl-7 col-sm-12 p-0">
-                                          <input type="text" class="form-control " name="audio_q15" id="audio_q15" placeholder="Whole,Total,Very,Open" value="{{(isset($questions->name))?$questions->questiondata[0]->data_value:''}}">
+                                          <input type="text" class="form-control " name="audio_q15" id="audio_q15" placeholder="Please Enter audio15" value="{{(isset($questions->name))?$questions->questiondata[0]->data_value:''}}">
                                        </div>
                                   </div>
                                    <div class="form-group mb-2 row">
                                       <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Q15 Correct Answers</label>
                                       <div class="col-12 col-md-6 col-xl-7 col-sm-12 p-0">
-                                          <input type="text" class="form-control " name="correct_answers_q15" id="correct_answers_q15" placeholder="Whole" value="{{(isset($questions->name))?$questions->answerdata[0]->answer_value:''}}">
+                                          <input type="text" class="form-control " name="correct_answers_q15" id="correct_answers_q15" placeholder="Please Enter correct answers15" value="{{(isset($questions->name))?$questions->answerdata[0]->answer_value:''}}">
                                       </div>
                                    </div>
                               </div><div class=" col-12 mt-5 mb-1 ml-1 white-bg common-col">
                                     <div class="form-group mb-2 row">
                                        <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label">Q16 Audio</label>
                                        <div class="col-12 col-md-6 col-xl-7 col-sm-12 p-0">
-                                          <input type="text" class="form-control " name="audio_q16" id="audio_q16" placeholder="Whole,Total,Very,Open" value="{{(isset($questions->name))?$questions->questiondata[1]->data_value:''}}">
+                                          <input type="text" class="form-control " name="audio_q16" id="audio_q16" placeholder="Please Enter audio16" value="{{(isset($questions->name))?$questions->questiondata[1]->data_value:''}}">
                                        </div>
                                   </div>
                                    <div class="form-group mb-2 row">
                                       <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Q16 Correct Answers</label>
                                       <div class="col-12 col-md-6 col-xl-7 col-sm-12 p-0">
-                                          <input type="text" class="form-control " name="correct_answers_q16" id="correct_answers_q16" placeholder="Whole" value="{{(isset($questions->name))?$questions->answerdata[1]->answer_value:''}}">
+                                          <input type="text" class="form-control " name="correct_answers_q16" id="correct_answers_q16" placeholder="Please Enter correct answers16" value="{{(isset($questions->name))?$questions->answerdata[1]->answer_value:''}}">
                                       </div>
                                    </div>
                               </div>
@@ -52,13 +52,13 @@
                                     <div class="form-group mb-2 row">
                                        <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label">Q17 Audio</label>
                                        <div class="col-12 col-md-6 col-xl-7 col-sm-12 p-0">
-                                          <input type="text" class="form-control " name="audio_q17" id="audio_q17" placeholder="Whole,Total,Very,Open" value="{{(isset($questions->name))?$questions->questiondata[2]->data_value:''}}">
+                                          <input type="text" class="form-control " name="audio_q17" id="audio_q17" placeholder="Please Enter audio17" value="{{(isset($questions->name))?$questions->questiondata[2]->data_value:''}}">
                                        </div>
                                   </div>
                                    <div class="form-group mb-2 row">
                                       <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Q17 Correct Answers</label>
                                       <div class="col-12 col-md-6 col-xl-7 col-sm-12 p-0">
-                                          <input type="text" class="form-control " name="correct_answers_q17" id="correct_answers_q17" placeholder="Whole" value="{{(isset($questions->name))?$questions->answerdata[2]->answer_value:''}}">
+                                          <input type="text" class="form-control " name="correct_answers_q17" id="correct_answers_q17" placeholder="Please Enter correct answers17" value="{{(isset($questions->name))?$questions->answerdata[2]->answer_value:''}}">
                                       </div>
                                    </div>
                               </div>

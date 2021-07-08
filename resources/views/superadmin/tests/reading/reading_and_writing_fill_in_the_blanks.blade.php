@@ -1,9 +1,4 @@
 @extends('layouts.appSuperAdmin')
-@section('css-hooks')
-   <style>
-      .add-icon{cursor: pointer;}
-   </style>
-@endsection
 @section('content')
 <div id="content">
 <section class="top-title-button mb-3">
@@ -133,20 +128,20 @@
                               </div>
                            </div>
                        </div>
-                       <div class=" col-11 mt-2 ml-3 white-bg common-col">
+                       <div class=" col-11 mt-2 ml-3 white-bg common-col dynamicblock8">
                             <div class="form-group mb-3 row">
                               <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label custom-label ">Ans Options 8</label>
                               <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
                                  <input type="text" class="form-control " name="ans_options8" id="ans_options8" placeholder="Please Enter options8 like Whole,Total,Very,Open">
                               </div>
                            </div>
-                           <div class="form-group mb-3 row btn-click">
+                           <div class="form-group mb-3 row btn-click subblock8">
                               <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label custom-label">Correct Options 8</label>
                               <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
                                  <input type="text" class="form-control " name="correct_option8" id="correct_option8" placeholder="Please Enter Correct options8">
                               </div>
                               <div class="add-icon" onclick="addQuestionColumn()"  data-id="8">
-                                  <a><i class="fas fa-plus"></i></a>
+                                  <a><i class="fas fa-plus"></i></a>  
                               </div>
                            </div>
                        </div>
@@ -169,14 +164,14 @@
                               @php
                                  $label++;
                               @endphp
-                              <div class=" col-11 mt-2 ml-3 white-bg common-col">
+                              <div class=" col-11 mt-2 ml-3 white-bg common-col dynamicblock{{$label}}">
                                  <div class="form-group mb-3 row">
                                     <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label custom-label ">Ans Options {{ $label }}</label>
                                     <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
                                        <input type="text" class="form-control " name="ans_options{{$label}}" id="ans_options{{$label}}" placeholder="Please Enter options{{$label}} like Whole,Total,Very,Open" value="{{ (isset($questions->desc))?$questions->questiondata[$i]->data_value:''}}">
                                     </div>
                                  </div>
-                                 <div class="form-group mb-3 row">
+                                 <div class="form-group mb-3 row subblock{{$label}}">
                                     <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label custom-label">Correct Options {{ $label }}</label>
                                     <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
                                        <input type="text" class="form-control " name="correct_option{{$label}}" id="correct_option{{$label}}" placeholder="Please Enter Correct options {{ $label }}" value="{{ (isset($questions->desc))?$questions->answerdata[$i]->answer_value:''}}">

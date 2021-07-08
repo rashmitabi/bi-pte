@@ -161,7 +161,7 @@
                 <input type="text" name="sstate_code" id="sstate_code" value="{{ old('sstate_code') }}" class="form-control " placeholder="Enter State Code" readonly>
               </div>
             </div>
-            <div class="form-group row">
+            <!-- <div class="form-group row">
               <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">GSTIN</label>
               <div class="col-12 col-md-7 col-xl-7 col-sm-12">
                 <input type="text" name="sgstin" value="{{ old('sgstin') }}" class="form-control " placeholder="Enter GST NO">
@@ -169,7 +169,7 @@
                   <span class="error-msg">{{$errors->first('sgstin')}}</span>
                 @endif
               </div>
-            </div>
+            </div> -->
             <div class="form-group row">
               <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Validity</label>
               <div class="col-12 col-md-7 col-xl-7 col-sm-12">
