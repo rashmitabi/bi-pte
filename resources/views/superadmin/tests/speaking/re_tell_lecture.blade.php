@@ -32,22 +32,22 @@
                       <div class=" col-12 mt-5 mb-1 ml-1 pr-3 white-bg common-col">
                         <input type="hidden" name="question_data_id[]" value="{{ $questions->questiondata[$i]->id }}">
                         <div class="form-group mb-2 row">
-                           <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label">Question 23</label>
+                           <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label">Question {{ $i+23 }}</label>
                            <div class="col-12 col-md-7 col-xl-8 col-sm-12 p-0">
-                              <input type="text" name="question[]" id="question{{ $i+1 }}" value="{{ $questions->questiondata[$i]->data_value }}" class="form-control " placeholder="Whole,Total,Very,Open">
+                              <input type="text" name="question[]" id="question{{ $i+1 }}" value="{{ $questions->questiondata[$i]->data_value }}" class="form-control " placeholder="Please Enter question{{ $i+23 }} like Whole,Total,Very,Open">
                            </div>
                         </div>
                         <input type="hidden" name="answer_data_id[]" value="{{ $questions->answerdata[$i]->id }}">
                         <div class="form-group mb-2 row">
-                           <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label">Image 23</label>
+                           <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label">Image {{ $i+23 }}</label>
                            <div class="col-12 col-md-7 col-xl-8 col-sm-12 p-0">
-                              <input type="text" name="image[]" id="image{{ $i+1 }}" value="{{ $questions->answerdata[$i]->answer_value }}" class="form-control " placeholder="Add Image Tag">
+                              <input type="text" name="image[]" id="image{{ $i+1 }}" value="{{ $questions->answerdata[$i]->answer_value }}" class="form-control " placeholder="Please Enter image{{ $i+23 }}">
                            </div>
                         </div>
                         <div class="form-group mb-2 row">
-                          <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Sample Ans 23</label>
+                          <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Sample Ans {{ $i+23 }}</label>
                           <div class="col-12 col-md-7 col-xl-8 col-sm-12 p-0">
-                              <input type="text" name="sample_ans[]" id="sample_ans{{ $i+1 }}" value="{{ $questions->answerdata[$i]->sample_answer }}" class="form-control " placeholder="Whole">
+                              <input type="text" name="sample_ans[]" id="sample_ans{{ $i+1 }}" value="{{ $questions->answerdata[$i]->sample_answer }}" class="form-control " placeholder="Please Enter sample answer{{ $i+23 }}">
                           </div>
                         </div>
                       </div>
@@ -57,19 +57,19 @@
                       <div class="form-group mb-2 row">
                          <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label">Question 23</label>
                          <div class="col-12 col-md-7 col-xl-8 col-sm-12 p-0">
-                            <input type="text" name="question[]" id="question1" class="form-control " placeholder="Whole,Total,Very,Open">
+                            <input type="text" name="question[]" id="question1" class="form-control " placeholder="Please Enter question23 like Whole,Total,Very,Open">
                          </div>
                       </div>
                       <div class="form-group mb-2 row">
                          <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label">Image 23</label>
                          <div class="col-12 col-md-7 col-xl-8 col-sm-12 p-0">
-                            <input type="text" name="image[]" id="image1" class="form-control " placeholder="Add Image Tag">
+                            <input type="text" name="image[]" id="image1" class="form-control " placeholder="Please Enter image23">
                          </div>
                       </div>
                       <div class="form-group mb-2 row">
                         <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Sample Ans 23</label>
                         <div class="col-12 col-md-7 col-xl-8 col-sm-12 p-0">
-                            <input type="text" name="sample_ans[]" id="sample_ans1" class="form-control " placeholder="Whole">
+                            <input type="text" name="sample_ans[]" id="sample_ans1" class="form-control " placeholder="Please Enter sample answer23">
                         </div>
                       </div>
                     </div>
@@ -77,19 +77,19 @@
                       <div class="form-group mb-2 row">
                          <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label">Question 24</label>
                          <div class="col-12 col-md-7 col-xl-8 col-sm-12 p-0">
-                            <input type="text" name="question[]" id="question2" class="form-control " placeholder="Whole,Total,Very,Open">
+                            <input type="text" name="question[]" id="question2" class="form-control " placeholder="Please Enter question24 like Whole,Total,Very,Open">
                          </div>
                       </div>
                       <div class="form-group mb-2 row">
                          <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label">Image 24</label>
                          <div class="col-12 col-md-7 col-xl-8 col-sm-12 p-0">
-                            <input type="text" name="image[]" id="image2" class="form-control " placeholder="Add Image Tag">
+                            <input type="text" name="image[]" id="image2" class="form-control " placeholder="Please Enter image24">
                          </div>
                       </div>
                       <div class="form-group mb-2 row">
                         <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Sample Ans 24</label>
                         <div class="col-12 col-md-7 col-xl-8 col-sm-12 p-0">
-                            <input type="text" name="sample_ans[]" id="sample_ans2" class="form-control " placeholder="Whole">
+                            <input type="text" name="sample_ans[]" id="sample_ans2" class="form-control " placeholder="Please Enter sample answer24">
                         </div>
                       </div>
                     </div>
@@ -97,19 +97,19 @@
                       <div class="form-group mb-2 row">
                          <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label">Question 25</label>
                          <div class="col-12 col-md-7 col-xl-8 col-sm-12 p-0">
-                            <input type="text" name="question[]" id="question3" class="form-control " placeholder="Whole,Total,Very,Open">
+                            <input type="text" name="question[]" id="question3" class="form-control " placeholder="Please Enter question25 like Whole,Total,Very,Open">
                          </div>
                       </div>
                       <div class="form-group mb-2 row">
                          <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label">Image 25</label>
                          <div class="col-12 col-md-7 col-xl-8 col-sm-12 p-0">
-                            <input type="text" name="image[]" id="image3" class="form-control" placeholder="Add Image Tag">
+                            <input type="text" name="image[]" id="image3" class="form-control" placeholder="Please Enter image25">
                          </div>
                       </div>
                       <div class="form-group mb-2 row">
                         <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Sample Ans 25</label>
                         <div class="col-12 col-md-7 col-xl-8 col-sm-12 p-0">
-                            <input type="text" name="sample_ans[]" id="sample_ans3" class="form-control " placeholder="Whole">
+                            <input type="text" name="sample_ans[]" id="sample_ans3" class="form-control " placeholder="Please Enter sample answer25">
                         </div>
                       </div>
                     </div>
