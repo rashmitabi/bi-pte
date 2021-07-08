@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Models\TestResults;
 use Illuminate\Http\Request;
 use DataTables;
-use DB;
 
 class TestResultsController extends Controller
 {
@@ -19,10 +18,10 @@ class TestResultsController extends Controller
      */
     public function index(Request $request)   
     {
-            // dd($data);
         if($request->ajax()) {
             //$data = TestResults::with(['test','subject','user'])->get();
-            $data = TestResults::with(['test','subject','user'])->select('test_id','user_id', 'subject_id', DB::raw('SUM(get_score) AS score'))->groupBy('test_id', 'user_id', 'subject_id')->get(); 
+            //$data = TestResults::with(['test','subject','user'])->select('test_id','user_id', 'subject_id', DB::raw('SUM(get_score) AS score'))->groupBy('test_id', 'user_id', 'subject_id')->get(); 
+            $data = TestResults::with(['test','subject','user'])->selectRaw('test_id,user_id,subject_id,SUM(get_score) AS score')->groupBy('test_id', 'user_id', 'subject_id')->get();  
             return Datatables::of($data)
                     ->addIndexColumn()
                     ->addColumn('username', function($row){
@@ -97,8 +96,8 @@ class TestResultsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($tid, $uid)
-    {
-        $data = TestResults::select(DB::raw('SUM(get_score) AS score'),'section_id')->groupBy('test_id', 'user_id', 'section_id')->where(['test_id' => $tid, 'user_id' => $uid])->get(); 
+    {        
+        $data = TestResults::selectRaw('SUM(get_score) AS score,section_id')->groupBy('test_id', 'user_id', 'section_id')->where(['test_id' => $tid, 'user_id' => $uid])->get(); 
         $resultData = array();
         foreach($data as $d){
             $resultData[$d->section_id] = $d->score;

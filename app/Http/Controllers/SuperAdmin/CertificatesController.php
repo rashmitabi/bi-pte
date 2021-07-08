@@ -10,7 +10,6 @@ use App\Models\Notifications;
 use App\Models\Tests;
 use App\Http\Requests\CreateCertificateRequest;
 use DataTables;
-use DB;
 use PDF;
 
 class CertificatesController extends Controller
@@ -59,7 +58,7 @@ class CertificatesController extends Controller
     public function edit($uid, $tid)
     {
         //get section wise score
-        $data = TestResults::select(DB::raw('SUM(get_score) AS score'),'section_id')->groupBy('test_id', 'user_id', 'section_id')->where(['test_id' => $tid, 'user_id' => $uid])->get(); 
+        $data = TestResults::selectRaw('SUM(get_score) AS score,section_id')->groupBy('test_id', 'user_id', 'section_id')->where(['test_id' => $tid, 'user_id' => $uid])->get(); 
         $result = array();
         foreach($data as $d){
             $result[$d->section_id] = $d->score;

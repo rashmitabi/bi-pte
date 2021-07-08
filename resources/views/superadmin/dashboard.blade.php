@@ -75,33 +75,37 @@
                  <option value="2">Day</option>
                  <option value="3">Monthly</option> -->
               </select>
-              <?php 
+              @php 
                 $months = [];
                 $count = [];
-                 if(count($data['chartSubs']) > 0){
-                    foreach($data['chartSubs'] as $sub){
-                      array_push($months, $sub['month']);
-                      array_push($count, $sub['count']);                      
-                    }
-                 }
-              ?>
-              <canvas id="myChart" width="50%" hight="500px" data-label='<?php echo json_encode($months); ?>' data-values='<?php echo json_encode($count); ?>'></canvas>
+              @endphp  
+              @if (count($data['chartSubs']) > 0)
+                @foreach ($data['chartSubs'] as $sub)
+                  @php
+                  array_push($months, $sub['month']);
+                  array_push($count, $sub['count']); 
+                  @endphp                     
+                @endforeach
+              @endif
+              <canvas id="myChart" width="50%" hight="500px" data-label='{{ json_encode($months) }}' data-values='{{ json_encode($count) }}'></canvas>
            </div>
            <div class="col-12 col-md-6 col-xl-6 col-sm-12 mt-5 mb-4 graph-common-2 white-bg">
                <div class="col-12 col-md-8 col-xl-8 col-sm-8 mt-1 left">
                   <h5 class="table-head head-text">User Session</h5>
-                </div>
-                <?php
-                if(count($data['userSession']) > 0){
+                </div>                
+                @php 
                   $time = [];
                   $num = [];
-                  foreach($data['userSession'] as $sess){
+                @endphp  
+                @if (count($data['userSession']) > 0)
+                  @foreach ($data['userSession'] as $sess)
+                    @php
                     array_push($time, $sess['time']);
-                    array_push($num, $sess['count']);                      
-                  }
-                }
-                ?>
-             <canvas id="userSession" width="50%" hight="500px" data-label='<?php echo json_encode($time); ?>' data-values='<?php echo json_encode($num); ?>'></canvas>
+                    array_push($num, $sess['count']);  
+                    @endphp                     
+                  @endforeach
+                @endif
+             <canvas id="userSession" width="50%" hight="500px" data-label='{{ json_encode($time) }}' data-values='{{ json_encode($num) }}'></canvas>
            </div>
         </div>
 
@@ -124,22 +128,22 @@
                                    </tr>
                                </thead>
                                <tbody>
-                                <?php
-                                if(count($data['activities']) > 0){
+                                @if(count($data['activities']) > 0)
+                                  @php
                                   $a = 1;
-                                  foreach($data['activities'] as $activity){
-                                ?>
-                                <tr>
-                                  <td><?php echo $a; ?></td>
-                                  <td><?php echo $activity->subject ?></td>
-                                  <td><?php echo $activity->user->first_name." ".$activity->user->last_name.' ('.$activity->role->role_name.')'; ?></td>
-                                  <td><?php echo date('Y-m-d', strtotime($activity->created_at)); ?></td>
-                                </tr>
-                                <?php    
-                                    $a++;
-                                  }
-                                }
-                                ?>
+                                  @endphp
+                                  @foreach($data['activities'] as $activity)
+                                    <tr>
+                                      <td>{{ $a }}</td>
+                                      <td>{{$activity->subject}}</td>
+                                      <td>{{ $activity->user->first_name." ".$activity->user->last_name.' ('.$activity->role->role_name.')' }}</td>
+                                      <td>{{ date('Y-m-d', strtotime($activity->created_at)) }}</td>
+                                    </tr>
+                                    @php    
+                                      $a++;
+                                    @endphp
+                                  @endforeach
+                                @endif
                             </table>
                         </div>
                     </div>
@@ -167,23 +171,23 @@
                                    </tr>
                                </thead>
                                <tbody>
-                                <?php
-                                if(count($data['transactions']) > 0){
+                                @if(count($data['transactions']) > 0)
+                                  @php
                                   $t = 1;
-                                  foreach($data['transactions'] as $transaction){
-                                ?>
+                                  @endphp
+                                  @foreach($data['transactions'] as $transaction)
                                     <tr>
-                                      <td><?php echo $t; ?></td>
-                                      <td><?php echo $transaction->transaction->trancation_id; ?></td>
-                                      <td><?php echo $transaction->user->first_name." ".$transaction->user->last_name ?></td>
-                                      <td><?php echo $transaction->transaction->amount; ?></td>
-                                      <td><?php echo date('Y-m-d', strtotime($transaction->transaction->created_at)); ?></td>
+                                      <td>{{$t}}</td>
+                                      <td>{{$transaction->transaction->trancation_id}}</td>
+                                      <td>{{$transaction->user->first_name." ".$transaction->user->last_name}}</td>
+                                      <td>{{$transaction->transaction->amount}}</td>
+                                      <td>{{date('Y-m-d', strtotime($transaction->transaction->created_at))}}</td>
                                     </tr>
-                                <?php
-                                  }
-                                  $t++;
-                                }                                  
-                                ?>     
+                                    @php
+                                      $t++;
+                                    @endphp
+                                  @endforeach
+                                @endif
                                 </tbody>                  
                             </table>                            
                         </div>
@@ -216,25 +220,25 @@
                                    </tr>
                                </thead>
                                <tbody>
-                                <?php
-                                if(count($data['expired_subscriptions']) > 0){
+                                @if(count($data['expired_subscriptions']) > 0)
+                                  @php
                                   $e = 1;
-                                  foreach($data['expired_subscriptions'] as $sub){
-                                ?>
-                                <tr>
-                                  <td><?php echo $e; ?></td>
-                                  <td><?php echo $sub->subscription->title; ?></td>
-                                  <td>Expired</td>
-                                  <td><?php echo $sub->transaction->amount; ?></td>
-                                  <td><?php echo $sub->user->role->role_name.' ('.$sub->user->first_name.' '.$sub->user->last_name.')'; ?></td>
-                                  <td><?php echo date('Y-m-d', strtotime($sub->end_date)); ?></td>
-                                </tr>
-                                <?php
+                                  @endphp
+                                  @foreach($data['expired_subscriptions'] as $sub)
+                                    <tr>
+                                      <td><?php echo $e; ?></td>
+                                      <td><?php echo $sub->subscription->title; ?></td>
+                                      <td>Expired</td>
+                                      <td><?php echo $sub->transaction->amount; ?></td>
+                                      <td><?php echo $sub->user->role->role_name.' ('.$sub->user->first_name.' '.$sub->user->last_name.')'; ?></td>
+                                      <td><?php echo date('Y-m-d', strtotime($sub->end_date)); ?></td>
+                                    </tr>
+                                    @php
                                     $e++;
-                                  }
-                                }
-                                ?>
-                                  
+                                    @endphp
+                                  @endforeach
+                                @endif    
+                              </tbody>                              
                             </table>
                             <table id="near-to-expire" class="table table-bordered dt-responsive nowrap" style="width:100%;">
                                <thead>
@@ -248,25 +252,26 @@
                                    </tr>
                                </thead>
                                <tbody>
-                                <?php
-                                if(count($data['near_to_expire_subscriptions']) > 0){
+                                @if(count($data['near_to_expire_subscriptions']) > 0)
+                                  @php
                                   $n = 1;
-                                  foreach($data['near_to_expire_subscriptions'] as $sub){
-                                ?>
-                                <tr>
-                                  <td><?php echo $n; ?></td>
-                                  <td><?php echo $sub->subscription->title; ?></td>
-                                  <td>Near to expire</td>
-                                  <td><?php echo $sub->transaction->amount; ?></td>
-                                  <td><?php echo $sub->user->role->role_name.' ('.$sub->user->first_name.' '.$sub->user->last_name.')'; ?></td>
-                                  <td><?php echo date('Y-m-d', strtotime($sub->end_date)); ?></td>
-                                </tr>
-                                <?php
-                                    $n++;
-                                  }
-                                }
-                                ?>
-                                  
+                                  @endphp
+                                  @foreach($data['near_to_expire_subscriptions'] as $sub)
+                                
+                                    <tr>
+                                      <td>{{ $n}}</td>
+                                      <td>{{ $sub->subscription->title }}</td>
+                                      <td>Near to expire</td>
+                                      <td>{{ $sub->transaction->amount }}</td>
+                                      <td>{{ $sub->user->role->role_name.' ('.$sub->user->first_name.' '.$sub->user->last_name.')'}}</td>
+                                      <td>{{ date('Y-m-d', strtotime($sub->end_date)) }}</td>
+                                    </tr>
+                                      @php
+                                        $n++;
+                                      @endphp
+                                  @endforeach
+                                @endif                               
+                              </tbody>  
                             </table>
                         </div>
                     </div>
@@ -289,22 +294,22 @@
                                    </tr>
                                </thead>
                                <tbody>
-                                <?php
-                                if(count($data['top_institutes']) > 0){
+                                @if(count($data['top_institutes']) > 0)
+                                  @php
                                   $ti = 1;
-                                  foreach($data['top_institutes'] as $inst){
-                                ?>
-                                <tr>
-                                  <td><?php echo $ti; ?></td>
-                                  <td><?php echo $inst->name; ?></td>
-                                  <td><?php echo $inst->children_count; ?></td>
-                                  <td><?php echo $inst->mobile_no; ?></td>                         
-                                </tr>
-                                <?php
-                                    $ti++;
-                                  }
-                                }
-                                ?>                             
+                                  @endphp
+                                  @foreach($data['top_institutes'] as $inst)
+                                  <tr>
+                                    <td>{{$ti}}</td>
+                                    <td><?php echo $inst->name; ?></td>
+                                    <td><?php echo $inst->children_count; ?></td>
+                                    <td><?php echo $inst->mobile_no; ?></td>
+                                  </tr>
+                                    @php
+                                      $ti++;
+                                    @endphp
+                                  @endforeach
+                                @endif                                                         </tbody>
                             </table>
                         </div>
                     </div>
