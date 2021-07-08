@@ -37,13 +37,13 @@
                         <div class="form-group mb-2 row">
                           <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label">Q{{ $i+1 }} Audio</label>
                           <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
-                            <input type="text" name="question_audio{{ $i+1 }}" id="question_audio{{ $i+1 }}" value="{{ (isset($data_value[0]) ? $data_value[0]:'') }}" class="form-control " placeholder="Whole,Total,Very,Open">
+                            <input type="text" name="question_audio{{ $i+1 }}" id="question_audio{{ $i+1 }}" value="{{ (isset($data_value[0]) ? $data_value[0]:'') }}" class="form-control " placeholder="Please Enter audio{{ $i+1 }}">
                           </div>
                         </div>
                         <div class="form-group mb-2 row">
                           <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Q{{ $i+1 }} Images</label>
                           <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
-                            <input type="text" name="question_image{{ $i+1 }}" id="question_image{{ $i+1 }}" value="{{ (isset($data_value[1]) ? $data_value[1]:'') }}" class="form-control " placeholder="Whole">
+                            <input type="text" name="question_image{{ $i+1 }}" id="question_image{{ $i+1 }}" value="{{ (isset($data_value[1]) ? $data_value[1]:'') }}" class="form-control " placeholder="Please Enter image{{ $i+1 }}">
                           </div>
                         </div>
                       </div>
@@ -71,13 +71,13 @@
                       <div class="form-group mb-2 row">
                         <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label">Q1 Audio</label>
                         <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
-                          <input type="text" name="question_audio1" id="question_audio1" class="form-control " placeholder="Whole,Total,Very,Open">
+                          <input type="text" name="question_audio1" id="question_audio1" class="form-control " placeholder="Please Enter audio1">
                         </div>
                       </div>
                       <div class="form-group mb-2 row">
                         <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Q1 Images</label>
                         <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
-                          <input type="text" name="question_image1" id="question_image1" class="form-control " placeholder="Whole">
+                          <input type="text" name="question_image1" id="question_image1" class="form-control " placeholder="Please Enter image1">
                         </div>
                       </div>
                     </div>
@@ -103,13 +103,13 @@
                       <div class="form-group mb-2 row">
                         <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label">Q2 Audio</label>
                         <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
-                          <input type="text" name="question_audio2" id="question_audio2" class="form-control " placeholder="Whole,Total,Very,Open">
+                          <input type="text" name="question_audio2" id="question_audio2" class="form-control " placeholder="Please Enter audio2">
                         </div>
                       </div>
                       <div class="form-group mb-2 row">
                         <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Q2 Images</label>
                         <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
-                          <input type="text" name="question_image2" id="question_image2" class="form-control " placeholder="Whole">
+                          <input type="text" name="question_image2" id="question_image2" class="form-control " placeholder="Please Enter image2">
                         </div>
                       </div>
                     </div>

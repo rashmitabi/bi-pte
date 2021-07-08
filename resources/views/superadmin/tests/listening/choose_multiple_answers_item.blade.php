@@ -37,26 +37,26 @@
                         <div class="form-group mb-2 row">
                           <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label">Q3 Question</label>
                           <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
-                            <input type="text" name="question[]" id="question{{ $i+1 }}" value="{{ (isset($data_value->question) ? $data_value->question : '') }}" class="form-control " placeholder="Whole,Total,Very,Open">
+                            <input type="text" name="question[]" id="question{{ $i+1 }}" value="{{ (isset($data_value->question) ? $data_value->question : '') }}" class="form-control " placeholder="Please Enter question{{ $i+1 }} like Whole,Total,Very,Open">
                           </div>
                         </div>
                         <div class="form-group mb-2 row">
                           <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Q3 Audio</label>
                           <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
-                            <input type="text" name="question_audio[]" id="question_audio{{ $i+1 }}" value="{{ (isset($data_value->question_audio) ? $data_value->question_audio : '') }}" class="form-control " placeholder="Whole">
+                            <input type="text" name="question_audio[]" id="question_audio{{ $i+1 }}" value="{{ (isset($data_value->question_audio) ? $data_value->question_audio : '') }}" class="form-control " placeholder="Please Enter audio{{ $i+1 }}">
                           </div>
                         </div>
                         <div class="form-group mb-2 row">
                           <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Q3 Options</label>
                           <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
-                            <input type="text" name="question_option[]" id="question_option{{ $i+1 }}" value="{{ (isset($data_value->question_option) ? $data_value->question_option : '') }}" class="form-control " placeholder="Whole">
+                            <input type="text" name="question_option[]" id="question_option{{ $i+1 }}" value="{{ (isset($data_value->question_option) ? $data_value->question_option : '') }}" class="form-control " placeholder="Please Enter options{{ $i+1 }} like whole">
                           </div>
                         </div>
                         <input type="hidden" name="answer_data_id[]" value="{{ $questions->answerdata[$i]->id }}">
                         <div class="form-group mb-2 row">
                           <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Q3 Correct Answers</label>
                           <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
-                            <input type="text" name="correct_ans[]" id="correct_ans{{ $i+1 }}" value="{{ $questions->answerdata[$i]->answer_value }}" class="form-control " placeholder="Whole">
+                            <input type="text" name="correct_ans[]" id="correct_ans{{ $i+1 }}" value="{{ $questions->answerdata[$i]->answer_value }}" class="form-control " placeholder="Please Enter Correct answer{{ $i+1 }}">
                           </div>
                         </div>
                       </div>
@@ -66,25 +66,25 @@
                       <div class="form-group mb-2 row">
                         <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label">Q3 Question</label>
                         <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
-                          <input type="text" name="question[]" id="question1" class="form-control " placeholder="Whole,Total,Very,Open">
+                          <input type="text" name="question[]" id="question1" class="form-control " placeholder="Please Enter question1 like Whole,Total,Very,Open">
                         </div>
                       </div>
                       <div class="form-group mb-2 row">
                         <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Q3 Audio</label>
                         <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
-                          <input type="text" name="question_audio[]" id="question_audio1" class="form-control " placeholder="Whole">
+                          <input type="text" name="question_audio[]" id="question_audio1" class="form-control " placeholder="Please Enter audio1">
                         </div>
                       </div>
                       <div class="form-group mb-2 row">
                         <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Q3 Options</label>
                         <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
-                          <input type="text" name="question_option[]" id="question_option1" class="form-control " placeholder="Whole">
+                          <input type="text" name="question_option[]" id="question_option1" class="form-control " placeholder="Please Enter options1 like whole">
                         </div>
                       </div>
                       <div class="form-group mb-2 row">
                         <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Q3 Correct Answers</label>
                         <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
-                          <input type="text" name="correct_ans[]" id="correct_ans1" class="form-control " placeholder="Whole">
+                          <input type="text" name="correct_ans[]" id="correct_ans1" class="form-control " placeholder="Please Enter Correct answer1">
                         </div>
                       </div>
                     </div>
@@ -92,25 +92,25 @@
                       <div class="form-group mb-2 row">
                         <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label">Q4 Question</label>
                         <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
-                          <input type="text" name="question[]" id="question2" class="form-control " placeholder="Whole,Total,Very,Open">
+                          <input type="text" name="question[]" id="question2" class="form-control " placeholder="Please Enter question2 like Whole,Total,Very,Open">
                         </div>
                       </div>
                       <div class="form-group mb-2 row">
                         <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Q4 Audio</label>
                         <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
-                          <input type="text" name="question_audio[]" id="question_audio2" class="form-control " placeholder="Whole">
+                          <input type="text" name="question_audio[]" id="question_audio2" class="form-control " placeholder="Please Enter audio2">
                         </div>
                       </div>
                       <div class="form-group mb-2 row">
                         <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Q4 Options</label>
                         <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
-                          <input type="text" name="question_option[]" id="question_option2" class="form-control " placeholder="Whole">
+                          <input type="text" name="question_option[]" id="question_option2" class="form-control " placeholder="Please Enter options2 like whole">
                         </div>
                       </div>
                       <div class="form-group mb-2 row">
                         <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Q4 Correct Answers</label>
                         <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
-                          <input type="text" name="correct_ans[]" id="correct_ans2" class="form-control " placeholder="Whole">
+                          <input type="text" name="correct_ans[]" id="correct_ans2" class="form-control " placeholder="Please Enter Correct answer2">
                         </div>
                       </div>
                     </div>
