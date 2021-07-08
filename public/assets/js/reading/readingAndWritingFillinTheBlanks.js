@@ -17,14 +17,14 @@ function addQuestionColumn()
     var correct_placeholder  = "Please Enter Correct options"+newNumber;
     var html = '';
     console.log(newNumber);
-    var html = "<div class='col-11 mt-2 ml-3 white-bg common-col'>"
+    var html = "<div class='col-11 mt-2 ml-3 white-bg common-col dynamicblock"+newNumber+"'>"
                     +"<div class='form-group mb-3 row'>"
                         +"<label class='col-3 col-form-label custom-label'>"+ans_option_label+"</label>"
                         +"<div class='col-7 p-0'>"
                             +"<input type='text' class='form-control' name='"+ans_option_id+"' id='"+ans_option_id+"' placeholder='"+ans_placeholder+"'>"
                         +"</div>"
                     +"</div>"
-                    +"<div class='form-group mb-3 row  btn-click'>"
+                    +"<div class='form-group mb-3 row  btn-click subblock"+newNumber+"'>"
                         +"<label class='col-3 col-form-label custom-label'>"+correct_option_label+"</label>"
                         +"<div class='col-7 p-0'>"
                             +"<input type='text' class='form-control' name='"+correct_option_id+"' id='"+correct_option_id+"' placeholder='"+correct_placeholder+"'>"
@@ -32,9 +32,13 @@ function addQuestionColumn()
                         +"<div class='add-icon' onclick='addQuestionColumn()' data-id='"+newNumber+"'>"
                             +"<a><i class='fas fa-plus'></i></a>"
                         +"</div>"
+                        +"<div class='minus-icon' onclick='minusQuestionColumn()' data-id='"+newNumber+"'>"
+                            +"<a><i class='fas fa-minus'></i></a>"
+                        +"</div>"
                     +"</div>"
                 +"</div>";
     $(".add-icon").remove();
+    $(".minus-icon").remove();
     $("#fill_in_blanks .white-bg:last").after(html);
     $('#fill_in_blanks').validate();
 
@@ -51,6 +55,38 @@ function addQuestionColumn()
         }
       });
       $("#slug").val(newNumber);
+}
+function minusQuestionColumn()
+{
+    console.log("hello");
+    var link = document.querySelector('.minus-icon');
+        if (link) {
+            var target = link.getAttribute('data-id');
+            console.log(target);
+        }
+    var ans_option_id = "ans_options"+target;
+    var correct_option_id    = "correct_option"+target;
+    var prv_number = parseInt(target)-parseInt(1);
+    
+    var plus_html = '';
+    var minus_html = '';
+    plus_html = "<div class='add-icon' onclick='addQuestionColumn()' data-id='"+prv_number+"'>"
+                    +"<a><i class='fas fa-plus'></i></a>"
+                    +"</div>";
+    minus_html = "<div class='minus-icon' onclick='minusQuestionColumn()' data-id='"+prv_number+"'>"
+                    +"<a><i class='fas fa-minus'></i></a>"
+                +"</div>";
+    
+    $(ans_option_id).rules("remove", "required");
+    $(correct_option_id).rules("remove", "required");
+    $(".dynamicblock"+target).remove();
+    if(prv_number == '8'){
+        $(".subblock"+prv_number).append(plus_html);
+    }else{
+        $(".subblock"+prv_number).append(plus_html);
+        $(".subblock"+prv_number).append(minus_html);
+    }
+    $("#slug").val(prv_number);
 }
 $(document).ready(function() {
     $('#fill_in_blanks').validate({
