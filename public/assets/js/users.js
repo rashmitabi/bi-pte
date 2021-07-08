@@ -709,7 +709,6 @@ $(document).ready(function() {
       var testCount = $('input:radio[name=test_select]:checked').val();
       for(var i=1;i<=testCount;i++)
       {
-        console.log(i);
         $(".singletest"+i).prop("checked", true);
       }
   });
