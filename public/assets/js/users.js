@@ -704,6 +704,15 @@ $(document).ready(function() {
   });
   /*multiple user tests assign get and update end*/
 
+  /* select test filter*/
+  $('body').on('click','.test_select',function(){
+      var testCount = $('input:radio[name=test_select]:checked').val();
+      for(var i=1;i<=testCount;i++)
+      {
+        console.log(i);
+        $(".singletest"+i).prop("checked", true);
+      }
+  });
   /*Check user unique validation at store start*/
   $(".unique-susername").keyup(function() {
     var uname       = $(this).val();

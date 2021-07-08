@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Questions;
 use App\Models\Answerdata;
 use App\Models\Questiondata;
-use DB;
+use App\Models\QuestionTypes;
 
 class ReadingQuestionController extends Controller
 {
@@ -16,7 +16,7 @@ class ReadingQuestionController extends Controller
         $input = \Arr::except($request->all(),array('_token'));
         
         $question_type_id = $input['question_type_id'];
-        $questionType = DB::table('question_types')->where('id',$question_type_id)->first();
+        $questionType = QuestionTypes::where('id',$question_type_id)->first();
 
         $questions                  = new Questions;
         $questions->section_id      = $input['section_id'];
@@ -129,7 +129,7 @@ class ReadingQuestionController extends Controller
         $test_id            = $request->test_id;
         $question_type_id   = $request->question_type_id;
         $slug               = $request->slug;
-        $questionType = DB::table('question_types')->where('id',$question_type_id)->first();
+        $questionType = where('id',$question_type_id)->first();
         $all = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
         
         $questions                  = new Questions;
@@ -243,7 +243,7 @@ class ReadingQuestionController extends Controller
         $question_type_id   = $request->question_type_id;
         $numberSlug         = $request->numberSlug;
         $alphaSlug          = $request->alphaSlug;
-        $questionType = DB::table('question_types')->where('id',$question_type_id)->first();
+        $questionType = QuestionTypes::where('id',$question_type_id)->first();
         $all = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
         
         $questions                  = new Questions;
@@ -350,7 +350,7 @@ class ReadingQuestionController extends Controller
         $test_id            = $request->test_id;
         $question_type_id   = $request->question_type_id;
         $slug               = $request->slug;
-        $questionType = DB::table('question_types')->where('id',$question_type_id)->first();
+        $questionType = QuestionTypes::where('id',$question_type_id)->first();
 
         $questions                  = new Questions;
         $questions->section_id      = $section_id;

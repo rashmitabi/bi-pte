@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Questions;
 use App\Models\Answerdata;
 use App\Models\Questiondata;
-use DB;
+use App\Models\QuestionTypes;
 
 class ListeningQuestionController extends Controller
 {
@@ -60,7 +60,7 @@ class ListeningQuestionController extends Controller
 		$input  = \Arr::except($request->all(),array('_token'));
 		
 		$question_type_id = $input['question_type_id'];
-        $questionType = DB::table('question_types')->where('id',$question_type_id)->first();
+        $questionType = QuestionTypes::where('id',$question_type_id)->first();
 
         $questions                  = new Questions;
         $questions->section_id      = $input['section_id'];
@@ -134,7 +134,7 @@ class ListeningQuestionController extends Controller
 		$input  = \Arr::except($request->all(),array('_token'));
 		
 		$question_type_id = $input['question_type_id'];
-        $questionType = DB::table('question_types')->where('id',$question_type_id)->first();
+        $questionType = QuestionTypes::where('id',$question_type_id)->first();
 
         $questions                  = new Questions;
         $questions->section_id      = $input['section_id'];
@@ -214,7 +214,7 @@ class ListeningQuestionController extends Controller
 		$input  = \Arr::except($request->all(),array('_token'));
 		
 		$question_type_id = $input['question_type_id'];
-        $questionType = DB::table('question_types')->where('id',$question_type_id)->first();
+        $questionType = QuestionTypes::where('id',$question_type_id)->first();
 
         $questions                  = new Questions;
         $questions->section_id      = $input['section_id'];
@@ -292,7 +292,7 @@ class ListeningQuestionController extends Controller
 		$input  = \Arr::except($request->all(),array('_token'));
 		
 		$question_type_id = $input['question_type_id'];
-        $questionType = DB::table('question_types')->where('id',$question_type_id)->first();
+        $questionType = QuestionTypes::where('id',$question_type_id)->first();
 
         $questions                  = new Questions;
         $questions->section_id      = $input['section_id'];
@@ -379,7 +379,7 @@ class ListeningQuestionController extends Controller
         $test_id            = $request->test_id;
         $question_type_id   = $request->question_type_id;
 
-        $questionType = DB::table('question_types')->where('id',$question_type_id)->first();
+        $questionType = QuestionTypes::where('id',$question_type_id)->first();
 
         $questions                  = new Questions;
         $questions->section_id      = $section_id;
@@ -476,7 +476,7 @@ class ListeningQuestionController extends Controller
         $test_id            = $request->test_id;
         $question_type_id   = $request->question_type_id;
 
-        $questionType = DB::table('question_types')->where('id',$question_type_id)->first();
+        $questionType = QuestionTypes::where('id',$question_type_id)->first();
 
         $questions                  = new Questions;
         $questions->section_id      = $section_id;
@@ -572,7 +572,7 @@ class ListeningQuestionController extends Controller
         $test_id            = $request->test_id;
         $question_type_id   = $request->question_type_id;
 
-        $questionType = DB::table('question_types')->where('id',$question_type_id)->first();
+        $questionType = QuestionTypes::where('id',$question_type_id)->first();
 
         $questions                  = new Questions;
         $questions->section_id      = $section_id;
@@ -657,7 +657,7 @@ class ListeningQuestionController extends Controller
         $test_id            = $request->test_id;
         $question_type_id   = $request->question_type_id;
 
-        $questionType = DB::table('question_types')->where('id',$question_type_id)->first();
+        $questionType = QuestionTypes::where('id',$question_type_id)->first();
 
         $questions                  = new Questions;
         $questions->section_id      = $section_id;
