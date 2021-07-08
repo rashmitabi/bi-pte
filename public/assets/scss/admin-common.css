@@ -265,6 +265,10 @@
     white-space: unset !important;
     padding-right: 13px !important;
   }
+  body #vouchers thead th {
+    white-space: unset !important;
+    padding-right: 7px !important;
+  }
   body #mock_test thead th {
     white-space: unset !important;
     padding-right: 35px !important;
@@ -290,8 +294,8 @@
     padding-right: 22px !important;
   }
   body #role thead th {
-    white-space: unset !important;
-    padding-right: 48px !important;
+    white-space: nowrap !important;
+    padding-right: 28px !important;
   }
   body #certificates thead th {
     white-space: unset !important;
@@ -467,7 +471,10 @@
   }
   body #videos thead th {
     white-space: unset !important;
-    padding-right: 25px !important;
+    padding-right: 60px !important;
+  }
+  body #module thead th {
+    padding-right: 45px !important;
   }
   body .dashboard-heading {
     margin-left: 17px;
@@ -709,6 +716,9 @@
   body #results thead th {
     white-space: unset !important;
   }
+  body #videos thead th {
+    padding-right: 50px !important;
+  }
   body .custom-row {
     -webkit-box-pack: justify;
         -ms-flex-pack: justify;
@@ -810,6 +820,9 @@
   }
   body #content .common-p {
     padding-right: 0px !important;
+  }
+  body #videos thead th {
+    padding-right: 50px !important;
   }
 }
 

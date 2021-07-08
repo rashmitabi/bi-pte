@@ -3,23 +3,23 @@
     
     @csrf
     <div class="form-group row">
-      <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Password</label>
-      <div class="col-12 col-md-7 col-xl-7 col-sm-12">
+      <label class="col-12 col-md-5 col-xl-12 col-sm-12 col-form-label ">Password</label>
+      <div class="col-12 col-md-7 col-xl-12 col-sm-12">
         <input type="password" id="password" name="password" class="form-control password" placeholder="Password">
         <i class="far fa-eye-slash lock-icon password-icon" onclick="password()"></i>
         <span class="error-msg" id="passwordError"></span>
       </div> 
     </div>
     <div class="form-group row">
-      <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Confirm Password</label>
-      <div class="col-12 col-md-7 col-xl-7 col-sm-12">
+      <label  class="col-12 col-md-5 col-xl-12 col-sm-12 col-form-label ">Confirm Password</label>
+      <div class="col-12 col-md-7 col-xl-12 col-sm-12">
         <input type="password" id="confirm_password" name="confirm_password" class="form-control confirm_password" placeholder="Confirm Password">
         <i class="far fa-eye-slash lock-icon cpassword-icon" onclick="confirm_password()"></i>
         <span class="error-msg" id="confirm_passwordError"></span>
       </div>
     </div>
     <div class="form-group row">
-      <div class="col-12 col-md-12 col-xl-11 col-sm-12 save-btn">
+      <div class="col-12 col-md-12 col-xl-12 col-sm-12 save-btn">
         @if(isset($user->id))
           <button  type="button" class="btn btn-outline-primary user-password-update" data-id="{{ $user->id }}" data-url="{{ route('superadmin-user-setpassword', $user->id) }}"><i class="far fa-save save-icon"></i>Save Password</button>
         @else
