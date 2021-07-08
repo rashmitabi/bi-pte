@@ -37,7 +37,7 @@
                         <div class="form-group mb-2 row">
                             <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label pl-1 ">Q{{ $i+5 }} Audio</label>
                             <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
-                                <input type="text" name="audio{{ $i+1 }}" id="audio{{ $i+1 }}" value="{{ (isset($data_value->audio) ? $data_value->audio : '') }}" class="form-control " placeholder="Whole">
+                                <input type="text" name="audio{{ $i+1 }}" id="audio{{ $i+1 }}" value="{{ (isset($data_value->audio) ? $data_value->audio : '') }}" class="form-control " placeholder="Please Enter audio{{ $i+5 }}">
                             </div>
                         </div>
                       </div>
@@ -54,7 +54,7 @@
                         <div class="form-group mb-2 row">
                           <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label pl-1 ">Q{{ $i+5 }} Correct Answers</label>
                           <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
-                            <input type="text" name="correct_ans{{ $i+1 }}" id="correct_ans{{ $i+1 }}" value="{{ $questions->answerdata[$i]->answer_value }}" class="form-control " placeholder="Whole">
+                            <input type="text" name="correct_ans{{ $i+1 }}" id="correct_ans{{ $i+1 }}" value="{{ $questions->answerdata[$i]->answer_value }}" class="form-control " placeholder="Please Enter correct answers{{ $i+5 }}">
                           </div>
                         </div>
                       </div>
@@ -64,7 +64,7 @@
                       <div class="form-group mb-2 row">
                           <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label pl-1 ">Q5 Audio</label>
                           <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
-                              <input type="text" name="audio1" id="audio1" class="form-control " placeholder="Whole">
+                              <input type="text" name="audio1" id="audio1" class="form-control " placeholder="Please Enter audio5">
                           </div>
                        </div>
                     </div>
@@ -80,7 +80,7 @@
                       <div class="form-group mb-2 row">
                         <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label pl-1 ">Q5 Correct Answers</label>
                         <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
-                          <input type="text" name="correct_ans1" id="correct_ans1" class="form-control " placeholder="Whole">
+                          <input type="text" name="correct_ans1" id="correct_ans1" class="form-control " placeholder="Please Enter correct answers5">
                         </div>
                       </div>
                     </div>
@@ -89,7 +89,7 @@
                       <div class="form-group mb-2 row">
                         <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label pl-1 ">Q6 Audio</label>
                         <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
-                          <input type="text" name="audio2" id="audio2" class="form-control " placeholder="Whole">
+                          <input type="text" name="audio2" id="audio2" class="form-control " placeholder="Please Enter audio6">
                         </div>
                       </div>
                     </div>
@@ -105,7 +105,7 @@
                       <div class="form-group mb-2 row">
                         <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label pl-1 ">Q6 Correct Answers</label>
                         <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
-                          <input type="text" name="correct_ans2" id="correct_ans2" class="form-control " placeholder="Whole">
+                          <input type="text" name="correct_ans2" id="correct_ans2" class="form-control " placeholder="Please Enter correct answers6">
                         </div>
                       </div>
                     </div>
