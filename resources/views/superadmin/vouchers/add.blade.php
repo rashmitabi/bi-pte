@@ -38,10 +38,10 @@
                         <div class="col-12 col-md-7 col-xl-7 col-sm-12">
                             <select class="user-type" name="role_id">
                                 <option selected disabled>Select User Type</option>
-                                <option value="2" {{ (old('role_id') == '2')?'selected':''}}>Branch Admin</option>
-                                <!-- @foreach($roles as $role)
+                                <!-- <option value="2" {{ (old('role_id') == '2')?'selected':''}}>Branch Admin</option> -->
+                                @foreach($roles as $role)
                                     <option value="{{ $role->id }}" {{ (old('role_id') == $role->id)?'selected':''}}>{{ $role->role_name }}</option>
-                                @endforeach -->
+                                @endforeach
                             </select>
                                 @if($errors->has('role_id'))
                                     <span class="error-msg">{{$errors->first('role_id')}}</span>
@@ -90,7 +90,8 @@
                     </div>
                     <div class="form-group row">
                         <div class="col-12 col-md-12 col-xl-11 col-sm-12 save-btn">
-                            <button type="submit" class="btn btn-outline-primary"><i
+                            <a href="{{ route('vouchers.index') }}"><button  type="button" class="btn btn-outline-primary "><img class="back-btn" src="{{ asset('assets/images/icons/back.svg') }}" style="width: 14px;margin-right: 10px">Cancel</button></a>
+                            <button type="submit" class="btn btn-outline-primary mr-2"><i
                                     class="far fa-save save-icon"></i>Save</button>
                         </div>
                     </div>

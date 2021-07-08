@@ -59,10 +59,18 @@ class CertificatesController extends Controller
     {
         //get section wise score
         $data = TestResults::selectRaw('SUM(get_score) AS score,section_id')->groupBy('test_id', 'user_id', 'section_id')->where(['test_id' => $tid, 'user_id' => $uid])->get(); 
-        $result = array();
+        $resultdata = array();
         foreach($data as $d){
-            $result[$d->section_id] = $d->score;
+            $resultdata[$d->section_id] = $d->score;
         }
+
+        $result = array(
+            1 => (isset($resultdata[1])) ? $resultdata[1] : 0,
+            2 => (isset($resultdata[2])) ? $resultdata[2] : 0,
+            3 => (isset($resultdata[3])) ? $resultdata[3] : 0,
+            4 => (isset($resultdata[4])) ? $resultdata[4] : 0
+        );
+
 
         $count = Certificates::where(['student_user_id' => $uid])->count(); 
 

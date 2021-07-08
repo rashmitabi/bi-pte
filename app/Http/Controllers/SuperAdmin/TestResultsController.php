@@ -98,10 +98,16 @@ class TestResultsController extends Controller
     public function edit($tid, $uid)
     {        
         $data = TestResults::selectRaw('SUM(get_score) AS score,section_id')->groupBy('test_id', 'user_id', 'section_id')->where(['test_id' => $tid, 'user_id' => $uid])->get(); 
-        $resultData = array();
+        $result = array();
         foreach($data as $d){
-            $resultData[$d->section_id] = $d->score;
+            $result[$d->section_id] = $d->score;
         }
+        $resultData = array(
+            1 => (isset($result[1])) ? $result[1] : 0,
+            2 => (isset($result[2])) ? $result[2] : 0,
+            3 => (isset($result[3])) ? $result[3] : 0,
+            4 => (isset($result[4])) ? $result[4] : 0
+        );
         $html_role = view($this->moduleTitleP.'edit', compact('resultData'))->render();
 
         return response()->json([

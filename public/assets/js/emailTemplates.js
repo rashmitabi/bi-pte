@@ -16,8 +16,7 @@ $(document).ready(function() {
                       CKEDITOR.replace(ckeditor);
                   });
                     CKEDITOR.replace(ckeditor);
-                });
-               },
+                }
            });
    });
    //Email Templates Edit page data start

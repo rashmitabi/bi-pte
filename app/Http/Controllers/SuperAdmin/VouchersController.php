@@ -67,7 +67,7 @@ class VouchersController extends Controller
                     ->addColumn('action', function($row){
                         $btn = '<ul class="actions-btns">
                             <li class="action vouchers-edit" data-toggle="modal" data-target="#editvouchers" data-id="'.$row->id.'" data-url="'.route('vouchers.edit', $row->id).'"><a href="javascript:void(0);"><i class="fas fa-pen"></i></a></li>
-                            <li class="action"><a href="#" class="delete_modal" data-toggle="modal" data-target="#delete_modal"  data-url="'.route('vouchers.destroy', $row->id).'" data-id="'.$row->id.'"><i class="fas fa-trash"></i></a></li>
+                            <li class="action bg-danger"><a href="#" class="delete_modal" data-toggle="modal" data-target="#delete_modal"  data-url="'.route('vouchers.destroy', $row->id).'" data-id="'.$row->id.'"><i class="fas fa-trash"></i></a></li>
                             <li class="action shield '. (($row->status == "E") ? "red" : "green").'"><a href="'.route('superadmin-vouchers-changestatus', $row->id ).'"><img src="'.asset('assets/images/icons/blocked.svg').'" class=""></a></li>
                             </ul>';
                         return $btn;
@@ -86,12 +86,12 @@ class VouchersController extends Controller
      */
     public function create()
     {
-        $roles = Roles::where('status','E')->get();
-
+        //$roles = Roles::where([['status','E'],['id',2]])->get();
+        $roles = Roles::where('id',2)->get();
         return view($this->moduleTitleP.'add',compact('roles'));
     }
 
-    /**
+    /**[
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -146,9 +146,8 @@ class VouchersController extends Controller
     public function edit($id)
     {
         $voucher        = Vouchers::find($id);
-
-        $roles          = Roles::where('status','E')->get();
-
+        //$roles          = Roles::where('status','E')->get();
+        $roles = Roles::where('id',2)->get();
         $html_voucher   = view($this->moduleTitleP.'edit', compact('voucher','roles'))->render();
 
         

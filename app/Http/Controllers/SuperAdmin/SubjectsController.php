@@ -42,7 +42,7 @@ class SubjectsController extends Controller
                         }
                         $btn = '<ul class="actions-btns">
                             <li class="action" data-toggle="modal" data-target="#editsubjects"><a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="Edit" class="subject-edit" data-id="'.$row->id.'" data-url="'.route('subjects.edit', $row->id).'"><i class="fas fa-pen"></i></a></li>
-                            <li class="action" data-toggle="tooltip" data-placement="top" title="Delete"><a href="#" class="delete_modal" data-toggle="modal" data-target="#delete_modal"  data-url="'.route('subjects.destroy', $row->id).'" data-id="'.$row->id.'" data-title="Subject"><i class="fas fa-trash"></i></a></li>
+                            <li class="action bg-danger" data-toggle="tooltip" data-placement="top" title="Delete"><a href="#" class="delete_modal" data-toggle="modal" data-target="#delete_modal"  data-url="'.route('subjects.destroy', $row->id).'" data-id="'.$row->id.'" data-title="Subject"><i class="fas fa-trash"></i></a></li>
                             <li class="action shield '.$iconClass.'" data-toggle="tooltip" data-placement="top" title="status update"><a href="'.route('superadmin-subjects-changestatus', $row->id ).'"><img src="'.asset('assets/images/icons/blocked.svg').'" class=""></a></li>
                             </ul>';
                         return $btn;
