@@ -728,22 +728,24 @@ class UsersController extends Controller
                         ->with('error','Sorry!Something wrong.Try again later!');
         }
     }
+    public function getChangeStatus(Request $request)
+    {
+        $user_ids = implode(",",$request->user_ids);
+        
+        $html_password = view($this->moduleTitleP.'userstatusmodel',compact('user_ids'))->render();
 
+        return response()->json([
+            'success' => 1,
+            'html'=>$html_password    
+        ]);
+    }
     public function changeStatus(Request $request,$id)
     {
-        if(is_array($request->user_ids)){
-            $users = User::whereIn('id',$request->user_ids)->get();
-            $status = 'P';
-            foreach ($users as $user) {
-                if($user->status == 'R'){
-                    $status = 'A';
-                }else if($user->status == 'P'){
-                    $status = 'A';    
-                }else{
-                    $status = 'R';
-                }
-                $result = User::where('id',$user->id)->update(array("status" => $status));
-            }
+        if($request->has('status'))
+        {
+            $status   = $request->status;
+            $user_ids = explode(",",$request->user_id);
+            $result = User::whereIn('id',$user_ids)->update(['status'=>$status]);
             if($result){
                 \Session::put('success', 'Status Updated successfully');
                 return true;
@@ -753,7 +755,9 @@ class UsersController extends Controller
                 return false;
                 
             }
-        }else{
+        }
+        else
+        {
             $user = User::find($id);
             if($user->status == 'R'){
                 $user->status = 'A';
@@ -771,8 +775,6 @@ class UsersController extends Controller
                             ->with('error','Status Not Updated!');
             }
         }
-       
-        
     }
 
     public function showPassword(Request $request,$id){

@@ -470,16 +470,16 @@ $(document).ready(function() {
           }); 
 
         }else if(selectedValue == "blockUnblock" && chekedInstituteIds != ''){
+          $('#setuserstatus').modal('toggle');
           $.ajax({
-            url: change_status_url_route,
-            type:'GET',
-            data:{'user_ids' : chekedInstituteIds},
+            url: change_status_get_model,
+            type:'POST',
+            data:{'_token':CSRF_TOKEN,'user_ids' : chekedInstituteIds},
+            beforeSend: function(){
+              $('#user-status-update').html('<i class="fa fa-spinner fa-spin"></i>  Please Wait...');
+            },
             success:function(data) {
-              if(data == 1){
-                setTimeout(function(){
-                  location.reload();
-                }, 2000);
-              }
+              $('#user-status-update').html(data.html);
             },
             error: function(response) {
               console.log(response.responseJSON.errors);
@@ -623,8 +623,32 @@ $(document).ready(function() {
         //   }
         // });
   //All common action end
-
-
+  
+  //user post method status update
+  $('body').on('click','.user-update-status',function(){
+    $("#statusError").text("");
+    var user_id = $(this).data('id');
+    var status   = $("#status :selected").val();
+    if(status == 'no'){
+      $('#statusError').text("status is required");
+    }else{
+      $.ajax({
+        url: change_status_url_route,
+        type:'GET',
+        data:{
+            _token:CSRF_TOKEN,
+            user_id:user_id,
+            status:status
+        },
+        success:function(data) {
+          location.reload();
+        },
+        error: function(response) {
+              $('#statusError').text(response.responseJSON.errors.type);
+            }
+      });
+    } 
+  });
   /*user single tests assign get and update start*/
   $('body').on('click','.get-assign-test',function(){
     var url = $(this).data('url');
