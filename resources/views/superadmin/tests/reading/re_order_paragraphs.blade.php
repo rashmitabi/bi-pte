@@ -85,31 +85,31 @@
                         <div class=" col-11 mt-4 ml-3 white-bg common-col" id="correctBlog">
                            @if(!isset($questions->name))
                               <div class="form-group mb-3 row">
-                                 <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label custom-label">Correct Options</label>
+                                 <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label custom-label">Correct Options 1</label>
                                  <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
                                     <input type="text" class="form-control " name="correct_options1" id="correct_options1" placeholder="it Seems that The Lack of Psychological Reward is the Reason for their Disatisfaction.">
                                  </div>
                               </div>
                               <div class="form-group mb-3 row">
-                                 <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label custom-label ">Correct Options</label>
+                                 <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label custom-label ">Correct Options 2</label>
                                  <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
                                     <input type="text" class="form-control " name="correct_options2" id="correct_options2" placeholder="it Seems that The Lack of Psychological Reward is the Reason for their Disatisfaction.">
                                  </div>
                               </div>
                               <div class="form-group mb-3 row">
-                                 <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label custom-label">Correct Options</label>
+                                 <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label custom-label">Correct Options 3</label>
                                  <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
                                     <input type="text" class="form-control " name="correct_options3" id="correct_options3" placeholder="it Seems that The Lack of Psychological Reward is the Reason for their Disatisfaction.">
                                  </div>
                               </div>
                               <div class="form-group mb-3 row">
-                                 <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label custom-label ">Correct Options</label>
+                                 <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label custom-label ">Correct Options 4</label>
                                  <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
                                     <input type="text" class="form-control " name="correct_options4" id="correct_options4" placeholder="it Seems that The Lack of Psychological Reward is the Reason for their Disatisfaction.">
                                  </div>
                               </div>
                               <div class="form-group mb-3 row dynamicblock5">
-                                 <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label custom-label">Correct Options</label>
+                                 <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label custom-label">Correct Options 5</label>
                                  <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
                                     <input type="text" class="form-control " name="correct_options5" id="correct_options5" placeholder="it Seems that The Lack of Psychological Reward is the Reason for their Disatisfaction.">
                                  </div>
@@ -124,7 +124,7 @@
                                        $temp++;
                                     @endphp
                                     <div class="form-group mb-3 row dynamicblock{{ $temp }}">
-                                       <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label custom-label">Correct Options</label>
+                                       <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label custom-label">Correct Options {{ $temp }}</label>
                                        <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
                                           <input type="text" class="form-control " name="correct_options{{ $temp }}" id="correct_options{{ $temp }}" placeholder="it Seems that The Lack of Psychological Reward is the Reason for their Disatisfaction." value="{{ $questions->answerdata[$c]->answer_value}}" required>
                                        </div>

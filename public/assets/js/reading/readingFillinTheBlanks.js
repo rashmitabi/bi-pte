@@ -7,10 +7,10 @@ function addQuestionColumn()
             console.log(target);
         }
     var number = parseInt(target)+parseInt(1);
-    var ansLabel = 'Ans Options';
+    var ansLabel = 'Ans Options '+number;
     var ansId    = 'ans_options'+number;
 
-    var correctLabel = 'Correct Options';
+    var correctLabel = 'Correct Options '+number;
     var correctId    = 'correct_options'+number;
 
     var html = '';
@@ -116,10 +116,10 @@ $(document).ready(function() {
                 required: "paragraph is required"
             },
             ans_options1: {
-                required: "Ans Options is required"
+                required: "Ans Options 1 is required"
             },
             correct_options1: {
-                required: "Correct options is required"
+                required: "Correct options 1 is required"
             },
         },
         submitHandler: function(form) {

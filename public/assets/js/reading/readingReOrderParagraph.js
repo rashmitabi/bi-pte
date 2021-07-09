@@ -19,7 +19,7 @@ function addQuestionColumn()
     var ansOptionId    = "ans_options_"+alpha;
     
     //correct_options5
-    var correctLabel   = "Correct Options";
+    var correctLabel   = "Correct Options "+number;
     var correctId      = "correct_options"+number;
     console.log(number);
     console.log(correctId);

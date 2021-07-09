@@ -34,13 +34,13 @@
                         @if(!isset($questions->desc))
                             <div class=" col-11 mt-2 ml-3 white-bg common-col mainbox1">
                                 <div class="form-group mb-3 row">
-                                <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label custom-label ">Ans Options</label>
+                                <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label custom-label ">Ans Options 1</label>
                                 <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
                                     <input type="text" class="form-control " name="ans_options1" id="ans_options1" placeholder="Whole,Total,Very,Open">
                                 </div>
                                 </div>
                                 <div class="form-group mb-3 row subbox1">
-                                    <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label custom-label">Correct Options</label>
+                                    <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label custom-label">Correct Options 1</label>
                                     <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
                                         <input type="text" class="form-control " name="correct_options1" id="correct_options1" placeholder="Whole">
                                     </div>
@@ -63,13 +63,13 @@
                                     @endphp
                                     <div class=" col-11 mt-2 ml-3 white-bg common-col mainbox{{$temp}}">
                                         <div class="form-group mb-3 row">
-                                            <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label custom-label ">Ans Options</label>
+                                            <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label custom-label ">Ans Options {{$temp}}</label>
                                             <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
                                                 <input type="text" class="form-control " name="ans_options{{$temp}}" id="ans_options{{$temp}}" placeholder="Whole,Total,Very,Open" value="{{ $questions->answerdata[$i]->answer_value}}">
                                             </div>
                                         </div>
                                         <div class="form-group mb-3 row subbox{{$temp}}">
-                                            <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label custom-label">Correct Options</label>
+                                            <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label custom-label">Correct Options {{$temp}}</label>
                                             <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
                                                 <input type="text" class="form-control " name="correct_options{{$temp}}" id="correct_options{{$temp}}" placeholder="Whole" value="{{ $questions->questiondata[$i]->data_value}}">
                                             </div>
