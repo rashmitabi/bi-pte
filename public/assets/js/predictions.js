@@ -32,19 +32,16 @@ $(document).ready(function() {
    });
    //Prediction Edit page data start
 
-   $(document).on('change', '#customFile', function(){
-      var file = $('#customFile').prop('files')[0];
-      //console.log(file);
-      $('#filename').val(file.name);
-      $('#filetype').val(file.type);
-      $('#filesize').val(file.size);
-   });
+   $(document).on("change", ".custom-file-input", function(){ 
+        $(this).parent(".custom-file").attr("data-text", $(this).val().replace(/.*(\/|\\)/, '') );
+        $(this).next('.custom-file-label').text('');
+    });
+
+   
    //Prediction update data start
-   $('body').on('click','.file-update',function(){
-    //console.log(file);
-    //console.log($('form').serialize());
-       var id = $(this).data('id');
-       var apiUrl = $(this).data('url');
+   $(document).on('submit','#editPrediction',function(e){
+       e.preventDefault();
+       var apiUrl = $(this).find('.file-update').data('url');
        $('#titleError').text('');
        $('#descriptionError').text('');
        $('#fileError').text('');
@@ -52,9 +49,11 @@ $(document).ready(function() {
        $('#typeError').text('');
        $.ajax({
            url: apiUrl,
-           type:'PATCH',
+           type:'POST',
            enctype: 'multipart/form-data',
-           data: $('form').serialize(),
+           data: new FormData(this),
+           processData: false,
+           contentType: false,
            success:function(data) {
                if(data == 1){
                    setTimeout(function(){

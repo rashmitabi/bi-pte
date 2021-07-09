@@ -160,6 +160,9 @@ class VideosController extends Controller
     public function update(UpdateVideosRequest $request, $id)
     {
         $input  = \Arr::except($request->all(),array('_token'));
+        if(!isset($input['status'])){
+            $input['status'] = 'D';
+        }
         $result = Videos::where('id',$id)->update($input);
         if($result){
             \Session::put('success', 'Video updated Successfully!');

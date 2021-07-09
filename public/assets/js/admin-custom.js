@@ -246,25 +246,6 @@ $(document).ready(function() {
     // $("#results_wrapper div.toolbar").html('Manage Test Results'); 
 
 
-    $('#activitylog').DataTable({
-        language: {
-            
-        }, 
-        "dom": "<'row'<'col-sm-12 col-md-3 top-label'<'toolbar'>>>" +
-        "<'row'<'col-sm-12't>>" +
-        "<'row'>",
-    });
-    $("#activitylog_wrapper div.toolbar").html(''); 
-
-    $('#transaction').DataTable({
-        language: {
-            
-        }, 
-        "dom": "<'row'<'col-sm-12 col-md-3 top-label'<'toolbar'>>>" +
-        "<'row'<'col-sm-12't>>" +
-        "<'row'>",
-    });
-    $("#transaction_wrapper div.toolbar").html(''); 
 
     $('#institute').DataTable({
         language: {
@@ -276,35 +257,7 @@ $(document).ready(function() {
     });
     $("#institute_wrapper div.toolbar").html(''); 
 
-    $('#near-to-expire').DataTable({
-        language: {
-            
-        }, 
-        "dom": "<'row'<'col-sm-12 col-md-3 top-label'<'toolbar'>>>" +
-        "<'row'<'col-sm-12't>>" +
-        "<'row'>",
-    });
-    $("#near-to-expire_wrapper div.toolbar").html(''); 
-
-    $('#expired').DataTable({
-        language: {
-            
-        }, 
-        "dom": "<'row'<'col-sm-12 col-md-3 top-label'<'toolbar'>>>" +
-        "<'row'<'col-sm-12't>>" +
-        "<'row'>",
-    });
-    $("#expired_wrapper div.toolbar").html(''); 
-
-    $('#ranking').DataTable({
-        language: {
-            
-        }, 
-        "dom": "<'row'<'col-sm-12 col-md-3 top-label'<'toolbar'>>>" +
-        "<'row'<'col-sm-12't>>" +
-        "<'row'>",
-    });
-    $("#ranking_wrapper div.toolbar").html(''); 
+    
 
     // $('#managemodule').DataTable({
     //     language: {

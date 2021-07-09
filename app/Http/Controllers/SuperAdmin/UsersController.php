@@ -470,7 +470,6 @@ class UsersController extends Controller
     public function update(Request $request, $id)
     {
         $type = $request->input('type');
-        
         if($type == 3){
             $request->validate([
                 'type'=>'required',

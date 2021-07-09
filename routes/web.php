@@ -63,7 +63,11 @@ Auth::routes();
 Route::group(['middleware' => ['auth', 'verified','superadmin']], function () { 
 
     Route::get('superadmin/dashboard', [App\Http\Controllers\SuperAdmin\DashboardController::class, 'index'])->name('dashboard');
-
+    Route::get('superadmin/dashboard/activitylogs', [App\Http\Controllers\SuperAdmin\DashboardController::class, 'activitylogs'])->name('dashboard-activitylogs');
+    Route::get('superadmin/dashboard/transactions', [App\Http\Controllers\SuperAdmin\DashboardController::class, 'transactions'])->name('dashboard-transactions');
+    Route::get('superadmin/dashboard/expired_subscriptions', [App\Http\Controllers\SuperAdmin\DashboardController::class, 'expired_subscriptions'])->name('dashboard-expired-subscriptions');
+    Route::get('superadmin/dashboard/near_to_expire', [App\Http\Controllers\SuperAdmin\DashboardController::class, 'near_to_expire'])->name('dashboard-near-to-expire-subscriptions');
+    Route::get('superadmin/dashboard/top_ranking_institutes', [App\Http\Controllers\SuperAdmin\DashboardController::class, 'top_ranking_institutes'])->name('dashboard-top-ranking-institutes');
 
 
     Route::resource('superadmin/users', App\Http\Controllers\SuperAdmin\UsersController::class)->names('users');
@@ -99,6 +103,9 @@ Route::group(['middleware' => ['auth', 'verified','superadmin']], function () {
     Route::post('superadmin/users/getMultipleAssignTest', [App\Http\Controllers\SuperAdmin\UsersController::class, 'getMultipleAssignTest'])->name('superadmin-user-get-multiple-assign-test');
     Route::post('superadmin/users/postMultipleAssignTest', [App\Http\Controllers\SuperAdmin\UsersController::class, 'postMultipleAssignTest'])->name('superadmin-user-post-multiple-assign-test');
     Route::post('superadmin/users/checkUniqueFields', [App\Http\Controllers\SuperAdmin\UsersController::class, 'checkUniqueUsername'])->name('superadmin-check-unique-validation');
+
+    Route::post('superadmin/users/update/{id}', [App\Http\Controllers\SuperAdmin\UsersController::class, 'update'])
+        ->name('superadmin-user-update');
     
     Route::resource('superadmin/module', App\Http\Controllers\SuperAdmin\ModulesController::class)->names('modules');
 
@@ -114,8 +121,13 @@ Route::group(['middleware' => ['auth', 'verified','superadmin']], function () {
 
     Route::resource('superadmin/results', App\Http\Controllers\SuperAdmin\TestResultsController::class);
 
+    /*Vouchers module start*/
+    Route::get('superadmin/vouchers/changestatus/{id}', [App\Http\Controllers\SuperAdmin\VouchersController::class, 'changeStatus'])
+        ->name('superadmin-vouchers-changestatus');
+    Route::resource('superadmin/vouchers', App\Http\Controllers\SuperAdmin\VouchersController::class);
+    /*Vouchers module end*/
 
-
+    
     /*Tests Modules start*/
 
         Route::get('superadmin/tests/mocktest', [App\Http\Controllers\SuperAdmin\TestsController::class, 'mockTests'])
@@ -332,14 +344,6 @@ Route::group(['middleware' => ['auth', 'verified','superadmin']], function () {
 
     /* end speaking section */
 
-
-
-    
-
-
-
-
-
     Route::get('superadmin/setting', [App\Http\Controllers\HomeController::class, 'setting'])->name('superadmin-setting');
 
 
@@ -409,14 +413,12 @@ Route::group(['middleware' => ['auth', 'verified','superadmin']], function () {
     Route::resource('superadmin/predictionfiles', App\Http\Controllers\SuperAdmin\PredictionFilesController::class);
 
     Route::get('superadmin/predictionfiles/changestatus/{id}', [App\Http\Controllers\SuperAdmin\PredictionFilesController::class, 'changeStatus'])
-
         ->name('superadmin-predictionfiles-changestatus');
 
+    Route::post('superadmin/predictionfiles/update/{id}', [App\Http\Controllers\SuperAdmin\PredictionFilesController::class, 'update'])
+        ->name('superadmin-predictionfiles-update');
+
     /* prediction files routes ends */
-
-
-
-
 
     Route::resource('superadmin/transactions', App\Http\Controllers\SuperAdmin\TransactionsController::class);
 
@@ -434,10 +436,6 @@ Route::group(['middleware' => ['auth', 'verified','superadmin']], function () {
     Route::resource('superadmin/results', App\Http\Controllers\SuperAdmin\TestResultsController::class);
     Route::get('superadmin/results/edit/{aid}/{bid}', [App\Http\Controllers\SuperAdmin\TestResultsController::class, 'edit'])->name('generate-result');
 
-
-
-
-
     /*Device logs module start*/
 
     Route::get('superadmin/device/changestatus/{id}', [App\Http\Controllers\SuperAdmin\DeviceController::class, 'changeStatus'])->name('superadmin-device-changestatus');
@@ -445,10 +443,6 @@ Route::group(['middleware' => ['auth', 'verified','superadmin']], function () {
     Route::resource('superadmin/device', App\Http\Controllers\SuperAdmin\DeviceController::class);
 
     /*Device logs module end*/
-
-     
-
-
 
     /*Videos module start*/
 
@@ -476,17 +470,11 @@ Route::group(['middleware' => ['auth', 'verified','superadmin']], function () {
     Route::resource('superadmin/email', App\Http\Controllers\SuperAdmin\EmailTemplatesController::class);
     /* Email templates module start*/
 
-/*Vouchers module start*/
-Route::get('superadmin/vouchers/changestatus/{id}', [App\Http\Controllers\SuperAdmin\VouchersController::class, 'changeStatus'])
-    ->name('superadmin-vouchers-changestatus');
-Route::resource('superadmin/vouchers', App\Http\Controllers\SuperAdmin\VouchersController::class);
-/*Vouchers module end*/
 
-});
 
 //end Super admin routes
 
-
+});
 
 Route::group(['middleware' => ['auth', 'verified','branchadmin']], function () {
 

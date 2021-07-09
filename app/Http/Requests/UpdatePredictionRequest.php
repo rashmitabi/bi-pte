@@ -26,8 +26,10 @@ class UpdatePredictionRequest extends FormRequest
         return [
             'title'=>'required|max:250',
             'description'=>'required|max:1000',
+            'file'=>'max:10000|mimes:doc,docx,pdf',
             'section_id'=>'required|numeric',
-            'design_id'=>'required|numeric'
+            'design_id'=>'required|numeric',
+            'status'=>'nullable|in:E,D'
         ];
     }
 

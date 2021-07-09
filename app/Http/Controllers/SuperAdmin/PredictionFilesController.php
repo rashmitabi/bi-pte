@@ -174,17 +174,24 @@ class PredictionFilesController extends Controller
      */
     public function update(UpdatePredictionRequest $request, $id)
     {
-        $input  = \Arr::except($request->all(),array('_token'));
-        // if($request->file()){
-        //     \Session::put('success', 'Prediction File got!');
-        //     return true;
-        //     $fileName = substr(time().'_'.str_replace(' ', '_', $request->file->getClientOriginalName()), 0, 250);  
-        //     if($request->file->move(public_path('files/predictions'), $fileName)){
-        //         $input['link'] = 'files/predictions/'.$fileName;
-        //     }
-        // }
-        $result = PredictionFiles::where('id',$id)->update($input);
+        $input = \Arr::except($request->all(),array('_token')); 
+             
+        if($request->file()){
+            $fileName = substr(time().'_'.str_replace(' ', '_', $request->file->getClientOriginalName()), 0, 250);  
+            if($request->file->move(public_path('files/predictions'), $fileName)){
+                $input['link'] = 'files/predictions/'.$fileName;
+                unset($input['file']);
+                $prediction = PredictionFiles::find($id);                
+            }
+        }     
+        if(!isset($input['status'])){
+            $input['status'] = 'D';
+        }       
+        $result = PredictionFiles::where('id',$id)->update($input);        
         if($result){
+            if(isset($prediction)){
+                unlink(public_path($prediction->link));
+            }
             \Session::put('success', 'Prediction File updated Successfully!');
             return true;
         }else{
@@ -239,4 +246,7 @@ class PredictionFilesController extends Controller
                         ->with('error','Status Not Updated!');
         }
     }
+
+   
+
 }

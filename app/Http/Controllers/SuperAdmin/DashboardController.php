@@ -9,6 +9,7 @@ use App\Models\Tests;
 use App\Models\userSubscriptions;
 use App\Models\Activities;
 use App\Models\UserSession;
+use DataTables;
 
 class DashboardController extends Controller
 {
@@ -19,16 +20,6 @@ class DashboardController extends Controller
     	$data['institutes'] = User::where(['role_id' => 2])->count();
     	$data['mock_tests'] = Tests::where(['type' => 'M'])->count();
     	$data['practice_tests'] = Tests::where(['type' => 'P'])->count();
-    	$data['transactions'] = userSubscriptions::with(['user','subscription', 'transaction'])->latest()->limit(5)->get();
-    	$data['activities'] = \App\Models\Activities::with(['user'])->latest()->limit(5)->get();
-
-    	$today = date('Y-m-d');
-    	$data['expired_subscriptions'] = \App\Models\userSubscriptions::with(['user','subscription', 'transaction'])->where('end_date', '<', $today)->get();
-
-    	$date_10days = date('Y-m-d', strtotime($today. ' + 10 days'));
-    	$data['near_to_expire_subscriptions'] = \App\Models\userSubscriptions::with(['user','subscription'])->where('end_date', '>', $today)->where('end_date', '<=', $date_10days)->get();
-
-    	$data['top_institutes'] = User::withCount('children')->where(['role_id' => 2])->orderBy('children_count', 'desc')->limit(5)->get();
 
     	$data['chartSubs'] = userSubscriptions::selectRaw('monthname(created_at) month, count(*) count')->whereYear('created_at', date('Y'))
                 ->groupBy('month')
@@ -41,5 +32,120 @@ class DashboardController extends Controller
                 ->get();
     	
         return view('superadmin/dashboard', compact('data'));
+    }
+
+    public function activitylogs(Request $request){
+        if($request->ajax())  {
+            $data = \App\Models\Activities::with(['user'])->latest()->limit(10)->get();
+            return Datatables::of($data)
+                    ->addIndexColumn()
+                    ->addColumn('subject', function($row){
+                        return $row->subject;
+                    })                    
+                    ->addColumn('created by', function($row){
+                        return $row->user->first_name." ".$row->user->last_name.' ('.$row->role->role_name.')';
+                    })
+                    ->addColumn('created date', function($row){                        
+                        return date('Y-m-d', strtotime($row->created_at));
+                    })
+                    ->rawColumns(['checkbox','action'])
+                    ->make(true);
+        }
+    }
+
+    public function transactions(Request $request){
+        if($request->ajax())  {
+            $data = userSubscriptions::with(['user','subscription', 'transaction'])->latest()->limit(10)->get();
+            return Datatables::of($data)
+                    ->addIndexColumn()
+                    ->addColumn('transaction_id', function($row){
+                        return $row->transaction->trancation_id;
+                    })                    
+                    ->addColumn('name', function($row){
+                        return $row->user->name;
+                    })
+                    ->addColumn('amount', function($row){
+                        return $row->transaction->amount;
+                    })
+                    ->addColumn('date', function($row){                        
+                        return date('Y-m-d', strtotime($row->created_at));
+                    })
+                    ->rawColumns(['checkbox','action'])
+                    ->make(true);
+        }
+    }
+
+    public function expired_subscriptions(Request $request){
+        if($request->ajax())  {
+            $today = date('Y-m-d');
+            $data = \App\Models\userSubscriptions::with(['user','subscription', 'transaction'])->where('end_date', '<', $today)->get();
+            return Datatables::of($data)
+                    ->addIndexColumn()                                      
+                    ->addColumn('name', function($row){
+                        return $row->subscription->title;
+                    })
+                    ->addColumn('status', function($row){
+                        return 'Expired';
+                    })  
+                    ->addColumn('price', function($row){
+                        return $row->transaction->amount;
+                    })
+                    ->addColumn('institute', function($row){                        
+                        return $row->user->name;
+                    })
+                    ->addColumn('date', function($row){                        
+                        return date('Y-m-d', strtotime($row->end_date));
+                    })
+                    ->rawColumns(['checkbox','action'])
+                    ->make(true);
+        }
+    }
+
+    public function near_to_expire(Request $request){
+        if($request->ajax())  {
+            $today = date('Y-m-d');
+            $date_10days = date('Y-m-d', strtotime($today. ' + 10 days'));
+            $data = \App\Models\userSubscriptions::with(['user','subscription'])->where('end_date', '>', $today)->where('end_date', '<=', $date_10days)->get();
+            
+            return Datatables::of($data)
+                    ->addIndexColumn()                                      
+                    ->addColumn('name', function($row){
+                        return $row->subscription->title;
+                    })
+                    ->addColumn('status', function($row){
+                        return 'Expired';
+                    })  
+                    ->addColumn('price', function($row){
+                        return $row->transaction->amount;
+                    })
+                    ->addColumn('institute', function($row){                        
+                        return $row->user->name;
+                    })
+                    ->addColumn('date', function($row){                        
+                        return date('Y-m-d', strtotime($row->end_date));
+                    })
+                    ->rawColumns(['checkbox','action'])
+                    ->make(true);
+        }
+    }
+
+    public function top_ranking_institutes(Request $request){
+        if($request->ajax())  {
+            $data = User::withCount('children')->where(['role_id' => 2])->orderBy('children_count', 'desc')->limit(5)->get();
+            
+            return Datatables::of($data)
+                    ->addIndexColumn()                                      
+                    ->addColumn('institute_name', function($row){
+                        return $row->name;
+                    })
+                    ->addColumn('students', function($row){
+                        return $row->children_count;
+                    })  
+                    ->addColumn('mobile', function($row){
+                        return $row->mobile_no;
+                    })
+                    ->rawColumns(['checkbox','action'])
+                    ->make(true);
+        }
     }
 }

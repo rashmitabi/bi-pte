@@ -127,23 +127,7 @@
                                       <th>Created Date & Time</th>
                                    </tr>
                                </thead>
-                               <tbody>
-                                @if(count($data['activities']) > 0)
-                                  @php
-                                  $a = 1;
-                                  @endphp
-                                  @foreach($data['activities'] as $activity)
-                                    <tr>
-                                      <td>{{ $a }}</td>
-                                      <td>{{$activity->subject}}</td>
-                                      <td>{{ $activity->user->first_name." ".$activity->user->last_name.' ('.$activity->role->role_name.')' }}</td>
-                                      <td>{{ date('Y-m-d', strtotime($activity->created_at)) }}</td>
-                                    </tr>
-                                    @php    
-                                      $a++;
-                                    @endphp
-                                  @endforeach
-                                @endif
+                               
                             </table>
                         </div>
                     </div>
@@ -170,25 +154,7 @@
                                       <th>Transaction Date</th>
                                    </tr>
                                </thead>
-                               <tbody>
-                                @if(count($data['transactions']) > 0)
-                                  @php
-                                  $t = 1;
-                                  @endphp
-                                  @foreach($data['transactions'] as $transaction)
-                                    <tr>
-                                      <td>{{$t}}</td>
-                                      <td>{{$transaction->transaction->trancation_id}}</td>
-                                      <td>{{$transaction->user->first_name." ".$transaction->user->last_name}}</td>
-                                      <td>{{$transaction->transaction->amount}}</td>
-                                      <td>{{date('Y-m-d', strtotime($transaction->transaction->created_at))}}</td>
-                                    </tr>
-                                    @php
-                                      $t++;
-                                    @endphp
-                                  @endforeach
-                                @endif
-                                </tbody>                  
+                                                
                             </table>                            
                         </div>
                     </div>
@@ -215,30 +181,11 @@
                                       <th>Name</th>
                                       <th>Status</th>
                                       <th>Price</th>
-                                      <th>Type</th>
+                                      <th>Institute</th>
                                       <th>Date</th>
                                    </tr>
                                </thead>
-                               <tbody>
-                                @if(count($data['expired_subscriptions']) > 0)
-                                  @php
-                                  $e = 1;
-                                  @endphp
-                                  @foreach($data['expired_subscriptions'] as $sub)
-                                    <tr>
-                                      <td><?php echo $e; ?></td>
-                                      <td><?php echo $sub->subscription->title; ?></td>
-                                      <td>Expired</td>
-                                      <td><?php echo $sub->transaction->amount; ?></td>
-                                      <td><?php echo $sub->user->role->role_name.' ('.$sub->user->first_name.' '.$sub->user->last_name.')'; ?></td>
-                                      <td><?php echo date('Y-m-d', strtotime($sub->end_date)); ?></td>
-                                    </tr>
-                                    @php
-                                    $e++;
-                                    @endphp
-                                  @endforeach
-                                @endif    
-                              </tbody>                              
+                                                         
                             </table>
                             <table id="near-to-expire" class="table table-bordered dt-responsive nowrap" style="width:100%;">
                                <thead>
@@ -247,31 +194,11 @@
                                       <th>Name</th>
                                       <th>Status</th>
                                       <th>Price</th>
-                                      <th>Type</th>
+                                      <th>Institute</th>
                                       <th>Date</th>
                                    </tr>
                                </thead>
-                               <tbody>
-                                @if(count($data['near_to_expire_subscriptions']) > 0)
-                                  @php
-                                  $n = 1;
-                                  @endphp
-                                  @foreach($data['near_to_expire_subscriptions'] as $sub)
-                                
-                                    <tr>
-                                      <td>{{ $n}}</td>
-                                      <td>{{ $sub->subscription->title }}</td>
-                                      <td>Near to expire</td>
-                                      <td>{{ $sub->transaction->amount }}</td>
-                                      <td>{{ $sub->user->role->role_name.' ('.$sub->user->first_name.' '.$sub->user->last_name.')'}}</td>
-                                      <td>{{ date('Y-m-d', strtotime($sub->end_date)) }}</td>
-                                    </tr>
-                                      @php
-                                        $n++;
-                                      @endphp
-                                  @endforeach
-                                @endif                               
-                              </tbody>  
+                               
                             </table>
                         </div>
                     </div>
@@ -293,23 +220,7 @@
                                       <th>Mobile Number</th>                                  
                                    </tr>
                                </thead>
-                               <tbody>
-                                @if(count($data['top_institutes']) > 0)
-                                  @php
-                                  $ti = 1;
-                                  @endphp
-                                  @foreach($data['top_institutes'] as $inst)
-                                  <tr>
-                                    <td>{{$ti}}</td>
-                                    <td><?php echo $inst->name; ?></td>
-                                    <td><?php echo $inst->children_count; ?></td>
-                                    <td><?php echo $inst->mobile_no; ?></td>
-                                  </tr>
-                                    @php
-                                      $ti++;
-                                    @endphp
-                                  @endforeach
-                                @endif                                                         </tbody>
+                               
                             </table>
                         </div>
                     </div>
@@ -321,5 +232,12 @@
    
 @endsection
 @section('js-hooks')
+<script type="text/javascript" defer>
+  var activityurl="{{ route('dashboard-activitylogs') }}";
+  var transactionurl="{{ route('dashboard-transactions') }}";
+  var expiredSubscriptionurl="{{ route('dashboard-expired-subscriptions') }}";
+  var neartoexpiresubscriptionurl = "{{ route('dashboard-near-to-expire-subscriptions') }}";
+  var toprankinginstitutesurl = "{{ route('dashboard-top-ranking-institutes') }}";
+</script>
 <script src="{{ asset('assets/js/superAdminDashboard.js') }}" defer></script>
 @endsection

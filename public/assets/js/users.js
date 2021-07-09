@@ -241,9 +241,10 @@ $(document).ready(function() {
   //user show page data start
 
   //user  update data start
-  $('body').on('click','.user-update',function(){
-    var id = $(this).data('id');
-    var apiUrl = $(this).data('url');
+  $('body').on('submit','#userupdate',function(e){
+    e.preventDefault();
+    var id = $(this).find('.user-update').data('id');
+    var apiUrl = $(this).find('.user-update').data('url');
     $('#fnameError').text('');
     $('#lnameError').text('');
     $('#unameError').text('');
@@ -280,8 +281,13 @@ $(document).ready(function() {
 
     $.ajax({
       url: apiUrl,
-      type:'PATCH',
-      data: $('form').serialize(),
+      //type:'PATCH',
+      //data: $('form').serialize(),
+      type:'POST',
+      enctype: 'multipart/form-data',
+      data: new FormData(this),
+      processData: false,
+      contentType: false,
       success:function(data) {
         if(data == 1){
           setTimeout(function(){
