@@ -2191,6 +2191,29 @@ body {
   cursor: pointer;
 }
 
+.question-forms .form .common-col .minus-icon-common a {
+  padding: 0px;
+  background-color: #9D1346;
+  color: #fff;
+  border-radius: 50%;
+  font-size: 24px;
+  position: absolute;
+  right: 132px;
+  top: 42px;
+  width: 45px;
+  height: 45px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
 .question-forms .form .back-btn {
   width: 14px;
   margin-right: 10px;
