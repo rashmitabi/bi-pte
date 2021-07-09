@@ -47,6 +47,9 @@
                                     <div class="add-icon" onclick="addQuestionColumn()" data-id="1">
                                         <a><i class="fas fa-plus"></i></a>
                                     </div>
+                                    <div class="minus-icon-common" onclick="minusQuestionColumn()" data-id="1">
+                                            <a><i class="fas fa-minus"></i></a>
+                                    </div>
                                 </div>
                             </div>
                             @else
@@ -75,7 +78,7 @@
                                                     <a><i class="fas fa-plus"></i></a>
                                                 </div>
                                                 @if($count != '1')
-                                                <div class="minus-icon" onclick="minusQuestionColumn()" data-id="{{$count}}">
+                                                <div class="minus-icon-common" onclick="minusQuestionColumn()" data-id="{{$count}}">
                                                     <a><i class="fas fa-minus"></i></a>
                                                 </div>
                                                 @endif
