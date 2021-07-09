@@ -118,14 +118,18 @@
         <div class="form-group row">
           <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">State</label>
           <div class="col-12 col-md-7 col-xl-7 col-sm-12">
-            <input type="text" name="sstate" id="sstate" value="{{ $user->state }}" class="form-control " placeholder="Enter State">
+              <select name="sstate" id="sstate" class="form-control">
+                @foreach(states() as $key => $state)
+                  <option value="{{ $state }}" data-code="{{ $key }}" {{ ($user->state == $state)?'selected':''}}>{{ $state }}</option>
+                @endforeach
+              </select>
             <span class="error-msg" id="sstateError"></span>
           </div>
         </div>
         <div class="form-group row">
           <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">State Code</label>
           <div class="col-12 col-md-7 col-xl-7 col-sm-12">
-            <input type="text" name="sstate_code" id="sstate_code" value="{{ $user->state_code }}" class="form-control " placeholder="Enter State Code">
+            <input type="text" name="sstate_code" id="sstate_code" value="{{ $user->state_code }}" class="form-control " placeholder="Enter State Code" readonly>
             <span class="error-msg" id="sstate_codeError"></span>
           </div>
         </div>
@@ -224,14 +228,18 @@
         <div class="form-group row">
           <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">State</label>
           <div class="col-12 col-md-7 col-xl-7 col-sm-12">
-            <input type="text" name="istate" id="istate" value="{{ $user->state }}" class="form-control " placeholder="Enter State">
+            <select name="istate" id="istate">
+                  @foreach(states() as $key => $state)
+                    <option value="{{ $state }}" data-code="{{ $key }}" {{ ($user->state == $state)?'selected':''}}>{{ $state }}</option>
+                  @endforeach
+            </select>
             <span class="error-msg" id="istateError"></span>
           </div>
         </div>
         <div class="form-group row">
           <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">State Code</label>
           <div class="col-12 col-md-7 col-xl-7 col-sm-12">
-            <input type="text" name="istate_code" id="istate_code" value="{{ $user->state_code }}" class="form-control " placeholder="Enter State Code">
+            <input type="text" name="istate_code" id="istate_code" value="{{ $user->state_code }}" class="form-control " placeholder="Enter State Code" readonly>
             <span class="error-msg" id="istate_codeError"></span>
           </div>
         </div>

@@ -71,6 +71,8 @@ Route::group(['middleware' => ['auth', 'verified','superadmin']], function () {
     Route::get('instituteexport', [App\Http\Controllers\SuperAdmin\UsersController::class, 'instituteExport'])->name('superadmin-user-institute-export');
     Route::get('studentexport', [App\Http\Controllers\SuperAdmin\UsersController::class, 'studentExport'])->name('superadmin-user-student-export');
     
+    
+    Route::get('superadmin/users/userblock/{id}', [App\Http\Controllers\SuperAdmin\UsersController::class, 'singleUserBlock'])->name('superadmin-user-single-block');
 
     Route::post('superadmin/users/changestatusmodel', [App\Http\Controllers\SuperAdmin\UsersController::class, 'getChangeStatus'])->name('superadmin-user-getstatus');
 

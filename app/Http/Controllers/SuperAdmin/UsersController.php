@@ -57,7 +57,7 @@ class UsersController extends Controller
                         $btn = '<ul class="actions-btns">
                                 <li class="action" data-toggle="modal" data-target="#userdetail"><a href="javascript:void(0);" class="user-show" data-id="'.$row->id .'" data-url="'.route('users.show', $row->id).'"><i class="fas fa-user"></i></a></li>
 
-                                    <li class="action" data-toggle="modal" data-target="#editdetail"><a href="javascript:void(0);" class="user-edit" data-id="'.$row->id .'" data-url="'.route('users.edit', $row->id).'"><i class="fas fa-pen"></i></a></li>
+                                    <li class="action" data-toggle="modal" data-target="#editdetail"><a href="javascript:void(0);" class="user-edit" data-id="'.$row->id .'" data-url="'.route('users.edit', $row->id).'" data-md="no"><i class="fas fa-pen"></i></a></li>
 
                                     <li class="action bg-danger"><a href="#" class="delete_modal" data-toggle="modal" data-target="#delete_modal"  data-url="'.route('users.destroy', $row->id).'" data-id="'.$row->id.'"><i class="fas fa-trash" ></i></a></li>
 
@@ -776,7 +776,23 @@ class UsersController extends Controller
             }
         }
     }
+    public function singleUserBlock($id)
+    {
+        $user = User::find($id);
+        if($user)
+        {
+            $user->status = "R";
+            $user->update();   
 
+            return redirect()->route('users.index')
+                            ->with('success','Status Updated successfully');
+        }
+        else
+        {
+            return redirect()->route('users.index')
+                            ->with('error','Status Not Updated!');
+        }
+    }
     public function showPassword(Request $request,$id){
         if(is_array($request->id)){
             $user = User::whereIn('id',$request->id)->get();

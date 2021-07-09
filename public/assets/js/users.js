@@ -186,6 +186,10 @@ $(document).ready(function() {
   $('body').on('click','.user-edit',function(){
     var id = $(this).data('id');
     var apiUrl = $(this).data('url');
+    var modelstatus = $(this).data('md');
+    if(modelstatus == 'yes'){
+      
+    }
     $.ajax({
       url: apiUrl,
       type:'GET',
