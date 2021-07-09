@@ -35,7 +35,7 @@ $("#users_wrapper div.toolbar").html('Registered Users');
 
 $('<div class="pull-right">' +
     '<select id="action-institute" class="form-control action-btn">'+
-      '<option value="">Actions</option>'+
+      '<option selected disabled>Actions</option>'+
       '<option value="email">Send Email</option>'+
       '<option value="password" >Change Password</option>'+
       '<option value="blockUnblock">BLock/unblock Users</option>'+
@@ -82,7 +82,7 @@ $('#students').DataTable({
 $("#students_wrapper div.toolbar").html('Registered Users');
 $('<div class="pull-right">' +
     '<select id="action-student" class="form-control action-btn">'+
-      '<option value="">Actions</option>'+
+      '<option selected disabled>Actions</option>'+
       '<option value="email">Send Email</option>'+
       '<option value="password" >Change Password</option>'+
       '<option value="blockUnblock">BLock/unblock Users</option>'+
