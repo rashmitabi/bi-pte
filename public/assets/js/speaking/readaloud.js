@@ -1,4 +1,7 @@
 $(document).ready(function() {
+    $.validator.addMethod("comma", function (value, element) {
+        return this.optional(element) || /^.*[^,]$/.test(value);
+    }, "Please specify value with comma");
      $('#frm-read-aloud').validate({ 
         ignore: [],
         debug: false,
@@ -10,7 +13,8 @@ $(document).ready(function() {
                 }
             },
             sample_ans1:{
-                required: true
+                required: true,
+                comma:true
             },
 
             editor2:{
@@ -20,7 +24,8 @@ $(document).ready(function() {
                 }
             },
             sample_ans2:{
-                required: true
+                required: true,
+                comma:true
             },
 
             editor3:{
@@ -30,7 +35,8 @@ $(document).ready(function() {
                 }
             },
             sample_ans3:{
-                required: true
+                required: true,
+                comma:true
             },
 
             editor4:{
@@ -40,7 +46,8 @@ $(document).ready(function() {
                 }
             },
             sample_ans4:{
-                required: true
+                required: true,
+                comma:true
             },
 
             editor5:{
@@ -50,7 +57,8 @@ $(document).ready(function() {
                 }
             },
             sample_ans5:{
-                required: true
+                required: true,
+                comma:true
             },
 
             editor6:{
@@ -60,7 +68,8 @@ $(document).ready(function() {
                 }
             },
             sample_ans6:{
-                required: true
+                required: true,
+                comma:true
             },
         },
         messages : {

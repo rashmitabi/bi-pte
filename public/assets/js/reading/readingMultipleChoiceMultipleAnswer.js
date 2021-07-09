@@ -72,6 +72,9 @@ function removeQuestionColumn(){
     $("#slug").val(number);
 }
 $(document).ready(function() {
+    $.validator.addMethod("coreectmatch", function (value, element) {
+        return this.optional(element) || /^.*[^@@]$/.test(value);
+    }, "Please specify value with @@");
     $('#mutli_choice').validate({ 
         ignore: [],
         debug: false,
@@ -101,7 +104,8 @@ $(document).ready(function() {
                 required: true
             },
             correct_options:{
-                required: true
+                required: true,
+                coreectmatch:true
             }
         },
         messages : {

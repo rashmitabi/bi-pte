@@ -1,8 +1,12 @@
 $(document).ready(function() {
+    $.validator.addMethod("comma", function (value, element) {
+        return this.optional(element) || /^.*[^,]$/.test(value);
+    }, "Please specify value with comma");
     $('#frm-repeat-sentence').validate({ 
         rules: {
             'question[]': {
-                required: true
+                required: true,
+                comma : true
             },
             'sample_ans[]': {
                 required: true,

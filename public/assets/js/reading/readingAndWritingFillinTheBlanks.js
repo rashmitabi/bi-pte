@@ -44,6 +44,7 @@ function addQuestionColumn()
 
     $("#"+ans_option_id).rules( "add", {
         required: true,
+        comma: true,
         messages: {
           required: ans_option_label+" is required",
         }
@@ -78,6 +79,7 @@ function minusQuestionColumn()
                 +"</div>";
     
     $(ans_option_id).rules("remove", "required");
+    $(ans_option_id).rules("remove", "comma");
     $(correct_option_id).rules("remove", "required");
     $(".dynamicblock"+target).remove();
     if(prv_number == '8'){
@@ -89,6 +91,9 @@ function minusQuestionColumn()
     $("#slug").val(prv_number);
 }
 $(document).ready(function() {
+    $.validator.addMethod("comma", function (value, element) {
+        return this.optional(element) || /^.*[^,]$/.test(value);
+    }, "Please specify value with comma");
     $('#fill_in_blanks').validate({
         ignore: [],
         debug: false,
@@ -100,28 +105,36 @@ $(document).ready(function() {
                 }
             },
             ans_options1: {
-                required: true
+                required: true,
+                comma: true
             },
             ans_options2: {
-                required: true
+                required: true,
+                comma: true
             },
             ans_options3: {
-                required: true
+                required: true,
+                comma: true
             },
             ans_options4: {
-                required: true
+                required: true,
+                comma: true
             },
             ans_options5: {
-                required: true
+                required: true,
+                comma: true
             },
             ans_options6: {
-                required: true
+                required: true,
+                comma: true
             },
             ans_options7: {
-                required: true
+                required: true,
+                comma: true
             },
             ans_options8: {
-                required: true
+                required: true,
+                comma: true
             },
             correct_option1: {
                 required: true
@@ -217,11 +230,5 @@ $(document).ready(function() {
                 }
             });
         }
-    });
-    $("#ans_options1").rules("add", { 
-        pattern: "^[a-zA-Z'.\\s]{1,40}$",
-        messages: {
-            pattern:"Please add comma seprate options",
-          }
     });
 });

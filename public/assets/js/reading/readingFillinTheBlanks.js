@@ -41,6 +41,7 @@ function addQuestionColumn()
     $('#re_order').validate();
     $("#"+ansId).rules( "add", {
         required: true,
+        comma:true,
         messages: {
           required: ansLabel+" is required",
         }
@@ -75,6 +76,7 @@ function minusQuestionColumn()
                 +"</div>";
 
     $(ansId).rules("remove", "required");
+    $(ansId).rules("remove","comma");
     $(correctId).rules("remove", "required");
     
     $(".mainbox"+target).remove();
@@ -88,6 +90,9 @@ function minusQuestionColumn()
     $("#slug").val(number);
 }
 $(document).ready(function() {
+    $.validator.addMethod("comma", function (value, element) {
+        return this.optional(element) || /^.*[^,]$/.test(value);
+    }, "Please specify value with comma");
     $('#fill_in_blanks').validate({ 
         ignore: [],
         debug: false,
@@ -99,7 +104,8 @@ $(document).ready(function() {
                 }
             },
             ans_options1:{
-                required: true
+                required: true,
+                comma:true
             },
             correct_options1:{
                 required: true

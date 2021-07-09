@@ -1,8 +1,12 @@
 $(document).ready(function() {
+    $.validator.addMethod("comma", function (value, element) {
+        return this.optional(element) || /^.*[^,]$/.test(value);
+    }, "Please specify value with comma");
     $('#frm-answer-short-question').validate({ 
         rules: {
             'question[]': {
-                required: true
+                required: true,
+                comma:true
             },
             'image[]': {
                 required: true
