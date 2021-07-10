@@ -393,7 +393,7 @@ $(document).ready(function() {
     var state_code = $('option:selected', this).attr('data-code');
     console.log(state_code);
     $("#istate_code").val(state_code);
-});
+  });
   
   // institute all check functionality start
   $('body').on('change',"#checkedAllInstitute", function(){
@@ -445,6 +445,30 @@ $(document).ready(function() {
   });
   // institute all check functionality end
 
+  $('body').on('click','.user-email-template',function(){
+    $("#emailtemplateError").text("");
+    var url = $(this).data('url');
+    var user_ids = $("#user_ids").val();
+    var emailtemplate   = $("#emailtemplate :selected").val();
+    if(emailtemplate == ''){
+      $('#emailtemplateError').text("email template is required");
+    }else{
+      var formdata = $('#emailsend').serialize();
+      $.ajax({
+        url: url,
+        type:'POST',
+        data:formdata,
+        success:function(data) {
+          alert(data);
+          // location.reload();
+        },
+        error: function(response) {
+              $('#statusError').text(response.responseJSON.errors.type);
+            }
+      });
+    } 
+  });
+
   //All common action start
   $("#action-institute").change(function () {
       var selectedText = $(this).find("option:selected").text();
@@ -490,6 +514,22 @@ $(document).ready(function() {
             },
             success:function(data) {
               $('#user-status-update').html(data.html);
+            },
+            error: function(response) {
+              console.log(response.responseJSON.errors);
+            }
+          }); 
+        }else if(selectedValue == "email" && chekedInstituteIds != ''){
+          $('#userSendEmail').modal('toggle');
+          $.ajax({
+            url: change_send_email_get_model,
+            type:'POST',
+            data:{'_token':CSRF_TOKEN,'user_ids' : chekedInstituteIds},
+            beforeSend: function(){
+              $('#show-send-email-body').html('<i class="fa fa-spinner fa-spin"></i>  Please Wait...');
+            },
+            success:function(data) {
+              $('#show-send-email-body').html(data.html);
             },
             error: function(response) {
               console.log(response.responseJSON.errors);

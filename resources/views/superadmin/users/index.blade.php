@@ -157,7 +157,7 @@
       </div>
     </div>
 
-    <!-- <div class="modal fade" id="userdetail12" tabindex="-1" aria-hidden="true">
+    <div class="modal fade" id="userSendEmail" tabindex="-1" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
           <div class="modal-header pb-3">
@@ -165,10 +165,10 @@
               <span aria-hidden="true"><i class="fas fa-times"></i></span>
             </button>
           </div>
-          <div class="modal-body" id="show-user-body"></div>
+          <div class="modal-body" id="show-send-email-body"></div>
         </div>
       </div>
-    </div> -->
+    </div>
 
 </div>
 @endsection
@@ -178,6 +178,7 @@
   var url_students = "{{ route('users.index', 'type=S') }}";
   var password_url_route = "{{ route('superadmin-user-showpassword', 'all') }}";
   var change_status_get_model = "{{ route('superadmin-user-getstatus') }}";
+  var change_send_email_get_model = "{{ route('superadmin-user-getsendemail') }}";
   var change_status_url_route = "{{ route('superadmin-user-changestatus', 'all') }}";
   var get_multiple_assign_test = "{{ route('superadmin-user-get-multiple-assign-test') }}";
    var institute_export_url_route = "{{ route('superadmin-user-institute-export') }}";

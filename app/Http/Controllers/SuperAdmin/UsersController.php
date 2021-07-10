@@ -10,6 +10,7 @@ use App\Models\UserAssignTests;
 use App\Models\Roles;
 use App\Models\Sections;
 use App\Models\Institues;
+use App\Models\EmailTemplates;
 use Illuminate\Support\Facades\Hash;
 use DataTables;
 use App\Http\Requests\StoreUserRequest;
@@ -17,6 +18,9 @@ use Stevebauman\Location\Facades\Location;
 use App\Exports\InstituteExport;
 use App\Exports\studentExport;
 use Maatwebsite\Excel\Facades\Excel;
+
+use Illuminate\Support\Facades\Mail;
+use App\Mail\SendEmailUser;
 
 class UsersController extends Controller
 {
@@ -763,6 +767,57 @@ class UsersController extends Controller
             'html'=>$html_password    
         ]);
     }
+
+    public function getSendEmail(Request $request)
+    {
+        // $user = implode(",",$request->user_ids);
+        $user = $request->user_ids;
+        $templates = EmailTemplates::get();
+        $html_password = view($this->moduleTitleP.'emailtemplate',compact('user','templates'))->render();
+
+        return response()->json([
+            'success' => 1,
+            'html'=>$html_password    
+        ]);
+    }
+
+    public function SendEmail(Request $request){
+        // dd($request->all());
+        $user_ids  = $request->user_ids;
+        $emailtemplate  = $request->emailtemplate;
+      
+
+        $flag = 0;
+         // \Mail::to('your_receiver_email@gmail.com')->send(new \App\Mail\MyTestMail($details));
+        $details = '';
+        $data1 = Mail::to('rashmita.gangani@email.com')->send(new \App\Mail\SendEmailUser($$details));
+        dd($data1);   
+
+        // foreach ($user_ids as $user_id) {
+        //     $user = User::find(2);
+        //     if($user){
+        //         try{                  
+                                 
+        //         }catch(\Exception $e){                
+        //             $msg = $e->getMessage();    
+        //             \Session::put('success', $msg);              
+                            
+        //         }   
+        //         $flag = 1;
+        //         break;
+        //     }else{
+        //         $flag = 0;
+        //     }
+
+        // } 
+        if($flag == 1){
+            \Session::put('success', 'Email send successfully!');
+        }else{
+            \Session::put('error', 'Email address not valid..!');
+              
+        }
+    }
+
     public function changeStatus(Request $request,$id)
     {
         if($request->has('status'))

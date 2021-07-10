@@ -80,6 +80,9 @@ Route::group(['middleware' => ['auth', 'verified','superadmin']], function () {
 
     Route::post('superadmin/users/changestatusmodel', [App\Http\Controllers\SuperAdmin\UsersController::class, 'getChangeStatus'])->name('superadmin-user-getstatus');
 
+    Route::post('superadmin/users/sendemailmodel', [App\Http\Controllers\SuperAdmin\UsersController::class, 'getSendEmail'])->name('superadmin-user-getsendemail');
+    Route::post('superadmin/users/sendemail', [App\Http\Controllers\SuperAdmin\UsersController::class, 'SendEmail'])->name('superadmin-user-sendemailtemplate');
+
     Route::get('superadmin/users/changestatus/{id}', [App\Http\Controllers\SuperAdmin\UsersController::class, 'changeStatus'])->name('superadmin-user-changestatus');
 
     Route::get('superadmin/users/showpassword/{id}', [App\Http\Controllers\SuperAdmin\UsersController::class, 'showPassword'])->name('superadmin-user-showpassword');
