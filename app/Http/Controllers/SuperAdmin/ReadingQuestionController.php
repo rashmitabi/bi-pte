@@ -35,17 +35,11 @@ class ReadingQuestionController extends Controller
         $questions->max_time        = 40;
         if($questions->save()){
              //1-reading 2-listening 3-writing 4-speaking
-            $sectionquestionscores = new SectionQuestionScores;
-            $sectionquestionscores->section_id = 1;
-            $sectionquestionscores->question_type_id = $question_type_id;
-            $sectionquestionscores->score_division = 22;
-            $sectionquestionscores->save();
+              $matchThese = ['section_id'=>1,'question_type_id'=>$question_type_id];
+            SectionQuestionScores::updateOrCreate($matchThese,["score_division"=>22]);
 
-            $sectionquestionscores = new SectionQuestionScores;
-            $sectionquestionscores->section_id = 3;
-            $sectionquestionscores->question_type_id = $question_type_id;
-            $sectionquestionscores->score_division = 22;
-            $sectionquestionscores->save();
+            $matchThese = ['section_id'=>3,'question_type_id'=>$question_type_id];
+            SectionQuestionScores::updateOrCreate($matchThese,["score_division"=>22]);
 
             $id = $questions->id;
             $slug = $input['slug'];
@@ -171,18 +165,13 @@ class ReadingQuestionController extends Controller
         {
             if($input['type'] == "single"){
                  //1-reading 2-listening 3-writing 4-speaking
-                $sectionquestionscores = new SectionQuestionScores;
-                $sectionquestionscores->section_id = 1;
-                $sectionquestionscores->question_type_id = $question_type_id;
-                $sectionquestionscores->score_division = 1;
-                $sectionquestionscores->save();
+                $matchThese = ['section_id'=>1,'question_type_id'=>$question_type_id];
+                SectionQuestionScores::updateOrCreate($matchThese,["score_division"=>1]);
+
             }else{
                 //1-reading 2-listening 3-writing 4-speaking
-                $sectionquestionscores = new SectionQuestionScores;
-                $sectionquestionscores->section_id = 1;
-                $sectionquestionscores->question_type_id = $question_type_id;
-                $sectionquestionscores->score_division = 3;
-                $sectionquestionscores->save();
+                $matchThese = ['section_id'=>1,'question_type_id'=>$question_type_id];
+                SectionQuestionScores::updateOrCreate($matchThese,["score_division"=>3]);
             }
 
 
@@ -302,13 +291,9 @@ class ReadingQuestionController extends Controller
         if($questions->save())
         {
             //1-reading 2-listening 3-writing 4-speaking
-            $sectionquestionscores = new SectionQuestionScores;
-            $sectionquestionscores->section_id = 1;
-            $sectionquestionscores->question_type_id = $question_type_id;
-            $sectionquestionscores->score_division = 6;
-            $sectionquestionscores->save();
+              $matchThese = ['section_id'=>1,'question_type_id'=>$question_type_id];
+            SectionQuestionScores::updateOrCreate($matchThese,["score_division"=>6]);
 
-            
             $id = $questions->id;
             $finalValue = array_search($alphaSlug,$all);
             try{
@@ -416,13 +401,8 @@ class ReadingQuestionController extends Controller
         if($questions->save())
         {
              //1-reading 2-listening 3-writing 4-speaking
-            $sectionquestionscores = new SectionQuestionScores;
-            $sectionquestionscores->section_id = 1;
-            $sectionquestionscores->question_type_id = $question_type_id;
-            $sectionquestionscores->score_division = 15;
-            $sectionquestionscores->save();
-
-           
+            $matchThese = ['section_id'=>1,'question_type_id'=>$question_type_id];
+            SectionQuestionScores::updateOrCreate($matchThese,["score_division"=>15]);
 
             $id = $questions->id;
             $temp = 0;

@@ -40,17 +40,11 @@ class SpeakingQuestionController extends Controller
         $questions->max_time        = 40;
         if($questions->save()){
             //1-reading 2-listening 3-writing 4-speaking
-            $sectionquestionscores = new SectionQuestionScores;
-            $sectionquestionscores->section_id = 4;
-            $sectionquestionscores->question_type_id = $question_type_id;
-            $sectionquestionscores->score_division = 22;
-            $sectionquestionscores->save();
+            $matchThese = ['section_id'=>4,'question_type_id'=>$question_type_id];
+            SectionQuestionScores::updateOrCreate($matchThese,["score_division"=>22]);
 
-            $sectionquestionscores = new SectionQuestionScores;
-            $sectionquestionscores->section_id = 1;
-            $sectionquestionscores->question_type_id = $question_type_id;
-            $sectionquestionscores->score_division = 22;
-            $sectionquestionscores->save();
+            $matchThese = ['section_id'=>1,'question_type_id'=>$question_type_id];
+            SectionQuestionScores::updateOrCreate($matchThese,["score_division"=>22]);
 
             $id = $questions->id;
 
@@ -124,17 +118,13 @@ class SpeakingQuestionController extends Controller
         $questions->max_time        = 40;
         if($questions->save()){
             //1-reading 2-listening 3-writing 4-speaking
-            $sectionquestionscores = new SectionQuestionScores;
-            $sectionquestionscores->section_id = 4;
-            $sectionquestionscores->question_type_id = $question_type_id;
-            $sectionquestionscores->score_division = 32;
-            $sectionquestionscores->save();
+            $matchThese = ['section_id'=>4,'question_type_id'=>$question_type_id];
+            SectionQuestionScores::updateOrCreate($matchThese,["score_division"=>32]);
 
-            $sectionquestionscores = new SectionQuestionScores;
-            $sectionquestionscores->section_id = 2;
-            $sectionquestionscores->question_type_id = $question_type_id;
-            $sectionquestionscores->score_division = 20;
-            $sectionquestionscores->save();
+            $matchThese = ['section_id'=>2,'question_type_id'=>$question_type_id];
+            SectionQuestionScores::updateOrCreate($matchThese,["score_division"=>20]);
+
+            
 
             $id = $questions->id;
 
@@ -208,15 +198,10 @@ class SpeakingQuestionController extends Controller
         $questions->max_time        = 40;
         if($questions->save()){
             //1-reading 2-listening 3-writing 4-speaking
-            $sectionquestionscores = new SectionQuestionScores;
-            $sectionquestionscores->section_id = 4;
-            $sectionquestionscores->question_type_id = $question_type_id;
-            $sectionquestionscores->score_division = 22;
-            $sectionquestionscores->save();
+             $matchThese = ['section_id'=>4,'question_type_id'=>$question_type_id];
+            SectionQuestionScores::updateOrCreate($matchThese,["score_division"=>22]);
 
-           
-
-            $id = $questions->id;
+           $id = $questions->id;
 
             for($i=0;$i<count($input['question']);$i++){
                 $questiondata = new Questiondata;
@@ -288,18 +273,12 @@ class SpeakingQuestionController extends Controller
         $questions->max_time        = 40;
         if($questions->save()){
              //1-reading 2-listening 3-writing 4-speaking
-            $sectionquestionscores = new SectionQuestionScores;
-            $sectionquestionscores->section_id = 4;
-            $sectionquestionscores->question_type_id = $question_type_id;
-            $sectionquestionscores->score_division = 12;
-            $sectionquestionscores->save();
+             $matchThese = ['section_id'=>4,'question_type_id'=>$question_type_id];
+            SectionQuestionScores::updateOrCreate($matchThese,["score_division"=>12]);
 
-            $sectionquestionscores = new SectionQuestionScores;
-            $sectionquestionscores->section_id = 2;
-            $sectionquestionscores->question_type_id = $question_type_id;
-            $sectionquestionscores->score_division = 10;
-            $sectionquestionscores->save();
-
+            $matchThese = ['section_id'=>2,'question_type_id'=>$question_type_id];
+            SectionQuestionScores::updateOrCreate($matchThese,["score_division"=>10]);
+           
             $id = $questions->id;
 
             for($i=0;$i<count($input['question']);$i++){
@@ -373,17 +352,11 @@ class SpeakingQuestionController extends Controller
         $questions->max_time        = 40;
         if($questions->save()){
              //1-reading 2-listening 3-writing 4-speaking
-            $sectionquestionscores = new SectionQuestionScores;
-            $sectionquestionscores->section_id = 4;
-            $sectionquestionscores->question_type_id = $question_type_id;
-            $sectionquestionscores->score_division = 2;
-            $sectionquestionscores->save();
+             $matchThese = ['section_id'=>4,'question_type_id'=>$question_type_id];
+            SectionQuestionScores::updateOrCreate($matchThese,["score_division"=>2]);
 
-            $sectionquestionscores = new SectionQuestionScores;
-            $sectionquestionscores->section_id = 2;
-            $sectionquestionscores->question_type_id = $question_type_id;
-            $sectionquestionscores->score_division = 6;
-            $sectionquestionscores->save();
+            $matchThese = ['section_id'=>2,'question_type_id'=>$question_type_id];
+            SectionQuestionScores::updateOrCreate($matchThese,["score_division"=>6]);
 
             $id = $questions->id;
 
