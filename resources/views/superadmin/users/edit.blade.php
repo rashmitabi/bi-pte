@@ -8,7 +8,7 @@
       @endif
     </div>
     <div class="edit-profile-btn">
-      <a><i class="fas fa-pen icon"></i></a>
+      <a> <input type="file" name="" id="" class="custom-file-input position-absolute"> <i class="fas fa-pen icon"></i></a>
     </div>
   </div>
   <div class="col-12 col-md-12 col-xl-12 col-sm-8 left">
