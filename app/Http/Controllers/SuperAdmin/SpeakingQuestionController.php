@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Questions;
 use App\Models\Answerdata;
 use App\Models\Questiondata;
+use App\Models\SectionQuestionScores;
 use DB;
 
 class SpeakingQuestionController extends Controller
@@ -33,11 +34,24 @@ class SpeakingQuestionController extends Controller
         $questions->desc            = "-";
         $questions->order           = 0;
         $questions->status          = "E";
-        $questions->marks           = 50;
+        $questions->marks           = 44;
         $questions->answer_time     = 40;
         $questions->waiting_time    = 40;
         $questions->max_time        = 40;
         if($questions->save()){
+            //1-reading 2-listening 3-writing 4-speaking
+            $sectionquestionscores = new SectionQuestionScores;
+            $sectionquestionscores->section_id = 4;
+            $sectionquestionscores->question_type_id = $question_type_id;
+            $sectionquestionscores->score_division = 22;
+            $sectionquestionscores->save();
+
+            $sectionquestionscores = new SectionQuestionScores;
+            $sectionquestionscores->section_id = 1;
+            $sectionquestionscores->question_type_id = $question_type_id;
+            $sectionquestionscores->score_division = 22;
+            $sectionquestionscores->save();
+
             $id = $questions->id;
 
             for($i=1;$i<= 6;$i++){
@@ -104,11 +118,24 @@ class SpeakingQuestionController extends Controller
         $questions->desc            = "-";
         $questions->order           = 0;
         $questions->status          = "E";
-        $questions->marks           = 50;
+        $questions->marks           = 52;
         $questions->answer_time     = 40;
         $questions->waiting_time    = 40;
         $questions->max_time        = 40;
         if($questions->save()){
+            //1-reading 2-listening 3-writing 4-speaking
+            $sectionquestionscores = new SectionQuestionScores;
+            $sectionquestionscores->section_id = 4;
+            $sectionquestionscores->question_type_id = $question_type_id;
+            $sectionquestionscores->score_division = 32;
+            $sectionquestionscores->save();
+
+            $sectionquestionscores = new SectionQuestionScores;
+            $sectionquestionscores->section_id = 2;
+            $sectionquestionscores->question_type_id = $question_type_id;
+            $sectionquestionscores->score_division = 20;
+            $sectionquestionscores->save();
+
             $id = $questions->id;
 
             for($i=0;$i<count($input['question']);$i++){
@@ -175,11 +202,20 @@ class SpeakingQuestionController extends Controller
         $questions->desc            = "-";
         $questions->order           = 0;
         $questions->status          = "E";
-        $questions->marks           = 50;
+        $questions->marks           = 22;
         $questions->answer_time     = 40;
         $questions->waiting_time    = 40;
         $questions->max_time        = 40;
         if($questions->save()){
+            //1-reading 2-listening 3-writing 4-speaking
+            $sectionquestionscores = new SectionQuestionScores;
+            $sectionquestionscores->section_id = 4;
+            $sectionquestionscores->question_type_id = $question_type_id;
+            $sectionquestionscores->score_division = 22;
+            $sectionquestionscores->save();
+
+           
+
             $id = $questions->id;
 
             for($i=0;$i<count($input['question']);$i++){
@@ -246,11 +282,24 @@ class SpeakingQuestionController extends Controller
         $questions->desc            = "-";
         $questions->order           = 0;
         $questions->status          = "E";
-        $questions->marks           = 50;
+        $questions->marks           = 22;
         $questions->answer_time     = 40;
         $questions->waiting_time    = 40;
         $questions->max_time        = 40;
         if($questions->save()){
+             //1-reading 2-listening 3-writing 4-speaking
+            $sectionquestionscores = new SectionQuestionScores;
+            $sectionquestionscores->section_id = 4;
+            $sectionquestionscores->question_type_id = $question_type_id;
+            $sectionquestionscores->score_division = 12;
+            $sectionquestionscores->save();
+
+            $sectionquestionscores = new SectionQuestionScores;
+            $sectionquestionscores->section_id = 2;
+            $sectionquestionscores->question_type_id = $question_type_id;
+            $sectionquestionscores->score_division = 10;
+            $sectionquestionscores->save();
+
             $id = $questions->id;
 
             for($i=0;$i<count($input['question']);$i++){
@@ -318,11 +367,24 @@ class SpeakingQuestionController extends Controller
         $questions->desc            = "-";
         $questions->order           = 0;
         $questions->status          = "E";
-        $questions->marks           = 50;
+        $questions->marks           = 8;
         $questions->answer_time     = 40;
         $questions->waiting_time    = 40;
         $questions->max_time        = 40;
         if($questions->save()){
+             //1-reading 2-listening 3-writing 4-speaking
+            $sectionquestionscores = new SectionQuestionScores;
+            $sectionquestionscores->section_id = 4;
+            $sectionquestionscores->question_type_id = $question_type_id;
+            $sectionquestionscores->score_division = 2;
+            $sectionquestionscores->save();
+
+            $sectionquestionscores = new SectionQuestionScores;
+            $sectionquestionscores->section_id = 2;
+            $sectionquestionscores->question_type_id = $question_type_id;
+            $sectionquestionscores->score_division = 6;
+            $sectionquestionscores->save();
+
             $id = $questions->id;
 
             for($i=0;$i<count($input['question']);$i++){

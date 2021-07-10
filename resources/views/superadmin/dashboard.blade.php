@@ -86,7 +86,7 @@
                   array_push($count, $sub['count']); 
                   @endphp                     
                 @endforeach
-              @endif
+              @endif 
               <canvas id="myChart" width="50%" hight="500px" data-label='{{ json_encode($months) }}' data-values='{{ json_encode($count) }}'></canvas>
            </div>
            <div class="col-12 col-md-6 col-xl-6 col-sm-12 mt-5 mb-4 graph-common-2 white-bg">

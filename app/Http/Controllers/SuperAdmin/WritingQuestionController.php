@@ -35,11 +35,24 @@ class WritingQuestionController extends Controller
         $questions->desc            = "-";
         $questions->order           = 0;
         $questions->status          = "E";
-        $questions->marks           = 50;
+        $questions->marks           = 20;
         $questions->answer_time     = 40;
         $questions->waiting_time    = 40;
         $questions->max_time        = 40;
         if($questions->save()){
+             //1-reading 2-listening 3-writing 4-speaking
+            $sectionquestionscores = new SectionQuestionScores;
+            $sectionquestionscores->section_id = 3;
+            $sectionquestionscores->question_type_id = $question_type_id;
+            $sectionquestionscores->score_division = 10;
+            $sectionquestionscores->save();
+
+            $sectionquestionscores = new SectionQuestionScores;
+            $sectionquestionscores->section_id = 1;
+            $sectionquestionscores->question_type_id = $question_type_id;
+            $sectionquestionscores->score_division = 10;
+            $sectionquestionscores->save();
+
             $id = $questions->id;
 
             $questiondata = new Questiondata;
@@ -134,11 +147,19 @@ class WritingQuestionController extends Controller
         $questions->desc            = "-";
         $questions->order           = 0;
         $questions->status          = "E";
-        $questions->marks           = 50;
+        $questions->marks           = 12;
         $questions->answer_time     = 40;
         $questions->waiting_time    = 40;
         $questions->max_time        = 40;
         if($questions->save()){
+             //1-reading 2-listening 3-writing 4-speaking
+            $sectionquestionscores = new SectionQuestionScores;
+            $sectionquestionscores->section_id = 3;
+            $sectionquestionscores->question_type_id = $question_type_id;
+            $sectionquestionscores->score_division = 12;
+            $sectionquestionscores->save();
+
+
             $id = $questions->id;
 
             $questiondata = new Questiondata;
