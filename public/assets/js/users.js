@@ -500,7 +500,7 @@ $(document).ready(function() {
             $.ajax({
               url: get_multiple_assign_test,
               type:'POST',
-              data:{'_token':CSRF_TOKEN, 'id' : chekedInstituteIds,'type':'P'},
+              data:{'_token':CSRF_TOKEN, 'id' : chekedInstituteIds,'type':'P', 'role': 'Institute'},
               beforeSend: function(){
                 $('#prectice-test-body').html('<i class="fa fa-spinner fa-spin"></i>  Please Wait...');
               },
@@ -514,7 +514,7 @@ $(document).ready(function() {
             $.ajax({
               url: get_multiple_assign_test,
               type:'POST',
-              data:{'_token':CSRF_TOKEN, 'id' : chekedInstituteIds,'type':'M'},
+              data:{'_token':CSRF_TOKEN, 'id' : chekedInstituteIds,'type':'M', 'role': 'Institute'},
               beforeSend: function(){
                 $('#assign-mock-test-body').html('<i class="fa fa-spinner fa-spin"></i>  Please Wait...');
               },
@@ -586,7 +586,7 @@ $(document).ready(function() {
           $.ajax({
             url: get_multiple_assign_test,
             type:'POST',
-            data:{'_token':CSRF_TOKEN, 'id' : chekedStudentsIds,'type':'P'},
+            data:{'_token':CSRF_TOKEN, 'id' : chekedStudentsIds,'type':'P', 'role': 'Students'},
             beforeSend: function(){
               $('#prectice-test-body').html('<div class="mb-5 text-center"><i class="fa fa-spinner fa-spin"></i>  Please Wait...</div>');
             },
@@ -600,7 +600,7 @@ $(document).ready(function() {
           $.ajax({
             url: get_multiple_assign_test,
             type:'POST',
-            data:{'_token':CSRF_TOKEN, 'id' : chekedStudentsIds,'type':'M'},
+            data:{'_token':CSRF_TOKEN, 'id' : chekedStudentsIds,'type':'M' , 'role': 'Students'},
             beforeSend: function(){
               $('#assign-mock-test-body').html('<div class="mb-5 text-center"><i class="fa fa-spinner fa-spin"></i>  Please Wait...</div>');
             },

@@ -1,20 +1,22 @@
-<div class="row">
-  <div class="col-12">
-    <div class="profile-img">
-      @if($user->profile_image != '')
-        <img src="{{ asset('assets/images/profile/'.$user->profile_image) }}">
-      @else
-        <img src="{{ asset('assets/images/profile-img-2.png') }}">
-      @endif
-    </div>
-    <div class="edit-profile-btn">
-      <a> <input type="file" name="" id="" class="custom-file-input position-absolute"> <i class="fas fa-pen icon"></i></a>
-    </div>
-  </div>
+<div class="row">  
   <div class="col-12 col-md-12 col-xl-12 col-sm-8 left">
-    {!! Form::open(array('id'=>'userupdate','method'=>'POST','enctype' => 'multipart/form-data','class'=>'form mt-4 ml-3')) !!}
+    {!! Form::open(array('id'=>'userupdate','method'=>'POST','enctype' => 'multipart/form-data','class'=>'form mt-4 ml-3')) !!}    
       @if($user->role_id == 3)
         <input type="hidden" name="type" value="{{ $user->role_id }}" >
+        <div class="form-group row">
+          <div class="col-12">
+            <div class="profile-img">
+              @if($user->profile_image != '')
+                <img src="{{ asset('assets/images/profile/'.$user->profile_image) }}">
+              @else
+                <img src="{{ asset('assets/images/profile-img-2.png') }}">
+              @endif
+            </div>
+            <div class="edit-profile-btn">
+              <a><input type="file" name="simage" id="" class="custom-file-input position-absolute"><i class="fas fa-pen icon"></i></a>
+            </div>
+          </div>
+        </div>
         <div class="form-group row">
           <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Branch Admin</label>
           <div class="col-12 col-md-7 col-xl-7 col-sm-12">
@@ -151,6 +153,20 @@
 
       @if($user->role_id == 2)
         <input type="hidden" name="type" value="{{ $user->role_id }}" >
+        <div class="form-group row">
+          <div class="col-12">
+            <div class="profile-img">
+              @if($user->profile_image != '')
+                <img src="{{ asset('assets/images/profile/'.$user->profile_image) }}">
+              @else
+                <img src="{{ asset('assets/images/profile-img-2.png') }}">
+              @endif
+            </div>
+            <div class="edit-profile-btn">
+              <a><input type="file" name="iimage" id="" class="custom-file-input position-absolute"><i class="fas fa-pen icon"></i></a>
+            </div>
+          </div>
+        </div>
         <div class="form-group row">
           <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">User Name</label>
           <div class="col-12 col-md-7 col-xl-7 col-sm-12">

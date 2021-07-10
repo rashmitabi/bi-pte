@@ -65,10 +65,11 @@ class UsersController extends Controller
 
                                     <li class="action" data-toggle="modal" data-target="#setpassword"><a href="javascript:void(0);" class="user-setpassword" data-id="'.$row->id .'" data-url="'.route('superadmin-user-showpassword', $row->id).'"><i class="fas fa-unlock-alt"></i></a></li>
 
-                                    <li class="action" class="action" data-toggle="modal" data-target="#mocktest"><a href="javascript:void(0);" class="get-assign-test" data-test-type="M" data-id="'.$row->id.'" data-url="'.route('superadmin-user-get-assign-test',$row->id).'"><i class="fas fa-clipboard-check"></i></a></li>
+                                    <li class="action" class="action" data-toggle="modal" data-target="#mocktest"><a href="javascript:void(0);" class="get-assign-test" data-test-type="M" data-id="'.$row->id.'" data-url="'.route('superadmin-user-get-assign-test',$row->id).'"><img src="'. asset('assets/images/icons/exam.svg').'"
+                                                class=""></a></li>
 
-                                    <li class="action" class="action" data-toggle="modal" data-target="#practisetest"><a href="javascript:void(0);" class="get-assign-test" data-test-type="P" data-id="'.$row->id.'" data-url="'.route('superadmin-user-get-assign-test',$row->id).'"><i class="fas fa-clipboard-check"></i></a></li>
-                                    <li class="action" data-toggle="modal" data-target="#practisetest" ><a href="javascript:void(0);" class="get-assign-test" data-test-type="P" data-id="'.$row->id.'" data-url="'.route('superadmin-user-get-assign-test',$row->id).'"><i class="fas fa-clipboard-check"></i></a></li>
+                                    <li class="action" class="action" data-toggle="modal" data-target="#practisetest"><a href="javascript:void(0);" class="get-assign-test" data-test-type="P" data-id="'.$row->id.'" data-url="'.route('superadmin-user-get-assign-test',$row->id).'"><img src="'. asset('assets/images/icons/test.svg').'"
+                                                class=""></a></li>                                   
                                 </ul>';
                         return $btn;
                     })
@@ -113,9 +114,11 @@ class UsersController extends Controller
 
                                     <li class="action" data-toggle="modal" data-target="#setpassword"><a href="javascript:void(0);" class="user-setpassword" data-id="'.$row->id .'" data-url="'.route('superadmin-user-showpassword', $row->id).'"><i class="fas fa-unlock-alt"></i></a></li>
 
-                                    <li class="action" class="action" data-toggle="modal" data-target="#mocktest"><a href="javascript:void(0);" class="get-assign-test" data-test-type="M" data-id="'.$row->id.'" data-url="'.route('superadmin-user-get-assign-test',$row->id).'"><i class="fas fa-clipboard-check"></i></a></li>
+                                    <li class="action" class="action" data-toggle="modal" data-target="#mocktest"><a href="javascript:void(0);" class="get-assign-test" data-test-type="M" data-id="'.$row->id.'" data-url="'.route('superadmin-user-get-assign-test',$row->id).'"><img src="'. asset('assets/images/icons/exam.svg').'"
+                                                class=""></a></li>
 
-                                    <li class="action" class="action" data-toggle="modal" data-target="#practisetest"><a href="javascript:void(0);" class="get-assign-test" data-test-type="P" data-id="'.$row->id.'" data-url="'.route('superadmin-user-get-assign-test',$row->id).'"><i class="fas fa-clipboard-check"></i></a></li>
+                                    <li class="action" class="action" data-toggle="modal" data-target="#practisetest"><a href="javascript:void(0);" class="get-assign-test" data-test-type="P" data-id="'.$row->id.'" data-url="'.route('superadmin-user-get-assign-test',$row->id).'"><img src="'. asset('assets/images/icons/test.svg').'"
+                                                class=""></a></li>
                                 </ul>';
                         return $btn;
                     })
@@ -152,6 +155,7 @@ class UsersController extends Controller
         $type = $request->type;
         $tests = Tests::where(['type'=>$type])->latest()->get();
         $user_id = $id;
+        $user = User::find($id);
         $userAssignTests = UserAssignTests::where('user_id',$user_id)->first();
         if($type == 'P'){
             $alreadyAssign = [];
@@ -164,7 +168,7 @@ class UsersController extends Controller
                 $alreadyAssign = explode(",",$userAssignTests->mock_test_id);
             }
         }
-        $html_Prectice = view($this->moduleTitleP.'assignTest', compact('tests','user_id','alreadyAssign','type'))->render();
+        $html_Prectice = view($this->moduleTitleP.'assignTest', compact('user', 'tests','user_id','alreadyAssign','type'))->render();
 
         return response()->json([
             'success' => 1,
@@ -199,7 +203,28 @@ class UsersController extends Controller
         $type = $request->type;
         $tests = Tests::where(['type'=>$type])->latest()->get();
         $user_id = implode(",",$request->id);
-        $html_Prectice = view($this->moduleTitleP.'assignMultipleUserTests', compact('tests','user_id','type'))->render();
+        $role = $request->role;
+        $users = User::whereIn('id', $request->id)->get();     
+        $usernames = $role.' -  ';
+        $i = 1;
+        foreach($users as $user){
+            if($role = 'Students'){
+                $usernames .= $user->first_name.' '.$user->last_name;
+            }
+            elseif($role = 'Institute'){
+                if(isset($user->institue->institute_name)){
+                    $usernames .= $user->institue->institute_name;
+                }
+                elseif(isset($user->name)){
+                    $usernames .= $user->name;
+                }
+            }
+            if($i < count($users)){
+                $usernames.= ',  ';
+            }
+            $i++;
+        }   
+        $html_Prectice = view($this->moduleTitleP.'assignMultipleUserTests', compact('tests','user_id','type', 'usernames'))->render();
         return response()->json([
             'success' => 1,
             'html'=>$html_Prectice   
