@@ -103,7 +103,7 @@ class CertificatesController extends Controller
             $resdata = $input;
             $resdata['test_name'] = $test->test_name;
             $result = Certificates::create($input);
-            if($result){
+            /*if($result){
                 //send notification                
                 if($test->type == "M"){
                     $type = "Mock Test";
@@ -122,9 +122,9 @@ class CertificatesController extends Controller
                 $notification = Notifications::create($notification_data);
                 \Session::put('success', 'Certificate generated successfully!');
                 return true;   
-            }
+            }*/
             //generate certificate file
-            /*view()->share('data', $resdata);
+            view()->share('data', $resdata);
             $pdf = PDF::loadView('superadmin.certificates.certificate', $input);
             $path = public_path('files/certificates/');
             $fileName = time().'_'.$test->test_name.'.pdf';
@@ -156,7 +156,8 @@ class CertificatesController extends Controller
                 else{
                     \Session::put('error', 'Unable to generate certificate. Please try Again.');
                     return false;
-                }  */  
+                }  
+            }
             else{
                 \Session::put('error', 'Sorry!Something went wrong. Please try Again.');
                 return false;
