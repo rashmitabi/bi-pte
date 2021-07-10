@@ -3,6 +3,7 @@
               <input type="checkbox" class="form-check-input" id="selectAllTest">
               <label class="form-check-label" for="selectAllTest">Select All</label>
             </div>
+            @if(count($tests) >= 10)
             <div class="form-check form-check-inline">
               <label class="form-check-label" for="inlineRadio1">Tests</label>
             </div>
@@ -17,6 +18,8 @@
                 <span class="col-blue fw-500">Select 10</span>
               </label>
             </div>
+            @endif
+            @if(count($tests) >= 20)
             <div class="form-check form-check-inline">
               <label for="rdo-2" class="btn-radio">
                 <input type="radio" id="rdo-2" class="test_select" name="test_select" value="20">
@@ -28,6 +31,8 @@
                 <span class="col-blue fw-500">Select 20</span>
               </label>
             </div>
+            @endif
+            @if(count($tests) >= 30)
             <div class="form-check form-check-inline">
                 <label for="rdo-3" class="btn-radio">
                       <input type="radio" id="rdo-3" class="test_select" name="test_select" value="30">
@@ -39,6 +44,8 @@
                            <span class="col-blue fw-500">Select 30</span>
                 </label>
             </div>
+            @endif
+            @if(count($tests) >= 40)
             <div class="form-check form-check-inline">
                 <label for="rdo-4" class="btn-radio">
                       <input type="radio" id="rdo-4" class="test_select" name="test_select" value="40">
@@ -50,6 +57,8 @@
                            <span class="col-blue fw-500">Select 40</span>
                 </label>
             </div>
+            @endif
+            @if(count($tests) >= 50)
             <div class="form-check form-check-inline">
                 <label for="rdo-5" class="btn-radio">
                       <input type="radio" id="rdo-5" class="test_select" name="test_select" value="50">
@@ -61,7 +70,10 @@
                            <span class="col-blue fw-500">Select 50</span>
                </label>
             </div>
-            <div class="common-wrap"></div>
+            @endif
+            <div class="common-wrap text-center">
+              <b>{{$usernames}}</b>
+            </div>
                 <div class="test-series">
                     @if(count($tests) > 0)
                         @php
