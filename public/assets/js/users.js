@@ -457,11 +457,11 @@ $(document).ready(function() {
       });    
       var idSelector = function() { return $(this).attr("data-id"); };
       var chekedInstituteIds = $(":checkbox:checked").map(idSelector).get();
-      
-      if(selectedValue == "export"){
+         
+      /*if(selectedValue == "export"){
         window.location = institute_export_url_route;
         return false; 
-      }
+      }*/
 
       if(isAnyChecked == 1 ){
         if(selectedValue == "password" && chekedInstituteIds != ''){
@@ -523,6 +523,32 @@ $(document).ready(function() {
 
               },
             }); 
+        }else if(selectedValue == "export" && chekedInstituteIds != ''){
+          var fileName = 'institude'+Date.now();
+          $.ajax({
+            url: institute_export_url_route,
+            type:'GET',
+            xhrFields: {
+              responseType: 'blob'
+            },
+            data: {
+                _token: CSRF_TOKEN,
+                ids: chekedInstituteIds
+            },
+            success:function(data) {
+              var a = document.createElement('a');
+              var url = window.URL.createObjectURL(data);
+              a.href = url;
+              a.download = fileName;
+              document.body.append(a);
+              a.click();
+              a.remove();
+              window.URL.revokeObjectURL(url);
+              setTimeout(function(){
+                location.reload();
+              }, 3000);
+            },
+          });
         }
       }else{
         alert("Please select any institute.");
@@ -542,14 +568,11 @@ $(document).ready(function() {
       var idSelector = function() { return $(this).attr("data-id"); };
       var chekedStudentsIds = $(":checkbox:checked").map(idSelector).get();
 
-      if(selectedValue == "export"){
+      /*if(selectedValue == "export"){
           
         window.location = student_export_url_route;
         return false;  
-      }
-
-
-      
+      }*/
       if(isAnyChecked == 1 && chekedStudentsIds != ''){
         if(selectedValue == "password"){
           $('#setpassword').modal('toggle');
@@ -609,6 +632,32 @@ $(document).ready(function() {
 
             },
           }); 
+        }else if(selectedValue == "export"){
+          var fileName = 'institude'+Date.now();
+          $.ajax({
+            url: student_export_url_route,
+            type:'GET',
+            xhrFields: {
+              responseType: 'blob'
+            },
+            data: {
+                _token: CSRF_TOKEN,
+                ids: chekedStudentsIds
+            },
+            success:function(data) {
+              var a = document.createElement('a');
+              var url = window.URL.createObjectURL(data);
+              a.href = url;
+              a.download = fileName;
+              document.body.append(a);
+              a.click();
+              a.remove();
+              window.URL.revokeObjectURL(url);
+              setTimeout(function(){
+                location.reload();
+              }, 3000);
+            },
+          });
         }
       }
       else{

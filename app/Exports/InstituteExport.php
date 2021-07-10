@@ -19,7 +19,9 @@ class InstituteExport implements FromCollection, WithHeadings
     */
     public function collection()
     {
-        return $users = User::where('role_id',2)->select('first_name','last_name','email','mobile_no', 'state')->with(['institue'])->get();
+        $input = request()->all();
+        
+        return $users = User::whereIn('id',$input['ids'])->select('first_name','last_name','email','mobile_no', 'state')->with(['institue'])->get();
 
         // $result = array('First Name', 'Last Name', 'Email', 'Mobile Number', 'State');
         // foreach($users as $user){

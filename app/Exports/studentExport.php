@@ -18,6 +18,7 @@ class studentExport implements FromCollection, WithHeadings
     */
     public function collection()
     {
-        return User::where('role_id',3)->select('first_name','last_name','email','mobile_no')->get();
+        $input = request()->all();
+        return User::whereIn('id',$input['ids'])->select('first_name','last_name','email','mobile_no')->get();
     }
 }

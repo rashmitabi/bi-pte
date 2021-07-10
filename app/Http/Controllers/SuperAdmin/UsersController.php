@@ -129,13 +129,13 @@ class UsersController extends Controller
         return view($this->moduleTitleP.'index');
     }
 
-    public function instituteExport() 
+    public function instituteExport(Request $request) 
     {
-        return Excel::download(new InstituteExport, 'institue.xlsx');
+        return Excel::download(new InstituteExport($request->ids), 'institue.xlsx');
     } 
-    public function studentExport() 
+    public function studentExport(Request $request) 
     {
-        return Excel::download(new studentExport, 'student.xlsx');
+        return Excel::download(new studentExport($request->ids), 'student.xlsx');
     }
 
     public function showMockTest(){
