@@ -159,7 +159,12 @@
         <div class="col-12 col-md-12 col-xl-11 col-sm-12 btn mt-2">
           <button  type="button" class="btn delete-btn btn-outline-primary delete_modal" data-toggle="modal" data-target="#delete_modal" data-url="{{ route('users.destroy', $user->id) }}" data-id="{{ $user->id }}" style="    min-width: auto;"><i class="fas fa-trash icon"></i>Delete</button>
           <button  type="button" data-toggle="modal" data-target="#editdetail" class="btn edit-btn btn-outline-primary user-edit" data-id="{{ $user->id }}" data-url="{{ route('users.edit',$user->id) }}" data-md="yes" style="    min-width: auto;"><i class="fas fa-pen icon"></i>Edit</button>
-          <a href="{{ route('superadmin-user-single-block', $user->id) }}"><button  type="button" class="btn shield-btn btn-outline-primary" style="min-width: auto;"><img src="{{ asset('assets/images/icons/blocked.svg') }}" class="icon"></i>Block</button></a>
+            @if($user->status == 'A')
+                <a href="{{ route('superadmin-user-changestatus',$user->id) }}"><button  type="button" class="btn shield-btn btn-outline-primary" style="min-width: auto;"><img src="{{ asset('assets/images/icons/blocked.svg') }}" class="icon"></i>Block</button></a>
+            @else
+            <a href="{{ route('superadmin-user-changestatus',$user->id) }}"><button  type="button" class="btn btn-success" style="min-width: auto;"><img src="{{ asset('assets/images/icons/blocked.svg') }}" class="icon"></i>Active</button></a>
+            @endif
+                        
         </div>
       </div>
     </form>
