@@ -28,11 +28,24 @@ class ReadingQuestionController extends Controller
         $questions->desc            = $input['editor'];
         $questions->order           = 0;
         $questions->status          = "E";
-        $questions->marks           = 50;
+        $questions->marks           = 44;
         $questions->answer_time     = 40;
         $questions->waiting_time    = 40;
         $questions->max_time        = 40;
         if($questions->save()){
+             //1-reading 2-listening 3-writing 4-speaking
+            $sectionquestionscores = new SectionQuestionScores;
+            $sectionquestionscores->section_id = 1;
+            $sectionquestionscores->question_type_id = $question_type_id;
+            $sectionquestionscores->score_division = 22;
+            $sectionquestionscores->save();
+
+            $sectionquestionscores = new SectionQuestionScores;
+            $sectionquestionscores->section_id = 3;
+            $sectionquestionscores->question_type_id = $question_type_id;
+            $sectionquestionscores->score_division = 22;
+            $sectionquestionscores->save();
+
             $id = $questions->id;
             $slug = $input['slug'];
             $ansArrry = [];
@@ -142,12 +155,20 @@ class ReadingQuestionController extends Controller
         $questions->desc            = $input['editor1'];
         $questions->order           =  6;
         $questions->status          = "E";
-        $questions->marks           = 50;
+        $questions->marks           = 3;
         $questions->answer_time     = 40;
         $questions->waiting_time    = 40;
         $questions->max_time        = 40;
         if($questions->save())
         {
+             //1-reading 2-listening 3-writing 4-speaking
+            $sectionquestionscores = new SectionQuestionScores;
+            $sectionquestionscores->section_id = 1;
+            $sectionquestionscores->question_type_id = $question_type_id;
+            $sectionquestionscores->score_division = 3;
+            $sectionquestionscores->save();
+
+
             $id = $questions->id;
             $finalValue = array_search($slug,$all);
             try{
@@ -256,13 +277,21 @@ class ReadingQuestionController extends Controller
         $questions->desc            = "";
         $questions->order           =  8;
         $questions->status          = "E";
-        $questions->marks           = 50;
+        $questions->marks           = 6;
         $questions->answer_time     = 40;
         $questions->waiting_time    = 40;
         $questions->max_time        = 40;
 
         if($questions->save())
         {
+            //1-reading 2-listening 3-writing 4-speaking
+            $sectionquestionscores = new SectionQuestionScores;
+            $sectionquestionscores->section_id = 1;
+            $sectionquestionscores->question_type_id = $question_type_id;
+            $sectionquestionscores->score_division = 6;
+            $sectionquestionscores->save();
+
+            
             $id = $questions->id;
             $finalValue = array_search($alphaSlug,$all);
             try{
@@ -362,13 +391,22 @@ class ReadingQuestionController extends Controller
         $questions->desc            = $input['editor2'];
         $questions->order           =  10;
         $questions->status          = "E";
-        $questions->marks           = 50;
+        $questions->marks           = 15;
         $questions->answer_time     = 40;
         $questions->waiting_time    = 40;
         $questions->max_time        = 40;
 
         if($questions->save())
         {
+             //1-reading 2-listening 3-writing 4-speaking
+            $sectionquestionscores = new SectionQuestionScores;
+            $sectionquestionscores->section_id = 1;
+            $sectionquestionscores->question_type_id = $question_type_id;
+            $sectionquestionscores->score_division = 15;
+            $sectionquestionscores->save();
+
+           
+
             $id = $questions->id;
             $temp = 0;
             try{
