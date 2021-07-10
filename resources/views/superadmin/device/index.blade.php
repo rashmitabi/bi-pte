@@ -30,67 +30,7 @@
                             <th>Action</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Study Care Institute</td>
-                            <td>Microsoft Edge</td>
-                            <td>123.201.234.106</td>
-                            <td>Oppo Mobile</td>
-                            <td>Active</td>
-                            <td>20-JUN-2020 08:03 AM</td>
-                            <td>
-                                <ul class="actions-btns">
-                                    <li class="action shield"><a href="#"><img
-                                                src="{{ asset('assets/images/icons/blocked.svg') }}" class=""></a></li>
-                                </ul>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>Study Care Institute</td>
-                            <td>Microsoft Edge</td>
-                            <td>123.201.234.106</td>
-                            <td>Oppo Mobile</td>
-                            <td>Active</td>
-                            <td>20-JUN-2020 08:03 AM</td>
-                            <td>
-                                <ul class="actions-btns">
-                                    <li class="action shield"><a href="#"><img
-                                                src="{{ asset('assets/images/icons/blocked.svg') }}" class=""></a></li>
-                                </ul>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>Study Care Institute</td>
-                            <td>Microsoft Edge</td>
-                            <td>123.201.234.106</td>
-                            <td>Oppo Mobile</td>
-                            <td>Active</td>
-                            <td>20-JUN-2020 08:03 AM</td>
-                            <td>
-                                <ul class="actions-btns">
-                                    <li class="action shield"><a href="#"><img
-                                                src="{{ asset('assets/images/icons/blocked.svg') }}" class=""></a></li>
-                                </ul>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>Study Care Institute</td>
-                            <td>Microsoft Edge</td>
-                            <td>123.201.234.106</td>
-                            <td>Oppo Mobile</td>
-                            <td>Active</td>
-                            <td>20-JUN-2020 08:03 AM</td>
-                            <td>
-                                <ul class="actions-btns">
-                                    <li class="action shield"><a href="#"><img
-                                                src="{{ asset('assets/images/icons/blocked.svg') }}" class=""></a></li>
-                                </ul>
-                            </td>
-                        </tr>
+                    
                 </table>
             </div>
         </div>
