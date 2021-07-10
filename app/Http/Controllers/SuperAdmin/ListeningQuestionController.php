@@ -7,6 +7,7 @@ use App\Models\Questions;
 use App\Models\Answerdata;
 use App\Models\Questiondata;
 use App\Models\QuestionTypes;
+use App\Models\SectionQuestionScores;
 
 class ListeningQuestionController extends Controller
 {

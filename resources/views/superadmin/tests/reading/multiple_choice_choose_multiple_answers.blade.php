@@ -28,6 +28,7 @@
                    </div>
                    <form class="form ml-1" method="POST" id="mutli_choice" name="mutli_choice" action="{{ (isset($questions->desc))?route('superadmin-question-update-MultipleChoice-Multipleanswers'):route('superadmin-question-store-MultipleChoice-Multipleanswers')}}">
                        @csrf
+                        <input type="hidden" name="type" value="mutli" id="type">
                       <div class="form-group mb-5 row">
                            <div class="col-12 col-md-12 col-xl-11 col-sm-12">
                               <!-- <div id="editor">

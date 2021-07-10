@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Questions;
 use App\Models\Answerdata;
 use App\Models\Questiondata;
+use App\Models\SectionQuestionScores;
 use DB;
 
 class WritingQuestionController extends Controller

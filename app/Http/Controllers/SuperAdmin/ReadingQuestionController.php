@@ -8,6 +8,7 @@ use App\Models\Questions;
 use App\Models\Answerdata;
 use App\Models\Questiondata;
 use App\Models\QuestionTypes;
+use App\Models\SectionQuestionScores;
 
 class ReadingQuestionController extends Controller
 {
@@ -142,7 +143,9 @@ class ReadingQuestionController extends Controller
         $test_id            = $request->test_id;
         $question_type_id   = $request->question_type_id;
         $slug               = $request->slug;
-        $questionType = where('id',$question_type_id)->first();
+
+        $questionType = QuestionTypes::where('id',$question_type_id)->first();
+
         $all = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
         
         $questions                  = new Questions;
@@ -155,18 +158,32 @@ class ReadingQuestionController extends Controller
         $questions->desc            = $input['editor1'];
         $questions->order           =  6;
         $questions->status          = "E";
-        $questions->marks           = 3;
+        if($request->type == "single"){
+            $questions->marks           = 1;
+        }else{
+
+            $questions->marks           = 3;
+        }
         $questions->answer_time     = 40;
         $questions->waiting_time    = 40;
         $questions->max_time        = 40;
         if($questions->save())
         {
-             //1-reading 2-listening 3-writing 4-speaking
-            $sectionquestionscores = new SectionQuestionScores;
-            $sectionquestionscores->section_id = 1;
-            $sectionquestionscores->question_type_id = $question_type_id;
-            $sectionquestionscores->score_division = 3;
-            $sectionquestionscores->save();
+            if($input['type'] == "single"){
+                 //1-reading 2-listening 3-writing 4-speaking
+                $sectionquestionscores = new SectionQuestionScores;
+                $sectionquestionscores->section_id = 1;
+                $sectionquestionscores->question_type_id = $question_type_id;
+                $sectionquestionscores->score_division = 1;
+                $sectionquestionscores->save();
+            }else{
+                //1-reading 2-listening 3-writing 4-speaking
+                $sectionquestionscores = new SectionQuestionScores;
+                $sectionquestionscores->section_id = 1;
+                $sectionquestionscores->question_type_id = $question_type_id;
+                $sectionquestionscores->score_division = 3;
+                $sectionquestionscores->save();
+            }
 
 
             $id = $questions->id;
