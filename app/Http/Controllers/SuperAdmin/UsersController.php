@@ -205,7 +205,7 @@ class UsersController extends Controller
         $user_id = implode(",",$request->id);
         $role = $request->role;
         $users = User::whereIn('id', $request->id)->get();     
-        $usernames = $role.' - ';
+        $usernames = $role.' -  ';
         $i = 1;
         foreach($users as $user){
             if($role = 'Students'){
@@ -220,7 +220,7 @@ class UsersController extends Controller
                 }
             }
             if($i < count($users)){
-                $usernames.= ', ';
+                $usernames.= ',  ';
             }
             $i++;
         }   
