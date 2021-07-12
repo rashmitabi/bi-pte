@@ -20,7 +20,7 @@ use App\Exports\studentExport;
 use Maatwebsite\Excel\Facades\Excel;
 
 use Illuminate\Support\Facades\Mail;
-use App\Mail\SendEmailUser;
+use App\Mail\SendEmail;
 
 class UsersController extends Controller
 {

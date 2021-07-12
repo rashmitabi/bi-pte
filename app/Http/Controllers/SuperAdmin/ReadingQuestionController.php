@@ -27,7 +27,7 @@ class ReadingQuestionController extends Controller
         $questions->name            = $questionType->question_title;
         $questions->short_desc      = "sort desc";
         $questions->desc            = $input['editor'];
-        $questions->order           = 0;
+        $questions->order           = 1;
         $questions->status          = "E";
         $questions->marks           = 44;
         $questions->answer_time     = 40;
@@ -150,7 +150,7 @@ class ReadingQuestionController extends Controller
         $questions->name            = $input['options_title'];
         $questions->short_desc      = "sort desc";
         $questions->desc            = $input['editor1'];
-        $questions->order           =  6;
+        $questions->order           =  2;
         $questions->status          = "E";
         if($request->type == "single"){
             $questions->marks           = 1;
