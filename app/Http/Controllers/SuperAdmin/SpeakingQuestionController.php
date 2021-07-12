@@ -65,9 +65,9 @@ class SpeakingQuestionController extends Controller
             }
             
 
-            return redirect()->route('tests.index')->with('success','Questions added Successfully!');
+            return redirect()->route('tests.show',$input['test_id'])->with('success','Questions added Successfully!');
         }else{
-            return redirect()->route('tests.index')->with('error','Sorry!Something wrong.Try Again.');
+            return redirect()->route('tests.show',$input['test_id'])->with('error','Sorry!Something wrong.Try Again.');
         }
     }
     public function updateReadAloud(Request $request){
@@ -90,9 +90,9 @@ class SpeakingQuestionController extends Controller
         }
 
         if($questiondata || $answerdata){
-            return redirect()->route('tests.index')->with('success','Questions Updated Successfully!');
+            return redirect()->route('tests.show',$input['test_id'])->with('success','Questions Updated Successfully!');
         }else{
-            return redirect()->route('tests.index')->with('error','Sorry!Something wrong.Try Again.');
+            return redirect()->route('tests.show',$input['test_id'])->with('error','Sorry!Something wrong.Try Again.');
         }
     }
 
@@ -144,9 +144,9 @@ class SpeakingQuestionController extends Controller
                 $answerdata->save();
             }
 
-            return redirect()->route('tests.index')->with('success','Questions added Successfully!');
+            return redirect()->route('tests.show',$input['test_id'])->with('success','Questions added Successfully!');
         }else{
-            return redirect()->route('tests.index')->with('error','Sorry!Something wrong.Try Again.');
+            return redirect()->route('tests.show',$input['test_id'])->with('error','Sorry!Something wrong.Try Again.');
         }
     }
     public function updateRepeatSentence(Request $request){
@@ -170,9 +170,9 @@ class SpeakingQuestionController extends Controller
         }
 
         if($questiondata || $answerdata){   
-            return redirect()->route('tests.index')->with('success','Questions Updated Successfully!');
+            return redirect()->route('tests.show',$input['test_id'])->with('success','Questions Updated Successfully!');
         }else{
-            return redirect()->route('tests.index')->with('error','Sorry!Something wrong.Try Again.');
+            return redirect()->route('tests.show',$input['test_id'])->with('error','Sorry!Something wrong.Try Again.');
         }
     }
 
@@ -219,9 +219,9 @@ class SpeakingQuestionController extends Controller
                 $answerdata->save();
             }
 
-            return redirect()->route('tests.index')->with('success','Questions added Successfully!');
+            return redirect()->route('tests.show',$input['test_id'])->with('success','Questions added Successfully!');
         }else{
-            return redirect()->route('tests.index')->with('error','Sorry!Something wrong.Try Again.');
+            return redirect()->route('tests.show',$input['test_id'])->with('error','Sorry!Something wrong.Try Again.');
         }
     }
     public function updateDescribeImage(Request $request){
@@ -245,9 +245,9 @@ class SpeakingQuestionController extends Controller
         }
 
         if($questiondata || $answerdata){
-            return redirect()->route('tests.index')->with('success','Questions Updated Successfully!');
+            return redirect()->route('tests.show',$input['test_id'])->with('success','Questions Updated Successfully!');
         }else{
-            return redirect()->route('tests.index')->with('error','Sorry!Something wrong.Try Again.');
+            return redirect()->route('tests.show',$input['test_id'])->with('error','Sorry!Something wrong.Try Again.');
         }
     }
 
@@ -297,9 +297,9 @@ class SpeakingQuestionController extends Controller
                 $answerdata->save();
             }
 
-            return redirect()->route('tests.index')->with('success','Questions added Successfully!');
+            return redirect()->route('tests.show',$input['test_id'])->with('success','Questions added Successfully!');
         }else{
-            return redirect()->route('tests.index')->with('error','Sorry!Something wrong.Try Again.');
+            return redirect()->route('tests.show',$input['test_id'])->with('error','Sorry!Something wrong.Try Again.');
         }
     }
     public function updateReTellLecture(Request $request){
@@ -324,9 +324,9 @@ class SpeakingQuestionController extends Controller
         }
 
         if($questiondata || $answerdata){
-            return redirect()->route('tests.index')->with('success','Questions Updated Successfully!');
+            return redirect()->route('tests.show',$input['test_id'])->with('success','Questions Updated Successfully!');
         }else{
-            return redirect()->route('tests.index')->with('error','Sorry!Something wrong.Try Again.');
+            return redirect()->route('tests.show',$input['test_id'])->with('error','Sorry!Something wrong.Try Again.');
         }
     }
 
@@ -376,9 +376,9 @@ class SpeakingQuestionController extends Controller
                 $answerdata->save();
             }
 
-            return redirect()->route('tests.index')->with('success','Questions added Successfully!');
+            return redirect()->route('tests.show',$input['test_id'])->with('success','Questions added Successfully!');
         }else{
-            return redirect()->route('tests.index')->with('error','Sorry!Something wrong.Try Again.');
+            return redirect()->route('tests.show',$input['test_id'])->with('error','Sorry!Something wrong.Try Again.');
         }
     }
     public function updateAnswerShortQuestion(Request $request){
@@ -403,9 +403,9 @@ class SpeakingQuestionController extends Controller
         }
 
         if($questiondata || $answerdata){    
-            return redirect()->route('tests.index')->with('success','Questions Updated Successfully!');
+            return redirect()->route('tests.show',$input['test_id'])->with('success','Questions Updated Successfully!');
         }else{
-            return redirect()->route('tests.index')->with('error','Sorry!Something wrong.Try Again.');
+            return redirect()->route('tests.show',$input['test_id'])->with('error','Sorry!Something wrong.Try Again.');
         }
     }
 	

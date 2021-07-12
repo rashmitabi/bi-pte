@@ -23,20 +23,22 @@ $(document).ready(function() {
     /*Tests Edit page data start*/
 
     /*Tests update data start*/
-    $('body').on('click','.test-update',function(){
+    $('body').on('submit','#test-update',function(e){
+        e.preventDefault();
         var id = $(this).data('id');
-        var apiUrl = $(this).data('url');
+        var apiUrl = $(this).attr('action');
         $('#typeError').text('');
         $('#nameError').text('');
         $('#subjectError').text('');
         $('#imageError').text('');
-        var test_type   = $("#type :selected").val();
-        var test_name   = $("input[name=test_name]").val();
-        var test_subject= $("#subject :selected").val();
+        console.log(apiUrl);
         $.ajax({
             url: apiUrl,
-            type:'PATCH',
-            data: {_token:CSRF_TOKEN,test_name:test_name,subject:test_subject,type:test_type},
+            type:'POST',
+            enctype: 'multipart/form-data',
+            data: new FormData(this),
+            processData: false,
+            contentType: false,
             success:function(data) {
                 if(data == 1){
                     setTimeout(function(){

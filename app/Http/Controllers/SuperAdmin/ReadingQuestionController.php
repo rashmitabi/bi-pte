@@ -69,9 +69,9 @@ class ReadingQuestionController extends Controller
                 $answerdata->sample_answer = "no sample answer";
                 $answerdata->save();
             }
-            return redirect()->route('tests.index')->with('success','Questions added Successfully!');
+            return redirect()->route('tests.show',$input['test_id'])->with('success','Questions added Successfully!');
         }else{
-            return redirect()->route('tests.index')->with('error','Sorry!Something wrong.Try Again.');
+            return redirect()->route('tests.show',$input['test_id'])->with('error','Sorry!Something wrong.Try Again.');
         }
     }
     public function updateFillInTheBlanks(Request $request)/* Reading and writing fill in the blanks form update*/
@@ -119,14 +119,14 @@ class ReadingQuestionController extends Controller
                     $answerdata->sample_answer = "no sample answer";
                     $answerdata->save();
                 }
-                return redirect()->route('tests.index')->with('success','Questions Update Successfully!');
+                return redirect()->route('tests.show',$test_id)->with('success','Questions Update Successfully!');
             }catch(\Exception $e){
                 dd($e->getMessage());
             }
         }
         else
         {
-            return redirect()->route('tests.index')->with('error','Sorry!Something wrong.Try Again.');
+            return redirect()->route('tests.show',$test_id)->with('error','Sorry!Something wrong.Try Again.');
         }
     }
     public function storeMultipleChoiceMultipleanswers(Request $request)/* Reading section multiple choice and multiple answers store*/
@@ -195,11 +195,11 @@ class ReadingQuestionController extends Controller
                 $answerdata->sample_answer = "no sample answer";
                 $answerdata->save();
                 
-                return redirect()->route('tests.index')
+                return redirect()->route('tests.show',$test_id)
                     ->with('success','Questions added Successfully!');
 
             }catch(\Exception $e){
-                return redirect()->route('tests.index')
+                return redirect()->route('tests.show',$test_id)
                 ->with('error','Sorry!Something wrong.Try again later!');
             }
         }
@@ -250,7 +250,7 @@ class ReadingQuestionController extends Controller
                 $answerdata->answer_value = $input['correct_options'];
                 $answerdata->sample_answer = "no sample answer";
                 $answerdata->save();
-                return redirect()->route('tests.index')
+                return redirect()->route('tests.show',$test_id)
                     ->with('success','Questions Updated Successfully!');
             }catch(\Exception $e){
                 dd($e->getMessage());
@@ -258,7 +258,7 @@ class ReadingQuestionController extends Controller
         }
         else
         {
-            return redirect()->route('tests.index')->with('error','Sorry!Something wrong.Try Again.');
+            return redirect()->route('tests.show',$test_id)->with('error','Sorry!Something wrong.Try Again.');
         }
     }
     public function storeReOrderParagraph(Request $request)/* Reading section re-order paragraph store*/
@@ -318,11 +318,11 @@ class ReadingQuestionController extends Controller
                     $answerdata->sample_answer = "no sample answer";
                     $answerdata->save();
                 }
-                return redirect()->route('tests.index')
+                return redirect()->route('tests.show',$test_id)
                     ->with('success','Questions added Successfully!');
 
             }catch(\Exception $e){
-                return redirect()->route('tests.index')
+                return redirect()->route('tests.show',$test_id)
                 ->with('error','Sorry!Something wrong.Try again later!');
             }
         }
@@ -365,11 +365,11 @@ class ReadingQuestionController extends Controller
                     $answerdata->sample_answer = "no sample answer";
                     $answerdata->save();
                 }
-                return redirect()->route('tests.index')
+                return redirect()->route('tests.show',$test_id)
                     ->with('success','Questions Updated Successfully!');
 
             }catch(\Exception $e){
-                return redirect()->route('tests.index')
+                return redirect()->route('tests.show',$test_id)
                 ->with('error','Sorry!Something wrong.Try again later!');
             }
     }
@@ -429,18 +429,18 @@ class ReadingQuestionController extends Controller
                     $answerdata->sample_answer = "no sample answer";
                     $answerdata->save();
                 }
-                return redirect()->route('tests.index')
+                return redirect()->route('tests.show',$test_id)
                     ->with('success','Questions added Successfully!');
 
             }catch(\Exception $e){
                 //dd($e->getMessage());
-                return redirect()->route('tests.index')
+                return redirect()->route('tests.show',$test_id)
                 ->with('error','Sorry!Something wrong.Try again later!');
             }
         }
         else
         {
-            return redirect()->route('tests.index')
+            return redirect()->route('tests.show',$test_id)
                 ->with('error','Sorry!Something wrong.Try again later!');
         }
     }
@@ -484,18 +484,18 @@ class ReadingQuestionController extends Controller
                     $answerdata->sample_answer = "no sample answer";
                     $answerdata->save();
                 }
-                return redirect()->route('tests.index')
+                return redirect()->route('tests.show',$test_id)
                     ->with('success','Questions updated Successfully!');
 
             }catch(\Exception $e){
                 //dd($e->getMessage());
-                return redirect()->route('tests.index')
+                return redirect()->route('tests.show',$test_id)
                 ->with('error','Sorry!Something wrong.Try again later!');
             }
         }
         else
         {
-            return redirect()->route('tests.index')
+            return redirect()->route('tests.show',$test_id)
                 ->with('error','Sorry!Something wrong.Try again later!');
         }
     }
