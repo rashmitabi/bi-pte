@@ -189,7 +189,7 @@ class PredictionFilesController extends Controller
         }       
         $result = PredictionFiles::where('id',$id)->update($input);        
         if($result){
-            if(isset($prediction)){
+            if(isset($prediction) && file_exists(public_path($prediction->link))){
                 unlink(public_path($prediction->link));
             }
             \Session::put('success', 'Prediction File updated Successfully!');
@@ -210,7 +210,9 @@ class PredictionFilesController extends Controller
     {
         $prediction = PredictionFiles::find($id);
         $result = PredictionFiles::where('id',$id)->delete();
-        unlink(public_path($prediction->link));
+        if(file_exists(public_path($prediction->link))){
+            unlink(public_path($prediction->link));
+        }        
         if($result)
         {
             return redirect()->route('predictionfiles.index')
