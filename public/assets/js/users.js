@@ -124,6 +124,9 @@ function confirm_password(){
 }
 
 $(document).ready(function() {
+    var date = new Date();
+    var today = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+    var end = new Date(date.getFullYear(), date.getMonth(), date.getDate());
   //add new user page data start
   $('body').on('change','.usertype_form',function(){
     var role_id = $("#type").val();
@@ -217,6 +220,21 @@ $(document).ready(function() {
       },
       success:function(data) {
         $('#edit-user-body').html(data.html);
+        $("#dob").datepicker({
+          todayHighlight: true,
+          endDate: end,
+          format:'yyyy-mm-dd'
+        });
+        $("#svalidity").datepicker({
+          todayHighlight: true,
+          startDate: today,
+          format:'yyyy-mm-dd'
+        });
+        $("#ivalidity").datepicker({
+            todayHighlight: true,
+            startDate: today,
+            format:'yyyy-mm-dd'
+        });
       },
     }); 
   });
@@ -459,8 +477,7 @@ $(document).ready(function() {
         type:'POST',
         data:formdata,
         success:function(data) {
-          alert(data);
-          // location.reload();
+          location.reload();
         },
         error: function(response) {
               $('#statusError').text(response.responseJSON.errors.type);
@@ -592,7 +609,7 @@ $(document).ready(function() {
         }
       }else{
         alert("Please select any institute.");
-        $(this).val('');
+        $(this).val('Actions');
       }
   });
 
@@ -629,16 +646,16 @@ $(document).ready(function() {
             },
           }); 
         }else if(selectedValue == "blockUnblock"){
+          $('#setuserstatus').modal('toggle');
           $.ajax({
-            url: change_status_url_route,
-            type:'GET',
-            data:{'user_ids' : chekedStudentsIds},
+            url: change_status_get_model,
+            type:'POST',
+            data:{'_token':CSRF_TOKEN,'user_ids' : chekedStudentsIds},
+            beforeSend: function(){
+              $('#user-status-update').html('<i class="fa fa-spinner fa-spin"></i>  Please Wait...');
+            },
             success:function(data) {
-              if(data == 1){
-                setTimeout(function(){
-                  location.reload();
-                }, 2000);
-              }
+              $('#user-status-update').html(data.html);
             },
             error: function(response) {
               console.log(response.responseJSON.errors);
@@ -698,11 +715,27 @@ $(document).ready(function() {
               }, 3000);
             },
           });
+        }else if(selectedValue == "email"){
+          $('#userSendEmail').modal('toggle');
+          $.ajax({
+            url: change_send_email_get_model,
+            type:'POST',
+            data:{'_token':CSRF_TOKEN,'user_ids' : chekedStudentsIds},
+            beforeSend: function(){
+              $('#show-send-email-body').html('<i class="fa fa-spinner fa-spin"></i>  Please Wait...');
+            },
+            success:function(data) {
+              $('#show-send-email-body').html(data.html);
+            },
+            error: function(response) {
+              console.log(response.responseJSON.errors);
+            }
+          }); 
         }
       }
       else{
         alert("Please select any student.");
-        $(this).val('');
+        $(this).val('Actions');
       }
   });
   // $.ajax({

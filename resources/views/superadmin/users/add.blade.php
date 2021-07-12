@@ -75,7 +75,7 @@
             <div class="form-group row">
               <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Date of Birth</label>
               <div class="col-12 col-md-7 col-xl-7 col-sm-12">
-                <input type="date" name="dob" value="{{ old('dob') }}" class="form-control " placeholder="Select Date of Birth">
+                <input type="text" name="dob" id="dob" value="{{ old('dob') }}" class="form-control " placeholder="Select Date of Birth">
                 @if($errors->has('dob'))
                   <span class="error-msg">{{$errors->first('dob')}}</span>
                 @endif
@@ -173,7 +173,7 @@
             <div class="form-group row">
               <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Validity</label>
               <div class="col-12 col-md-7 col-xl-7 col-sm-12">
-                <input type="date" name="svalidity" value="{{ old('svalidity') }}" class="form-control " placeholder="Validity">
+                <input type="text" name="svalidity" id="svalidity" value="{{ old('svalidity') }}" class="form-control " placeholder="Validity">
                 @if($errors->has('svalidity'))
                   <span class="error-msg">{{$errors->first('svalidity')}}</span>
                 @endif
@@ -348,7 +348,7 @@
             <div class="form-group row">
               <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Validity</label>
               <div class="col-12 col-md-7 col-xl-7 col-sm-12">
-                <input type="date" name="validity" value="{{ old('validity') }}" class="form-control " placeholder="Validity">
+                <input type="text" name="validity" id="ivalidity" value="{{ old('validity') }}" class="form-control " placeholder="Validity">
                 @if($errors->has('validity'))
                   <span class="error-msg">{{$errors->first('validity')}}</span>
                 @endif

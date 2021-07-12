@@ -59,7 +59,7 @@
         <div class="form-group row mb-2">
           <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Date of Birth</label>
           <div class="col-12 col-md-7 col-xl-7 col-sm-12">
-            <input type="date" name="dob" id="dob" value="{{ $user->date_of_birth }}" class="form-control " placeholder="Select Date of Birth">
+            <input type="text" name="dob" id="dob" value="{{ $user->date_of_birth }}" class="form-control " placeholder="Select Date of Birth">
             <span class="error-msg" id="dobError"></span>
           </div>
         </div>
@@ -145,7 +145,7 @@
         <div class="form-group row mb-2">
           <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Validity</label>
           <div class="col-12 col-md-7 col-xl-7 col-sm-12">
-            <input type="date" name="svalidity" id="svalidity" value="{{ date('Y-m-d', strtotime($user->validity)) }}" class="form-control " placeholder="Validity">
+            <input type="text" name="svalidity" id="svalidity" value="{{ date('Y-m-d', strtotime($user->validity)) }}" class="form-control " placeholder="Validity">
             <span class="error-msg" id="svalidityError"></span>
           </div>
         </div>  
@@ -295,7 +295,7 @@
         <div class="form-group row">
           <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Validity</label>
           <div class="col-12 col-md-7 col-xl-7 col-sm-12">
-            <input type="date" name="validity" id="validity" value="{{ date('Y-m-d',strtotime($user->validity)) }}" class="form-control " placeholder="Validity">
+            <input type="text" name="validity" id="ivalidity" value="{{ date('Y-m-d',strtotime($user->validity)) }}" class="form-control " placeholder="Validity">
             <span class="error-msg" id="validityError"></span>
           </div>
         </div>
