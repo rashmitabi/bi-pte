@@ -1,4 +1,4 @@
-<form class="form mt-4 ml-3" method="post" action="">
+<form class="form mt-4 ml-3" method="POST" action="{{ route('superadmin-tests-update', $test->id) }}" enctype="multipart/form-data" id="test-update" name="test-update">
     @csrf
     <div class="form-group row">
         <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Select Test Type</label>
@@ -43,7 +43,7 @@
 </div>
     <div class="form-group row">
         <div class="col-12 col-md-12 col-xl-11 col-sm-12 save-btn">
-            <button type="button" class="btn btn-outline-primary test-update" data-id="{{ $test->id }}" data-url="{{ route('tests.update', $test->id) }}"><i
+            <button type="submit" class="btn btn-outline-primary" data-id="{{ $test->id }}" data-url="{{ route('superadmin-tests-update', $test->id) }}"><i
                     class="far fa-save save-icon"></i>Save</button>
         </div>
     </div>

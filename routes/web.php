@@ -145,6 +145,10 @@ Route::group(['middleware' => ['auth', 'verified','superadmin']], function () {
 
             ->name('superadmin-tests-addQuestions');
 
+        Route::post('superadmin/tests/update/{id}', [App\Http\Controllers\SuperAdmin\TestsController::class, 'update'])
+
+            ->name('superadmin-tests-update');
+
         Route::resource('superadmin/tests', App\Http\Controllers\SuperAdmin\TestsController::class);
 
         Route::get('superadmin/tests/add', [App\Http\Controllers\SuperAdmin\TestsController::class, 'add'])
