@@ -138,6 +138,7 @@ $(document).ready(function() {
       $("#breanchadmin").css("display","block");
       $("#student").css("display","none");
     }
+    $(".finalsubmit").css("display","block");
   });
   //add new user page data start
 

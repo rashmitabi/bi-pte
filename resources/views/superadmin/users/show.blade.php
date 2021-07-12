@@ -18,80 +18,80 @@
         <div class="form-group row">
           <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label">First Name</label>
           <div class=" form-input col-12 col-md-7 col-xl-7 col-sm-12">
-            <input type="text" class="form-control" placeholder="{{ $user->first_name }}" readonly>
+            <label >{{ $user->first_name }}</label>
           </div>
         </div>
         <div class="form-group row">
           <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label">Last Name</label>
           <div class=" form-input col-12 col-md-7 col-xl-7 col-sm-12">
-            <input type="text" class="form-control" placeholder="{{ $user->last_name }}" readonly>
+            <label for="">{{ $user->last_name }}</label>
           </div>
         </div>
         <div class="form-group row">
           <label class="col-12 col-md-5 col-xl-2 col-sm-12 col-form-label">Email</label>
           <div class=" form-input col-12 col-md-7 col-xl-10 col-sm-12">
-            <input type="email" class="form-control" placeholder="{{ $user->email }}" readonly>
+            <label for="">{{ $user->email }}</label>
           </div>
         </div>
         <div class="form-group row">
           <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label">UserName</label>
           <div class=" form-input col-12 col-md-7 col-xl-7 col-sm-12">
-            <input type="Phone" class="form-control" placeholder="{{ $user->name  }}" readonly>
+            <label for="">{{ $user->name  }}</label>
           </div>
         </div>
         <div class="form-group row">
           <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label">Date of Birth</label>
           <div class=" form-input col-12 col-md-7 col-xl-7 col-sm-12">
-            <input type="Phone" class="form-control" placeholder="{{ $user->date_of_birth }}" readonly>
+            <label for="">{{ $user->date_of_birth }}</label>
           </div>
         </div>
         <div class="form-group row">
           <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label">Mobile Number</label>
           <div class=" form-input col-12 col-md-7 col-xl-7 col-sm-12">
-            <input type="email" class="form-control" placeholder="{{ $user->mobile_no }}" readonly>
+            <label for="">{{ $user->mobile_no }}</label>
           </div>
         </div>
         <div class="form-group row">
           <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label">Status</label>
           <div class=" form-input col-12 col-md-7 col-xl-7 col-sm-12">
             @if($user->status == "A")
-              <input type="email" class="form-control" placeholder="Active" readonly>
+              <label for="">Active</label>
             @elseif($user->status == "R")
-              <input type="email" class="form-control" placeholder="Reject" readonly>
+              <label for="">Reject</label>
             @else
-              <input type="email" class="form-control" placeholder="Pending" readonly>
+              <label for="">Pending</label>
             @endif
           </div>
         </div>
         <div class="form-group row">
           <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label">State</label>
           <div class=" form-input col-12 col-md-7 col-xl-7 col-sm-12">
-            <input type="email" class="form-control" placeholder="{{ $user->state }}-{{ $user->state_code }}" readonly>
+            <label for="">{{ $user->state }}-{{ $user->state_code }}</label>
           </div>
         </div>
         
         <div class="form-group row">
           <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label">GSTIN</label>
           <div class=" form-input col-12 col-md-7 col-xl-7 col-sm-12">
-            <input type="email" class="form-control" placeholder="{{ $user->gstin }}" readonly>
+            <label for="">{{ $user->gstin }}</label>
           </div>
         </div>
         <div class="form-group row">
           <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label">Country Citizen</label>
           <div class=" form-input col-12 col-md-7 col-xl-7 col-sm-12">
-            <input type="email" class="form-control" placeholder="{{ $user->country_citizen }}" readonly>
+            <label for="">{{ $user->country_citizen }}</label>
           </div>
         </div>
         <div class="form-group row">
           <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label">Country Residence</label>
           <div class=" form-input col-12 col-md-7 col-xl-7 col-sm-12">
-            <input type="email" class="form-control" placeholder="{{ $user->country_residence }}" readonly>
+            <label for="">{{ $user->country_residence }}</label>
           </div>
         </div>
         <div class="form-group row">
           <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label">Validity</label>
           <div class=" form-input col-12 col-md-7 col-xl-7 col-sm-12">
-            <input type="email" class="form-control" placeholder="{{ $validity }}" readonly>
+            <label for="">{{ $validity }}</label>
           </div>
         </div>
       @endif
@@ -100,62 +100,62 @@
         <div class="form-group row">
           <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label">Institute Name</label>
           <div class=" form-input col-12 col-md-7 col-xl-7 col-sm-12">
-            <input type="text" class="form-control" placeholder="{{isset($user->institue->institute_name) ? $user->institue->institute_name : '' }}" readonly>
+            <label for="">{{isset($user->institue->institute_name) ? $user->institue->institute_name : '' }}</label>
           </div>
         </div>
         <div class="form-group row">
           <label class="col-12 col-md-5 col-xl-2 col-sm-12 col-form-label">Email</label>
           <div class=" form-input col-12 col-md-7 col-xl-10 col-sm-12">
-            <input type="email" class="form-control" placeholder="{{ $user->email }}" readonly>
+            <label for="">{{ $user->email }}</label>
           </div>
         </div>
         <div class="form-group row">
           <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label">UserName</label>
           <div class=" form-input col-12 col-md-7 col-xl-7 col-sm-12">
-            <input type="Phone" class="form-control" placeholder="{{ $user->name }}" readonly>
+            <label for="">{{ $user->name }}</label>
           </div>
         </div>
         <div class="form-group row">
           <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label">Mobile Number</label>
           <div class=" form-input col-12 col-md-7 col-xl-7 col-sm-12">
-            <input type="email" class="form-control" placeholder="{{ $user->mobile_no }}" readonly>
+            <label for="">{{ $user->mobile_no }}</label>
           </div>
         </div>
         <div class="form-group row">
           <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label">Status</label>
           <div class=" form-input col-12 col-md-7 col-xl-7 col-sm-12">
             @if($user->status == "A")
-              <input type="email" class="form-control" placeholder="Active" readonly>
+              <label for="">Active</label>
             @elseif($user->status == "R")
-              <input type="email" class="form-control" placeholder="Reject" readonly>
+              <label for="">Reject</label>
             @else
-              <input type="email" class="form-control" placeholder="Pending" readonly>
+              <label for="">Pending</label>
             @endif
           </div>
         </div>
         <div class="form-group row">
           <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label">State</label>
           <div class=" form-input col-12 col-md-7 col-xl-7 col-sm-12">
-            <input type="email" class="form-control" placeholder="{{ $user->state }}-{{ $user->state_code }}" readonly> 
+            <label for="">{{ $user->state }}-{{ $user->state_code }}</label>
           </div>
         </div>
         
         <div class="form-group row">
           <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label">GSTIN</label>
           <div class=" form-input col-12 col-md-7 col-xl-7 col-sm-12">
-            <input type="email" class="form-control" placeholder="{{ $user->gstin }}" readonly>
+            <label for="">{{ $user->gstin }}</label>
           </div>
         </div>
         <div class="form-group row">
           <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label">Country Citizen</label>
           <div class=" form-input col-12 col-md-7 col-xl-7 col-sm-12">
-            <input type="email" class="form-control" placeholder="{{ $user->country_citizen }}" readonly>
+            <label for="">{{ $user->country_citizen }}</label>
           </div>
         </div>
         <div class="form-group row">
           <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label">Validity</label>
           <div class=" form-input col-12 col-md-7 col-xl-7 col-sm-12">
-            <input type="email" class="form-control" placeholder="{{ $validity }}" readonly>
+            <label for="">{{ $validity }}</label>
           </div>
         </div>
       @endif

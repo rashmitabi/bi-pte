@@ -19,17 +19,40 @@
             <div class="col-12 col-md-7 col-xl-7 col-sm-12">
               <select class="user-type usertype_form" id="type" name="type">
                 <option selected>Select User Type</option>
-                <option value="2" >Branch Admin</option>
-                <option value="3" >Student</option>
+                <option value="2" {{ (old('type') == '2')?'selected':''}}>Branch Admin</option>
+                <option value="3" {{ (old('type') == '3')?'selected':''}}>Student</option>
               </select>
             </div>
           </div>
-
-          <div id="student" style="display: none;">
+          @php
+            $type = old('type');
+            if(isset($type) && $type != '')
+            {
+                $finalbtn = "";
+                if($type == 3)
+                {
+                  $studentblock = "";
+                  $branchblock  = "display:none;";
+                }
+                else
+                {
+                  $branchblock = "";
+                  $studentblock  = "display:none;";
+                }
+            }
+            else
+            {
+                $studentblock = "display:none;";
+                $branchblock  = "display:none;";
+                $finalbtn     = "display:none";
+            }
+          @endphp
+          <div id="student" style="{{ $studentblock }}">
             <div class="form-group row">
               <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Branch Admin</label>
               <div class="col-12 col-md-7 col-xl-7 col-sm-12">
                 <select class="" name="branch_admin">
+                  <option selected disabled>Select Branch Admin</option>
                   @foreach($admins as $admin)
                     <option value="{{ $admin->id }}" >{{ isset($admin->institue->institute_name)?$admin->institue->institute_name:'' }}</option>
                   @endforeach
@@ -194,7 +217,7 @@
           </div>
 
 
-          <div id="breanchadmin" style="display: none;">
+          <div id="breanchadmin" style="{{ $branchblock }}">
             <div class="form-group row">
               <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">User Name</label>
               <div class="col-12 col-md-7 col-xl-7 col-sm-12">
@@ -448,7 +471,7 @@
             </div>
           </div>
           
-          <div class="form-group row">
+          <div class="form-group row finalsubmit" style="{{ $finalbtn }}">
             <div class="col-12 col-md-12 col-xl-11 col-sm-12 save-btn">
               <a href="{{ route('users.index') }}"><button  type="button" class="btn btn-outline-primary "><img class="back-btn" src="{{ asset('assets/images/icons/back.svg') }}" style="width: 14px;margin-right: 10px">Cancel</button></a>
               <button  type="submit" class="btn btn-outline-primary mr-2 final-button"><i class="far fa-save save-icon"></i>Save User</button>
