@@ -106,9 +106,9 @@ class ListeningQuestionController extends Controller
 	            $answerdata->save();
 	        }
 
-            return redirect()->route('tests.index')->with('success','Questions added Successfully!');
+            return redirect()->route('tests.show',$input['test_id'])->with('success','Questions added Successfully!');
         }else{
-            return redirect()->route('tests.index')->with('error','Sorry!Something wrong.Try Again.');
+            return redirect()->route('tests.show',$input['test_id'])->with('error','Sorry!Something wrong.Try Again.');
         }
 	}
 	public function updateSummarizeSpokenItem(Request $request){
@@ -133,9 +133,9 @@ class ListeningQuestionController extends Controller
         }
 
         if($questiondata || $answerdata){
-            return redirect()->route('tests.index')->with('success','Questions added Successfully!');
+            return redirect()->route('tests.show',$input['test_id'])->with('success','Questions added Successfully!');
 	    }else{
-            return redirect()->route('tests.index')->with('error','Sorry!Something wrong.Try Again.');
+            return redirect()->route('tests.show',$input['test_id'])->with('error','Sorry!Something wrong.Try Again.');
         }
 	}
 
@@ -187,9 +187,9 @@ class ListeningQuestionController extends Controller
 	            $answerdata->save();
 	        }
 
-            return redirect()->route('tests.index')->with('success','Questions added Successfully!');
+            return redirect()->route('tests.show',$input['test_id'])->with('success','Questions added Successfully!');
         }else{
-            return redirect()->route('tests.index')->with('error','Sorry!Something wrong.Try Again.');
+            return redirect()->route('tests.show',$input['test_id'])->with('error','Sorry!Something wrong.Try Again.');
         }
 	}
 	public function updateChooseMultipleAnswersItem(Request $request){
@@ -217,9 +217,9 @@ class ListeningQuestionController extends Controller
         }
 
         if($questiondata || $answerdata){
-            return redirect()->route('tests.index')->with('success','Questions added Successfully!');
+            return redirect()->route('tests.show',$input['test_id'])->with('success','Questions added Successfully!');
 	    }else{
-            return redirect()->route('tests.index')->with('error','Sorry!Something wrong.Try Again.');
+            return redirect()->route('tests.show',$input['test_id'])->with('error','Sorry!Something wrong.Try Again.');
         }
 	}
 
@@ -274,9 +274,9 @@ class ListeningQuestionController extends Controller
 	            $answerdata->save();
 	        }
 
-            return redirect()->route('tests.index')->with('success','Questions added Successfully!');
+            return redirect()->route('tests.show',$input['test_id'])->with('success','Questions added Successfully!');
         }else{
-            return redirect()->route('tests.index')->with('error','Sorry!Something wrong.Try Again.');
+            return redirect()->route('tests.show',$input['test_id'])->with('error','Sorry!Something wrong.Try Again.');
         }
 	}
 	public function updateFillInTheBlanks(Request $request){
@@ -303,9 +303,9 @@ class ListeningQuestionController extends Controller
         }
 
         if($questiondata || $answerdata){
-            return redirect()->route('tests.index')->with('success','Questions added Successfully!');
+            return redirect()->route('tests.show',$input['test_id'])->with('success','Questions added Successfully!');
 	    }else{
-            return redirect()->route('tests.index')->with('error','Sorry!Something wrong.Try Again.');
+            return redirect()->route('tests.show',$input['test_id'])->with('error','Sorry!Something wrong.Try Again.');
         }
 	}
 
@@ -374,9 +374,9 @@ class ListeningQuestionController extends Controller
 	            $answerdata->save();
 	        }
 
-            return redirect()->route('tests.index')->with('success','Questions added Successfully!');
+            return redirect()->route('tests.show',$input['test_id'])->with('success','Questions added Successfully!');
         }else{
-            return redirect()->route('tests.index')->with('error','Sorry!Something wrong.Try Again.');
+            return redirect()->route('tests.show',$input['test_id'])->with('error','Sorry!Something wrong.Try Again.');
         }
 	}
 	public function updateHighlightCorrectSummaryItem(Request $request){
@@ -406,9 +406,9 @@ class ListeningQuestionController extends Controller
         }
 
         if($questiondata || $answerdata){
-            return redirect()->route('tests.index')->with('success','Questions added Successfully!');
+            return redirect()->route('tests.show',$input['test_id'])->with('success','Questions added Successfully!');
 	    }else{
-            return redirect()->route('tests.index')->with('error','Sorry!Something wrong.Try Again.');
+            return redirect()->route('tests.show',$input['test_id'])->with('error','Sorry!Something wrong.Try Again.');
         }
     }
     public function storeMultipleChoiceChooseSingle(Request $request)/*Store listening multiple choice choose single*/
@@ -467,11 +467,11 @@ class ListeningQuestionController extends Controller
 	            $answerdata->sample_answer = '-';
 	            $answerdata->save();             
             }
-            return redirect()->route('tests.index')->with('success','Questions added Successfully!');
+            return redirect()->route('tests.show',$test_id)->with('success','Questions added Successfully!');
         }
         else
         {
-            return redirect()->route('tests.index')->with('error','Sorry!Something wrong.Try Again.');
+            return redirect()->route('tests.show',$test_id)->with('error','Sorry!Something wrong.Try Again.');
         }
     }
     public function updateMultipleChoiceChooseSingle(Request $request)/*Update listening multiple choice choose single*/
@@ -507,9 +507,9 @@ class ListeningQuestionController extends Controller
                 $id = $input['question_data_id_'.$i];
                 $finalResult = Questiondata::where('id',$id)->update(['data_value'=>$json]);
             }
-            return redirect()->route('tests.index')->with('success','Questions updated Successfully!');
+            return redirect()->route('tests.show',$test_id)->with('success','Questions updated Successfully!');
         }catch(\Exception $e){
-            return redirect()->route('tests.index')->with('error','Sorry!Something wrong.Try Again.');
+            return redirect()->route('tests.show',$test_id)->with('error','Sorry!Something wrong.Try Again.');
         }
     }
     public function storeMissingWordItem(Request $request)/*Store listening missing word item*/
@@ -567,11 +567,11 @@ class ListeningQuestionController extends Controller
 	            $answerdata->sample_answer = '-';
 	            $answerdata->save();             
             }
-            return redirect()->route('tests.index')->with('success','Questions added Successfully!');
+            return redirect()->route('tests.show',$test_id)->with('success','Questions added Successfully!');
         }
         else
         {
-            return redirect()->route('tests.index')->with('error','Sorry!Something wrong.Try Again.');
+            return redirect()->route('tests.show',$test_id)->with('error','Sorry!Something wrong.Try Again.');
         }
     }
     public function updateMissingWordItem(Request $request)/*Update listening missing word item*/
@@ -607,9 +607,9 @@ class ListeningQuestionController extends Controller
                 $id = $input['question_data_id_'.$i];
                 $finalResult = Questiondata::where('id',$id)->update(['data_value'=>$json]);
             }
-            return redirect()->route('tests.index')->with('success','Questions updated Successfully!');
+            return redirect()->route('tests.show',$test_id)->with('success','Questions updated Successfully!');
         }catch(\Exception $e){
-            return redirect()->route('tests.index')->with('error','Sorry!Something wrong.Try Again.');
+            return redirect()->route('tests.show',$test_id)->with('error','Sorry!Something wrong.Try Again.');
         }
     }
     public function storeHighlightIncorrectWords(Request $request)/*Store listening highlight incorrect words*/
@@ -667,11 +667,11 @@ class ListeningQuestionController extends Controller
 	            $answerdata->sample_answer = '-';
 	            $answerdata->save();
             }
-            return redirect()->route('tests.index')->with('success','Questions added Successfully!');
+            return redirect()->route('tests.show',$test_id)->with('success','Questions added Successfully!');
         }
         else
         {
-            return redirect()->route('tests.index')->with('error','Sorry!Something wrong.Try Again.');
+            return redirect()->route('tests.show',$test_id)->with('error','Sorry!Something wrong.Try Again.');
         }
 
     }
@@ -699,9 +699,9 @@ class ListeningQuestionController extends Controller
                 $firstResult = Questiondata::where('id',$input[$qid])->update(['data_value'=>$data_value]);
                 $secondResult= Answerdata::where('id',$input[$aid])->update(['answer_value'=>$input[$answer]]);
             }
-            return redirect()->route('tests.index')->with('success','Questions updated Successfully!');
+            return redirect()->route('tests.show',$test_id)->with('success','Questions updated Successfully!');
         }catch(\Exception $e){
-            return redirect()->route('tests.index')->with('error','Sorry!Something wrong.Try Again.');
+            return redirect()->route('tests.show',$test_id)->with('error','Sorry!Something wrong.Try Again.');
         }
     }
     public function storeWriteFormDictations(Request $request)/*Store listening write form dictations*/
@@ -759,11 +759,11 @@ class ListeningQuestionController extends Controller
 	            $answerdata->save();
 
             }
-            return redirect()->route('tests.index')->with('success','Questions added Successfully!');
+            return redirect()->route('tests.show',$test_id)->with('success','Questions added Successfully!');
         }
         else
         {
-            return redirect()->route('tests.index')->with('error','Sorry!Something wrong.Try Again.');
+            return redirect()->route('tests.show',$test_id)->with('error','Sorry!Something wrong.Try Again.');
         }
     }
     public function updateWriteFormDictations(Request $request)/*Update write form dictations*/
@@ -782,10 +782,10 @@ class ListeningQuestionController extends Controller
                 $secondResult   = Questiondata::where('id',$input[$question_id])->update(['data_value'=>$input[$questionString]]);
                 $firstResult    = Answerdata::where('id',$input[$answer_id])->update(['answer_value'=>$input[$answerString]]);
             }
-            return redirect()->route('tests.index')->with('success','Questions updated Successfully!');
+            return redirect()->route('tests.show',$test_id)->with('success','Questions updated Successfully!');
         }catch(\Exception $e){
             //dd($e->getMessage());
-            return redirect()->route('tests.index')->with('error','Sorry!Something wrong.Try Again.');
+            return redirect()->route('tests.show',$test_id)->with('error','Sorry!Something wrong.Try Again.');
         }
         
     }
