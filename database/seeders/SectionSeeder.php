@@ -16,15 +16,32 @@ class SectionSeeder extends Seeder
      */
     public function run()
     {
-        $data = ['reading','listening','writing','speaking'];
+        
         $check = DB::table('sections')->count();
         if($check < 1){
-            foreach($data as $section)
-            {
-                DB::table('sections')->insert([
-                    'section_name' => $section
-                ]); 
-            }  
+            DB::table('sections')->insert([
+                'id' => 1,
+                'section_name' => 'reading',
+                'image' => 'reading.png'
+            ]);
+
+            DB::table('sections')->insert([
+                'id' => 2,
+                'section_name' => 'listening',
+                'image' => 'listening.jpg'
+            ]);
+
+            DB::table('sections')->insert([
+                'id' => 3,
+                'section_name' => 'writing',
+                'image' => 'writing.png'
+            ]);
+            DB::table('sections')->insert([
+                'id' => 4,
+                'section_name' => 'speaking',
+                'image' => 'speaking.png'
+            ]);
+             
         }
     }
 }

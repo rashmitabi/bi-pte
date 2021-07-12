@@ -20,7 +20,7 @@ use App\Exports\studentExport;
 use Maatwebsite\Excel\Facades\Excel;
 
 use Illuminate\Support\Facades\Mail;
-use App\Mail\SendEmailUser;
+use App\Mail\SendEmail;
 
 class UsersController extends Controller
 {
@@ -784,32 +784,19 @@ class UsersController extends Controller
     public function SendEmail(Request $request){
         // dd($request->all());
         $user_ids  = $request->user_ids;
-        $emailtemplate  = $request->emailtemplate;
-      
+        $template_id  = $request->emailtemplate;
+        $user = User::find(2);
+        $emailtemplate = EmailTemplates::where("id",$template_id)->get();
 
-        $flag = 0;
-         // \Mail::to('your_receiver_email@gmail.com')->send(new \App\Mail\MyTestMail($details));
-        $details = '';
-        $data1 = Mail::to('rashmita.gangani@email.com')->send(new \App\Mail\SendEmailUser($$details));
-        dd($data1);   
-
-        // foreach ($user_ids as $user_id) {
-        //     $user = User::find(2);
-        //     if($user){
-        //         try{                  
-                                 
-        //         }catch(\Exception $e){                
-        //             $msg = $e->getMessage();    
-        //             \Session::put('success', $msg);              
-                            
-        //         }   
-        //         $flag = 1;
-        //         break;
-        //     }else{
-        //         $flag = 0;
-        //     }
-
-        // } 
+        $details = [
+            'title' => $emailtemplate->subject,
+            'body' => $emailtemplate->body
+        ];
+       
+        \Mail::to($user->email)->send(new MyTestMail($details));
+        
+    
+        
         if($flag == 1){
             \Session::put('success', 'Email send successfully!');
         }else{

@@ -56,8 +56,6 @@ Auth::routes();
 
 
 
-
-
 //start Super admin routes
 
 Route::group(['middleware' => ['auth', 'verified','superadmin']], function () { 

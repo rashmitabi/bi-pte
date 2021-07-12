@@ -57,11 +57,11 @@ class CreateRelationWithTable extends Migration
 
         DB::statement("ALTER TABLE predictions ADD CONSTRAINT FK_UsersPredictions FOREIGN KEY (user_id) REFERENCES users(id) ON UPDATE CASCADE ON DELETE CASCADE");
         DB::statement("ALTER TABLE predictions ADD CONSTRAINT FK_SectionsPredictions FOREIGN KEY (section_id) REFERENCES sections(id) ON UPDATE CASCADE ON DELETE CASCADE");
-        DB::statement("ALTER TABLE predictions ADD CONSTRAINT FK_QuestionTypesPredictions FOREIGN KEY (question_type_id) REFERENCES question_types(id) ON UPDATE CASCADE ON DELETE CASCADE");
+        // DB::statement("ALTER TABLE predictions ADD CONSTRAINT FK_QuestionTypesPredictions FOREIGN KEY (question_type_id) REFERENCES question_types(id) ON UPDATE CASCADE ON DELETE CASCADE");
 
         DB::statement("ALTER TABLE videos ADD CONSTRAINT FK_UsersVideos FOREIGN KEY (user_id) REFERENCES users(id) ON UPDATE CASCADE ON DELETE CASCADE");
         DB::statement("ALTER TABLE videos ADD CONSTRAINT FK_SectionsVideos FOREIGN KEY (section_id) REFERENCES sections(id) ON UPDATE CASCADE ON DELETE CASCADE");
-        DB::statement("ALTER TABLE videos ADD CONSTRAINT FK_QuestionTypesVideos FOREIGN KEY (question_type_id) REFERENCES question_types(id) ON UPDATE CASCADE ON DELETE CASCADE");
+        // DB::statement("ALTER TABLE videos ADD CONSTRAINT FK_QuestionTypesVideos FOREIGN KEY (question_type_id) REFERENCES question_types(id) ON UPDATE CASCADE ON DELETE CASCADE");
 
         DB::statement("ALTER TABLE subscriptions ADD CONSTRAINT FK_RolesSubscriptions FOREIGN KEY (role_id) REFERENCES roles(id) ON UPDATE CASCADE ON DELETE CASCADE");
 
@@ -153,11 +153,11 @@ class CreateRelationWithTable extends Migration
 
         DB::statement("ALTER TABLE predictions DROP CONSTRAINT FK_UsersPredictions");
         DB::statement("ALTER TABLE predictions DROP CONSTRAINT FK_SectionsPredictions");
-        DB::statement("ALTER TABLE predictions DROP CONSTRAINT FK_QuestionTypesPredictions");
+        // DB::statement("ALTER TABLE predictions DROP CONSTRAINT FK_QuestionTypesPredictions");
 
         DB::statement("ALTER TABLE videos DROP CONSTRAINT FK_UsersVideos");
         DB::statement("ALTER TABLE videos DROP CONSTRAINT FK_SectionsVideos");
-        DB::statement("ALTER TABLE videos DROP CONSTRAINT FK_QuestionTypesVideos");
+        // DB::statement("ALTER TABLE videos DROP CONSTRAINT FK_QuestionTypesVideos");
 
         DB::statement("ALTER TABLE subscriptions DROP CONSTRAINT FK_RolesSubscriptions");
 

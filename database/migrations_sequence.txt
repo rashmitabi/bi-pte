@@ -9,6 +9,7 @@ php artisan migrate:rollback --path=/database/migrations/relations/2021_05_29_08
 
 ########  data seeder ########
 php artisan db:seed
+php artisan db:seed --class=UsersSeeder
 
 ######## create resource controller ########
 php artisan make:controller /SuperAdmin/UsersController --resource 

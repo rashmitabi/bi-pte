@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
-class QuestionTypeSeeder extends Seeder
+class QuestionTypesSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -80,37 +80,47 @@ class QuestionTypeSeeder extends Seeder
                     $designid = 5;
                 }
                 DB::table('question_types')->insert([
+                    'id' => $readingTemp,
                     'section_id' =>'1',
                     'question_title'=>$reading,
                     'desgin_id'=>$designid
                 ]);
             }
+            $ids = count($readings) + 1;
             foreach($listings as $listing)
             {
                 $listingTemp++;
                 DB::table('question_types')->insert([
+                    'id' => $ids,
                     'section_id' =>'2',
                     'question_title'=>$listing,
                     'desgin_id'=>$listingTemp
                 ]);
+                $ids++;
             }
+            $ids = count($readings) + count($listings) + 1;
             foreach($writings as $writing)
             {
                 $writingTemp++;
                 DB::table('question_types')->insert([
+                    'id' => $ids,
                     'section_id' =>'3',
                     'question_title'=>$writing,
                     'desgin_id'=>$writingTemp
                 ]);
+                $ids++;
             }
+            $ids = count($readings) + count($listings) + count($writings) + 1;
             foreach($speakings as $speaking)
             {
                 $speakingTemp++;
                 DB::table('question_types')->insert([
+                    'id' => $ids,
                     'section_id' =>'4',
                     'question_title'=>$speaking,
                     'desgin_id'=>$speakingTemp
                 ]);
+                $ids++;
             }
         }
     }
