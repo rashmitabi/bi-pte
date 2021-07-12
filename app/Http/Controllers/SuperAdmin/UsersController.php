@@ -306,6 +306,30 @@ class UsersController extends Controller
                 // 'sgstin'=>'required|min:2|max:100',
                 'svalidity'=>'required|after:' . date('Y-m-d'),
                 'simage'=>'nullable|image|mimes:jpeg,png,jpg|max:2048'
+            ],
+            [
+                'semail.required'=> 'Email is required', // custom message
+                'semail.email'=> 'Email is must be email format',
+                'semail.unique'=> 'Email has already taken',
+                'semail.max'=> 'Email maximum length allow 255',
+                'sstatus.required'=>'Status is required',
+                'sstatus.in'=> 'Status only allow given values',
+                'scitizen.required'=> 'Country Citizen is required',
+                'scitizen.min'=>'Country Citizen min length at least 2',
+                'scitizen.max'=>'Country Citizen maximum length allow 255',
+                'sresidence.required'=>'Country Residence is required',
+                'sresidence.min'=>'Country Residence min length at least 2',
+                'sresidence.max'=>'Country Residence maximum length allow 255',
+                'sstate.required'=>'State is required',
+                'sstate.min'=>'State min length at least 2',
+                'sstate.max'=>'State maximum length allow 255',
+                'sstate_code.required'=>'State Code is required',
+                'sstate_code.min'=>'State Code min length at least 1',
+                'sstate_code.max'=>'State Code maximum length allow 255',
+                'svalidity.required'=>'Validity is required',
+                'svalidity.after'=>'Validity date must be after today',
+                'simage.image'=>'Image must be image file',
+                'simage.mimes'=>'Image must be file jpeg,png,jpg format'
             ]);
             $input  = \Arr::except($request->all(),array('_token'));
             
@@ -364,7 +388,31 @@ class UsersController extends Controller
                 'admin_prediction_file'=>'required|in:Y,N',
                 'admin_practice_question'=>'required|in:Y,N',
                 'admin_test'=>'required|in:Y,N'
-            ]);
+            ],
+            [
+                'iuname.required'=> 'user name is required', // custom message
+                'iuname.unique'=> 'user name already taken', // custom message
+                'iuname.max'=> 'user name maximum length allow 255', // custom message
+                'iname.required'=>'Institute Name is required',
+                'iname.min'=>'Institute Name min length at least 2',
+                'iname.max'=>'Institute Name max length is 255',
+                'iemail.required'=>'Email is required',
+                'iemail.email'=>'Email must be email format',
+                'iemail.unique'=>'Email has already taken',
+                'iemail.max'=>'Email maximum length allow 255',
+                'istate.required'=>'State is required',
+                'istate.min'=>'State min length at least 2',
+                'istate.max'=>'State maximum length allow 100',
+                'istate_code.required'=>'State Code is required',
+                'istate_code.min'=>'State Code min length at least 1',
+                'istate_code.max'=>'State Code maximum length allow 100',
+                'igstin.required'=>'GSTIN is required',
+                'igstin.min'=>'GSTIN min length at least 2',
+                'igstin.max'=>'GSTIN maximum length allow 100',
+                'bimage.image'=>'Background image must be image format',
+                'bimage.mimes'=>'Background image must be jpeg,png,jpg format',
+                'bimage.max'=>'Background image maximum length allow 2048'
+               ]);
             $input  = \Arr::except($request->all(),array('_token'));
 
             if ($image = $request->file('logo')) {
