@@ -488,8 +488,9 @@ Route::group(['middleware' => ['auth', 'verified','branchadmin']], function () {
     Route::get('branchadmin/dashboard', [App\Http\Controllers\BranchAdmin\DashboardController::class, 'index'])->name('dashboard');
 
 
-
-
+    Route::resource('branchadmin/videos', App\Http\Controllers\BranchAdmin\VideosController::class);
+    Route::resource('branchadmin/device', App\Http\Controllers\BranchAdmin\DeviceController::class);
+    Route::resource('branchadmin/certificates', App\Http\Controllers\BranchAdmin\CertificatesController::class);
     //end branch admin routes
 
 
