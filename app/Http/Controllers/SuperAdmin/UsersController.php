@@ -35,7 +35,7 @@ class UsersController extends Controller
         $type = $request->input('type');
         if($request->ajax()) {
             if($type == "S"){
-                $data = User::where('role_id',3)->get();
+                $data = User::where('role_id',3)->latest()->get();
                 return Datatables::of($data)
                     ->addIndexColumn()
                     ->addColumn('checkbox', function($row){
@@ -59,20 +59,20 @@ class UsersController extends Controller
                     })
                     ->addColumn('action', function($row){
                         $btn = '<ul class="actions-btns">
-                                <li class="action" data-toggle="modal" data-target="#userdetail"><a href="javascript:void(0);" class="user-show" data-id="'.$row->id .'" data-url="'.route('users.show', $row->id).'"><i class="fas fa-user"></i></a></li>
+                                <li class="action" data-toggle="modal" data-target="#userdetail"><a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="view" class="user-show" data-id="'.$row->id .'" data-url="'.route('users.show', $row->id).'"><i class="fas fa-user"></i></a></li>
 
-                                    <li class="action" data-toggle="modal" data-target="#editdetail"><a href="javascript:void(0);" class="user-edit" data-id="'.$row->id .'" data-url="'.route('users.edit', $row->id).'" data-md="no"><i class="fas fa-pen"></i></a></li>
+                                    <li class="action" data-toggle="modal" data-target="#editdetail"><a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="edit" class="user-edit" data-id="'.$row->id .'" data-url="'.route('users.edit', $row->id).'" data-md="no"><i class="fas fa-pen"></i></a></li>
 
-                                    <li class="action bg-danger"><a href="#" class="delete_modal" data-toggle="modal" data-target="#delete_modal"  data-url="'.route('users.destroy', $row->id).'" data-id="'.$row->id.'"><i class="fas fa-trash" ></i></a></li>
+                                    <li class="action bg-danger" data-toggle="tooltip" data-placement="top" title="delete"><a href="#" class="delete_modal" data-toggle="modal" data-target="#delete_modal"  data-url="'.route('users.destroy', $row->id).'" data-id="'.$row->id.'"><i class="fas fa-trash" ></i></a></li>
 
-                                    <li class="action shield '.(($row->status != "P")? (($row->status == "A") ? "bg-danger" : "green"):'').'"><a href="'.route('superadmin-user-changestatus', $row->id ).'"><img src="'.asset('assets/images/icons/blocked.svg').'" class=""></a></li>
+                                    <li class="action shield '.(($row->status != "P")? (($row->status == "A") ? "bg-danger" : "green"):'').'" data-toggle="tooltip" data-placement="top" title="status"><a href="'.route('superadmin-user-changestatus', $row->id ).'"><img src="'.asset('assets/images/icons/blocked.svg').'" class=""></a></li>
 
-                                    <li class="action" data-toggle="modal" data-target="#setpassword"><a href="javascript:void(0);" class="user-setpassword" data-id="'.$row->id .'" data-url="'.route('superadmin-user-showpassword', $row->id).'"><i class="fas fa-unlock-alt"></i></a></li>
+                                    <li class="action" data-toggle="modal" data-target="#setpassword"><a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="password" class="user-setpassword" data-id="'.$row->id .'" data-url="'.route('superadmin-user-showpassword', $row->id).'"><i class="fas fa-unlock-alt"></i></a></li>
 
-                                    <li class="action" class="action" data-toggle="modal" data-target="#mocktest"><a href="javascript:void(0);" class="get-assign-test" data-test-type="M" data-id="'.$row->id.'" data-url="'.route('superadmin-user-get-assign-test',$row->id).'"><img src="'. asset('assets/images/icons/exam.svg').'"
+                                    <li class="action" class="action" data-toggle="modal" data-target="#mocktest"><a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="mock test" class="get-assign-test" data-test-type="M" data-id="'.$row->id.'" data-url="'.route('superadmin-user-get-assign-test',$row->id).'"><img src="'. asset('assets/images/icons/exam.svg').'"
                                                 class=""></a></li>
 
-                                    <li class="action" class="action" data-toggle="modal" data-target="#practisetest"><a href="javascript:void(0);" class="get-assign-test" data-test-type="P" data-id="'.$row->id.'" data-url="'.route('superadmin-user-get-assign-test',$row->id).'"><img src="'. asset('assets/images/icons/test.svg').'"
+                                    <li class="action" class="action" data-toggle="modal" data-target="#practisetest"><a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="practise test" class="get-assign-test" data-test-type="P" data-id="'.$row->id.'" data-url="'.route('superadmin-user-get-assign-test',$row->id).'"><img src="'. asset('assets/images/icons/test.svg').'"
                                                 class=""></a></li>                                   
                                 </ul>';
                         return $btn;
@@ -81,7 +81,7 @@ class UsersController extends Controller
                     ->make(true);
             }else{
 
-                $data = User::where('role_id',2)->with(['institue'])->get();
+                $data = User::where('role_id',2)->latest()->with(['institue'])->get();
                 return Datatables::of($data)
                     ->addIndexColumn()
                     ->addColumn('checkbox', function($row){
@@ -108,20 +108,20 @@ class UsersController extends Controller
                     })
                     ->addColumn('action', function($row){
                         $btn = '<ul class="actions-btns">
-                                <li class="action" data-toggle="modal" data-target="#userdetail"><a href="javascript:void(0);" class="user-show" data-id="'.$row->id .'" data-url="'.route('users.show', $row->id).'"><i class="fas fa-user"></i></a></li>
+                                <li class="action" data-toggle="modal" data-target="#userdetail"><a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="view" class="user-show" data-id="'.$row->id .'" data-url="'.route('users.show', $row->id).'"><i class="fas fa-user"></i></a></li>
 
-                                    <li class="action" data-toggle="modal" data-target="#editdetail"><a href="javascript:void(0);" class="user-edit" data-id="'.$row->id .'" data-url="'.route('users.edit', $row->id).'"><i class="fas fa-pen"></i></a></li>
+                                    <li class="action" data-toggle="modal" data-target="#editdetail"><a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="edit" class="user-edit" data-id="'.$row->id .'" data-url="'.route('users.edit', $row->id).'"><i class="fas fa-pen"></i></a></li>
 
-                                    <li class="action bg-danger"><a href="javascript:void(0);" class="delete_modal" data-toggle="modal" data-target="#delete_modal"  data-url="'.route('users.destroy', $row->id).'" data-id="'.$row->id.'"><i class="fas fa-trash"></i></a></li>
+                                    <li class="action bg-danger" data-toggle="tooltip" data-placement="top" title="delete"><a href="javascript:void(0);" class="delete_modal" data-toggle="modal" data-target="#delete_modal"  data-url="'.route('users.destroy', $row->id).'" data-id="'.$row->id.'"><i class="fas fa-trash"></i></a></li>
 
-                                    <li class="action shield '.(($row->status != "P")? (($row->status == "A") ? "bg-danger" : "green"):'').'"><a href="'.route('superadmin-user-changestatus', $row->id ).'"><img src="'.asset('assets/images/icons/blocked.svg').'" class=""></a></li>
+                                    <li class="action shield '.(($row->status != "P")? (($row->status == "A") ? "bg-danger" : "green"):'').'" data-toggle="tooltip" data-placement="top" title="status"><a href="'.route('superadmin-user-changestatus', $row->id ).'"><img src="'.asset('assets/images/icons/blocked.svg').'" class=""></a></li>
 
-                                    <li class="action" data-toggle="modal" data-target="#setpassword"><a href="javascript:void(0);" class="user-setpassword" data-id="'.$row->id .'" data-url="'.route('superadmin-user-showpassword', $row->id).'"><i class="fas fa-unlock-alt"></i></a></li>
+                                    <li class="action" data-toggle="modal" data-target="#setpassword"><a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="password" class="user-setpassword" data-id="'.$row->id .'" data-url="'.route('superadmin-user-showpassword', $row->id).'"><i class="fas fa-unlock-alt"></i></a></li>
 
-                                    <li class="action" class="action" data-toggle="modal" data-target="#mocktest"><a href="javascript:void(0);" class="get-assign-test" data-test-type="M" data-id="'.$row->id.'" data-url="'.route('superadmin-user-get-assign-test',$row->id).'"><img src="'. asset('assets/images/icons/exam.svg').'"
+                                    <li class="action" class="action" data-toggle="modal" data-target="#mocktest"><a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="mock test" class="get-assign-test" data-test-type="M" data-id="'.$row->id.'" data-url="'.route('superadmin-user-get-assign-test',$row->id).'"><img src="'. asset('assets/images/icons/exam.svg').'"
                                                 class=""></a></li>
 
-                                    <li class="action" class="action" data-toggle="modal" data-target="#practisetest"><a href="javascript:void(0);" class="get-assign-test" data-test-type="P" data-id="'.$row->id.'" data-url="'.route('superadmin-user-get-assign-test',$row->id).'"><img src="'. asset('assets/images/icons/test.svg').'"
+                                    <li class="action" class="action" data-toggle="modal" data-target="#practisetest"><a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="practise test" class="get-assign-test" data-test-type="P" data-id="'.$row->id.'" data-url="'.route('superadmin-user-get-assign-test',$row->id).'"><img src="'. asset('assets/images/icons/test.svg').'"
                                                 class=""></a></li>
                                 </ul>';
                         return $btn;
@@ -296,7 +296,7 @@ class UsersController extends Controller
                 'uname'=>'required|unique:users,name|max:255',
                 'semail'=>'required|email|unique:users,email|max:255',
                 'dob' =>'required|before:18 years ago',
-                'mobileno' =>'required|max:20',
+                'mobileno' =>'required|digits:10',
                 'sstatus'=>'required|in:P,A,R',
                 'gender'=>'required|in:M,F',
                 'scitizen'=>'required|min:2|max:255',
@@ -372,7 +372,7 @@ class UsersController extends Controller
                 'iname'=>'required|min:2|max:255',
                 'iemail'=>'required|email|unique:users,email|max:255',
                 'country_code'=>'required|max:5',
-                'phone_no' =>'required|max:20',
+                'phone_no' =>'required|min:6|max:20',
                 'status'=>'required|in:P,A,R',
                 'subdomain' =>'required|max:255|regex:'.$regexUrl,
                 'domain'=>'required|max:255|regex:'.$regexUrl,
@@ -380,8 +380,8 @@ class UsersController extends Controller
                 'istate'=>'required|min:2|max:100',
                 'istate_code'=>'required|min:1|max:100',
                 'igstin'=>'required|min:2|max:100',
-                'logo'=>'nullable|image|mimes:jpeg,png,jpg|max:2048',
-                'banner'=>'nullable|image|mimes:jpeg,png,jpg|max:2048',
+                'logo'=>'required|image|mimes:jpeg,png,jpg|max:2048',
+                'banner'=>'required|image|mimes:jpeg,png,jpg|max:2048',
                 'bimage'=>'nullable|image|mimes:jpeg,png,jpg|max:2048',
                 'validity'=>'required|after:' . date('Y-m-d'),
                 'admin_video'=>'required|in:Y,N',
@@ -832,24 +832,27 @@ class UsersController extends Controller
     public function SendEmail(Request $request){
         // dd($request->all());
         $user_ids  = $request->user_ids;
-        $template_id  = $request->emailtemplate;
-        $user = User::find(2);
-        $emailtemplate = EmailTemplates::where("id",$template_id)->get();
-
-        $details = [
-            'title' => $emailtemplate->subject,
-            'body' => $emailtemplate->body
-        ];
-       
-        \Mail::to($user->email)->send(new MyTestMail($details));
+        $emailtemplate  = $request->emailtemplate;
         
-    
+        $template = EmailTemplates::find($emailtemplate);
+        $allEmails= User::whereIn('id',$user_ids)->pluck('email')->toArray();
+        //dd($template->body,$allEmails);
+        $data = ['body'=>$template->body];
+        $flag = 0;
+         // \Mail::to('your_receiver_email@gmail.com')->send(new \App\Mail\MyTestMail($details));
+        try{
+            Mail::to($allEmails)->send(new SendEmailUser($data));
+            $flag = 1;
+        }catch(\Exception $e){
+            dd($e->getMessage());
+        }
         
         if($flag == 1){
             \Session::put('success', 'Email send successfully!');
+            return true;
         }else{
             \Session::put('error', 'Email address not valid..!');
-              
+            return false;  
         }
     }
 
@@ -873,12 +876,10 @@ class UsersController extends Controller
         else
         {
             $user = User::find($id);
-            if($user->status == 'R'){
-                $user->status = 'A';
-            }else if($user->status == 'P'){
-                    $status = 'A';    
-            }else{
+            if($user->status == 'A'){
                 $user->status = 'R';
+            }else if($user->status == 'R' || $user->status == 'P'){
+                $user->status = 'A';
             }
             $result = $user->update();
             if($result){
@@ -924,7 +925,7 @@ class UsersController extends Controller
     public function setPassword(Request $request,$id){
         
         $request->validate([
-           'password' => 'required',
+           'password' => 'required|min:6',
            'confirm_password' => 'required|same:password'
         ]);
         $input  = \Arr::except($request->all(),array('_token'));

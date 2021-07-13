@@ -23,7 +23,8 @@ $pageActive = isset($pageArray[4]) ? $pageArray[4] : 'dashboard';
 	    <script src="{{ asset('assets/js/jquery.dataTables.min.js') }}" defer></script>
 	    <script src="{{ asset('assets/js/dataTables.bootstrap4.min.js') }}" defer></script>
 	    <script src="{{ asset('assets/js/dataTables.responsive.min.js') }}" defer></script>
-	    <script src="{{ asset('assets/js/responsive.bootstrap4.min.js') }}" defer></script>
+		<script src="{{ asset('assets/js/responsive.bootstrap4.min.js') }}" defer></script>
+		<script src="{{ asset('assets/js/bootstrap-datepicker.js') }}" defer></script>
 	    <!-- <script src="{{ asset('assets/js/ckeditor.js') }}" defer></script> -->
 		<!-- <script src="https://cdn.ckeditor.com/ckeditor5/28.0.0/classic/ckeditor.js"></script>   -->
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/ckeditor/4.12.1/ckeditor.js"></script>
@@ -34,14 +35,15 @@ $pageActive = isset($pageArray[4]) ? $pageArray[4] : 'dashboard';
 
 		<script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js" defer></script>
-
+		
 	    <!-- Fonts -->
 	    <link rel="dns-prefetch" href="//fonts.gstatic.com">
 	    <link href="{{ asset('assets/css/font.css') }}" rel="stylesheet">
 
 	    <!-- Styles -->
 	    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-	    <link href="{{ asset('assets/fontawesome/css/all.min.css') }}" rel="stylesheet">
+		<link href="{{ asset('assets/fontawesome/css/all.min.css') }}" rel="stylesheet">
+		<link href="{{ asset('assets/css/bootstrap-datepicker.css') }}" rel="stylesheet">
 	    <link href="{{ asset('assets/fontawesome/css/fontawesome.min.css') }}" rel="stylesheet">
 	    <link href="{{ asset('assets/scss/admin-common.css') }}" rel="stylesheet">
 	    <link href="{{ asset('assets/scss/admin-style.css') }}" rel="stylesheet">

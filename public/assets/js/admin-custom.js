@@ -7,7 +7,10 @@ $(document).ready(function () {
       $('#content').toggleClass("full_content");
   });
 });
-
+function readURL(event) {
+    var image = document.getElementById('output');
+	image.src = URL.createObjectURL(event.target.files[0]);
+}
 $(document).ready(function() {
     //use for multiple select option
     //$('select').selectpicker();
@@ -1170,6 +1173,24 @@ $(document).ready(function() {
     $("form").on("change", ".custom-file-input", function(){ 
         $(this).parent(".custom-file").attr("data-text", $(this).val().replace(/.*(\/|\\)/, '') );
         $(this).next('.custom-file-label').text('');
+    });
+    var date = new Date();
+    var today = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+    var end = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+    $("#dob").datepicker({
+        todayHighlight: true,
+        endDate: end,
+        format:'yyyy-mm-dd'
+    });
+    $("#svalidity").datepicker({
+        todayHighlight: true,
+        startDate: today,
+        format:'yyyy-mm-dd'
+    });
+    $("#ivalidity").datepicker({
+        todayHighlight: true,
+        startDate: today,
+        format:'yyyy-mm-dd'
     });
 });
 

@@ -1,6 +1,6 @@
 <div class="modal-body">
+  <h3>Reset password</h3>
   <form class="form mt-5" method="POST">
-    
     @csrf
     <div class="form-group row">
       <label class="col-12 col-md-5 col-xl-12 col-sm-12 col-form-label ">Password</label>
