@@ -59,7 +59,7 @@ class QuestionTypesSeeder extends Seeder
         {   $readingTemp  = 0;
             $listingTemp  = 5;
             $writingTemp  = 13;
-            $speakingTemp = 16;
+            $speakingTemp = 15;
             foreach($readings as $reading)
             {
                 $readingTemp++;

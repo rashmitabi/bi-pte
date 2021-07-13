@@ -106,6 +106,17 @@ class UsersSeeder extends Seeder
 	            'validity' => date('Y-m-d H:i:s',strtotime(date('Y-m-d H:i:s') . " +1 year")),
 	            'status' => 'A'
 	        ]);
+	        //child table in insert record
+        	DB::table('student_details')->insert([
+        		'id' => 1,
+        		'user_id' =>3,
+        		'address' => '-',
+        		'user_interests' => '-',
+        		'show_admin_videos' => 'Y',
+        		'show_admin_tests' => 'Y',
+        		'show_admin_files' => 'Y',
+        		'show_practice_questions' => 'Y'
+        	]);
 
 	        DB::table('users')->insert([
         		'id' => 4,
@@ -128,6 +139,18 @@ class UsersSeeder extends Seeder
 	            'validity' => date('Y-m-d H:i:s',strtotime(date('Y-m-d H:i:s') . " +1 year")),
 	            'status' => 'A'
 	        ]);
+	        //child table in insert record
+        	DB::table('student_details')->insert([
+        		'id' => 2,
+        		'user_id' =>4,
+        		'address' => '-',
+        		'user_interests' => '-',
+        		'show_admin_videos' => 'Y',
+        		'show_admin_tests' => 'Y',
+        		'show_admin_files' => 'Y',
+        		'show_practice_questions' => 'Y'
+        	]);
+
 
 	        DB::table('users')->insert([
         		'id' => 5,
@@ -150,6 +173,17 @@ class UsersSeeder extends Seeder
 	            'validity' => date('Y-m-d H:i:s',strtotime(date('Y-m-d H:i:s') . " +1 year")),
 	            'status' => 'A'
 	        ]);
+	        //child table in insert record
+        	DB::table('student_details')->insert([
+        		'id' => 3,
+        		'user_id' =>5,
+        		'address' => '-',
+        		'user_interests' => '-',
+        		'show_admin_videos' => 'Y',
+        		'show_admin_tests' => 'Y',
+        		'show_admin_files' => 'Y',
+        		'show_practice_questions' => 'Y'
+        	]);
 
 	        //second branch admin
         	DB::table('users')->insert([
@@ -215,6 +249,17 @@ class UsersSeeder extends Seeder
 	            'validity' => date('Y-m-d H:i:s',strtotime(date('Y-m-d H:i:s') . " +1 year")),
 	            'status' => 'A'
 	        ]);
+	        //child table in insert record
+        	DB::table('student_details')->insert([
+        		'id' => 4,
+        		'user_id' =>7,
+        		'address' => '-',
+        		'user_interests' => '-',
+        		'show_admin_videos' => 'Y',
+        		'show_admin_tests' => 'Y',
+        		'show_admin_files' => 'Y',
+        		'show_practice_questions' => 'Y'
+        	]);
 
 	        DB::table('users')->insert([
         		'id' => 8,
@@ -237,6 +282,17 @@ class UsersSeeder extends Seeder
 	            'validity' => date('Y-m-d H:i:s',strtotime(date('Y-m-d H:i:s') . " +1 year")),
 	            'status' => 'A'
 	        ]);
+	        //child table in insert record
+        	DB::table('student_details')->insert([
+        		'id' => 5,
+        		'user_id' =>8,
+        		'address' => '-',
+        		'user_interests' => '-',
+        		'show_admin_videos' => 'Y',
+        		'show_admin_tests' => 'Y',
+        		'show_admin_files' => 'Y',
+        		'show_practice_questions' => 'Y'
+        	]);
 
 	        DB::table('users')->insert([
         		'id' => 9,
@@ -259,6 +315,17 @@ class UsersSeeder extends Seeder
 	            'validity' => date('Y-m-d H:i:s',strtotime(date('Y-m-d H:i:s') . " +1 year")),
 	            'status' => 'A'
 	        ]);
+	        //child table in insert record
+        	DB::table('student_details')->insert([
+        		'id' => 6,
+        		'user_id' =>9,
+        		'address' => '-',
+        		'user_interests' => '-',
+        		'show_admin_videos' => 'Y',
+        		'show_admin_tests' => 'Y',
+        		'show_admin_files' => 'Y',
+        		'show_practice_questions' => 'Y'
+        	]);
         }
     }
 

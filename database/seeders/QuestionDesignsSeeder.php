@@ -103,20 +103,15 @@ class QuestionDesignsSeeder extends Seeder
             //section two end
 
             //section three start
+           
             DB::table('question_designs')->insert([
                 'id' => 14,
-                'section_id' => 3,
-                'design_name'=>'Writing Instruction',
-                'file_name'=>'writing_instruction'
-            ]);
-            DB::table('question_designs')->insert([
-                'id' => 15,
                 'section_id' => 3,
                 'design_name'=>'Summarize Written',
                 'file_name'=>'summarize_written'
             ]);
             DB::table('question_designs')->insert([
-                'id' => 16,
+                'id' => 15,
                 'section_id' => 3,
                 'design_name'=>'Essay Writing',
                 'file_name'=>'essay_writing'
@@ -126,31 +121,31 @@ class QuestionDesignsSeeder extends Seeder
             //section four start
            
             DB::table('question_designs')->insert([
-                'id' => 17,
+                'id' => 16,
                 'section_id' => 4,
                 'design_name'=>'Read Aloud',
                 'file_name'=>'read_aloud'
             ]);
             DB::table('question_designs')->insert([
-                'id' => 18,
+                'id' => 17,
                 'section_id' => 4,
                 'design_name'=>'Repeat Sentence',
                 'file_name'=>'repeat_sentence'
             ]);
             DB::table('question_designs')->insert([
-                'id' => 19,
+                'id' => 18,
                 'section_id' => 4,
                 'design_name'=>'Describe Image',
                 'file_name'=>'describe_image'
             ]);
             DB::table('question_designs')->insert([
-                'id' => 20,
+                'id' => 19,
                 'section_id' => 4,
                 'design_name'=>'Re-tell lecture',
                 'file_name'=>'re_tell_lecture'
             ]);
             DB::table('question_designs')->insert([
-                'id' => 21,
+                'id' => 20,
                 'section_id' => 4,
                 'design_name'=>'Answer-short Question',
                 'file_name'=>'answer_short_question'
