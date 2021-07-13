@@ -488,17 +488,16 @@ Route::group(['middleware' => ['auth', 'verified','branchadmin']], function () {
     Route::get('branchadmin/dashboard', [App\Http\Controllers\BranchAdmin\DashboardController::class, 'index'])->name('dashboard');
 
     Route::resource('branchadmin/users', App\Http\Controllers\BranchAdmin\UsersController::class)->names('users');
-    Route::resource('branchadmin/videos', App\Http\Controllers\BranchAdmin\VideosController::class);
+
     Route::resource('branchadmin/device', App\Http\Controllers\BranchAdmin\DeviceController::class);
 
     Route::resource('branchadmin/certificates', App\Http\Controllers\BranchAdmin\CertificatesController::class);
-    Route::get('branchadmin/certificates/edit/{aid}/{bid}', [App\Http\Controllers\BranchAdmin\CertificatesController::class, 'edit'])->name('generate-certificate');
-
+    Route::get('branchadmin/certificates/edit/{aid}/{bid}', [App\Http\Controllers\BranchAdmin\CertificatesController::class, 'edit'])->name('branchadmin-generate-certificate');
     Route::post('branchadmin/certificates/updateScore', [App\Http\Controllers\BranchAdmin\CertificatesController::class, 'updateScore'])->name('branchadmin-update-score');
 
     
-    Route::resource('branchadmin/results', App\Http\Controllers\SuperAdmin\TestResultsController::class);
-    Route::get('branchadmin/results/edit/{aid}/{bid}', [App\Http\Controllers\BranchAdmin\TestResultsController::class, 'edit'])->name('generate-result');
+    Route::resource('branchadmin/results', App\Http\Controllers\BranchAdmin\TestResultsController::class);
+    Route::get('branchadmin/results/edit/{aid}/{bid}', [App\Http\Controllers\BranchAdmin\TestResultsController::class, 'edit'])->name('branchadmin-generate-result');
 
     /*Device logs module start*/
 
@@ -520,13 +519,13 @@ Route::group(['middleware' => ['auth', 'verified','branchadmin']], function () {
 
 
 
-    /*Super admin notification start*/
+    /*branch admin notification start*/
 
         Route::get('branchadmin/notifications', [App\Http\Controllers\BranchAdmin\NotificationController::class, 'index'])->name('branchadmin-notifications');
 
         Route::get('branchadmin/notifications/{id}', [App\Http\Controllers\BranchAdmin\NotificationController::class, 'viewNotification'])->name('branchadmin-view-notifications');
 
-    /*Super admin notification end*/
+    /*branch admin notification end*/
 
     /* Email templates module start*/
     Route::get('branchadmin/email/changestatus/{id}', [App\Http\Controllers\BranchAdmin\EmailTemplatesController::class, 'changeStatus'])

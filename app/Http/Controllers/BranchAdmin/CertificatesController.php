@@ -17,7 +17,20 @@ class CertificatesController extends Controller
     public function index(Request $request)
     {
     	if($request->ajax()) {
-            $data = TestResults::with(['test','user'])->join('users', 'users.id', '=', 'test_results.user_id')->select('test_id','user_id')->groupBy('test_id', 'user_id')->where('users.parent_user_id', \Auth::user()->id)->get();             
+            //$data = TestResults::with(['test','user'])->join('users', 'users.id', '=', 'test_results.user_id')->select('test_id','user_id')->groupBy('test_id', 'user_id')->where('users.parent_user_id', \Auth::user()->id)->get();
+
+            $data = TestResults::with(['test','user'])
+                ->select('test_results.test_id','test_results.user_id')
+                ->join('users', 'users.id', '=', 'test_results.user_id')
+                ->join('student_tests', function($join)
+                         {
+                             $join->on('student_tests.user_id', '=', 'test_results.user_id');
+                             $join->on('student_tests.test_id', '=', 'test_results.test_id');
+                         })
+                ->where('users.parent_user_id', \Auth::user()->id)
+                ->where('student_tests.status', 'C')
+                ->groupBy('test_id', 'user_id')
+                ->get();               
             return Datatables::of($data)
                     ->addIndexColumn()
                     ->addColumn('username', function($row){

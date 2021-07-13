@@ -18,10 +18,19 @@ class TestResultsController extends Controller
      */
     public function index(Request $request)   
     {
-        if($request->ajax()) {
-            //$data = TestResults::with(['test','subject','user'])->get();
-            //$data = TestResults::with(['test','subject','user'])->select('test_id','user_id', 'subject_id', DB::raw('SUM(get_score) AS score'))->groupBy('test_id', 'user_id', 'subject_id')->get(); 
-            $data = TestResults::with(['test','subject','user'])->selectRaw('test_id,user_id,subject_id,SUM(get_score) AS score')->groupBy('test_id', 'user_id', 'subject_id')->get();  
+        if($request->ajax()) {    
+            $data = TestResults::with(['test','subject','user'])
+                ->selectRaw('test_results.test_id,test_results.user_id,test_results.subject_id,SUM(get_score) AS score')
+                ->join('users', 'users.id', '=', 'test_results.user_id')
+                ->join('student_tests', function($join)
+                         {
+                             $join->on('student_tests.user_id', '=', 'test_results.user_id');
+                             $join->on('student_tests.test_id', '=', 'test_results.test_id');
+                         })
+                ->where('users.parent_user_id', '=', \Auth::user()->id)
+                ->where('student_tests.status', '=', 'C')
+                ->groupBy('test_id', 'user_id', 'subject_id')
+                ->get();  
             return Datatables::of($data)
                     ->addIndexColumn()
                     ->addColumn('username', function($row){
@@ -47,7 +56,7 @@ class TestResultsController extends Controller
                         return $row->score;
                     })
                     ->addColumn('action', function($row){
-                        $btn = '<ul class="actions-btns"><li data-toggle="modal" data-target="#testresults" class="action"><a href="javascript:void(0);" class="results-edit" data-url="'.route('generate-result', ['aid' => $row->test_id, 'bid' => $row->user_id]).'"><i class="fas fa-eye"></i></a></li></ul>';
+                        $btn = '<ul class="actions-btns"><li data-toggle="modal" data-target="#testresults" class="action"><a href="javascript:void(0);" class="results-edit" data-url="'.route('branchadmin-generate-result', ['aid' => $row->test_id, 'bid' => $row->user_id]).'"><i class="fas fa-eye"></i></a></li></ul>';
                         
                         return $btn;
                     })
