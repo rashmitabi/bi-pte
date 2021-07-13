@@ -15,7 +15,7 @@ $(document).ready(function() {
                    $("#editor23").each(function(_, ckeditor) {
                       CKEDITOR.replace(ckeditor);
                   });
-                    CKEDITOR.replace(ckeditor);
+                    //CKEDITOR.replace(ckeditor);
                 }
            });
    });
@@ -24,6 +24,7 @@ $(document).ready(function() {
    $('body').on('click','.email-update',function(){
        var id = $(this).data('id');
        var apiUrl = $(this).data('url');
+       var emailbody = CKEDITOR.instances['editor23'].getData();
        $('#nameError').text('');
        $('#subjectError').text('');
        $('#bodyError').text('');
@@ -31,7 +32,7 @@ $(document).ready(function() {
        $.ajax({
            url: apiUrl,
            type:'PATCH',
-           data: $('form').serialize(),
+           data: $('form').serialize()+'&body='+emailbody,
            success:function(data) {
                if(data == 1){
                    setTimeout(function(){

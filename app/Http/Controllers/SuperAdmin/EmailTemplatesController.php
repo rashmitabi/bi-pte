@@ -18,7 +18,7 @@ class EmailTemplatesController extends Controller
     public function index(Request $request)
     {
         if($request->ajax())  {
-            $data = EmailTemplates::latest()->get();
+            $data = EmailTemplates::latest()->where('user_id',\Auth::user()->id)->get();
             return Datatables::of($data)
                     ->addIndexColumn()
                     ->addColumn('name', function($row){

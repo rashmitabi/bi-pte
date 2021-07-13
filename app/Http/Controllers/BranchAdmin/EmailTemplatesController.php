@@ -18,7 +18,7 @@ class EmailTemplatesController extends Controller
     public function index(Request $request)
     {
         if($request->ajax())  {
-            $data = EmailTemplates::latest()->get();
+            $data = EmailTemplates::latest()->where('user_id',\Auth::user()->id)->get();
             return Datatables::of($data)
                     ->addIndexColumn()
                     ->addColumn('name', function($row){
@@ -44,7 +44,7 @@ class EmailTemplatesController extends Controller
                         $btn = '<ul class="actions-btns">
                             <li class="action email-edit" data-toggle="modal" data-target="#editemail" data-id="'.$row->id.'" data-url="'.route('email.edit', $row->id).'"><a href="javascript:void(0);"><i class="fas fa-pen"></i></a></li>
                             <li class="action bg-danger"><a href="#" class="delete_modal" data-toggle="modal" data-target="#delete_modal"  data-url="'.route('email.destroy', $row->id).'" data-id="'.$row->id.'"><i class="fas fa-trash"></i></a></li>
-                            <li class="action shield '.(($row->status == "E") ? "red" : "green").'"><a href="'.route('superadmin-email-changestatus', $row->id ).'"><img src="'.asset('assets/images/icons/blocked.svg').'" class=""></a></li>
+                            <li class="action shield '.(($row->status == "E") ? "red" : "green").'"><a href="'.route('branchadmin-email-changestatus', $row->id ).'"><img src="'.asset('assets/images/icons/blocked.svg').'" class=""></a></li>
                             </ul>';
                         return $btn;
                     })
