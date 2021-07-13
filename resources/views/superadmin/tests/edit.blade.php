@@ -33,13 +33,18 @@
     </div>
     <div class="form-group row">
     <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Test Image</label>
-    <div class="col-12 col-md-7 col-xl-7 col-sm-12">
-        <div class="custom-file mb-3">
-            <input type="file" class="custom-file-input" name="image" id="image">
-            <label class="custom-file-label" for="customFile">Select file</label>
-        </div> 
-        <span class="error-msg" id="imageError"></span>
-    </div>
+    <div class="col-12">  
+            <div class="profile-img">
+              @if($test->image != '')
+                <img src="{{ asset('assets/images/test-images/'.$test->image) }}" id="output">
+              @else
+                <img src="{{ asset('assets/images/profile-img-2.png') }}" id="output">
+              @endif
+            </div>
+            <div class="edit-profile-btn">
+              <a><input type="file" name="image" id="image" onchange="readURL(event)" class="custom-file-input position-absolute"><i class="fas fa-pen icon"></i></a>
+            </div>
+          </div>
 </div>
     <div class="form-group row">
         <div class="col-12 col-md-12 col-xl-11 col-sm-12 save-btn">

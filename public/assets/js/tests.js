@@ -122,5 +122,4 @@ $(document).ready(function() {
     });
     /*datatable mock test end*/
     $("#practice_test_wrapper div.toolbar").html('Manage Test');
-
 });

@@ -7,7 +7,10 @@ $(document).ready(function () {
       $('#content').toggleClass("full_content");
   });
 });
-
+function readURL(event) {
+    var image = document.getElementById('output');
+	image.src = URL.createObjectURL(event.target.files[0]);
+}
 $(document).ready(function() {
     //use for multiple select option
     //$('select').selectpicker();
