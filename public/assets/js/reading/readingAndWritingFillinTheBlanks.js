@@ -108,56 +108,7 @@ $(document).ready(function() {
                 required: true,
                 comma: true
             },
-            ans_options2: {
-                required: true,
-                comma: true
-            },
-            ans_options3: {
-                required: true,
-                comma: true
-            },
-            ans_options4: {
-                required: true,
-                comma: true
-            },
-            ans_options5: {
-                required: true,
-                comma: true
-            },
-            ans_options6: {
-                required: true,
-                comma: true
-            },
-            ans_options7: {
-                required: true,
-                comma: true
-            },
-            ans_options8: {
-                required: true,
-                comma: true
-            },
             correct_option1: {
-                required: true
-            },
-            correct_option2: {
-                required: true
-            },
-            correct_option3: {
-                required: true
-            },
-            correct_option4: {
-                required: true
-            },
-            correct_option5: {
-                required: true
-            },
-            correct_option6: {
-                required: true
-            },
-            correct_option7: {
-                required: true
-            },
-            correct_option8: {
                 required: true
             },
         },
@@ -168,51 +119,9 @@ $(document).ready(function() {
             ans_options1: {
                 required: "Ans Option 1 is required"
             },
-            ans_options2: {
-                required: "Ans Option 2 is required"
-            },
-            ans_options3: {
-                required: "Ans Option 3 is required"
-            },
-            ans_options4: {
-                required: "Ans Option 4 is required"
-            },
-            ans_options5: {
-                required: "Ans Option 5 is required"
-            },
-            ans_options6: {
-                required: "Ans Option 6 is required"
-            },
-            ans_options7: {
-                required: "Ans Option 7 is required"
-            },
-            ans_options8: {
-                required: "Ans Option 8 is required"
-            },
             correct_option1: {
                 required: "Correct option 1 is required"
             },
-            correct_option2: {
-                required: "Correct option 2 is required"
-            },
-            correct_option3: {
-                required: "Correct option 3 is required"
-            },
-            correct_option4: {
-                required: "Correct option 4 is required"
-            },
-            correct_option5: {
-                required: "Correct option 5 is required"
-            },
-            correct_option6: {
-                required: "Correct option 6 is required"
-            },
-            correct_option7: {
-                required: "Correct option 7 is required"
-            },
-            correct_option8: {
-                required: "Correct option 8 is required"
-            }
         },
         submitHandler: function(form) {
             console.log(section_id);
