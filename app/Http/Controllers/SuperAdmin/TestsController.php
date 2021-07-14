@@ -256,16 +256,25 @@ class TestsController extends Controller
      */
     public function destroy($id)
     {
-        $result = Tests::where('id',$id)->delete();
-        if($result)
+        $questions = Questions::where('test_id',$id)->pluck('id')->toArray();
+        if(count($questions)>0)
         {
             return redirect()->route('tests.index')
-                        ->with('success','Test deleted successfully!');
+            ->with('warning','Test not delete because Questions available!');
         }
         else
         {
-            return redirect()->route('tests.index')
-                        ->with('error','Sorry!Something wrong.Try again later!');
+            $result = Tests::where('id',$id)->delete();
+            if($result)
+            {
+                return redirect()->route('tests.index')
+                            ->with('success','Test deleted successfully!');
+            }
+            else
+            {
+                return redirect()->route('tests.index')
+                            ->with('error','Sorry!Something wrong.Try again later!');
+            }
         }
     }
 }

@@ -45,36 +45,12 @@
                               </div>
                            </div>
                            @if(!isset($questions->desc))
-                              <div class="form-group mb-3 row">
+                              <div class="form-group mb-3 row question-blockA">
                                  <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label custom-label">Ans Options A</label>
                                  <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
                                     <input type="text" class="form-control " name="ans_options_A" id="ans_options_A" placeholder="Which of the Following Are True Statements?">
                                  </div>
-                              </div>
-                              <div class="form-group mb-3 row">
-                                 <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label custom-label ">Ans Options B</label>
-                                 <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
-                                    <input type="text" class="form-control " name="ans_options_B" id="ans_options_B" placeholder="Which of the Following Are True Statements?">
-                                 </div>
-                              </div>
-                              <div class="form-group mb-3 row">
-                                 <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label custom-label">Ans Options C</label>
-                                 <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
-                                    <input type="text" class="form-control " name="ans_options_C" id="ans_options_C" placeholder="Which of the Following Are True Statements?">
-                                 </div>
-                              </div>
-                              <div class="form-group mb-3 row">
-                                 <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label custom-label ">Ans Options D</label>
-                                 <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
-                                    <input type="text" class="form-control " name="ans_options_D" id="ans_options_D" placeholder="Which of the Following Are True Statements?">
-                                 </div>
-                              </div>
-                              <div class="form-group mb-3 row question-blockE">
-                                 <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label custom-label">Ans Options E</label>
-                                 <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
-                                    <input type="text" class="form-control " name="ans_options_E" id="ans_options_E" placeholder="Which of the Following Are True Statements?">
-                                 </div>
-                                 <div class="plus-icon" onclick="addQuestionColumn()" data-id="E">
+                                 <div class="plus-icon" onclick="addQuestionColumn()" data-id="A">
                                     <a><i class="fas fa-plus"></i></a>
                                  </div>
                               </div>

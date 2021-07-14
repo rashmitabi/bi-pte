@@ -870,7 +870,8 @@ $(document).ready(function() {
       }
   });
   /*Check user unique validation at store start*/
-  $(".unique-susername").keyup(function() {
+  $(".unique-susername").change(function() {
+    $("#suname-unique-msg").text('');
     var uname       = $(this).val();
     var url         = $(this).attr("data-url");
     var unique_type = $(this).attr("data-unique-type");
@@ -902,7 +903,8 @@ $(document).ready(function() {
       },
     });
   });
-  $(".unique-semail").keyup(function() {
+  $(".unique-semail").change(function() {
+    $("#semail-unique-msg").text('');
     var email       = $(this).val();
     var url         = $(this).attr("data-url");
     var unique_type = $(this).attr("data-unique-type");
@@ -911,6 +913,7 @@ $(document).ready(function() {
     var msg = 'Email already exists!';
     if(email == ''){
       $(':input[type="submit"]').prop('disabled', true);
+      $("#semail-unique-msg").text('');
     }else{
       $.ajax({
         url: url,
@@ -940,7 +943,7 @@ $(document).ready(function() {
   /*Check user unique validation at store end*/
 
   /*Check institude unique validation start*/
-  $(".unique-iusername").keyup(function() {
+  $(".unique-iusername").change(function() {
     $("#iuname-unique-msg").text('');
     var uname       = $(this).val();
     var url         = $(this).attr("data-url");
@@ -978,7 +981,7 @@ $(document).ready(function() {
       }); 
     }
   });
-  $(".unique-iemail").keyup(function() {
+  $(".unique-iemail").change(function() {
     $("#iemail-unique-msg").text('');
     var email       = $(this).val();
     var url         = $(this).attr("data-url");
@@ -988,6 +991,7 @@ $(document).ready(function() {
     var msg = 'Email already exists!';
     if(email == ''){
       $(':input[type="submit"]').prop('disabled', true);
+      $("#iemail-unique-msg").text('');
     }else{
       $.ajax({
         url: url,

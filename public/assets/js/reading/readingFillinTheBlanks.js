@@ -30,13 +30,13 @@ function addQuestionColumn()
                         +"<div class='add-icon' onclick='addQuestionColumn()' data-id='"+number+"'>"
                             +"<a><i class='fas fa-plus'></i></a>"
                         +"</div>"
-                        +"<div class='minus-icon' onclick='minusQuestionColumn()' data-id='"+number+"'>"
+                        +"<div class='minus-icon-common' onclick='minusQuestionColumn()' data-id='"+number+"'>"
                             +"<a><i class='fas fa-minus'></i></a>"
                         +"</div>"
                     +"</div>";
                 +"</div>";
     $(".add-icon").remove();
-    $(".minus-icon").remove();
+    $(".minus-icon-common").remove();
     $(".mainbox"+target).after(html);
     $('#re_order').validate();
     $("#"+ansId).rules( "add", {
@@ -56,7 +56,7 @@ function addQuestionColumn()
 }
 function minusQuestionColumn()
 {
-    var link = document.querySelector('.minus-icon');
+    var link = document.querySelector('.minus-icon-common');
         if (link) {
             var target = link.getAttribute('data-id');
             console.log(target);
@@ -71,7 +71,7 @@ function minusQuestionColumn()
     plus_html = "<div class='add-icon' onclick='addQuestionColumn()' data-id='"+number+"'>"
                     +"<a><i class='fas fa-plus'></i></a>"
                 +"</div>";
-    minus_html = "<div class='minus-icon' onclick='minusQuestionColumn()' data-id='"+number+"'>"
+    minus_html = "<div class='minus-icon-common' onclick='minusQuestionColumn()' data-id='"+number+"'>"
                     +"<a><i class='fas fa-minus'></i></a>"
                 +"</div>";
 
