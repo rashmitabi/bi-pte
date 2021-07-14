@@ -18,7 +18,7 @@
           <div class="form-group row">
             <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Select Role</label>
             <div class="col-12 col-md-7 col-xl-7 col-sm-12">
-              <select class="user-type usertype_form" id="type" name="type">
+              <select  class="custom-select usertype_form" id="type" name="type">
                 <option selected>Select User Type</option>
                 <option value="2" {{ (old('type') == '2')?'selected':''}}>Branch Admin</option>
                 <option value="3" {{ (old('type') == '3')?'selected':''}}>Student</option>
@@ -52,7 +52,7 @@
             <div class="form-group row">
               <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Branch Admin</label>
               <div class="col-12 col-md-7 col-xl-7 col-sm-12">
-                <select class="" name="branch_admin">
+                <select class="custom-select" name="branch_admin">
                   <option selected disabled>Select Branch Admin</option>
                   @foreach($admins as $admin)
                     <option value="{{ $admin->id }}" {{ (old('branch_admin') == $admin->id)?'selected':''}} >{{ isset($admin->institue->institute_name)?$admin->institue->institute_name:'' }}</option>
@@ -117,7 +117,7 @@
             <div class="form-group row">
               <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Select Status</label>
               <div class="col-12 col-md-7 col-xl-7 col-sm-12">
-                <select class="user-type" name="sstatus">
+                <select class="custom-select" name="sstatus">
                   <option value="P" {{ (old('sstatus') == 'P')?'checked':'' }}>Pending</option>
                   <option value="A"  {{ (old('sstatus') == 'A')?'checked':'' }}>Active</option>
                   <option value="R"  {{ (old('sstatus') == 'R')?'checked':'' }}>Reject</option>
@@ -168,7 +168,7 @@
             <div class="form-group row">
               <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">State</label>
               <div class="col-12 col-md-7 col-xl-7 col-sm-12">
-                <select class="form-control" name="sstate" id="sstate">
+                <select class="custom-select" class="form-control" name="sstate" id="sstate">
                     <option selected disabled>Select State</option>
                     @foreach(states() as $key => $state)
                       <option value="{{ $state }}" data-code="{{ $key }}" {{ (old('sstate') == $state)?'selected':''}}>{{ $state }}</option>
@@ -276,7 +276,7 @@
             <div class="form-group row">
               <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Status</label>
               <div class="col-12 col-md-7 col-xl-7 col-sm-12">
-                <select class="" name="status">
+                <select class="custom-select" name="status">
                   <option value="P" {{ (old('status') == 'P')?'selected':'' }}>Pending</option>
                   <option value="A"  {{ (old('status') == 'A')?'selected':'' }}>Active</option>
                   <option value="R"  {{ (old('status') == 'R')?'selected':'' }}>Reject</option>
@@ -313,7 +313,7 @@
             <div class="form-group row">
               <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">State</label>
               <div class="col-12 col-md-7 col-xl-7 col-sm-12">
-                <select class="form-control" name="istate" id="istate">
+                <select class="custom-select" class="form-control" name="istate" id="istate">
                   <option selected disabled>Select State</option>
                   @foreach(states() as $key => $state)
                     <option value="{{ $state }}" data-code="{{ $key }}" {{ (old('sstate') == $state)?'selected':''}}>{{ $state }}</option>

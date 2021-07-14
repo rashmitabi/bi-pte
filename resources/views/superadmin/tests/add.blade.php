@@ -18,7 +18,7 @@
                     <div class="form-group row">
                         <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Select Test Type</label>
                         <div class="col-12 col-md-7 col-xl-7 col-sm-12">
-                            <select class="user-type" name="type">
+                            <select class="user-type custom-select" name="type">
                                 <option selected disabled>Select Test Type</option>
                                 <option value="M" {{ (old('type') == 'M')?'selected':''}} >Mock</option>
                                 <option value="P" {{ (old('type') == 'P')?'selected':''}} >Practice</option>
@@ -41,7 +41,7 @@
                     <div class="form-group row">
                         <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Select Subject</label>
                         <div class="col-12 col-md-7 col-xl-7 col-sm-12">
-                            <select class="user-type" name="subject">
+                            <select  class="user-type custom-select" name="subject">
                                 <option selected disabled>Select Subject Type</option>
                                 @foreach($subjects as $subject)
                                     <option value="{{ $subject->id }}" {{ (old('subject') == $subject->id)?'selected':'' }}>{{ $subject->subject_name }}</option>

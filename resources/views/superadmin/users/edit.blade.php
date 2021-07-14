@@ -20,7 +20,7 @@
         <div class="form-group row">
           <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Branch Admin</label>
           <div class="col-12 col-md-7 col-xl-7 col-sm-12">
-            <select class="" name="branch_admin" id="branch_admin">
+            <select class="custom-select" name="branch_admin" id="branch_admin">
               @foreach($admins as $admin)
                 <option value="{{ $admin->id }}" {{ ($user->parent_user_id == $admin->id)?'selected':'' }}>{{ isset($admin->institue->institute_name)?$admin->institue->institute_name:'' }}</option>
               @endforeach
@@ -120,7 +120,7 @@
         <div class="form-group row">
           <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">State</label>
           <div class="col-12 col-md-7 col-xl-7 col-sm-12">
-              <select name="sstate" id="sstate" class="form-control">
+              <select class="custom-select" name="sstate" id="sstate" class="form-control">
                 @foreach(states() as $key => $state)
                   <option value="{{ $state }}" data-code="{{ $key }}" {{ ($user->state == $state)?'selected':''}}>{{ $state }}</option>
                 @endforeach
@@ -251,7 +251,7 @@
         <div class="form-group row">
           <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">State</label>
           <div class="col-12 col-md-7 col-xl-7 col-sm-12">
-            <select name="istate" id="istate">
+            <select class="custom-select" name="istate" id="istate">
                   @foreach(states() as $key => $state)
                     <option value="{{ $state }}" data-code="{{ $key }}" {{ ($user->state == $state)?'selected':''}}>{{ $state }}</option>
                   @endforeach

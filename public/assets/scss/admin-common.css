@@ -2007,6 +2007,10 @@ body {
   font-weight: 600;
 }
 
+.modal-body .row .user-form .form-group .label {
+  margin-top: 6px;
+}
+
 .modal-body .row .user-form .form-input input {
   border: none;
 }

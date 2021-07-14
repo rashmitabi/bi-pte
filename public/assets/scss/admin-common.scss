@@ -464,6 +464,7 @@ body {
                          }
                     }
                }
+               
           }
          .form-control{
             border: 1px solid #0C213A;
@@ -1055,6 +1056,9 @@ body {
                     margin-bottom: 0px;
                     .col-form-label{
                          font-weight: $fw-600;
+                    }
+                    .label{
+                         margin-top: 6px;
                     }
                }
                .form-input{
