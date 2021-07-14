@@ -1,5 +1,6 @@
 @extends('layouts.appSuperAdmin')
 @section('content')
+
 <!-- Page Content  -->
 <div id="content">
   <section class="top-title-button mb-3">
@@ -54,7 +55,7 @@
                 <select class="" name="branch_admin">
                   <option selected disabled>Select Branch Admin</option>
                   @foreach($admins as $admin)
-                    <option value="{{ $admin->id }}" >{{ isset($admin->institue->institute_name)?$admin->institue->institute_name:'' }}</option>
+                    <option value="{{ $admin->id }}" {{ (old('branch_admin') == $admin->id)?'selected':''}} >{{ isset($admin->institue->institute_name)?$admin->institue->institute_name:'' }}</option>
                   @endforeach
                 </select>
               </div>
@@ -194,6 +195,15 @@
               </div>
             </div> -->
             <div class="form-group row">
+              <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">City</label>
+              <div class="col-12 col-md-7 col-xl-7 col-sm-12">
+                <input type="text" name="scity" id="scity" value="{{ old('scity') }}" class="form-control " placeholder="Enter City">
+                @if($errors->has('scity'))
+                  <span class="error-msg">{{$errors->first('scity')}}</span>
+                @endif
+              </div>
+            </div>
+            <div class="form-group row">
               <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Validity</label>
               <div class="col-12 col-md-7 col-xl-7 col-sm-12">
                 <input type="text" name="svalidity" id="svalidity" value="{{ old('svalidity') }}" class="form-control " placeholder="Validity">
@@ -320,6 +330,15 @@
                 <input type="text" name="istate_code" id="istate_code" value="{{ old('istate_code') }}" class="form-control " placeholder="Enter State Code" readonly>
                 @if($errors->has('istate_code'))
                   <span class="error-msg">{{$errors->first('istate_code')}}</span>
+                @endif
+              </div>
+            </div>
+            <div class="form-group row">
+              <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">City</label>
+              <div class="col-12 col-md-7 col-xl-7 col-sm-12">
+                <input type="text" name="icity" id="icity" value="{{ old('icity') }}" class="form-control " placeholder="Enter City">
+                @if($errors->has('icity'))
+                  <span class="error-msg">{{$errors->first('icity')}}</span>
                 @endif
               </div>
             </div>

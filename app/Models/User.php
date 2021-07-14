@@ -36,6 +36,7 @@ class User extends Authenticatable
         'validity',
         'state',
         'state_code',
+        'city',
         'gstin',
         'status'
     ];

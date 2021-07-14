@@ -135,6 +135,13 @@
             <span class="error-msg" id="sstate_codeError"></span>
           </div>
         </div>
+        <div class="form-group row">
+          <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">City</label>
+          <div class="col-12 col-md-7 col-xl-7 col-sm-12">
+            <input type="text" name="scity" id="scity" value="{{ $user->city }}" class="form-control " placeholder="Enter City">
+            <span class="error-msg" id="scityError"></span>
+          </div>
+        </div>
         <!-- <div class="form-group row">
           <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">GSTIN</label>
           <div class="col-12 col-md-7 col-xl-7 col-sm-12">
@@ -259,6 +266,13 @@
             <span class="error-msg" id="istate_codeError"></span>
           </div>
         </div>
+        <div class="form-group row">
+              <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">City</label>
+              <div class="col-12 col-md-7 col-xl-7 col-sm-12">
+                <input type="text" name="icity" id="icity" value="{{ $user->city }}" class="form-control " placeholder="Enter City">
+                <span class="error-msg" id="icityError"></span>
+              </div>
+            </div>
         <div class="form-group row">
           <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">GSTIN</label>
           <div class="col-12 col-md-7 col-xl-7 col-sm-12">

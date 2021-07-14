@@ -276,6 +276,7 @@ $(document).ready(function() {
     $('#sresidenceError').text('');
     $('#sstateError').text('');
     $('#sstate_codeError').text('');
+    $('#scityError').text('');
     // $('#sgstinError').text('');
     $('#svalidityError').text('');
 
@@ -292,6 +293,8 @@ $(document).ready(function() {
     $('#welcome_msgError').text('');
     $('#istateError').text('');
     $('#istate_codeError').text('');
+    $('#icityError').text('');
+    
     $('#igstinError').text('');
     $('#logoError').text('');
     $('#bannerError').text('');
@@ -328,6 +331,7 @@ $(document).ready(function() {
         $('#sresidenceError').text(response.responseJSON.errors.sresidence);
         $('#sstateError').text(response.responseJSON.errors.sstate);
         $('#sstate_codeError').text(response.responseJSON.errors.sstate_code);
+        $('#scityError').text(response.responseJSON.errors.scity);
         // $('#sgstinError').text(response.responseJSON.errors.sgstin);
         $('#svalidityError').text(response.responseJSON.errors.svalidity);
 
@@ -344,6 +348,8 @@ $(document).ready(function() {
         $('#welcome_msgError').text(response.responseJSON.errors.welcome_msg);
         $('#istateError').text(response.responseJSON.errors.istate);
         $('#istate_codeError').text(response.responseJSON.errors.istate_code);
+        $('#icityError').text(response.responseJSON.errors.icity);
+        
         $('#igstinError').text(response.responseJSON.errors.igstin);
         $('#logoError').text(response.responseJSON.errors.logo);
         $('#bannerError').text(response.responseJSON.errors.banner);
