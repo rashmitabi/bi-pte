@@ -29,16 +29,16 @@ function addQuestionColumn()
                         +"<div class='col-7 p-0'>"
                             +"<input type='text' class='form-control' name='"+correct_option_id+"' id='"+correct_option_id+"' placeholder='"+correct_placeholder+"'>"
                         +"</div>"
+                        +"<div class='minus-icon-common' onclick='minusQuestionColumn()' data-id='"+newNumber+"'>"
+                            +"<a><i class='fas fa-minus'></i></a>"
+                        +"</div>"
                         +"<div class='add-icon' onclick='addQuestionColumn()' data-id='"+newNumber+"'>"
                             +"<a><i class='fas fa-plus'></i></a>"
-                        +"</div>"
-                        +"<div class='minus-icon' onclick='minusQuestionColumn()' data-id='"+newNumber+"'>"
-                            +"<a><i class='fas fa-minus'></i></a>"
                         +"</div>"
                     +"</div>"
                 +"</div>";
     $(".add-icon").remove();
-    $(".minus-icon").remove();
+    $(".minus-icon-common").remove();
     $("#fill_in_blanks .white-bg:last").after(html);
     $('#fill_in_blanks').validate();
 
@@ -60,7 +60,7 @@ function addQuestionColumn()
 function minusQuestionColumn()
 {
     console.log("hello");
-    var link = document.querySelector('.minus-icon');
+    var link = document.querySelector('.minus-icon-common');
         if (link) {
             var target = link.getAttribute('data-id');
             console.log(target);
@@ -74,7 +74,7 @@ function minusQuestionColumn()
     plus_html = "<div class='add-icon' onclick='addQuestionColumn()' data-id='"+prv_number+"'>"
                     +"<a><i class='fas fa-plus'></i></a>"
                     +"</div>";
-    minus_html = "<div class='minus-icon' onclick='minusQuestionColumn()' data-id='"+prv_number+"'>"
+    minus_html = "<div class='minus-icon-common' onclick='minusQuestionColumn()' data-id='"+prv_number+"'>"
                     +"<a><i class='fas fa-minus'></i></a>"
                 +"</div>";
     
@@ -82,11 +82,11 @@ function minusQuestionColumn()
     $(ans_option_id).rules("remove", "comma");
     $(correct_option_id).rules("remove", "required");
     $(".dynamicblock"+target).remove();
-    if(prv_number == '8'){
+    if(prv_number == '1'){
         $(".subblock"+prv_number).append(plus_html);
     }else{
-        $(".subblock"+prv_number).append(plus_html);
         $(".subblock"+prv_number).append(minus_html);
+        $(".subblock"+prv_number).append(plus_html);
     }
     $("#slug").val(prv_number);
 }

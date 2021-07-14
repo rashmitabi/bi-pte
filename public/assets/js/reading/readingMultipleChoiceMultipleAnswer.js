@@ -21,11 +21,11 @@ function addQuestionColumn()
                     +"<div class='col-12 col-md-7 col-xl-7 col-sm-12 p-0'>"
                         +"<input type='text' class='form-control' name='"+ans_option_id+"' id='"+ans_option_id+"' placeholder='"+ans_placeholder+"'>"
                     +"</div>"
-                    +"<div class='plus-icon' onclick='addQuestionColumn()' data-id='"+number+"'>"
-                        +"<a><i class='fas fa-plus'></i></a>"
-                    +"</div>"
                     +"<div class='minus-icon' onclick='removeQuestionColumn()' data-id='"+number+"'>"
                         +"<a><i class='fas fa-minus'></i></a>"
+                    +"</div>"
+                    +"<div class='plus-icon' onclick='addQuestionColumn()' data-id='"+number+"'>"
+                        +"<a><i class='fas fa-plus'></i></a>"
                     +"</div>"
                 +"</div>";
     $(".minus-icon").remove();
@@ -63,7 +63,7 @@ function removeQuestionColumn(){
     
     $("#ans_options_"+target).rules("remove", "required");
     $(".question-block"+target).remove();
-    if(number == 'E'){
+    if(number == 'A'){
         $(".question-block"+number).append(plus_html);
     }else{
         $(".question-block"+number).append(plus_html);
@@ -91,18 +91,6 @@ $(document).ready(function() {
             ans_options_A:{
                 required: true
             },
-            ans_options_B:{
-                required: true
-            },
-            ans_options_C:{
-                required: true
-            },
-            ans_options_D:{
-                required: true
-            },
-            ans_options_E:{
-                required: true
-            },
             correct_options:{
                 required: true,
                 coreectmatch:true
@@ -117,18 +105,6 @@ $(document).ready(function() {
             },
             ans_options_A: {
                 required: "Ans Options A is required"
-            },
-            ans_options_B: {
-                required: "Ans Options B is required"
-            },
-            ans_options_C: {
-                required: "Ans Options C is required"
-            },
-            ans_options_D: {
-                required: "Ans Options D is required"
-            },
-            ans_options_E: {
-                required: "Ans Options E is required"
             },
             correct_options: {
                 required: "Correct Options is required"
