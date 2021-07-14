@@ -28,11 +28,11 @@ function addQuestionColumn()
                             +"<div class='col-12 col-md-7 col-xl-7 col-sm-12 p-0'>"
                                 +"<input type='text' class='form-control' name='"+ansOptionId+"' id='"+ansOptionId+"' placeholder='Which of the Following Are True Statements?'>"
                             +"</div>"
+                            +"<div class='minus-icon' onclick='minusQuestionColumn()' data-qid='"+alpha+"' data-aid='"+number+"'>"
+                                +"<a><i class='fas fa-minus'></i></a>"
+                            +"</div>"
                             +"<div class='plus-icon' onclick='addQuestionColumn()' data-qid='"+alpha+"' data-aid='"+number+"'>"
                                 +"<a><i class='fas fa-plus'></i></a>"
-                            +"</div>"
-                            +"<div class='minus-icon' onclick='minusQuestionColumn()' data-qid='"+alpha+"' data-aid='"+number+"'>"
-                                    +"<a><i class='fas fa-minus'></i></a>"
                             +"</div>"
                         +"</div>";
     var correctOptionHtml = "<div class='form-group mb-3 row dynamicblock"+number+"'>"
@@ -96,11 +96,11 @@ function minusQuestionColumn()
     $(".dynamicblock"+target).remove();
     $(".dynamicblock"+anstarget).remove();
 
-    if(alpha == 'E'){
+    if(alpha == 'A'){
         $(".dynamicblock"+alpha).append(plus_html);
     }else{
-        $(".dynamicblock"+alpha).append(plus_html);
         $(".dynamicblock"+alpha).append(minus_html);
+        $(".dynamicblock"+alpha).append(plus_html);
     }
     $("#numberSlug").val(number);
     $("#alphaSlug").val(alpha);
@@ -111,63 +111,15 @@ $(document).ready(function() {
             ans_options_A:{
                 required: true
             },
-            ans_options_B:{
-                required: true
-            },
-            ans_options_C:{
-                required: true
-            },
-            ans_options_D:{
-                required: true
-            },
-            ans_options_E:{
-                required: true
-            },
             correct_options1:{
                 required: true
             },
-            correct_options2:{
-                required: true
-            },
-            correct_options3:{
-                required: true
-            },
-            correct_options4:{
-                required: true
-            },
-            correct_options5:{
-                required: true
-            }
         },
         messages : {
             ans_options_A: {
                 required: "Ans Options A is required"
             },
-            ans_options_B: {
-                required: "Ans Options B is required"
-            },
-            ans_options_C: {
-                required: "Ans Options C is required"
-            },
-            ans_options_D: {
-                required: "Ans Options D is required"
-            },
-            ans_options_E: {
-                required: "Ans Options E is required"
-            },
             correct_options1: {
-                required: "Correct options is required"
-            },
-            correct_options2: {
-                required: "Correct options is required"
-            },
-            correct_options3: {
-                required: "Correct options is required"
-            },
-            correct_options4: {
-                required: "Correct options is required"
-            },
-            correct_options5: {
                 required: "Correct options is required"
             },
         },

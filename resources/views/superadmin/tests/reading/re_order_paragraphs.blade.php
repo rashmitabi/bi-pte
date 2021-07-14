@@ -21,36 +21,12 @@
                        @csrf
                        <div class=" col-11 mt-5 ml-3 white-bg common-col" id="answerBlog">
                            @if(!isset($questions->name))
-                              <div class="form-group mb-3 row">
+                              <div class="form-group mb-3 row dynamicblockA">
                                  <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label custom-label">Ans Options A</label>
                                  <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
-                                    <input type="text" class="form-control " name="ans_options_A" id="ans_options_A" placeholder="it Seems that The Lack of Psychological Reward is the Reason for their Disatisfaction.">
+                                    <input type="text" class="form-control " name="ans_options_A" id="ans_options_A" placeholder="Which of the Following Are True Statements?">
                                  </div>
-                              </div>
-                              <div class="form-group mb-3 row">
-                                 <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label custom-label ">Ans Options B</label>
-                                 <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
-                                    <input type="text" class="form-control " name="ans_options_B" id="ans_options_B" placeholder="it Seems that The Lack of Psychological Reward is the Reason for their Disatisfaction.">
-                                 </div>
-                              </div>
-                              <div class="form-group mb-3 row">
-                                 <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label custom-label">Ans Options C</label>
-                                 <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
-                                    <input type="text" class="form-control " name="ans_options_C" id="ans_options_C" placeholder="Which of the Following Are True Statements?">
-                                 </div>
-                              </div>
-                              <div class="form-group mb-3 row">
-                                 <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label custom-label ">Ans Options D</label>
-                                 <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
-                                    <input type="text" class="form-control " name="ans_options_D" id="ans_options_D" placeholder="Which of the Following Are True Statements?">
-                                 </div>
-                              </div>
-                              <div class="form-group mb-3 row dynamicblockE">
-                                 <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label custom-label">Ans Options E</label>
-                                 <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
-                                    <input type="text" class="form-control " name="ans_options_E" id="ans_options_E" placeholder="Which of the Following Are True Statements?">
-                                 </div>
-                                 <div class="plus-icon" onclick="addQuestionColumn()" data-qid="E" data-aid="5">
+                                 <div class="plus-icon" onclick="addQuestionColumn()" data-qid="A" data-aid="1">
                                     <a><i class="fas fa-plus"></i></a>
                                  </div>
                               </div>
@@ -84,34 +60,10 @@
                        </div>
                         <div class=" col-11 mt-4 ml-3 white-bg common-col" id="correctBlog">
                            @if(!isset($questions->name))
-                              <div class="form-group mb-3 row">
+                              <div class="form-group mb-3 row dynamicblock1">
                                  <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label custom-label">Correct Options 1</label>
                                  <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
                                     <input type="text" class="form-control " name="correct_options1" id="correct_options1" placeholder="it Seems that The Lack of Psychological Reward is the Reason for their Disatisfaction.">
-                                 </div>
-                              </div>
-                              <div class="form-group mb-3 row">
-                                 <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label custom-label ">Correct Options 2</label>
-                                 <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
-                                    <input type="text" class="form-control " name="correct_options2" id="correct_options2" placeholder="it Seems that The Lack of Psychological Reward is the Reason for their Disatisfaction.">
-                                 </div>
-                              </div>
-                              <div class="form-group mb-3 row">
-                                 <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label custom-label">Correct Options 3</label>
-                                 <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
-                                    <input type="text" class="form-control " name="correct_options3" id="correct_options3" placeholder="it Seems that The Lack of Psychological Reward is the Reason for their Disatisfaction.">
-                                 </div>
-                              </div>
-                              <div class="form-group mb-3 row">
-                                 <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label custom-label ">Correct Options 4</label>
-                                 <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
-                                    <input type="text" class="form-control " name="correct_options4" id="correct_options4" placeholder="it Seems that The Lack of Psychological Reward is the Reason for their Disatisfaction.">
-                                 </div>
-                              </div>
-                              <div class="form-group mb-3 row dynamicblock5">
-                                 <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label custom-label">Correct Options 5</label>
-                                 <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
-                                    <input type="text" class="form-control " name="correct_options5" id="correct_options5" placeholder="it Seems that The Lack of Psychological Reward is the Reason for their Disatisfaction.">
                                  </div>
                               </div>
                               @else
