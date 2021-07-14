@@ -47,9 +47,6 @@
                                     <div class="add-icon" onclick="addQuestionColumn()" data-id="1">
                                         <a><i class="fas fa-plus"></i></a>
                                     </div>
-                                    <div class="minus-icon-common" onclick="minusQuestionColumn()" data-id="1">
-                                            <a><i class="fas fa-minus"></i></a>
-                                    </div>
                                 </div>
                             </div>
                             @else
