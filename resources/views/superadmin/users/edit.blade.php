@@ -70,14 +70,10 @@
             <span class="error-msg" id="mobilenoError"></span>
           </div>
         </div>
-        <div class="form-group row mb-2">
-          <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Select Status</label>
-          <div class="col-12 col-md-7 col-xl-7 col-sm-12">
-            <select class="custom-select" name="sstatus" id="sstatus">
-              <option value="P" {{ ($user->status == 'P')?'selected':'' }}>Pending</option>
-              <option value="A"  {{ ($user->status == 'A')?'selected':'' }}>Active</option>
-              <option value="R"  {{ ($user->status == 'R')?'selected':'' }}>Reject</option>
-            </select>
+        <div class="form-group row">
+          <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Status</label>
+          <div class="col-12 col-md-7 col-xl-7 col-sm-12 toggle-switch">
+              <input type="checkbox" id="sstatus" name="sstatus" value="A" {{ ($user->status == 'A')?'checked':''}} /><label for="sstatus">Toggle</label>
           </div>
         </div>
         <div class="form-group row mb-2">
@@ -211,13 +207,9 @@
           </div>
         </div>
         <div class="form-group row">
-          <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Status</label>
-          <div class="col-12 col-md-7 col-xl-7 col-sm-12">
-            <select class="custom-select" id="status" name="status">
-              <option value="P" {{ ( $user->status == 'P')?'selected':'' }}>Pending</option>
-              <option value="A"  {{ ( $user->status == 'A')?'selected':'' }}>Active</option>
-              <option value="R"  {{ ( $user->status == 'R')?'selected':'' }}>Reject</option>
-            </select>
+          <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Status</label>
+          <div class="col-12 col-md-7 col-xl-7 col-sm-12 toggle-switch">
+              <input type="checkbox" id="istatus" name="istatus" value="A" {{ ($user->status == 'A')?'checked':''}} /><label for="istatus">Toggle</label>
           </div>
         </div>
         <div class="form-group row">

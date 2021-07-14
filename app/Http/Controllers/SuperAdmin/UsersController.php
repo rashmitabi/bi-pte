@@ -585,7 +585,6 @@ class UsersController extends Controller
                 'semail'=>'required|email|unique:users,email,'.$id.'|max:255',
                 'dob' =>'required|before:18 years ago',
                 'mobileno' =>'required|max:20',
-                'sstatus'=>'required|in:P,A,R',
                 'gender'=>'required|in:M,F',
                 'scitizen'=>'required|min:2|max:255',
                 'sresidence'=>'required|min:2|max:255',
@@ -601,8 +600,6 @@ class UsersController extends Controller
                 'semail.email'=> 'Email is must be email format',
                 'semail.unique'=> 'Email has already taken',
                 'semail.max'=> 'Email maximum length allow 255',
-                'sstatus.required'=>'Status is required',
-                'sstatus.in'=> 'Status only allow given values',
                 'scitizen.required'=> 'Country Citizen is required',
                 'scitizen.min'=>'Country Citizen min length at least 2',
                 'scitizen.max'=>'Country Citizen maximum length allow 255',
@@ -624,7 +621,7 @@ class UsersController extends Controller
                 'simage.mimes'=>'Image must be file jpeg,png,jpg format'
             ]);
             $input  = \Arr::except($request->all(),array('_token'));
-
+                
             if ($image = $request->file('simage')) {
                 $destinationPath = 'assets/images/profile/';
                 $fileNameToStore = date('YmdHis') . "." . $image->getClientOriginalExtension();
@@ -647,7 +644,6 @@ class UsersController extends Controller
                     'city'=>$input['scity'],
                     // 'gstin' => $input['sgstin'],
                     'validity' => $input['svalidity'],
-                    'status' => $input['sstatus'],
                     'ip_address' => '',
                     'latitude' => '',
                     'longitude' => ''
@@ -671,7 +667,6 @@ class UsersController extends Controller
                     'city'=>$input['scity'],
                     // 'gstin' => $input['sgstin'],
                     'validity' => $input['svalidity'],
-                    'status' => $input['sstatus'],
                     'ip_address' => '',
                     'latitude' => '',
                     'longitude' => ''
@@ -679,6 +674,11 @@ class UsersController extends Controller
 
             }
 
+            if(isset($input['sstatus'])){
+                $user_input['status'] = $input['sstatus'];
+            }else{
+                $user_input['status'] = 'P';
+            }
             
             $result = User::where('id',$id)->update($user_input);
         }else if($type == 2){
@@ -689,7 +689,6 @@ class UsersController extends Controller
                 'iemail'=>'required|email|unique:users,email,'.$id.'|max:255',
                 'country_code'=>'required|max:5',
                 'phone_no' =>'required|max:20',
-                'status'=>'required|in:P,A,R',
                 'students_allowed' =>'required',
                 'subdomain' =>'required|max:255',
                 'domain'=>'required|max:255',
@@ -759,7 +758,6 @@ class UsersController extends Controller
                     'city'=>$input['icity'],
                     'gstin' => $input['igstin'],
                     'validity' => $input['validity'],
-                    'status' => $input['status'],
                     'ip_address' => '',
                     'latitude' => '',
                     'longitude' => ''
@@ -776,13 +774,16 @@ class UsersController extends Controller
                     'city'=>$input['icity'],
                     'gstin' => $input['igstin'],
                     'validity' => $input['validity'],
-                    'status' => $input['status'],
                     'ip_address' => '',
                     'latitude' => '',
                     'longitude' => ''
                 );
             }
-
+            if(isset($input['istatus'])){
+                $user_input['status'] = $input['istatus'];
+            }else{
+                $user_input['status'] = 'P';
+            }
             $result = User::where('id',$id)->update($user_input);
 
             if(isset($logo) && isset($banner)){
