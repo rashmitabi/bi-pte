@@ -97,6 +97,24 @@
               </div>
             </div>
             <div class="form-group row">
+              <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Password</label>
+              <div class="col-12 col-md-7 col-xl-7 col-sm-12">
+                <input type="password" name="spassword" value="{{ old('spassword') }}" class="form-control" placeholder="Enter Password">
+                @if($errors->has('spassword'))
+                  <span class="error-msg">{{$errors->first('spassword')}}</span>
+                @endif
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Confirm Password</label>
+              <div class="col-12 col-md-7 col-xl-7 col-sm-12">
+                <input type="password" name="confirm_spassword" value="{{ old('confirm_spassword') }}" class="form-control" placeholder="Enter Confirm Password">
+                @if($errors->has('confirm_spassword'))
+                  <span class="error-msg">{{$errors->first('confirm_spassword')}}</span>
+                @endif
+              </div>
+            </div>
+            <div class="form-group row">
               <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Date of Birth</label>
               <div class="col-12 col-md-7 col-xl-7 col-sm-12">
                 <input type="text" name="dob" id="dob" value="{{ old('dob') }}" class="form-control " placeholder="Select Date of Birth">
@@ -252,6 +270,24 @@
                 <input type="email" name="iemail" value="{{ old('iemail') }}" data-id="" class="form-control unique-iemail" data-action="store" data-unique-type="email" data-url="{{ route('superadmin-check-unique-validation') }}"  placeholder="Enter Email id">
                 @if($errors->has('iemail'))
                   <span class="error-msg">{{$errors->first('iemail')}}</span>
+                @endif
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Password</label>
+              <div class="col-12 col-md-7 col-xl-7 col-sm-12">
+                <input type="password" name="ipassword" value="{{ old('ipassword') }}" class="form-control" placeholder="Enter Password">
+                @if($errors->has('ipassword'))
+                  <span class="error-msg">{{$errors->first('ipassword')}}</span>
+                @endif
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Confirm Password</label>
+              <div class="col-12 col-md-7 col-xl-7 col-sm-12">
+                <input type="password" name="confirm_ipassword" value="{{ old('confirm_ipassword') }}" class="form-control" placeholder="Enter Confirm Password">
+                @if($errors->has('confirm_ipassword'))
+                  <span class="error-msg">{{$errors->first('confirm_ipassword')}}</span>
                 @endif
               </div>
             </div>

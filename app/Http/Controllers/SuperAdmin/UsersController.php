@@ -295,6 +295,8 @@ class UsersController extends Controller
                 'lname' => 'required|min:3|max:100',
                 'uname'=>'required|unique:users,name|max:255',
                 'semail'=>'required|email|unique:users,email|max:255',
+                'spassword'=>'required|min:6|max:20',
+                'confirm_spassword'=>'required|same:spassword',
                 'dob' =>'required|before:18 years ago',
                 'mobileno' =>'required|digits:10',
                 'sstatus'=>'required|in:P,A,R',
@@ -312,6 +314,11 @@ class UsersController extends Controller
                 'semail.email'=> 'Email is must be email format',
                 'semail.unique'=> 'Email has already taken',
                 'semail.max'=> 'Email maximum length allow 255',
+                'spassword.required'=>'Password is required',
+                'spassword.min'=>'Password min length at least 6',
+                'spassword.max'=>'Password maximum length allow 20',
+                'confirm_spassword.required'=>'Confirm password is required',
+                'confirm_spassword.same'=>'Confirm password not match with password',
                 'sstatus.required'=>'Status is required',
                 'sstatus.in'=> 'Status only allow given values',
                 'scitizen.required'=> 'Country Citizen is required',
@@ -343,7 +350,7 @@ class UsersController extends Controller
                 $fileNameToStore = date('YmdHis') . "." . $image->getClientOriginalExtension();
                 $image->move($destinationPath, $fileNameToStore);
             }
-
+            $password = Hash::make($input['spassword']);
             $user_input = array(
                 'role_id' => $input['type'],
                 'parent_user_id' => $input['branch_admin'],
@@ -351,6 +358,7 @@ class UsersController extends Controller
                 'last_name' => $input['lname'],
                 'name' => $input['uname'],
                 'email' => $input['semail'],
+                'password'=>$password,
                 'mobile_no' => $input['mobileno'],
                 'date_of_birth' => $input['dob'],
                 'profile_image' => isset($fileNameToStore)?$fileNameToStore:'',
@@ -375,6 +383,8 @@ class UsersController extends Controller
                 'iuname' => 'required|unique:users,name|max:255',
                 'iname'=>'required|min:2|max:255',
                 'iemail'=>'required|email|unique:users,email|max:255',
+                'ipassword'=>'required|min:6|max:20',
+                'confirm_ipassword'=>'required|same:ipassword',
                 'country_code'=>'required|max:5',
                 'phone_no' =>'required|min:6|max:20',
                 'status'=>'required|in:P,A,R',
@@ -405,6 +415,11 @@ class UsersController extends Controller
                 'iemail.email'=>'Email must be email format',
                 'iemail.unique'=>'Email has already taken',
                 'iemail.max'=>'Email maximum length allow 255',
+                'ipassword.required'=>'Password is required',
+                'ipassword.min'=>'Password min length at least 6',
+                'ipassword.max'=>'Password maximum length allow 20',
+                'confirm_ipassword.required'=>'Confirm password is required',
+                'confirm_ipassword.same'=>'Confirm password not match with password',
                 'istate.required'=>'State is required',
                 'istate.min'=>'State min length at least 2',
                 'istate.max'=>'State maximum length allow 100',
@@ -422,7 +437,7 @@ class UsersController extends Controller
                 'bimage.max'=>'Background image maximum length allow 2048'
                ]);
             $input  = \Arr::except($request->all(),array('_token'));
-
+            $password = Hash::make($input['ipassword']);
             if ($image = $request->file('logo')) {
                 $destinationPath = 'assets/images/institute/';
                 $logo = date('YmdHis') ."_logo". "." . $image->getClientOriginalExtension();
@@ -444,6 +459,7 @@ class UsersController extends Controller
                     'parent_user_id' => 0,
                     'name' => $input['iuname'],
                     'email' => $input['iemail'],
+                    'password'=> $password,
                     'mobile_no' => $input['phone_no'],
                     'profile_image' => $profile,
                     'state' => $input['istate'],
@@ -462,6 +478,7 @@ class UsersController extends Controller
                     'parent_user_id' => 0,
                     'name' => $input['iuname'],
                     'email' => $input['iemail'],
+                    'password'=> $password,
                     'mobile_no' => $input['phone_no'],
                     'profile_image' => '',
                     'state' => $input['istate'],
