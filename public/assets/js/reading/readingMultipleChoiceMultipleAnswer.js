@@ -66,8 +66,8 @@ function removeQuestionColumn(){
     if(number == 'A'){
         $(".question-block"+number).append(plus_html);
     }else{
-        $(".question-block"+number).append(plus_html);
         $(".question-block"+number).append(minus_html);
+        $(".question-block"+number).append(plus_html);
     }
     $("#slug").val(number);
 }
