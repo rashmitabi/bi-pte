@@ -7,13 +7,13 @@
           <div class="col-12">
             <div class="profile-img">
               @if($user->profile_image != '')
-                <img src="{{ asset('assets/images/profile/'.$user->profile_image) }}">
+                <img src="{{ asset('assets/images/profile/'.$user->profile_image) }}" id="output">
               @else
-                <img src="{{ asset('assets/images/profile-img-2.png') }}">
+                <img src="{{ asset('assets/images/profile-img-2.png') }}" id="output">
               @endif
             </div>
             <div class="edit-profile-btn">
-              <a><input type="file" name="simage" id="" class="custom-file-input position-absolute"><i class="fas fa-pen icon"></i></a>
+              <a><input type="file" name="simage" id="" onchange="readURL(event)" class="custom-file-input position-absolute"><i class="fas fa-pen icon"></i></a>
             </div>
           </div>
         </div>
@@ -160,13 +160,13 @@
           <div class="col-12">
             <div class="profile-img">
               @if($user->profile_image != '')
-                <img src="{{ asset('assets/images/profile/'.$user->profile_image) }}">
+                <img src="{{ asset('assets/images/profile/'.$user->profile_image) }}" id="output">
               @else
-                <img src="{{ asset('assets/images/profile-img-2.png') }}">
+                <img src="{{ asset('assets/images/profile-img-2.png') }}" id="output">
               @endif
             </div>
             <div class="edit-profile-btn">
-              <a><input type="file" name="iimage" id="" class="custom-file-input position-absolute"><i class="fas fa-pen icon"></i></a>
+              <a><input type="file" name="iimage" id="" onchange="readURL(event)" class="custom-file-input position-absolute"><i class="fas fa-pen icon"></i></a>
             </div>
           </div>
         </div>
