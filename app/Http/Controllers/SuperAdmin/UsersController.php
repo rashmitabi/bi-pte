@@ -299,7 +299,6 @@ class UsersController extends Controller
                 'confirm_spassword'=>'required|same:spassword',
                 'dob' =>'required|before:18 years ago',
                 'mobileno' =>'required|digits:10',
-                'sstatus'=>'required|in:P,A,R',
                 'gender'=>'required|in:M,F',
                 'scitizen'=>'required|min:2|max:255',
                 'sresidence'=>'required|min:2|max:255',
@@ -319,8 +318,6 @@ class UsersController extends Controller
                 'spassword.max'=>'Password maximum length allow 20',
                 'confirm_spassword.required'=>'Confirm password is required',
                 'confirm_spassword.same'=>'Confirm password not match with password',
-                'sstatus.required'=>'Status is required',
-                'sstatus.in'=> 'Status only allow given values',
                 'scitizen.required'=> 'Country Citizen is required',
                 'scitizen.min'=>'Country Citizen min length at least 2',
                 'scitizen.max'=>'Country Citizen maximum length allow 255',
@@ -343,8 +340,10 @@ class UsersController extends Controller
             ]);
             $input  = \Arr::except($request->all(),array('_token'));
             
-           
-  
+            if(!isset($input['sstatus'])){
+                $input['sstatus'] = 'P';
+            }
+                
             if ($image = $request->file('simage')) {
                 $destinationPath = 'assets/images/profile/';
                 $fileNameToStore = date('YmdHis') . "." . $image->getClientOriginalExtension();
@@ -387,7 +386,6 @@ class UsersController extends Controller
                 'confirm_ipassword'=>'required|same:ipassword',
                 'country_code'=>'required|max:5',
                 'phone_no' =>'required|min:6|max:20',
-                'status'=>'required|in:P,A,R',
                 'subdomain' =>'required|max:255|regex:'.$regexUrl,
                 'domain'=>'required|max:255|regex:'.$regexUrl,
                 'welcome_msg'=>'required|max:500',
@@ -437,6 +435,10 @@ class UsersController extends Controller
                 'bimage.max'=>'Background image maximum length allow 2048'
                ]);
             $input  = \Arr::except($request->all(),array('_token'));
+
+            if(!isset($input['istatus'])){
+                $input['istatus'] = 'P';
+            }
             $password = Hash::make($input['ipassword']);
             if ($image = $request->file('logo')) {
                 $destinationPath = 'assets/images/institute/';
@@ -485,7 +487,7 @@ class UsersController extends Controller
                     'state_code' => $input['istate_code'],
                     'gstin' => $input['igstin'],
                     'validity' => $input['validity'],
-                    'status' => $input['status'],
+                    'status' => $input['istatus'],
                     'ip_address' => '',
                     'latitude' => '',
                     'longitude' => ''

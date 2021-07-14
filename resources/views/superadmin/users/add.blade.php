@@ -133,13 +133,9 @@
               </div>
             </div>
             <div class="form-group row">
-              <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Select Status</label>
-              <div class="col-12 col-md-7 col-xl-7 col-sm-12">
-                <select class="custom-select" name="sstatus">
-                  <option value="P" {{ (old('sstatus') == 'P')?'checked':'' }}>Pending</option>
-                  <option value="A"  {{ (old('sstatus') == 'A')?'checked':'' }}>Active</option>
-                  <option value="R"  {{ (old('sstatus') == 'R')?'checked':'' }}>Reject</option>
-                </select>
+              <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Status</label>
+              <div class="col-12 col-md-7 col-xl-7 col-sm-12 toggle-switch">
+                  <input type="checkbox" id="sstatus" name="sstatus" value="A" {{ (old('sstatus') == 'A')?'selected':''}} /><label for="sstatus">Toggle</label>
               </div>
             </div>
             <div class="form-group row">
@@ -310,13 +306,9 @@
               </div>
             </div>
             <div class="form-group row">
-              <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Status</label>
-              <div class="col-12 col-md-7 col-xl-7 col-sm-12">
-                <select class="custom-select" name="status">
-                  <option value="P" {{ (old('status') == 'P')?'selected':'' }}>Pending</option>
-                  <option value="A"  {{ (old('status') == 'A')?'selected':'' }}>Active</option>
-                  <option value="R"  {{ (old('status') == 'R')?'selected':'' }}>Reject</option>
-                </select>
+              <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Status</label>
+              <div class="col-12 col-md-7 col-xl-7 col-sm-12 toggle-switch">
+                  <input type="checkbox" id="istatus" name="istatus" value="A" {{ (old('istatus') == 'A')?'selected':''}} /><label for="istatus">Toggle</label>
               </div>
             </div>
             <div class="form-group row">
