@@ -17,12 +17,12 @@
                             @csrf
                             <div class="form-group">
                                 <i class="fas fa-user form-icon"></i>
-                                <input id="email" type="email" name="email" class="form-control @error('email') is-invalid @enderror" autocomplete="email" autofocus placeholder="Enter Email Address" >
-                                @error('email')
+                                <input id="login" type="text" name="login" class="form-control @error('login') is-invalid @enderror" autocomplete="Username or Email Address" autofocus placeholder="Enter Username or Email Address" value="{{ old('login')  }}">
+                                @error('login')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
-                                @enderror 
+                                @enderror
                             </div>
                             <div class="form-group mb-3">
                                 

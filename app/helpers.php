@@ -9,8 +9,8 @@ use Carbon\Carbon;
 
 function getNotifications($limit = '5')
 {
-    $id             = \Auth::user()->id;
-    $type           = \Auth::user()->role->role_name;
+    $id   = \Auth::user()->id;
+    $type = \Auth::user()->role->role_name;
     
     $notifications  =  Notifications::where('user_id',$id)
             ->where('is_read', 'N')
@@ -21,6 +21,7 @@ function getNotifications($limit = '5')
 
     return $notifications;
 }
+
 function getSingleSettingValue($label)
 {
     $lastValue = '';
@@ -30,6 +31,7 @@ function getSingleSettingValue($label)
     }
     return $lastValue;
 }
+
 function getUserIP()
 {
     // Get real visitor IP behind CloudFlare network
@@ -56,6 +58,7 @@ function getUserIP()
 
     return $ip;
 }
+
 function states()
 {
     $states = [ 
