@@ -18,7 +18,12 @@ class DeviceController extends Controller
     public function index(Request $request)
     {
         if($request->ajax())  {
-            $data = DeviceLogs::with('user')->latest()->get();
+            $data = DeviceLogs::with('user')
+            ->select('device_logs.*')
+            ->leftJoin('users', 'users.id', '=', 'device_logs.user_id')
+            ->where('users.parent_user_id', \Auth::user()->id)
+            ->orderBy('device_logs.created_at', 'desc')->get();
+            //print_r($data);
             return Datatables::of($data)
                     ->addIndexColumn()
                     ->addColumn('username', function($row){
@@ -46,7 +51,7 @@ class DeviceController extends Controller
                     })
                     ->addColumn('action', function($row){
                         $btn = '<ul class="actions-btns">
-                                    <li class="action shield '.(($row->status == "Y") ? "red" : "green").'"><a href="'.route('superadmin-device-changestatus', $row->id ).'"><img src="'.asset('assets/images/icons/blocked.svg').'" class=""></a></li>
+                                    <li class="action shield '.(($row->status == "Y") ? "red" : "green").'"><a href="'.route('branchadmin-device-changestatus', $row->id ).'"><img src="'.asset('assets/images/icons/blocked.svg').'" class=""></a></li>
                             </ul>';
                         return $btn;
                     })
@@ -71,10 +76,10 @@ class DeviceController extends Controller
         }
         $result = $device->update();
         if($result){
-            return redirect()->route('device.index')
+            return redirect()->route('branchadmin-device.index')
                         ->with('success','Status updated successfully');
         }else{
-            return redirect()->route('device.index')
+            return redirect()->route('branchadmin-device.index')
                         ->with('error','Status Not Updated!');
         }
     }

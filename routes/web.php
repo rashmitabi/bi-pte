@@ -501,7 +501,7 @@ Route::group(['middleware' => ['auth', 'verified','branchadmin']], function () {
 
     /*Device logs module start*/
 
-    Route::get('branchadmin/device/changestatus/{id}', [App\Http\Controllers\BranchAdmin\DeviceController::class, 'changeStatus'])->name('superadmin-device-changestatus');
+    Route::get('branchadmin/device/changestatus/{id}', [App\Http\Controllers\BranchAdmin\DeviceController::class, 'changeStatus'])->name('branchadmin-device-changestatus');
 
     Route::resource('branchadmin/device', App\Http\Controllers\BranchAdmin\DeviceController::class)->names('branchadmin-device');
 
