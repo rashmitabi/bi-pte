@@ -408,7 +408,42 @@ $(document).ready(function() {
       })             
     }
   });
-
+  
+  //single test checked/uncheck event.
+  $('body').on('click',".multitest", function() {
+    var total = $(this).attr("data-count");
+    var id = [];
+    $('.multitest:checked').each(function(){
+        id.push($(this).val());
+    });
+    if(id.length >= 10 && id.length < 20){
+      $(".testradio10").prop("checked",true);
+    }else if(id.length >= 20 && id.length < 30){
+      $(".testradio10").prop("checked",false);
+      $(".testradio20").prop("checked",true);
+    }else if (id.length >= 30 && id.length < 40){
+      $(".testradio10").prop("checked",false);
+      $(".testradio20").prop("checked",false);
+      $(".testradio30").prop("checked",true);
+    }else if(id.length >= 40 && id.length < 50){
+      $(".testradio10").prop("checked",false);
+      $(".testradio20").prop("checked",false);
+      $(".testradio30").prop("checked",false);
+      $(".testradio40").prop("checked",true);
+    }else{
+      $(".testradio10").prop("checked",false);
+      $(".testradio20").prop("checked",false);
+      $(".testradio30").prop("checked",false);
+      $(".testradio40").prop("checked",false);
+      $(".testradio40").prop("checked",true);
+    }
+    if(id.length == total)
+    {
+      $("#selectAllTest").prop("checked",true);
+    }else{
+      $("#selectAllTest").prop("checked",false);
+    }
+  });
   $('body').on('change',"#sstate", function(){
       var state_code = $('option:selected', this).attr('data-code');
       console.log(state_code);

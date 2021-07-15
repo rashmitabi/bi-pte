@@ -32,7 +32,7 @@
         <div class="form-group row">
             <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Number Of Students Allowed</label>
             <div class="col-12 col-md-7 col-xl-7 col-sm-12">
-                <input type="text" class="form-control " name="students_allowed" placeholder="Enter Number Of Students Allowed" value="{{ $subscription->students_allowed }}">
+                <input type="number" class="form-control " name="students_allowed" placeholder="Enter Number Of Students Allowed" value="{{ $subscription->students_allowed }}">
                 <span class="error-msg" id="studentsAllowedError"></span>
             </div>
         </div>
@@ -88,14 +88,14 @@
         <div class="form-group row">
             <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Can Add Videos?</label>
             <div class="col-12 col-md-7 col-xl-7 col-sm-12 toggle-switch">
-                <input type="checkbox" id="video" name="videos" value="Y" {{ ($subscription->videos == 'Y')?'checked':''}} /><label for="video">Toggle</label>
+                <input type="checkbox" id="videos" name="videos" value="Y" {{ ($subscription->videos == 'Y')?'checked':''}} /><label for="videos">Toggle</label>
                 <span class="error-msg" id="videosError"></span>
             </div>
         </div>
         <div class="form-group row">
             <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Can Add Prediction Files?</label>
             <div class="col-12 col-md-7 col-xl-7 col-sm-12 toggle-switch">
-                <input type="checkbox" id="files" name="prediction_files" value="Y" {{ ($subscription->prediction_files == 'Y')?'checked':''}} /><label for="files">Toggle</label>
+                <input type="checkbox" id="prediction_files" name="prediction_files" value="Y" {{ ($subscription->prediction_files == 'Y')?'checked':''}} /><label for="prediction_files">Toggle</label>
                 <span class="error-msg" id="predictionFilesError"></span>
             </div>
         </div>

@@ -10,7 +10,7 @@
             </div>
         </div>
     </section>
-
+    
     <section class="top-title-button white-bg mb-3 remove-main-margin">
         <div class="row mx-0 align-items-center">
             <div class="col-12 col-md-12 col-xl-8 col-sm-12 mt-4 left">
@@ -52,7 +52,7 @@
                     <div class="form-group row">
                         <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Number Of Students Allowed</label>
                         <div class="col-12 col-md-7 col-xl-7 col-sm-12">
-                            <input type="text" class="form-control " name="students_allowed" placeholder="Enter Number Of Students Allowed" value="{{old('students_allowed')}}">
+                            <input type="number" class="form-control " name="students_allowed" placeholder="Enter Number Of Students Allowed" value="{{old('students_allowed')}}">
                             @if($errors->has('students_allowed'))
                                 <span class="error-msg">{{$errors->first('students_allowed')}}</span>
                             @endif
@@ -124,7 +124,7 @@
                     <div class="form-group row">
                         <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Can Add Videos?</label>
                         <div class="col-12 col-md-7 col-xl-7 col-sm-12 toggle-switch">
-                            <input type="checkbox" id="video" name="videos" value="Y" {{ (old('videos') == 'Y')?'selected':''}} /><label for="video">Toggle</label>
+                            <input type="checkbox" id="videos" name="videos" value="Y" checked /><label for="videos">Toggle</label>
                             @if($errors->has('videos'))
                                 <span class="error-msg">{{$errors->first('videos')}}</span>
                             @endif
@@ -133,7 +133,7 @@
                     <div class="form-group row">
                         <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Can Add Prediction Files?</label>
                         <div class="col-12 col-md-7 col-xl-7 col-sm-12 toggle-switch">
-                            <input type="checkbox" id="files" name="prediction_files" value="Y" {{ (old('prediction_files') == 'Y')?'selected':''}} /><label for="files">Toggle</label>
+                            <input type="checkbox" id="prediction_files" name="prediction_files" value="Y" checked /><label for="prediction_files">Toggle</label>
                             @if($errors->has('prediction_files'))
                                 <span class="error-msg">{{$errors->first('prediction_files')}}</span>
                             @endif
@@ -142,7 +142,7 @@
                     <div class="form-group row">
                         <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Status</label>
                         <div class="col-12 col-md-7 col-xl-7 col-sm-12 toggle-switch">
-                            <input type="checkbox" id="status" name="status" value="E" {{ (old('status') == 'E')?'selected':''}} /><label for="status">Toggle</label>
+                            <input type="checkbox" id="status" name="status" value="E" checked /><label for="status">Toggle</label>
                             @if($errors->has('status'))
                                 <span class="error-msg">{{$errors->first('status')}}</span>
                             @endif
