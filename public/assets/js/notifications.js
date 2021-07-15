@@ -32,6 +32,7 @@ $(document).ready(function() {
         ajax: getSuperAdminNotification,
         columns: [
            {data: 'DT_RowIndex', name: 'DT_RowIndex'},
+           {data: 'user', name: 'user'},
            {data: 'title', name: 'title'},
            {data: 'body', name: 'body'},
            {data: 'action', name: 'action', orderable: false, searchable: false},

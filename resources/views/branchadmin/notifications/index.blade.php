@@ -1,4 +1,4 @@
-@extends('layouts.appSuperAdmin')
+@extends('layouts.appBranchAdmin')
 @section('content')
 <!-- Page Content  -->
 <div id="content">
@@ -9,7 +9,7 @@
                 <h1 class="title mb-4">All Notifications</h1>
             </div>
             <div class="col-12 col-md-4 col-xl-4 col-sm-4 right">
-                <a href="{{ route('dashboard') }}">
+                <a href="{{ route('branchadmin-dashboard') }}">
                 <button type="button" class="btn btn-primary">
                     Dashboard</button>
                 </a>
@@ -21,7 +21,7 @@
         <div class="row mx-0 align-items-center">
             <div class="col-12 col-md-12 col-xl-12 col-sm-8 left p-0">
                 <!-- <h1 class="title mb-4">Manage Subscription</h1> -->
-                <table id="notifications" class="table table-striped table-bordered dt-responsive nowrap"
+                <table id="notifications" class="table table-striped table-bordered dt-responsive wrap"
                     style="width:100%">
                     <thead>
                         <tr>
@@ -40,5 +40,4 @@
 </div>
 @endsection
 @section('js-hooks')
-
 @endsection

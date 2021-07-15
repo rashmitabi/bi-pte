@@ -6,12 +6,12 @@
     <section class="top-title-button mb-3">
         <div class="row mx-0 align-items-center">
             <div class="col-12 col-md-8 col-xl-8 col-sm-8 left">
-                <h1 class="title mb-4">All Notifications</h1>
+                <h1 class="title mb-4">Notification Details</h1>
             </div>
             <div class="col-12 col-md-4 col-xl-4 col-sm-4 right">
-                <a href="{{ route('dashboard') }}">
+                <a href="{{ route('branchadmin-notifications') }}">
                 <button type="button" class="btn btn-primary">
-                    Dashboard</button>
+                    Back</button>
                 </a>
             </div>
         </div>
@@ -21,18 +21,16 @@
         <div class="row mx-0 align-items-center">
             <div class="col-12 col-md-12 col-xl-12 col-sm-8 left p-0">
                 <!-- <h1 class="title mb-4">Manage Subscription</h1> -->
-                <table id="notifications" class="table table-striped table-bordered dt-responsive nowrap"
+                <table class="table table-striped table-bordered dt-responsive nowrap"
                     style="width:100%">
-                    <thead>
-                        <tr>
-                            <th>Sr No</th>
-                            <th>Sender</th>
-                            <th>Title</th>
-                            <th>Body</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    
+                    <tr>
+                        <td>Title</td>
+                        <td>{{ $notification->title }}</td>
+                    </tr>
+                    <tr>
+                        <td>Body</td>
+                        <td>{{ $notification->body }}</td>
+                    </tr>
                 </table>
             </div>
         </div>

@@ -12,8 +12,8 @@ class NotificationController extends Controller
     {
         $notifications = getNotifications();
         $countNotifications = count($notifications);
-        
-        $html_notifications   = view('notification', compact('notifications'))->render();
+        $role_id = \Auth::user()->role_id;
+        $html_notifications   = view('notification', compact('notifications', 'role_id'))->render();
 
         
         return response()->json([

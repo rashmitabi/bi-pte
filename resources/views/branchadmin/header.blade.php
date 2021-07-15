@@ -51,14 +51,21 @@
             <div class="profile-user-wrap" id="profile-box">
                <a href="#" class="profile-name">
                   {{ Auth::user()->first_name }} {{ Auth::user()->last_name }} 
-                  <i class="fas fa-chevron-down"></i> 
-                  <img src="{{ asset('assets/images/Userprofile.png') }}" class="">
+                  <i class='fas fa-chevron-down'></i> 
+                  @if(Auth::user()->profile_image != '')
+                     <img src="{{ asset('assets/images/profile/'.Auth::user()->profile_image) }}" width="50">
+                  @else if
+                     <img src="{{ asset('assets/images/Userprofile.png') }}">
+                  @endif
                </a>
                <div class="logout-dropdown">
                   <div class="notifications-main-wrap">
                      <ul>
                         <li> 
                            <a href="{{ route('settings.index') }}"> <i class="fas fa-cog"></i> Settings </a>
+                        </li>
+                        <li> 
+                           <a href="{{ route('branchadmin-transactions.index') }}"> <i class="fas fa-cog"></i> My Payments </a>
                         </li>
                         <li> 
                            <a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();"> <i class="fas fa-sign-out-alt"></i> Sign Out </a>

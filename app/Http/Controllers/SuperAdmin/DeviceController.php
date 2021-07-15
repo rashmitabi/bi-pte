@@ -5,6 +5,7 @@ namespace App\Http\Controllers\SuperAdmin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\DeviceLogs;
+use App\Models\Notifications;
 use DataTables;
 
 class DeviceController extends Controller
@@ -34,10 +35,10 @@ class DeviceController extends Controller
                         return $row->device_name;
                     })
                     ->addColumn('status', function($row){
-                        if($row->status == "Y"){
-                            $status = "Enable";
+                        if($row->status == "Y"){ // Y is blocked
+                            $status = "Blocked";
                         }else{
-                            $status = "Disable";
+                            $status = "Active";
                         }
                         return $status;
                     })
@@ -46,7 +47,7 @@ class DeviceController extends Controller
                     })
                     ->addColumn('action', function($row){
                         $btn = '<ul class="actions-btns">
-                                    <li class="action shield '.(($row->status == "Y") ? "red" : "green").'"><a href="'.route('superadmin-device-changestatus', $row->id ).'"><img src="'.asset('assets/images/icons/blocked.svg').'" class=""></a></li>
+                                    <li class="action shield '.(($row->status == "Y") ? "green" : "red").'"><a href="'.route('superadmin-device-changestatus', $row->id ).'"><img src="'.asset('assets/images/icons/blocked.svg').'" class=""></a></li>
                             </ul>';
                         return $btn;
                     })
@@ -64,12 +65,24 @@ class DeviceController extends Controller
     public function changeStatus($id)
     {
         $device = DeviceLogs::find($id);
+        $status = '';
         if($device->status == 'N'){
             $device->status = 'Y';
+            $status = 'blocked';
         }else{
             $device->status = 'N';
+            $status = 'unblocked';
         }
         $result = $device->update();
+        $notification_data = array(
+            'user_id' => $device->user_id,
+            'sender_id' => \Auth::user()->id,
+            'type' => getUserRole($device->user_id),
+            'title' => "Your login for ".$device->browser_name.' with IP Address '.$device->ip_address.' has been '.$status.'.',
+            'body' => "Your login for ".$device->browser_name.' with IP Address '.$device->ip_address.' has been '.$status.'.',
+            'url' => ""
+        );
+        $notification = Notifications::create($notification_data);
         if($result){
             return redirect()->route('device.index')
                         ->with('success','Status updated successfully');

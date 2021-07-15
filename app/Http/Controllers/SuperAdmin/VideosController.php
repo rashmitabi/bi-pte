@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Models\Videos;
 use App\Models\Sections;
 use App\Models\QuestionDesigns;
+use App\Models\Notifications;
+use App\Models\User;
+use App\Models\Institues;
 use Illuminate\Http\Request;
 use App\Http\Requests\CreateVideosRequest;
 use App\Http\Requests\UpdateVideosRequest;
@@ -107,6 +110,37 @@ class VideosController extends Controller
         }
         
         if($video->save()){
+
+            if(isset($input['status'])){                
+                //send notification to students if video status is enabled
+                $institutes = Institues::select('user_id')->where('show_admin_files', 'Y')->get();
+                foreach($institutes as $inst){
+                    $notification_data[] = array(
+                                'user_id' => $inst->user_id,
+                                'sender_id' => \Auth::user()->id,
+                                'type' => 'Branch Admin',
+                                'title' => "New video has been added to your students account.",
+                                'body' => 'New video has been added to students account with title - '.$input['title'],
+                                'url' => "",
+                                'created_at' => date('Y-m-d h:i:s')
+                            );
+                    $mystudents = User::select('id')->where('parent_user_id', $inst->user_id)->get();
+                    foreach($mystudents as $stud){
+                        $notification_data[] = array(
+                                'user_id' => $stud->id,
+                                'sender_id' => \Auth::user()->id,
+                                'type' => 'Student',
+                                'title' => "New video has been added to your account.",
+                                'body' => 'New video has been added with title - '.$input['title'],
+                                'url' => "",
+                                'created_at' => date('Y-m-d h:i:s')
+                            );
+                    }  
+                }
+                if(isset($notification_data) && count($notification_data) > 0){
+                    $notification = Notifications::insert($notification_data);
+                }                  
+            }
             return redirect()->route('videos.index')
             ->with('success','Video added successfully!');
         }else{

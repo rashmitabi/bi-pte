@@ -214,4 +214,9 @@ function states()
     
     return $states;
 }
+
+function getUserRole($user_id){
+    $user = User::with('role')->where('id',$user_id)->first();
+    return $user->role->role_name;
+}
 ?>

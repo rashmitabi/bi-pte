@@ -127,7 +127,7 @@ class CertificatesController extends Controller
                 $notification_data = array(
                     'user_id' => $input['student_user_id'],
                     'sender_id' => $input['generate_by_user_id'],
-                    'type' => "student",
+                    'type' => getUserRole($input['student_user_id']),
                     'title' => "New certificate has been generated",
                     'body' => "A new certificate has been generated for ".$type." - ".$test->test_name." attempted by you.",
                     'url' => ""

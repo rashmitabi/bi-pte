@@ -77,15 +77,15 @@ $pageActive = isset($pageArray[4]) ? $pageArray[4] : 'dashboard';
     	</div>
         <script src="{{ asset('assets/js/jquery-confirm.min.js') }}"></script>
         
-        @include('superadmin.deleteModel')
-        @include('superadmin.alert')
+        @include('branchadmin.deleteModel')
+        @include('branchadmin.alert')
         <script type="text/javascript">
             var DATE = "{{ date('d-m-Y') }}";
             var current_page_url = "<?php echo URL::current(); ?>";
             var current_page_fullurl = "<?php echo URL::full(); ?>";
             var CSRF_TOKEN= "{{ csrf_token() }}";
             var notifyURL = "{{ route('notifications') }}";
-            var getSuperAdminNotification = "{{ route('superadmin-notifications') }}"
+            var getSuperAdminNotification = "{{ route('branchadmin-notifications') }}"
         </script> 
         <script type="text/javascript">
             $(document).ready(function(){

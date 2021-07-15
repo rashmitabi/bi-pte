@@ -83,7 +83,7 @@
             </tr>
             @else
             <tr>
-                <td colspan="3">Add: IGST@</td>
+                <td colspan="3">Add: IGST@ {{ $data['igst'] }}%</td>
                 <td colspan="3">{{ round($data['rate'] * $data['igst'] / 100) }}</td>
             </tr>
             @endif
@@ -116,7 +116,7 @@
                     <span ><strong>Aone Solutions</strong></span><br>
                     <span >Authorised Signatory</span>
                     @if ($data['digital_signature'] != '')
-                      <!-- <img width="100" src="{{ $data['digital_signature'] }}"> -->
+                        <!-- <img width="100" src="{{ $data['digital_signature'] }}"> -->
                     @endif                    
                 </td>
             </tr>

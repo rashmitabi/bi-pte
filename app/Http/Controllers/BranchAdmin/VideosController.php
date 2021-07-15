@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Videos;
 use App\Models\Sections;
 use App\Models\QuestionDesigns;
+use App\Models\Notifications;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\CreateVideosRequest;
 use App\Http\Requests\UpdateVideosRequest;
@@ -104,8 +106,25 @@ class VideosController extends Controller
         }else{
             $video->status = $input['status'];
         }
-        
         if($video->save()){
+            if(isset($input['status'])){
+                //send notification to students if video status is enabled
+                $mystudents = User::select('id')->where('parent_user_id', \Auth::user()->id)->get();
+                foreach($mystudents as $stud){
+                    $notification_data[] = array(
+                            'user_id' => $stud->id,
+                            'sender_id' => \Auth::user()->id,
+                            'type' => 'Student',
+                            'title' => "New video has been added to your account.",
+                            'body' => 'New video has been added with title - '.$input['title'],
+                            'url' => "",
+                            'created_at' => date('Y-m-d h:i:s')
+                        );
+                }            
+                if(isset($notification_data) && count($notification_data) > 0){
+                    $notification = Notifications::insert($notification_data);
+                }  
+            }
             return redirect()->route('branchadmin-videos.index')
             ->with('success','Video added successfully!');
         }else{

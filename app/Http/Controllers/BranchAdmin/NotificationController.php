@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\SuperAdmin;
+namespace App\Http\Controllers\BranchAdmin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -9,7 +9,7 @@ use DataTables;
 
 class NotificationController extends Controller
 {
-    private $moduleTitleP = 'superadmin.notifications.';
+    private $moduleTitleP = 'branchadmin.notifications.';
     public function index(Request $request)
     {
         $id = \Auth::user()->id;
@@ -28,7 +28,7 @@ class NotificationController extends Controller
                     })
                     ->addColumn('action', function($row){
                         $btn = '<ul class="actions-btns">
-                                    <li ><a href="'.route('superadmin-view-notifications', $row->id ).'"><button type="button" class="btn btn-primary">
+                                    <li ><a href="'.route('branchadmin-view-notifications', $row->id ).'"><button type="button" class="btn btn-primary">
                                     View</button></a></li>
                             </ul>';
                         return $btn;
