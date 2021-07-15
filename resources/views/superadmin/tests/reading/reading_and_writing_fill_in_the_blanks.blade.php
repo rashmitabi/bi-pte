@@ -30,117 +30,19 @@
                            </div>
                        </div>
                        @if(!isset($questions->desc))
-                       <div class=" col-11 mt-2 ml-3 white-bg common-col">
+                       <div class=" col-11 mt-2 ml-3 white-bg common-col dynamicblock1">
                             <div class="form-group mb-3 row">
                               <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label custom-label ">Ans Options 1</label>
                               <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
-                                 <input type="text" class="form-control " name="ans_options1" id="ans_options1" placeholder="Please Enter options1 like Whole,Total,Very,Open" value="{{ (isset($questions->desc))?$questions->desc:''}}">
+                                 <input type="text" class="form-control " name="ans_options1" id="ans_options1" placeholder="Please Enter options1 like Whole,Total,Very,Open">
                               </div>
                            </div>
-                           <div class="form-group mb-3 row">
+                           <div class="form-group mb-3 row btn-click subblock1">
                               <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label custom-label">Correct Options 1</label>
                               <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
                                  <input type="text" class="form-control " name="correct_option1" id="correct_option1" placeholder="Please Enter Correct options1">
                               </div>
-                           </div>
-                       </div>
-                       <div class=" col-11 mt-2 ml-3 white-bg common-col">
-                            <div class="form-group mb-3 row">
-                              <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label custom-label ">Ans Options 2</label>
-                              <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
-                                 <input type="text" class="form-control " name="ans_options2" id="ans_options2" placeholder="Please Enter options2 like Whole,Total,Very,Open">
-                              </div>
-                           </div>
-                           <div class="form-group mb-3 row">
-                              <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label custom-label">Correct Options 2</label>
-                              <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
-                                 <input type="text" class="form-control " name="correct_option2" id="correct_option2" placeholder="Please Enter Correct options2">
-                              </div>
-                           </div>
-                       </div>
-                       <div class=" col-11 mt-2 ml-3 white-bg common-col">
-                            <div class="form-group mb-3 row">
-                              <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label custom-label ">Ans Options 3</label>
-                              <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
-                                 <input type="text" class="form-control " name="ans_options3" id="ans_options3" placeholder="Please Enter options3 like Whole,Total,Very,Open">
-                              </div>
-                           </div>
-                           <div class="form-group mb-3 row">
-                              <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label custom-label">Correct Options 3</label>
-                              <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
-                                 <input type="text" class="form-control " name="correct_option3" id="correct_option3" placeholder="Please Enter Correct options3">
-                              </div>
-                           </div>
-                       </div>
-                       <div class=" col-11 mt-2 ml-3 white-bg common-col">
-                            <div class="form-group mb-3 row">
-                              <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label custom-label ">Ans Options 4</label>
-                              <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
-                                 <input type="text" class="form-control " name="ans_options4" id="ans_options4" placeholder="Please Enter options4 like Whole,Total,Very,Open">
-                              </div>
-                           </div>
-                           <div class="form-group mb-3 row">
-                              <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label custom-label">Correct Options 4</label>
-                              <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
-                                 <input type="text" class="form-control " name="correct_option4" id="correct_option4" placeholder="Please Enter Correct options4">
-                              </div>
-                           </div>
-                       </div>
-                       <div class=" col-11 mt-2 ml-3 white-bg common-col">
-                            <div class="form-group mb-3 row">
-                              <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label custom-label ">Ans Options 5</label>
-                              <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
-                                 <input type="text" class="form-control " name="ans_options5" id="ans_options5" placeholder="Please Enter options5 like Whole,Total,Very,Open">
-                              </div>
-                           </div>
-                           <div class="form-group mb-3 row">
-                              <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label custom-label">Correct Options 5</label>
-                              <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
-                                 <input type="text" class="form-control " name="correct_option5" id="correct_option5" placeholder="Please Enter Correct options5">
-                              </div>
-                           </div>
-                       </div>
-                       <div class=" col-11 mt-2 ml-3 white-bg common-col">
-                            <div class="form-group mb-3 row">
-                              <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label custom-label ">Ans Options 6</label>
-                              <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
-                                 <input type="text" class="form-control " name="ans_options6" id="ans_options6" placeholder="Please Enter options6 like Whole,Total,Very,Open">
-                              </div>
-                           </div>
-                           <div class="form-group mb-3 row">
-                              <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label custom-label">Correct Options 6</label>
-                              <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
-                                 <input type="text" class="form-control " name="correct_option6" id="correct_option6" placeholder="Please Enter Correct options6">
-                              </div>
-                           </div>
-                       </div>
-                       <div class=" col-11 mt-2 ml-3 white-bg common-col">
-                            <div class="form-group mb-3 row">
-                              <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label custom-label ">Ans Options 7</label>
-                              <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
-                                 <input type="text" class="form-control " name="ans_options7" id="ans_options7" placeholder="Please Enter options7 like Whole,Total,Very,Open">
-                              </div>
-                           </div>
-                           <div class="form-group mb-3 row">
-                              <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label custom-label">Correct Options 7</label>
-                              <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
-                                 <input type="text" class="form-control " name="correct_option7" id="correct_option7" placeholder="Please Enter Correct options7">
-                              </div>
-                           </div>
-                       </div>
-                       <div class=" col-11 mt-2 ml-3 white-bg common-col dynamicblock8">
-                            <div class="form-group mb-3 row">
-                              <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label custom-label ">Ans Options 8</label>
-                              <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
-                                 <input type="text" class="form-control " name="ans_options8" id="ans_options8" placeholder="Please Enter options8 like Whole,Total,Very,Open">
-                              </div>
-                           </div>
-                           <div class="form-group mb-3 row btn-click subblock8">
-                              <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label custom-label">Correct Options 8</label>
-                              <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
-                                 <input type="text" class="form-control " name="correct_option8" id="correct_option8" placeholder="Please Enter Correct options8">
-                              </div>
-                              <div class="add-icon" onclick="addQuestionColumn()"  data-id="8">
+                              <div class="add-icon" onclick="addQuestionColumn()"  data-id="1">
                                   <a><i class="fas fa-plus"></i></a>  
                               </div>
                            </div>
@@ -177,9 +79,12 @@
                                        <input type="text" class="form-control " name="correct_option{{$label}}" id="correct_option{{$label}}" placeholder="Please Enter Correct options {{ $label }}" value="{{ (isset($questions->desc))?$questions->answerdata[$i]->answer_value:''}}">
                                     </div>
                                     @if($label == $count)
-                                       <div class="add-icon" onclick="addQuestionColumn()"  data-id="{{$count}}">
-                                          <a><i class="fas fa-plus"></i></a>
-                                       </div>
+                                          <div class="minus-icon-common" onclick="minusQuestionColumn()" data-id="{{$count}}">
+                                             <a><i class="fas fa-minus"></i></a>
+                                          </div>
+                                          <div class="add-icon" onclick="addQuestionColumn()"  data-id="{{$count}}">
+                                             <a><i class="fas fa-plus"></i></a>
+                                          </div>
                                     @endif
                                  </div>
                               </div>

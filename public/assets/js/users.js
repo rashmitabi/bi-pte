@@ -276,6 +276,7 @@ $(document).ready(function() {
     $('#sresidenceError').text('');
     $('#sstateError').text('');
     $('#sstate_codeError').text('');
+    $('#scityError').text('');
     // $('#sgstinError').text('');
     $('#svalidityError').text('');
 
@@ -292,6 +293,8 @@ $(document).ready(function() {
     $('#welcome_msgError').text('');
     $('#istateError').text('');
     $('#istate_codeError').text('');
+    $('#icityError').text('');
+    
     $('#igstinError').text('');
     $('#logoError').text('');
     $('#bannerError').text('');
@@ -328,6 +331,7 @@ $(document).ready(function() {
         $('#sresidenceError').text(response.responseJSON.errors.sresidence);
         $('#sstateError').text(response.responseJSON.errors.sstate);
         $('#sstate_codeError').text(response.responseJSON.errors.sstate_code);
+        $('#scityError').text(response.responseJSON.errors.scity);
         // $('#sgstinError').text(response.responseJSON.errors.sgstin);
         $('#svalidityError').text(response.responseJSON.errors.svalidity);
 
@@ -344,6 +348,8 @@ $(document).ready(function() {
         $('#welcome_msgError').text(response.responseJSON.errors.welcome_msg);
         $('#istateError').text(response.responseJSON.errors.istate);
         $('#istate_codeError').text(response.responseJSON.errors.istate_code);
+        $('#icityError').text(response.responseJSON.errors.icity);
+        
         $('#igstinError').text(response.responseJSON.errors.igstin);
         $('#logoError').text(response.responseJSON.errors.logo);
         $('#bannerError').text(response.responseJSON.errors.banner);
@@ -402,7 +408,42 @@ $(document).ready(function() {
       })             
     }
   });
-
+  
+  //single test checked/uncheck event.
+  $('body').on('click',".multitest", function() {
+    var total = $(this).attr("data-count");
+    var id = [];
+    $('.multitest:checked').each(function(){
+        id.push($(this).val());
+    });
+    if(id.length >= 10 && id.length < 20){
+      $(".testradio10").prop("checked",true);
+    }else if(id.length >= 20 && id.length < 30){
+      $(".testradio10").prop("checked",false);
+      $(".testradio20").prop("checked",true);
+    }else if (id.length >= 30 && id.length < 40){
+      $(".testradio10").prop("checked",false);
+      $(".testradio20").prop("checked",false);
+      $(".testradio30").prop("checked",true);
+    }else if(id.length >= 40 && id.length < 50){
+      $(".testradio10").prop("checked",false);
+      $(".testradio20").prop("checked",false);
+      $(".testradio30").prop("checked",false);
+      $(".testradio40").prop("checked",true);
+    }else{
+      $(".testradio10").prop("checked",false);
+      $(".testradio20").prop("checked",false);
+      $(".testradio30").prop("checked",false);
+      $(".testradio40").prop("checked",false);
+      $(".testradio40").prop("checked",true);
+    }
+    if(id.length == total)
+    {
+      $("#selectAllTest").prop("checked",true);
+    }else{
+      $("#selectAllTest").prop("checked",false);
+    }
+  });
   $('body').on('change',"#sstate", function(){
       var state_code = $('option:selected', this).attr('data-code');
       console.log(state_code);
@@ -870,7 +911,8 @@ $(document).ready(function() {
       }
   });
   /*Check user unique validation at store start*/
-  $(".unique-susername").keyup(function() {
+  $(".unique-susername").change(function() {
+    $("#suname-unique-msg").text('');
     var uname       = $(this).val();
     var url         = $(this).attr("data-url");
     var unique_type = $(this).attr("data-unique-type");
@@ -902,7 +944,8 @@ $(document).ready(function() {
       },
     });
   });
-  $(".unique-semail").keyup(function() {
+  $(".unique-semail").change(function() {
+    $("#semail-unique-msg").text('');
     var email       = $(this).val();
     var url         = $(this).attr("data-url");
     var unique_type = $(this).attr("data-unique-type");
@@ -911,6 +954,7 @@ $(document).ready(function() {
     var msg = 'Email already exists!';
     if(email == ''){
       $(':input[type="submit"]').prop('disabled', true);
+      $("#semail-unique-msg").text('');
     }else{
       $.ajax({
         url: url,
@@ -940,7 +984,7 @@ $(document).ready(function() {
   /*Check user unique validation at store end*/
 
   /*Check institude unique validation start*/
-  $(".unique-iusername").keyup(function() {
+  $(".unique-iusername").change(function() {
     $("#iuname-unique-msg").text('');
     var uname       = $(this).val();
     var url         = $(this).attr("data-url");
@@ -978,7 +1022,7 @@ $(document).ready(function() {
       }); 
     }
   });
-  $(".unique-iemail").keyup(function() {
+  $(".unique-iemail").change(function() {
     $("#iemail-unique-msg").text('');
     var email       = $(this).val();
     var url         = $(this).attr("data-url");
@@ -988,6 +1032,7 @@ $(document).ready(function() {
     var msg = 'Email already exists!';
     if(email == ''){
       $(':input[type="submit"]').prop('disabled', true);
+      $("#iemail-unique-msg").text('');
     }else{
       $.ajax({
         url: url,

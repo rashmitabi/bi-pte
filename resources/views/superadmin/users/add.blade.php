@@ -1,5 +1,6 @@
 @extends('layouts.appSuperAdmin')
 @section('content')
+
 <!-- Page Content  -->
 <div id="content">
   <section class="top-title-button mb-3">
@@ -17,7 +18,7 @@
           <div class="form-group row">
             <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Select Role</label>
             <div class="col-12 col-md-7 col-xl-7 col-sm-12">
-              <select class="user-type usertype_form" id="type" name="type">
+              <select  class="custom-select usertype_form" id="type" name="type">
                 <option selected>Select User Type</option>
                 <option value="2" {{ (old('type') == '2')?'selected':''}}>Branch Admin</option>
                 <option value="3" {{ (old('type') == '3')?'selected':''}}>Student</option>
@@ -51,10 +52,10 @@
             <div class="form-group row">
               <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Branch Admin</label>
               <div class="col-12 col-md-7 col-xl-7 col-sm-12">
-                <select class="" name="branch_admin">
+                <select class="custom-select" name="branch_admin">
                   <option selected disabled>Select Branch Admin</option>
                   @foreach($admins as $admin)
-                    <option value="{{ $admin->id }}" >{{ isset($admin->institue->institute_name)?$admin->institue->institute_name:'' }}</option>
+                    <option value="{{ $admin->id }}" {{ (old('branch_admin') == $admin->id)?'selected':''}} >{{ isset($admin->institue->institute_name)?$admin->institue->institute_name:'' }}</option>
                   @endforeach
                 </select>
               </div>
@@ -96,6 +97,24 @@
               </div>
             </div>
             <div class="form-group row">
+              <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Password</label>
+              <div class="col-12 col-md-7 col-xl-7 col-sm-12">
+                <input type="password" name="spassword" value="{{ old('spassword') }}" class="form-control" placeholder="Enter Password">
+                @if($errors->has('spassword'))
+                  <span class="error-msg">{{$errors->first('spassword')}}</span>
+                @endif
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Confirm Password</label>
+              <div class="col-12 col-md-7 col-xl-7 col-sm-12">
+                <input type="password" name="confirm_spassword" value="{{ old('confirm_spassword') }}" class="form-control" placeholder="Enter Confirm Password">
+                @if($errors->has('confirm_spassword'))
+                  <span class="error-msg">{{$errors->first('confirm_spassword')}}</span>
+                @endif
+              </div>
+            </div>
+            <div class="form-group row">
               <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Date of Birth</label>
               <div class="col-12 col-md-7 col-xl-7 col-sm-12">
                 <input type="text" name="dob" id="dob" value="{{ old('dob') }}" class="form-control " placeholder="Select Date of Birth">
@@ -114,13 +133,9 @@
               </div>
             </div>
             <div class="form-group row">
-              <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Select Status</label>
-              <div class="col-12 col-md-7 col-xl-7 col-sm-12">
-                <select class="user-type" name="sstatus">
-                  <option value="P" {{ (old('sstatus') == 'P')?'checked':'' }}>Pending</option>
-                  <option value="A"  {{ (old('sstatus') == 'A')?'checked':'' }}>Active</option>
-                  <option value="R"  {{ (old('sstatus') == 'R')?'checked':'' }}>Reject</option>
-                </select>
+              <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Status</label>
+              <div class="col-12 col-md-7 col-xl-7 col-sm-12 toggle-switch">
+                  <input type="checkbox" id="sstatus" name="sstatus" value="A" {{ (old('sstatus') == 'A')?'selected':''}} /><label for="sstatus">Toggle</label>
               </div>
             </div>
             <div class="form-group row">
@@ -167,7 +182,7 @@
             <div class="form-group row">
               <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">State</label>
               <div class="col-12 col-md-7 col-xl-7 col-sm-12">
-                <select class="form-control" name="sstate" id="sstate">
+                <select class="custom-select" class="form-control" name="sstate" id="sstate">
                     <option selected disabled>Select State</option>
                     @foreach(states() as $key => $state)
                       <option value="{{ $state }}" data-code="{{ $key }}" {{ (old('sstate') == $state)?'selected':''}}>{{ $state }}</option>
@@ -193,6 +208,15 @@
                 @endif
               </div>
             </div> -->
+            <div class="form-group row">
+              <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">City</label>
+              <div class="col-12 col-md-7 col-xl-7 col-sm-12">
+                <input type="text" name="scity" id="scity" value="{{ old('scity') }}" class="form-control " placeholder="Enter City">
+                @if($errors->has('scity'))
+                  <span class="error-msg">{{$errors->first('scity')}}</span>
+                @endif
+              </div>
+            </div>
             <div class="form-group row">
               <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Validity</label>
               <div class="col-12 col-md-7 col-xl-7 col-sm-12">
@@ -246,6 +270,24 @@
               </div>
             </div>
             <div class="form-group row">
+              <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Password</label>
+              <div class="col-12 col-md-7 col-xl-7 col-sm-12">
+                <input type="password" name="ipassword" value="{{ old('ipassword') }}" class="form-control" placeholder="Enter Password">
+                @if($errors->has('ipassword'))
+                  <span class="error-msg">{{$errors->first('ipassword')}}</span>
+                @endif
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Confirm Password</label>
+              <div class="col-12 col-md-7 col-xl-7 col-sm-12">
+                <input type="password" name="confirm_ipassword" value="{{ old('confirm_ipassword') }}" class="form-control" placeholder="Enter Confirm Password">
+                @if($errors->has('confirm_ipassword'))
+                  <span class="error-msg">{{$errors->first('confirm_ipassword')}}</span>
+                @endif
+              </div>
+            </div>
+            <div class="form-group row">
               <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Country Phone Code</label>
               <div class="col-12 col-md-7 col-xl-7 col-sm-12">
                 <input type="text" name="country_code" value="{{ old('country_code') }}" class="form-control " placeholder="Enter Country Phone Code">
@@ -264,13 +306,9 @@
               </div>
             </div>
             <div class="form-group row">
-              <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Status</label>
-              <div class="col-12 col-md-7 col-xl-7 col-sm-12">
-                <select class="" name="status">
-                  <option value="P" {{ (old('status') == 'P')?'selected':'' }}>Pending</option>
-                  <option value="A"  {{ (old('status') == 'A')?'selected':'' }}>Active</option>
-                  <option value="R"  {{ (old('status') == 'R')?'selected':'' }}>Reject</option>
-                </select>
+              <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Status</label>
+              <div class="col-12 col-md-7 col-xl-7 col-sm-12 toggle-switch">
+                  <input type="checkbox" id="istatus" name="istatus" value="A" {{ (old('istatus') == 'A')?'selected':''}} /><label for="istatus">Toggle</label>
               </div>
             </div>
             <div class="form-group row">
@@ -303,7 +341,7 @@
             <div class="form-group row">
               <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">State</label>
               <div class="col-12 col-md-7 col-xl-7 col-sm-12">
-                <select class="form-control" name="istate" id="istate">
+                <select class="custom-select" class="form-control" name="istate" id="istate">
                   <option selected disabled>Select State</option>
                   @foreach(states() as $key => $state)
                     <option value="{{ $state }}" data-code="{{ $key }}" {{ (old('sstate') == $state)?'selected':''}}>{{ $state }}</option>
@@ -320,6 +358,15 @@
                 <input type="text" name="istate_code" id="istate_code" value="{{ old('istate_code') }}" class="form-control " placeholder="Enter State Code" readonly>
                 @if($errors->has('istate_code'))
                   <span class="error-msg">{{$errors->first('istate_code')}}</span>
+                @endif
+              </div>
+            </div>
+            <div class="form-group row">
+              <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">City</label>
+              <div class="col-12 col-md-7 col-xl-7 col-sm-12">
+                <input type="text" name="icity" id="icity" value="{{ old('icity') }}" class="form-control " placeholder="Enter City">
+                @if($errors->has('icity'))
+                  <span class="error-msg">{{$errors->first('icity')}}</span>
                 @endif
               </div>
             </div>

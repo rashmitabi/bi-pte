@@ -1,4 +1,4 @@
-@extends('layouts.appSuperAdmin')
+@extends('layouts.appBranchAdmin')
 @section('content')
 <!-- Page Content  -->
 <div id="content">
@@ -53,7 +53,7 @@
 @endsection
 @section('js-hooks')
 <script type="text/javascript" defer>
-  var url="{{ route('certificates.index') }}";
+  var url="{{ route('branchadmin-certificates.index') }}";
 </script>
 <script src="{{ asset('assets/js/waitMe.min.js') }}"></script>
 <script src="{{ asset('assets/js/certificates.js') }}" defer></script>

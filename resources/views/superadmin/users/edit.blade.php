@@ -7,20 +7,20 @@
           <div class="col-12">
             <div class="profile-img">
               @if($user->profile_image != '')
-                <img src="{{ asset('assets/images/profile/'.$user->profile_image) }}">
+                <img src="{{ asset('assets/images/profile/'.$user->profile_image) }}" id="output">
               @else
-                <img src="{{ asset('assets/images/profile-img-2.png') }}">
+                <img src="{{ asset('assets/images/profile-img-2.png') }}" id="output">
               @endif
             </div>
             <div class="edit-profile-btn">
-              <a><input type="file" name="simage" id="" class="custom-file-input position-absolute"><i class="fas fa-pen icon"></i></a>
+              <a><input type="file" name="simage" id="" onchange="readURL(event)" class="custom-file-input position-absolute"><i class="fas fa-pen icon"></i></a>
             </div>
           </div>
         </div>
         <div class="form-group row">
           <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Branch Admin</label>
           <div class="col-12 col-md-7 col-xl-7 col-sm-12">
-            <select class="" name="branch_admin" id="branch_admin">
+            <select class="custom-select" name="branch_admin" id="branch_admin">
               @foreach($admins as $admin)
                 <option value="{{ $admin->id }}" {{ ($user->parent_user_id == $admin->id)?'selected':'' }}>{{ isset($admin->institue->institute_name)?$admin->institue->institute_name:'' }}</option>
               @endforeach
@@ -70,14 +70,10 @@
             <span class="error-msg" id="mobilenoError"></span>
           </div>
         </div>
-        <div class="form-group row mb-2">
-          <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Select Status</label>
-          <div class="col-12 col-md-7 col-xl-7 col-sm-12">
-            <select class="custom-select" name="sstatus" id="sstatus">
-              <option value="P" {{ ($user->status == 'P')?'selected':'' }}>Pending</option>
-              <option value="A"  {{ ($user->status == 'A')?'selected':'' }}>Active</option>
-              <option value="R"  {{ ($user->status == 'R')?'selected':'' }}>Reject</option>
-            </select>
+        <div class="form-group row">
+          <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Status</label>
+          <div class="col-12 col-md-7 col-xl-7 col-sm-12 toggle-switch">
+              <input type="checkbox" id="sstatus" name="sstatus" value="A" {{ ($user->status == 'A')?'checked':''}} /><label for="sstatus">Toggle</label>
           </div>
         </div>
         <div class="form-group row mb-2">
@@ -120,7 +116,7 @@
         <div class="form-group row">
           <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">State</label>
           <div class="col-12 col-md-7 col-xl-7 col-sm-12">
-              <select name="sstate" id="sstate" class="form-control">
+              <select class="custom-select" name="sstate" id="sstate" class="form-control">
                 @foreach(states() as $key => $state)
                   <option value="{{ $state }}" data-code="{{ $key }}" {{ ($user->state == $state)?'selected':''}}>{{ $state }}</option>
                 @endforeach
@@ -133,6 +129,13 @@
           <div class="col-12 col-md-7 col-xl-7 col-sm-12">
             <input type="text" name="sstate_code" id="sstate_code" value="{{ $user->state_code }}" class="form-control " placeholder="Enter State Code" readonly>
             <span class="error-msg" id="sstate_codeError"></span>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">City</label>
+          <div class="col-12 col-md-7 col-xl-7 col-sm-12">
+            <input type="text" name="scity" id="scity" value="{{ $user->city }}" class="form-control " placeholder="Enter City">
+            <span class="error-msg" id="scityError"></span>
           </div>
         </div>
         <!-- <div class="form-group row">
@@ -157,13 +160,13 @@
           <div class="col-12">
             <div class="profile-img">
               @if($user->profile_image != '')
-                <img src="{{ asset('assets/images/profile/'.$user->profile_image) }}">
+                <img src="{{ asset('assets/images/profile/'.$user->profile_image) }}" id="output">
               @else
-                <img src="{{ asset('assets/images/profile-img-2.png') }}">
+                <img src="{{ asset('assets/images/profile-img-2.png') }}" id="output">
               @endif
             </div>
             <div class="edit-profile-btn">
-              <a><input type="file" name="iimage" id="" class="custom-file-input position-absolute"><i class="fas fa-pen icon"></i></a>
+              <a><input type="file" name="iimage" id="" onchange="readURL(event)" class="custom-file-input position-absolute"><i class="fas fa-pen icon"></i></a>
             </div>
           </div>
         </div>
@@ -204,13 +207,9 @@
           </div>
         </div>
         <div class="form-group row">
-          <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Status</label>
-          <div class="col-12 col-md-7 col-xl-7 col-sm-12">
-            <select class="custom-select" id="status" name="status">
-              <option value="P" {{ ( $user->status == 'P')?'selected':'' }}>Pending</option>
-              <option value="A"  {{ ( $user->status == 'A')?'selected':'' }}>Active</option>
-              <option value="R"  {{ ( $user->status == 'R')?'selected':'' }}>Reject</option>
-            </select>
+          <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Status</label>
+          <div class="col-12 col-md-7 col-xl-7 col-sm-12 toggle-switch">
+              <input type="checkbox" id="istatus" name="istatus" value="A" {{ ($user->status == 'A')?'checked':''}} /><label for="istatus">Toggle</label>
           </div>
         </div>
         <div class="form-group row">
@@ -244,7 +243,7 @@
         <div class="form-group row">
           <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">State</label>
           <div class="col-12 col-md-7 col-xl-7 col-sm-12">
-            <select name="istate" id="istate">
+            <select class="custom-select" name="istate" id="istate">
                   @foreach(states() as $key => $state)
                     <option value="{{ $state }}" data-code="{{ $key }}" {{ ($user->state == $state)?'selected':''}}>{{ $state }}</option>
                   @endforeach
@@ -259,6 +258,13 @@
             <span class="error-msg" id="istate_codeError"></span>
           </div>
         </div>
+        <div class="form-group row">
+              <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">City</label>
+              <div class="col-12 col-md-7 col-xl-7 col-sm-12">
+                <input type="text" name="icity" id="icity" value="{{ $user->city }}" class="form-control " placeholder="Enter City">
+                <span class="error-msg" id="icityError"></span>
+              </div>
+            </div>
         <div class="form-group row">
           <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">GSTIN</label>
           <div class="col-12 col-md-7 col-xl-7 col-sm-12">

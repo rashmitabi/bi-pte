@@ -4,6 +4,8 @@ namespace App\Http\Controllers\SuperAdmin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Subjects;
+use App\Models\Tests;
+use App\Models\Questions;
 use Illuminate\Http\Request;
 use App\Http\Requests\CreateSubjectRequest;
 use App\Http\Requests\UpdateSubjectRequest;
@@ -146,16 +148,25 @@ class SubjectsController extends Controller
      */
     public function destroy($id)
     {
-        $result = Subjects::where('id',$id)->delete();
-        if($result)
-        {
+        $tests = Tests::where('subject_id',$id)->pluck('id')->toArray();
+        if(count($tests)>0)
+        {   
             return redirect()->route('subjects.index')
-                        ->with('success','Subject deleted successfully!');
+                            ->with('warning','Subject not delete because tests available!');
         }
         else
         {
-            return redirect()->route('subjects.index')
-                        ->with('error','Sorry!Something wrong.Try again later!');
+            $result = Subjects::where('id',$id)->delete();
+            if($result)
+            {
+                return redirect()->route('subjects.index')
+                            ->with('success','Subject deleted successfully!');
+            }
+            else
+            {
+                return redirect()->route('subjects.index')
+                            ->with('error','Sorry!Something wrong.Try again later!');
+            }
         }
     }
 

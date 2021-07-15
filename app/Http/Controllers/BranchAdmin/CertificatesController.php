@@ -17,7 +17,20 @@ class CertificatesController extends Controller
     public function index(Request $request)
     {
     	if($request->ajax()) {
-            $data = TestResults::with(['test','user'])->select('test_id','user_id')->groupBy('test_id', 'user_id')->get();             
+            //$data = TestResults::with(['test','user'])->join('users', 'users.id', '=', 'test_results.user_id')->select('test_id','user_id')->groupBy('test_id', 'user_id')->where('users.parent_user_id', \Auth::user()->id)->get();
+
+            $data = TestResults::with(['test','user'])
+                ->select('test_results.test_id','test_results.user_id')
+                ->join('users', 'users.id', '=', 'test_results.user_id')
+                ->join('student_tests', function($join)
+                         {
+                             $join->on('student_tests.user_id', '=', 'test_results.user_id');
+                             $join->on('student_tests.test_id', '=', 'test_results.test_id');
+                         })
+                ->where('users.parent_user_id', \Auth::user()->id)
+                ->where('student_tests.status', 'C')
+                ->groupBy('test_id', 'user_id')
+                ->get();               
             return Datatables::of($data)
                     ->addIndexColumn()
                     ->addColumn('username', function($row){
@@ -36,7 +49,7 @@ class CertificatesController extends Controller
                         else{
                             $btn = '<ul class="actions-btns">
                                     <li class="action" data-toggle="modal" data-target="#editcertificates">
-                                    <a href="javascript:void(0)" class="generate_certificate" data-url="'.route('generate-certificate', ['aid' => $row->user_id, 'bid' => $row->test_id]).'">
+                                    <a href="javascript:void(0)" class="generate_certificate" data-url="'.route('branchadmin-generate-certificate', ['aid' => $row->user_id, 'bid' => $row->test_id]).'">
                                     <img src="'. asset('assets/images/icons/certificate.svg').'"
                                                 class=""></a></li>
                                 </ul>';
@@ -103,7 +116,7 @@ class CertificatesController extends Controller
             $resdata = $input;
             $resdata['test_name'] = $test->test_name;
             $result = Certificates::create($input);
-            /*if($result){
+            if($result){
                 //send notification                
                 if($test->type == "M"){
                     $type = "Mock Test";
@@ -122,9 +135,9 @@ class CertificatesController extends Controller
                 $notification = Notifications::create($notification_data);
                 \Session::put('success', 'Certificate generated successfully!');
                 return true;   
-            }*/
+            }
             //generate certificate file
-            view()->share('data', $resdata);
+            /*view()->share('data', $resdata);
             $pdf = PDF::loadView('superadmin.certificates.certificate', $input);
             $path = public_path('files/certificates/');
             $fileName = time().'_'.$test->test_name.'.pdf';
@@ -157,7 +170,7 @@ class CertificatesController extends Controller
                     \Session::put('error', 'Unable to generate certificate. Please try Again.');
                     return false;
                 }  
-            }
+            }*/
             else{
                 \Session::put('error', 'Sorry!Something went wrong. Please try Again.');
                 return false;

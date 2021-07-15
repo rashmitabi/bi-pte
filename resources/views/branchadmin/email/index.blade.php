@@ -1,4 +1,4 @@
-@extends('layouts.appSuperAdmin')
+@extends('layouts.appBranchAdmin')
 @section('content')
 <!-- Page Content  -->
 <div id="content">
@@ -9,7 +9,7 @@
                 <h1 class="title mb-4">Email Template</h1>
             </div>
             <div class="col-12 col-md-4 col-xl-4 col-sm-4 right">
-                <a href="{{ route('email.create') }}">
+                <a href="{{ route('branchadmin-email.create') }}">
                 <button type="button" class="btn btn-primary"><i class="fas fa-plus-circle mr-1"></i> New Email Template</button>
                 </a>
             </div>
@@ -93,7 +93,7 @@
 @endsection
 @section('js-hooks')
 <script type="text/javascript" defer>
-  var url="{{ route('email.index') }}";
+  var url="{{ route('branchadmin-email.index') }}";
 </script>
 <script src="{{ asset('assets/js/emailTemplates.js') }}" defer></script>
 @endsection

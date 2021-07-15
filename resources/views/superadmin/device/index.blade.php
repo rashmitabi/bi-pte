@@ -16,7 +16,7 @@
             <div class="col-12 col-md-12 col-xl-12 col-sm-12 left p-0">
                 <!-- <h1 class="title mb-4">Manage Subscription</h1> -->
 
-                <table id="device" class="table table-striped table-bordered dt-responsive nowrap common"
+                <table id="device" class="table table-striped table-bordered dt-responsive wrap common"
                     style="width:100%">
                     <thead>
                         <tr>

@@ -19,9 +19,17 @@ class TestResultsController extends Controller
     public function index(Request $request)   
     {
         if($request->ajax()) {
-            //$data = TestResults::with(['test','subject','user'])->get();
-            //$data = TestResults::with(['test','subject','user'])->select('test_id','user_id', 'subject_id', DB::raw('SUM(get_score) AS score'))->groupBy('test_id', 'user_id', 'subject_id')->get(); 
-            $data = TestResults::with(['test','subject','user'])->selectRaw('test_id,user_id,subject_id,SUM(get_score) AS score')->groupBy('test_id', 'user_id', 'subject_id')->get();  
+            //$data = TestResults::with(['test','subject','user'])->selectRaw('test_id,user_id,subject_id,SUM(get_score) AS score')->groupBy('test_id', 'user_id', 'subject_id')->get();  
+            $data = TestResults::with(['test','subject','user'])
+                ->selectRaw('test_results.test_id,test_results.user_id,test_results.subject_id,SUM(get_score) AS score')
+                ->join('student_tests', function($join)
+                         {
+                             $join->on('student_tests.user_id', '=', 'test_results.user_id');
+                             $join->on('student_tests.test_id', '=', 'test_results.test_id');
+                         })
+                ->where('student_tests.status', '=', 'C')
+                ->groupBy('test_id', 'user_id', 'subject_id')
+                ->get();  
             return Datatables::of($data)
                     ->addIndexColumn()
                     ->addColumn('username', function($row){

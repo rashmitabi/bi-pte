@@ -10,15 +10,6 @@ $(document).ready(function() {
             choice_1_q9: {
                 required: true
             },
-            choice_2_q9: {
-                required: true
-            },
-            choice_3_q9: {
-                required: true
-            },
-            choice_4_q9: {
-                required: true
-            },
             correct_answers_q9: {
                 required: true
             },
@@ -29,15 +20,6 @@ $(document).ready(function() {
                 required: true
             },
             choice_1_q10: {
-                required: true
-            },
-            choice_2_q10: {
-                required: true
-            },
-            choice_3_q10: {
-                required: true
-            },
-            choice_4_q10: {
                 required: true
             },
             correct_answers_q10: {
@@ -54,15 +36,6 @@ $(document).ready(function() {
             choice_1_q9: {
                 required: "Choice is required"
             },
-            choice_2_q9: {
-                required: "Choice is required"
-            },
-            choice_3_q9: {
-                required: "Choice is required"
-            },
-            choice_4_q9: {
-                required: "Choice is required"
-            },
             correct_answers_q9: {
                 required: "Correct Answer is required"
             },
@@ -73,15 +46,6 @@ $(document).ready(function() {
                 required: "Audio is required"
             },
             choice_1_q10: {
-                required: "Choice is required"
-            },
-            choice_2_q10: {
-                required: "Choice is required"
-            },
-            choice_3_q10: {
-                required: "Choice is required"
-            },
-            choice_4_q10: {
                 required: "Choice is required"
             },
             correct_answers_q10: {

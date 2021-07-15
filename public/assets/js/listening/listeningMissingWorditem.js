@@ -7,15 +7,6 @@ $(document).ready(function() {
             choice_1_q11: {
                 required: true
             },
-            choice_2_q11: {
-                required: true
-            },
-            choice_3_q11: {
-                required: true
-            },
-            choice_4_q11: {
-                required: true
-            },
             correct_answers_q11: {
                 required: true
             },
@@ -23,15 +14,6 @@ $(document).ready(function() {
                 required: true
             },
             choice_1_q12: {
-                required: true
-            },
-            choice_2_q12: {
-                required: true
-            },
-            choice_3_q12: {
-                required: true
-            },
-            choice_4_q12: {
                 required: true
             },
             correct_answers_q12: {

@@ -295,15 +295,16 @@ class UsersController extends Controller
                 'lname' => 'required|min:3|max:100',
                 'uname'=>'required|unique:users,name|max:255',
                 'semail'=>'required|email|unique:users,email|max:255',
+                'spassword'=>'required|min:6|max:20',
+                'confirm_spassword'=>'required|same:spassword',
                 'dob' =>'required|before:18 years ago',
                 'mobileno' =>'required|digits:10',
-                'sstatus'=>'required|in:P,A,R',
                 'gender'=>'required|in:M,F',
                 'scitizen'=>'required|min:2|max:255',
                 'sresidence'=>'required|min:2|max:255',
                 'sstate'=>'required|min:2|max:100',
                 'sstate_code'=>'required|min:1|max:100',
-                // 'sgstin'=>'required|min:2|max:100',
+                'scity'=>'required|min:2|max:100',
                 'svalidity'=>'required|after:' . date('Y-m-d'),
                 'simage'=>'nullable|image|mimes:jpeg,png,jpg|max:2048'
             ],
@@ -312,8 +313,11 @@ class UsersController extends Controller
                 'semail.email'=> 'Email is must be email format',
                 'semail.unique'=> 'Email has already taken',
                 'semail.max'=> 'Email maximum length allow 255',
-                'sstatus.required'=>'Status is required',
-                'sstatus.in'=> 'Status only allow given values',
+                'spassword.required'=>'Password is required',
+                'spassword.min'=>'Password min length at least 6',
+                'spassword.max'=>'Password maximum length allow 20',
+                'confirm_spassword.required'=>'Confirm password is required',
+                'confirm_spassword.same'=>'Confirm password not match with password',
                 'scitizen.required'=> 'Country Citizen is required',
                 'scitizen.min'=>'Country Citizen min length at least 2',
                 'scitizen.max'=>'Country Citizen maximum length allow 255',
@@ -326,6 +330,9 @@ class UsersController extends Controller
                 'sstate_code.required'=>'State Code is required',
                 'sstate_code.min'=>'State Code min length at least 1',
                 'sstate_code.max'=>'State Code maximum length allow 255',
+                'scity.required'=>'City is required',
+                'scity.min'=>'City min length at least 2',
+                'scity.max'=>'City maximum length allow 100',
                 'svalidity.required'=>'Validity is required',
                 'svalidity.after'=>'Validity date must be after today',
                 'simage.image'=>'Image must be image file',
@@ -333,14 +340,16 @@ class UsersController extends Controller
             ]);
             $input  = \Arr::except($request->all(),array('_token'));
             
-           
-  
+            if(!isset($input['sstatus'])){
+                $input['sstatus'] = 'P';
+            }
+                
             if ($image = $request->file('simage')) {
                 $destinationPath = 'assets/images/profile/';
                 $fileNameToStore = date('YmdHis') . "." . $image->getClientOriginalExtension();
                 $image->move($destinationPath, $fileNameToStore);
             }
-
+            $password = Hash::make($input['spassword']);
             $user_input = array(
                 'role_id' => $input['type'],
                 'parent_user_id' => $input['branch_admin'],
@@ -348,6 +357,7 @@ class UsersController extends Controller
                 'last_name' => $input['lname'],
                 'name' => $input['uname'],
                 'email' => $input['semail'],
+                'password'=>$password,
                 'mobile_no' => $input['mobileno'],
                 'date_of_birth' => $input['dob'],
                 'profile_image' => isset($fileNameToStore)?$fileNameToStore:'',
@@ -356,6 +366,7 @@ class UsersController extends Controller
                 'country_residence' => $input['sresidence'],
                 'state' => $input['sstate'],
                 'state_code' => $input['sstate_code'],
+                'city'=> $input['scity'],
                 // 'gstin' => $input['sgstin'],
                 'validity' => $input['svalidity'],
                 'status' => $input['sstatus'],
@@ -371,14 +382,16 @@ class UsersController extends Controller
                 'iuname' => 'required|unique:users,name|max:255',
                 'iname'=>'required|min:2|max:255',
                 'iemail'=>'required|email|unique:users,email|max:255',
+                'ipassword'=>'required|min:6|max:20',
+                'confirm_ipassword'=>'required|same:ipassword',
                 'country_code'=>'required|max:5',
                 'phone_no' =>'required|min:6|max:20',
-                'status'=>'required|in:P,A,R',
                 'subdomain' =>'required|max:255|regex:'.$regexUrl,
                 'domain'=>'required|max:255|regex:'.$regexUrl,
                 'welcome_msg'=>'required|max:500',
                 'istate'=>'required|min:2|max:100',
                 'istate_code'=>'required|min:1|max:100',
+                'icity'=>'required|min:2|max:100',
                 'igstin'=>'required|min:2|max:100',
                 'logo'=>'required|image|mimes:jpeg,png,jpg|max:2048',
                 'banner'=>'required|image|mimes:jpeg,png,jpg|max:2048',
@@ -400,12 +413,20 @@ class UsersController extends Controller
                 'iemail.email'=>'Email must be email format',
                 'iemail.unique'=>'Email has already taken',
                 'iemail.max'=>'Email maximum length allow 255',
+                'ipassword.required'=>'Password is required',
+                'ipassword.min'=>'Password min length at least 6',
+                'ipassword.max'=>'Password maximum length allow 20',
+                'confirm_ipassword.required'=>'Confirm password is required',
+                'confirm_ipassword.same'=>'Confirm password not match with password',
                 'istate.required'=>'State is required',
                 'istate.min'=>'State min length at least 2',
                 'istate.max'=>'State maximum length allow 100',
                 'istate_code.required'=>'State Code is required',
                 'istate_code.min'=>'State Code min length at least 1',
                 'istate_code.max'=>'State Code maximum length allow 100',
+                'icity.required'=>'City is required',
+                'icity.min'=>'City min length at least 2',
+                'icity.max'=>'City maximum length allow 100',
                 'igstin.required'=>'GSTIN is required',
                 'igstin.min'=>'GSTIN min length at least 2',
                 'igstin.max'=>'GSTIN maximum length allow 100',
@@ -415,6 +436,10 @@ class UsersController extends Controller
                ]);
             $input  = \Arr::except($request->all(),array('_token'));
 
+            if(!isset($input['istatus'])){
+                $input['istatus'] = 'P';
+            }
+            $password = Hash::make($input['ipassword']);
             if ($image = $request->file('logo')) {
                 $destinationPath = 'assets/images/institute/';
                 $logo = date('YmdHis') ."_logo". "." . $image->getClientOriginalExtension();
@@ -436,10 +461,12 @@ class UsersController extends Controller
                     'parent_user_id' => 0,
                     'name' => $input['iuname'],
                     'email' => $input['iemail'],
+                    'password'=> $password,
                     'mobile_no' => $input['phone_no'],
                     'profile_image' => $profile,
                     'state' => $input['istate'],
                     'state_code' => $input['istate_code'],
+                    'city'=> $input['icity'],
                     'gstin' => $input['igstin'],
                     'validity' => $input['validity'],
                     'status' => $input['status'],
@@ -453,13 +480,14 @@ class UsersController extends Controller
                     'parent_user_id' => 0,
                     'name' => $input['iuname'],
                     'email' => $input['iemail'],
+                    'password'=> $password,
                     'mobile_no' => $input['phone_no'],
                     'profile_image' => '',
                     'state' => $input['istate'],
                     'state_code' => $input['istate_code'],
                     'gstin' => $input['igstin'],
                     'validity' => $input['validity'],
-                    'status' => $input['status'],
+                    'status' => $input['istatus'],
                     'ip_address' => '',
                     'latitude' => '',
                     'longitude' => ''
@@ -557,18 +585,43 @@ class UsersController extends Controller
                 'semail'=>'required|email|unique:users,email,'.$id.'|max:255',
                 'dob' =>'required|before:18 years ago',
                 'mobileno' =>'required|max:20',
-                'sstatus'=>'required|in:P,A,R',
                 'gender'=>'required|in:M,F',
                 'scitizen'=>'required|min:2|max:255',
                 'sresidence'=>'required|min:2|max:255',
                 'sstate'=>'required|min:2|max:100',
                 'sstate_code'=>'required|min:1|max:100',
+                'scity'=>'required|min:2|max:100',
                 // 'sgstin'=>'required|min:2|max:100',
                 'svalidity'=>'required|after:' . date('Y-m-d'),
                 'simage'=>'nullable|image|mimes:jpeg,png,jpg|max:2048'
+            ],
+            [
+                'semail.required'=> 'Email is required', // custom message
+                'semail.email'=> 'Email is must be email format',
+                'semail.unique'=> 'Email has already taken',
+                'semail.max'=> 'Email maximum length allow 255',
+                'scitizen.required'=> 'Country Citizen is required',
+                'scitizen.min'=>'Country Citizen min length at least 2',
+                'scitizen.max'=>'Country Citizen maximum length allow 255',
+                'sresidence.required'=>'Country Residence is required',
+                'sresidence.min'=>'Country Residence min length at least 2',
+                'sresidence.max'=>'Country Residence maximum length allow 255',
+                'sstate.required'=>'State is required',
+                'sstate.min'=>'State min length at least 2',
+                'sstate.max'=>'State maximum length allow 255',
+                'sstate_code.required'=>'State Code is required',
+                'sstate_code.min'=>'State Code min length at least 1',
+                'sstate_code.max'=>'State Code maximum length allow 255',
+                'scity.required'=>'City is required',
+                'scity.min'=>'City min length at least 2',
+                'scity.max'=>'City maximum length allow 100',
+                'svalidity.required'=>'Validity is required',
+                'svalidity.after'=>'Validity date must be after today',
+                'simage.image'=>'Image must be image file',
+                'simage.mimes'=>'Image must be file jpeg,png,jpg format'
             ]);
             $input  = \Arr::except($request->all(),array('_token'));
-
+                
             if ($image = $request->file('simage')) {
                 $destinationPath = 'assets/images/profile/';
                 $fileNameToStore = date('YmdHis') . "." . $image->getClientOriginalExtension();
@@ -588,9 +641,9 @@ class UsersController extends Controller
                     'country_residence' => $input['sresidence'],
                     'state' => $input['sstate'],
                     'state_code' => $input['sstate_code'],
+                    'city'=>$input['scity'],
                     // 'gstin' => $input['sgstin'],
                     'validity' => $input['svalidity'],
-                    'status' => $input['sstatus'],
                     'ip_address' => '',
                     'latitude' => '',
                     'longitude' => ''
@@ -611,9 +664,9 @@ class UsersController extends Controller
                     'country_residence' => $input['sresidence'],
                     'state' => $input['sstate'],
                     'state_code' => $input['sstate_code'],
+                    'city'=>$input['scity'],
                     // 'gstin' => $input['sgstin'],
                     'validity' => $input['svalidity'],
-                    'status' => $input['sstatus'],
                     'ip_address' => '',
                     'latitude' => '',
                     'longitude' => ''
@@ -621,6 +674,11 @@ class UsersController extends Controller
 
             }
 
+            if(isset($input['sstatus'])){
+                $user_input['status'] = $input['sstatus'];
+            }else{
+                $user_input['status'] = 'P';
+            }
             
             $result = User::where('id',$id)->update($user_input);
         }else if($type == 2){
@@ -631,13 +689,13 @@ class UsersController extends Controller
                 'iemail'=>'required|email|unique:users,email,'.$id.'|max:255',
                 'country_code'=>'required|max:5',
                 'phone_no' =>'required|max:20',
-                'status'=>'required|in:P,A,R',
                 'students_allowed' =>'required',
                 'subdomain' =>'required|max:255',
                 'domain'=>'required|max:255',
                 'welcome_msg'=>'required|max:500',
                 'istate'=>'required|min:2|max:100',
                 'istate_code'=>'required|min:1|max:100',
+                'icity'=>'required|min:2|max:100',
                 'igstin'=>'required|min:2|max:100',
                 'logo'=>'nullable|image|mimes:jpeg,png,jpg|max:2048',
                 'banner'=>'nullable|image|mimes:jpeg,png,jpg|max:2048',
@@ -646,6 +704,30 @@ class UsersController extends Controller
                 'admin_prediction_file'=>'required|in:Y,N',
                 'admin_practice_question'=>'required|in:Y,N',
                 'admin_test'=>'required|in:Y,N'
+            ],
+            [
+                'iuname.required'=> 'user name is required', // custom message
+                'iuname.unique'=> 'user name already taken', // custom message
+                'iuname.max'=> 'user name maximum length allow 255', // custom message
+                'iname.required'=>'Institute Name is required',
+                'iname.min'=>'Institute Name min length at least 2',
+                'iname.max'=>'Institute Name max length is 255',
+                'iemail.required'=>'Email is required',
+                'iemail.email'=>'Email must be email format',
+                'iemail.unique'=>'Email has already taken',
+                'iemail.max'=>'Email maximum length allow 255',
+                'istate.required'=>'State is required',
+                'istate.min'=>'State min length at least 2',
+                'istate.max'=>'State maximum length allow 100',
+                'istate_code.required'=>'State Code is required',
+                'istate_code.min'=>'State Code min length at least 1',
+                'istate_code.max'=>'State Code maximum length allow 100',
+                'icity.required'=>'City is required',
+                'icity.min'=>'City min length at least 2',
+                'icity.max'=>'City maximum length allow 100',
+                'igstin.required'=>'GSTIN is required',
+                'igstin.min'=>'GSTIN min length at least 2',
+                'igstin.max'=>'GSTIN maximum length allow 100'
             ]);
             $input  = \Arr::except($request->all(),array('_token'));
             if ($image = $request->file('logo')) {
@@ -673,9 +755,9 @@ class UsersController extends Controller
                     'profile_image' => $fileNameToStore,
                     'state' => $input['istate'],
                     'state_code' => $input['istate_code'],
+                    'city'=>$input['icity'],
                     'gstin' => $input['igstin'],
                     'validity' => $input['validity'],
-                    'status' => $input['status'],
                     'ip_address' => '',
                     'latitude' => '',
                     'longitude' => ''
@@ -689,15 +771,19 @@ class UsersController extends Controller
                     'mobile_no' => $input['phone_no'],
                     'state' => $input['istate'],
                     'state_code' => $input['istate_code'],
+                    'city'=>$input['icity'],
                     'gstin' => $input['igstin'],
                     'validity' => $input['validity'],
-                    'status' => $input['status'],
                     'ip_address' => '',
                     'latitude' => '',
                     'longitude' => ''
                 );
             }
-
+            if(isset($input['istatus'])){
+                $user_input['status'] = $input['istatus'];
+            }else{
+                $user_input['status'] = 'P';
+            }
             $result = User::where('id',$id)->update($user_input);
 
             if(isset($logo) && isset($banner)){
