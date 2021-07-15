@@ -2310,4 +2310,9 @@ body {
 .progress-pie-chart, .progress-pie-chart1, .progress-pie-chart2, .progress-pie-chart3 {
   margin: 0px auto 20px;
 }
+
+.required:after {
+  content: " *";
+  color: red;
+}
 /*# sourceMappingURL=admin-common.css.map */

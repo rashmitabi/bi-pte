@@ -1,7 +1,7 @@
 <form class="form mt-4 ml-3" method="POST" action="{{ route('superadmin-tests-update', $test->id) }}" enctype="multipart/form-data" id="test-update" name="test-update">
     @csrf
     <div class="form-group row">
-        <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Select Test Type</label>
+        <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label required">Select Test Type</label>
         <div class="col-12 col-md-7 col-xl-7 col-sm-12">
             <select class="user-type custom-select" name="type" id="type">
                 <option selected disabled>Select Test Type</option>
@@ -12,7 +12,7 @@
         </div>
     </div>
     <div class="form-group row">
-        <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Test Name</label>
+        <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label required">Test Name</label>
         <div class="col-12 col-md-7 col-xl-7 col-sm-12">
             <input type="text" class="form-control " name="test_name" id="test_name"
             placeholder="Enter Test Name" value="{{ $test->test_name }}">
@@ -20,7 +20,7 @@
         </div>
     </div>
     <div class="form-group row">
-        <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Select Subject</label>
+        <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label required">Select Subject</label>
         <div class="col-12 col-md-7 col-xl-7 col-sm-12">
             <select class="user-type custom-select" name="subject" id="subject">
                 <option selected disabled>Select Subject Type</option>

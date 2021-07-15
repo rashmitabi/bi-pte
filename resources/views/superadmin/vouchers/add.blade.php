@@ -16,7 +16,7 @@
             <div class="col-12 col-md-12 col-xl-8 col-sm-12 left">
                 {!! Form::open(array('route' => 'vouchers.store','method'=>'POST','class'=>'form mt-4 ml-3')) !!}
                     <div class="form-group row">
-                        <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Voucher Name</label>
+                        <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label required">Voucher Name</label>
                         <div class="col-12 col-md-7 col-xl-7 col-sm-12">
                             <input type="text" class="form-control "name="name" placeholder="Enter Voucher Name" value="{{old('name')}}">
                             @if($errors->has('name'))
@@ -25,7 +25,7 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Voucher Code</label>
+                        <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label required">Voucher Code</label>
                         <div class="col-12 col-md-7 col-xl-7 col-sm-12">
                             <input type="text" class="form-control "name="code" placeholder="Enter Voucher Code" value="{{old('code')}}">
                             @if($errors->has('code'))
@@ -34,7 +34,7 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Select Role</label>
+                        <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label required">Select Role</label>
                         <div class="col-12 col-md-7 col-xl-7 col-sm-12">
                             <select class="user-type custom-select" name="role_id">
                                 <option selected disabled>Select User Type</option>
@@ -49,7 +49,7 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Voucher Type</label>
+                        <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label required">Voucher Type</label>
                         <div class="col-12 col-md-7 col-xl-7 col-sm-12">
                             <select class="user-type custom-select voucher-type" name="voucher_type">
                                 <option selected disabled>Select Voucher Type</option>
@@ -62,7 +62,7 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label voucher-price-label">Voucher Price</label>
+                        <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label voucher-price-label required">Voucher Price</label>
                         <div class="col-12 col-md-7 col-xl-7 col-sm-12">
                             <input type="text" class="form-control " name="voucher_price" placeholder="Enter Voucher Price" value="{{ old('voucher_price') }}">
                             @if($errors->has('voucher_price'))
@@ -71,7 +71,7 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                      <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Voucher Expiry Date</label>
+                      <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label required">Voucher Expiry Date</label>
                        <div class="col-12 col-md-7 col-xl-7 col-sm-12">
                           <input type="date" class="form-control " name="valid_till" placeholder="Select Voucher Expiry Date" value="{{ old('valid_till') }}">
                             @if($errors->has('valid_till'))

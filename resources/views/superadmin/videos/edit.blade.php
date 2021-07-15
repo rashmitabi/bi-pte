@@ -1,28 +1,28 @@
 <form class="form mt-4 ml-3" method="post" action="">
 @csrf
 <div class="form-group row">
-    <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Video Title</label>
+    <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label required">Video Title</label>
     <div class="col-12 col-md-7 col-xl-7 col-sm-12">
         <input type="text" class="form-control "name="title" placeholder="Enter Video Title" value="{{ $video->title }}">
         <span class="error-msg" id="titleError"></span>
     </div>
 </div>
 <div class="form-group row">
-    <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Video Description</label>
+    <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label required">Video Description</label>
     <div class="col-12 col-md-7 col-xl-7 col-sm-12">
         <input type="text" class="form-control "name="description" placeholder="Enter Video Description" value="{{ $video->description }}">
         <span class="error-msg" id="descriptionError"></span>
     </div>
 </div>
 <div class="form-group row">
-    <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Video Link</label>
+    <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label required">Video Link</label>
     <div class="col-12 col-md-7 col-xl-7 col-sm-12">
         <input type="text" class="form-control "name="link" placeholder="Enter Video Link" value="{{ $video->link }}">
         <span class="error-msg" id="linkError"></span>
     </div>
 </div>
 <div class="form-group row">
-  <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label">Video Section</label>
+  <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label required">Video Section</label>
   <div class="col-12 col-md-7 col-xl-7 col-sm-12">
     <select id="sections" name="section_id"  class="form-select">
       <option value="" selected>Select Section</option>
@@ -36,7 +36,7 @@
   </div>
 </div>
 <div class="form-group row">
-  <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label">Video Type</label>
+  <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label required">Video Type</label>
   <div class="col-12 col-md-7 col-xl-7 col-sm-12">
     <select id="types" name="design_id" class="form-select" data-json="{{ json_encode($types) }}">
       <option value="" selected>Select Type</option>

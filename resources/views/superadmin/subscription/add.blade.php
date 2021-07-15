@@ -16,7 +16,7 @@
             <div class="col-12 col-md-12 col-xl-8 col-sm-12 mt-4 left">
                 {!! Form::open(array('route' => 'subscription.store','method'=>'POST','class'=>'form')) !!}
                     <div class="form-group row">
-                        <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Subscription Title</label>
+                        <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label required">Subscription Title</label>
                         <div class="col-12 col-md-7 col-xl-7 col-sm-12">
                             <input type="text" class="form-control "name="title" placeholder="Enter Subscription Title" value="{{old('title')}}">
                             @if($errors->has('title'))
@@ -25,7 +25,7 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-12 col-md-5 col-xl-4 col-sm-12  col-form-label ">Description</label>
+                        <label class="col-12 col-md-5 col-xl-4 col-sm-12  col-form-label required">Description</label>
                         <div class="col-12 col-md-7 col-xl-7 col-sm-12">
                             <textarea class="form-control" name="description" id="exampleFormControlTextarea1"
                                 rows="3" placeholder="Enter Description">{{old('description')}}</textarea>
@@ -35,7 +35,7 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Select Role</label>
+                        <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label required">Select Role</label>
                         <div class="col-12 col-md-7 col-xl-7 col-sm-12">
                             <select class="user-type custom-select" name="role_id">
                                 <option selected disabled>Select User Type</option>
@@ -50,7 +50,7 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Number Of Students Allowed</label>
+                        <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label required">Number Of Students Allowed</label>
                         <div class="col-12 col-md-7 col-xl-7 col-sm-12">
                             <input type="number" class="form-control " name="students_allowed" placeholder="Enter Number Of Students Allowed" value="{{old('students_allowed')}}">
                             @if($errors->has('students_allowed'))
@@ -59,7 +59,7 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Monthly Price</label>
+                        <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label required">Monthly Price</label>
                         <div class="col-12 col-md-7 col-xl-7 col-sm-12">
                             <input type="text" class="form-control " name="monthly_price" placeholder="Enter Monthly Price" value="{{old('monthly_price')}}">
                             @if($errors->has('monthly_price'))
@@ -68,7 +68,7 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Quarterly Price</label>
+                        <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label required">Quarterly Price</label>
                         <div class="col-12 col-md-7 col-xl-7 col-sm-12">
                             <input type="text" class="form-control " name="quarterly_price" placeholder="Enter Quarterly Price" value="{{old('quarterly_price')}}">
                             @if($errors->has('quarterly_price'))
@@ -77,7 +77,7 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Half Yearly Price</label>
+                        <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label required">Half Yearly Price</label>
                         <div class="col-12 col-md-7 col-xl-7 col-sm-12">
                             <input type="text" class="form-control " name="halfyearly_price" placeholder="Enter Half Yearly Price" value="{{old('halfyearly_price')}}">
                             @if($errors->has('halfyearly_price'))
@@ -86,7 +86,7 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Annually Price</label>
+                        <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label required">Annually Price</label>
                         <div class="col-12 col-md-7 col-xl-7 col-sm-12">
                             <input type="text" class="form-control " name="annually_price" placeholder="Enter Annually Price" value="{{old('annually_price')}}">
                             @if($errors->has('annually_price'))
@@ -95,7 +95,7 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">White Labelling Price</label>
+                        <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label required">White Labelling Price</label>
                         <div class="col-12 col-md-7 col-xl-7 col-sm-12">
                             <input type="text" class="form-control " name="white_labelling_price" placeholder="White Labelling Price" value="{{old('white_labelling_price')}}">
                             @if($errors->has('white_labelling_price'))
@@ -104,7 +104,7 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Mock Tests</label>
+                        <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label required">Mock Tests</label>
                         <div class="col-12 col-md-7 col-xl-7 col-sm-12">
                             <input type="text" class="form-control " name="mock_tests" placeholder="Number Of Mock Tests Allowed" value="{{old('mock_tests')}}">
                             @if($errors->has('mock_tests'))
@@ -113,7 +113,7 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Practice Tests</label>
+                        <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label required">Practice Tests</label>
                         <div class="col-12 col-md-7 col-xl-7 col-sm-12">
                             <input type="text" class="form-control " name="practice_tests" placeholder="Number Of Practice Tests Allowed" value="{{old('practice_tests')}}">
                             @if($errors->has('practice_tests'))

@@ -1,7 +1,7 @@
 <form class="form mt-4 ml-3" method="post" action="">
 @csrf
 <div class="form-group row">
-    <label class="col-12 col-md-5 col-xl-5 col-sm-12 col-form-label ">Subject Name</label>
+    <label class="col-12 col-md-5 col-xl-5 col-sm-12 col-form-label required">Subject Name</label>
     <div class="col-12 col-md-7 col-xl-7 col-sm-12">
         <input type="text" class="form-control "name="name" placeholder="Enter Subject Name" value="{{ $subject->subject_name }}">
         <span class="error-msg" id="nameError"></span>
