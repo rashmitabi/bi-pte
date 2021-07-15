@@ -1,13 +1,13 @@
 <form class="form mt-4 ml-3">
     <div class="form-group row">
-        <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Template Name</label>
+        <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label required">Template Name</label>
         <div class="col-12 col-md-7 col-xl-7 col-sm-12">
             <input type="text" class="form-control " name="name" placeholder="Enter Subscription Title" value="{{ $EmailTemplate->name }}">
             <span class="error-msg" id="nameError"></span>
         </div>
     </div>
     <div class="form-group row">
-        <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Email Subject</label>
+        <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label required">Email Subject</label>
         <div class="col-12 col-md-7 col-xl-7 col-sm-12">
             <input type="email" class="form-control " name="subject" placeholder="Enter Email Subject" value="{{ $EmailTemplate->subject }}">
             <span class="error-msg" id="subjectError"></span>
@@ -15,7 +15,7 @@
     </div>
 
     <div class="form-group row">
-        <label class="col-12 col-form-label pt-0">Email Body</label>
+        <label class="col-12 col-form-label pt-0 required">Email Body</label>
         <div class="col-12">
             <!-- <div id="editor">
                 <h2>The three greatest things you learn from traveling</h2>

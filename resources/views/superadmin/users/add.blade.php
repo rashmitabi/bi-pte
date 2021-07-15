@@ -1,4 +1,5 @@
 @extends('layouts.appSuperAdmin')
+
 @section('content')
 
 <!-- Page Content  -->
@@ -61,7 +62,7 @@
               </div>
             </div>
             <div class="form-group row">
-              <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">First Name</label>
+              <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label required">First Name</label>
               <div class="col-12 col-md-7 col-xl-7 col-sm-12">
                 <input type="text" name="fname" value="{{ old('fname') }}" class="form-control " placeholder="Enter First Name">
                 @if($errors->has('fname'))
@@ -70,7 +71,7 @@
               </div>
             </div>
             <div class="form-group row">
-              <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Last Name</label>
+              <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label required">Last Name</label>
               <div class="col-12 col-md-7 col-xl-7 col-sm-12">
                 <input type="text" name="lname" value="{{ old('lname') }}" class="form-control " placeholder="Enter Last Name">
                 @if($errors->has('lname'))
@@ -79,7 +80,7 @@
               </div>
             </div>
             <div class="form-group row">
-              <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">User Name</label>
+              <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label required">User Name</label>
               <div class="col-12 col-md-7 col-xl-7 col-sm-12">
                 <input type="text" name="uname" value="{{old('uname')}}" data-id="" data-action="store" data-unique-type="username" data-url="{{ route('superadmin-check-unique-validation') }}" class="form-control unique-susername" placeholder="Enter User Name">
                 @if($errors->has('uname'))
@@ -88,7 +89,7 @@
               </div>
             </div>
             <div class="form-group row">
-              <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Email</label>
+              <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label required">Email</label>
               <div class="col-12 col-md-7 col-xl-7 col-sm-12">
                 <input type="email" name="semail" value="{{old('semail')}}" data-id="" data-action="store" data-unique-type="email" data-url="{{ route('superadmin-check-unique-validation') }}" class="form-control unique-semail" placeholder="Enter Email id">
                 @if($errors->has('semail'))
@@ -97,7 +98,7 @@
               </div>
             </div>
             <div class="form-group row">
-              <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Password</label>
+              <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label required">Password</label>
               <div class="col-12 col-md-7 col-xl-7 col-sm-12">
                 <input type="password" name="spassword" value="{{ old('spassword') }}" class="form-control" placeholder="Enter Password">
                 @if($errors->has('spassword'))
@@ -106,7 +107,7 @@
               </div>
             </div>
             <div class="form-group row">
-              <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Confirm Password</label>
+              <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label required">Confirm Password</label>
               <div class="col-12 col-md-7 col-xl-7 col-sm-12">
                 <input type="password" name="confirm_spassword" value="{{ old('confirm_spassword') }}" class="form-control" placeholder="Enter Confirm Password">
                 @if($errors->has('confirm_spassword'))
@@ -115,7 +116,7 @@
               </div>
             </div>
             <div class="form-group row">
-              <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Date of Birth</label>
+              <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label required">Date of Birth</label>
               <div class="col-12 col-md-7 col-xl-7 col-sm-12">
                 <input type="text" name="dob" id="dob" value="{{ old('dob') }}" class="form-control " placeholder="Select Date of Birth">
                 @if($errors->has('dob'))
@@ -124,7 +125,7 @@
               </div>
             </div>
             <div class="form-group row">
-              <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Mobile Number</label>
+              <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label required">Mobile Number</label>
               <div class="col-12 col-md-7 col-xl-7 col-sm-12">
                 <input type="text" name="mobileno" value="{{ old('mobileno') }}" class="form-control " placeholder="Enter Mobile Number">
                 @if($errors->has('mobileno'))
@@ -162,7 +163,7 @@
               </div>
             </div>
             <div class="form-group row">
-              <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Country Citizen</label>
+              <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label required">Country Citizen</label>
               <div class="col-12 col-md-7 col-xl-7 col-sm-12">
                 <input type="text" name="scitizen" value="{{ old('scitizen') }}" class="form-control " placeholder="Enter Country Citizen">
                 @if($errors->has('scitizen'))
@@ -171,7 +172,7 @@
               </div>
             </div>
             <div class="form-group row">
-              <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Country Residence</label>
+              <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label required">Country Residence</label>
               <div class="col-12 col-md-7 col-xl-7 col-sm-12">
                 <input type="text" name="sresidence" value="{{ old('sresidence') }}" class="form-control " placeholder="Enter Country Residence">
                 @if($errors->has('sresidence'))
@@ -180,7 +181,7 @@
               </div>
             </div>
             <div class="form-group row">
-              <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">State</label>
+              <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label required">State</label>
               <div class="col-12 col-md-7 col-xl-7 col-sm-12">
                 <select class="custom-select" class="form-control" name="sstate" id="sstate">
                     <option selected disabled>Select State</option>
@@ -209,7 +210,7 @@
               </div>
             </div> -->
             <div class="form-group row">
-              <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">City</label>
+              <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label required">City</label>
               <div class="col-12 col-md-7 col-xl-7 col-sm-12">
                 <input type="text" name="scity" id="scity" value="{{ old('scity') }}" class="form-control " placeholder="Enter City">
                 @if($errors->has('scity'))
@@ -218,7 +219,7 @@
               </div>
             </div>
             <div class="form-group row">
-              <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Validity</label>
+              <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label required">Validity</label>
               <div class="col-12 col-md-7 col-xl-7 col-sm-12">
                 <input type="text" name="svalidity" id="svalidity" value="{{ old('svalidity') }}" class="form-control " placeholder="Validity">
                 @if($errors->has('svalidity'))
@@ -243,7 +244,7 @@
 
           <div id="breanchadmin" style="{{ $branchblock }}">
             <div class="form-group row">
-              <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">User Name</label>
+              <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label required">User Name</label>
               <div class="col-12 col-md-7 col-xl-7 col-sm-12">
                 <input type="text" name="iuname" value="{{ old('iuname') }}" data-id="" data-action="store" data-unique-type="username" data-url="{{ route('superadmin-check-unique-validation') }}" class="form-control unique-iusername" placeholder="Enter User Name">
                 @if($errors->has('iuname'))
@@ -252,7 +253,7 @@
               </div>
             </div>
             <div class="form-group row">
-              <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Institute Name</label>
+              <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label required">Institute Name</label>
               <div class="col-12 col-md-7 col-xl-7 col-sm-12">
                 <input type="text" name="iname" value="{{ old('iname') }}" class="form-control " placeholder="Enter Institute Name">
                 @if($errors->has('iname'))
@@ -261,7 +262,7 @@
               </div>
             </div>
             <div class="form-group row">
-              <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Email</label>
+              <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label required">Email</label>
               <div class="col-12 col-md-7 col-xl-7 col-sm-12">
                 <input type="email" name="iemail" value="{{ old('iemail') }}" data-id="" class="form-control unique-iemail" data-action="store" data-unique-type="email" data-url="{{ route('superadmin-check-unique-validation') }}"  placeholder="Enter Email id">
                 @if($errors->has('iemail'))
@@ -270,7 +271,7 @@
               </div>
             </div>
             <div class="form-group row">
-              <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Password</label>
+              <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label required">Password</label>
               <div class="col-12 col-md-7 col-xl-7 col-sm-12">
                 <input type="password" name="ipassword" value="{{ old('ipassword') }}" class="form-control" placeholder="Enter Password">
                 @if($errors->has('ipassword'))
@@ -279,7 +280,7 @@
               </div>
             </div>
             <div class="form-group row">
-              <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Confirm Password</label>
+              <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label required">Confirm Password</label>
               <div class="col-12 col-md-7 col-xl-7 col-sm-12">
                 <input type="password" name="confirm_ipassword" value="{{ old('confirm_ipassword') }}" class="form-control" placeholder="Enter Confirm Password">
                 @if($errors->has('confirm_ipassword'))
@@ -288,7 +289,7 @@
               </div>
             </div>
             <div class="form-group row">
-              <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Country Phone Code</label>
+              <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label required">Country Phone Code</label>
               <div class="col-12 col-md-7 col-xl-7 col-sm-12">
                 <input type="text" name="country_code" value="{{ old('country_code') }}" class="form-control " placeholder="Enter Country Phone Code">
                 @if($errors->has('country_code'))
@@ -297,7 +298,7 @@
               </div>
             </div>
             <div class="form-group row">
-              <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Phone Number</label>
+              <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label required">Phone Number</label>
               <div class="col-12 col-md-7 col-xl-7 col-sm-12">
                 <input type="text" name="phone_no" value="{{ old('phone_no') }}" class="form-control " placeholder="Enter Phone Number">
                 @if($errors->has('phone_no'))
@@ -312,7 +313,7 @@
               </div>
             </div>
             <div class="form-group row">
-              <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Subdomain</label>
+              <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label required">Subdomain</label>
               <div class="col-12 col-md-7 col-xl-7 col-sm-12">
                 <input type="text" name="subdomain" value="{{ old('subdomain') }}" class="form-control " placeholder="Enter Subdomain">
                 @if($errors->has('subdomain'))
@@ -321,7 +322,7 @@
               </div>
             </div>
             <div class="form-group row">
-              <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Domain</label>
+              <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label required">Domain</label>
               <div class="col-12 col-md-7 col-xl-7 col-sm-12">
                 <input type="text" name="domain" value="{{ old('domain') }}" class="form-control " placeholder="Enter Domain">
                 @if($errors->has('domain'))
@@ -330,7 +331,7 @@
               </div>
             </div>
             <div class="form-group row">
-              <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Welcome Message</label>
+              <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label required">Welcome Message</label>
               <div class="col-12 col-md-7 col-xl-7 col-sm-12">
                 <textarea name="welcome_msg" class="form-control"  rows="3" placeholder="Enter Welcome Message">{{ old('welcome_msg') }}</textarea>
                 @if($errors->has('welcome_msg'))
@@ -339,7 +340,7 @@
               </div>
             </div>
             <div class="form-group row">
-              <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">State</label>
+              <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label required">State</label>
               <div class="col-12 col-md-7 col-xl-7 col-sm-12">
                 <select class="custom-select" class="form-control" name="istate" id="istate">
                   <option selected disabled>Select State</option>
@@ -362,7 +363,7 @@
               </div>
             </div>
             <div class="form-group row">
-              <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">City</label>
+              <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label required">City</label>
               <div class="col-12 col-md-7 col-xl-7 col-sm-12">
                 <input type="text" name="icity" id="icity" value="{{ old('icity') }}" class="form-control " placeholder="Enter City">
                 @if($errors->has('icity'))
@@ -371,7 +372,7 @@
               </div>
             </div>
             <div class="form-group row">
-              <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">GSTIN</label>
+              <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label required">GSTIN</label>
               <div class="col-12 col-md-7 col-xl-7 col-sm-12">
                 <input type="text" name="igstin" value="{{ old('igstin') }}" class="form-control " placeholder="Enter GST NO">
                 @if($errors->has('igstin'))
@@ -392,7 +393,7 @@
               </div>
             </div>
             <div class="form-group row">
-              <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Logo Image</label>
+              <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label required">Logo Image</label>
               <div class="col-12 col-md-7 col-xl-7 col-sm-12">
                 <div class="custom-file">
                   <input type="file" name="logo" value="{{ old('logo') }}" class="custom-file-input" id="customFile">
@@ -404,7 +405,7 @@
               </div>
             </div>
             <div class="form-group row">
-              <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Banner Image</label>
+              <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label required">Banner Image</label>
               <div class="col-12 col-md-7 col-xl-7 col-sm-12">
                 <div class="custom-file">
                   <input type="file" name="banner" value="{{ old('banner') }}" class="custom-file-input" id="customFile">
@@ -416,7 +417,7 @@
               </div>
             </div>
             <div class="form-group row">
-              <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Validity</label>
+              <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label required">Validity</label>
               <div class="col-12 col-md-7 col-xl-7 col-sm-12">
                 <input type="text" name="validity" id="ivalidity" value="{{ old('validity') }}" class="form-control " placeholder="Validity">
                 @if($errors->has('validity'))

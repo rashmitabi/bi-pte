@@ -16,7 +16,7 @@
             <div class="col-12 col-md-12 col-xl-8 col-sm-8 left">
                 {!! Form::open(array('route' => 'predictionfiles.store','method'=>'POST','class'=>'form mt-4 ml-3', 'enctype' => 'multipart/form-data')) !!}
                     <div class="form-group row">
-                        <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">File Title</label>
+                        <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label required">File Title</label>
                         <div class="col-12 col-md-7 col-xl-7 col-sm-12">
                             <input type="text" class="form-control" name="title" placeholder="File Title" value="{{old('title')}}">
                             @if($errors->has('title'))
@@ -25,7 +25,7 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">File Description</label>
+                        <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label required">File Description</label>
                         <div class="col-12 col-md-7 col-xl-7 col-sm-12">
                             <input type="text" class="form-control" name="description" placeholder="File Description" value="{{old('description')}}">
                             @if($errors->has('description'))
@@ -34,7 +34,7 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                      <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Upload Prediction File</label>
+                      <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label required">Upload Prediction File</label>
                        <div class="col-12 col-md-7 col-xl-7 col-sm-12">
                            <div class="custom-file">
                                <input type="file" class="custom-file-input" name="file" id="customFile">
@@ -46,7 +46,7 @@
                       </div>
                    </div>
                     <div class="form-group row">
-                      <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">File Section</label>
+                      <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label required">File Section</label>
                       <div class="col-12 col-md-7 col-xl-7 col-sm-12">
                         <select id="sections" name="section_id"  class="user-type custom-select">
                           <option value="" selected>Select Section</option>
@@ -62,7 +62,7 @@
                       </div>
                     </div>
                     <div class="form-group row">
-                      <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">File Type</label>
+                      <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label required">File Type</label>
                       <div class="col-12 col-md-7 col-xl-7 col-sm-12">
                         <select id="types" name="design_id" class="user-type custom-select" data-json="{{ json_encode($types) }}">
                           <option value="" selected>Select Type</option>

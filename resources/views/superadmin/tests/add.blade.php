@@ -16,7 +16,7 @@
             <div class="col-12 col-md-12 col-xl-8 col-sm-12 left">
                 {!! Form::open(array('route' => 'tests.store','method'=>'POST','class'=>'form mt-4 ml-3','enctype'=>'multipart/form-data')) !!}
                     <div class="form-group row">
-                        <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Select Test Type</label>
+                        <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label required">Select Test Type</label>
                         <div class="col-12 col-md-7 col-xl-7 col-sm-12">
                             <select class="user-type custom-select" name="type">
                                 <option selected disabled>Select Test Type</option>
@@ -29,7 +29,7 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Test Name</label>
+                        <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label required">Test Name</label>
                         <div class="col-12 col-md-7 col-xl-7 col-sm-12">
                             <input type="text" class="form-control " name="test_name"
                                 placeholder="Enter Test Name" value="{{ old('test_name') }}">
@@ -39,7 +39,7 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Select Subject</label>
+                        <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label required">Select Subject</label>
                         <div class="col-12 col-md-7 col-xl-7 col-sm-12">
                             <select  class="user-type custom-select" name="subject">
                                 <option selected disabled>Select Subject Type</option>
@@ -53,7 +53,7 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Test Image</label>
+                        <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label required">Test Image</label>
                         <div class="col-12 col-md-7 col-xl-7 col-sm-12">
                             <div class="custom-file mb-3">
                                 <input type="file" class="custom-file-input" name="image" id="image">

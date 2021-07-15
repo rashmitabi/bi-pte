@@ -28,21 +28,21 @@
           </div>
         </div>
         <div class="form-group row mb-2">
-          <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">First Name</label>
+          <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label required">First Name</label>
           <div class="col-12 col-md-7 col-xl-7 col-sm-12">
             <input type="text" name="fname" id="fname" value="{{ $user->first_name }}" class="form-control " placeholder="Enter First Name">
             <span class="error-msg" id="fnameError"></span>
           </div>
         </div>
         <div class="form-group row mb-2">
-          <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Last Name</label>
+          <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label required">Last Name</label>
           <div class="col-12 col-md-7 col-xl-7 col-sm-12">
             <input type="text" name="lname" id="lname" value="{{ $user->last_name }}" class="form-control " placeholder="Enter Last Name">
             <span class="error-msg" id="lnameError"></span>
           </div>
         </div>   
         <div class="form-group row mb-2">
-          <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">User Name</label>
+          <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label required">User Name</label>
           <div class="col-12 col-md-7 col-xl-7 col-sm-12">
             <input type="text" name="uname" id="uname" value="{{ $user->name  }}" class="form-control " placeholder="Enter User Name">
             <span class="error-msg" id="unameError"></span>
@@ -50,21 +50,21 @@
         </div>   
         
         <div class="form-group row mb-2">
-          <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Email</label>
+          <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label required">Email</label>
           <div class="col-12 col-md-7 col-xl-7 col-sm-12">
             <input type="email" name="semail" id="semail" value="{{ $user->email }}" class="form-control " placeholder="Enter Email id">
             <span class="error-msg" id="semailError"></span>
           </div>
         </div>
         <div class="form-group row mb-2">
-          <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Date of Birth</label>
+          <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label required">Date of Birth</label>
           <div class="col-12 col-md-7 col-xl-7 col-sm-12">
             <input type="text" name="dob" id="dob" value="{{ $user->date_of_birth }}" class="form-control " placeholder="Select Date of Birth">
             <span class="error-msg" id="dobError"></span>
           </div>
         </div>
         <div class="form-group row mb-2">
-          <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Mobile Number</label>
+          <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label required">Mobile Number</label>
           <div class="col-12 col-md-7 col-xl-7 col-sm-12">
             <input type="text" name="mobileno" id="mobileno" value="{{ $user->mobile_no }}" class="form-control " placeholder="Enter Mobile Number">
             <span class="error-msg" id="mobilenoError"></span>
@@ -100,21 +100,21 @@
           </div>
         </div>
         <div class="form-group row mb-2">
-          <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Country Citizen</label>
+          <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label required">Country Citizen</label>
           <div class="col-12 col-md-7 col-xl-7 col-sm-12">
             <input type="text" name="scitizen" id="scitizen" value="{{ $user->country_citizen }}" class="form-control " placeholder="Enter Country Citizen">
             <span class="error-msg" id="scitizenError"></span>
           </div>
         </div>
         <div class="form-group row mb-2">
-          <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Country Residence</label>
+          <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label required">Country Residence</label>
           <div class="col-12 col-md-7 col-xl-7 col-sm-12">
             <input type="text" name="sresidence" id="sresidence" value="{{ $user->country_residence }}" class="form-control " placeholder="Enter Country Residence">
             <span class="error-msg" id="sresidenceError"></span>
           </div>
         </div>
         <div class="form-group row">
-          <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">State</label>
+          <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label required">State</label>
           <div class="col-12 col-md-7 col-xl-7 col-sm-12">
               <select class="custom-select" name="sstate" id="sstate" class="form-control">
                 @foreach(states() as $key => $state)
@@ -132,7 +132,7 @@
           </div>
         </div>
         <div class="form-group row">
-          <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">City</label>
+          <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label required">City</label>
           <div class="col-12 col-md-7 col-xl-7 col-sm-12">
             <input type="text" name="scity" id="scity" value="{{ $user->city }}" class="form-control " placeholder="Enter City">
             <span class="error-msg" id="scityError"></span>
@@ -146,7 +146,7 @@
           </div>
         </div> -->
         <div class="form-group row mb-2">
-          <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Validity</label>
+          <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label required">Validity</label>
           <div class="col-12 col-md-7 col-xl-7 col-sm-12">
             <input type="text" name="svalidity" id="svalidity" value="{{ date('Y-m-d', strtotime($user->validity)) }}" class="form-control " placeholder="Validity">
             <span class="error-msg" id="svalidityError"></span>
@@ -171,21 +171,21 @@
           </div>
         </div>
         <div class="form-group row">
-          <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">User Name</label>
+          <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label required">User Name</label>
           <div class="col-12 col-md-7 col-xl-7 col-sm-12">
             <input type="text" name="iuname" id="iuname" value="{{ $user->name }}" class="form-control " placeholder="Enter User Name">
             <span class="error-msg" id="iunameError"></span>
           </div>
         </div>
         <div class="form-group row">
-          <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Institute Name</label>
+          <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label required">Institute Name</label>
           <div class="col-12 col-md-7 col-xl-7 col-sm-12">
             <input type="text" name="iname" id="iname" value="{{ isset($user->institue->institute_name) ? $user->institue->institute_name : '' }}" class="form-control " placeholder="Enter Institute Name">
             <span class="error-msg" id="inameError"></span>
           </div>
         </div>
         <div class="form-group row">
-          <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Email</label>
+          <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label required">Email</label>
           <div class="col-12 col-md-7 col-xl-7 col-sm-12">
             <input type="email" name="iemail" id="iemail" value="{{ $user->email }}" class="form-control " placeholder="Enter Email id">
             <span class="error-msg" id="iemailError"></span>
@@ -193,55 +193,55 @@
         </div>
        
         <div class="form-group row">
-          <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Country Phone Code</label>
+          <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label required">Country Phone Code</label>
           <div class="col-12 col-md-7 col-xl-7 col-sm-12">
             <input type="text" name="country_code" id="country_code" value="{{ isset($user->institue->country_phone_code) ? $user->institue->country_phone_code : '' }}" class="form-control " placeholder="Enter Country Phone Code">
             <span class="error-msg" id="country_codeError"></span>
           </div>
         </div>
         <div class="form-group row">
-          <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Phone Number</label>
+          <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label required">Phone Number</label>
           <div class="col-12 col-md-7 col-xl-7 col-sm-12">
             <input type="text" name="phone_no" id="phone_no" value="{{ isset($user->institue->phone_number) ? $user->institue->phone_number : '' }}" class="form-control " placeholder="Enter Phone Number">
             <span class="error-msg" id="phone_noError"></span>
           </div>
         </div>
         <div class="form-group row">
-          <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Status</label>
+          <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label required">Status</label>
           <div class="col-12 col-md-7 col-xl-7 col-sm-12 toggle-switch">
               <input type="checkbox" id="istatus" name="istatus" value="A" {{ ($user->status == 'A')?'checked':''}} /><label for="istatus">Toggle</label>
           </div>
         </div>
         <div class="form-group row">
-          <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Allowed Student</label>
+          <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label required">Allowed Student</label>
           <div class="col-12 col-md-7 col-xl-7 col-sm-12">
             <input type="text" name="students_allowed" id="students_allowed" value="{{ isset($user->institue->students_allowed) ? $user->institue->students_allowed : 0 }}" class="form-control " placeholder="Enter Allowed Student">
             <span class="error-msg" id="students_allowedError"></span>
           </div>
         </div>
         <div class="form-group row">
-          <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Subdomain</label>
+          <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label required">Subdomain</label>
           <div class="col-12 col-md-7 col-xl-7 col-sm-12">
             <input type="text" name="subdomain" id="subdomain" value="{{ isset($user->institue->sub_domain) ? $user->institue->sub_domain : '' }}" class="form-control " placeholder="Enter Subdomain">
             <span class="error-msg" id="subdomainError"></span>
           </div>
         </div>
         <div class="form-group row">
-          <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Domain</label>
+          <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label required">Domain</label>
           <div class="col-12 col-md-7 col-xl-7 col-sm-12">
             <input type="text" name="domain" id="domain" value="{{ isset($user->institue->domain) ? $user->institue->domain : '' }}" class="form-control " placeholder="Enter Domain">
             <span class="error-msg" id="domainError"></span>
           </div>
         </div>
         <div class="form-group row">
-          <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Welcome Message</label>
+          <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label required">Welcome Message</label>
           <div class="col-12 col-md-7 col-xl-7 col-sm-12">
             <textarea name="welcome_msg" id="welcome_msg"  class="form-control"  rows="3">{{ isset($user->institue->welcome_message) ? $user->institue->welcome_message : '' }}</textarea>
             <span class="error-msg" id="welcome_msgError"></span>
           </div>
         </div>
         <div class="form-group row">
-          <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">State</label>
+          <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label required">State</label>
           <div class="col-12 col-md-7 col-xl-7 col-sm-12">
             <select class="custom-select" name="istate" id="istate">
                   @foreach(states() as $key => $state)
@@ -259,14 +259,14 @@
           </div>
         </div>
         <div class="form-group row">
-              <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">City</label>
+              <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label required">City</label>
               <div class="col-12 col-md-7 col-xl-7 col-sm-12">
                 <input type="text" name="icity" id="icity" value="{{ $user->city }}" class="form-control " placeholder="Enter City">
                 <span class="error-msg" id="icityError"></span>
               </div>
             </div>
         <div class="form-group row">
-          <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">GSTIN</label>
+          <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label required">GSTIN</label>
           <div class="col-12 col-md-7 col-xl-7 col-sm-12">
             <input type="text" name="igstin" id="igstin" value="{{ $user->gstin }}" class="form-control " placeholder="Enter GSTIN">
             <span class="error-msg" id="igstinError"></span>
@@ -299,7 +299,7 @@
           </div>
         </div>
         <div class="form-group row">
-          <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Validity</label>
+          <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label required">Validity</label>
           <div class="col-12 col-md-7 col-xl-7 col-sm-12">
             <input type="text" name="validity" id="ivalidity" value="{{ date('Y-m-d',strtotime($user->validity)) }}" class="form-control " placeholder="Validity">
             <span class="error-msg" id="validityError"></span>
