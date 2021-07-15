@@ -14,7 +14,7 @@ $pageActive = isset($pageArray[4]) ? $pageArray[4] : 'dashboard';
 	    <meta content="" name="author">
 	    <meta content="" name="description">
 	    <meta content="width=device-width, initial-scale=1" name="viewport">
-	    <link href="favicon.png" rel="shortcut icon">
+		<link href="{{ asset('assets/images/fevicon.png') }}" rel="shortcut icon">
 	    <!-- Scripts -->
 	    <script src="{{ asset('js/app.js') }}" defer></script>
 	    <script src="{{ asset('assets/fontawesome/js/all.min.js') }}" defer></script>

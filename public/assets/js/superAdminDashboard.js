@@ -183,5 +183,12 @@ $(document).ready(function() {
         ]
     });
     $("#ranking_wrapper div.toolbar").html(''); 
-
+    $("#from_date").datepicker({
+      todayHighlight: true,
+      format:'yyyy-mm-dd'
+  });
+  $("#to_date").datepicker({
+      todayHighlight: true,
+      format:'yyyy-mm-dd'
+  });
 });

@@ -139,8 +139,8 @@
                      <h1 class="table-head">Transactions</h1>
                    </div>
                    <div class="col-3 datapicker">
-                          <input type="date" class="form-control ml-4" placeholder="Form">
-                          <input type="date" class="form-control" placeholder="To">
+                          <input type="text" id="from_date" class="form-control ml-4" placeholder="Form" autocomplete="off">
+                          <input type="text" id="to_date" class="form-control" placeholder="To" autocomplete="off">
                       </div>
                    <div class="row mx-0 align-items-center">
                       <div class="col-12 col-md-12 col-xl-12 col-sm-12 left p-0">
