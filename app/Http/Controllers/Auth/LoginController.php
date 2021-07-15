@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\DeviceLogs;
+use App\Models\UserSession;
 // use hisorange\BrowserDetect\Parser as Browser;
 
 class LoginController extends Controller
@@ -24,6 +25,7 @@ class LoginController extends Controller
     */
 
     use AuthenticatesUsers;
+    
 
     /**
      * Where to redirect users after login.
@@ -61,17 +63,59 @@ class LoginController extends Controller
 
         if (Auth::attempt($request->only($login_type, 'password'))) {
             
-            $user = Auth::user(); 
-            $data = array(
-                "user_id" => $user->id,
-                "browser_name" => $request->header('User-Agent'),
-                "device_name" => '-',
-                "ip_address" => $request->getClientIp(),
-                "login_time" => date("Y-m-d h:i:s"),
-                "status" => 'Y'
-            );
-            DeviceLogs::create($data);
-            return redirect()->intended($this->redirectPath());
+            $user = Auth::user();
+            if($user->role_id == 2){
+                $loginrecord = UserSession::where("user_id",$user->id)->first();
+                if($loginrecord){
+                    $sessiondata = [
+                        "status" =>"A"
+                    ];
+                    UserSession::where("user_id",$user->id)->update($sessiondata);
+                }else{
+                    $sessiondata = [
+                        "role_id" =>$user->role_id,
+                        "user_id" =>$user->id,
+                        "status" =>"A"
+                    ];
+                    UserSession::create($sessiondata);
+                }
+                
+
+                $browser = getBrowserInfo();
+                $devicelog = DeviceLogs::where("user_id",$user->id)->where("browser_name",$browser['browser'])->where("device_name",$browser['device'])->first();
+                
+                $devicelogCount = ($devicelog != '') ? $devicelog->count() : 0;
+                
+                $data = array(
+                    "user_id" => $user->id,
+                    "user_agent" => $browser['user_agent'],
+                    "browser_name" => $browser['browser'],
+                    "device_name" => $browser['device'],
+                    "ip_address" => $request->getClientIp(),
+                    "login_time" => date("Y-m-d h:i:s"),
+                    "status" => 'Y'
+                );
+                if($devicelogCount == 0){
+                    DeviceLogs::create($data);
+                    return redirect()->intended($this->redirectPath());
+                }else{
+
+                    if($devicelog->status == "Y"){
+                        return redirect()->intended($this->redirectPath());
+                    }else{
+                        $this->guard()->logout();
+                        $request->session()->flush();
+                        $request->session()->regenerate();
+                        return redirect()->back()
+                        ->withInput()
+                        ->withErrors([
+                            'login' => 'This device login block by admin.',
+                        ]);
+                    }
+                }
+            }else{
+                return redirect()->intended($this->redirectPath());
+            }
         }
 
         return redirect()->back()
@@ -81,8 +125,31 @@ class LoginController extends Controller
             ]);
     } 
 
+    public function logout(Request $request)
+    {
+       
+        $user = Auth::user();
+        if($user){
+            $sessiondata = array(
+                "status" =>"D"
+            );
+            $loginrecord = UserSession::where('user_id',$user->id)->update($sessiondata);
+        }
+        // Get the session key for this user
+        $sessionKey = $this->guard()->getName();
+
+        // Logout current user by guard
+        $this->guard()->logout();
+
+        // Delete single session key (just for this user)
+        $request->session()->forget($sessionKey);
+
+        // After logout, redirect to login screen again
+        return redirect()->route('login');
+    }
+
     
-    
+
     public function redirectTo(){
 
         $user = Auth::user(); 
