@@ -22,8 +22,8 @@ class PredictionFilesController extends Controller
     public function index(Request $request)
     {
         if($request->ajax())  {
-            //$data = PredictionFiles::latest()->where('user_id',\Auth::user()->id)->get();
-            $data = PredictionFiles::with(['user'])->latest()->get();
+            $data = PredictionFiles::latest()->where('user_id',\Auth::user()->id)->get();
+            //$data = PredictionFiles::with(['user'])->latest()->get();
             return Datatables::of($data)
                     ->addIndexColumn()
                     ->addColumn('title', function($row){
@@ -61,9 +61,9 @@ class PredictionFilesController extends Controller
                             $iconClass = "green";
                         }
                         $btn = '<ul class="actions-btns">
-                            <li class="action" data-toggle="modal" data-target="#editprediction"><a href="javascript:void(0);" class="file-edit" data-id="'.$row->id.'" data-url="'.route('predictionfiles.edit', $row->id).'"><i class="fas fa-pen"></i></a></li>
-                            <li class="action bg-danger"><a href="#" class="delete_modal" data-toggle="modal" data-target="#delete_modal"  data-url="'.route('predictionfiles.destroy', $row->id).'" data-id="'.$row->id.'" data-title="Prediction File"><i class="fas fa-trash"></i></a></li>
-                            <li class="action shield '.$iconClass.'"><a href="'.route('superadmin-predictionfiles-changestatus', $row->id ).'"><img src="'.asset('assets/images/icons/blocked.svg').'" class=""></a></li>
+                            <li class="action" data-toggle="modal" data-target="#editprediction"><a href="javascript:void(0);" class="file-edit" data-id="'.$row->id.'" data-url="'.route('branchadmin-predictionfiles.edit', $row->id).'"><i class="fas fa-pen"></i></a></li>
+                            <li class="action bg-danger"><a href="#" class="delete_modal" data-toggle="modal" data-target="#delete_modal"  data-url="'.route('branchadmin-predictionfiles.destroy', $row->id).'" data-id="'.$row->id.'" data-title="Prediction File"><i class="fas fa-trash"></i></a></li>
+                            <li class="action shield '.$iconClass.'"><a href="'.route('branchadmin-predictionfiles-changestatus', $row->id ).'"><img src="'.asset('assets/images/icons/blocked.svg').'" class=""></a></li>
                             </ul>';
                         return $btn;
                     })
@@ -122,10 +122,10 @@ class PredictionFilesController extends Controller
         }
         
         if($prediction->save()){
-            return redirect()->route('predictionfiles.index')
+            return redirect()->route('branchadmin-predictionfiles.index')
             ->with('success','Prediction file added successfully!');
         }else{
-            return redirect()->route('predictionfiles.index')
+            return redirect()->route('branchadmin-predictionfiles.index')
             ->with('error','Sorry!Something wrong.Try again later!');
         }
     }
@@ -215,12 +215,12 @@ class PredictionFilesController extends Controller
         }        
         if($result)
         {
-            return redirect()->route('predictionfiles.index')
+            return redirect()->route('branchadmin-predictionfiles.index')
                         ->with('success','Prediction file deleted successfully!');
         }
         else
         {
-            return redirect()->route('predictionfiles.index')
+            return redirect()->route('branchadmin-predictionfiles.index')
                         ->with('error','Sorry!Something wrong.Try again later!');
         }
     }
@@ -241,10 +241,10 @@ class PredictionFilesController extends Controller
         }
         $result = $prediction->update();
         if($result){
-            return redirect()->route('predictionfiles.index')
+            return redirect()->route('branchadmin-predictionfiles.index')
                         ->with('success','Prediction file status updated successfully!');
         }else{
-            return redirect()->route('predictionfiles.index')
+            return redirect()->route('branchadmin-predictionfiles.index')
                         ->with('error','Status Not Updated!');
         }
     }
