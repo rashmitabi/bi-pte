@@ -34,7 +34,7 @@
 
     <div class="form-group row">
         <div class="col-12 save-btn">
-            <button type="button" class="btn btn-outline-primary email-update" data-id="{{ $EmailTemplate->id }}" data-url="{{ route('email.update', $EmailTemplate->id) }}">
+            <button type="button" class="btn btn-outline-primary email-update" data-id="{{ $EmailTemplate->id }}" data-url="{{ route('branchadmin-email.update', $EmailTemplate->id) }}">
             <i class="far fa-save save-icon"></i>Save</button>
         </div>
     </div>

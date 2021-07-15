@@ -485,31 +485,31 @@ Route::group(['middleware' => ['auth', 'verified','branchadmin']], function () {
 
     //start branch admin routes
 
-    Route::get('branchadmin/dashboard', [App\Http\Controllers\BranchAdmin\DashboardController::class, 'index'])->name('dashboard');
+    Route::get('branchadmin/dashboard', [App\Http\Controllers\BranchAdmin\DashboardController::class, 'index'])->name('branchadmin-dashboard');
 
-    Route::resource('branchadmin/users', App\Http\Controllers\BranchAdmin\UsersController::class)->names('branchadmin/users');
+    Route::resource('branchadmin/users', App\Http\Controllers\BranchAdmin\UsersController::class)->names('branchadmin-users');
 
-    Route::resource('branchadmin/device', App\Http\Controllers\BranchAdmin\DeviceController::class);
+    Route::resource('branchadmin/device', App\Http\Controllers\BranchAdmin\DeviceController::class)->names('branchadmin-device');
 
-    Route::resource('branchadmin/certificates', App\Http\Controllers\BranchAdmin\CertificatesController::class);
+    Route::resource('branchadmin/certificates', App\Http\Controllers\BranchAdmin\CertificatesController::class)->names('branchadmin-certificates');
     Route::get('branchadmin/certificates/edit/{aid}/{bid}', [App\Http\Controllers\BranchAdmin\CertificatesController::class, 'edit'])->name('branchadmin-generate-certificate');
     Route::post('branchadmin/certificates/updateScore', [App\Http\Controllers\BranchAdmin\CertificatesController::class, 'updateScore'])->name('branchadmin-update-score');
 
     
-    Route::resource('branchadmin/results', App\Http\Controllers\BranchAdmin\TestResultsController::class);
+    Route::resource('branchadmin/results', App\Http\Controllers\BranchAdmin\TestResultsController::class)->names('branchadmin-results');
     Route::get('branchadmin/results/edit/{aid}/{bid}', [App\Http\Controllers\BranchAdmin\TestResultsController::class, 'edit'])->name('branchadmin-generate-result');
 
     /*Device logs module start*/
 
     Route::get('branchadmin/device/changestatus/{id}', [App\Http\Controllers\BranchAdmin\DeviceController::class, 'changeStatus'])->name('superadmin-device-changestatus');
 
-    Route::resource('branchadmin/device', App\Http\Controllers\BranchAdmin\DeviceController::class);
+    Route::resource('branchadmin/device', App\Http\Controllers\BranchAdmin\DeviceController::class)->names('branchadmin-device');
 
     /*Device logs module end*/
 
     /*Videos module start*/
 
-    Route::resource('branchadmin/videos', App\Http\Controllers\BranchAdmin\VideosController::class);
+    Route::resource('branchadmin/videos', App\Http\Controllers\BranchAdmin\VideosController::class)->names('branchadmin-videos');
 
     Route::get('branchadmin/videos/changestatus/{id}', [App\Http\Controllers\BranchAdmin\VideosController::class, 'changeStatus'])
 
@@ -517,7 +517,19 @@ Route::group(['middleware' => ['auth', 'verified','branchadmin']], function () {
 
     /*Videos module end*/
 
+    /* prediction files routes start *//* prediction files routes start */
 
+    Route::resource('branchadmin/predictionfiles', App\Http\Controllers\BranchAdmin\PredictionFilesController::class)->names('branchadmin-predictionfiles');
+
+    Route::get('branchadmin/predictionfiles/changestatus/{id}', [App\Http\Controllers\BranchAdmin\PredictionFilesController::class, 'changeStatus'])
+        ->name('branchadmin-predictionfiles-changestatus');
+
+    Route::post('branchadmin/predictionfiles/update/{id}', [App\Http\Controllers\BranchAdmin\PredictionFilesController::class, 'update'])
+        ->name('branchadmin-predictionfiles-update');
+
+    /* prediction files routes ends */
+
+    Route::resource('branchadmin/tests', App\Http\Controllers\BranchAdmin\TestsController::class)->names('branchadmin-tests');
 
     /*branch admin notification start*/
 
@@ -530,7 +542,7 @@ Route::group(['middleware' => ['auth', 'verified','branchadmin']], function () {
     /* Email templates module start*/
     Route::get('branchadmin/email/changestatus/{id}', [App\Http\Controllers\BranchAdmin\EmailTemplatesController::class, 'changeStatus'])
         ->name('branchadmin-email-changestatus');
-    Route::resource('branchadmin/email', App\Http\Controllers\BranchAdmin\EmailTemplatesController::class);
+    Route::resource('branchadmin/email', App\Http\Controllers\BranchAdmin\EmailTemplatesController::class)->names('branchadmin-email');
     /* Email templates module start*/
     //end branch admin routes
 

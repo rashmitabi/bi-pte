@@ -55,7 +55,7 @@
 
 @section('js-hooks')
 <script type="text/javascript" defer>
-  var url="{{ route('results.index') }}";
+  var url="{{ route('branchadmin-results.index') }}";
 </script>
 <script type="text/javascript" src="{{ asset('assets/js/testresults.js') }}" defer></script>
 @endsection

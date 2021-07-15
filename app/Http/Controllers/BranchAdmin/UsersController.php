@@ -24,7 +24,7 @@ use App\Mail\SendEmail;
 
 class UsersController extends Controller
 {
-    private $moduleTitleP = 'branchadmin.users.';
+    private $moduleTitleP = 'branchadmin.student.';
     /**
      * Display a listing of the resource.
      *

@@ -58,7 +58,7 @@
 </div>
 <div class="form-group row">
     <div class="col-12 col-md-12 col-xl-11 col-sm-12 save-btn">
-        <button type="button" class="btn btn-outline-primary video-update" data-id="{{ $video->id }}" data-url="{{ route('videos.update', $video->id) }}">
+        <button type="button" class="btn btn-outline-primary video-update" data-id="{{ $video->id }}" data-url="{{ route('branchadmin-videos.update', $video->id) }}">
             <i class="far fa-save save-icon"></i>Save</button>
     </div>
 </div>

@@ -55,8 +55,8 @@ class VideosController extends Controller
                             $iconClass = "green";
                         }
                         $btn = '<ul class="actions-btns">
-                            <li class="action" data-toggle="modal" data-target="#editvideos"><a href="javascript:void(0);" class="video-edit" data-id="'.$row->id.'" data-url="'.route('videos.edit', $row->id).'"><i class="fas fa-pen"></i></a></li>
-                            <li class="action bg-danger"><a href="#" class="delete_modal" data-toggle="modal" data-target="#delete_modal"  data-url="'.route('videos.destroy', $row->id).'" data-id="'.$row->id.'" data-title="Video"><i class="fas fa-trash"></i></a></li>
+                            <li class="action" data-toggle="modal" data-target="#editvideos"><a href="javascript:void(0);" class="video-edit" data-id="'.$row->id.'" data-url="'.route('branchadmin-videos.edit', $row->id).'"><i class="fas fa-pen"></i></a></li>
+                            <li class="action bg-danger"><a href="#" class="delete_modal" data-toggle="modal" data-target="#delete_modal"  data-url="'.route('branchadmin-videos.destroy', $row->id).'" data-id="'.$row->id.'" data-title="Video"><i class="fas fa-trash"></i></a></li>
                             <li class="action shield '.$iconClass.'"><a href="'.route('branchadmin-videos-changestatus', $row->id ).'"><img src="'.asset('assets/images/icons/blocked.svg').'" class=""></a></li>
                             </ul>';
                         return $btn;
@@ -106,10 +106,10 @@ class VideosController extends Controller
         }
         
         if($video->save()){
-            return redirect()->route('videos.index')
+            return redirect()->route('branchadmin-videos.index')
             ->with('success','Video added successfully!');
         }else{
-            return redirect()->route('videos.index')
+            return redirect()->route('branchadmin-videos.index')
             ->with('error','Sorry!Something wrong.Try again later!');
         }
     }
@@ -183,12 +183,12 @@ class VideosController extends Controller
         $result = Videos::where('id',$id)->delete();
         if($result)
         {
-            return redirect()->route('videos.index')
+            return redirect()->route('branchadmin-videos.index')
                         ->with('success','Video deleted successfully!');
         }
         else
         {
-            return redirect()->route('videos.index')
+            return redirect()->route('branchadmin-videos.index')
                         ->with('error','Sorry!Something wrong.Try again later!');
         }
     }
@@ -209,10 +209,10 @@ class VideosController extends Controller
         }
         $result = $video->update();
         if($result){
-            return redirect()->route('videos.index')
+            return redirect()->route('branchadmin-videos.index')
                         ->with('success','Video status updated successfully!');
         }else{
-            return redirect()->route('videos.index')
+            return redirect()->route('branchadmin-videos.index')
                         ->with('error','Status Not Updated!');
         }
     }

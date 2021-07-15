@@ -14,7 +14,7 @@
     <section class="top-title-button white-bg mb-3 remove-main-margin">
         <div class="row mx-0 align-items-center">
             <div class="col-12 col-md-12 col-xl-8 col-sm-8 left">
-                {!! Form::open(array('route' => 'videos.store','method'=>'POST','class'=>'form mt-4 ml-3')) !!}
+                {!! Form::open(array('route' => 'branchadmin-videos.store','method'=>'POST','class'=>'form mt-4 ml-3')) !!}
                     <div class="form-group row">
                         <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Video Title</label>
                         <div class="col-12 col-md-7 col-xl-7 col-sm-12">
@@ -81,7 +81,7 @@
                     </div>
                     <div class="form-group row">
                         <div class="col-12 col-md-12 col-xl-11 col-sm-12 save-btn">
-                            <a href="{{ route('videos.index') }}"><button  type="button" class="btn btn-outline-primary "><img class="back-btn" src="{{ asset('assets/images/icons/back.svg') }}" style="width: 14px;margin-right: 10px">Cancel</button></a>
+                            <a href="{{ route('branchadmin-videos.index') }}"><button  type="button" class="btn btn-outline-primary "><img class="back-btn" src="{{ asset('assets/images/icons/back.svg') }}" style="width: 14px;margin-right: 10px">Cancel</button></a>
                             <button type="submit" class="btn btn-outline-primary mr-2"><i
                                     class="far fa-save save-icon"></i>Save
                                 </button>
