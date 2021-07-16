@@ -1,4 +1,4 @@
-@extends('layouts.appSuperAdmin')
+@extends('layouts.appBranchAdmin')
 @section('content')
 
 	
@@ -18,7 +18,7 @@
 	                    <div class="col-12 heading-text">
 	                      <h5>Essay Writing</h5>
 	                    </div>
-	                    <form class="form ml-1" method="POST" id="frm-essay-writting" name="frm-essay-writting" action="{{ (isset($questions->desc))?route('update-essay-writting'):route('add-essay-writting')}}">
+	                    <form class="form ml-1" method="POST" id="frm-essay-writting" name="frm-essay-writting" action="{{ (isset($questions->desc))?route('branchadmin-update-essay-writting'):route('branchadmin-add-essay-writting')}}">
                        		@csrf
 	                    	<input type="hidden" name="question_type_id" value="{{ $question_id }}">
 	                    	<input type="hidden" name="section_id" value="{{ $section_id }}">
@@ -92,5 +92,5 @@
 	</div>
 @endsection
 @section('js-hooks')
-<script src="{{ asset('assets/js/writing/essaywriting.js') }}" defer></script>
+<script src="{{ asset('assets/js/branchadmin/writing/essaywriting.js') }}" defer></script>
 @endsection

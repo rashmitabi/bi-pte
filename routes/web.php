@@ -301,7 +301,7 @@ Route::group(['middleware' => ['auth', 'verified','superadmin']], function () {
 
 
 
-    /* start writing section */
+    /*Superadmin writing section start*/
 
         Route::post('superadmin/questions/summarize', [App\Http\Controllers\SuperAdmin\WritingQuestionController::class,'storeSummarizeWritten'])->name('add-summarize-written');
 
@@ -313,7 +313,7 @@ Route::group(['middleware' => ['auth', 'verified','superadmin']], function () {
 
         Route::post('superadmin/questions/editessay', [App\Http\Controllers\SuperAdmin\WritingQuestionController::class,'updateEssayWritting'])->name('update-essay-writting');
 
-    /* end writing section */
+    /* Superadmin writing section end */
 
 
 
@@ -588,6 +588,12 @@ Route::group(['middleware' => ['auth', 'verified','branchadmin']], function () {
     Route::post('branchadmin/questions/updateWriteFormDictations', [App\Http\Controllers\BranchAdmin\ListeningQuestionController::class,'updateWriteFormDictations'])->name('branchadmin-update-listen-write-form-dictations');
     /*Branchadmin listening section end*/
 
+    /*Branchadmin writing section start*/
+    Route::post('branchadmin/questions/summarize', [App\Http\Controllers\BranchAdmin\WritingQuestionController::class,'storeSummarizeWritten'])->name('branchadmin-add-summarize-written');
+    Route::post('branchadmin/questions/editsummarize', [App\Http\Controllers\BranchAdmin\WritingQuestionController::class,'updateSummarizeWritten'])->name('branchadmin-update-summarize-written');
+    Route::post('branchadmin/questions/essay', [App\Http\Controllers\BranchAdmin\WritingQuestionController::class,'storeEssayWritting'])->name('branchadmin-add-essay-writting');
+    Route::post('branchadmin/questions/editessay', [App\Http\Controllers\BranchAdmin\WritingQuestionController::class,'updateEssayWritting'])->name('branchadmin-update-essay-writting');
+    /* Branchadmin writing section end */
     /*branch admin notification start*/
 
         Route::get('branchadmin/notifications', [App\Http\Controllers\BranchAdmin\NotificationController::class, 'index'])->name('branchadmin-notifications');

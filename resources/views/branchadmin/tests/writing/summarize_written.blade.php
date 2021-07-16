@@ -1,4 +1,4 @@
-@extends('layouts.appSuperAdmin')
+@extends('layouts.appBranchAdmin')
 @section('content')
 	
 	<div id="content">
@@ -16,7 +16,7 @@
 	                    <div class="col-12 heading-text">
 	                      <h5>Summarize Written</h5>
 	                    </div>
-	                    <form class="form ml-1" method="POST" id="frm-summarize-written" name="frm-summarize-written" action="{{ (isset($questions->desc))?route('update-summarize-written'):route('add-summarize-written')}}">
+	                    <form class="form ml-1" method="POST" id="frm-summarize-written" name="frm-summarize-written" action="{{ (isset($questions->desc))?route('branchadmin-update-summarize-written'):route('branchadmin-add-summarize-written')}}">
                        		@csrf
 	                    	<input type="hidden" name="question_type_id" value="{{ $question_id }}">
 	                    	<input type="hidden" name="section_id" value="{{ $section_id }}">
@@ -115,6 +115,5 @@
 	</div>
 @endsection
 @section('js-hooks')
-
-<script src="{{ asset('assets/js/writing/summarizewritten.js') }}" defer></script>
+<script src="{{ asset('assets/js/branchadmin/writing/summarizewritten.js') }}" defer></script>
 @endsection
