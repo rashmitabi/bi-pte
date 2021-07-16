@@ -26,7 +26,7 @@
                    <div class="sub-heading">
                        <h4>Paragraph<span>Enter the First Module Paragraph</span></h4>
                    </div>
-                   <form class="form ml-1" method="POST" id="mutli_choice" name="mutli_choice" action="{{ (isset($questions->desc))?route('superadmin-question-update-MultipleChoice-Multipleanswers'):route('superadmin-question-store-MultipleChoice-Multipleanswers')}}">
+                   <form class="form ml-1" method="POST" id="mutli_choice" name="mutli_choice" action="{{ (isset($questions->desc))?route('branchadmin-question-update-MultipleChoice-Multipleanswers'):route('branchadmin-question-store-MultipleChoice-Multipleanswers')}}">
                        @csrf
                        <input type="hidden" name="type" value="single" id="type">
                       <div class="form-group mb-5 row">
@@ -71,9 +71,11 @@
                                        <input type="text" class="form-control " name="ans_options_{{$arrayValue}}" id="ans_options_{{$arrayValue}}" placeholder="Which of the Following Are True Statements?" value="{{ $questions->questiondata[$i]->data_value }}">
                                     </div>
                                     @if($label == $count)
-                                    <div class="minus-icon" onclick="removeQuestionColumn()" data-id="{{$arrayValue}}">
-                                       <a><i class='fas fa-minus'></i></a>
-                                    </div>
+                                       @if($label > 1)
+                                       <div class="minus-icon" onclick="removeQuestionColumn()" data-id="{{$arrayValue}}">
+                                          <a><i class='fas fa-minus'></i></a>
+                                       </div>
+                                       @endif
                                     <div class="plus-icon" onclick="addQuestionColumn()" data-id="{{$arrayValue}}">
                                        <a><i class="fas fa-plus"></i></a>
                                     </div>
@@ -93,7 +95,7 @@
                                 <input type="hidden" name="section_id" value="{{ $section_id }}">
                                 <input type="hidden" name="test_id" value="{{ $test_id }}">
                                 <input type="hidden" name="question_type_id" value="{{ $question_id }}">
-                                <input type="hidden" name="slug" id="slug" value="{{(isset($arrayValue))?$arrayValue:'E'}}">
+                                <input type="hidden" name="slug" id="slug" value="{{(isset($arrayValue))?$arrayValue:'A'}}">
                                 @if(isset($questions->desc))
                                  <input type="hidden" name="question_id" value="{{ $questions->id }}">
                                 @endif
@@ -110,5 +112,5 @@
 
 @endsection
 @section('js-hooks')
-<script src="{{ asset('assets/js/reading/readingMultipleChoiceMultipleAnswer.js') }}" defer></script>
+<script src="{{ asset('assets/js/branchadmin/reading/readingMultipleChoiceMultipleAnswer.js') }}" defer></script>
 @endsection
