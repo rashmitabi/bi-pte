@@ -628,6 +628,8 @@ Route::group(['middleware' => ['auth', 'verified','branchadmin']], function () {
     Route::get('branchadmin/transactions/download_invoice/{id}', [App\Http\Controllers\BranchAdmin\TransactionsController::class, 'download_invoice'])->name('branchadmin-download-invoice');
 
     Route::resource('branchadmin/activities', App\Http\Controllers\BranchAdmin\ActivitiesController::class)->names('branchadmin-activities');
+
+    Route::resource('branchadmin/profile', App\Http\Controllers\BranchAdmin\ProfileController::class)->names('branchadmin-profile');
     //end branch admin routes
 
 

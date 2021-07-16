@@ -62,7 +62,7 @@
                   <div class="notifications-main-wrap">
                      <ul>
                         <li> 
-                           <a href="{{ route('settings.index') }}"> <i class="fas fa-cog"></i> Settings </a>
+                           <a href="{{ route('branchadmin-profile.index') }}"> <i class="fas fa-cog"></i> My Profile </a>
                         </li>
                         <li> 
                            <a href="{{ route('branchadmin-transactions.index') }}"> <i class="fas fa-cog"></i> My Payments </a>
