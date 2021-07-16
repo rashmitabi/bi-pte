@@ -9,7 +9,7 @@
                 <h1 class="title mb-4">Manage Test</h1>
             </div>
             <div class="col-12 col-md-4 col-xl-4 col-sm-4 right">
-                <a href="{{ route('tests.create') }}">
+                <a href="{{ route('branchadmin-tests.create') }}">
                     <button type="button" class="btn btn-primary"><i class="fas fa-plus-circle mr-1"></i> New Test</button>
                 </a>
             </div>
@@ -119,8 +119,8 @@
 @endsection
 @section('js-hooks')
 <script type="text/javascript" defer>
-  var practiceUrl="{{ route('tests.index') }}";
-  var mockUrl    = "{{ route('superadmin-tests-mocktest') }}";
+  var practiceUrl="{{ route('branchadmin-tests.index') }}";
+  var mockUrl    = "{{ route('branchadmin-tests-mocktest') }}";
 </script>
-<script src="{{ asset('assets/js/tests.js') }}" defer></script>
+<script src="{{ asset('assets/js/branchadmin/tests.js') }}" defer></script>
 @endsection

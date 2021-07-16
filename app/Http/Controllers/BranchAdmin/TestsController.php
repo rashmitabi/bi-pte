@@ -20,8 +20,9 @@ class TestsController extends Controller
      */
     public function index(Request $request)
     {
+        $id = \Auth::user()->id;
         if($request->ajax())  {
-            $data = Tests::with('subject')->where('type','P')->latest()->get();
+            $data = Tests::with('subject')->where(['type'=>'P','generated_by_user_id'=>$id])->latest()->get();
             return Datatables::of($data)
                     ->addIndexColumn()
                     ->addColumn('test_name', function($row){
@@ -32,11 +33,11 @@ class TestsController extends Controller
                     })
                     ->addColumn('action', function($row){
                         $btn = '<ul class="actions-btns">
-                                <li class="action" data-toggle="tooltip" data-placement="top" title="Add Questions"><a href="'.route('tests.show',$row->id).'"><i class="fas fa-question"></i></a></li>
+                                <li class="action" data-toggle="tooltip" data-placement="top" title="Add Questions"><a href="'.route('branchadmin-tests.show',$row->id).'"><i class="fas fa-question"></i></a></li>
                                 <li class="action" data-toggle="modal" data-target="#edittest"><a
-                                    href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="Edit" class="test-edit" data-id="'.$row->id.'" data-url="'.route('tests.edit', $row->id).'"><i class="fas fa-pen"></i></a></li>
-                                <li class="action" data-toggle="tooltip" data-placement="top" title="Delete"><a href="#" class="delete_modal" data-toggle="modal" data-target="#delete_modal"  data-url="'.route('tests.destroy', $row->id).'" data-id="'.$row->id.'"><i class="fas fa-trash"></i></a></li>
-                            <li class="action shield '.(($row->status == "E") ? "red" : "green").'" data-toggle="tooltip" data-placement="top" title="'.(($row->status == "E") ? "Disable" : "Enable").'"><a href="'.route('superadmin-tests-changestatus', $row->id ).'"><img src="'.asset('assets/images/icons/blocked.svg').'" class=""></a></li>
+                                    href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="Edit" class="test-edit" data-id="'.$row->id.'" data-url="'.route('branchadmin-tests.edit', $row->id).'"><i class="fas fa-pen"></i></a></li>
+                                <li class="action" data-toggle="tooltip" data-placement="top" title="Delete"><a href="#" class="delete_modal" data-toggle="modal" data-target="#delete_modal"  data-url="'.route('branchadmin-tests.destroy', $row->id).'" data-id="'.$row->id.'"><i class="fas fa-trash"></i></a></li>
+                            <li class="action shield '.(($row->status == "E") ? "red" : "green").'" data-toggle="tooltip" data-placement="top" title="'.(($row->status == "E") ? "Disable" : "Enable").'"><a href="'.route('branchadmin-tests-changestatus', $row->id ).'"><img src="'.asset('assets/images/icons/blocked.svg').'" class=""></a></li>
                             </ul>';
                         return $btn;
                     })
@@ -49,8 +50,9 @@ class TestsController extends Controller
     {
         $red = 'red';
         $green = 'green';
+        $id = \Auth::user()->id;
         if($request->ajax())  {
-            $data = Tests::with('subject')->where('type','M')->latest()->get();
+            $data = Tests::with('subject')->where(['type'=>'M','generated_by_user_id'=>$id])->latest()->get();
             return Datatables::of($data)
                     ->addIndexColumn()
                     ->addColumn('test_name', function($row){
@@ -61,11 +63,11 @@ class TestsController extends Controller
                     })
                     ->addColumn('action', function($row){
                         $btn = '<ul class="actions-btns">
-                                <li class="action"><a href="'.route('tests.show',$row->id).'"><i class="fas fa-question"></i></a></li>
+                                <li class="action"><a href="'.route('branchadmin-tests.show',$row->id).'"><i class="fas fa-question"></i></a></li>
                                 <li class="action" data-toggle="modal" data-target="#edittest"><a
-                                    href="javascript:void(0);" class="test-edit" data-id="'.$row->id.'" data-url="'.route('tests.edit', $row->id).'"><i class="fas fa-pen"></i></a></li>
-                                <li class="action"><a href="#" class="delete_modal" data-toggle="modal" data-target="#delete_modal"  data-url="'.route('tests.destroy', $row->id).'" data-id="'.$row->id.'"><i class="fas fa-trash"></i></a></li>
-                            <li class="action shield '.(($row->status == "E") ? "red" : "green").'"><a href="'.route('superadmin-tests-changestatus', $row->id ).'"><img src="'.asset('assets/images/icons/blocked.svg').'" class=""></a></li>
+                                    href="javascript:void(0);" class="test-edit" data-id="'.$row->id.'" data-url="'.route('branchadmin-tests.edit', $row->id).'"><i class="fas fa-pen"></i></a></li>
+                                <li class="action"><a href="#" class="delete_modal" data-toggle="modal" data-target="#delete_modal"  data-url="'.route('branchadmin-tests.destroy', $row->id).'" data-id="'.$row->id.'"><i class="fas fa-trash"></i></a></li>
+                            <li class="action shield '.(($row->status == "E") ? "red" : "green").'"><a href="'.route('branchadmin-tests-changestatus', $row->id ).'"><img src="'.asset('assets/images/icons/blocked.svg').'" class=""></a></li>
                             </ul>';
                         return $btn;
                     })
@@ -117,10 +119,10 @@ class TestsController extends Controller
         $result = Tests::create($input);
         
         if($result){
-            return redirect()->route('tests.index')
+            return redirect()->route('branchadmin-tests.index')
             ->with('success','Test created successfully!');
         }else{
-            return redirect()->route('tests.index')
+            return redirect()->route('branchadmin-tests.index')
             ->with('error','Sorry!Something wrong.Try again later!');
         }
     }
@@ -180,10 +182,10 @@ class TestsController extends Controller
             }
             $result = $tests->update();
             if($result){
-                return redirect()->route('tests.index')
+                return redirect()->route('branchadmin-tests.index')
                             ->with('success','Status Update successfully');
             }else{
-                return redirect()->route('tests.index')
+                return redirect()->route('branchadmin-tests.index')
                             ->with('error','Status Not Updated!');
             }
         }else{
@@ -256,16 +258,25 @@ class TestsController extends Controller
      */
     public function destroy($id)
     {
-        $result = Tests::where('id',$id)->delete();
-        if($result)
+        $questions = Questions::where('test_id',$id)->pluck('id')->toArray();
+        if(count($questions)>0)
         {
             return redirect()->route('tests.index')
-                        ->with('success','Test deleted successfully!');
+            ->with('warning','Test not delete because Questions available!');
         }
         else
         {
-            return redirect()->route('tests.index')
-                        ->with('error','Sorry!Something wrong.Try again later!');
+            $result = Tests::where('id',$id)->delete();
+            if($result)
+            {
+                return redirect()->route('branchadmin-tests.index')
+                            ->with('success','Test deleted successfully!');
+            }
+            else
+            {
+                return redirect()->route('branchadmin-tests.index')
+                            ->with('error','Sorry!Something wrong.Try again later!');
+            }
         }
     }
 }

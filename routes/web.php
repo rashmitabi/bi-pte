@@ -529,7 +529,17 @@ Route::group(['middleware' => ['auth', 'verified','branchadmin']], function () {
 
     /* prediction files routes ends */
 
+    /*branchadmin test module start*/
+    Route::get('branchadmin/tests/mocktest', [App\Http\Controllers\BranchAdmin\TestsController::class, 'mockTests'])
+    ->name('branchadmin-tests-mocktest');
+    Route::get('branchadmin/tests/changestatus/{id}', [App\Http\Controllers\BranchAdmin\TestsController::class, 'changeStatus'])
+    ->name('branchadmin-tests-changestatus');
+    Route::post('branchadmin/tests/update/{id}', [App\Http\Controllers\BranchAdmin\TestsController::class, 'update'])
+    ->name('branchadmin-tests-update');
+    Route::post('branchadmin/tests/addQuestions', [App\Http\Controllers\BranchAdmin\TestsController::class, 'addQuestions'])
+    ->name('branchadmin-tests-addQuestions');
     Route::resource('branchadmin/tests', App\Http\Controllers\BranchAdmin\TestsController::class)->names('branchadmin-tests');
+    /*branchadmin test module end*/
 
     /*branch admin notification start*/
 
