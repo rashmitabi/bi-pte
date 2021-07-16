@@ -1,4 +1,4 @@
-@extends('layouts.appSuperAdmin')
+@extends('layouts.appBranchAdmin')
 @section('content')
 	
 	<div id="content">
@@ -16,7 +16,7 @@
 	                    <div class="col-12 heading-text">
 	                      <h5>Summarize Written</h5>
 	                    </div>
-	                    <form class="form ml-1" method="POST" id="frm-summarize-written" name="frm-summarize-written" action="{{ (isset($questions->desc))?route('update-summarize-written'):route('add-summarize-written')}}">
+	                    <form class="form ml-1" method="POST" id="frm-summarize-written" name="frm-summarize-written" action="{{ (isset($questions->desc))?route('branchadmin-update-summarize-written'):route('branchadmin-add-summarize-written')}}">
                        		@csrf
 	                    	<input type="hidden" name="question_type_id" value="{{ $question_id }}">
 	                    	<input type="hidden" name="section_id" value="{{ $section_id }}">
@@ -103,7 +103,7 @@
 		                    @endif
 	                        <div class="form-group row">
 	                            <div class="col-12 col-md-12 col-xl-11 col-sm-12 save-btn mt-5 ">
-	                                <a href="{{ route('tests.show', $test_id) }}"><button  type="button" class="btn btn-outline-primary"><img class="back-btn" src="{{ asset('assets/images/icons/back.svg') }}">Cancel</button></a>
+	                                <a href="{{ route('branchadmin-tests.show', $test_id) }}"><button  type="button" class="btn btn-outline-primary"><img class="back-btn" src="{{ asset('assets/images/icons/back.svg') }}">Cancel</button></a>
 	                                <button  type="submit" class="btn btn-outline-primary mr-2"><i class="far fa-save save-icon"></i>Submit</button>
 	                            </div> 
 	                        </div>
@@ -115,6 +115,5 @@
 	</div>
 @endsection
 @section('js-hooks')
-
-<script src="{{ asset('assets/js/writing/summarizewritten.js') }}" defer></script>
+<script src="{{ asset('assets/js/branchadmin/writing/summarizewritten.js') }}" defer></script>
 @endsection

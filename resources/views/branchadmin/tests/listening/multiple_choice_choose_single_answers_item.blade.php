@@ -18,7 +18,7 @@
                    <div class="col-12 heading-text">
                       <h5>Multiple-choice,choose single answers Item (9-10)</h5>
                    </div>
-                   <form class="form" name="listen_multiple_choice" id="listen_multiple_choice" method="POST" action="{{ (isset($questions->name))?route('update-listen-multiple-choice-choose-single'):route('store-listen-multiple-choice-choose-single') }}">
+                   <form class="form" name="listen_multiple_choice" id="listen_multiple_choice" method="POST" action="{{ (isset($questions->name))?route('branchadmin-update-listen-multiple-choice-choose-single'):route('branchadmin-store-listen-multiple-choice-choose-single') }}">
                         <div class="row">
                             <div class="col-12 col-md-8 col-xl-8 col-sm-12">
                                     <div class=" col-12 mt-5 mb-1 ml-1 white-bg common-col">
@@ -122,7 +122,7 @@
                                 <div class="form-group mb-2 row">
                                     <div class="col-12 p-0">                              
                                         <div class="custom-file mb-3">
-                                        <input type="file" class="custom-file-input " onchange ="uploadAduio()" id="customFile_audio123" data-url="{{ route('upload-audio') }}" data-token="{{ csrf_token() }}">
+                                        <input type="file" class="custom-file-input " onchange ="uploadAduio()" id="customFile_audio123" data-url="{{ route('branchadmin-upload-audio') }}" data-token="{{ csrf_token() }}">
                                             <label class="custom-file-label" for="customFile">Select Audio</label>
                                         </div>
                                         <input type="text" name="upload-audio" id="upload-audio" class="form-control" >
@@ -143,7 +143,7 @@
                                 <input type="hidden" name="answer_data_1" value="{{ $questions->answerdata[0]->id }}">
                                 <input type="hidden" name="answer_data_2" value="{{ $questions->answerdata[1]->id }}">
                                 @endif
-                                <a href="{{ route('tests.show', $test_id) }}"><button  type="button" class="btn btn-outline-primary"><img class="back-btn" src="{{ asset('assets/images/icons/back.svg') }}">Cancel</button></a>
+                                <a href="{{ route('branchadmin-tests.show', $test_id) }}"><button  type="button" class="btn btn-outline-primary"><img class="back-btn" src="{{ asset('assets/images/icons/back.svg') }}">Cancel</button></a>
                                 <button  type="submit" class="btn btn-outline-primary mr-2"><i class="far fa-save save-icon"></i>Submit</button>
                             </div> 
                         </div>
