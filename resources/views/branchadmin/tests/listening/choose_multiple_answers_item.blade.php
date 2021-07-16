@@ -1,4 +1,4 @@
-@extends('layouts.appSuperAdmin')
+@extends('layouts.appBranchAdmin')
 @section('content')
   <div id="content">
   	<section class="top-title-button mb-3">
@@ -145,5 +145,5 @@
 @endsection
 @section('js-hooks')
 
-<script src="{{ asset('assets/js/listening/choosemultipleanswersitem.js') }}" defer></script>
+<script src="{{ asset('assets/js/branchadmin/listening/choosemultipleanswersitem.js') }}" defer></script>
 @endsection

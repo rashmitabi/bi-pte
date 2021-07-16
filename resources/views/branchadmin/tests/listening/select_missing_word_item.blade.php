@@ -1,4 +1,4 @@
-@extends('layouts.appSuperAdmin')
+@extends('layouts.appBranchAdmin')
 @section('content')
 <div id="content">
  <!-- missing word -->
@@ -142,5 +142,5 @@
 </div>
 @endsection
 @section('js-hooks')
-<script src="{{ asset('assets/js/listening/listeningMissingWorditem.js') }}" defer></script>
+<script src="{{ asset('assets/js/branchadmin/listening/listeningMissingWorditem.js') }}" defer></script>
 @endsection

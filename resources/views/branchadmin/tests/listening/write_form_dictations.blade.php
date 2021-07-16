@@ -1,4 +1,4 @@
-@extends('layouts.appSuperAdmin')
+@extends('layouts.appBranchAdmin')
 @section('content')
 <div id="content">
     <!-- write dictations -->
@@ -103,5 +103,5 @@
 </div>
 @endsection
 @section('js-hooks')
-<script src="{{ asset('assets/js/listening/listeningWriteFormDictations.js') }}" defer></script>
+<script src="{{ asset('assets/js/branchadmin/listening/listeningWriteFormDictations.js') }}" defer></script>
 @endsection

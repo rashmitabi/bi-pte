@@ -1,4 +1,4 @@
-@extends('layouts.appSuperAdmin')
+@extends('layouts.appBranchAdmin')
 @section('content')
   <div id="content">
   	<section class="top-title-button mb-3">
@@ -181,5 +181,5 @@
 @endsection
 @section('js-hooks')
 
-<script src="{{ asset('assets/js/listening/highlightcorrectsummaryitem.js') }}" defer></script>
+<script src="{{ asset('assets/js/branchadmin/listening/highlightcorrectsummaryitem.js') }}" defer></script>
 @endsection
