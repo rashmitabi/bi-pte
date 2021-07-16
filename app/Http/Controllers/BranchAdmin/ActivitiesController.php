@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\BranchAdmin;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Activities;
 use App\Models\User;
@@ -12,7 +13,7 @@ class ActivitiesController extends Controller
     public function index(Request $request)
     {
         if($request->ajax())  {
-            $data = Activities::select('log_activities.*')
+            $data = Activities::latest()->select('log_activities.*')
             	->join('users', 'users.id', '=', 'log_activities.user_id')
             	->where('users.parent_user_id', \Auth::user()->id)
             	->get();

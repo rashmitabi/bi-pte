@@ -115,7 +115,7 @@
                <section class="top-title-button white-bg common-wrap mb-3">
                    <div class="col-12 col-md-8 col-xl-8 col-sm-8 left">
                      <h1 class="table-head head-text">Activity Log</h1>
-                   </div>
+                   </div>                   
                    <div class="row mx-0 align-items-center">
                       <div class="col-12 col-md-12 col-xl-12 col-sm-12 left p-0">
                            <table id="activitylog" class="table  table-bordered dt-responsive nowrap" style="width:100%">
@@ -130,6 +130,11 @@
                                
                             </table>
                         </div>
+                        <div class="col-12 right">
+                          <a href="{{ route('activities.index') }}">
+                           View All Activity Logs
+                         </a>
+                         </div>
                     </div>
                 </section>
             </div>
@@ -157,6 +162,11 @@
                                                 
                             </table>                            
                         </div>
+                        <div class="col-12 right">
+                          <a href="{{ route('transactions.index') }}">
+                           View All Transactions
+                         </a>
+                         </div>
                     </div>
                 </section>
             </div>

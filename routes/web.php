@@ -128,6 +128,8 @@ Route::group(['middleware' => ['auth', 'verified','superadmin']], function () {
     Route::resource('superadmin/vouchers', App\Http\Controllers\SuperAdmin\VouchersController::class);
     /*Vouchers module end*/
 
+    Route::resource('superadmin/activities', App\Http\Controllers\SuperAdmin\ActivitiesController::class);
+
     
     /*Tests Modules start*/
 
@@ -624,6 +626,8 @@ Route::group(['middleware' => ['auth', 'verified','branchadmin']], function () {
 
     Route::resource('branchadmin/transactions', App\Http\Controllers\BranchAdmin\TransactionsController::class)->names('branchadmin-transactions');
     Route::get('branchadmin/transactions/download_invoice/{id}', [App\Http\Controllers\BranchAdmin\TransactionsController::class, 'download_invoice'])->name('branchadmin-download-invoice');
+
+    Route::resource('branchadmin/activities', App\Http\Controllers\BranchAdmin\ActivitiesController::class)->names('branchadmin-activities');
     //end branch admin routes
 
 
