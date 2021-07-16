@@ -89,8 +89,8 @@
                                  <input type="hidden" name="section_id" value="{{ $section_id }}">
                                  <input type="hidden" name="test_id" value="{{ $test_id }}">
                                  <input type="hidden" name="question_type_id" value="{{ $question_id }}">
-                                 <input type="hidden" name="numberSlug" id="numberSlug" value="{{(isset($questions->name))?$temp:'E'}}">
-                                 <input type="hidden" name="alphaSlug" id="alphaSlug" value="{{(isset($questions->name))?$arrayValue:'5'}}">
+                                 <input type="hidden" name="numberSlug" id="numberSlug" value="{{(isset($questions->name))?$temp:'A'}}">
+                                 <input type="hidden" name="alphaSlug" id="alphaSlug" value="{{(isset($questions->name))?$arrayValue:'1'}}">
                                  @if(isset($questions->name))
                                     <input type="hidden" name="question_id" value="{{ $questions->id }}">
                                  @endif

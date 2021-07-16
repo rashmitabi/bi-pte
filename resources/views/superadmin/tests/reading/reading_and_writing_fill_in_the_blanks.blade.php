@@ -97,7 +97,7 @@
                                     <input type="hidden" name="section_id" value="{{ $section_id }}">
                                     <input type="hidden" name="test_id" value="{{ $test_id }}">
                                     <input type="hidden" name="question_type_id" value="{{ $question_id }}">
-                                    <input type="hidden" name="slug" id="slug" value="{{(isset($count))?$count:'8'}}">
+                                    <input type="hidden" name="slug" id="slug" value="{{(isset($count))?$count:'1'}}">
                                     <a href="{{ route('tests.show',$test_id )}}"><button  type="button" class="btn btn-outline-primary"><img class="back-btn" src="{{ asset('assets/images/icons/back.svg') }}">Cancel</button></a>
                                     <button  type="submit" class="btn btn-outline-primary mr-2" data-sectionid="{{ $section_id }}" data-testid="{{ $test_id }}" data-questionid="{{ $question_id }}"><i class="far fa-save save-icon"></i>Submit</button>
                               </div> 

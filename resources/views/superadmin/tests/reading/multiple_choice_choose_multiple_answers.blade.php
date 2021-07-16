@@ -91,7 +91,7 @@
                                 <input type="hidden" name="section_id" value="{{ $section_id }}">
                                 <input type="hidden" name="test_id" value="{{ $test_id }}">
                                 <input type="hidden" name="question_type_id" value="{{ $question_id }}">
-                                <input type="hidden" name="slug" id="slug" value="{{(isset($arrayValue))?$arrayValue:'E'}}">
+                                <input type="hidden" name="slug" id="slug" value="{{(isset($arrayValue))?$arrayValue:'A'}}">
                                 @if(isset($questions->desc))
                                  <input type="hidden" name="question_id" value="{{ $questions->id }}">
                                 @endif
