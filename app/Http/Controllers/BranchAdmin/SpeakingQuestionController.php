@@ -1,5 +1,5 @@
 <?php
-namespace App\Http\Controllers\SuperAdmin;
+namespace App\Http\Controllers\BranchAdmin;
 use App\Models\Subscriptions;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -65,34 +65,35 @@ class SpeakingQuestionController extends Controller
             }
             
 
-            return redirect()->route('tests.show',$input['test_id'])->with('success','Questions added Successfully!');
+            return redirect()->route('branchadmin-tests.show',$input['test_id'])->with('success','Questions added Successfully!');
         }else{
-            return redirect()->route('tests.show',$input['test_id'])->with('error','Sorry!Something wrong.Try Again.');
+            return redirect()->route('branchadmin-tests.show',$input['test_id'])->with('error','Sorry!Something wrong.Try Again.');
         }
     }
     public function updateReadAloud(Request $request){
         $input  = \Arr::except($request->all(),array('_token'));
+        
         $questiondata = 1;
-        $answerdata = 1; 
-        for($i=1;$i< 6;$i++){
+        $answerdata = 1;
+        try{
+            for($i=1;$i< 6;$i++){
            
-            $questiondata = Questiondata::where('id',$input['question_data_id'.$i])->update(
-                array(
-                    "data_value" => $input['editor'.$i]
-                )
-            );
-            $answerdata = Answerdata::where('id',$input['answer_data_id'.$i])->update(
-                array(
-                    "sample_answer" => $input['sample_ans'.$i]
-                )
-            );
-           
-        }
-
-        if($questiondata || $answerdata){
-            return redirect()->route('tests.show',$input['test_id'])->with('success','Questions Updated Successfully!');
-        }else{
-            return redirect()->route('tests.show',$input['test_id'])->with('error','Sorry!Something wrong.Try Again.');
+                $questiondata = Questiondata::where('id',$input['question_data_id'.$i])->update(
+                    array(
+                        "data_value" => $input['editor'.$i]
+                    )
+                );
+                $answerdata = Answerdata::where('id',$input['answer_data_id'.$i])->update(
+                    array(
+                        "sample_answer" => $input['sample_ans'.$i]
+                    )
+                );
+               
+            }
+            return redirect()->route('branchadmin-tests.show',$input['test_id'])->with('success','Questions Updated Successfully!');
+        }catch(\Exception $e){
+            //dd($e->getMessage());
+            return redirect()->route('branchadmin-tests.show',$input['test_id'])->with('error','Sorry!Something wrong.Try Again.');
         }
     }
 
@@ -144,9 +145,9 @@ class SpeakingQuestionController extends Controller
                 $answerdata->save();
             }
 
-            return redirect()->route('tests.show',$input['test_id'])->with('success','Questions added Successfully!');
+            return redirect()->route('branchadmin-tests.show',$input['test_id'])->with('success','Questions added Successfully!');
         }else{
-            return redirect()->route('tests.show',$input['test_id'])->with('error','Sorry!Something wrong.Try Again.');
+            return redirect()->route('branchadmin-tests.show',$input['test_id'])->with('error','Sorry!Something wrong.Try Again.');
         }
     }
     public function updateRepeatSentence(Request $request){
@@ -154,25 +155,25 @@ class SpeakingQuestionController extends Controller
         $questiondata = 1;
         $answerdata = 1; 
 
-        for($i=0;$i< count($input['question']);$i++){
+        try{
+            for($i=0;$i< count($input['question']);$i++){
            
-            $questiondata = Questiondata::where('id',$input['question_data_id'][$i])->update(
-                array(
-                    "data_value" => $input['question'][$i]
-                )
-            );
-            $answerdata = Answerdata::where('id',$input['answer_data_id'][$i])->update(
-                array(
-                    "sample_answer" => $input['sample_ans'][$i]
-                )
-            );
-           
-        }
-
-        if($questiondata || $answerdata){   
-            return redirect()->route('tests.show',$input['test_id'])->with('success','Questions Updated Successfully!');
-        }else{
-            return redirect()->route('tests.show',$input['test_id'])->with('error','Sorry!Something wrong.Try Again.');
+                $questiondata = Questiondata::where('id',$input['question_data_id'][$i])->update(
+                    array(
+                        "data_value" => $input['question'][$i]
+                    )
+                );
+                $answerdata = Answerdata::where('id',$input['answer_data_id'][$i])->update(
+                    array(
+                        "sample_answer" => $input['sample_ans'][$i]
+                    )
+                );
+               
+            }
+            return redirect()->route('branchadmin-tests.show',$input['test_id'])->with('success','Questions Updated Successfully!');
+        }catch(\Exception $e){
+            //dd($e->getMessage());
+            return redirect()->route('branchadmin-tests.show',$input['test_id'])->with('error','Sorry!Something wrong.Try Again.');
         }
     }
 
@@ -219,9 +220,9 @@ class SpeakingQuestionController extends Controller
                 $answerdata->save();
             }
 
-            return redirect()->route('tests.show',$input['test_id'])->with('success','Questions added Successfully!');
+            return redirect()->route('branchadmin-tests.show',$input['test_id'])->with('success','Questions added Successfully!');
         }else{
-            return redirect()->route('tests.show',$input['test_id'])->with('error','Sorry!Something wrong.Try Again.');
+            return redirect()->route('branchadmin-tests.show',$input['test_id'])->with('error','Sorry!Something wrong.Try Again.');
         }
     }
     public function updateDescribeImage(Request $request){
@@ -229,25 +230,25 @@ class SpeakingQuestionController extends Controller
         $questiondata = 1;
         $answerdata = 1; 
 
-        for($i=0;$i< count($input['question']);$i++){
+        try{
+            for($i=0;$i< count($input['question']);$i++){
            
-            $questiondata = Questiondata::where('id',$input['question_data_id'][$i])->update(
-                array(
-                    "data_value" => $input['question'][$i]
-                )
-            );
-            $answerdata = Answerdata::where('id',$input['answer_data_id'][$i])->update(
-                array(
-                    "sample_answer" => $input['sample_ans'][$i]
-                )
-            );
-           
-        }
-
-        if($questiondata || $answerdata){
-            return redirect()->route('tests.show',$input['test_id'])->with('success','Questions Updated Successfully!');
-        }else{
-            return redirect()->route('tests.show',$input['test_id'])->with('error','Sorry!Something wrong.Try Again.');
+                $questiondata = Questiondata::where('id',$input['question_data_id'][$i])->update(
+                    array(
+                        "data_value" => $input['question'][$i]
+                    )
+                );
+                $answerdata = Answerdata::where('id',$input['answer_data_id'][$i])->update(
+                    array(
+                        "sample_answer" => $input['sample_ans'][$i]
+                    )
+                );
+               
+            }
+            return redirect()->route('branchadmin-tests.show',$input['test_id'])->with('success','Questions Updated Successfully!');
+        }catch(\Exception $e){
+            //dd($e->getMessage());
+            return redirect()->route('branchadmin-tests.show',$input['test_id'])->with('error','Sorry!Something wrong.Try Again.');
         }
     }
 
@@ -297,36 +298,35 @@ class SpeakingQuestionController extends Controller
                 $answerdata->save();
             }
 
-            return redirect()->route('tests.show',$input['test_id'])->with('success','Questions added Successfully!');
+            return redirect()->route('branchadmin-tests.show',$input['test_id'])->with('success','Questions added Successfully!');
         }else{
-            return redirect()->route('tests.show',$input['test_id'])->with('error','Sorry!Something wrong.Try Again.');
+            return redirect()->route('branchadmin-tests.show',$input['test_id'])->with('error','Sorry!Something wrong.Try Again.');
         }
     }
     public function updateReTellLecture(Request $request){
         $input  = \Arr::except($request->all(),array('_token'));
         $questiondata = 1;
         $answerdata = 1; 
-
-        for($i=0;$i< count($input['question']);$i++){
+        try{
+            for($i=0;$i< count($input['question']);$i++){
            
-            $questiondata = Questiondata::where('id',$input['question_data_id'][$i])->update(
-                array(
-                    "data_value" => $input['question'][$i]
-                )
-            );
-            $answerdata = Answerdata::where('id',$input['answer_data_id'][$i])->update(
-                array(
-                    "answer_value" => $input['image'][$i],
-                    "sample_answer" => $input['sample_ans'][$i]
-                )
-            );
-           
-        }
-
-        if($questiondata || $answerdata){
-            return redirect()->route('tests.show',$input['test_id'])->with('success','Questions Updated Successfully!');
-        }else{
-            return redirect()->route('tests.show',$input['test_id'])->with('error','Sorry!Something wrong.Try Again.');
+                $questiondata = Questiondata::where('id',$input['question_data_id'][$i])->update(
+                    array(
+                        "data_value" => $input['question'][$i]
+                    )
+                );
+                $answerdata = Answerdata::where('id',$input['answer_data_id'][$i])->update(
+                    array(
+                        "answer_value" => $input['image'][$i],
+                        "sample_answer" => $input['sample_ans'][$i]
+                    )
+                );
+               
+            }
+            return redirect()->route('branchadmin-tests.show',$input['test_id'])->with('success','Questions Updated Successfully!');
+        }catch(\Exception $e){
+            //dd($e->getMessage());
+            return redirect()->route('branchadmin-tests.show',$input['test_id'])->with('error','Sorry!Something wrong.Try Again.');
         }
     }
 
@@ -376,36 +376,34 @@ class SpeakingQuestionController extends Controller
                 $answerdata->save();
             }
 
-            return redirect()->route('tests.show',$input['test_id'])->with('success','Questions added Successfully!');
+            return redirect()->route('branchadmin-tests.show',$input['test_id'])->with('success','Questions added Successfully!');
         }else{
-            return redirect()->route('tests.show',$input['test_id'])->with('error','Sorry!Something wrong.Try Again.');
+            return redirect()->route('branchadmin-tests.show',$input['test_id'])->with('error','Sorry!Something wrong.Try Again.');
         }
     }
     public function updateAnswerShortQuestion(Request $request){
         $input  = \Arr::except($request->all(),array('_token'));
         $questiondata = 1;
         $answerdata = 1; 
-
-        for($i=0;$i< count($input['question']);$i++){
+        try{
+            for($i=0;$i< count($input['question']);$i++){
            
-            $questiondata = Questiondata::where('id',$input['question_data_id'][$i])->update(
-                array(
-                    "data_value" => $input['question'][$i]
-                )
-            );
-            $answerdata = Answerdata::where('id',$input['answer_data_id'][$i])->update(
-                array(
-                    "answer_value" => $input['image'][$i],
-                    "sample_answer" => $input['sample_ans'][$i]
-                )
-            );
-           
-        }
-
-        if($questiondata || $answerdata){    
-            return redirect()->route('tests.show',$input['test_id'])->with('success','Questions Updated Successfully!');
-        }else{
-            return redirect()->route('tests.show',$input['test_id'])->with('error','Sorry!Something wrong.Try Again.');
+                $questiondata = Questiondata::where('id',$input['question_data_id'][$i])->update(
+                    array(
+                        "data_value" => $input['question'][$i]
+                    )
+                );
+                $answerdata = Answerdata::where('id',$input['answer_data_id'][$i])->update(
+                    array(
+                        "answer_value" => $input['image'][$i],
+                        "sample_answer" => $input['sample_ans'][$i]
+                    )
+                );
+               
+            }
+            return redirect()->route('branchadmin-tests.show',$input['test_id'])->with('success','Questions Updated Successfully!');
+        }catch(\Exception $e){
+            return redirect()->route('branchadmin-tests.show',$input['test_id'])->with('error','Sorry!Something wrong.Try Again.');
         }
     }
 	
