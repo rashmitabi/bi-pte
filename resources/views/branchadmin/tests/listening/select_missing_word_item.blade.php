@@ -130,7 +130,7 @@
                                 <input type="hidden" name="answer_data_1" value="{{ $questions->answerdata[0]->id }}">
                                 <input type="hidden" name="answer_data_2" value="{{ $questions->answerdata[1]->id }}">
                             @endif
-                            <a href="{{ route('tests.show', $test_id) }}"><button  type="button" class="btn btn-outline-primary"><img class="back-btn" src="{{ asset('assets/images/icons/back.svg') }}">Cancel</button></a>
+                            <a href="{{ route('branchadmin-tests.show', $test_id) }}"><button  type="button" class="btn btn-outline-primary"><img class="back-btn" src="{{ asset('assets/images/icons/back.svg') }}">Cancel</button></a>
                             <button  type="submit" class="btn btn-outline-primary mr-2"><i class="far fa-save save-icon"></i>Submit</button>
                         </div> 
                     </div>
