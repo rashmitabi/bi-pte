@@ -21,7 +21,7 @@
                    <div class="sub-heading">
                        <h4>Paragraph<span>Enter the First Module Paragraph</span></h4>
                    </div>
-                   <form class="form ml-1" name="fill_in_blanks" id="fill_in_blanks" method="POST" action="{{ (isset($questions->desc))?route('superadmin-question-update-fill-in-the-blanks'):route('superadmin-question-store-fill-in-the-blanks') }}">
+                   <form class="form ml-1" name="fill_in_blanks" id="fill_in_blanks" method="POST" action="{{ (isset($questions->desc))?route('branchadmin-question-update-fill-in-the-blanks'):route('branchadmin-question-store-fill-in-the-blanks') }}">
                       <div class="form-group mb-5 row">
                            <div class="col-12 col-md-12 col-xl-11 col-sm-12">
                                @csrf
@@ -105,5 +105,5 @@
 </div>
 @endsection
 @section('js-hooks')
-<script src="{{ asset('assets/js/reading/readingFillinTheBlanks.js') }}" defer></script>
+<script src="{{ asset('assets/js/branchadmin/reading/readingFillinTheBlanks.js') }}" defer></script>
 @endsection
