@@ -72,7 +72,7 @@ class TransactionsController extends Controller
 
     /**
      * Download invoice from storage.
-     *
+     *                                         
      * @param  \App\Models\Transactions  $payment_id
      * @return \Illuminate\Http\Response
      */
@@ -127,7 +127,7 @@ class TransactionsController extends Controller
 	    			'company_gst_number' => (isset($setting['company_gst_number']))?$setting['company_gst_number']:'',
 	    			'hsn_code' => (isset($setting['hsn_code']))?$setting['hsn_code']:'',
 	    			'company_mobile_number' => (isset($setting['company_mobile_number']))?$setting['company_mobile_number']:'',
-	    			'digital_signature' => (isset($setting['digital_signature']))?url('/assets/images/'.$setting["digital_signature"]):'',
+	    			'digital_signature' => (isset($setting['digital_signature'])) ? base64_encode(file_get_contents(public_path('/assets/images/'.$setting['digital_signature']))) : '',
 	    			'stgst' => (isset($setting['stgst']))?$setting['stgst']:9,
 	    			'cgst' => (isset($setting['cgst']))?$setting['cgst']:9,
 	    			'igst' => (isset($setting['igst']))?$setting['igst']:18

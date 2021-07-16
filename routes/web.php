@@ -603,7 +603,7 @@ Route::group(['middleware' => ['auth', 'verified','branchadmin']], function () {
     /* Email templates module start*/
 
     Route::resource('branchadmin/transactions', App\Http\Controllers\BranchAdmin\TransactionsController::class)->names('branchadmin-transactions');
-    Route::get('branchadmin/transactions/download_invoice/{id}', [App\Http\Controllers\SuperAdmin\TransactionsController::class, 'download_invoice'])->name('branchadmin-download-invoice');
+    Route::get('branchadmin/transactions/download_invoice/{id}', [App\Http\Controllers\BranchAdmin\TransactionsController::class, 'download_invoice'])->name('branchadmin-download-invoice');
     //end branch admin routes
 
 

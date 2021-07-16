@@ -7,6 +7,7 @@ use App\Models\Videos;
 use App\Models\Sections;
 use App\Models\QuestionDesigns;
 use App\Models\Notifications;
+use App\Models\Activities;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\CreateVideosRequest;
@@ -125,6 +126,17 @@ class VideosController extends Controller
                     $notification = Notifications::insert($notification_data);
                 }  
             }
+            //add activity log
+            $activity_data = array(
+                'user_id' => \Auth::user()->id,
+                'role_id' => \Auth::user()->role_id,
+                'subject' => 'Added a new video',
+                'message' => 'New video has been added with title - '.$input['title'],
+                'ip_address' => getUserIP(),
+                'latitude' => '',
+                'longitude' => ''
+            );
+            $activity = Activities::create($activity_data);
             return redirect()->route('branchadmin-videos.index')
             ->with('success','Video added successfully!');
         }else{

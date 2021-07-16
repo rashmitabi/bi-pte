@@ -115,8 +115,8 @@
                 <td style="border-bottom: 0px;" colspan="4">Certified that the particulars given above are true and correct<br>
                     <span ><strong>Aone Solutions</strong></span><br>
                     <span >Authorised Signatory</span>
-                    @if ($data['digital_signature'] != '')
-                        <!-- <img width="100" src="{{ $data['digital_signature'] }}"> -->
+                    @if ($data['digital_signature'] != '')                    
+                    <img width="100" src="data:image/png;base64,{{ $data['digital_signature'] }}">
                     @endif                    
                 </td>
             </tr>

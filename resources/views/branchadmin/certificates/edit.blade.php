@@ -84,7 +84,7 @@
     
     <div class="form-group row">
         <div class="col-12 col-md-12 col-xl-11 col-sm-12 save-btn">
-            <button type="button" class="btn btn-outline-primary" id="add_certificate" data-url="{{ route('certificates.store') }}"><i
+            <button type="button" class="btn btn-outline-primary" id="add_certificate" data-url="{{ route('branchadmin-certificates.store') }}"><i
                     class="far fa-save save-icon"></i>Save Certificate</button>
         </div>
     </div>

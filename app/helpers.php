@@ -219,4 +219,10 @@ function getUserRole($user_id){
     $user = User::with('role')->where('id',$user_id)->first();
     return $user->role->role_name;
 }
+
+function getUserName($user_id){
+    $user = User::select('name')->where('id',$user_id)->first();
+    return $user->name;
+}
+
 ?>

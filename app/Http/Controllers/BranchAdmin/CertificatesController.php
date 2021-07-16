@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\TestResults;
 use App\Models\Certificates;
 use App\Models\Notifications;
+use App\Models\Activities;
 use App\Models\Tests;
 use App\Http\Requests\CreateCertificateRequest;
 use DataTables;
@@ -133,44 +134,21 @@ class CertificatesController extends Controller
                     'url' => ""
                 );
                 $notification = Notifications::create($notification_data);
+                //add activity log
+                $activity_data = array(
+                    'user_id' => \Auth::user()->id,
+                    'role_id' => \Auth::user()->role_id,
+                    'subject' => 'Generate certificate for '.getUserName($input['student_user_id']),
+                    'message' => "A new certificate has been generated for ".$type." - ".$test->test_name." attempted by ".getUserName($input['student_user_id']).".",
+                    'ip_address' => getUserIP(),
+                    'latitude' => '',
+                    'longitude' => ''
+                );
+                $activity = Activities::create($activity_data);
+
                 \Session::put('success', 'Certificate generated successfully!');
                 return true;   
-            }
-            //generate certificate file
-            /*view()->share('data', $resdata);
-            $pdf = PDF::loadView('superadmin.certificates.certificate', $input);
-            $path = public_path('files/certificates/');
-            $fileName = time().'_'.$test->test_name.'.pdf';
-            if($pdf->save($path . '/' . $fileName)){
-                $input['file_path'] = 'files/certificates/'.$fileName;
-                //print_r($input);die;
-                // add record in database 
-                $result = Certificates::create($input);
-                if($result){
-                    //send notification                
-                    if($test->type == "M"){
-                        $type = "Mock Test";
-                    }
-                    else if($test->type == "P"){
-                        $type = "Practice Test";
-                    }
-                    $notification_data = array(
-                        'user_id' => $input['student_user_id'],
-                        'sender_id' => $input['generate_by_user_id'],
-                        'type' => "student",
-                        'title' => "New certificate has been generated",
-                        'body' => "A new certificate has been generated for ".$type." - ".$test->test_name." attempted by you.",
-                        'url' => ""
-                    );
-                    $notification = Notifications::create($notification_data);
-                    \Session::put('success', 'Certificate generated successfully!');
-                    return true;   
-                }   
-                else{
-                    \Session::put('error', 'Unable to generate certificate. Please try Again.');
-                    return false;
-                }  
-            }*/
+            }            
             else{
                 \Session::put('error', 'Sorry!Something went wrong. Please try Again.');
                 return false;
