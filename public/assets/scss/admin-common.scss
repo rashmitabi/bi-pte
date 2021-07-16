@@ -84,6 +84,7 @@ body {
                          text-decoration: none;
                          padding: 16px 0px;
                          display: block;
+                         text-transform: capitalize;
                          &:hover {
                               color: $primary-color;
                          }

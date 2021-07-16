@@ -17,7 +17,7 @@
                    <div class="col-12 heading-text">
                       <h5>Select missing word item (11-12)</h5>
                    </div>
-                   <form class="form" name="missing_word" id="missing_word" method="POST" action="{{ (isset($questions->name))?route('update-listen-missing-word-item'):route('store-listen-missing-word-item') }}">
+                   <form class="form" name="missing_word" id="missing_word" method="POST" action="{{ (isset($questions->name))?route('branchadmin-update-listen-missing-word-item'):route('branchadmin-store-listen-missing-word-item') }}">
                     @csrf
                     @if(isset($questions->name))
                         @php
@@ -109,7 +109,7 @@
                             <div class="form-group mb-2 row">
                                     <div class="col-12 p-0">                              
                                         <div class="custom-file mb-3">
-                                        <input type="file" class="custom-file-input " onchange ="uploadAduio()" id="customFile_audio123" data-url="{{ route('upload-audio') }}" data-token="{{ csrf_token() }}">
+                                        <input type="file" class="custom-file-input " onchange ="uploadAduio()" id="customFile_audio123" data-url="{{ route('branchadmin-upload-audio') }}" data-token="{{ csrf_token() }}">
                                             <label class="custom-file-label" for="customFile">Select Audio</label>
                                         </div>
                                         <input type="text" name="upload-audio" id="upload-audio" class="form-control" >
@@ -130,7 +130,7 @@
                                 <input type="hidden" name="answer_data_1" value="{{ $questions->answerdata[0]->id }}">
                                 <input type="hidden" name="answer_data_2" value="{{ $questions->answerdata[1]->id }}">
                             @endif
-                            <a href="{{ route('tests.show', $test_id) }}"><button  type="button" class="btn btn-outline-primary"><img class="back-btn" src="{{ asset('assets/images/icons/back.svg') }}">Cancel</button></a>
+                            <a href="{{ route('branchadmin-tests.show', $test_id) }}"><button  type="button" class="btn btn-outline-primary"><img class="back-btn" src="{{ asset('assets/images/icons/back.svg') }}">Cancel</button></a>
                             <button  type="submit" class="btn btn-outline-primary mr-2"><i class="far fa-save save-icon"></i>Submit</button>
                         </div> 
                     </div>

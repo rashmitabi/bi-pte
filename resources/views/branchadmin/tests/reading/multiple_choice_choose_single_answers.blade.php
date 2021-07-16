@@ -99,7 +99,7 @@
                                 @if(isset($questions->desc))
                                  <input type="hidden" name="question_id" value="{{ $questions->id }}">
                                 @endif
-                                <a href="{{ route('tests.show',$test_id )}}"><button  type="button" class="btn btn-outline-primary"><img class="back-btn" src="{{ asset('assets/images/icons/back.svg') }}">Cancel</button></a>
+                                <a href="{{ route('branchadmin-tests.show',$test_id )}}"><button  type="button" class="btn btn-outline-primary"><img class="back-btn" src="{{ asset('assets/images/icons/back.svg') }}">Cancel</button></a>
                                 <button  type="submit" class="btn btn-outline-primary mr-2"><i class="far fa-save save-icon"></i>Submit</button>
                             </div> 
                         </div>
