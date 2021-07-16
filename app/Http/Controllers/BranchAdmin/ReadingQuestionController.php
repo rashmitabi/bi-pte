@@ -178,7 +178,7 @@ class ReadingQuestionController extends Controller
             $id = $questions->id;
             $finalValue = array_search($slug,$all);
             try{
-                for($i=0;$i<=$finalValue;$i++)
+                for($i=0; $i <= $finalValue; $i++)
                 {
                     $indexValue = $all[$i];
                     $string = 'ans_options_'.$indexValue;

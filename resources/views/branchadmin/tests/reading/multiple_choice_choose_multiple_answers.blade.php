@@ -1,4 +1,4 @@
-@extends('layouts.appSuperAdmin')
+@extends('layouts.appBranchAdmin')
 @section('content')
 
 <div id="content">
@@ -26,14 +26,11 @@
                    <div class="sub-heading">
                        <h4>Paragraph<span>Enter the First Module Paragraph</span></h4>
                    </div>
-                   <form class="form ml-1" method="POST" id="mutli_choice" name="mutli_choice" action="{{ (isset($questions->desc))?route('superadmin-question-update-MultipleChoice-Multipleanswers'):route('superadmin-question-store-MultipleChoice-Multipleanswers')}}">
+                   <form class="form ml-1" method="POST" id="mutli_choice" name="mutli_choice" action="{{ (isset($questions->desc))?route('branchadmin-question-update-MultipleChoice-Multipleanswers'):route('branchadmin-question-store-MultipleChoice-Multipleanswers')}}">
                        @csrf
                         <input type="hidden" name="type" value="mutli" id="type">
                       <div class="form-group mb-5 row">
                            <div class="col-12 col-md-12 col-xl-11 col-sm-12">
-                              <!-- <div id="editor">
-                                 <h2>The three greatest things you learn from traveling</h2>
-                              </div> -->
                               <textarea name="editor1" id="editor1">{{(isset($questions->desc))?$questions->desc:''}}</textarea>
                            </div>
                        </div>
@@ -91,7 +88,7 @@
                                 <input type="hidden" name="section_id" value="{{ $section_id }}">
                                 <input type="hidden" name="test_id" value="{{ $test_id }}">
                                 <input type="hidden" name="question_type_id" value="{{ $question_id }}">
-                                <input type="hidden" name="slug" id="slug" value="{{(isset($arrayValue))?$arrayValue:'E'}}">
+                                <input type="hidden" name="slug" id="slug" value="{{(isset($arrayValue))?$arrayValue:'A'}}">
                                 @if(isset($questions->desc))
                                  <input type="hidden" name="question_id" value="{{ $questions->id }}">
                                 @endif
@@ -108,5 +105,5 @@
 
 @endsection
 @section('js-hooks')
-<script src="{{ asset('assets/js/reading/readingMultipleChoiceMultipleAnswer.js') }}" defer></script>
+<script src="{{ asset('assets/js/branchadmin/reading/readingMultipleChoiceMultipleAnswer.js') }}" defer></script>
 @endsection
