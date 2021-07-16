@@ -16,7 +16,7 @@
             <div class="col-12 heading-text">
               <h5>Highlight Incorrect Words (13 - 14)</h5>
             </div>
-            <form class="form ml-1" method="POST" id="hightlight_words" name="hightlight_words" action="{{ (isset($questions->desc))?route('update-listen-highlight-incorrect-words'):route('store-listen-highlight-incorrect-words')}}">
+            <form class="form ml-1" method="POST" id="hightlight_words" name="hightlight_words" action="{{ (isset($questions->desc))?route('branchadmin-update-listen-highlight-incorrect-words'):route('branchadmin-store-listen-highlight-incorrect-words')}}">
               @csrf
               <input type="hidden" name="question_type_id" value="{{ $question_id }}">
               <input type="hidden" name="section_id" value="{{ $section_id }}">
@@ -88,7 +88,7 @@
                   <div class="form-group mb-2 row">
                       <div class="col-12 p-0">                              
                           <div class="custom-file mb-3">
-                          <input type="file" class="custom-file-input " onchange ="uploadAduio()" id="customFile_audio123" data-url="{{ route('upload-audio') }}" data-token="{{ csrf_token() }}">
+                          <input type="file" class="custom-file-input " onchange ="uploadAduio()" id="customFile_audio123" data-url="{{ route('branchadmin-upload-audio') }}" data-token="{{ csrf_token() }}">
                               <label class="custom-file-label" for="customFile">Select Audio</label>
                           </div>
                           <input type="text" name="upload-audio" id="upload-audio" class="form-control" >
