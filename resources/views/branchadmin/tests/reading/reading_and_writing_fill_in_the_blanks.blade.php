@@ -1,4 +1,4 @@
-@extends('layouts.appSuperAdmin')
+@extends('layouts.appBranchAdmin')
 @section('content')
 <div id="content">
 <section class="top-title-button mb-3">
@@ -19,7 +19,7 @@
                    <div class="sub-heading">
                        <h4>Paragraph<span>Enter the First Module Paragraph</span></h4>
                    </div>
-                   <form class="form ml-1" method="POST" id="fill_in_blanks" name="fill_in_blanks" action="{{ (isset($questions->desc))?route('superadmin-question-update-readingwriting-fillintheblanks'):route('superadmin-reading-store-fill-in-the-blanks')}}">
+                   <form class="form ml-1" method="POST" id="fill_in_blanks" name="fill_in_blanks" action="{{ (isset($questions->desc))?route('branchadmin-question-update-readingwriting-fillintheblanks'):route('branchadmin-reading-store-fill-in-the-blanks')}}">
                       @csrf
                       <div class="form-group mb-5 row">
                            <div class="col-12 col-md-12 col-xl-11 col-sm-12">
@@ -52,7 +52,7 @@
                                  <input type="hidden" name="section_id" value="{{ $section_id }}">
                                  <input type="hidden" name="test_id" value="{{ $test_id }}">
                                  <input type="hidden" name="question_type_id" value="{{ $question_id }}">
-                                 <input type="hidden" name="slug" id="slug" value="8">
+                                 <input type="hidden" name="slug" id="slug" value="1">
                                  <button  type="button" class="btn btn-outline-primary"><a href="{{ route('tests.show',$test_id )}}"><img class="back-btn" src="{{ asset('assets/images/icons/back.svg') }}"></a>Cancel</button>
                                  <button  type="submit" class="btn btn-outline-primary mr-2" data-sectionid="{{ $section_id }}" data-testid="{{ $test_id }}" data-questionid="{{ $question_id }}"><i class="far fa-save save-icon"></i>Submit</button>
                            </div> 
@@ -79,9 +79,11 @@
                                        <input type="text" class="form-control " name="correct_option{{$label}}" id="correct_option{{$label}}" placeholder="Please Enter Correct options {{ $label }}" value="{{ (isset($questions->desc))?$questions->answerdata[$i]->answer_value:''}}">
                                     </div>
                                     @if($label == $count)
+                                          @if($label > 1)
                                           <div class="minus-icon-common" onclick="minusQuestionColumn()" data-id="{{$count}}">
                                              <a><i class="fas fa-minus"></i></a>
                                           </div>
+                                          @endif
                                           <div class="add-icon" onclick="addQuestionColumn()"  data-id="{{$count}}">
                                              <a><i class="fas fa-plus"></i></a>
                                           </div>
@@ -97,7 +99,7 @@
                                     <input type="hidden" name="section_id" value="{{ $section_id }}">
                                     <input type="hidden" name="test_id" value="{{ $test_id }}">
                                     <input type="hidden" name="question_type_id" value="{{ $question_id }}">
-                                    <input type="hidden" name="slug" id="slug" value="{{(isset($count))?$count:'8'}}">
+                                    <input type="hidden" name="slug" id="slug" value="{{(isset($count))?$count:'1'}}">
                                     <a href="{{ route('tests.show',$test_id )}}"><button  type="button" class="btn btn-outline-primary"><img class="back-btn" src="{{ asset('assets/images/icons/back.svg') }}">Cancel</button></a>
                                     <button  type="submit" class="btn btn-outline-primary mr-2" data-sectionid="{{ $section_id }}" data-testid="{{ $test_id }}" data-questionid="{{ $question_id }}"><i class="far fa-save save-icon"></i>Submit</button>
                               </div> 
@@ -111,8 +113,5 @@
 </div>
 @endsection
 @section('js-hooks')
-<script type="text/javascript" defer>
-   var url = "{{ route('questions.store') }}";
-</script>
-<script src="{{ asset('assets/js/reading/readingAndWritingFillinTheBlanks.js') }}" defer></script>
+<script src="{{ asset('assets/js/branchadmin/reading/readingAndWritingFillinTheBlanks.js') }}" defer></script>
 @endsection

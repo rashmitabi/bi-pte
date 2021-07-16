@@ -189,7 +189,7 @@ Route::group(['middleware' => ['auth', 'verified','superadmin']], function () {
 
     
 
-    /*Reading section questions start*/
+    /*Superadmin Reading section questions start*/
 
         Route::post('superadmin/questions/readingStoreFillInTheBlanks', [App\Http\Controllers\SuperAdmin\ReadingQuestionController::class,'storeFillInTheBlanks'])
 
@@ -237,7 +237,7 @@ Route::group(['middleware' => ['auth', 'verified','superadmin']], function () {
 
             ->name('superadmin-question-update-fill-in-the-blanks');        
 
-    /*Reading section questions end*/
+    /*Superadmin Reading section questions end*/
 
 
 
@@ -540,6 +540,32 @@ Route::group(['middleware' => ['auth', 'verified','branchadmin']], function () {
     ->name('branchadmin-tests-addQuestions');
     Route::resource('branchadmin/tests', App\Http\Controllers\BranchAdmin\TestsController::class)->names('branchadmin-tests');
     /*branchadmin test module end*/
+
+    /*Reading section questions start*/
+    Route::post('branchadmin/questions/readingStoreFillInTheBlanks', [App\Http\Controllers\BranchAdmin\ReadingQuestionController::class,'storeFillInTheBlanks'])
+    ->name('branchadmin-reading-store-fill-in-the-blanks');
+
+    Route::post('branchadmin/questions/updateReadingWritingFillInTheBlanks', [App\Http\Controllers\BranchAdmin\ReadingQuestionController::class,'updateFillInTheBlanks'])
+    ->name('branchadmin-question-update-readingwriting-fillintheblanks');
+
+    Route::post('branchadmin/questions/storeReadingMultipleChoiceMultipleanswers', [App\Http\Controllers\BranchAdmin\ReadingQuestionController::class,'storeMultipleChoiceMultipleanswers'])
+    ->name('branchadmin-question-store-MultipleChoice-Multipleanswers');
+
+    Route::post('branchadmin/questions/updateReadingMultipleChoiceMultipleanswers', [App\Http\Controllers\BranchAdmin\ReadingQuestionController::class,'updateMultipleChoiceMultipleanswers'])
+    ->name('branchadmin-question-update-MultipleChoice-Multipleanswers');
+
+    Route::post('branchadmin/questions/storeReOrderParagraphs', [App\Http\Controllers\BranchAdmin\ReadingQuestionController::class,'storeReOrderParagraph'])
+    ->name('branchadmin-question-store-re-order-paragraph');
+
+    Route::post('branchadmin/questions/updateReOrderParagraphs', [App\Http\Controllers\BranchAdmin\ReadingQuestionController::class,'updateReOrderParagraph'])
+    ->name('branchadmin-question-update-re-order-paragraph');
+
+    Route::post('branchadmin/questions/storeFillInTheBlanks', [App\Http\Controllers\BranchAdmin\ReadingQuestionController::class,'storeReadingFillInTheBlanks'])
+    ->name('branchadmin-question-store-fill-in-the-blanks');
+
+    Route::post('branchadmin/questions/updateFillInTheBlanks', [App\Http\Controllers\BranchAdmin\ReadingQuestionController::class,'updateReadingFillInTheBlanks'])
+    ->name('branchadmin-question-update-fill-in-the-blanks');        
+    /*Reading section questions end*/
 
     /*branch admin notification start*/
 
