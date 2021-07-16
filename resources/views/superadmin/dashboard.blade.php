@@ -138,7 +138,7 @@
                    <div class="col-12 col-md-6 col-xl-6 col-sm-7 float-left left">
                      <h1 class="table-head">Transactions</h1>
                    </div>
-                   <div class="col-3 datapicker">
+                   <div class="col-6 datapicker">
                           <input type="text" id="from_date" class="form-control ml-4" placeholder="Form" autocomplete="off">
                           <input type="text" id="to_date" class="form-control" placeholder="To" autocomplete="off">
                       </div>
