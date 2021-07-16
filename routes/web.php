@@ -317,7 +317,7 @@ Route::group(['middleware' => ['auth', 'verified','superadmin']], function () {
 
 
 
-    /* start speaking section */
+    /* Superadmin speaking section start*/
 
         Route::post('superadmin/questions/readaloud', [App\Http\Controllers\SuperAdmin\SpeakingQuestionController::class,'storeReadAloud'])->name('add-read-aloud');
 
@@ -347,7 +347,7 @@ Route::group(['middleware' => ['auth', 'verified','superadmin']], function () {
 
         Route::post('superadmin/questions/editanswershortquestion', [App\Http\Controllers\SuperAdmin\SpeakingQuestionController::class,'updateAnswerShortQuestion'])->name('update-answer-short-question');
 
-    /* end speaking section */
+    /* Superadmin speaking section end */
 
     Route::get('superadmin/setting', [App\Http\Controllers\HomeController::class, 'setting'])->name('superadmin-setting');
 
@@ -594,6 +594,20 @@ Route::group(['middleware' => ['auth', 'verified','branchadmin']], function () {
     Route::post('branchadmin/questions/essay', [App\Http\Controllers\BranchAdmin\WritingQuestionController::class,'storeEssayWritting'])->name('branchadmin-add-essay-writting');
     Route::post('branchadmin/questions/editessay', [App\Http\Controllers\BranchAdmin\WritingQuestionController::class,'updateEssayWritting'])->name('branchadmin-update-essay-writting');
     /* Branchadmin writing section end */
+
+    /* Branchadmin speaking section start*/
+    Route::post('branchadmin/questions/readaloud', [App\Http\Controllers\BranchAdmin\SpeakingQuestionController::class,'storeReadAloud'])->name('branchadmin-add-read-aloud');
+    Route::post('branchadmin/questions/editreadaloud', [App\Http\Controllers\BranchAdmin\SpeakingQuestionController::class,'updateReadAloud'])->name('branchadmin-update-read-aloud');
+    Route::post('branchadmin/questions/repeatsentence', [App\Http\Controllers\BranchAdmin\SpeakingQuestionController::class,'storeRepeatSentence'])->name('branchadmin-add-repeat-sentence');
+    Route::post('branchadmin/questions/editrepeatsentence', [App\Http\Controllers\BranchAdmin\SpeakingQuestionController::class,'updateRepeatSentence'])->name('branchadmin-update-repeat-sentence');
+    Route::post('branchadmin/questions/describeimage', [App\Http\Controllers\BranchAdmin\SpeakingQuestionController::class,'storeDescribeImage'])->name('branchadmin-add-describe-image');
+    Route::post('branchadmin/questions/editdescribeimage', [App\Http\Controllers\BranchAdmin\SpeakingQuestionController::class,'updateDescribeImage'])->name('branchadmin-update-describe-image');
+    Route::post('branchadmin/questions/retelllecture', [App\Http\Controllers\BranchAdmin\SpeakingQuestionController::class,'storeReTellLecture'])->name('branchadmin-add-re-tell-lecture');
+    Route::post('branchadmin/questions/editretelllecture', [App\Http\Controllers\BranchAdmin\SpeakingQuestionController::class,'updateReTellLecture'])->name('branchadmin-update-re-tell-lecture');
+    Route::post('branchadmin/questions/answershortquestion', [App\Http\Controllers\BranchAdmin\SpeakingQuestionController::class,'storeAnswerShortQuestion'])->name('branchadmin-add-answer-short-question');
+    Route::post('branchadmin/questions/editanswershortquestion', [App\Http\Controllers\BranchAdmin\SpeakingQuestionController::class,'updateAnswerShortQuestion'])->name('branchadmin-update-answer-short-question');
+    /* Branchadmin speaking section end */
+
     /*branch admin notification start*/
 
         Route::get('branchadmin/notifications', [App\Http\Controllers\BranchAdmin\NotificationController::class, 'index'])->name('branchadmin-notifications');

@@ -1,4 +1,4 @@
-@extends('layouts.appSuperAdmin')
+@extends('layouts.appBranchAdmin')
 @section('content')
   <div id="content">
   	<section class="top-title-button mb-3">
@@ -16,7 +16,7 @@
             <div class="col-12 heading-text">
               <h5>Answer-Short Question</h5>
             </div>
-            <form class="form ml-1" method="POST" id="frm-answer-short-question" name="frm-answer-short-question" action="{{ (isset($questions->desc))?route('update-answer-short-question'):route('add-answer-short-question')}}">
+            <form class="form ml-1" method="POST" id="frm-answer-short-question" name="frm-answer-short-question" action="{{ (isset($questions->desc))?route('branchadmin-update-answer-short-question'):route('branchadmin-add-answer-short-question')}}">
               @csrf
               <input type="hidden" name="question_type_id" value="{{ $question_id }}">
               <input type="hidden" name="section_id" value="{{ $section_id }}">
@@ -260,7 +260,7 @@
                   <div class="form-group mb-2 row">
                     <div class="col-12 p-0">                              
                       <div class="custom-file mb-3" >
-                          <input type="file" class="custom-file-input" onchange="uploadImage()" id="customFile_image" data-url="{{ route('upload-image') }}" data-token="{{ csrf_token() }}">
+                          <input type="file" class="custom-file-input" onchange="uploadImage()" id="customFile_image" data-url="{{ route('branchadmin-upload-image') }}" data-token="{{ csrf_token() }}">
                           <label class="custom-file-label" for="customFile">Select Image</label>
                       </div>
                       <input type="text" name="upload-image" id="upload-image" class="form-control">
@@ -272,7 +272,7 @@
                   <div class="form-group mb-2 row">
                     <div class="col-12 p-0">                              
                       <div class="custom-file mb-3">
-                        <input type="file" class="custom-file-input " onchange ="uploadAduio()" id="customFile_audio" data-url="{{ route('upload-audio') }}" data-token="{{ csrf_token() }}">
+                        <input type="file" class="custom-file-input " onchange ="uploadAduio()" id="customFile_audio" data-url="{{ route('branchadmin-upload-audio') }}" data-token="{{ csrf_token() }}">
                         <label class="custom-file-label" for="customFile">Select Audio</label>
                       </div>
                       <input type="text" name="upload-audio" id="upload-audio" class="form-control" >
@@ -297,5 +297,5 @@
 @endsection
 @section('js-hooks')
 
-<script src="{{ asset('assets/js/speaking/answershortquestion.js') }}" defer></script>
+<script src="{{ asset('assets/js/branchadmin/speaking/answershortquestion.js') }}" defer></script>
 @endsection
