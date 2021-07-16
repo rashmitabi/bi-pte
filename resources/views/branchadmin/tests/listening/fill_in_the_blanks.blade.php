@@ -16,7 +16,7 @@
             <div class="col-12 heading-text">
               <h5>Fill in the blanks (5-6)</h5>
             </div>
-            <form class="form ml-1" method="POST" id="frm-fill-in-the-blanks" name="frm-fill-in-the-blanks" action="{{ (isset($questions->desc))?route('update-fill-in-the-blanks'):route('add-fill-in-the-blanks')}}">
+            <form class="form ml-1" method="POST" id="frm-fill-in-the-blanks" name="frm-fill-in-the-blanks" action="{{ (isset($questions->desc))?route('branchadmin-update-fill-in-the-blanks'):route('branchadmin-add-fill-in-the-blanks')}}">
               @csrf
               <input type="hidden" name="question_type_id" value="{{ $question_id }}">
               <input type="hidden" name="section_id" value="{{ $section_id }}">
@@ -116,7 +116,7 @@
                   <div class="form-group mb-2 row">
                     <div class="col-12 p-0">                              
                       <div class="custom-file mb-3">
-                        <input type="file" class="custom-file-input " onchange ="uploadAduio()" id="customFile_audio" data-url="{{ route('upload-audio') }}" data-token="{{ csrf_token() }}">
+                        <input type="file" class="custom-file-input " onchange ="uploadAduio()" id="customFile_audio" data-url="{{ route('branchadmin-upload-audio') }}" data-token="{{ csrf_token() }}">
                         <label class="custom-file-label" for="customFile">Select Audio</label>
                       </div>
                       <input type="text" name="upload-audio" id="upload-audio" class="form-control" >
