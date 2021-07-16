@@ -50,9 +50,11 @@
                                        <div class="plus-icon" onclick="addQuestionColumn()" data-qid="{{$arrayValue}}" data-aid="{{$label}}">
                                           <a><i class="fas fa-plus"></i></a>
                                        </div>
-                                       <div class="minus-icon" onclick="minusQuestionColumn()" data-qid="{{$arrayValue}}" data-aid="{{$label}}">
-                                          <a><i class="fas fa-minus"></i></a>
-                                       </div>
+                                       @if($label > 1)
+                                          <div class="minus-icon" onclick="minusQuestionColumn()" data-qid="{{$arrayValue}}" data-aid="{{$label}}">
+                                             <a><i class="fas fa-minus"></i></a>
+                                          </div>
+                                       @endif
                                     @endif
                                  </div>
                               @endfor
@@ -89,8 +91,8 @@
                                  <input type="hidden" name="section_id" value="{{ $section_id }}">
                                  <input type="hidden" name="test_id" value="{{ $test_id }}">
                                  <input type="hidden" name="question_type_id" value="{{ $question_id }}">
-                                 <input type="hidden" name="numberSlug" id="numberSlug" value="{{(isset($questions->name))?$temp:'A'}}">
-                                 <input type="hidden" name="alphaSlug" id="alphaSlug" value="{{(isset($questions->name))?$arrayValue:'1'}}">
+                                 <input type="hidden" name="numberSlug" id="numberSlug" value="{{(isset($questions->name))?$temp:'1'}}">
+                                 <input type="hidden" name="alphaSlug" id="alphaSlug" value="{{(isset($questions->name))?$arrayValue:'A'}}">
                                  @if(isset($questions->name))
                                     <input type="hidden" name="question_id" value="{{ $questions->id }}">
                                  @endif
