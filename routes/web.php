@@ -490,6 +490,7 @@ Route::group(['middleware' => ['auth', 'verified','branchadmin']], function () {
     Route::get('branchadmin/dashboard', [App\Http\Controllers\BranchAdmin\DashboardController::class, 'index'])->name('branchadmin-dashboard');
 
     Route::resource('branchadmin/users', App\Http\Controllers\BranchAdmin\UsersController::class)->names('branchadmin-users');
+    Route::get('branchadmin/subscriptionpackages',[App\Http\Controllers\BranchAdmin\UsersController::class,'subscription'])->name('branchadmin-subscriptionpackages');
 
     Route::resource('branchadmin/device', App\Http\Controllers\BranchAdmin\DeviceController::class)->names('branchadmin-device');
 

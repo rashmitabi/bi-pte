@@ -1332,3 +1332,62 @@ body {
      content:" *";
      color: red;
    }
+
+
+
+
+/*branchadmin css */
+
+.heading-text-wrap{
+     h2{
+       margin-left: 30px;
+       margin-bottom: 20px;
+       font-weight: 700;
+     }
+}
+.card{
+     border: none;
+     box-shadow: 0px 10px 24px #b4a5a5;
+     padding-bottom: 15px;
+     .list-group-item{
+         border: none;
+     }
+     .common-card-header1{
+         background-color: #f5a623;
+         border: none;
+         padding: 23px 0px;
+         h2{
+            margin: 0px;
+            text-align: center;
+            font-weight: 600;
+         }
+     }
+     .common-card-header2{
+        background-color: #f64d4d;
+        border: none;
+        padding: 23px 0px;
+        h2{
+           margin: 0px;
+           text-align: center;
+           font-weight: 600;
+          }
+     }
+     .common-card-header3{
+        background-color: #30dbb5;
+        border: none;
+        padding: 23px 0px;
+        h2{
+           margin: 0px;
+           text-align: center;
+           font-weight: 600;
+         }
+     }
+     .select-btn{      
+          width: 80%;
+          padding: 4px 0px;
+          display: block;
+          margin: auto;
+          font-weight: 500;
+          font-size: 22px;
+     }
+}

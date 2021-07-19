@@ -989,4 +989,7 @@ class UsersController extends Controller
             }
         }
     }
+    public function subscription(){
+        return view('branchadmin.subscription');
+    }
 }
