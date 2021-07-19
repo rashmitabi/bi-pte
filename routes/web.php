@@ -513,6 +513,7 @@ Route::group(['middleware' => ['auth', 'verified','branchadmin']], function () {
     // Route::post('superadmin/users/update/{id}', [App\Http\Controllers\SuperAdmin\UsersController::class, 'update'])->name('superadmin-user-update');
     /*Branch Admin students module start*/
     
+    Route::get('branchadmin/subscriptionpackages',[App\Http\Controllers\BranchAdmin\UsersController::class,'subscription'])->name('branchadmin-subscriptionpackages');
 
     Route::resource('branchadmin/device', App\Http\Controllers\BranchAdmin\DeviceController::class)->names('branchadmin-device');
 
