@@ -10,7 +10,7 @@
             <a href="#Usersubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"> <img src="{{ asset('assets/images/icons/user.svg') }}" class=""> <span> Manage Students </span></a>
             <ul class="collapse list-unstyled" id="Usersubmenu">
                <li>
-                  <a href="{{ route('branchadmin-users.index', 'type=S') }}">List Students</a>
+                  <a href="{{ route('branchadmin-users.index') }}">List Students</a>
                </li>
                <li>
                   <a href="{{ route('branchadmin-users.create') }}">Add New Students</a>

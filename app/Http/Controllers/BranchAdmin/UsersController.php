@@ -32,103 +32,53 @@ class UsersController extends Controller
      */
     public function index(Request $request)
     {
-        $type = $request->input('type');
+        $id = \Auth::user()->id;
         if($request->ajax()) {
-            if($type == "S"){
-                $data = User::where('role_id',3)->latest()->get();
-                return Datatables::of($data)
-                    ->addIndexColumn()
-                    ->addColumn('checkbox', function($row){
-                        $checkbox = '<input type="checkbox" class="form-check-input position-relative ml-0 checkSingleStudent" data-id="'.$row->id.'" value="0">';
-                        return $checkbox;
-                    })
-                    ->addColumn('name', function($row){
-                        
-                        $name = $row->first_name." ".$row->last_name;
-                        return $name;
-                    }) 
-                    ->addColumn('email', function($row){
-                        
-                        $email = $row->email;
-                        return $email;
-                    }) 
-                    ->addColumn('mobile_no', function($row){
-                        
-                        $mobile_no = $row->mobile_no;
-                        return $mobile_no;
-                    })
-                    ->addColumn('action', function($row){
-                        $btn = '<ul class="actions-btns">
-                                <li class="action" data-toggle="modal" data-target="#userdetail"><a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="view" class="user-show" data-id="'.$row->id .'" data-url="'.route('users.show', $row->id).'"><i class="fas fa-user"></i></a></li>
+            $data = User::where(['parent_user_id'=>$id,'role_id'=>3])->latest()->get();
+            return Datatables::of($data)
+                ->addIndexColumn()
+                ->addColumn('checkbox', function($row){
+                    $checkbox = '<input type="checkbox" class="form-check-input position-relative ml-0 checkSingleStudent" data-id="'.$row->id.'" value="0">';
+                    return $checkbox;
+                })
+                ->addColumn('name', function($row){
+                    
+                    $name = $row->first_name." ".$row->last_name;
+                    return $name;
+                }) 
+                ->addColumn('email', function($row){
+                    
+                    $email = $row->email;
+                    return $email;
+                }) 
+                ->addColumn('mobile_no', function($row){
+                    
+                    $mobile_no = $row->mobile_no;
+                    return $mobile_no;
+                })
+                ->addColumn('action', function($row){
+                    $btn = '<ul class="actions-btns">
+                            <li class="action" data-toggle="modal" data-target="#userdetail"><a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="view" class="user-show" data-id="'.$row->id .'" data-url="'.route('users.show', $row->id).'"><i class="fas fa-user"></i></a></li>
 
-                                    <li class="action" data-toggle="modal" data-target="#editdetail"><a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="edit" class="user-edit" data-id="'.$row->id .'" data-url="'.route('users.edit', $row->id).'" data-md="no"><i class="fas fa-pen"></i></a></li>
+                                <li class="action" data-toggle="modal" data-target="#editdetail"><a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="edit" class="user-edit" data-id="'.$row->id .'" data-url="'.route('users.edit', $row->id).'" data-md="no"><i class="fas fa-pen"></i></a></li>
 
-                                    <li class="action bg-danger" data-toggle="tooltip" data-placement="top" title="delete"><a href="#" class="delete_modal" data-toggle="modal" data-target="#delete_modal"  data-url="'.route('users.destroy', $row->id).'" data-id="'.$row->id.'"><i class="fas fa-trash" ></i></a></li>
+                                <li class="action bg-danger" data-toggle="tooltip" data-placement="top" title="delete"><a href="#" class="delete_modal" data-toggle="modal" data-target="#delete_modal"  data-url="'.route('users.destroy', $row->id).'" data-id="'.$row->id.'"><i class="fas fa-trash" ></i></a></li>
 
-                                    <li class="action shield '.(($row->status != "P")? (($row->status == "A") ? "bg-danger" : "green"):'').'" data-toggle="tooltip" data-placement="top" title="status"><a href="'.route('superadmin-user-changestatus', $row->id ).'"><img src="'.asset('assets/images/icons/blocked.svg').'" class=""></a></li>
+                                <li class="action shield '.(($row->status != "P")? (($row->status == "A") ? "bg-danger" : "green"):'').'" data-toggle="tooltip" data-placement="top" title="status"><a href="'.route('superadmin-user-changestatus', $row->id ).'"><img src="'.asset('assets/images/icons/blocked.svg').'" class=""></a></li>
 
-                                    <li class="action" data-toggle="modal" data-target="#setpassword"><a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="password" class="user-setpassword" data-id="'.$row->id .'" data-url="'.route('superadmin-user-showpassword', $row->id).'"><i class="fas fa-unlock-alt"></i></a></li>
+                                <li class="action" data-toggle="modal" data-target="#setpassword"><a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="password" class="user-setpassword" data-id="'.$row->id .'" data-url="'.route('superadmin-user-showpassword', $row->id).'"><i class="fas fa-unlock-alt"></i></a></li>
 
-                                    <li class="action" class="action" data-toggle="modal" data-target="#mocktest"><a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="mock test" class="get-assign-test" data-test-type="M" data-id="'.$row->id.'" data-url="'.route('superadmin-user-get-assign-test',$row->id).'"><img src="'. asset('assets/images/icons/exam.svg').'"
-                                                class=""></a></li>
+                                <li class="action" class="action" data-toggle="modal" data-target="#mocktest"><a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="mock test" class="get-assign-test" data-test-type="M" data-id="'.$row->id.'" data-url="'.route('superadmin-user-get-assign-test',$row->id).'"><img src="'. asset('assets/images/icons/exam.svg').'"
+                                            class=""></a></li>
 
-                                    <li class="action" class="action" data-toggle="modal" data-target="#practisetest"><a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="practise test" class="get-assign-test" data-test-type="P" data-id="'.$row->id.'" data-url="'.route('superadmin-user-get-assign-test',$row->id).'"><img src="'. asset('assets/images/icons/test.svg').'"
-                                                class=""></a></li>                                   
-                                </ul>';
-                        return $btn;
-                    })
-                    ->rawColumns(['checkbox','action'])
-                    ->make(true);
-            }else{
-
-                $data = User::where('role_id',2)->latest()->with(['institue'])->get();
-                return Datatables::of($data)
-                    ->addIndexColumn()
-                    ->addColumn('checkbox', function($row){
-                        $checkbox = '<input type="checkbox" class="form-check-input position-relative ml-0 checkSingleInstitute" data-id="'.$row->id.'" value="0">';
-                        return $checkbox;
-                    })
-                    ->addColumn('name', function($row){
-                        $name = '';
-                        if(isset($row->institue->institute_name)){
-
-                            $name = $row->institue->institute_name;
-                        }
-                        return $name;
-                    }) 
-                    ->addColumn('email', function($row){
-                        
-                        $email = $row->email;
-                        return $email;
-                    }) 
-                    ->addColumn('phone_number', function($row){
-                        
-                        $phone_number = isset($row->institue->phone_number) ? $row->institue->phone_number : '-';
-                        return $phone_number;
-                    })
-                    ->addColumn('action', function($row){
-                        $btn = '<ul class="actions-btns">
-                                <li class="action" data-toggle="modal" data-target="#userdetail"><a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="view" class="user-show" data-id="'.$row->id .'" data-url="'.route('users.show', $row->id).'"><i class="fas fa-user"></i></a></li>
-
-                                    <li class="action" data-toggle="modal" data-target="#editdetail"><a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="edit" class="user-edit" data-id="'.$row->id .'" data-url="'.route('users.edit', $row->id).'"><i class="fas fa-pen"></i></a></li>
-
-                                    <li class="action bg-danger" data-toggle="tooltip" data-placement="top" title="delete"><a href="javascript:void(0);" class="delete_modal" data-toggle="modal" data-target="#delete_modal"  data-url="'.route('users.destroy', $row->id).'" data-id="'.$row->id.'"><i class="fas fa-trash"></i></a></li>
-
-                                    <li class="action shield '.(($row->status != "P")? (($row->status == "A") ? "bg-danger" : "green"):'').'" data-toggle="tooltip" data-placement="top" title="status"><a href="'.route('superadmin-user-changestatus', $row->id ).'"><img src="'.asset('assets/images/icons/blocked.svg').'" class=""></a></li>
-
-                                    <li class="action" data-toggle="modal" data-target="#setpassword"><a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="password" class="user-setpassword" data-id="'.$row->id .'" data-url="'.route('superadmin-user-showpassword', $row->id).'"><i class="fas fa-unlock-alt"></i></a></li>
-
-                                    <li class="action" class="action" data-toggle="modal" data-target="#mocktest"><a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="mock test" class="get-assign-test" data-test-type="M" data-id="'.$row->id.'" data-url="'.route('superadmin-user-get-assign-test',$row->id).'"><img src="'. asset('assets/images/icons/exam.svg').'"
-                                                class=""></a></li>
-
-                                    <li class="action" class="action" data-toggle="modal" data-target="#practisetest"><a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="practise test" class="get-assign-test" data-test-type="P" data-id="'.$row->id.'" data-url="'.route('superadmin-user-get-assign-test',$row->id).'"><img src="'. asset('assets/images/icons/test.svg').'"
-                                                class=""></a></li>
-                                </ul>';
-                        return $btn;
-                    })
-                    ->rawColumns(['checkbox','action'])
-                    ->make(true);
-            }
+                                <li class="action" class="action" data-toggle="modal" data-target="#practisetest"><a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="practise test" class="get-assign-test" data-test-type="P" data-id="'.$row->id.'" data-url="'.route('superadmin-user-get-assign-test',$row->id).'"><img src="'. asset('assets/images/icons/test.svg').'"
+                                            class=""></a></li>                                   
+                            </ul>';
+                    return $btn;
+                })
+                ->rawColumns(['checkbox','action'])
+                ->make(true);
+            
         }
         return view($this->moduleTitleP.'index');
     }
