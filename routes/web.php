@@ -652,6 +652,14 @@ Route::group(['middleware' => ['auth', 'verified','branchadmin']], function () {
     Route::resource('branchadmin/activities', App\Http\Controllers\BranchAdmin\ActivitiesController::class)->names('branchadmin-activities');
 
     Route::resource('branchadmin/profile', App\Http\Controllers\BranchAdmin\ProfileController::class)->names('branchadmin-profile');
+
+    Route::get('branchadmin/changepassword', [App\Http\Controllers\BranchAdmin\ProfileController::class, 'changepassword'])->name('branchadmin-changepassword');
+
+    Route::get('branchadmin/editprofile', [App\Http\Controllers\BranchAdmin\ProfileController::class, 'edit'])->name('branchadmin-editprofile');
+
+    Route::post('branchadmin/updatePassword', [App\Http\Controllers\BranchAdmin\ProfileController::class,'updatePassword'])->name('branchadmin-updatepassword');
+
+    Route::post('branchadmin/updateProfile', [App\Http\Controllers\BranchAdmin\ProfileController::class,'update'])->name('branchadmin-updateprofile');
     //end branch admin routes
 
 
