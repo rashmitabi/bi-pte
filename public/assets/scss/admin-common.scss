@@ -1391,3 +1391,53 @@ body {
           font-size: 22px;
      }
 }
+
+/*profile page */
+.col-header{
+     .bg-banner{
+        background-image: url(../images/profile/20210710065929.jpg);
+        background-size: cover;
+        background-position: bottom;
+        width: 100%;
+        height: 35vh;
+        .media{
+           justify-content: space-between;
+           height: 245px;
+            align-items: flex-end;
+          }
+     }
+     button{
+        border: none;
+        padding: none!important;
+        display: block;
+        margin: auto;
+        margin-top: 25px;
+        .edit-btn{
+            padding: 7px 35px;
+          }
+     }
+}
+.profile-detail{
+   box-shadow: 0px 5px 10px #ccc;
+   padding: 15px;
+   .form-group{
+       border-bottom: 1px solid #a89f9f;
+         .col-form-label{
+             padding-left: 0px;
+          }
+          .check-icon{
+             display: flex;
+             align-items: center;
+             height: 36px;
+             color: green;
+             font-size: 18px;
+          }
+          .cancel-icon{
+               display: flex;
+               align-items: center;
+               height: 36px;
+               color: red;
+               font-size: 18px;
+          }
+     }
+}
