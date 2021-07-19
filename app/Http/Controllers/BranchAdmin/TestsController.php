@@ -8,8 +8,10 @@ use App\Models\QuestionTypes;
 use App\Models\Questions;
 use Illuminate\Http\Request;
 use App\Models\Subjects;
+use Aws\Exception\AwsException;
 use DataTables;
 use DB;
+use AWS;
 class TestsController extends Controller
 {
     private $moduleTitleP = 'branchadmin.tests.';
@@ -115,7 +117,17 @@ class TestsController extends Controller
         if($request->image->move(public_path('assets/images/test-images'), $fileName)){
             $filePath = $fileName;
         }
-        $input['image'] = $filePath;
+        /*try{
+            $s3 = AWS::createClient('s3');
+            $s3->putObject(array(
+                'Bucket'     => 'au-pte-dev',
+                'Key'        => $fileName,
+                'SourceFile' => $request->image,
+            ));
+        }catch(AwsException $e){
+            echo $e->getMessage();
+        }*/
+        $input['image'] = $fileName;
         $result = Tests::create($input);
         
         if($result){

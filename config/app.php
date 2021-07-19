@@ -184,7 +184,7 @@ return [
         */
         Stevebauman\Location\LocationServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
-
+        Aws\Laravel\AwsServiceProvider::class,
     ],
 
     /*
@@ -240,6 +240,7 @@ return [
         'PDF' => Barryvdh\DomPDF\Facade::class,
         'Location' => Stevebauman\Location\Facades\Location::class,
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
+        'AWS' => Aws\Laravel\AwsFacade::class,
     ],
 
 ];

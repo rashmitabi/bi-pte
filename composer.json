@@ -20,7 +20,8 @@
         "laravelcollective/html": "^6.2",
         "maatwebsite/excel": "^3.1",
         "stevebauman/location": "^6.1",
-        "yajra/laravel-datatables-oracle": "^9.18"
+        "yajra/laravel-datatables-oracle": "^9.18",
+        "aws/aws-sdk-php-laravel": "~3.0"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
