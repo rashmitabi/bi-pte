@@ -144,7 +144,6 @@ class ProfileController extends Controller
                     'state_code' => $input['istate_code'],
                     'city'=>$input['icity'],
                     'gstin' => $input['igstin'],
-                    'validity' => $input['validity'],
                     'ip_address' => getUserIP()
                 );
             }else{
@@ -223,12 +222,14 @@ class ProfileController extends Controller
 
             $result2 = Institues::where('user_id',$id)->update($institue);
              if($result2){
-                return redirect()->route('branchadmin-profile.index')
-                ->with('success','Profile updated successfully!');
+                /*return redirect()->route('branchadmin-profile.index')
+                ->with('success','Profile updated successfully!');*/
+                \Session::put('success', 'Profile updated successfully!');
+                return true;
             }
             else{
-                return redirect()->route('branchadmin-profile.index')
-                ->with('error','Sorry!Something wrong.Try again later!');        
+                \Session::put('error', 'Sorry!Something wrong.try Again.');
+                return false;       
             }
     }
 

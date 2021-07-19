@@ -13,7 +13,7 @@
    <section class="top-title-button white-bg remove-main-margin mb-3">
         <div class="row mx-0 align-items-center">
             <div class="col-12 col-md-12 col-xl-8 col-sm-12 left">
-                {!! Form::open(array('route' => 'branchadmin-updateprofile', 'method'=>'POST', 'enctype' => 'multipart/form-data', 'class'=>'form mt-4 ml-3')) !!}    
+                {!! Form::open(array('id' => 'profileupdate', 'method'=>'POST', 'enctype' => 'multipart/form-data', 'class'=>'form mt-4 ml-3')) !!}    
                 <div class="form-group row">
                   <div class="col-12">
                     <div class="profile-img">
@@ -32,7 +32,7 @@
                   <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label required">User Name</label>
                   <div class="col-12 col-md-7 col-xl-7 col-sm-12">
                     <input type="text" name="iuname" id="iuname" value="{{ $user->name }}" class="form-control " placeholder="Enter User Name">
-                    
+                    <span class="error-msg" id="iunameError"></span>
                   </div>
                 </div>
                 <div class="form-group row">
@@ -216,7 +216,7 @@
                 <div class="form-group row mt-4">
                     <div class="col-12 col-md-12 col-xl-11 col-sm-12 save-btn">
                       <a href="{{ route('branchadmin-profile.index') }}"><button  type="button" class="btn btn-outline-primary "><img class="back-btn" src="{{ asset('assets/images/icons/back.svg') }}" style="width: 14px;margin-right: 10px">Cancel</button></a>
-                      <button  type="submit" class="btn btn-outline-primary mr-2">
+                      <button  type="submit" class="btn btn-outline-primary profile-update mr-2" data-url = "{{ route('branchadmin-updateprofile') }}">
                         <i class="far fa-save save-icon"></i>Save Profile
                       </button>
                     </div>
