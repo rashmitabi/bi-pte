@@ -2425,6 +2425,10 @@ body {
   padding-left: 0px;
 }
 
+.profile-detail .form-group .form-control-plaintext {
+  outline: none;
+}
+
 .profile-detail .form-group .check-icon {
   display: -webkit-box;
   display: -ms-flexbox;

@@ -1425,6 +1425,9 @@ body {
          .col-form-label{
              padding-left: 0px;
           }
+          .form-control-plaintext{
+              outline: none;
+          }
           .check-icon{
              display: flex;
              align-items: center;
