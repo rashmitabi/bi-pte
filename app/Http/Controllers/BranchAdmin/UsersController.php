@@ -11,6 +11,7 @@ use App\Models\Roles;
 use App\Models\Sections;
 use App\Models\Institues;
 use App\Models\EmailTemplates;
+use App\Models\Notifications;
 use Illuminate\Support\Facades\Hash;
 use DataTables;
 use App\Http\Requests\StoreUserRequest;
@@ -138,6 +139,15 @@ class UsersController extends Controller
                     ['mock_test_id'   => $test_id,]);
         }
         if($result){
+            $notification_data = array(
+                'user_id' => $user_id,
+                'sender_id' => \Auth::user()->id,
+                'type' => getUserRole($user_id),
+                'title' => "Branch admin assign test to students",
+                'body' => "A new Test assign you.",
+                'url' => ""
+            );
+            $notification = Notifications::create($notification_data);
             \Session::put('success', 'Tests Assiged successfully!');
             return true;
         }else{
@@ -402,6 +412,15 @@ class UsersController extends Controller
         $result = User::where('id',$id)->update($user_input);
 
         if($result){
+            $notification_data = array(
+                'user_id' => $id,
+                'sender_id' => \Auth::user()->id,
+                'type' => getUserRole($id),
+                'title' => "Update your profile.",
+                'body' => "Branch admin change your profile details.",
+                'url' => ""
+            );
+            $notification = Notifications::create($notification_data);
             \Session::put('success', 'User updated successfully!');
             return true;
         }else{

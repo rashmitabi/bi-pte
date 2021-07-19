@@ -14,7 +14,6 @@ function getNotifications($limit = '5')
     
     $notifications  =  Notifications::where('user_id',$id)
             ->where('is_read', 'N')
-            ->where('type', $type)
             ->limit($limit)
             ->orderBy('created_at','DESC')
             ->get();
