@@ -496,21 +496,19 @@ Route::group(['middleware' => ['auth', 'verified','branchadmin']], function () {
     // Route::post('superadmin/users/changestatusmodel', [App\Http\Controllers\SuperAdmin\UsersController::class, 'getChangeStatus'])->name('superadmin-user-getstatus');
     // Route::post('superadmin/users/sendemailmodel', [App\Http\Controllers\SuperAdmin\UsersController::class, 'getSendEmail'])->name('superadmin-user-getsendemail');
     // Route::post('superadmin/users/sendemail', [App\Http\Controllers\SuperAdmin\UsersController::class, 'SendEmail'])->name('superadmin-user-sendemailtemplate');
-    // Route::get('superadmin/users/changestatus/{id}', [App\Http\Controllers\SuperAdmin\UsersController::class, 'changeStatus'])->name('superadmin-user-changestatus');
-    // Route::get('superadmin/users/showpassword/{id}', [App\Http\Controllers\SuperAdmin\UsersController::class, 'showPassword'])->name('superadmin-user-showpassword');
-    // Route::patch('superadmin/users/setpassword/{id}', [App\Http\Controllers\SuperAdmin\UsersController::class, 'setPassword'])->name('superadmin-user-setpassword');
+    Route::get('branchadmin/users/changestatus/{id}', [App\Http\Controllers\BranchAdmin\UsersController::class, 'changeStatus'])->name('branchadmin-user-changestatus');
+    Route::get('branchadmin/users/showpassword/{id}', [App\Http\Controllers\BranchAdmin\UsersController::class, 'showPassword'])->name('branchadmin-user-showpassword');
+    Route::patch('branchadmin/users/setpassword/{id}', [App\Http\Controllers\BranchAdmin\UsersController::class, 'setPassword'])->name('branchadmin-user-setpassword');
     // Route::post('superadmin/users/showmocktest/{id}', [App\Http\Controllers\SuperAdmin\UsersController::class, 'showMockTest'])->name('superadmin-show-mock-test');
     // Route::post('superadmin/users/assignmocktest/{id}', [App\Http\Controllers\SuperAdmin\UsersController::class, 'assignMockTest'])->name('superadmin-assign-mock-test');
-    // Route::get('superadmin/users/getAssignTest/{id}', [App\Http\Controllers\SuperAdmin\UsersController::class, 'getAssignTest'])->name('superadmin-user-get-assign-test');
-    // Route::post('superadmin/users/postAssignTest', [App\Http\Controllers\SuperAdmin\UsersController::class, 'postAssignTest'])->name('superadmin-user-post-assign-test');
+    Route::get('branchadmin/users/getAssignTest/{id}', [App\Http\Controllers\BranchAdmin\UsersController::class, 'getAssignTest'])->name('branchadmin-user-get-assign-test');
+    Route::post('branchadmin/users/postAssignTest', [App\Http\Controllers\BranchAdmin\UsersController::class, 'postAssignTest'])->name('branchadmin-user-post-assign-test');
     // Route::post('superadmin/users/getMultipleAssignTest', [App\Http\Controllers\SuperAdmin\UsersController::class, 'getMultipleAssignTest'])->name('superadmin-user-get-multiple-assign-test');
     // Route::post('superadmin/users/postMultipleAssignTest', [App\Http\Controllers\SuperAdmin\UsersController::class, 'postMultipleAssignTest'])->name('superadmin-user-post-multiple-assign-test');
-    // Route::get('superadmin/users/getAssignTest/{id}', [App\Http\Controllers\SuperAdmin\UsersController::class, 'getAssignTest'])->name('superadmin-user-get-assign-test');
-    // Route::post('superadmin/users/postAssignTest', [App\Http\Controllers\SuperAdmin\UsersController::class, 'postAssignTest'])->name('superadmin-user-post-assign-test');
     // Route::post('superadmin/users/getMultipleAssignTest', [App\Http\Controllers\SuperAdmin\UsersController::class, 'getMultipleAssignTest'])->name('superadmin-user-get-multiple-assign-test');
     // Route::post('superadmin/users/postMultipleAssignTest', [App\Http\Controllers\SuperAdmin\UsersController::class, 'postMultipleAssignTest'])->name('superadmin-user-post-multiple-assign-test');
-    // Route::post('superadmin/users/checkUniqueFields', [App\Http\Controllers\SuperAdmin\UsersController::class, 'checkUniqueUsername'])->name('superadmin-check-unique-validation');
-    // Route::post('superadmin/users/update/{id}', [App\Http\Controllers\SuperAdmin\UsersController::class, 'update'])->name('superadmin-user-update');
+     Route::post('branchadmin/users/checkUniqueFields', [App\Http\Controllers\BranchAdmin\UsersController::class, 'checkUniqueUsername'])->name('branchadmin-check-unique-validation');
+    Route::post('branchadmin/users/update/{id}', [App\Http\Controllers\BranchAdmin\UsersController::class, 'update'])->name('branchadmin-user-update');
     /*Branch Admin students module start*/
     
     Route::get('branchadmin/subscriptionpackages',[App\Http\Controllers\BranchAdmin\UsersController::class,'subscription'])->name('branchadmin-subscriptionpackages');

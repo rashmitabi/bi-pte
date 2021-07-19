@@ -1,4 +1,3 @@
-//Device logs datatable
 var table = $('#students').DataTable({
   language: {
      search: '',
@@ -207,35 +206,14 @@ $(document).ready(function() {
     $('#unameError').text('');
     $('#passwordError').text('');
     $('#confirm_passwordError').text('');
-    $('#semailError').text('');
+    $('#emailError').text('');
     $('#dobError').text('');
     $('#mobilenoError').text('');
-    $('#scitizenError').text('');
-    $('#sresidenceError').text('');
-    $('#sstateError').text('');
-    $('#sstate_codeError').text('');
-    $('#scityError').text('');
-    // $('#sgstinError').text('');
-    $('#svalidityError').text('');
-
-    $('#iunameError').text('');
-    $('#inameError').text('');
-    $('#iemailError').text('');
-    $('#ipasswordError').text('');
-    $('#iconfirm_passwordError').text('');
-    $('#country_codeError').text('');
-    $('#phone_noError').text('');
-    $('#students_allowedError').text('');
-    $('#subdomainError').text('');
-    $('#domainError').text('');
-    $('#welcome_msgError').text('');
-    $('#istateError').text('');
-    $('#istate_codeError').text('');
-    $('#icityError').text('');
-    
-    $('#igstinError').text('');
-    $('#logoError').text('');
-    $('#bannerError').text('');
+    $('#citizenError').text('');
+    $('#residenceError').text('');
+    $('#stateError').text('');
+    $('#state_codeError').text('');
+    $('#cityError').text('');
     $('#validityError').text('');
 
 
@@ -256,41 +234,20 @@ $(document).ready(function() {
         }
       },
       error: function(response) {
-        console.log(response.responseJSON.errors.password);
+        //console.log(response.responseJSON.errors.password);
         $('#fnameError').text(response.responseJSON.errors.fname);
         $('#lnameError').text(response.responseJSON.errors.lname);
         $('#unameError').text(response.responseJSON.errors.uname);
         $('#passwordError').text(response.responseJSON.errors.password);
         $('#confirm_passwordError').text(response.responseJSON.errors.confirm_password);
-        $('#semailError').text(response.responseJSON.errors.semail);
+        $('#emailError').text(response.responseJSON.errors.email);
         $('#dobError').text(response.responseJSON.errors.dob);
         $('#mobilenoError').text(response.responseJSON.errors.mobileno);
-        $('#scitizenError').text(response.responseJSON.errors.scitizen);
-        $('#sresidenceError').text(response.responseJSON.errors.sresidence);
-        $('#sstateError').text(response.responseJSON.errors.sstate);
-        $('#sstate_codeError').text(response.responseJSON.errors.sstate_code);
-        $('#scityError').text(response.responseJSON.errors.scity);
-        // $('#sgstinError').text(response.responseJSON.errors.sgstin);
-        $('#svalidityError').text(response.responseJSON.errors.svalidity);
-
-        $('#iunameError').text(response.responseJSON.errors.iuname);
-        $('#inameError').text(response.responseJSON.errors.iname);
-        $('#iemailError').text(response.responseJSON.errors.iemail);
-        $('#ipasswordError').text(response.responseJSON.errors.ipassword);
-        $('#iconfirm_passwordError').text(response.responseJSON.errors.iconfirm_password);
-        $('#country_codeError').text(response.responseJSON.errors.country_code);
-        $('#phone_noError').text(response.responseJSON.errors.phone_no);
-        $('#students_allowedError').text(response.responseJSON.errors.students_allowed);
-        $('#subdomainError').text(response.responseJSON.errors.subdomain);
-        $('#domainError').text(response.responseJSON.errors.domain);
-        $('#welcome_msgError').text(response.responseJSON.errors.welcome_msg);
-        $('#istateError').text(response.responseJSON.errors.istate);
-        $('#istate_codeError').text(response.responseJSON.errors.istate_code);
-        $('#icityError').text(response.responseJSON.errors.icity);
-        
-        $('#igstinError').text(response.responseJSON.errors.igstin);
-        $('#logoError').text(response.responseJSON.errors.logo);
-        $('#bannerError').text(response.responseJSON.errors.banner);
+        $('#citizenError').text(response.responseJSON.errors.citizen);
+        $('#residenceError').text(response.responseJSON.errors.residence);
+        $('#stateError').text(response.responseJSON.errors.state);
+        $('#state_codeError').text(response.responseJSON.errors.state_code);
+        $('#cityError').text(response.responseJSON.errors.city);
         $('#validityError').text(response.responseJSON.errors.validity);
       }
     });
@@ -386,13 +343,7 @@ $(document).ready(function() {
       var state_code = $('option:selected', this).attr('data-code');
       console.log(state_code);
       $("#sstate_code").val(state_code);
-  });
-  $('body').on('change',"#istate", function(){
-    var state_code = $('option:selected', this).attr('data-code');
-    console.log(state_code);
-    $("#istate_code").val(state_code);
-  });
-  
+  });  
   // institute all check functionality start
   $('body').on('change',"#checkedAllInstitute", function(){
     if(this.checked){
@@ -850,7 +801,7 @@ $(document).ready(function() {
   });
   /*Check user unique validation at store start*/
   $(".unique-susername").change(function() {
-    $("#suname-unique-msg").text('');
+    $(".unameError").text('');
     var uname       = $(this).val();
     var url         = $(this).attr("data-url");
     var unique_type = $(this).attr("data-unique-type");
@@ -870,11 +821,11 @@ $(document).ready(function() {
       },
       success:function(data) {
         if(data == false){
-          $(".unique-susername").after("<span class='error-msg' id='suname-unique-msg'>"+msg+"</span>");
+          $(".unameError").text(msg);
           $(':input[type="submit"]').prop('disabled', true);
         }else{
-          $("#suname-unique-msg").text('');
-          var checkMsg = $("#semail-unique-msg").text();
+          $(".unameError").text('');
+          var checkMsg = $(".emailError").text();
           if(checkMsg == ''){
             $(':input[type="submit"]').prop('disabled', false);
           }
@@ -883,7 +834,7 @@ $(document).ready(function() {
     });
   });
   $(".unique-semail").change(function() {
-    $("#semail-unique-msg").text('');
+    $(".emailError").text('');
     var email       = $(this).val();
     var url         = $(this).attr("data-url");
     var unique_type = $(this).attr("data-unique-type");
@@ -906,11 +857,11 @@ $(document).ready(function() {
         },
         success:function(data) {
           if(data == false){
-            $(".unique-semail").after("<span class='error-msg' id='semail-unique-msg'>"+msg+"</span>");
+            $(".emailError").text(msg);
             $(':input[type="submit"]').prop('disabled', true);
           }else{
-            $("#semail-unique-msg").text('');
-            var checkMsg = $("#suname-unique-msg").text();
+            $(".emailError").text('');
+            var checkMsg = $(".unameError").text();
             if(checkMsg == ''){
               $(':input[type="submit"]').prop('disabled', false);
             }

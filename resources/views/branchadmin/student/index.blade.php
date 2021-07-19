@@ -8,7 +8,7 @@
         <h1 class="title mb-4">Manage User</h1>
       </div>
       <div class="col-12 col-md-12 col-xl-4 col-12 col-md-5 col-xl-4 col-sm-12 right">
-        <a href="{{ route('users.create') }}"><button type="button" class="btn btn-primary" ><i class="fas fa-plus-circle mr-1"></i> New
+        <a href="{{ route('branchadmin-users.create') }}"><button type="button" class="btn btn-primary" ><i class="fas fa-plus-circle mr-1"></i> New
               User</button>
         </a>
       </div>
@@ -174,8 +174,8 @@
 @endsection
 @section('js-hooks')
 <script type="text/javascript" defer>
-  var url_users = "{{ route('users.index', 'type=I') }}";
-  var url_students = "{{ route('users.index', 'type=S') }}";
+  var url_users = "";
+  var url_students = "{{ route('branchadmin-users.index') }}";
   var password_url_route = "{{ route('superadmin-user-showpassword', 'all') }}";
   var change_status_get_model = "{{ route('superadmin-user-getstatus') }}";
   var change_send_email_get_model = "{{ route('superadmin-user-getsendemail') }}";
@@ -184,5 +184,5 @@
    var institute_export_url_route = "{{ route('superadmin-user-institute-export') }}";
   var student_export_url_route = "{{ route('superadmin-user-student-export') }}";
 </script>
-<script type="text/javascript" src="{{ asset('assets/js/users.js') }}" defer></script>
+<script type="text/javascript" src="{{ asset('assets/js/branchadmin/users.js') }}" defer></script>
 @endsection 
