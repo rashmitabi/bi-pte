@@ -15,7 +15,7 @@ var table = $('#students').DataTable({
         previous: '<i class="fas fa-chevron-left"></i>' // or '←' 
      }
   },
-  "dom": "<'row'<'col-sm-12 col-md-3 top-label'<'toolbar'>><'col-sm-12 col-md-6 top-search'f><'col-sm-12 col-md-3 top-pagination'l>>" +
+  "dom": "<'row'<'col-sm-12 col-md-3 top-label'<'toolbar'>><'col-sm-12 col-md-3 top-search'f><'col-sm-12 col-md-3 header_filter'><'col-sm-12 col-md-3 top-pagination'l>>" +
     "<'row'<'col-sm-12't>>" +
     "<'row'<'col-sm-12 col-md-12'p>>",
   processing: true,
@@ -31,6 +31,20 @@ var table = $('#students').DataTable({
   ]
   });
   $("#students_wrapper div.toolbar").html('Manage Students');
+  $('<div class="pull-right">' +
+  '<select id="action-student" class="form-control action-btn">'+
+    '<option selected disabled>Actions</option>'+
+    '<option value="email">Send Email</option>'+
+    '<option value="password" >Change Password</option>'+
+    '<option value="blockUnblock">BLock/unblock Users</option>'+
+    '<option value="export">Export Users</option>'+
+    '<option value="assignPracticeTest">Assign Practice Tests</option>'+
+    '<option value="assignMockTest">Assign Mock Tests</option>'+
+  '</select>' +
+'</div>').appendTo("#students_wrapper .header_filter");
+$(".dataTables_filter label").addClass("pull-right");
+
+
 
 function password(){
   $(this).toggleClass("password-icon");
