@@ -13,6 +13,6 @@ class ProfileController extends Controller
     public function index(Request $request)
     {
         $user = User::with('institue')->where('id', \Auth::user()->id)->first();
-        return view('branchadmin.profile.index',compact('user'));
+        return view('branchadmin.profile.profile',compact('user'));
     }
 }
