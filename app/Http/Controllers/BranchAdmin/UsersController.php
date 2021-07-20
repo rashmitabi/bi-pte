@@ -666,4 +666,9 @@ class UsersController extends Controller
 
         return view('branchadmin.subscription',compact('subscriptions'));
     }
+
+    public function subscriptionPayment(Request $request)
+    {
+        dd($request->all());
+    }
 }

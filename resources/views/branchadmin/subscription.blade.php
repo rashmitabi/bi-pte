@@ -58,7 +58,7 @@
                                     </div>
                                 </div>
                         </form>
-                        <button type="button" class="btn  select-btn" style="background-color: #f5a623;">SELECT</button>
+                        <button type="button" class="btn  select-btn rzp-button1" style="background-color: #f5a623;">SELECT</button>
                     </div>
                 </div>
                 @endforeach
@@ -171,6 +171,53 @@
        </div>
     </div>
 </div>
-@endsection 
+@endsection
+@section('js-hooks')
+<script src="https://checkout.razorpay.com/v1/checkout.js" defer></script>
+<script defer>
+    $('body').on('click','.rzp-button1',function(e){
+        e.preventDefault();
+        var amount = 10;
+        var total_amount = amount * 100;
+        var options = {
+            "key": "{{ env('RAZOR_KEY') }}", // Enter the Key ID generated from the Dashboard
+            "amount": total_amount, // Amount is in currency subunits. Default currency is INR. Hence, 10 refers to 1000 paise
+            "currency": "INR",
+            "name": "NiceSnippets",
+            "description": "Test Transaction",
+            "image": "https://www.nicesnippets.com/image/imgpsh_fullsize.png",
+            "order_id": "", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+            "handler": function (response){
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+                $.ajax({
+                    type:'POST',
+                    url:"{{ route('branchadmin-subscriptionpayment') }}",
+                    data:{razorpay_payment_id:response.razorpay_payment_id,amount:amount},
+                    success:function(data){
+                        alert("payment success");
+                    }
+                });
+            },
+            "prefill": {
+                "name": "Mehul Bagda",
+                "email": "mehul.bagda@example.com",
+                "contact": "818********6"
+            },
+            "notes": {
+                "address": "test test"
+            },
+            "theme": {
+                "color": "#F37254"
+            }
+        };
+        var rzp1 = new Razorpay(options);
+        rzp1.open();
+    });
+</script>
+@endsection
 
 
