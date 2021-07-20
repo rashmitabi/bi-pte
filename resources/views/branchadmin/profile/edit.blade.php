@@ -16,15 +16,15 @@
                 {!! Form::open(array('id' => 'profileupdate', 'method'=>'POST', 'enctype' => 'multipart/form-data', 'class'=>'form mt-4 ml-3')) !!}    
                 <div class="form-group row">
                   <div class="col-12">
-                    <div class="profile-img">
+                    <div class="profile-img branch-profile">
                       @if($user->profile_image != '')
                         <img src="{{ asset('assets/images/profile/'.$user->profile_image) }}" id="output" width="150">
                       @else
                         <img src="{{ asset('assets/images/profile-img-2.png') }}" id="output" width="150">
                       @endif
                     </div>
-                    <div class="edit-profile-btn">
-                      <a><input type="file" name="iimage" id="" onchange="readURL(event)" class="custom-file-input position-absolute"><i class="fas fa-pen icon"></i></a>
+                    <div class="edit-profile-btn branch-edit-profile">
+                      <a><input type="file" name="iimage" id="" onchange="readURL(event)" class="custom-file-input position-absolute"><i class="fas fa-pen icon edit-icon"></i></a>
                     </div>
                   </div>
                 </div>
