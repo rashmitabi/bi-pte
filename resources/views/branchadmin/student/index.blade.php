@@ -8,7 +8,7 @@
         <h1 class="title mb-4">Manage User</h1>
       </div>
       <div class="col-12 col-md-12 col-xl-4 col-12 col-md-5 col-xl-4 col-sm-12 right">
-        <a href="{{ route('branchadmin-users.create') }}"><button type="button" class="btn btn-primary" ><i class="fas fa-plus-circle mr-1"></i> New
+        <a href="{{ route('branchadmin-students.create') }}"><button type="button" class="btn btn-primary" ><i class="fas fa-plus-circle mr-1"></i> New
               User</button>
         </a>
       </div>
@@ -145,15 +145,14 @@
 @endsection
 @section('js-hooks')
 <script type="text/javascript" defer>
-  var url_users = "";
-  var url_students = "{{ route('branchadmin-users.index') }}";
-  var password_url_route = "{{ route('superadmin-user-showpassword', 'all') }}";
-  var change_status_get_model = "{{ route('superadmin-user-getstatus') }}";
-  var change_send_email_get_model = "{{ route('superadmin-user-getsendemail') }}";
-  var change_status_url_route = "{{ route('superadmin-user-changestatus', 'all') }}";
-  var get_multiple_assign_test = "{{ route('superadmin-user-get-multiple-assign-test') }}";
-   var institute_export_url_route = "{{ route('superadmin-user-institute-export') }}";
-  var student_export_url_route = "{{ route('superadmin-user-student-export') }}";
+  var url_users = "";  
+  var url_students = "{{ route('branchadmin-students.index') }}";
+  var password_url_route = "{{ route('branchadmin-students-showpassword', 'all') }}";
+  var change_status_get_model = "{{ route('branchadmin-students-getstatus') }}";
+  var change_send_email_get_model = "{{ route('branchadmin-students-getsendemail') }}";
+  var change_status_url_route = "{{ route('branchadmin-students-changestatus', 'all') }}";
+  var get_multiple_assign_test = "{{ route('branchadmin-students-get-multiple-assign-test') }}";
+  var student_export_url_route = "{{ route('branchadmin-students-export') }}";
 </script>
 <script type="text/javascript" src="{{ asset('assets/js/branchadmin/users.js') }}" defer></script>
 @endsection 

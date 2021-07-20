@@ -6,7 +6,7 @@
             @if(count($tests) >= 10)
             <div class="form-check form-check-inline">
               <label class="form-check-label" for="inlineRadio1">Tests</label>
-            </div>            
+            </div>
             <div class="form-check form-check-inline">
               <label for="rdo-1" class="btn-radio">
                 <input type="radio" id="rdo-1" class="test_select testradio10" name="test_select" value="10">
@@ -72,7 +72,7 @@
             </div>
             @endif
             <div class="common-wrap text-center">
-              <b>{{ $user->role->role_name.' - '.$user->name }}</b>
+              <b>{{$usernames}}</b>
             </div>
                 <div class="test-series">
                     @if(count($tests) > 0)
@@ -85,14 +85,14 @@
                               $temp++;
                             @endphp
                             <div class="form-check  form-check-inline ">
-                                <input type="checkbox" data-count="{{$totalTest}}" class="form-check-input multitest singletest{{ $temp }}" {{ (in_array($test->id, $alreadyAssign) == 1)?'checked':''}} name="test[]" id="Check{{ $test->id }}" value="{{ $test->id }}">
-                                <label class="form-check-label" for="example1">{{ ucfirst($test->test_name) }}</label>
+                                <input type="checkbox" data-count="{{$totalTest}}" class="form-check-input multitest singletest{{ $temp }}" name="test[]" id="Check{{ $test->id }}" value="{{ $test->id }}">
+                                <label class="form-check-label" for="example1">{{ $test->test_name }}</label>
                             </div>
                         @endforeach
                     @endif
                     <div class="form-group row">
                         <div class="col-11 assign-btn">
-                                <button type="button" class="btn btn-outline-primary store-assign-test" data-test-type="{{ $type }}" data-user-id="{{ $user_id }}" data-url="{{ route('branchadmin-students-post-assign-test') }}"><i class="far fa-save save-icon"></i>Assign Tests</button>
+                                <button type="button" class="btn btn-outline-primary store-multiple-assign-test" data-test-type="{{ $type }}" data-user-id="{{ $user_id }}" data-url="{{ route('branchadmin-students-post-multiple-assign-test') }}"><i class="far fa-save save-icon"></i>Assign Tests</button>
                                 <span class="error-msg" id="checkError"></span>
                         </div>
                     </div>
