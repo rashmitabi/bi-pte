@@ -2053,6 +2053,25 @@ body {
   margin-right: 5px;
 }
 
+.branch-profile img {
+  display: block;
+  margin: auto;
+}
+
+.branch-edit-profile a {
+  position: absolute !important;
+  top: 139px !important;
+  left: 383px !important;
+  background-color: #9d1346;
+  padding: 2px 6px;
+  border-radius: 50%;
+}
+
+.branch-edit-profile a .edit-icon {
+  color: #fff;
+  font-size: 14px;
+}
+
 /*table tab */
 .tab {
   margin-bottom: 20px;
