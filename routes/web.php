@@ -484,7 +484,7 @@ Route::group(['middleware' => ['auth', 'verified','branchadmin']], function () {
     //start branch admin routes
 
     Route::get('branchadmin/dashboard', [App\Http\Controllers\BranchAdmin\DashboardController::class, 'index'])->name('branchadmin-dashboard');
-    
+    Route::get('branchadmin/dashboard/activitylogs', [App\Http\Controllers\BranchAdmin\DashboardController::class, 'activitylogs'])->name('branchadmin-dashboard-activitylogs');
     /*Branch Admin students module start*/
     Route::resource('branchadmin/students', App\Http\Controllers\BranchAdmin\UsersController::class)->names('branchadmin-students');
     Route::get('branchadmin/studentexport', [App\Http\Controllers\BranchAdmin\UsersController::class, 'studentExport'])->name('branchadmin-students-export');
