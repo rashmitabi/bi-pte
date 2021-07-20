@@ -54,7 +54,7 @@
                   <i class='fas fa-chevron-down'></i> 
                   @if(Auth::user()->profile_image != '')
                      <img src="{{ asset('assets/images/profile/'.Auth::user()->profile_image) }}" width="50">
-                  @else if
+                  @else
                      <img src="{{ asset('assets/images/Userprofile.png') }}">
                   @endif
                </a>
