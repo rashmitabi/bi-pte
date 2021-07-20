@@ -11,6 +11,7 @@ use App\Models\Roles;
 use App\Models\Sections;
 use App\Models\Institues;
 use App\Models\EmailTemplates;
+use App\Models\notification;
 use Illuminate\Support\Facades\Hash;
 use DataTables;
 use App\Http\Requests\StoreUserRequest;
@@ -185,6 +186,7 @@ class UsersController extends Controller
         $user_id = $request->user_id;
         $test_id = implode(",",$request->id);
         $type    = $request->type;
+        $user = User::find($user_id);
         if($type == 'P'){
             $result = UserAssignTests::updateOrCreate(['user_id'   => $user_id,],
             ['practise_test_id'   => $test_id,]);
@@ -193,6 +195,29 @@ class UsersController extends Controller
                     ['mock_test_id'   => $test_id,]);
         }
         if($result){
+            if($user->role == '3')
+            {
+                $notification_data = array(
+                    'user_id' => $user_id,
+                    'sender_id' => \Auth::user()->id,
+                    'type' => getUserRole($user_id),
+                    'title' => "Assign Tests",
+                    'body' => "Super admin Assign test to you.",
+                    'url' => ""
+                );
+            }
+            else
+            {
+                $notification_data = array(
+                    'user_id' => $user_id,
+                    'sender_id' => \Auth::user()->id,
+                    'type' => getUserRole($user_id),
+                    'title' => "Assign Tests",
+                    'body' => "Super admin Assign test to you.",
+                    'url' => ""
+                );
+            }
+            $notification = Notifications::create($notification_data);
             \Session::put('success', 'Tests Assiged successfully!');
             return true;
         }else{
@@ -861,6 +886,30 @@ class UsersController extends Controller
         }
 
         if($result){
+            if($type == 2)
+            {
+                $notification_data = array(
+                    'user_id' => $id,
+                    'sender_id' => \Auth::user()->id,
+                    'type' => getUserRole($id),
+                    'title' => "Update your profile.",
+                    'body' => "Super Admin change your profile details.",
+                    'url' => ""
+                );
+                
+            }
+            else
+            {
+                $notification_data = array(
+                    'user_id' => $id,
+                    'sender_id' => \Auth::user()->id,
+                    'type' => getUserRole($id),
+                    'title' => "Update your profile.",
+                    'body' => "Super Admin change your profile details.",
+                    'url' => ""
+                );
+            }
+            $notification = Notifications::create($notification_data);
             \Session::put('success', 'User updated successfully!');
             return true;
             

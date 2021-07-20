@@ -15,9 +15,7 @@
             <div class="col-12 col-md-12 col-xl-8 col-sm-12">
               <div class="profile-img">
                 @if($user->profile_image != '')
-                  <img src="{{ asset('assets/images/profile/'.$user->profile_image) }}" width="150">
-                @else
-                  <img src="{{ asset('assets/images/profile-img-2.png') }}">
+                  <img src="{{ asset('assets/images/institute/'.$user->profile_image) }}" width="150">
                 @endif
               </div>
               <div class="form-group row">

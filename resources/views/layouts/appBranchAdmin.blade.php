@@ -44,6 +44,7 @@ $pageActive = isset($pageArray[4]) ? $pageArray[4] : 'dashboard';
         <link href="{{ asset('assets/fontawesome/css/fontawesome.min.css') }}" rel="stylesheet">
         <link href="{{ asset('assets/scss/admin-common.css') }}" rel="stylesheet">
         <link href="{{ asset('assets/scss/admin-style.css') }}" rel="stylesheet">
+        <link href="{{ asset('assets/css/bootstrap-datepicker.css') }}" rel="stylesheet">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
           rel="stylesheet">
           <link href="{{ asset('assets/css/dataTables.bootstrap4.min.css') }}" rel="stylesheet">

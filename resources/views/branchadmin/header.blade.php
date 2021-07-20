@@ -62,10 +62,13 @@
                   <div class="notifications-main-wrap">
                      <ul>
                         <li> 
-                           <a href="{{ route('branchadmin-profile.index') }}"> <i class="fas fa-cog"></i> My Profile </a>
+                           <a href="{{ route('branchadmin-profile.index') }}"> <i class="fas fa-user"></i>My Profile</a>
+                        </li>                        
+                        <li> 
+                           <a href="{{ route('branchadmin-transactions.index') }}"> <i class="fas fa-credit-card"></i>My Payments</a>
                         </li>
                         <li> 
-                           <a href="{{ route('branchadmin-transactions.index') }}"> <i class="fas fa-cog"></i> My Payments </a>
+                           <a href="{{ route('branchadmin-changepassword') }}"> <i class="fas fa-lock"></i>Change Password</a>
                         </li>
                         <li> 
                            <a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();"> <i class="fas fa-sign-out-alt"></i> Sign Out </a>
