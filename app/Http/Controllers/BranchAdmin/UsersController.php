@@ -12,6 +12,7 @@ use App\Models\Sections;
 use App\Models\Institues;
 use App\Models\EmailTemplates;
 use App\Models\Notifications;
+use App\Models\Activities;
 use Illuminate\Support\Facades\Hash;
 use DataTables;
 use App\Http\Requests\StoreUserRequest;
@@ -289,6 +290,17 @@ class UsersController extends Controller
             );
             $result = User::create($user_input);
         if($result){
+            $name = getUserName($result->id);
+            $activity_data = array(
+                'user_id' => \Auth::user()->id,
+                'role_id' => \Auth::user()->role_id,
+                'subject' => 'Add student '.$name,
+                'message' => "You successfully create student ".$name,
+                'ip_address' => getUserIP(),
+                'latitude' => '',
+                'longitude' => ''
+            );
+            $activity = Activities::create($activity_data);
             return redirect()->route('branchadmin-students.index')
                         ->with('success','User created successfully!');
         }else{
@@ -438,9 +450,21 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
+        $name = getUserName($id);
         $result = User::where('id',$id)->delete();
         if($result)
         {
+            $activity_data = array(
+                'user_id' => \Auth::user()->id,
+                'role_id' => \Auth::user()->role_id,
+                'subject' => 'delete student '.$name,
+                'message' => "You successfully deleted student ".$name,
+                'ip_address' => getUserIP(),
+                'latitude' => '',
+                'longitude' => ''
+            );
+            $activity = Activities::create($activity_data);
+
             return redirect()->route('branchadmin-students.index')
                         ->with('success','User deleted successfully');
         }

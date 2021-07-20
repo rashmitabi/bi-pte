@@ -8,7 +8,7 @@ use App\Models\Answerdata;
 use App\Models\Questiondata;
 use App\Models\SectionQuestionScores;
 use DB;
-
+ 
 class WritingQuestionController extends Controller
 {
 
@@ -37,9 +37,10 @@ class WritingQuestionController extends Controller
         $questions->order           = 0;
         $questions->status          = "E";
         $questions->marks           = 20;
-        $questions->answer_time     = 40;
-        $questions->waiting_time    = 40;
-        $questions->max_time        = 40;
+        $questions->recording_answer_time     = '';
+        $questions->befor_audio_waiting_time    = '';
+        $questions->prepration_time    = '';
+        $questions->max_time        = 600;
         if($questions->save()){
              //1-reading 2-listening 3-writing 4-speaking
               $matchThese = ['section_id'=>3,'question_type_id'=>$question_type_id];
@@ -143,9 +144,10 @@ class WritingQuestionController extends Controller
         $questions->order           = 0;
         $questions->status          = "E";
         $questions->marks           = 12;
-        $questions->answer_time     = 40;
-        $questions->waiting_time    = 40;
-        $questions->max_time        = 40;
+         $questions->recording_answer_time     = '';
+        $questions->befor_audio_waiting_time    = '';
+        $questions->prepration_time    = '';
+        $questions->max_time        = 1200;
         if($questions->save()){
              //1-reading 2-listening 3-writing 4-speaking
               $matchThese = ['section_id'=>3,'question_type_id'=>$question_type_id];

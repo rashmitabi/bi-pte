@@ -157,31 +157,31 @@ Route::group(['middleware' => ['auth', 'verified','superadmin']], function () {
 
     /*Questions Modules start*/
 
-    Route::post('superadmin/questions/storeReadingInstructions', [App\Http\Controllers\SuperAdmin\questionsController::class,'storeReadingInstructions'])
+    Route::post('superadmin/questions/storeReadingInstructions', [App\Http\Controllers\SuperAdmin\QuestionsController::class,'storeReadingInstructions'])
 
         ->name('superadmin-reading-questions-instructions');
 
 
 
-    Route::post('superadmin/questions/storeListeningInstructions', [App\Http\Controllers\SuperAdmin\questionsController::class,'storeListeningInstructions'])
+    Route::post('superadmin/questions/storeListeningInstructions', [App\Http\Controllers\SuperAdmin\QuestionsController::class,'storeListeningInstructions'])
 
         ->name('superadmin-listening-questions-instructions');
 
 
 
-    Route::post('superadmin/questions/storeWritingInstructions', [App\Http\Controllers\SuperAdmin\questionsController::class,'storeWritingInstructions'])
+    Route::post('superadmin/questions/storeWritingInstructions', [App\Http\Controllers\SuperAdmin\QuestionsController::class,'storeWritingInstructions'])
 
         ->name('superadmin-writing-questions-instructions');
 
 
 
-    Route::post('superadmin/questions/storeSpeakingInstructions', [App\Http\Controllers\SuperAdmin\questionsController::class,'storeSpeakingInstructions'])
+    Route::post('superadmin/questions/storeSpeakingInstructions', [App\Http\Controllers\SuperAdmin\QuestionsController::class,'storeSpeakingInstructions'])
 
         ->name('superadmin-speaking-questions-instructions');
 
 
 
-    Route::resource('superadmin/questions', App\Http\Controllers\SuperAdmin\questionsController::class);
+    Route::resource('superadmin/questions', App\Http\Controllers\SuperAdmin\QuestionsController::class);
 
     /*Questions Modules end*/
 
@@ -484,7 +484,7 @@ Route::group(['middleware' => ['auth', 'verified','branchadmin']], function () {
     //start branch admin routes
 
     Route::get('branchadmin/dashboard', [App\Http\Controllers\BranchAdmin\DashboardController::class, 'index'])->name('branchadmin-dashboard');
-    
+    Route::get('branchadmin/dashboard/activitylogs', [App\Http\Controllers\BranchAdmin\DashboardController::class, 'activitylogs'])->name('branchadmin-dashboard-activitylogs');
     /*Branch Admin students module start*/
     Route::resource('branchadmin/students', App\Http\Controllers\BranchAdmin\UsersController::class)->names('branchadmin-students');
     Route::get('branchadmin/studentexport', [App\Http\Controllers\BranchAdmin\UsersController::class, 'studentExport'])->name('branchadmin-students-export');
