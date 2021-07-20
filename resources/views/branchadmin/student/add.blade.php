@@ -15,7 +15,7 @@
   <section class="top-title-button white-bg remove-main-margin mb-3">
     <div class="row mx-0 align-items-center">
       <div class="col-12 col-md-12 col-xl-8 col-sm-12 left">
-         {!! Form::open(array('route' => 'branchadmin-users.store','method'=>'POST','enctype' => 'multipart/form-data','class'=>'form mt-4 ml-3')) !!}
+         {!! Form::open(array('route' => 'branchadmin-students.store','method'=>'POST','enctype' => 'multipart/form-data','class'=>'form mt-4 ml-3')) !!}
           <div id="student">
             <div class="form-group row">
               <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label required">First Name</label>
@@ -185,7 +185,7 @@
           </div>          
           <div class="form-group row finalsubmit">
             <div class="col-12 col-md-12 col-xl-11 col-sm-12 save-btn">
-              <a href="{{ route('branchadmin-users.index') }}"><button  type="button" class="btn btn-outline-primary "><img class="back-btn" src="{{ asset('assets/images/icons/back.svg') }}" style="width: 14px;margin-right: 10px">Cancel</button></a>
+              <a href="{{ route('branchadmin-students.index') }}"><button  type="button" class="btn btn-outline-primary "><img class="back-btn" src="{{ asset('assets/images/icons/back.svg') }}" style="width: 14px;margin-right: 10px">Cancel</button></a>
               <button  type="submit" class="btn btn-outline-primary mr-2 final-button"><i class="far fa-save save-icon"></i>Save Student</button>
               
             </div>

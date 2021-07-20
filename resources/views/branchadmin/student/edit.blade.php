@@ -138,8 +138,8 @@
       @endif
       <div class="form-group row mt-4">
         <div class="col-12 col-md-12 col-xl-11 col-sm-12 save-btn">
-          <a href="{{ route('branchadmin-users.index') }}"><button  type="button" class="btn btn-outline-primary "><img class="back-btn" src="{{ asset('assets/images/icons/back.svg') }}" style="width: 14px;margin-right: 10px">Cancel</button></a>
-          <button  type="submit" class="btn btn-outline-primary user-update mr-2" data-id="{{ $user->id }}" id="submitabtn" data-url="{{ route('branchadmin-user-update', $user->id) }}"><i class="far fa-save save-icon"></i>Save Profile</button>
+          <a href="{{ route('branchadmin-students.index') }}"><button  type="button" class="btn btn-outline-primary "><img class="back-btn" src="{{ asset('assets/images/icons/back.svg') }}" style="width: 14px;margin-right: 10px">Cancel</button></a>
+          <button  type="submit" class="btn btn-outline-primary user-update mr-2" data-id="{{ $user->id }}" id="submitabtn" data-url="{{ route('branchadmin-students-update', $user->id) }}"><i class="far fa-save save-icon"></i>Save Profile</button>
         </div>
       </div>
     {!! Form::close() !!}

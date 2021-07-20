@@ -78,20 +78,6 @@ $(document).ready(function() {
     var date = new Date();
     var today = new Date(date.getFullYear(), date.getMonth(), date.getDate());
     var end = new Date(date.getFullYear(), date.getMonth(), date.getDate());
-  //add new user page data start
-  $('body').on('change','.usertype_form',function(){
-    var role_id = $("#type").val();
-    // alert(role_id);
-    if(role_id == 3){
-      $("#student").css("display","block");
-      $("#breanchadmin").css("display","none");
-    }else{
-      $("#breanchadmin").css("display","block");
-      $("#student").css("display","none");
-    }
-    $(".finalsubmit").css("display","block");
-  });
-  //add new user page data start
 
   //user password page data start
   $('body').on('click','.user-setpassword',function(){
@@ -413,7 +399,7 @@ $(document).ready(function() {
     var url = $(this).data('url');
     var user_ids = $("#user_ids").val();
     var emailtemplate   = $("#emailtemplate :selected").val();
-    if(emailtemplate == ''){
+    if(emailtemplate == 'no'){
       $('#emailtemplateError').text("email template is required");
     }else{
       var formdata = $('#emailsend').serialize();
@@ -635,7 +621,7 @@ $(document).ready(function() {
             },
           }); 
         }else if(selectedValue == "export"){
-          var fileName = 'institude'+Date.now();
+          var fileName = 'students'+Date.now();
           $.ajax({
             url: student_export_url_route,
             type:'GET',

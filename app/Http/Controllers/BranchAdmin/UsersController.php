@@ -21,7 +21,7 @@ use App\Exports\studentExport;
 use Maatwebsite\Excel\Facades\Excel;
 
 use Illuminate\Support\Facades\Mail;
-use App\Mail\SendEmail;
+use App\Mail\SendEmailUser;
 
 class UsersController extends Controller
 {
@@ -59,20 +59,20 @@ class UsersController extends Controller
                 })
                 ->addColumn('action', function($row){
                     $btn = '<ul class="actions-btns">
-                            <li class="action" data-toggle="modal" data-target="#userdetail"><a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="view" class="user-show" data-id="'.$row->id .'" data-url="'.route('branchadmin-users.show', $row->id).'"><i class="fas fa-user"></i></a></li>
+                            <li class="action" data-toggle="modal" data-target="#userdetail"><a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="view" class="user-show" data-id="'.$row->id .'" data-url="'.route('branchadmin-students.show', $row->id).'"><i class="fas fa-user"></i></a></li>
 
-                                <li class="action" data-toggle="modal" data-target="#editdetail"><a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="edit" class="user-edit" data-id="'.$row->id .'" data-url="'.route('branchadmin-users.edit', $row->id).'" data-md="no"><i class="fas fa-pen"></i></a></li>
+                                <li class="action" data-toggle="modal" data-target="#editdetail"><a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="edit" class="user-edit" data-id="'.$row->id .'" data-url="'.route('branchadmin-students.edit', $row->id).'" data-md="no"><i class="fas fa-pen"></i></a></li>
 
-                                <li class="action bg-danger" data-toggle="tooltip" data-placement="top" title="delete"><a href="#" class="delete_modal" data-toggle="modal" data-target="#delete_modal"  data-url="'.route('branchadmin-users.destroy', $row->id).'" data-id="'.$row->id.'"><i class="fas fa-trash" ></i></a></li>
+                                <li class="action bg-danger" data-toggle="tooltip" data-placement="top" title="delete"><a href="#" class="delete_modal" data-toggle="modal" data-target="#delete_modal"  data-url="'.route('branchadmin-students.destroy', $row->id).'" data-id="'.$row->id.'"><i class="fas fa-trash" ></i></a></li>
 
-                                <li class="action shield '.(($row->status != "P")? (($row->status == "A") ? "bg-danger" : "green"):'').'" data-toggle="tooltip" data-placement="top" title="status"><a href="'.route('branchadmin-user-changestatus', $row->id ).'"><img src="'.asset('assets/images/icons/blocked.svg').'" class=""></a></li>
+                                <li class="action shield '.(($row->status != "P")? (($row->status == "A") ? "bg-danger" : "green"):'').'" data-toggle="tooltip" data-placement="top" title="status"><a href="'.route('branchadmin-students-changestatus', $row->id ).'"><img src="'.asset('assets/images/icons/blocked.svg').'" class=""></a></li>
 
-                                <li class="action" data-toggle="modal" data-target="#setpassword"><a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="password" class="user-setpassword" data-id="'.$row->id .'" data-url="'.route('branchadmin-user-showpassword', $row->id).'"><i class="fas fa-unlock-alt"></i></a></li>
+                                <li class="action" data-toggle="modal" data-target="#setpassword"><a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="password" class="user-setpassword" data-id="'.$row->id .'" data-url="'.route('branchadmin-students-showpassword', $row->id).'"><i class="fas fa-unlock-alt"></i></a></li>
 
-                                <li class="action" class="action" data-toggle="modal" data-target="#mocktest"><a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="mock test" class="get-assign-test" data-test-type="M" data-id="'.$row->id.'" data-url="'.route('branchadmin-user-get-assign-test',$row->id).'"><img src="'. asset('assets/images/icons/exam.svg').'"
+                                <li class="action" class="action" data-toggle="modal" data-target="#mocktest"><a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="mock test" class="get-assign-test" data-test-type="M" data-id="'.$row->id.'" data-url="'.route('branchadmin-students-get-assign-test',$row->id).'"><img src="'. asset('assets/images/icons/exam.svg').'"
                                             class=""></a></li>
 
-                                <li class="action" class="action" data-toggle="modal" data-target="#practisetest"><a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="practise test" class="get-assign-test" data-test-type="P" data-id="'.$row->id.'" data-url="'.route('branchadmin-user-get-assign-test',$row->id).'"><img src="'. asset('assets/images/icons/test.svg').'"
+                                <li class="action" class="action" data-toggle="modal" data-target="#practisetest"><a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="practise test" class="get-assign-test" data-test-type="P" data-id="'.$row->id.'" data-url="'.route('branchadmin-students-get-assign-test',$row->id).'"><img src="'. asset('assets/images/icons/test.svg').'"
                                             class=""></a></li>                                   
                             </ul>';
                     return $btn;
@@ -161,7 +161,8 @@ class UsersController extends Controller
     public function getMultipleAssignTest(Request $request)
     {
         $type = $request->type;
-        $tests = Tests::where(['type'=>$type])->latest()->get();
+        $auth_id = \Auth::user()->id;
+        $tests = Tests::where(['type'=>$type,'generated_by_user_id'=>$auth_id])->latest()->get();
         $user_id = implode(",",$request->id);
         $role = $request->role;
         $users = User::whereIn('id', $request->id)->get();     
@@ -288,10 +289,10 @@ class UsersController extends Controller
             );
             $result = User::create($user_input);
         if($result){
-            return redirect()->route('branchadmin-users.index')
+            return redirect()->route('branchadmin-students.index')
                         ->with('success','User created successfully!');
         }else{
-            return redirect()->route('branchadmin-users.index')
+            return redirect()->route('branchadmin-students.index')
                         ->with('error','Sorry!Something wrong.Try again later!');
         }
     }
@@ -440,12 +441,12 @@ class UsersController extends Controller
         $result = User::where('id',$id)->delete();
         if($result)
         {
-            return redirect()->route('branchadmin-users.index')
+            return redirect()->route('branchadmin-students.index')
                         ->with('success','User deleted successfully');
         }
         else
         {
-            return redirect()->route('branchadmin-users.index')
+            return redirect()->route('branchadmin-students.index')
                         ->with('error','Sorry!Something wrong.Try again later!');
         }
     }
@@ -528,10 +529,10 @@ class UsersController extends Controller
             }
             $result = $user->update();
             if($result){
-                return redirect()->route('branchadmin-users.index')
+                return redirect()->route('branchadmin-students.index')
                             ->with('success','Status Updated successfully');
             }else{
-                return redirect()->route('branchadmin-users.index')
+                return redirect()->route('branchadmin-students.index')
                             ->with('error','Status Not Updated!');
             }
         }
