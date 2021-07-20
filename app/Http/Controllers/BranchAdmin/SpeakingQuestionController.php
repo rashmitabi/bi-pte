@@ -7,7 +7,7 @@ use App\Models\Questions;
 use App\Models\Answerdata;
 use App\Models\Questiondata;
 use App\Models\SectionQuestionScores;
-use DB;
+use DB; 
 
 class SpeakingQuestionController extends Controller
 {
@@ -35,9 +35,10 @@ class SpeakingQuestionController extends Controller
         $questions->order           = 0;
         $questions->status          = "E";
         $questions->marks           = 44;
-        $questions->answer_time     = 40;
-        $questions->waiting_time    = 40;
-        $questions->max_time        = 40;
+        $questions->recording_answer_time     = 40;
+        $questions->befor_audio_waiting_time    = '';
+        $questions->prepration_time    = 40;
+        $questions->max_time        = 80;
         if($questions->save()){
             //1-reading 2-listening 3-writing 4-speaking
             $matchThese = ['section_id'=>4,'question_type_id'=>$question_type_id];
@@ -114,9 +115,11 @@ class SpeakingQuestionController extends Controller
         $questions->order           = 0;
         $questions->status          = "E";
         $questions->marks           = 52;
-        $questions->answer_time     = 40;
-        $questions->waiting_time    = 40;
-        $questions->max_time        = 40;
+        $questions->recording_answer_time     = 10;
+        $questions->befor_audio_waiting_time    = 3;
+        $questions->prepration_time    = 1;
+        $questions->max_time        = 14;
+       
         if($questions->save()){
             //1-reading 2-listening 3-writing 4-speaking
             $matchThese = ['section_id'=>4,'question_type_id'=>$question_type_id];
@@ -194,9 +197,10 @@ class SpeakingQuestionController extends Controller
         $questions->order           = 0;
         $questions->status          = "E";
         $questions->marks           = 22;
-        $questions->answer_time     = 40;
-        $questions->waiting_time    = 40;
-        $questions->max_time        = 40;
+        $questions->recording_answer_time     = 40;
+        $questions->befor_audio_waiting_time    = '';
+        $questions->prepration_time    = 25;
+        $questions->max_time        = 65;
         if($questions->save()){
             //1-reading 2-listening 3-writing 4-speaking
              $matchThese = ['section_id'=>4,'question_type_id'=>$question_type_id];
@@ -269,9 +273,10 @@ class SpeakingQuestionController extends Controller
         $questions->order           = 0;
         $questions->status          = "E";
         $questions->marks           = 22;
-        $questions->answer_time     = 40;
-        $questions->waiting_time    = 40;
-        $questions->max_time        = 40;
+        $questions->recording_answer_time     = 40;
+        $questions->befor_audio_waiting_time    = 3;
+        $questions->prepration_time    = 10;
+        $questions->max_time        = 53;
         if($questions->save()){
              //1-reading 2-listening 3-writing 4-speaking
              $matchThese = ['section_id'=>4,'question_type_id'=>$question_type_id];
@@ -347,9 +352,10 @@ class SpeakingQuestionController extends Controller
         $questions->order           = 0;
         $questions->status          = "E";
         $questions->marks           = 8;
-        $questions->answer_time     = 40;
-        $questions->waiting_time    = 40;
-        $questions->max_time        = 40;
+        $questions->recording_answer_time     = 5;
+        $questions->befor_audio_waiting_time    = 3;
+        $questions->prepration_time    = 1;
+        $questions->max_time        = 9;
         if($questions->save()){
              //1-reading 2-listening 3-writing 4-speaking
              $matchThese = ['section_id'=>4,'question_type_id'=>$question_type_id];

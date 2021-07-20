@@ -74,9 +74,10 @@ class ListeningQuestionController extends Controller
         $questions->order           = 0;
         $questions->status          = "E";
         $questions->marks           = 25;
-        $questions->answer_time     = 40;
-        $questions->waiting_time    = 40;
-        $questions->max_time        = 40;
+        $questions->recording_answer_time     = '';
+        $questions->befor_audio_waiting_time    = '';
+        $questions->prepration_time    = 10;
+        $questions->max_time        = 10;
 
         if($questions->save()){
              //1-reading 2-listening 3-writing 4-speaking
@@ -156,9 +157,10 @@ class ListeningQuestionController extends Controller
         $questions->order           = 0;
         $questions->status          = "E";
         $questions->marks           = 3;
-        $questions->answer_time     = 40;
-        $questions->waiting_time    = 40;
-        $questions->max_time        = 40;
+        $questions->recording_answer_time     = '';
+        $questions->befor_audio_waiting_time    = '';
+        $questions->prepration_time    = 7;
+        $questions->max_time        = 7;
 
         if($questions->save()){
              //1-reading 2-listening 3-writing 4-speaking
@@ -240,9 +242,10 @@ class ListeningQuestionController extends Controller
         $questions->order           = 0;
         $questions->status          = "E";
         $questions->marks           = 14;
-        $questions->answer_time     = 40;
-        $questions->waiting_time    = 40;
-        $questions->max_time        = 40;
+        $questions->recording_answer_time     = '';
+        $questions->befor_audio_waiting_time    = '';
+        $questions->prepration_time    = 7;
+        $questions->max_time        = 7;
 
         if($questions->save()){
              //1-reading 2-listening 3-writing 4-speaking
@@ -326,9 +329,10 @@ class ListeningQuestionController extends Controller
         $questions->order           = 0;
         $questions->status          = "E";
         $questions->marks           = 3;
-        $questions->answer_time     = 40;
-        $questions->waiting_time    = 40;
-        $questions->max_time        = 40;
+        $questions->recording_answer_time     = '';
+        $questions->befor_audio_waiting_time    = '';
+        $questions->prepration_time    = 7;
+        $questions->max_time        = 7;
 
         if($questions->save()){
              //1-reading 2-listening 3-writing 4-speaking
@@ -432,9 +436,10 @@ class ListeningQuestionController extends Controller
         $questions->order           = 0;
         $questions->status          = "E";
         $questions->marks           = 1;
-        $questions->answer_time     = 40;
-        $questions->waiting_time    = 40;
-        $questions->max_time        = 40;
+        $questions->recording_answer_time     = '';
+        $questions->befor_audio_waiting_time    = '';
+        $questions->prepration_time    = 7;
+        $questions->max_time        = 7;
 
         if($questions->save())
         {
@@ -533,9 +538,10 @@ class ListeningQuestionController extends Controller
         $questions->order           = 0;
         $questions->status          = "E";
         $questions->marks           = 1;
-        $questions->answer_time     = 40;
-        $questions->waiting_time    = 40;
-        $questions->max_time        = 40;
+        $questions->recording_answer_time     = '';
+        $questions->befor_audio_waiting_time    = '';
+        $questions->prepration_time    = 7;
+        $questions->max_time        = 7;
 
         if($questions->save())
         {
@@ -633,9 +639,10 @@ class ListeningQuestionController extends Controller
         $questions->order           = 0;
         $questions->status          = "E";
         $questions->marks           = 17;
-        $questions->answer_time     = 40;
-        $questions->waiting_time    = 40;
-        $questions->max_time        = 40;
+        $questions->recording_answer_time     = '';
+        $questions->befor_audio_waiting_time    = '';
+        $questions->prepration_time    = 7;
+        $questions->max_time        = 7;
 
         if($questions->save())
         {
@@ -725,9 +732,10 @@ class ListeningQuestionController extends Controller
         $questions->order           = 0;
         $questions->status          = "E";
         $questions->marks           = 47;
-        $questions->answer_time     = 40;
-        $questions->waiting_time    = 40;
-        $questions->max_time        = 40;
+        $questions->recording_answer_time     = '';
+        $questions->befor_audio_waiting_time    = '';
+        $questions->prepration_time    = 7;
+        $questions->max_time        = 7;
 
         if($questions->save())
         {

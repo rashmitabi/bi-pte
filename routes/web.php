@@ -161,31 +161,31 @@ Route::group(['middleware' => ['auth', 'verified','superadmin']], function () {
 
     /*Questions Modules start*/
 
-    Route::post('superadmin/questions/storeReadingInstructions', [App\Http\Controllers\SuperAdmin\questionsController::class,'storeReadingInstructions'])
+    Route::post('superadmin/questions/storeReadingInstructions', [App\Http\Controllers\SuperAdmin\QuestionsController::class,'storeReadingInstructions'])
 
         ->name('superadmin-reading-questions-instructions');
 
 
 
-    Route::post('superadmin/questions/storeListeningInstructions', [App\Http\Controllers\SuperAdmin\questionsController::class,'storeListeningInstructions'])
+    Route::post('superadmin/questions/storeListeningInstructions', [App\Http\Controllers\SuperAdmin\QuestionsController::class,'storeListeningInstructions'])
 
         ->name('superadmin-listening-questions-instructions');
 
 
 
-    Route::post('superadmin/questions/storeWritingInstructions', [App\Http\Controllers\SuperAdmin\questionsController::class,'storeWritingInstructions'])
+    Route::post('superadmin/questions/storeWritingInstructions', [App\Http\Controllers\SuperAdmin\QuestionsController::class,'storeWritingInstructions'])
 
         ->name('superadmin-writing-questions-instructions');
 
 
 
-    Route::post('superadmin/questions/storeSpeakingInstructions', [App\Http\Controllers\SuperAdmin\questionsController::class,'storeSpeakingInstructions'])
+    Route::post('superadmin/questions/storeSpeakingInstructions', [App\Http\Controllers\SuperAdmin\QuestionsController::class,'storeSpeakingInstructions'])
 
         ->name('superadmin-speaking-questions-instructions');
 
 
 
-    Route::resource('superadmin/questions', App\Http\Controllers\SuperAdmin\questionsController::class);
+    Route::resource('superadmin/questions', App\Http\Controllers\SuperAdmin\QuestionsController::class);
 
     /*Questions Modules end*/
 

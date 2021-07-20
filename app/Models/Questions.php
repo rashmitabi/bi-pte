@@ -20,8 +20,9 @@ class Questions extends Model
         'order',
         'status',
         'marks',
-        'answer_time',
-        'waiting_time',
+        'recording_answer_time',
+        'befor_audio_waiting_time',
+        'prepration_time',
         'max_time'
     ];
     public function answerdata()
