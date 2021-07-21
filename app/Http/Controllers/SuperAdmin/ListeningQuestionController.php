@@ -74,8 +74,6 @@ class ListeningQuestionController extends Controller
         $questions->order           = 0;
         $questions->status          = "E";
         $questions->marks           = 25;
-        $questions->recording_answer_time     = '';
-        $questions->befor_audio_waiting_time    = '';
         $questions->prepration_time    = 10;
         $questions->max_time        = 10;
 
@@ -157,8 +155,6 @@ class ListeningQuestionController extends Controller
         $questions->order           = 0;
         $questions->status          = "E";
         $questions->marks           = 3;
-        $questions->recording_answer_time     = '';
-        $questions->befor_audio_waiting_time    = '';
         $questions->prepration_time    = 7;
         $questions->max_time        = 7;
 
@@ -242,8 +238,6 @@ class ListeningQuestionController extends Controller
         $questions->order           = 0;
         $questions->status          = "E";
         $questions->marks           = 14;
-        $questions->recording_answer_time     = '';
-        $questions->befor_audio_waiting_time    = '';
         $questions->prepration_time    = 7;
         $questions->max_time        = 7;
 
@@ -329,8 +323,6 @@ class ListeningQuestionController extends Controller
         $questions->order           = 0;
         $questions->status          = "E";
         $questions->marks           = 3;
-        $questions->recording_answer_time     = '';
-        $questions->befor_audio_waiting_time    = '';
         $questions->prepration_time    = 7;
         $questions->max_time        = 7;
 
@@ -436,8 +428,6 @@ class ListeningQuestionController extends Controller
         $questions->order           = 0;
         $questions->status          = "E";
         $questions->marks           = 1;
-        $questions->recording_answer_time     = '';
-        $questions->befor_audio_waiting_time    = '';
         $questions->prepration_time    = 7;
         $questions->max_time        = 7;
 
@@ -538,8 +528,6 @@ class ListeningQuestionController extends Controller
         $questions->order           = 0;
         $questions->status          = "E";
         $questions->marks           = 1;
-        $questions->recording_answer_time     = '';
-        $questions->befor_audio_waiting_time    = '';
         $questions->prepration_time    = 7;
         $questions->max_time        = 7;
 
@@ -639,8 +627,6 @@ class ListeningQuestionController extends Controller
         $questions->order           = 0;
         $questions->status          = "E";
         $questions->marks           = 17;
-        $questions->recording_answer_time     = '';
-        $questions->befor_audio_waiting_time    = '';
         $questions->prepration_time    = 7;
         $questions->max_time        = 7;
 
@@ -732,8 +718,6 @@ class ListeningQuestionController extends Controller
         $questions->order           = 0;
         $questions->status          = "E";
         $questions->marks           = 47;
-        $questions->recording_answer_time     = '';
-        $questions->befor_audio_waiting_time    = '';
         $questions->prepration_time    = 7;
         $questions->max_time        = 7;
 

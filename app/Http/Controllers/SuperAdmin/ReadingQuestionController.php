@@ -30,10 +30,7 @@ class ReadingQuestionController extends Controller
         $questions->order           = 1;
         $questions->status          = "E";
         $questions->marks           = 44;
-        $questions->recording_answer_time     = '';
-        $questions->befor_audio_waiting_time    = '';
-        $questions->prepration_time    = '';
-        $questions->max_time        = '';
+        
         if($questions->save()){
              //1-reading 2-listening 3-writing 4-speaking
               $matchThese = ['section_id'=>1,'question_type_id'=>$question_type_id];
@@ -159,10 +156,6 @@ class ReadingQuestionController extends Controller
 
             $questions->marks           = 3;
         }
-        $questions->recording_answer_time     = '';
-        $questions->befor_audio_waiting_time    = '';
-        $questions->prepration_time    = '';
-        $questions->max_time        = '';
         if($questions->save())
         {
             if($input['type'] == "single"){
@@ -286,10 +279,6 @@ class ReadingQuestionController extends Controller
         $questions->order           =  8;
         $questions->status          = "E";
         $questions->marks           = 6;
-        $questions->recording_answer_time     = '';
-        $questions->befor_audio_waiting_time    = '';
-        $questions->prepration_time    = '';
-        $questions->max_time        = '';
 
         if($questions->save())
         {
@@ -397,10 +386,6 @@ class ReadingQuestionController extends Controller
         $questions->order           =  10;
         $questions->status          = "E";
         $questions->marks           = 15;
-        $questions->recording_answer_time     = '';
-        $questions->befor_audio_waiting_time    = '';
-        $questions->prepration_time    = '';
-        $questions->max_time        = '';
 
         if($questions->save())
         {

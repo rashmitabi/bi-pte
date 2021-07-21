@@ -36,7 +36,6 @@ class SpeakingQuestionController extends Controller
         $questions->status          = "E";
         $questions->marks           = 44;
         $questions->recording_answer_time     = 40;
-        $questions->befor_audio_waiting_time    = '';
         $questions->prepration_time    = 40;
         $questions->max_time        = 80;
         if($questions->save()){
