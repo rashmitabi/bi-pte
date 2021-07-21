@@ -13,6 +13,7 @@ use App\Models\Institues;
 use App\Models\EmailTemplates;
 use App\Models\Notifications;
 use App\Models\Activities;
+use App\Models\Subscriptions;
 use Illuminate\Support\Facades\Hash;
 use DataTables;
 use App\Http\Requests\StoreUserRequest;
@@ -660,6 +661,14 @@ class UsersController extends Controller
         }
     }
     public function subscription(){
-        return view('branchadmin.subscription');
+        
+        $subscriptions = Subscriptions::where('status','E')->get();
+
+        return view('branchadmin.subscription',compact('subscriptions'));
+    }
+
+    public function subscriptionPayment(Request $request)
+    {
+        dd($request->all());
     }
 }

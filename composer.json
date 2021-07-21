@@ -7,6 +7,7 @@
     "require": {
         "php": "^7.3|^8.0",
         "ext-gd": "*",
+        "aws/aws-sdk-php-laravel": "~3.0",
         "barryvdh/laravel-dompdf": "^0.9.0",
         "doctrine/dbal": "^3.1",
         "fideloper/proxy": "^4.4",
@@ -19,9 +20,9 @@
         "laravel/ui": "^3.3",
         "laravelcollective/html": "^6.2",
         "maatwebsite/excel": "^3.1",
+        "razorpay/razorpay": "^2.7",
         "stevebauman/location": "^6.1",
-        "yajra/laravel-datatables-oracle": "^9.18",
-        "aws/aws-sdk-php-laravel": "~3.0"
+        "yajra/laravel-datatables-oracle": "^9.18"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

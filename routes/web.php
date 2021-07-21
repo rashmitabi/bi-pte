@@ -503,7 +503,8 @@ Route::group(['middleware' => ['auth', 'verified','branchadmin']], function () {
     /*Branch Admin students module start*/
     
     Route::get('branchadmin/subscriptionpackages',[App\Http\Controllers\BranchAdmin\UsersController::class,'subscription'])->name('branchadmin-subscriptionpackages');
-
+    Route::post('branchadmin/subscriptionpayment',[App\Http\Controllers\BranchAdmin\UsersController::class,'subscriptionPayment'])->name('branchadmin-subscriptionpayment');
+    
     Route::resource('branchadmin/device', App\Http\Controllers\BranchAdmin\DeviceController::class)->names('branchadmin-device');
 
     Route::resource('branchadmin/certificates', App\Http\Controllers\BranchAdmin\CertificatesController::class)->names('branchadmin-certificates');

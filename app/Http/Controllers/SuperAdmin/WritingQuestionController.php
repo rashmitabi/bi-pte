@@ -37,9 +37,6 @@ class WritingQuestionController extends Controller
         $questions->order           = 0;
         $questions->status          = "E";
         $questions->marks           = 20;
-        $questions->recording_answer_time     = '';
-        $questions->befor_audio_waiting_time    = '';
-        $questions->prepration_time    = '';
         $questions->max_time        = 600;
         if($questions->save()){
              //1-reading 2-listening 3-writing 4-speaking
@@ -144,9 +141,6 @@ class WritingQuestionController extends Controller
         $questions->order           = 0;
         $questions->status          = "E";
         $questions->marks           = 12;
-        $questions->recording_answer_time     = '';
-        $questions->befor_audio_waiting_time    = '';
-        $questions->prepration_time    = '';
         $questions->max_time        = 1200;
         if($questions->save()){
              //1-reading 2-listening 3-writing 4-speaking
