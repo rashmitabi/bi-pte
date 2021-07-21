@@ -525,23 +525,23 @@ Route::group(['middleware' => ['auth', 'verified','branchadmin']], function () {
 
     /*Videos module start*/
 
-    Route::resource('branchadmin/videos', App\Http\Controllers\BranchAdmin\VideosController::class)->names('branchadmin-videos');
+    Route::resource('branchadmin/videos', App\Http\Controllers\BranchAdmin\VideosController::class)->names('branchadmin-videos')->middleware('branchVideo');
 
     Route::get('branchadmin/videos/changestatus/{id}', [App\Http\Controllers\BranchAdmin\VideosController::class, 'changeStatus'])
 
-        ->name('branchadmin-videos-changestatus');
+        ->name('branchadmin-videos-changestatus')->middleware('branchVideo');
 
     /*Videos module end*/
 
     /* prediction files routes start *//* prediction files routes start */
 
-    Route::resource('branchadmin/predictionfiles', App\Http\Controllers\BranchAdmin\PredictionFilesController::class)->names('branchadmin-predictionfiles');
+    Route::resource('branchadmin/predictionfiles', App\Http\Controllers\BranchAdmin\PredictionFilesController::class)->names('branchadmin-predictionfiles')->middleware('branchFile');
 
     Route::get('branchadmin/predictionfiles/changestatus/{id}', [App\Http\Controllers\BranchAdmin\PredictionFilesController::class, 'changeStatus'])
-        ->name('branchadmin-predictionfiles-changestatus');
+        ->name('branchadmin-predictionfiles-changestatus')->middleware('branchFile');
 
     Route::post('branchadmin/predictionfiles/update/{id}', [App\Http\Controllers\BranchAdmin\PredictionFilesController::class, 'update'])
-        ->name('branchadmin-predictionfiles-update');
+        ->name('branchadmin-predictionfiles-update')->middleware('branchFile');
 
     /* prediction files routes ends */
 
