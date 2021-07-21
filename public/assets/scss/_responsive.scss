@@ -283,6 +283,17 @@
                     }
                }
           }
+          .branch-edit-profile a{
+               left: 235px !important;
+          }
+          .col-header button{
+               margin-top: 80px; 
+          }
+          .save-btn{
+               display: flex;
+               padding: 0;
+               justify-content: space-evenly;
+          }
      }
 }
 
@@ -538,6 +549,20 @@
                     }
                }
           }
+          .branch-edit-profile a{
+               left: 189px !important;
+          }
+          .col-header button{
+               margin-top: 80px; 
+          }
+          .save-btn{
+               display: flex;
+               padding: 0;
+               justify-content: space-evenly;
+               button{
+                    margin-right: 0px!important;
+               }
+          }
      }
 }
 
@@ -715,6 +740,17 @@
                     }
                }
           }
+          .branch-edit-profile a{
+               left: 245px !important;
+          }
+          .col-header button{
+               margin-top: 80px; 
+          }
+          .save-btn{
+               display: flex;
+               padding: 0;
+               justify-content: space-evenly;
+          }
      }
 }
 /* all large mobile (575 up to 768)*/
@@ -823,6 +859,14 @@
                          }
                     }
                }
+          }
+          .branch-edit-profile a{
+               left: 189px !important;
+          }
+          .save-btn{
+               display: flex;
+               padding: 0;
+               justify-content: space-evenly;
           }
      }
 }
@@ -950,6 +994,11 @@
                }
           }
      }
+     .save-btn{
+          button{
+               margin-right: 10px;
+          }
+     }
 }
 
 /*laptop devices 991 up devices */
@@ -1003,6 +1052,9 @@
                     }
                }
 
+          }
+          .branch-edit-profile a{
+               left: 385px !important;
           }
      }
 } 

@@ -1109,6 +1109,10 @@ body {
           margin: auto;
      }
 }
+.profile{
+    width: 130px;
+    height: 129px;
+}
 .branch-edit-profile{
      a{
           position: absolute !important;
@@ -1368,6 +1372,7 @@ body {
      border: none;
      box-shadow: 0px 10px 24px #b4a5a5;
      padding-bottom: 15px;
+     margin-bottom: 20px;
      .list-group-item{
          border: none;
      }

@@ -230,6 +230,21 @@
     display: flex;
     margin-top: 6px;
   }
+  body .branch-edit-profile a {
+    left: 235px !important;
+  }
+  body .col-header button {
+    margin-top: 80px;
+  }
+  body .save-btn {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    padding: 0;
+    -webkit-box-pack: space-evenly;
+        -ms-flex-pack: space-evenly;
+            justify-content: space-evenly;
+  }
 }
 
 @media (min-width: 320px) and (max-width: 374px) {
@@ -430,6 +445,24 @@
     display: flex;
     margin-top: 6px;
   }
+  body .branch-edit-profile a {
+    left: 189px !important;
+  }
+  body .col-header button {
+    margin-top: 80px;
+  }
+  body .save-btn {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    padding: 0;
+    -webkit-box-pack: space-evenly;
+        -ms-flex-pack: space-evenly;
+            justify-content: space-evenly;
+  }
+  body .save-btn button {
+    margin-right: 0px !important;
+  }
 }
 
 /*middle screen(425 up to 575 */
@@ -568,6 +601,21 @@
     display: flex;
     margin-top: 6px;
   }
+  body .branch-edit-profile a {
+    left: 245px !important;
+  }
+  body .col-header button {
+    margin-top: 80px;
+  }
+  body .save-btn {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    padding: 0;
+    -webkit-box-pack: space-evenly;
+        -ms-flex-pack: space-evenly;
+            justify-content: space-evenly;
+  }
 }
 
 /* all large mobile (575 up to 768)*/
@@ -666,6 +714,18 @@
     display: flex;
     margin-top: 6px;
   }
+  body .branch-edit-profile a {
+    left: 189px !important;
+  }
+  body .save-btn {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    padding: 0;
+    -webkit-box-pack: space-evenly;
+        -ms-flex-pack: space-evenly;
+            justify-content: space-evenly;
+  }
 }
 
 /* tablets devices (tablets, 768px and up)  */
@@ -757,6 +817,9 @@
             justify-content: center;
     margin-top: 0px;
   }
+  .save-btn button {
+    margin-right: 10px;
+  }
 }
 
 /*laptop devices 991 up devices */
@@ -801,6 +864,9 @@
   }
   body #content .common-wrap .btn-group .expired-btn {
     margin-left: 0px !important;
+  }
+  body .branch-edit-profile a {
+    left: 385px !important;
   }
 }
 
