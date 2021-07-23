@@ -120,7 +120,7 @@
                     <div class="form-group row">    
                         <label for="staticEmail" class="col-sm-6 col-form-label">Show Superadmin Video</label>
                         <div class="col-sm-6">
-                          <input type="text" readonly class="form-control-plaintext" style="display: flex; float: left; width: 7%;" id="staticEmail" value="{{ $user->institue->show_admin_videos }}">
+                          <!-- <input type="text" readonly class="form-control-plaintext" style="display: flex; float: left; width: 7%;" id="staticEmail" value=""> -->
                           @if ($user->institue->show_admin_videos == 'Y')
                           <i class="fas fa-check check-icon"></i>
                           @else
@@ -130,8 +130,7 @@
                     </div>
                     <div class="form-group row">    
                         <label for="staticEmail" class="col-sm-6 col-form-label">Show Superadmin Prediction Files</label>
-                        <div class="col-sm-6">
-                        <input type="text" readonly class="form-control-plaintext" style="display: flex; float: left; width: 7%;" id="staticEmail" value="{{ $user->institue->show_admin_files }}">
+                        <div class="col-sm-6">                        
                           @if ($user->institue->show_admin_files == 'Y')
                           <i class="fas fa-check check-icon"></i>
                           @else
@@ -142,8 +141,7 @@
                     <div class="form-group row">    
                         <label for="staticEmail" class="col-sm-6 col-form-label">Show Superadmin Tests</label>
                         <div class="col-sm-6">
-                        <input type="text" readonly class="form-control-plaintext" style="display: flex; float: left; width: 7%;" id="staticEmail" value="{{ $user->institue->show_admin_tests }}">
-                        @if ($user->institue->show_admin_tests == 'Y')
+                          @if ($user->institue->show_admin_tests == 'Y')
                           <i class="fas fa-check check-icon"></i>
                           @else
                           <i class="fas fa-times cancel-icon"></i>

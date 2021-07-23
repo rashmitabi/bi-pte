@@ -113,7 +113,7 @@ class VideosController extends Controller
 
             if(isset($input['status'])){                
                 //send notification to students if video status is enabled
-                $institutes = Institues::select('user_id')->where('show_admin_files', 'Y')->get();
+                $institutes = Institues::select('user_id')->where('show_admin_videos', 'Y')->get();
                 foreach($institutes as $inst){
                     $notification_data[] = array(
                                 'user_id' => $inst->user_id,
