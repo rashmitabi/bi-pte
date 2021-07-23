@@ -93,14 +93,14 @@ class LoginController extends Controller
                     "device_name" => $browser['device'],
                     "ip_address" => $request->getClientIp(),
                     "login_time" => date("Y-m-d h:i:s"),
-                    "status" => 'Y'
+                    "status" => 'N'
                 );
                 if($devicelogCount == 0){
                     DeviceLogs::create($data);
                     return redirect()->intended($this->redirectPath());
                 }else{
 
-                    if($devicelog->status == "Y"){
+                    if($devicelog->status == "N"){
                         return redirect()->intended($this->redirectPath());
                     }else{
                         $this->guard()->logout();
