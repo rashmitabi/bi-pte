@@ -23,16 +23,21 @@ class DashboardController extends Controller
     	$data['mock_tests'] = Tests::where(['type' => 'M','generated_by_user_id'=>\Auth::user()->id])->count();
     	$data['practice_tests'] = Tests::where(['type' => 'P','generated_by_user_id'=>\Auth::user()->id])->count();
 
-    	$data['chartSubs'] = userSubscriptions::selectRaw('monthname(created_at) month, count(*) count')->whereYear('created_at', date('Y'))
-                ->groupBy('month')
-                ->orderBy('month', 'desc')
-                ->get();
+    	//mysql query
+        // $data['userSession'] = UserSession::selectRaw('DATE_FORMAT(created_at, "%l:00 %p") time, count(*) count')->whereDate('created_at', date('Y-m-d'))
+        //         ->whereIn('user_id',$allStudents)    
+        //         ->groupBy('time')
+        //         ->orderBy('time', 'ASC')
+        //         ->get();
 
-        $data['userSession'] = UserSession::selectRaw('DATE_FORMAT(created_at, "%l:00 %p") time, count(*) count')->whereDate('created_at', date('Y-m-d'))
-                ->whereIn('user_id',$allStudents)    
-                ->groupBy('time')
-                ->orderBy('time', 'ASC')
-                ->get();
+        //pgsql query
+        $data['userSession'] = UserSession::selectRaw("CASE WHEN updated_at IS NOT NULL THEN to_char(updated_at, 'hh pm') ELSE to_char(created_at, 'hh pm') END as time, count(*) count")
+        ->whereIn('user_id',$allStudents)
+        ->whereDate('created_at', date('Y-m-d'))
+        ->orWhereDate('updated_at', date('Y-m-d'))
+        ->groupBy('time')
+        ->orderBy('time', 'ASC')
+        ->get();
 
         return view('branchadmin/dashboard', compact('data'));
     }

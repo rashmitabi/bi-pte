@@ -11,7 +11,7 @@ use App\Models\Roles;
 use App\Models\Sections;
 use App\Models\Institues;
 use App\Models\EmailTemplates;
-use App\Models\notification;
+use App\Models\Notifications;
 use Illuminate\Support\Facades\Hash;
 use DataTables;
 use App\Http\Requests\StoreUserRequest;
@@ -495,7 +495,7 @@ class UsersController extends Controller
                     'city'=> $input['icity'],
                     'gstin' => $input['igstin'],
                     'validity' => $input['validity'],
-                    'status' => $input['status'],
+                    'status' => $input['istatus'],
                     'ip_address' => '',
                     'latitude' => '',
                     'longitude' => ''
