@@ -79,7 +79,7 @@
   }
   body #prediction thead th {
     white-space: unset !important;
-    padding-right: 7px !important;
+    padding-right: 23px !important;
   }
   body #subscription thead th {
     padding-right: 8px;
@@ -94,7 +94,7 @@
   }
   body #email_wrapper thead th {
     white-space: unset !important;
-    padding-right: 20px !important;
+    padding-right: 33px !important;
   }
   body #videos thead th {
     white-space: unset !important;
@@ -166,7 +166,7 @@
     margin-left: 0px !important;
   }
   body .table-col .datapicker {
-    max-width: 52% !important;
+    max-width: 100% !important;
   }
   body .table-col .datapicker input {
     margin-left: 0px !important;
@@ -207,9 +207,8 @@
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-pack: space-evenly;
-        -ms-flex-pack: space-evenly;
-            justify-content: space-evenly;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
   }
   body .question-forms .form .save-btn button {
     margin: 0px !important;
@@ -274,11 +273,11 @@
     padding-bottom: 0px !important;
   }
   body .dataTables_wrapper {
-    padding: 20px 0px 0px;
+    padding: 20px 0px 20px;
   }
   body #prediction thead th {
     white-space: unset !important;
-    padding-right: 13px !important;
+    padding-right: 16px !important;
   }
   body #vouchers thead th {
     white-space: unset !important;
@@ -322,13 +321,22 @@
   }
   body #email_wrapper thead th {
     white-space: unset !important;
-    padding-right: 8px !important;
+    padding-right: 19px !important;
   }
   body .modal-body {
     padding: 5px !important;
   }
   body .modal-body .delete-text {
     padding-left: 22px;
+  }
+  body .modal-body .user-form {
+    padding: 0px !important;
+  }
+  body .modal-body .user-form .delete-btn {
+    margin-bottom: 10px;
+  }
+  body .modal-body .user-form .edit-btn {
+    margin-bottom: 10px;
   }
   body .score-heading {
     margin-top: 0px !important;
@@ -381,7 +389,7 @@
     margin-left: 0px;
   }
   body #content .table-col .datapicker {
-    max-width: 52% !important;
+    max-width: 100% !important;
   }
   body #content .table-col .datapicker input {
     margin-left: 0px !important;
@@ -537,7 +545,7 @@
     margin-left: 0px !important;
   }
   body .table-col .datapicker {
-    max-width: 52% !important;
+    max-width: 100% !important;
   }
   body .table-col .datapicker input {
     margin-left: 0px !important;
@@ -738,7 +746,7 @@
     padding-right: 0px !important;
   }
   body #content .custom-wrap-p .datapicker {
-    max-width: 27% !important;
+    max-width: 50% !important;
   }
   body #content .custom-wrap-p .datapicker input {
     margin-left: 0px !important;
@@ -771,13 +779,19 @@
   }
   body #prediction thead th {
     white-space: unset !important;
-    padding-right: 21px !important;
+    padding-right: 33px !important;
   }
   body #results thead th {
     white-space: unset !important;
   }
   body #videos thead th {
-    padding-right: 50px !important;
+    padding-right: 23px !important;
+  }
+  body #expired_wrapper {
+    padding: 0px;
+  }
+  body #near-to-expire_wrapper {
+    padding: 0px;
   }
   body .custom-row {
     -webkit-box-pack: justify;
@@ -817,9 +831,6 @@
             justify-content: center;
     margin-top: 0px;
   }
-  .save-btn button {
-    margin-right: 10px;
-  }
 }
 
 /*laptop devices 991 up devices */
@@ -849,6 +860,12 @@
   body #content .custom-wrap-p .datapicker input {
     margin-left: 0px !important;
     width: 23%;
+  }
+  body #content #expired_wrapper {
+    padding: 0px;
+  }
+  body #content #near-to-expire_wrapper {
+    padding: 0px;
   }
   body #content #device thead th {
     padding-right: 24px !important;
@@ -889,6 +906,12 @@
   }
   body #videos thead th {
     padding-right: 50px !important;
+  }
+  body #expired_wrapper {
+    padding: 0px;
+  }
+  body #near-to-expire_wrapper {
+    padding: 0px;
   }
 }
 

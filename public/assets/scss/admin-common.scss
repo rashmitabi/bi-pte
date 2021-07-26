@@ -712,6 +712,7 @@ body {
 .white-bg{
      background-color: #fff;
      box-shadow:  0px 2px 6px #00000016;
+     padding-bottom: 15px;
 }
 
 .remove-main-margin{
@@ -1077,22 +1078,21 @@ body {
                          width: 16px;
                     }
                     .edit-btn{
-                         float: right!important;
+                         
                          background-color: $primary-color;
                          color: $white-color;
                          border-color: $primary-color;
                          min-width: 120px;
-                         margin-right: 5px;
                     }
                     .delete-btn{
-                         float: right!important;
+                         
                          background-color: $error;
                          color: $white-color;
                          border-color: $error;
                          min-width: 120px;
                     }
                     .shield-btn{
-                         float: right!important;
+     
                          background-color: $error;
                          color: $white-color;
                          border-color: $error;
