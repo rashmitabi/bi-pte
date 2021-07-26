@@ -351,7 +351,7 @@
             </label>
           </div>
         </div>
-        <div class="form-group row">
+        <!-- <div class="form-group row">
           <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Show Super Admin Practice Questions</label>
           <div class="col-12 col-md-7 col-xl-7 col-sm-12">
             <label for="rdo-2" class="btn-radio">
@@ -373,7 +373,7 @@
               <span class="col-blue fw-500">No</span>
             </label>
           </div>
-        </div>
+        </div> -->
         <div class="form-group row">
           <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Show Super Admin Tests</label>
           <div class="col-12 col-md-7 col-xl-7 col-sm-12">

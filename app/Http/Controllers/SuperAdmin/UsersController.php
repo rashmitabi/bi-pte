@@ -319,7 +319,7 @@ class UsersController extends Controller
                 'branch_admin'=>'required',
                 'fname' => 'required|min:3|max:100',
                 'lname' => 'required|min:3|max:100',
-                'uname'=>'required|unique:users,name|max:255',
+                'uname'=>'required|regex:/^[a-zA-Z0-9]+$/u|unique:users,name|max:255',
                 'semail'=>'required|email|unique:users,email|max:255',
                 'spassword'=>'required|min:6|max:20',
                 'confirm_spassword'=>'required|same:spassword',
@@ -405,7 +405,7 @@ class UsersController extends Controller
 
             $request->validate([
                 'type'=>'required',
-                'iuname' => 'required|unique:users,name|max:255',
+                'iuname' => 'required|regex:/^[a-zA-Z0-9]+$/u|unique:users,name|max:255',
                 'iname'=>'required|min:2|max:255',
                 'iemail'=>'required|email|unique:users,email|max:255',
                 'ipassword'=>'required|min:6|max:20',
@@ -425,11 +425,12 @@ class UsersController extends Controller
                 'validity'=>'required|after:' . date('Y-m-d'),
                 'admin_video'=>'required|in:Y,N',
                 'admin_prediction_file'=>'required|in:Y,N',
-                'admin_practice_question'=>'required|in:Y,N',
+                //'admin_practice_question'=>'required|in:Y,N',
                 'admin_test'=>'required|in:Y,N'
             ],
             [
                 'iuname.required'=> 'user name is required', // custom message
+                'iuname.regex'=> 'user name format not valid',
                 'iuname.unique'=> 'user name already taken', // custom message
                 'iuname.max'=> 'user name maximum length allow 255', // custom message
                 'iname.required'=>'Institute Name is required',
@@ -511,6 +512,7 @@ class UsersController extends Controller
                     'profile_image' => '',
                     'state' => $input['istate'],
                     'state_code' => $input['istate_code'],
+                    'city'=> $input['icity'],
                     'gstin' => $input['igstin'],
                     'validity' => $input['validity'],
                     'status' => $input['istatus'],
@@ -533,7 +535,7 @@ class UsersController extends Controller
                 'show_admin_videos' => $input['admin_video'],
                 'show_admin_tests' => $input['admin_test'],
                 'show_admin_files' => $input['admin_prediction_file'],
-                'show_practice_questions' => $input['admin_practice_question'],
+                //'show_practice_questions' => $input['admin_practice_question'],
                 'welcome_message'=> $input['welcome_msg'],
                 'country_phone_code'=> $input['country_code'],
                 'phone_number'=> $input['phone_no'],
@@ -728,7 +730,7 @@ class UsersController extends Controller
                 'validity'=>'required|after:' . date('Y-m-d'),
                 'admin_video'=>'required|in:Y,N',
                 'admin_prediction_file'=>'required|in:Y,N',
-                'admin_practice_question'=>'required|in:Y,N',
+                //'admin_practice_question'=>'required|in:Y,N',
                 'admin_test'=>'required|in:Y,N'
             ],
             [
@@ -823,7 +825,7 @@ class UsersController extends Controller
                     'show_admin_videos' => $input['admin_video'],
                     'show_admin_tests' => $input['admin_test'],
                     'show_admin_files' => $input['admin_prediction_file'],
-                    'show_practice_questions' => $input['admin_practice_question'],
+                    //'show_practice_questions' => $input['admin_practice_question'],
                     'welcome_message'=> $input['welcome_msg'],
                     'country_phone_code'=> $input['country_code'],
                     'phone_number'=> $input['phone_no'],
@@ -840,7 +842,7 @@ class UsersController extends Controller
                     'show_admin_videos' => $input['admin_video'],
                     'show_admin_tests' => $input['admin_test'],
                     'show_admin_files' => $input['admin_prediction_file'],
-                    'show_practice_questions' => $input['admin_practice_question'],
+                    //'show_practice_questions' => $input['admin_practice_question'],
                     'welcome_message'=> $input['welcome_msg'],
                     'country_phone_code'=> $input['country_code'],
                     'phone_number'=> $input['phone_no'],
@@ -857,7 +859,7 @@ class UsersController extends Controller
                     'show_admin_videos' => $input['admin_video'],
                     'show_admin_tests' => $input['admin_test'],
                     'show_admin_files' => $input['admin_prediction_file'],
-                    'show_practice_questions' => $input['admin_practice_question'],
+                    //'show_practice_questions' => $input['admin_practice_question'],
                     'welcome_message'=> $input['welcome_msg'],
                     'country_phone_code'=> $input['country_code'],
                     'phone_number'=> $input['phone_no'],
@@ -873,7 +875,7 @@ class UsersController extends Controller
                     'show_admin_videos' => $input['admin_video'],
                     'show_admin_tests' => $input['admin_test'],
                     'show_admin_files' => $input['admin_prediction_file'],
-                    'show_practice_questions' => $input['admin_practice_question'],
+                    //'show_practice_questions' => $input['admin_practice_question'],
                     'welcome_message'=> $input['welcome_msg'],
                     'country_phone_code'=> $input['country_code'],
                     'phone_number'=> $input['phone_no'],
@@ -956,7 +958,7 @@ class UsersController extends Controller
     {
         // $user = implode(",",$request->user_ids);
         $user = $request->user_ids;
-        $templates = EmailTemplates::get();
+        $templates = EmailTemplates::where('user_id',\Auth::user()->id)->get();
         $html_password = view($this->moduleTitleP.'emailtemplate',compact('user','templates'))->render();
 
         return response()->json([
@@ -966,7 +968,7 @@ class UsersController extends Controller
     }
 
     public function SendEmail(Request $request){
-        // dd($request->all());
+        //dd($request->all());
         $user_ids  = $request->user_ids;
         $emailtemplate  = $request->emailtemplate;
         
@@ -974,7 +976,7 @@ class UsersController extends Controller
         if($template)
         {
             $allEmails= User::whereIn('id',$user_ids)->pluck('email')->toArray();
-            $data = ['body'=>$template->body];
+            $data = ['body'=>$request->body,'subject'=>$template->subject];
             $flag = 0;
             try{
                 Mail::to($allEmails)->send(new SendEmailUser($data));
