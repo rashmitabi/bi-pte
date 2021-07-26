@@ -79,7 +79,7 @@
   }
   body #prediction thead th {
     white-space: unset !important;
-    padding-right: 7px !important;
+    padding-right: 23px !important;
   }
   body #subscription thead th {
     padding-right: 8px;
@@ -94,7 +94,7 @@
   }
   body #email_wrapper thead th {
     white-space: unset !important;
-    padding-right: 20px !important;
+    padding-right: 33px !important;
   }
   body #videos thead th {
     white-space: unset !important;
@@ -278,7 +278,7 @@
   }
   body #prediction thead th {
     white-space: unset !important;
-    padding-right: 13px !important;
+    padding-right: 16px !important;
   }
   body #vouchers thead th {
     white-space: unset !important;
@@ -322,7 +322,7 @@
   }
   body #email_wrapper thead th {
     white-space: unset !important;
-    padding-right: 8px !important;
+    padding-right: 19px !important;
   }
   body .modal-body {
     padding: 5px !important;
@@ -771,7 +771,7 @@
   }
   body #prediction thead th {
     white-space: unset !important;
-    padding-right: 21px !important;
+    padding-right: 33px !important;
   }
   body #results thead th {
     white-space: unset !important;
