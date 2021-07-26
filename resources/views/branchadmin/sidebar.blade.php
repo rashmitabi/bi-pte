@@ -17,11 +17,6 @@
                </li>
             </ul>
          </li>
-
-         <li class="{{ $pageActive == 'device' ? 'active' : ''  }}">
-            <a href="{{ route('branchadmin-device.index') }}"> <img src="{{ asset('assets/images/icons/devices.svg') }}" class=""><span> Manage Devices Logs </span></a>
-         </li>
-
          <li class="{{ $pageActive == 'tests' ? 'active' : ''  }}">
             <a href="#Testsubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"> <img src="{{ asset('assets/images/icons/test.svg') }}" class=""> <span> Manage Test </span></a>
             <ul class="collapse list-unstyled" id="Testsubmenu">
@@ -72,8 +67,16 @@
          </li>
          <li class="{{ $pageActive == 'certificates' ? 'active' : ''  }}">
             <a href="{{ route('branchadmin-certificates.index') }}"> <img src="{{ asset('assets/images/icons/certificates.svg') }}" class=""><span> Certificate </span></a>
+         </li>        
+          <li class="{{ $pageActive == 'device' ? 'active' : ''  }}">
+            <a href="{{ route('branchadmin-device.index') }}"> <img src="{{ asset('assets/images/icons/devices.svg') }}" class=""><span> Manage Devices Logs </span></a>
+         </li> 
+         <li class="{{ $pageActive == 'activities' ? 'active' : ''  }}">
+            <a href="{{ route('branchadmin-activities.index') }}"> <img src="{{ asset('assets/images/icons/subject.svg') }}" class=""><span> Activity Logs </span></a>
          </li>
-         
+         <li class="{{ $pageActive == 'notifications' ? 'active' : ''  }}">
+            <a href="{{ route('branchadmin-notifications') }}"> <img src="{{ asset('assets/images/icons/devices.svg') }}" class=""><span> Notifications </span></a>
+         </li>
       </ul>
    </nav>
 </div>

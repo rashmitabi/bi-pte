@@ -85,13 +85,13 @@ class QuestionDesignsSeeder extends Seeder
             DB::table('question_designs')->insert([
                 'id' => 11,
                 'section_id' => 2,
-                'design_name'=>'Select missing word item (11-12)',
+                'design_name'=>'Select missing word item',
                 'file_name'=>'select_missing_word_item'
             ]);
             DB::table('question_designs')->insert([
                 'id' => 12,
                 'section_id' => 2,
-                'design_name'=>'Highlight Incorrect Word (13-14)',
+                'design_name'=>'Highlight Incorrect Word',
                 'file_name'=>'highlight_incorrect_word'
             ]);
             DB::table('question_designs')->insert([

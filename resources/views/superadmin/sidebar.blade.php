@@ -128,6 +128,12 @@
          <li class="{{ $pageActive == 'device' ? 'active' : ''  }}">
             <a href="{{ route('device.index') }}"> <img src="{{ asset('assets/images/icons/devices.svg') }}" class=""><span> Manage Devices Logs </span></a>
          </li>
+         <li class="{{ $pageActive == 'activities' ? 'active' : ''  }}">
+            <a href="{{ route('activities.index') }}"> <img src="{{ asset('assets/images/icons/subject.svg') }}" class=""><span> Activity Logs </span></a>
+         </li>
+         <li class="{{ $pageActive == 'notifications' ? 'active' : ''  }}">
+            <a href="{{ route('superadmin-notifications') }}"> <img src="{{ asset('assets/images/icons/devices.svg') }}" class=""><span> Notifications </span></a>
+         </li>
       </ul>
    </nav>
 </div>
