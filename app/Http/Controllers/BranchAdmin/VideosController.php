@@ -65,17 +65,22 @@ class VideosController extends Controller
                         return $status;
                     })
                     ->addColumn('action', function($row){
-                        if($row->status == "E"){
-                            $iconClass = "red";
-                        }else{
-                            $iconClass = "green";
+                        if($row->user_id == \Auth::user()->id){
+                            if($row->status == "E"){
+                                $iconClass = "red";
+                            }else{
+                                $iconClass = "green";
+                            }
+                            $btn = '<ul class="actions-btns">
+                                <li class="action" data-toggle="modal" data-target="#editvideos"><a href="javascript:void(0);" class="video-edit" data-id="'.$row->id.'" data-url="'.route('branchadmin-videos.edit', $row->id).'"><i class="fas fa-pen"></i></a></li>
+                                <li class="action bg-danger"><a href="#" class="delete_modal" data-toggle="modal" data-target="#delete_modal"  data-url="'.route('branchadmin-videos.destroy', $row->id).'" data-id="'.$row->id.'" data-title="Video"><i class="fas fa-trash"></i></a></li>
+                                <li class="action shield '.$iconClass.'"><a href="'.route('branchadmin-videos-changestatus', $row->id ).'"><img src="'.asset('assets/images/icons/blocked.svg').'" class=""></a></li>
+                                </ul>';
+                            return $btn;
                         }
-                        $btn = '<ul class="actions-btns">
-                            <li class="action" data-toggle="modal" data-target="#editvideos"><a href="javascript:void(0);" class="video-edit" data-id="'.$row->id.'" data-url="'.route('branchadmin-videos.edit', $row->id).'"><i class="fas fa-pen"></i></a></li>
-                            <li class="action bg-danger"><a href="#" class="delete_modal" data-toggle="modal" data-target="#delete_modal"  data-url="'.route('branchadmin-videos.destroy', $row->id).'" data-id="'.$row->id.'" data-title="Video"><i class="fas fa-trash"></i></a></li>
-                            <li class="action shield '.$iconClass.'"><a href="'.route('branchadmin-videos-changestatus', $row->id ).'"><img src="'.asset('assets/images/icons/blocked.svg').'" class=""></a></li>
-                            </ul>';
-                        return $btn;
+                        else{
+                            return '';
+                        }
                     })
                     ->rawColumns(['checkbox','action'])
                     ->make(true);
