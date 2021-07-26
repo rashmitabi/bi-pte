@@ -968,7 +968,7 @@ class UsersController extends Controller
     }
 
     public function SendEmail(Request $request){
-        // dd($request->all());
+        //dd($request->all());
         $user_ids  = $request->user_ids;
         $emailtemplate  = $request->emailtemplate;
         
@@ -976,7 +976,7 @@ class UsersController extends Controller
         if($template)
         {
             $allEmails= User::whereIn('id',$user_ids)->pluck('email')->toArray();
-            $data = ['body'=>$template->body];
+            $data = ['body'=>$request->body,'subject'=>$template->subject];
             $flag = 0;
             try{
                 Mail::to($allEmails)->send(new SendEmailUser($data));

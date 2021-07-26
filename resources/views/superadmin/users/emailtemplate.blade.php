@@ -5,7 +5,7 @@
     <div class="form-group row">
       <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Select Email Template</label>
       <div class="col-12 col-md-7 col-xl-7 col-sm-12">
-        <select name="emailtemplate" id="emailtemplate" >
+        <select name="emailtemplate" class="emailtemplate" id="emailtemplate" >
             <option selected disabled value='no'>select Email Template</option>
             @foreach($templates as $template)
               <option value="{{ $template->id }}" data-subject="{{ $template->id }}" data-body="{{ $template->body }}">{{ $template->name }}</option>
@@ -14,7 +14,13 @@
         <span class="error-msg" id="emailtemplateError"></span>
       </div> 
     </div>
-    
+    <div class="form-group row">
+        <label class="col-12 col-form-label pt-0 required">Email Body</label>
+        <div class="col-12">
+            <textarea id="editor23"></textarea>
+            <span class="error-msg" id="bodyError"></span>
+        </div>
+    </div>
     <div class="form-group row">
       <div class="col-12 col-md-12 col-xl-11 col-sm-12 save-btn">
         <!-- @if(isset($user->id))
@@ -30,5 +36,6 @@
 
       </div>
     </div>
+
   </form>
 </div>
