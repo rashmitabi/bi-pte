@@ -21,7 +21,7 @@
         <div class="row mx-0 align-items-center">
             <div class="col-12 col-md-12 col-xl-12 col-sm-8 left p-0">
                 <!-- <h1 class="title mb-4">Manage Subscription</h1> -->
-                <table id="prediction" class="table table-striped table-bordered dt-responsive nowrap"
+                <table id="prediction" class="table table-striped table-bordered dt-responsive wrap"
                     style="width:100%">
                     <thead>
                         <tr>
