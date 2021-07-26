@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Institues;
 use App\Models\User;
+use App\Models\Activities;
 use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
@@ -222,8 +223,18 @@ class ProfileController extends Controller
 
             $result2 = Institues::where('user_id',$id)->update($institue);
              if($result2){
-                /*return redirect()->route('branchadmin-profile.index')
-                ->with('success','Profile updated successfully!');*/
+                //add activity log
+                $activity_data = array(
+                    'user_id' => \Auth::user()->id,
+                    'role_id' => \Auth::user()->role_id,
+                    'subject' => 'Updated its profile settings',
+                    'message' => $input['iname'].' has updated its profile settings.',
+                    'ip_address' => getUserIP(),
+                    'latitude' => '',
+                    'longitude' => ''
+                );
+                $activity = Activities::create($activity_data);
+
                 \Session::put('success', 'Profile updated successfully!');
                 return true;
             }

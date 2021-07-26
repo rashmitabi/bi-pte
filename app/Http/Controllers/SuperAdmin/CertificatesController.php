@@ -26,7 +26,11 @@ class CertificatesController extends Controller
                              $join->on('student_tests.test_id', '=', 'test_results.test_id');
                          })
                 ->where('student_tests.status', 'C')
-                ->groupBy('test_id', 'user_id')
+                //mysql group by
+                //->groupBy('test_id', 'user_id')
+
+                //pgsql group by
+                ->groupBy('test_results.test_id', 'test_results.user_id')
                 ->get();              
             return Datatables::of($data)
                     ->addIndexColumn()

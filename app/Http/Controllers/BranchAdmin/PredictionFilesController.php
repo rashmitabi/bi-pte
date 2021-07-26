@@ -25,8 +25,16 @@ class PredictionFilesController extends Controller
     public function index(Request $request)
     {
         if($request->ajax())  {
-            $data = PredictionFiles::latest()->where('user_id',\Auth::user()->id)->get();
-            //$data = PredictionFiles::with(['user'])->latest()->get();
+            if(\Auth::user()->institue->show_admin_files == 'Y'){
+                $superadmin = User::select('id')->where('role_id', 1)->first();
+                $data = PredictionFiles::latest()
+                ->where('user_id',\Auth::user()->id)
+                ->orWhere('user_id',$superadmin->id)
+                ->get();
+            }
+            else{
+                $data = PredictionFiles::latest()->where('user_id',\Auth::user()->id)->get();
+            }  
             return Datatables::of($data)
                     ->addIndexColumn()
                     ->addColumn('title', function($row){
@@ -44,7 +52,11 @@ class PredictionFilesController extends Controller
                         return ucfirst($row->section->section_name).' - '.ucfirst($row->design->design_name);
                     })
                     ->addColumn('created by', function($row){
-                        return $row->user->first_name.' '.$row->user->last_name.' ('.$row->user->role->role_name.')';
+                        if($row->user_id == \Auth::user()->id){
+                            return 'You';
+                        }else{
+                            return 'Superadmin';
+                        }
                     })
                     ->addColumn('created date', function($row){
                         return date('Y-m-d', strtotime($row->created_at));

@@ -65,5 +65,7 @@ class Kernel extends HttpKernel
         'superadmin' => \App\Http\Middleware\SuperAdmin::class,
         'branchadmin' => \App\Http\Middleware\BranchAdmin::class,
         'student' => \App\Http\Middleware\Student::class,
+        'branchVideo'=> \App\Http\Middleware\BranchVideoPermission::class,
+        'branchFile'=> \App\Http\Middleware\BranchPredictionFiles::class,
     ];
 }

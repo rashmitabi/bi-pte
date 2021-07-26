@@ -4,6 +4,7 @@ namespace App\Http\Controllers\SuperAdmin;
 use App\Models\Subscriptions;
 use App\Models\Roles;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Razorpay;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreSubscriptionRequest;
 use App\Http\Requests\UpdateSubscriptionRequest;
@@ -102,6 +103,7 @@ class SubscriptionsController extends Controller
         $input['practice_questions'] = 0;
         $result = Subscriptions::create($input);
         if($result){
+
             return redirect()->route('subscription.index')
                         ->with('success','Subscription created successfully!');
         }else{

@@ -11,7 +11,7 @@ use App\Models\Roles;
 use App\Models\Sections;
 use App\Models\Institues;
 use App\Models\EmailTemplates;
-use App\Models\notification;
+use App\Models\Notifications;
 use Illuminate\Support\Facades\Hash;
 use DataTables;
 use App\Http\Requests\StoreUserRequest;
@@ -159,7 +159,7 @@ class UsersController extends Controller
     public function getAssignTest(Request $request,$id)
     {
         $type = $request->type;
-        $tests = Tests::where(['type'=>$type])->latest()->get();
+        $tests = Tests::where(['type'=>$type,'generated_by_user_id'=>\Auth::user()->id])->latest()->get();
         $user_id = $id;
         $user = User::find($id);
         $userAssignTests = UserAssignTests::where('user_id',$user_id)->first();
@@ -231,7 +231,7 @@ class UsersController extends Controller
     public function getMultipleAssignTest(Request $request)
     {
         $type = $request->type;
-        $tests = Tests::where(['type'=>$type])->latest()->get();
+        $tests = Tests::where(['type'=>$type,'generated_by_user_id'=>\Auth::user()->id])->latest()->get();
         $user_id = implode(",",$request->id);
         $role = $request->role;
         $users = User::whereIn('id', $request->id)->get();     
@@ -495,7 +495,7 @@ class UsersController extends Controller
                     'city'=> $input['icity'],
                     'gstin' => $input['igstin'],
                     'validity' => $input['validity'],
-                    'status' => $input['status'],
+                    'status' => $input['istatus'],
                     'ip_address' => '',
                     'latitude' => '',
                     'longitude' => ''
