@@ -244,7 +244,7 @@ class UsersController extends Controller
         $request->validate([
             'fname' => 'required|min:3|max:100',
             'lname' => 'required|min:3|max:100',
-            'uname'=>'required|unique:users,name|max:255',
+            'uname'=>'required|regex:/^[a-zA-Z0-9]+$/u|unique:users,name|max:255,',
             'email'=>'required|email|unique:users,email|max:255',
             'dob' =>'required|before:18 years ago',
             'mobileno' =>'required|digits:10',
@@ -359,7 +359,7 @@ class UsersController extends Controller
         $request->validate([
             'fname' => 'required|min:3|max:100',
             'lname' => 'required|min:3|max:100',
-            'uname'=>'required|unique:users,name,'.$id.'|max:255',
+            'uname'=>'required|regex:/^[a-zA-Z0-9]+$/u|unique:users,name,'.$id.'|max:255',
             'email'=>'required|email|unique:users,email,'.$id.'|max:255',
             'dob' =>'required|before:18 years ago',
             'mobileno' =>'required|max:20',
