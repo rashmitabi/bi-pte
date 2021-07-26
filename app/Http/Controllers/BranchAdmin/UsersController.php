@@ -491,7 +491,7 @@ class UsersController extends Controller
     {
         // $user = implode(",",$request->user_ids);
         $user = $request->user_ids;
-        $templates = EmailTemplates::get();
+        $templates = EmailTemplates::where('user_id',\Auth::user()->id)->get();
         $html_password = view($this->moduleTitleP.'emailtemplate',compact('user','templates'))->render();
 
         return response()->json([
@@ -504,18 +504,21 @@ class UsersController extends Controller
         // dd($request->all());
         $user_ids  = $request->user_ids;
         $emailtemplate  = $request->emailtemplate;
-        
-        $template = EmailTemplates::find($emailtemplate);
-        $allEmails= User::whereIn('id',$user_ids)->pluck('email')->toArray();
-        //dd($template->body,$allEmails);
-        $data = ['body'=>$template->body];
         $flag = 0;
-         // \Mail::to('your_receiver_email@gmail.com')->send(new \App\Mail\MyTestMail($details));
-        try{
-            Mail::to($allEmails)->send(new SendEmailUser($data));
-            $flag = 1;
-        }catch(\Exception $e){
-            dd($e->getMessage());
+        $template = EmailTemplates::find($emailtemplate);
+        if($template)
+        {
+            $allEmails= User::whereIn('id',$user_ids)->pluck('email')->toArray();
+            //dd($template->body,$allEmails);
+            $data = ['body'=>$request->body,'subject'=>$template->subject];
+             // \Mail::to('your_receiver_email@gmail.com')->send(new \App\Mail\MyTestMail($details));
+            try{
+                Mail::to($allEmails)->send(new SendEmailUser($data));
+                $flag = 1;
+            }catch(\Exception $e){
+                $flag = 0;
+                dd($e->getMessage());
+            }
         }
         
         if($flag == 1){

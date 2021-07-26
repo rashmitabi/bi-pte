@@ -958,7 +958,7 @@ class UsersController extends Controller
     {
         // $user = implode(",",$request->user_ids);
         $user = $request->user_ids;
-        $templates = EmailTemplates::get();
+        $templates = EmailTemplates::where('user_id',\Auth::user()->id)->get();
         $html_password = view($this->moduleTitleP.'emailtemplate',compact('user','templates'))->render();
 
         return response()->json([
