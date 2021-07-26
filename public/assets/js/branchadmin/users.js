@@ -954,4 +954,22 @@ $(document).ready(function() {
         $(this).parent(".custom-file").attr("data-text", $(this).val().replace(/.*(\/|\\)/, '') );
         $(this).next('.custom-file-label').text('');
     });
+
+  //student result data start
+  $('body').on('click','.view-test-result',function(){
+    var id = $(this).data('id');
+    var apiUrl = $(this).data('url');
+    $.ajax({
+      url: apiUrl,
+      type:'GET',
+      data:{'id' : id},
+      beforeSend: function(){
+        $('#test-results-body').html('<div class="mb-5 text-center"><i class="fa fa-spinner fa-spin"></i>  Please Wait...</div>');
+      },
+      success:function(data) {
+        $('#test-results-body').html(data.html);
+      },
+    }); 
+  });
+  //student result data end
 });

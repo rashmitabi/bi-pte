@@ -103,6 +103,8 @@ Route::group(['middleware' => ['auth', 'verified','superadmin']], function () {
 
     Route::post('superadmin/users/update/{id}', [App\Http\Controllers\SuperAdmin\UsersController::class, 'update'])
         ->name('superadmin-user-update');
+
+    Route::get('superadmin/users/result/{id}', [App\Http\Controllers\SuperAdmin\UsersController::class, 'result'])->name('superadmin-student-result');  
     
     Route::resource('superadmin/module', App\Http\Controllers\SuperAdmin\ModulesController::class)->names('modules');
 
@@ -500,6 +502,7 @@ Route::group(['middleware' => ['auth', 'verified','branchadmin']], function () {
     Route::post('branchadmin/students/postMultipleAssignTest', [App\Http\Controllers\BranchAdmin\UsersController::class, 'postMultipleAssignTest'])->name('branchadmin-students-post-multiple-assign-test');
      Route::post('branchadmin/students/checkUniqueFields', [App\Http\Controllers\BranchAdmin\UsersController::class, 'checkUniqueUsername'])->name('branchadmin-check-unique-validation');
     Route::post('branchadmin/students/update/{id}', [App\Http\Controllers\BranchAdmin\UsersController::class, 'update'])->name('branchadmin-students-update');
+    Route::get('branchadmin/students/result/{id}', [App\Http\Controllers\BranchAdmin\UsersController::class, 'result'])->name('branchadmin-student-result');    
     /*Branch Admin students module start*/
     
     Route::get('branchadmin/subscriptionpackages',[App\Http\Controllers\BranchAdmin\UsersController::class,'subscription'])->name('branchadmin-subscriptionpackages');

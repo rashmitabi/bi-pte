@@ -62,6 +62,23 @@
 
 
   <!-- Modal -->
+  <div class="modal fade" id="result" tabindex="-1" 
+      aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header pb-3 bg-light">
+          <h5 class="mt-1">Test Results</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true"><i class="fas fa-times"></i></span>
+          </button>
+        </div>
+        <div class="modal-body" id="test-results-body">
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="modal fade" id="mocktest" tabindex="-1" 
       aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
