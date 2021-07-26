@@ -50,7 +50,7 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
-
+    protected $appends = ['fullname'];
     /**
      * The attributes that should be cast to native types.
      *
@@ -83,5 +83,10 @@ class User extends Authenticatable
     public function children()
     {
         return $this->hasMany(User::class, 'parent_user_id');
+    }
+
+    public function getFullnameAttribute($value)
+    {
+        return $this->first_name.' '.$this->last_name;
     }
 }

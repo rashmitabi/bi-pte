@@ -312,6 +312,8 @@ class UsersController extends Controller
 
         $result='';
         $type = $request->input('type');
+        $body = '';
+        $subject = '';
         $regexUrl = '/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/';
         if($type == 3){
             $request->validate([
@@ -365,7 +367,9 @@ class UsersController extends Controller
                 'simage.mimes'=>'Image must be file jpeg,png,jpg format'
             ]);
             $input  = \Arr::except($request->all(),array('_token'));
-            
+            $body = '</p>You are successfuly register as Student.</p>';
+            $subject = 'Student register';
+            $emailid = $input['semail'];
             if(!isset($input['sstatus'])){
                 $input['sstatus'] = 'P';
             }
@@ -462,6 +466,9 @@ class UsersController extends Controller
                 'bimage.max'=>'Background image maximum length allow 2048'
                ]);
             $input  = \Arr::except($request->all(),array('_token'));
+            $body = '</p>You are successfuly register as Branch admin.</p>';
+            $subject = 'Branch admin register';
+            $emailid = $input['iemail'];
 
             if(!isset($input['istatus'])){
                 $input['istatus'] = 'P';
@@ -546,8 +553,14 @@ class UsersController extends Controller
             $result = Institues::create($institue);
             
         }
-
+        $data = ['body'=>$body,'subject'=>$subject];
         if($result){
+            try{
+                Mail::to($emailid)->send(new SendEmailUser($data));
+                $flag = 1;
+            }catch(\Exception $e){
+                dd($e->getMessage());
+            }
             return redirect()->route('users.index')
                         ->with('success','User created successfully!');
         }else{
@@ -603,6 +616,9 @@ class UsersController extends Controller
     public function update(Request $request, $id)
     {
         $type = $request->input('type');
+        $subject  = '';
+        $body     = '';
+        $user_emailid = '';
         if($type == 3){
             $request->validate([
                 'type'=>'required',
@@ -649,7 +665,6 @@ class UsersController extends Controller
                 'simage.mimes'=>'Image must be file jpeg,png,jpg format'
             ]);
             $input  = \Arr::except($request->all(),array('_token'));
-                
             if ($image = $request->file('simage')) {
                 $destinationPath = 'assets/images/profile/';
                 $fileNameToStore = date('YmdHis') . "." . $image->getClientOriginalExtension();
@@ -709,6 +724,10 @@ class UsersController extends Controller
             }
             
             $result = User::where('id',$id)->update($user_input);
+            $user = User::find($id);
+            $subject = 'Student Profile Update';
+            $body    = '<p>Hello '.$user->fullname.', Your profile update by superadmin.</p>';
+            $user_emailid = $user->email;
         }else if($type == 2){
             $request->validate([
                 'type'=>'required',
@@ -885,6 +904,10 @@ class UsersController extends Controller
             }
 
             $result = Institues::where('user_id',$id)->update($institue);
+            $user = User::find($id);
+            $subject = 'BranchAdmin Profile Update';
+            $body    = '<p>Hello '.$user->fullname.', Your profile update by superadmin.</p>';
+            $user_emailid = $user->email;
         }
 
         if($result){
@@ -912,6 +935,12 @@ class UsersController extends Controller
                 );
             }
             $notification = Notifications::create($notification_data);
+            $data = ['body'=>$body,'subject'=>$subject];
+            try{
+                Mail::to($user_emailid)->send(new SendEmailUser($data));
+            }catch(\Exception $e){
+                dd($e->getMessage());
+            }
             \Session::put('success', 'User updated successfully!');
             return true;
             
@@ -930,9 +959,19 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
+        $user = User::find($id);
+        $body = '<p>'.$user->fullname.' are remove from PTE-education system!</p>';
+        $subject = 'Remove from PTE';
+        $data = ['body'=>$body,'subject'=>$subject];
+        $emailid = $user->email;
         $result = User::where('id',$id)->delete();
         if($result)
         {
+            try{
+                Mail::to($emailid)->send(new SendEmailUser($data));
+            }catch(\Exception $e){
+                dd($e->getMessage());
+            }
             return redirect()->route('users.index')
                         ->with('success','User deleted successfully');
         }
@@ -1008,6 +1047,27 @@ class UsersController extends Controller
             $user_ids = explode(",",$request->user_id);
             $result = User::whereIn('id',$user_ids)->update(['status'=>$status]);
             if($result){
+                $st_name = '';
+                if($status == 'A'){
+                    $st_name = 'Active';
+                }else if($status == 'P'){
+                    $st_name = 'Pending';
+                }else{
+                    $st_name = 'Reject';
+                }
+                foreach($user_ids as $new_user)
+                {
+                    $user = User::find($new_user);
+                    $body = '<p>Hello,'.$user->fullname.' now your status in PTE education is '.$st_name.'.</p>';
+                    $subject = 'Status Change';
+                    $data = ['body'=>$body,'subject'=>$subject];
+                    $emailid = $user->email;
+                    try{
+                        Mail::to($emailid)->send(new SendEmailUser($data));
+                    }catch(\Exception $e){
+                        dd($e->getMessage());
+                    }
+                }
                 \Session::put('success', 'Status Updated successfully');
                 return true;
                 
@@ -1027,6 +1087,24 @@ class UsersController extends Controller
             }
             $result = $user->update();
             if($result){
+                $user = User::find($id);
+                $st_name = '';
+                if($user->status == 'A'){
+                    $st_name = 'Active';
+                }else if($user->status == 'P'){
+                    $st_name = 'Pending';
+                }else{
+                    $st_name = 'Reject';
+                }
+                $body = '<p>Hello,'.$user->fullname.' now your status in PTE education is '.$st_name.'.</p>';
+                $subject = 'Status Change';
+                $data = ['body'=>$body,'subject'=>$subject];
+                $emailid = 'vishal.mistry.bi@gmail.com';
+                try{
+                    Mail::to($emailid)->send(new SendEmailUser($data));
+                }catch(\Exception $e){
+                    dd($e->getMessage());
+                }
                 return redirect()->route('users.index')
                             ->with('success','Status Updated successfully');
             }else{
