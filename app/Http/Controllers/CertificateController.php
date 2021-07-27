@@ -11,11 +11,14 @@ class CertificateController extends Controller
 {
     public function download($id){
     	$certificate = Certificates::with(['test', 'student'])->where(['id' => $id])->first();
-		view()->share('data', $certificate);
-        $pdf = PDF::loadView('certificate', $certificate);
-        $fileName = time().'_'.$certificate->test->test_name.'.pdf';
+    	if($certificate){
+    		view()->share('data', $certificate);
+	        $pdf = PDF::loadView('certificate', $certificate);
+	        $fileName = time().'_'.$certificate->test->test_name.'.pdf';
 
-        // download PDF file with download method
-       	return $pdf->download($fileName);
+	        // download PDF file with download method
+	       	return $pdf->download($fileName);
+    	}
+		
     }
 }
