@@ -54,7 +54,8 @@ Auth::routes();
 
 /*Notifications module end*/
 
-
+//Download certificate url
+Route::get('certificate/download/{id}', [App\Http\Controllers\CertificateController::class, 'download'])->name('download-certificate');
 
 //start Super admin routes
 
