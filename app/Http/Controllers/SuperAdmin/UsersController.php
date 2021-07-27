@@ -5,14 +5,27 @@ namespace App\Http\Controllers\SuperAdmin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
-use App\Models\Tests;
+use App\Models\DeviceLogs;
+use App\Models\Notifications;
+use App\Models\Activities;
+use App\Models\UserSession;
+use App\Models\StudentsAnswerData;
+use App\Models\TestResults;
+use App\Models\StudentTests;
 use App\Models\UserAssignTests;
+use App\Models\Certificates;
+use App\Models\StudentDetails;
+use App\Models\Videos;
+use App\Models\PredictionFiles;
+use App\Models\Questions;
+use App\Models\Questiondata;
+use App\Models\Answerdata;
+
+use App\Models\Tests;
 use App\Models\Roles;
 use App\Models\Sections;
 use App\Models\Institues;
 use App\Models\EmailTemplates;
-use App\Models\Notifications;
-use App\Models\TestResults;
 use Illuminate\Support\Facades\Hash;
 use DataTables;
 use App\Http\Requests\StoreUserRequest;
@@ -24,7 +37,7 @@ use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\SendEmail;
 use App\Mail\SendEmailUser;
-
+use DB;
 class UsersController extends Controller
 {
     private $moduleTitleP = 'superadmin.users.';
@@ -966,26 +979,106 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-        $user = User::find($id);
-        $body = '<p>'.$user->fullname.' are remove from PTE-education system!</p>';
-        $subject = 'Remove from PTE';
-        $data = ['body'=>$body,'subject'=>$subject];
-        $emailid = $user->email;
-        $result = User::where('id',$id)->delete();
-        if($result)
+        $user    = User::find($id);
+        $body    = '';
+        $subject = '';
+        $emailid = '';
+        if($user->role_id == '3')
         {
             try{
+                DB::beginTransaction();
+                    DeviceLogs::where('user_id',$id)->delete();
+                    Notifications::where('user_id',$id)->delete();
+                    Activities::where('user_id',$id)->delete();
+                    UserSession::where('user_id',$id)->delete();
+                    StudentsAnswerData::where('student_id',$id)->delete();
+                    TestResults::where('user_id',$id)->delete();
+                    StudentTests::where('user_id',$id)->delete();
+                    UserAssignTests::where('user_id',$id)->delete();
+                    Certificates::where('student_user_id',$id)->delete();
+                    StudentDetails::where('user_id',$id)->delete();
+                    User::where('id',$id)->delete();
+                DB::commit();
+                //Mail send code
+                $body = '<p>'.$user->fullname.' are remove from PTE-education system!</p>';
+                $subject = 'Remove from PTE';
+                $data = ['body'=>$body,'subject'=>$subject];
+                $emailid = $user->email;
                 Mail::to($emailid)->send(new SendEmailUser($data));
+                
+                return redirect()->route('users.index')->with('success','Student deleted successfully');
             }catch(\Exception $e){
+                DB::rollback();
                 dd($e->getMessage());
+                return redirect()->route('users.index')->with('error','Sorry!Something wrong.Try again later!');
             }
-            return redirect()->route('users.index')
-                        ->with('success','User deleted successfully');
         }
         else
         {
-            return redirect()->route('users.index')
-                        ->with('error','Sorry!Something wrong.Try again later!');
+            $allTests = Tests::where('generated_by_user_id',$id)->pluck('id')->toArray();
+            $allStudents = User::where('parent_user_id',$id)->pluck('id')->toArray();
+            try{
+                DB::beginTransaction();
+                    if(count($allTests)>0)
+                    {
+                        foreach($allTests as $newTest)
+                        {
+                            $questions = Questions::where('test_id',$newTest)->pluck('id')->toArray();
+                            if(count($questions)>0)
+                            {
+                                Questiondata::whereIn('question_id',$questions)->delete();
+                                Answerdata::whereIn('question_id',$questions)->delete();
+                                StudentsAnswerData::whereIn('question_id',$questions)->delete();
+                                TestResults::whereIn('question_id',$questions)->delete();
+                                StudentTests::where('test_id',$id)->delete();
+                                Questions::where('test_id',$id)->delete();
+                                Tests::where('id',$id)->delete();
+                            }
+                            else
+                            {
+                                Tests::where('id',$newTest)->delete();
+                            }
+                        }
+                    }
+                    if(count($allStudents)>0)
+                    {
+                        foreach($allStudents as $newStudent)
+                        {
+                            DeviceLogs::where('user_id',$newStudent)->delete();
+                            Notifications::where('user_id',$newStudent)->delete();
+                            Activities::where('user_id',$newStudent)->delete();
+                            UserSession::where('user_id',$newStudent)->delete();
+                            StudentsAnswerData::where('student_id',$newStudent)->delete();
+                            TestResults::where('user_id',$newStudent)->delete();
+                            StudentTests::where('user_id',$newStudent)->delete();
+                            UserAssignTests::where('user_id',$newStudent)->delete();
+                            Certificates::where('student_user_id',$newStudent)->delete();
+                            StudentDetails::where('user_id',$newStudent)->delete();
+                            User::where('id',$newStudent)->delete();
+                        }
+                    }
+                    DeviceLogs::where('user_id',$id)->delete();
+                    Notifications::where('user_id',$id)->delete();
+                    Activities::where('user_id',$id)->delete();
+                    UserSession::where('user_id',$id)->delete();
+                    Videos::where('user_id',$id)->delete();
+                    PredictionFiles::where('user_id',$id)->delete();
+                    EmailTemplates::where('user_id',$id)->delete();
+                    User::where('id',$id)->delete();
+                DB::commit();
+                
+                $body = '<p>'.$user->fullname.' are remove from PTE-education system!</p>';
+                $subject = 'Remove from PTE';
+                $data = ['body'=>$body,'subject'=>$subject];
+                $emailid = $user->email;
+                Mail::to($emailid)->send(new SendEmailUser($data));
+
+                return redirect()->route('users.index')->with('success','User deleted successfully');
+            }catch(\Exception $e){
+                DB::rollback();
+                dd($e->getMessage());
+                return redirect()->route('users.index')->with('error','Sorry!Something wrong.Try again later!');
+            }
         }
     }
     public function getChangeStatus(Request $request)

@@ -272,8 +272,8 @@ class TestsController extends Controller
                     DB::beginTransaction();
                         Questiondata::whereIn('question_id',$questions)->delete();
                         Answerdata::whereIn('question_id',$questions)->delete();
-                        StudentsAnswerData::where('question_id',$questions)->delete();
-                        TestResults::where('question_id',$questions)->delete();
+                        StudentsAnswerData::whereIn('question_id',$questions)->delete();
+                        TestResults::whereIn('question_id',$questions)->delete();
                         StudentTests::where('test_id',$id)->delete();
                         Questions::where('test_id',$id)->delete();
                         Tests::where('id',$id)->delete();
