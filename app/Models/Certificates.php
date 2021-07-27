@@ -26,4 +26,14 @@ class Certificates extends Model
         'written_discourse',
         'file_path'
     ];
+
+    public function test() 
+    {
+        return  $this->belongsTo('App\Models\Tests', 'test_id');
+    }
+
+    public function student()
+    {
+        return $this->belongsTo(User::class, 'student_user_id');
+    }
 }
