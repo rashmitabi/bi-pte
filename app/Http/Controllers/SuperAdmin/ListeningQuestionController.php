@@ -761,7 +761,7 @@ class ListeningQuestionController extends Controller
     public function updateWriteFormDictations(Request $request)/*Update write form dictations*/
     {
         $input  = \Arr::except($request->all(),array('_token'));
-
+        $test_id = $input['test_id'];
         try{
             for($i=15;$i<=17;$i++)
             {

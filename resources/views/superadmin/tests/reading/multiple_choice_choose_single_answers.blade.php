@@ -71,9 +71,11 @@
                                        <input type="text" class="form-control " name="ans_options_{{$arrayValue}}" id="ans_options_{{$arrayValue}}" placeholder="Which of the Following Are True Statements?" value="{{ $questions->questiondata[$i]->data_value }}">
                                     </div>
                                     @if($label == $count)
-                                    <div class="minus-icon" onclick="removeQuestionColumn()" data-id="{{$arrayValue}}">
-                                       <a><i class='fas fa-minus'></i></a>
-                                    </div>
+                                       @if($label > 1)
+                                       <div class="minus-icon" onclick="removeQuestionColumn()" data-id="{{$arrayValue}}">
+                                          <a><i class='fas fa-minus'></i></a>
+                                       </div>
+                                       @endif
                                     <div class="plus-icon" onclick="addQuestionColumn()" data-id="{{$arrayValue}}">
                                        <a><i class="fas fa-plus"></i></a>
                                     </div>
