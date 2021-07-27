@@ -5,16 +5,24 @@ namespace App\Http\Controllers\BranchAdmin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
-use App\Models\Tests;
+use App\Models\StudentDetails;
+use App\Models\StudentTests;
 use App\Models\UserAssignTests;
+use App\Models\UserSession;
+use App\Models\StudentAnswerData;
+use App\Models\TestResults;
+use App\Models\Certificates;
+use App\Models\DeviceLogs;
+use App\Models\Activities;
+use App\Models\Notifications;
+use App\Models\StudentsAnswerData;
+use App\Models\PrecticeAnswerData;
+use App\Models\Tests;
 use App\Models\Roles;
 use App\Models\Sections;
 use App\Models\Institues;
 use App\Models\EmailTemplates;
-use App\Models\Notifications;
-use App\Models\Activities;
 use App\Models\Subscriptions;
-use App\Models\TestResults;
 use Illuminate\Support\Facades\Hash;
 use DataTables;
 use App\Http\Requests\StoreUserRequest;
@@ -22,10 +30,9 @@ use Stevebauman\Location\Facades\Location;
 use App\Exports\InstituteExport;
 use App\Exports\studentExport;
 use Maatwebsite\Excel\Facades\Excel;
-
 use Illuminate\Support\Facades\Mail;
 use App\Mail\SendEmailUser;
-
+use DB;
 class UsersController extends Controller
 {
     private $moduleTitleP = 'branchadmin.student.';
@@ -459,8 +466,8 @@ class UsersController extends Controller
     public function destroy($id)
     {
         $name = getUserName($id);
-        $result = User::where('id',$id)->delete();
-        if($result)
+        $user = User::find($id);
+        if($user)
         {
             $activity_data = array(
                 'user_id' => \Auth::user()->id,
@@ -471,15 +478,32 @@ class UsersController extends Controller
                 'latitude' => '',
                 'longitude' => ''
             );
-            $activity = Activities::create($activity_data);
-
-            return redirect()->route('branchadmin-students.index')
-                        ->with('success','User deleted successfully');
+            try{
+                DB::beginTransaction();
+                    DeviceLogs::where('user_id',$id)->delete();
+                    Notifications::where('user_id',$id)->delete();
+                    Activities::where('user_id',$id)->delete();
+                    UserSession::where('user_id',$id)->delete();
+                    StudentsAnswerData::where('student_id',$id)->delete();
+                    TestResults::where('user_id',$id)->delete();
+                    StudentTests::where('user_id',$id)->delete();
+                    UserAssignTests::where('user_id',$id)->delete();
+                    Certificates::where('student_user_id',$id)->delete();
+                    StudentDetails::where('user_id',$id)->delete();
+                    User::where('id',$id)->delete();
+                    $activity = Activities::create($activity_data);
+                DB::commit();
+                return redirect()->route('branchadmin-students.index')->with('success','Student deleted successfully');
+            }catch(\Exception $e){
+                DB::rollback();
+                dd($e->getMessage());
+                return redirect()->route('branchadmin-students.index')->with('error','Sorry!Something wrong.Try again later!');
+            }
         }
         else
         {
             return redirect()->route('branchadmin-students.index')
-                        ->with('error','Sorry!Something wrong.Try again later!');
+            ->with('error','Sorry!Something wrong.Try again later!');
         }
     }
     public function getChangeStatus(Request $request)
