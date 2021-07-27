@@ -122,7 +122,7 @@ class CertificatesController extends Controller
             $result = Certificates::create($input);
             if($result){
                 $certificate_id = $result->id;
-                $student = getUserName($input['student_user_id']);
+                $student = User::select('name', 'email')->where('id',$user_id)->first();
                 //send notification                
                 if($test->type == "M"){
                     $type = "Mock Test";
@@ -141,7 +141,7 @@ class CertificatesController extends Controller
                 $notification = Notifications::create($notification_data);
                 //send email
                 $subject = "New certificate has been generated";
-                $body = "Hello ".$student."
+                $body = "Hello ".$student->name."
                     <br><br>
                     Administrator has reviewed your score and generated a certificate based on ".$type." - ".$test->test_name." attempted by you.
                     <br><br>
@@ -150,12 +150,10 @@ class CertificatesController extends Controller
                     </a>
                     <br><br>
                     Thanks & Regards,<br><br>PTE Team";
-                $data = ['body'=>$body,'subject'=>$subject];
+                $emaildata = ['body'=>$body,'subject'=>$subject];
                 try{
-                    Mail::to('dev.nancy.bi@gmail.com')->send(new SendEmailUser($data));
-                    $flag = 1;
+                    Mail::to($student->email)->send(new SendEmailUser($emaildata));
                 }catch(\Exception $e){
-                    $flag = 0;
                     dd($e->getMessage());
                 }
                 

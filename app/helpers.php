@@ -224,4 +224,9 @@ function getUserName($user_id){
     return $user->name;
 }
 
+function getUserEmail($user_id){
+    $user = User::select('email')->where('id',$user_id)->first();
+    return $user->email;
+}
+
 ?>
