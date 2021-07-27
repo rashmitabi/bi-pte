@@ -10,15 +10,19 @@ use Illuminate\Queue\SerializesModels;
 class SendEmailUser extends Mailable
 {
     use Queueable, SerializesModels;
-        public $details;
+        public $data;
+        public $subject;
+        public $body;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($details)
+    public function __construct($data)
     {
-       $this->details = $details;
+       $this->data = $data;
+       $this->subject = $this->data['subject'];
+       $this->body   = $this->data['body'];
     }
 
     /**
@@ -29,8 +33,8 @@ class SendEmailUser extends Mailable
     public function build()
     {
         // return $this->view('view.name');
-        return $this->subject("Mail from PTE.com")
-                    ->view('superadmin.mailtemplate.send-email-user');
+        return $this->subject($this->data['subject'])
+                    ->html($this->data['body']);
     }
 
     

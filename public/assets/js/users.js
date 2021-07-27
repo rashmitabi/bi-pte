@@ -505,15 +505,25 @@ $(document).ready(function() {
   });
   // institute all check functionality end
 
+  //put email template body in textarea model
+  $('body').on('change','.emailtemplate',function(){
+    $("#emailtemplateError").text("");
+    var body = $('option:selected', this).attr('data-body');
+      //$("#editor23").val(body);
+      CKEDITOR.instances.editor23.setData(body);
+  });
+
+  //send email from selected email templates.
   $('body').on('click','.user-email-template',function(){
     $("#emailtemplateError").text("");
     var url = $(this).data('url');
     var user_ids = $("#user_ids").val();
+    var emailbody = CKEDITOR.instances['editor23'].getData();
     var emailtemplate   = $("#emailtemplate :selected").val();
-    if(emailtemplate == ''){
+    if(emailtemplate == 'no'){
       $('#emailtemplateError').text("email template is required");
     }else{
-      var formdata = $('#emailsend').serialize();
+      var formdata = $('#emailsend').serialize()+'&body='+emailbody;
       $.ajax({
         url: url,
         type:'POST',
@@ -589,6 +599,9 @@ $(document).ready(function() {
             },
             success:function(data) {
               $('#show-send-email-body').html(data.html);
+              $("#editor23").each(function(_, ckeditor) {
+                CKEDITOR.replace(ckeditor);
+              });
             },
             error: function(response) {
               console.log(response.responseJSON.errors);
@@ -768,6 +781,9 @@ $(document).ready(function() {
             },
             success:function(data) {
               $('#show-send-email-body').html(data.html);
+              $("#editor23").each(function(_, ckeditor) {
+                CKEDITOR.replace(ckeditor);
+              });
             },
             error: function(response) {
               console.log(response.responseJSON.errors);

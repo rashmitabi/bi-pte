@@ -100,7 +100,7 @@
                thead{
                    th{
                              white-space: unset!important;
-                             padding-right: 7px!important;
+                             padding-right: 23px!important;
                    }
               }
          }
@@ -131,7 +131,7 @@
                thead{
                     th{
                          white-space: unset!important;
-                         padding-right: 20px!important;
+                         padding-right: 33px!important;
                     }
                }
           }
@@ -206,7 +206,7 @@
                }
                padding-left: 15px!important;
                .datapicker{
-                    max-width: 52%!important;
+                    max-width: 100%!important;
                     input{
                       margin-left: 0px!important;
                     }
@@ -258,7 +258,7 @@
                     .save-btn{
                          margin-top: 80px!important;
                          display: flex;
-                         justify-content: space-evenly;
+                         justify-content: space-around;
                          button{
                               margin: 0px!important;
                          }
@@ -333,13 +333,13 @@
                }
           }
           .dataTables_wrapper{
-               padding: 20px 0px 0px;
+               padding: 20px 0px 20px;
           }
           #prediction{
                thead{
                     th{
                               white-space: unset!important;
-                              padding-right: 13px!important;
+                              padding-right: 16px!important;
                     }
                }
           }
@@ -417,7 +417,7 @@
                thead{
                     th{
                          white-space: unset!important;
-                         padding-right: 8px!important;
+                         padding-right: 19px!important;
                     }
                }
           }
@@ -425,6 +425,15 @@
                padding: 5px!important;
                .delete-text{
                     padding-left: 22px;
+               }
+               .user-form{
+                   padding: 0px!important;
+                  .delete-btn{
+                       margin-bottom: 10px;
+                    }
+                  .edit-btn{
+                       margin-bottom: 10px;
+                   }
                }
           }
           .score-heading{
@@ -471,7 +480,7 @@
                     }
                     padding-left: 15px!important;
                     .datapicker{
-                         max-width: 52%!important;
+                         max-width: 100%!important;
                          input{
                            margin-left: 0px!important;
                          }
@@ -664,7 +673,7 @@
                }
                padding-left: 15px!important;
                .datapicker{
-                    max-width: 52%!important;
+                    max-width: 100%!important;
                     input{
                       margin-left: 0px!important;
                     }
@@ -882,7 +891,7 @@
                .custom-wrap-p{
                     padding-right: 0px!important;
                     .datapicker{
-                         max-width: 27%!important;
+                         max-width: 50%!important;
                          input{
                            margin-left: 0px!important;
                          }
@@ -929,7 +938,7 @@
                thead{
                    th{
                              white-space: unset!important;
-                             padding-right: 21px!important;
+                             padding-right: 33px!important;
                    }
               }
          }
@@ -944,9 +953,15 @@
           #videos{
                thead{
                     th{
-                         padding-right: 50px!important;
+                         padding-right: 23px!important;
                     }
                }
+          }
+          #expired_wrapper{
+               padding: 0px;
+          }
+          #near-to-expire_wrapper{
+               padding: 0px;
           }
           .custom-row{
                justify-content: space-between;
@@ -994,11 +1009,11 @@
                }
           }
      }
-     .save-btn{
-          button{
-               margin-right: 10px;
-          }
-     }
+     // .save-btn{
+     //      button{
+              
+     //      }
+     // }
 }
 
 /*laptop devices 991 up devices */
@@ -1025,6 +1040,12 @@
                            width: 23%;
                          }
                     }
+               }
+               #expired_wrapper{
+                    padding: 0px;
+               }
+               #near-to-expire_wrapper{
+                    padding: 0px;
                }
                #device{
                     thead{
@@ -1085,6 +1106,12 @@
                          padding-right: 50px!important;
                     }
                }
+          }
+          #expired_wrapper{
+               padding: 0px;
+          }
+          #near-to-expire_wrapper{
+               padding: 0px;
           }
      }
 

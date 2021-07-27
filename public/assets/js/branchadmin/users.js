@@ -394,15 +394,25 @@ $(document).ready(function() {
   });
   // institute all check functionality end
 
+  //put email template body in textarea model
+  $('body').on('change','.emailtemplate',function(){
+    $("#emailtemplateError").text("");
+    var body = $('option:selected', this).attr('data-body');
+      //$("#editor23").val(body);
+      CKEDITOR.instances.editor23.setData(body);
+  });
+
+  //send email to student which selected
   $('body').on('click','.user-email-template',function(){
     $("#emailtemplateError").text("");
     var url = $(this).data('url');
     var user_ids = $("#user_ids").val();
+    var emailbody = CKEDITOR.instances['editor23'].getData();
     var emailtemplate   = $("#emailtemplate :selected").val();
     if(emailtemplate == 'no'){
       $('#emailtemplateError').text("email template is required");
     }else{
-      var formdata = $('#emailsend').serialize();
+      var formdata = $('#emailsend').serialize()+'&body='+emailbody;
       $.ajax({
         url: url,
         type:'POST',
@@ -417,132 +427,6 @@ $(document).ready(function() {
     } 
   });
 
-  //All common action start
-  $("#action-institute").change(function () {
-      var selectedText = $(this).find("option:selected").text();
-      var selectedValue = $(this).val();
-      var AllChecked = $("#checkedAllInstitute").is(":checked");
-      var isAnyChecked = 0;
-      $(".checkSingleInstitute").each(function(){
-        if(this.checked)
-          isAnyChecked = 1;
-      });    
-      var idSelector = function() { return $(this).attr("data-id"); };
-      var chekedInstituteIds = $(":checkbox:checked").map(idSelector).get();
-         
-      /*if(selectedValue == "export"){
-        window.location = institute_export_url_route;
-        return false; 
-      }*/
-
-      if(isAnyChecked == 1 ){
-        if(selectedValue == "password" && chekedInstituteIds != ''){
-          $('#setpassword').modal('toggle');
-          $.ajax({
-            url: password_url_route,
-            type:'GET',
-            data:{'id' : chekedInstituteIds},
-            beforeSend: function(){
-              $('#password-set-body').html('<i class="fa fa-spinner fa-spin"></i>  Please Wait...');
-            },
-            success:function(data) {
-              $('#password-set-body').html(data.html);
-
-            },
-          }); 
-
-        }else if(selectedValue == "blockUnblock" && chekedInstituteIds != ''){
-          $('#setuserstatus').modal('toggle');
-          $.ajax({
-            url: change_status_get_model,
-            type:'POST',
-            data:{'_token':CSRF_TOKEN,'user_ids' : chekedInstituteIds},
-            beforeSend: function(){
-              $('#user-status-update').html('<i class="fa fa-spinner fa-spin"></i>  Please Wait...');
-            },
-            success:function(data) {
-              $('#user-status-update').html(data.html);
-            },
-            error: function(response) {
-              console.log(response.responseJSON.errors);
-            }
-          }); 
-        }else if(selectedValue == "email" && chekedInstituteIds != ''){
-          $('#userSendEmail').modal('toggle');
-          $.ajax({
-            url: change_send_email_get_model,
-            type:'POST',
-            data:{'_token':CSRF_TOKEN,'user_ids' : chekedInstituteIds},
-            beforeSend: function(){
-              $('#show-send-email-body').html('<i class="fa fa-spinner fa-spin"></i>  Please Wait...');
-            },
-            success:function(data) {
-              $('#show-send-email-body').html(data.html);
-            },
-            error: function(response) {
-              console.log(response.responseJSON.errors);
-            }
-          }); 
-        }else if(selectedValue == "assignPracticeTest" && chekedInstituteIds != ''){
-            $('#practisetest').modal('toggle');
-            $.ajax({
-              url: get_multiple_assign_test,
-              type:'POST',
-              data:{'_token':CSRF_TOKEN, 'id' : chekedInstituteIds,'type':'P', 'role': 'Institute'},
-              beforeSend: function(){
-                $('#prectice-test-body').html('<i class="fa fa-spinner fa-spin"></i>  Please Wait...');
-              },
-              success:function(data) {
-                $('#prectice-test-body').html(data.html);
-  
-              },
-            }); 
-        }else if(selectedValue == "assignMockTest" && chekedInstituteIds != ''){
-            $('#mocktest').modal('toggle');
-            $.ajax({
-              url: get_multiple_assign_test,
-              type:'POST',
-              data:{'_token':CSRF_TOKEN, 'id' : chekedInstituteIds,'type':'M', 'role': 'Institute'},
-              beforeSend: function(){
-                $('#assign-mock-test-body').html('<i class="fa fa-spinner fa-spin"></i>  Please Wait...');
-              },
-              success:function(data) {
-                $('#assign-mock-test-body').html(data.html);
-
-              },
-            }); 
-        }else if(selectedValue == "export" && chekedInstituteIds != ''){
-          var fileName = 'institude'+Date.now();
-          $.ajax({
-            url: institute_export_url_route,
-            type:'GET',
-            xhrFields: {
-              responseType: 'blob'
-            },
-            data: {
-                _token: CSRF_TOKEN,
-                ids: chekedInstituteIds
-            },
-            success:function(data) {
-              var a = document.createElement('a');
-              var url = window.URL.createObjectURL(data);
-              a.href = url;
-              a.download = fileName;
-              document.body.append(a);
-              a.click();
-              a.remove();
-              window.URL.revokeObjectURL(url);
-              setTimeout(function(){
-                location.reload();
-              }, 3000);
-            },
-          });
-        }
-      }else{
-        alert("Please select any institute.");
-        $(this).val('Actions');
-      }
-  });
 
   $("#action-student").change(function () {
       var selectedText = $(this).find("option:selected").text();
@@ -657,6 +541,9 @@ $(document).ready(function() {
             },
             success:function(data) {
               $('#show-send-email-body').html(data.html);
+              $("#editor23").each(function(_, ckeditor) {
+                CKEDITOR.replace(ckeditor);
+              });
             },
             error: function(response) {
               console.log(response.responseJSON.errors);

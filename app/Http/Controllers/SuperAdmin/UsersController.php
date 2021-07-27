@@ -319,6 +319,8 @@ class UsersController extends Controller
 
         $result='';
         $type = $request->input('type');
+        $body = '';
+        $subject = '';
         $regexUrl = '/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/';
         if($type == 3){
             $request->validate([
@@ -326,7 +328,7 @@ class UsersController extends Controller
                 'branch_admin'=>'required',
                 'fname' => 'required|min:3|max:100',
                 'lname' => 'required|min:3|max:100',
-                'uname'=>'required|unique:users,name|max:255',
+                'uname'=>'required|regex:/^[a-zA-Z0-9]+$/u|unique:users,name|max:255',
                 'semail'=>'required|email|unique:users,email|max:255',
                 'spassword'=>'required|min:6|max:20',
                 'confirm_spassword'=>'required|same:spassword',
@@ -372,7 +374,9 @@ class UsersController extends Controller
                 'simage.mimes'=>'Image must be file jpeg,png,jpg format'
             ]);
             $input  = \Arr::except($request->all(),array('_token'));
-            
+            $body = '</p>You are successfuly register as Student.</p>';
+            $subject = 'Student register';
+            $emailid = $input['semail'];
             if(!isset($input['sstatus'])){
                 $input['sstatus'] = 'P';
             }
@@ -412,7 +416,7 @@ class UsersController extends Controller
 
             $request->validate([
                 'type'=>'required',
-                'iuname' => 'required|unique:users,name|max:255',
+                'iuname' => 'required|regex:/^[a-zA-Z0-9]+$/u|unique:users,name|max:255',
                 'iname'=>'required|min:2|max:255',
                 'iemail'=>'required|email|unique:users,email|max:255',
                 'ipassword'=>'required|min:6|max:20',
@@ -432,11 +436,12 @@ class UsersController extends Controller
                 'validity'=>'required|after:' . date('Y-m-d'),
                 'admin_video'=>'required|in:Y,N',
                 'admin_prediction_file'=>'required|in:Y,N',
-                'admin_practice_question'=>'required|in:Y,N',
+                //'admin_practice_question'=>'required|in:Y,N',
                 'admin_test'=>'required|in:Y,N'
             ],
             [
                 'iuname.required'=> 'user name is required', // custom message
+                'iuname.regex'=> 'user name format not valid',
                 'iuname.unique'=> 'user name already taken', // custom message
                 'iuname.max'=> 'user name maximum length allow 255', // custom message
                 'iname.required'=>'Institute Name is required',
@@ -468,6 +473,9 @@ class UsersController extends Controller
                 'bimage.max'=>'Background image maximum length allow 2048'
                ]);
             $input  = \Arr::except($request->all(),array('_token'));
+            $body = '</p>You are successfuly register as Branch admin.</p>';
+            $subject = 'Branch admin register';
+            $emailid = $input['iemail'];
 
             if(!isset($input['istatus'])){
                 $input['istatus'] = 'P';
@@ -518,6 +526,7 @@ class UsersController extends Controller
                     'profile_image' => '',
                     'state' => $input['istate'],
                     'state_code' => $input['istate_code'],
+                    'city'=> $input['icity'],
                     'gstin' => $input['igstin'],
                     'validity' => $input['validity'],
                     'status' => $input['istatus'],
@@ -540,7 +549,7 @@ class UsersController extends Controller
                 'show_admin_videos' => $input['admin_video'],
                 'show_admin_tests' => $input['admin_test'],
                 'show_admin_files' => $input['admin_prediction_file'],
-                'show_practice_questions' => $input['admin_practice_question'],
+                //'show_practice_questions' => $input['admin_practice_question'],
                 'welcome_message'=> $input['welcome_msg'],
                 'country_phone_code'=> $input['country_code'],
                 'phone_number'=> $input['phone_no'],
@@ -551,8 +560,14 @@ class UsersController extends Controller
             $result = Institues::create($institue);
             
         }
-
+        $data = ['body'=>$body,'subject'=>$subject];
         if($result){
+            try{
+                Mail::to($emailid)->send(new SendEmailUser($data));
+                $flag = 1;
+            }catch(\Exception $e){
+                dd($e->getMessage());
+            }
             return redirect()->route('users.index')
                         ->with('success','User created successfully!');
         }else{
@@ -608,6 +623,9 @@ class UsersController extends Controller
     public function update(Request $request, $id)
     {
         $type = $request->input('type');
+        $subject  = '';
+        $body     = '';
+        $user_emailid = '';
         if($type == 3){
             $request->validate([
                 'type'=>'required',
@@ -654,7 +672,6 @@ class UsersController extends Controller
                 'simage.mimes'=>'Image must be file jpeg,png,jpg format'
             ]);
             $input  = \Arr::except($request->all(),array('_token'));
-                
             if ($image = $request->file('simage')) {
                 $destinationPath = 'assets/images/profile/';
                 $fileNameToStore = date('YmdHis') . "." . $image->getClientOriginalExtension();
@@ -714,6 +731,10 @@ class UsersController extends Controller
             }
             
             $result = User::where('id',$id)->update($user_input);
+            $user = User::find($id);
+            $subject = 'Student Profile Update';
+            $body    = '<p>Hello '.$user->fullname.', Your profile update by superadmin.</p>';
+            $user_emailid = $user->email;
         }else if($type == 2){
             $request->validate([
                 'type'=>'required',
@@ -735,7 +756,7 @@ class UsersController extends Controller
                 'validity'=>'required|after:' . date('Y-m-d'),
                 'admin_video'=>'required|in:Y,N',
                 'admin_prediction_file'=>'required|in:Y,N',
-                'admin_practice_question'=>'required|in:Y,N',
+                //'admin_practice_question'=>'required|in:Y,N',
                 'admin_test'=>'required|in:Y,N'
             ],
             [
@@ -830,7 +851,7 @@ class UsersController extends Controller
                     'show_admin_videos' => $input['admin_video'],
                     'show_admin_tests' => $input['admin_test'],
                     'show_admin_files' => $input['admin_prediction_file'],
-                    'show_practice_questions' => $input['admin_practice_question'],
+                    //'show_practice_questions' => $input['admin_practice_question'],
                     'welcome_message'=> $input['welcome_msg'],
                     'country_phone_code'=> $input['country_code'],
                     'phone_number'=> $input['phone_no'],
@@ -847,7 +868,7 @@ class UsersController extends Controller
                     'show_admin_videos' => $input['admin_video'],
                     'show_admin_tests' => $input['admin_test'],
                     'show_admin_files' => $input['admin_prediction_file'],
-                    'show_practice_questions' => $input['admin_practice_question'],
+                    //'show_practice_questions' => $input['admin_practice_question'],
                     'welcome_message'=> $input['welcome_msg'],
                     'country_phone_code'=> $input['country_code'],
                     'phone_number'=> $input['phone_no'],
@@ -864,7 +885,7 @@ class UsersController extends Controller
                     'show_admin_videos' => $input['admin_video'],
                     'show_admin_tests' => $input['admin_test'],
                     'show_admin_files' => $input['admin_prediction_file'],
-                    'show_practice_questions' => $input['admin_practice_question'],
+                    //'show_practice_questions' => $input['admin_practice_question'],
                     'welcome_message'=> $input['welcome_msg'],
                     'country_phone_code'=> $input['country_code'],
                     'phone_number'=> $input['phone_no'],
@@ -880,7 +901,7 @@ class UsersController extends Controller
                     'show_admin_videos' => $input['admin_video'],
                     'show_admin_tests' => $input['admin_test'],
                     'show_admin_files' => $input['admin_prediction_file'],
-                    'show_practice_questions' => $input['admin_practice_question'],
+                    //'show_practice_questions' => $input['admin_practice_question'],
                     'welcome_message'=> $input['welcome_msg'],
                     'country_phone_code'=> $input['country_code'],
                     'phone_number'=> $input['phone_no'],
@@ -890,6 +911,10 @@ class UsersController extends Controller
             }
 
             $result = Institues::where('user_id',$id)->update($institue);
+            $user = User::find($id);
+            $subject = 'BranchAdmin Profile Update';
+            $body    = '<p>Hello '.$user->fullname.', Your profile update by superadmin.</p>';
+            $user_emailid = $user->email;
         }
 
         if($result){
@@ -917,6 +942,12 @@ class UsersController extends Controller
                 );
             }
             $notification = Notifications::create($notification_data);
+            $data = ['body'=>$body,'subject'=>$subject];
+            try{
+                Mail::to($user_emailid)->send(new SendEmailUser($data));
+            }catch(\Exception $e){
+                dd($e->getMessage());
+            }
             \Session::put('success', 'User updated successfully!');
             return true;
             
@@ -935,9 +966,19 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
+        $user = User::find($id);
+        $body = '<p>'.$user->fullname.' are remove from PTE-education system!</p>';
+        $subject = 'Remove from PTE';
+        $data = ['body'=>$body,'subject'=>$subject];
+        $emailid = $user->email;
         $result = User::where('id',$id)->delete();
         if($result)
         {
+            try{
+                Mail::to($emailid)->send(new SendEmailUser($data));
+            }catch(\Exception $e){
+                dd($e->getMessage());
+            }
             return redirect()->route('users.index')
                         ->with('success','User deleted successfully');
         }
@@ -963,7 +1004,7 @@ class UsersController extends Controller
     {
         // $user = implode(",",$request->user_ids);
         $user = $request->user_ids;
-        $templates = EmailTemplates::get();
+        $templates = EmailTemplates::where('user_id',\Auth::user()->id)->get();
         $html_password = view($this->moduleTitleP.'emailtemplate',compact('user','templates'))->render();
 
         return response()->json([
@@ -973,7 +1014,7 @@ class UsersController extends Controller
     }
 
     public function SendEmail(Request $request){
-        // dd($request->all());
+        //dd($request->all());
         $user_ids  = $request->user_ids;
         $emailtemplate  = $request->emailtemplate;
         
@@ -981,7 +1022,7 @@ class UsersController extends Controller
         if($template)
         {
             $allEmails= User::whereIn('id',$user_ids)->pluck('email')->toArray();
-            $data = ['body'=>$template->body];
+            $data = ['body'=>$request->body,'subject'=>$template->subject];
             $flag = 0;
             try{
                 Mail::to($allEmails)->send(new SendEmailUser($data));
@@ -1013,6 +1054,27 @@ class UsersController extends Controller
             $user_ids = explode(",",$request->user_id);
             $result = User::whereIn('id',$user_ids)->update(['status'=>$status]);
             if($result){
+                $st_name = '';
+                if($status == 'A'){
+                    $st_name = 'Active';
+                }else if($status == 'P'){
+                    $st_name = 'Pending';
+                }else{
+                    $st_name = 'Reject';
+                }
+                foreach($user_ids as $new_user)
+                {
+                    $user = User::find($new_user);
+                    $body = '<p>Hello,'.$user->fullname.' now your status in PTE education is '.$st_name.'.</p>';
+                    $subject = 'Status Change';
+                    $data = ['body'=>$body,'subject'=>$subject];
+                    $emailid = $user->email;
+                    try{
+                        Mail::to($emailid)->send(new SendEmailUser($data));
+                    }catch(\Exception $e){
+                        dd($e->getMessage());
+                    }
+                }
                 \Session::put('success', 'Status Updated successfully');
                 return true;
                 
@@ -1032,6 +1094,24 @@ class UsersController extends Controller
             }
             $result = $user->update();
             if($result){
+                $user = User::find($id);
+                $st_name = '';
+                if($user->status == 'A'){
+                    $st_name = 'Active';
+                }else if($user->status == 'P'){
+                    $st_name = 'Pending';
+                }else{
+                    $st_name = 'Reject';
+                }
+                $body = '<p>Hello,'.$user->fullname.' now your status in PTE education is '.$st_name.'.</p>';
+                $subject = 'Status Change';
+                $data = ['body'=>$body,'subject'=>$subject];
+                $emailid = 'vishal.mistry.bi@gmail.com';
+                try{
+                    Mail::to($emailid)->send(new SendEmailUser($data));
+                }catch(\Exception $e){
+                    dd($e->getMessage());
+                }
                 return redirect()->route('users.index')
                             ->with('success','Status Updated successfully');
             }else{
