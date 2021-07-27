@@ -10,6 +10,8 @@ use App\Models\Notifications;
 use App\Models\Activities;
 use App\Models\Tests;
 use App\Http\Requests\CreateCertificateRequest;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\SendEmailUser;
 use DataTables;
 use PDF;
 
@@ -122,6 +124,8 @@ class CertificatesController extends Controller
             $resdata['test_name'] = $test->test_name;
             $result = Certificates::create($input);
             if($result){
+                $certificate_id = $result->id;
+                $student = User::select('name', 'email')->where('id',$user_id)->first();
                 //send notification                
                 if($test->type == "M"){
                     $type = "Mock Test";
@@ -149,6 +153,23 @@ class CertificatesController extends Controller
                     'longitude' => ''
                 );
                 $activity = Activities::create($activity_data);
+                //send email
+                $subject = "New certificate has been generated";
+                $body = "Hello ".$student->name."
+                    <br><br>
+                    Administrator has reviewed your score and generated a certificate based on ".$type." - ".$test->test_name." attempted by you.
+                    <br><br>
+                    <a href='".route('download-certificate', $certificate_id)."'>
+                    <button>Download certificate for ".$test->test_name."</button>
+                    </a>
+                    <br><br>
+                    Thanks & Regards,<br><br>PTE Team";
+                $emaildata = ['body'=>$body,'subject'=>$subject];
+                try{
+                    Mail::to($student->email)->send(new SendEmailUser($emaildata));
+                }catch(\Exception $e){
+                    dd($e->getMessage());
+                }
 
                 \Session::put('success', 'Certificate generated successfully!');
                 return true;   

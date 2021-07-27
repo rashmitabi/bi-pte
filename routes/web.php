@@ -43,14 +43,15 @@ Route::get('/login', function () {
 });
 
 Route::get('logout', 'Auth\LoginController@logout')->name('logout');
+Route::POST('register', 'Auth\RegisterController@register')->name('register');
+// Route::POST('saveregister', 'Auth\RegisterController@create')->name('saveregister');
 
 Auth::routes();
 
 
 
 /*Notifications module start*/
-
-    Route::get('notifications', [App\Http\Controllers\NotificationController::class, 'getNotifications'])->name('notifications');
+Route::get('notifications', [App\Http\Controllers\NotificationController::class, 'getNotifications'])->name('notifications');
 
 /*Notifications module end*/
 

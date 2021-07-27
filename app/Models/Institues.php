@@ -14,6 +14,7 @@ class Institues extends Model
         'sub_domain',
         'domain',
         'students_allowed',
+        'tests_allowed',
         'logo',
         'banner_image',
         'show_admin_videos',

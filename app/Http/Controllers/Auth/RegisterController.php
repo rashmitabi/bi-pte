@@ -5,9 +5,13 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
+use App\Models\Institues;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\Request;
+
+use Illuminate\Support\Facades\Auth;
 
 class RegisterController extends Controller
 {
@@ -29,7 +33,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    // protected $redirectTo = RouteServiceProvider::HOME;
 
     /**
      * Create a new controller instance.
@@ -49,10 +53,14 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+        return Validator::make($data, [ 
+            'name' => ['required', 'string','regex:/^[a-zA-Z0-9]+$/u', 'max:255', 'unique:users,name'],
+            'mobile_no' => ['required', 'string', 'digits:10'],
+            'institute_name' => ['required', 'string',  'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email'],
+            'password' => ['required', 'string', 'min:6','max:20'],
+            'confirm_password' => ['required', 'string', 'same:password'],
+            'agree' => ['required']
         ]);
     }
 
@@ -64,26 +72,53 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
 
-            'role_id' => 3,
-            'parent_user_id' => null,
-            'first_name' => '',
-            'last_name' => '',
-            'mobile_no' => '',
-            'date_of_birth' => null,
-            'profile_image' => '',
-            'ip_address' => '',
-            'latitude' => '',
-            'longitude' => '',
-            'gender' => null,
-            'country_citizen' => '',
-            'country_residence' => '',
-            'validity' => null,
-            'status' => 'A'
-        ]);
+        $data = [ 
+            'user_name'=>$data['name'],
+            'mobile_no'=>$data['mobile_no'],
+            'institute_name'=>$data['institute_name'],
+            'email'=>$data['email'],
+            'password'=>Hash::make($data['password']),
+        ]; 
+        
+        $validator = validator($data); 
+        if($validator->fails()){
+            return back()->withErrors($validator)->withInput();
+        }
+
+       
+        $user = User::create([
+            'role_id'=>2,
+            'parent_user_id'=>0,
+            'name'=>$data['user_name'] ,
+            'email' => $data['email'],
+            'password'=>$data['password'],
+            'mobile_no'=>$data['mobile_no'],
+            'profile_image'=>'',
+            'ip_address'=>'',
+            'latitude'=>'',
+            'status' => 'A',
+            'longitude'=>''
+        ])->id;    
+
+        if (!empty($user)) {
+            $institute = Institues::create([
+                'user_id'=>$user,
+                'sub_domain'=>'',
+                'domain'=>'',
+                'students_allowed'=>'0',
+                'welcome_message'=>'',
+                'country_phone_code'=>'',
+                'phone_number'=>$data['mobile_no'],
+                'institute_name'=>$data['institute_name']
+            ]);
+          
+           return redirect("login");
+        }else{
+            return false;
+        }
+        
     }
+
+    
 }
