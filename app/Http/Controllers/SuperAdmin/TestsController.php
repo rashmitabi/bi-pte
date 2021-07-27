@@ -26,7 +26,7 @@ class TestsController extends Controller
     public function index(Request $request)
     {
         if($request->ajax())  {
-            $data = Tests::with('subject')->where('type','P')->latest()->get();
+            $data = Tests::with('subject')->where(['type'=>'P','generated_by_user_id'=>\Auth::user()->id])->latest()->get();
             return Datatables::of($data)
                     ->addIndexColumn()
                     ->addColumn('test_name', function($row){
@@ -55,7 +55,7 @@ class TestsController extends Controller
         $red = 'red';
         $green = 'green';
         if($request->ajax())  {
-            $data = Tests::with('subject')->where('type','M')->latest()->get();
+            $data = Tests::with('subject')->where(['type'=>'M','generated_by_user_id'=>\Auth::user()->id])->latest()->get();
             return Datatables::of($data)
                     ->addIndexColumn()
                     ->addColumn('test_name', function($row){

@@ -13,6 +13,7 @@ use App\Models\TestResults;
 use App\Models\StudentTests;
 use Illuminate\Http\Request;
 use App\Models\Subjects;
+use App\Models\User;
 use Aws\Exception\AwsException;
 use DataTables;
 use DB;
@@ -29,7 +30,18 @@ class TestsController extends Controller
     {
         $id = \Auth::user()->id;
         if($request->ajax())  {
-            $data = Tests::with('subject')->where(['type'=>'P','generated_by_user_id'=>$id])->latest()->get();
+            if(\Auth::user()->institue->show_admin_tests == 'Y')
+            {
+                $superadmin = User::select('id')->where('role_id', 1)->first();
+                
+                $data = Tests::with('subject')->where('type','P')
+                ->whereIn('generated_by_user_id',[$superadmin->id,$id])
+                ->latest()->get();
+            }
+            else
+            {
+                $data = Tests::with('subject')->where(['type'=>'P','generated_by_user_id'=>$id])->latest()->get();
+            }
             return Datatables::of($data)
                     ->addIndexColumn()
                     ->addColumn('test_name', function($row){
@@ -39,13 +51,22 @@ class TestsController extends Controller
                         return $row->subject->subject_name;
                     })
                     ->addColumn('action', function($row){
-                        $btn = '<ul class="actions-btns">
+                        if($row->generated_by_role_id == '1')
+                        {
+                            $btn = '<ul class="actions-btns">
+                                        <li class="action" data-toggle="tooltip" data-placement="top" title="Add Questions"><a href="'.route('branchadmin-tests.show',$row->id).'"><i class="fas fa-question"></i></a></li>
+                                    </ul>';
+                        }
+                        else
+                        {
+                            $btn = '<ul class="actions-btns">
                                 <li class="action" data-toggle="tooltip" data-placement="top" title="Add Questions"><a href="'.route('branchadmin-tests.show',$row->id).'"><i class="fas fa-question"></i></a></li>
                                 <li class="action" data-toggle="modal" data-target="#edittest"><a
                                     href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="Edit" class="test-edit" data-id="'.$row->id.'" data-url="'.route('branchadmin-tests.edit', $row->id).'"><i class="fas fa-pen"></i></a></li>
                                 <li class="action" data-toggle="tooltip" data-placement="top" title="Delete"><a href="#" class="delete_modal" data-toggle="modal" data-target="#delete_modal"  data-url="'.route('branchadmin-tests.destroy', $row->id).'" data-id="'.$row->id.'"><i class="fas fa-trash"></i></a></li>
                             <li class="action shield '.(($row->status == "E") ? "red" : "green").'" data-toggle="tooltip" data-placement="top" title="'.(($row->status == "E") ? "Disable" : "Enable").'"><a href="'.route('branchadmin-tests-changestatus', $row->id ).'"><img src="'.asset('assets/images/icons/blocked.svg').'" class=""></a></li>
                             </ul>';
+                        }
                         return $btn;
                     })
                     ->rawColumns(['checkbox','action'])
@@ -59,7 +80,18 @@ class TestsController extends Controller
         $green = 'green';
         $id = \Auth::user()->id;
         if($request->ajax())  {
-            $data = Tests::with('subject')->where(['type'=>'M','generated_by_user_id'=>$id])->latest()->get();
+            if(\Auth::user()->institue->show_admin_tests == 'Y')
+            {
+                $superadmin = User::select('id')->where('role_id', 1)->first();
+
+                $data = Tests::with('subject')->where('type','M')
+                ->whereIn('generated_by_user_id',[$superadmin->id,$id])
+                ->latest()->get();
+            }
+            else
+            {
+                $data = Tests::with('subject')->where(['type'=>'M','generated_by_user_id'=>$id])->latest()->get();
+            }
             return Datatables::of($data)
                     ->addIndexColumn()
                     ->addColumn('test_name', function($row){
@@ -69,13 +101,22 @@ class TestsController extends Controller
                         return $row->subject->subject_name;
                     })
                     ->addColumn('action', function($row){
-                        $btn = '<ul class="actions-btns">
+                        if($row->generated_by_role_id == '1')
+                        {
+                            $btn = '<ul class="actions-btns">
+                                    <li class="action"><a href="'.route('branchadmin-tests.show',$row->id).'"><i class="fas fa-question"></i></a></li>
+                                    </ul>';
+                        }
+                        else
+                        {
+                            $btn = '<ul class="actions-btns">
                                 <li class="action"><a href="'.route('branchadmin-tests.show',$row->id).'"><i class="fas fa-question"></i></a></li>
                                 <li class="action" data-toggle="modal" data-target="#edittest"><a
                                     href="javascript:void(0);" class="test-edit" data-id="'.$row->id.'" data-url="'.route('branchadmin-tests.edit', $row->id).'"><i class="fas fa-pen"></i></a></li>
                                 <li class="action"><a href="#" class="delete_modal" data-toggle="modal" data-target="#delete_modal"  data-url="'.route('branchadmin-tests.destroy', $row->id).'" data-id="'.$row->id.'"><i class="fas fa-trash"></i></a></li>
-                            <li class="action shield '.(($row->status == "E") ? "red" : "green").'"><a href="'.route('branchadmin-tests-changestatus', $row->id ).'"><img src="'.asset('assets/images/icons/blocked.svg').'" class=""></a></li>
-                            </ul>';
+                                <li class="action shield '.(($row->status == "E") ? "red" : "green").'"><a href="'.route('branchadmin-tests-changestatus', $row->id ).'"><img src="'.asset('assets/images/icons/blocked.svg').'" class=""></a></li>
+                                </ul>';
+                        }
                         return $btn;
                     })
                     ->rawColumns(['checkbox','action'])
@@ -167,23 +208,24 @@ class TestsController extends Controller
         $question_type_id   = $request->input('question_type_id');
         $question_id   = $request->input('question_type_id');
         
-        // $section_id         = $request->section_id;
-        // $test_id            = $request->test_id;
-        // $question_type_id   = $request->question_type_id;
-        
+        $test = Tests::find($test_id);
+        $buttonHide = 'No';
+        if($test->generated_by_role_id == '1'){
+            $buttonHide = 'Yes';
+        }
         $questionType = QuestionTypes::where('id',$question_type_id)->first();
         $design       = DB::table('question_designs')->where('id',$questionType->desgin_id)->first();
         
         $questions    = Questions::with('questiondata','answerdata')->where(['test_id'=>$test_id,'question_type_id'=>$question_type_id])->first();
         
         if($section_id == 4){
-            return view ($this->moduleTitleP."/speaking/".$design->file_name,compact('questions','section_id','test_id','question_id'));
+            return view ($this->moduleTitleP."/speaking/".$design->file_name,compact('questions','section_id','test_id','question_id','buttonHide'));
         }else if($section_id == 3){
-            return view ($this->moduleTitleP."/writing/".$design->file_name,compact('questions','section_id','test_id','question_id'));
+            return view ($this->moduleTitleP."/writing/".$design->file_name,compact('questions','section_id','test_id','question_id','buttonHide'));
         }else if($section_id == 2){
-            return view ($this->moduleTitleP."/listening/".$design->file_name,compact('questions','section_id','test_id','question_id'));
+            return view ($this->moduleTitleP."/listening/".$design->file_name,compact('questions','section_id','test_id','question_id','buttonHide'));
         }else if($section_id == 1){
-            return view ($this->moduleTitleP."/reading/".$design->file_name,compact('questions','section_id','test_id','question_id'));
+            return view ($this->moduleTitleP."/reading/".$design->file_name,compact('questions','section_id','test_id','question_id','buttonHide'));
         }else{
              return view ($this->moduleTitleP.$design->file_name,compact('questions'));
         }
@@ -286,8 +328,8 @@ class TestsController extends Controller
                     DB::beginTransaction();
                         Questiondata::whereIn('question_id',$questions)->delete();
                         Answerdata::whereIn('question_id',$questions)->delete();
-                        StudentsAnswerData::where('question_id',$questions)->delete();
-                        TestResults::where('question_id',$questions)->delete();
+                        StudentsAnswerData::whereIn('question_id',$questions)->delete();
+                        TestResults::whereIn('question_id',$questions)->delete();
                         StudentTests::where('test_id',$id)->delete();
                         Questions::where('test_id',$id)->delete();
                         Tests::where('id',$id)->delete();

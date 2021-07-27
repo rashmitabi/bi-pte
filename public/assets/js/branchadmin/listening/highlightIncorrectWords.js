@@ -1,4 +1,12 @@
 $(document).ready(function() {
+    if(btnClass == 'Yes'){
+        $(':input[type="submit"]').prop('disabled', true);
+        $('.minus-icon-common').css('display','none');
+        $('.add-icon').css('display','none');
+        $('.minus-icon').css('display','none');
+        $('.plus-icon').css('display','none');
+        $(':input[type="text"]').prop('readonly', true);
+    }
     $('#hightlight_words').validate({
         ignore: [],
         debug: false,

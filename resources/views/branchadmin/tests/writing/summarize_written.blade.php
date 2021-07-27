@@ -115,5 +115,8 @@
 	</div>
 @endsection
 @section('js-hooks')
+<script type="text/javascript" defer>
+   var btnClass = "{{ $buttonHide }}";
+</script>
 <script src="{{ asset('assets/js/branchadmin/writing/summarizewritten.js') }}" defer></script>
 @endsection
