@@ -6,6 +6,11 @@ use App\Http\Controllers\Controller;
 use App\Models\Tests;
 use App\Models\QuestionTypes;
 use App\Models\Questions;
+use App\Models\Questiondata;
+use App\Models\Answerdata;
+use App\Models\StudentsAnswerData;
+use App\Models\TestResults;
+use App\Models\StudentTests;
 use Illuminate\Http\Request;
 use App\Models\Subjects;
 use Aws\Exception\AwsException;
@@ -270,25 +275,51 @@ class TestsController extends Controller
      */
     public function destroy($id)
     {
-        $questions = Questions::where('test_id',$id)->pluck('id')->toArray();
-        if(count($questions)>0)
+        $getTest = Tests::find($id);
+        if($getTest)
         {
-            return redirect()->route('tests.index')
-            ->with('warning','Test not delete because Questions available!');
-        }
-        else
-        {
-            $result = Tests::where('id',$id)->delete();
-            if($result)
+            $questions = Questions::where('test_id',$id)->pluck('id')->toArray();
+            if(count($questions)>0)
+            {
+                $response = 0;
+                try{
+                    DB::beginTransaction();
+                        Questiondata::whereIn('question_id',$questions)->delete();
+                        Answerdata::whereIn('question_id',$questions)->delete();
+                        StudentsAnswerData::where('question_id',$questions)->delete();
+                        TestResults::where('question_id',$questions)->delete();
+                        StudentTests::where('test_id',$id)->delete();
+                        Questions::where('test_id',$id)->delete();
+                        Tests::where('id',$id)->delete();
+                        DB::commit();
+                        $response = 1;
+                }catch(\Exception $e){
+                    DB::rollback();
+                    $response = 0;
+                    dd($e->getMessage());
+                    return redirect()->route('branchadmin-tests.index')
+                            ->with('error','Sorry!Something wrong.Try again later!');
+                }
+            }else{
+                Tests::where('id',$id)->delete();
+                $response = 1;
+            }
+            
+            if($response == 1)
             {
                 return redirect()->route('branchadmin-tests.index')
-                            ->with('success','Test deleted successfully!');
+                            ->with('success','Test deleted Successfully!');
             }
             else
             {
                 return redirect()->route('branchadmin-tests.index')
                             ->with('error','Sorry!Something wrong.Try again later!');
             }
+        }
+        else
+        {
+            return redirect()->route('branchadmin-tests.index')
+                            ->with('error','Sorry!Something wrong.Try again later!');
         }
     }
 }
