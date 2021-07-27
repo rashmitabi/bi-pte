@@ -14,6 +14,7 @@ use App\Models\EmailTemplates;
 use App\Models\Notifications;
 use App\Models\Activities;
 use App\Models\Subscriptions;
+use App\Models\TestResults;
 use Illuminate\Support\Facades\Hash;
 use DataTables;
 use App\Http\Requests\StoreUserRequest;
@@ -75,7 +76,13 @@ class UsersController extends Controller
                                             class=""></a></li>
 
                                 <li class="action" class="action" data-toggle="modal" data-target="#practisetest"><a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="practise test" class="get-assign-test" data-test-type="P" data-id="'.$row->id.'" data-url="'.route('branchadmin-students-get-assign-test',$row->id).'"><img src="'. asset('assets/images/icons/test.svg').'"
-                                            class=""></a></li>                                   
+                                            class=""></a></li> 
+
+                                <li class="action" class="action" data-toggle="modal" data-target="#result">
+                                    <a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="Student Test Result" class="view-test-result" data-id="'.$row->id.'" data-url="'.route('branchadmin-student-result',$row->id).'">
+                                    <i class="fas fa-eye"></i>
+                                    </a>
+                                </li>                                   
                             </ul>';
                     return $btn;
                 })
@@ -673,5 +680,32 @@ class UsersController extends Controller
     public function subscriptionPayment(Request $request)
     {
         dd($request->all());
+    }
+
+    public function result($id){
+        $data = TestResults::with(['test'])
+                ->selectRaw('test_results.test_id,test_results.section_id,SUM(get_score) AS score')
+                ->join('student_tests', function($join)
+                         {
+                             $join->on('student_tests.user_id', '=', 'test_results.user_id');
+                             $join->on('student_tests.test_id', '=', 'test_results.test_id');
+                         })
+                ->where('test_results.user_id', '=', $id)
+                ->where('student_tests.status', '=', 'C')
+                ->groupBy('test_results.test_id', 'test_results.section_id')
+                ->get();  
+
+        $results = array();
+        foreach($data as $d){
+            $results[$d->test_id]['name'] = $d->test->test_name;
+            $results[$d->test_id][strtolower($d->section->section_name)] = $d->score;
+        }
+
+        $html = view('branchadmin.student.result',compact('results'))->render();
+
+        return response()->json([
+            'success' => 1,
+            'html'=>$html    
+        ]);
     }
 }
