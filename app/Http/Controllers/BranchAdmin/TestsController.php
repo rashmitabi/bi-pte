@@ -11,6 +11,8 @@ use App\Models\Answerdata;
 use App\Models\StudentsAnswerData;
 use App\Models\TestResults;
 use App\Models\StudentTests;
+
+use App\Models\Institues;
 use Illuminate\Http\Request;
 use App\Models\Subjects;
 use Aws\Exception\AwsException;
@@ -111,6 +113,14 @@ class TestsController extends Controller
         ]);
 
         $input = \Arr::except($request->all(),array('_token'));
+
+        $count = Tests::where('generated_by_user_id',\Auth::user()->id)->count();
+        $Institues = Institues::where('user_id',\Auth::user()->id)->get();
+        
+        if($count == $Institues[0]->tests_allowed || $count > $Institues[0]->tests_allowed){
+            return redirect()->route('branchadmin-tests.index')
+            ->with('error','Sorry!Your generate test limit is out of reach!');
+        }
         
         $filePath = '';
         $input['subject_id'] = $input['subject'];
@@ -142,6 +152,7 @@ class TestsController extends Controller
             return redirect()->route('branchadmin-tests.index')
             ->with('error','Sorry!Something wrong.Try again later!');
         }
+
     }
 
     /**
