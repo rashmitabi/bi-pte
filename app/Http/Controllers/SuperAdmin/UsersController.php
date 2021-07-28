@@ -335,7 +335,7 @@ class UsersController extends Controller
         $body = '';
         $subject = '';
         $regexUrl = '/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/';
-        if($type == 3){
+        if($type == 3){ 
             $request->validate([
                 'type'=>'required',
                 'branch_admin'=>'required',
@@ -387,7 +387,7 @@ class UsersController extends Controller
                 'simage.mimes'=>'Image must be file jpeg,png,jpg format'
             ]);
             $input  = \Arr::except($request->all(),array('_token'));
-            $body = '</p>You are successfuly register as Student.</p>';
+            $body = 'User Name: '.$input['uname'].' <br/> Password : '.$input['spassword'].' <br/> <p>You are successfuly register as Student.</p>';
             $subject = 'Student register';
             $emailid = $input['semail'];
             if(!isset($input['sstatus'])){
@@ -486,7 +486,7 @@ class UsersController extends Controller
                 'bimage.max'=>'Background image maximum length allow 2048'
                ]);
             $input  = \Arr::except($request->all(),array('_token'));
-            $body = '</p>You are successfuly register as Branch admin.</p>';
+            $body = 'User Name : '.$input['iuname'].' <br/> Password : '.$input['ipassword'].' <br/> <p>You are successfuly register as Branch admin.</p>';
             $subject = 'Branch admin register';
             $emailid = $input['iemail'];
 
@@ -582,7 +582,7 @@ class UsersController extends Controller
                 dd($e->getMessage());
             }
             return redirect()->route('users.index')
-                        ->with('success','User created successfully!');
+                        ->with('success','Thank you for creating new user');
         }else{
             return redirect()->route('users.index')
                         ->with('error','Sorry!Something wrong.Try again later!');

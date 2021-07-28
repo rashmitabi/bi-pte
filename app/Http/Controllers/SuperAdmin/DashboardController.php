@@ -22,30 +22,30 @@ class DashboardController extends Controller
     	$data['practice_tests'] = Tests::where(['type' => 'P'])->count();
 
     	// mysql query
-        //$data['chartSubs'] = userSubscriptions::selectRaw('monthname(created_at) month, count(*) count')->whereYear('created_at', date('Y'))
-     //            ->groupBy('month')
-     //            ->orderBy('month', 'desc')
-     //            ->get();
-
-        //pgsql query
-        $data['chartSubs'] = userSubscriptions::selectRaw('EXTRACT(MONTH FROM created_at) AS month, count(*) count')->whereYear('created_at', date('Y'))
+        $data['chartSubs'] = userSubscriptions::selectRaw('monthname(created_at) month, count(*) count')->whereYear('created_at', date('Y'))
                 ->groupBy('month')
                 ->orderBy('month', 'desc')
                 ->get();
 
+        //pgsql query
+        // $data['chartSubs'] = userSubscriptions::selectRaw('EXTRACT(MONTH FROM created_at) AS month, count(*) count')->whereYear('created_at', date('Y'))
+        //         ->groupBy('month')
+        //         ->orderBy('month', 'desc')
+        //         ->get();
+
         //mysql query
-        // $data['userSession'] = UserSession::selectRaw('DATE_FORMAT(created_at, "%l:00 %p") time, count(*) count')->whereDate('created_at', date('Y-m-d'))
-        //     ->groupBy('time')
-        //     ->orderBy('time', 'ASC')
-        //     ->get();
+        $data['userSession'] = UserSession::selectRaw('DATE_FORMAT(created_at, "%l:00 %p") time, count(*) count')->whereDate('created_at', date('Y-m-d'))
+            ->groupBy('time')
+            ->orderBy('time', 'ASC')
+            ->get();
 
         //pgsql query
-        $data['userSession'] = UserSession::selectRaw("CASE WHEN updated_at IS NOT NULL THEN to_char(updated_at, 'hh pm') ELSE to_char(created_at, 'hh pm') END as time, count(*) count")
-        ->whereDate('created_at', date('Y-m-d'))
-        ->orWhereDate('updated_at', date('Y-m-d'))
-        ->groupBy('time')
-        ->orderBy('time', 'ASC')
-        ->get();
+        // $data['userSession'] = UserSession::selectRaw("CASE WHEN updated_at IS NOT NULL THEN to_char(updated_at, 'hh pm') ELSE to_char(created_at, 'hh pm') END as time, count(*) count")
+        // ->whereDate('created_at', date('Y-m-d'))
+        // ->orWhereDate('updated_at', date('Y-m-d'))
+        // ->groupBy('time')
+        // ->orderBy('time', 'ASC')
+        // ->get();
     	
         return view('superadmin/dashboard', compact('data'));
     }

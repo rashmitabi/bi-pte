@@ -38,7 +38,7 @@ $('<div class="pull-right">' +
       '<option selected disabled>Actions</option>'+
       '<option value="email">Send Email</option>'+
       '<option value="password" >Change Password</option>'+
-      '<option value="blockUnblock">BLock/unblock Users</option>'+
+      '<option value="blockUnblock">BLock/Unblock Users</option>'+
       '<option value="export">Export Users</option>'+
       '<option value="assignPracticeTest">Assign Practice Tests</option>'+
       '<option value="assignMockTest">Assign Mock Tests</option>'+
@@ -85,7 +85,7 @@ $('<div class="pull-right">' +
       '<option selected disabled>Actions</option>'+
       '<option value="email">Send Email</option>'+
       '<option value="password" >Change Password</option>'+
-      '<option value="blockUnblock">BLock/unblock Users</option>'+
+      '<option value="blockUnblock">BLock/Unblock Users</option>'+
       '<option value="export">Export Users</option>'+
       '<option value="assignPracticeTest">Assign Practice Tests</option>'+
       '<option value="assignMockTest">Assign Mock Tests</option>'+
@@ -202,7 +202,7 @@ $(document).ready(function() {
         $('#edit-user-body').html('<div class="mb-5 text-center"><i class="fa fa-spinner fa-spin"></i>  Please Wait...</div>');
       },
       success:function(data) {
-        $('#edit-user-body').html(data.html);
+        // $('#edit-user-body').html(data.html);
       },
     }); 
   });

@@ -53,8 +53,8 @@
             <div class="form-group row">
               <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Branch Admin</label>
               <div class="col-12 col-md-7 col-xl-7 col-sm-12">
-                <select class="custom-select" name="branch_admin">
-                  <option selected disabled>Select Branch Admin</option>
+                <select class="custom-select" name="branch_admin" id="branch_admin">
+                  <option value="" selected disabled>Select Branch Admin</option>
                   @foreach($admins as $admin)
                     <option value="{{ $admin->id }}" {{ (old('branch_admin') == $admin->id)?'selected':''}} >{{ isset($admin->institue->institute_name)?$admin->institue->institute_name:'' }}</option>
                   @endforeach

@@ -1471,7 +1471,7 @@ body {
   left: 0;
   padding: 10px 15px;
   display: block;
-  z-index: 20;
+  z-index: 9;
   color: #000;
   font-weight: 600;
 }

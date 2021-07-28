@@ -270,8 +270,16 @@ class UsersController extends Controller
             'validity'=>'required|after:' . date('Y-m-d'),
             'image'=>'nullable|image|mimes:jpeg,png,jpg|max:2048'
             ]);
-            
+             
             $input  = \Arr::except($request->all(),array('_token'));
+
+            $count = User::where('parent_user_id',\Auth::user()->id)->count();
+            $Institues = Institues::where('user_id',\Auth::user()->id)->get();
+            
+            if($count == $Institues[0]->students_allowed || $count > $Institues[0]->students_allowed){
+                return redirect()->route('branchadmin-students.index')
+                ->with('error','Sorry!Your student add limit is out of reach!');
+            }
             
             if ($image = $request->file('image')) {
                 $destinationPath = 'assets/images/profile/';
