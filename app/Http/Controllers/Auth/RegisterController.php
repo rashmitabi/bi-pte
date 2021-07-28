@@ -58,7 +58,7 @@ class RegisterController extends Controller
             'mobile_no' => ['required', 'string', 'digits:10'],
             'institute_name' => ['required', 'string',  'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email'],
-            'password' => ['required', 'string', 'min:6','max:20'],
+            'password' => ['required', 'string', 'min:8','max:20'],
             'confirm_password' => ['required', 'string', 'same:password'],
             'agree' => ['required']
         ]);
