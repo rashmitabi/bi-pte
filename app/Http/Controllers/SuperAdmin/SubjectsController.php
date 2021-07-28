@@ -36,6 +36,10 @@ class SubjectsController extends Controller
                         }
                         return $status;
                     })
+                    ->addColumn('tests', function($row){
+                        $total_tests = Tests::where(['subject_id' => $row->id, 'status' => 'E'])->count();
+                        return $total_tests;
+                    })
                     ->addColumn('action', function($row){
                         if($row->status == "E"){
                             $iconClass = "red";

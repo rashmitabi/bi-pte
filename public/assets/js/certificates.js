@@ -94,6 +94,7 @@ $(document).ready(function(){
            {data: 'DT_RowIndex', name: 'DT_RowIndex'},
            {data: 'username', name: 'username'},
            {data: 'test_name', name: 'test_name'},
+           {data: 'attempted_date', name: 'attempted_date'},
            {data: 'action', name: 'action', orderable: false, searchable: false},
         ]
     });

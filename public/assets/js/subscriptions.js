@@ -93,6 +93,7 @@ $(document).ready(function() {
     columns: [
        {data: 'DT_RowIndex', name: 'DT_RowIndex'},
        {data: 'title', name: 'title'},
+       {data: 'status', name: 'status'},
        {data: 'monthly_price', name: 'monthly_price'},
        {data: 'quarterly_price', name: 'quarterly_price'},
        {data: 'halfyearly_price', name: 'halfyearly_price'},

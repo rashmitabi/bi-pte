@@ -14,6 +14,7 @@ class CreateRoleHasPermissions extends Migration
     public function up()
     {
         Schema::create('role_has_permissions', function (Blueprint $table) {
+            $table->increments('id');
             $table->tinyInteger('role_id')->comment('Foreign key of roles table');
             $table->tinyInteger('module_id')->comment('Foreign key of module table');
             $table->string('slug',255);

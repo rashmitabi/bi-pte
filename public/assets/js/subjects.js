@@ -67,6 +67,7 @@ $(document).ready(function() {
        {data: 'DT_RowIndex', name: 'DT_RowIndex'},
        {data: 'subject_name', name: 'subject_name'},
        {data: 'status', name: 'status'},
+       {data: 'tests', name: 'tests'},
        {data: 'action', name: 'action', orderable: false, searchable: false},
     ]
     });

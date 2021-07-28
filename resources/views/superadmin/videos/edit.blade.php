@@ -8,7 +8,7 @@
     </div>
 </div>
 <div class="form-group row">
-    <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label required">Video Description</label>
+    <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label">Video Description</label>
     <div class="col-12 col-md-7 col-xl-7 col-sm-12">
         <input type="text" class="form-control "name="description" placeholder="Enter Video Description" value="{{ $video->description }}">
         <span class="error-msg" id="descriptionError"></span>

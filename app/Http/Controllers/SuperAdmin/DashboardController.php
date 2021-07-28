@@ -6,9 +6,13 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Tests;
+use App\Models\Videos;
+use App\Models\PredictionFiles;
+use App\Models\Vouchers;
 use App\Models\userSubscriptions;
 use App\Models\Activities;
 use App\Models\UserSession;
+use App\Models\EmailTemplates;
 use DataTables;
 
 class DashboardController extends Controller
@@ -16,10 +20,14 @@ class DashboardController extends Controller
 	
     public function index()
     {
-    	$data['students'] = User::where(['role_id' => 3])->count(); 
-    	$data['institutes'] = User::where(['role_id' => 2])->count();
-    	$data['mock_tests'] = Tests::where(['type' => 'M'])->count();
-    	$data['practice_tests'] = Tests::where(['type' => 'P'])->count();
+    	$data['students'] = User::where(['role_id' => 3, 'status' => 'A'])->count(); 
+    	$data['institutes'] = User::where(['role_id' => 2, 'status' => 'A'])->count();
+    	$data['mock_tests'] = Tests::where(['type' => 'M', 'status' => 'E'])->count();
+    	$data['practice_tests'] = Tests::where(['type' => 'P', 'status' => 'E'])->count();
+        $data['videos'] = Videos::where(['status' => 'E'])->count();
+        $data['files'] = PredictionFiles::where(['status' => 'E'])->count();
+        $data['vouchers'] = Vouchers::where(['status' => 'E'])->count();
+        $data['templates'] = EmailTemplates::where(['user_id' => \Auth::user()->id, 'status' => 'E'])->count();
 
     	// mysql query
         //$data['chartSubs'] = userSubscriptions::selectRaw('monthname(created_at) month, count(*) count')->whereYear('created_at', date('Y'))
