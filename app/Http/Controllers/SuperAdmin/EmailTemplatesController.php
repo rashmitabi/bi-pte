@@ -154,7 +154,9 @@ class EmailTemplatesController extends Controller
         ]);
 
         $input  = \Arr::except($request->all(),array('_token'));
-
+        if(!isset($input['status'])){
+            $input['status'] = 'D';
+        }
         $result = EmailTemplates::where('id',$id)->update($input);
         if($result){
             \Session::put('success', 'Email updated successfully!');

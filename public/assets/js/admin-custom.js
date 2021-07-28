@@ -1192,6 +1192,11 @@ $(document).ready(function() {
         startDate: today,
         format:'yyyy-mm-dd'
     });
+    $("#voucher_exp_date").datepicker({
+        todayHighlight: true,
+        startDate: today,
+        format:'yyyy-mm-dd'
+    });
 });
 
 // $(document).ready(function(){

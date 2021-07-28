@@ -47,7 +47,7 @@
 <div class="form-group row">
     <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label required">Voucher Expiry Date</label>
     <div class="col-12 col-md-7 col-xl-7 col-sm-12">
-        <input type="date" class="form-control " name="valid_till" placeholder="Select Voucher Expiry Date" value="{{ $voucher->valid_till }}">
+        <input type="text" name="valid_till" id="voucher_exp_date" class="form-control " placeholder="Select Voucher Expiry Date" value="{{ $voucher->valid_till }}" autocomplete="off">
         <span class="error-msg" id="validTillError"></span>
     </div>
 </div>
