@@ -27,6 +27,7 @@
                         <tr>
                             <th>Sr No</th>
                             <th>Subscription Name</th>
+                            <th>Subscription Status</th>
                             <th>Monthly Price</th>
                             <th>Quarterly Price</th>
                             <th>Half Yearly Price</th>

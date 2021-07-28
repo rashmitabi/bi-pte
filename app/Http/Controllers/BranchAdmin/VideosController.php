@@ -118,7 +118,7 @@ class VideosController extends Controller
         $video->section_id = $input['section_id'];
         $video->design_id = $input['design_id'];
         $video->title = $input['title'];
-        $video->description = $input['description'];
+        $video->description = isset($input['description'])?$input['description']:'';
         $video->link = $input['link'];
         if(!isset($input['status'])){
             $video->status = 'D';
@@ -211,6 +211,7 @@ class VideosController extends Controller
         if(!isset($input['status'])){
             $input['status'] = 'D';
         }
+        $input['description'] = isset($input['description'])?$input['description']:'';
         $result = Videos::where('id',$id)->update($input);
         if($result){
             \Session::put('success', 'Video updated Successfully!');

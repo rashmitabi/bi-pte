@@ -22,7 +22,7 @@
                             <th>Sr No</th>
                             <th>Student Name</th>
                             <th>Test Name</th>
-                            <!-- <th>Attempted Date</th> -->
+                            <th>Attempted Date</th>
                             <th>Action</th>
                         </tr>
                     </thead>

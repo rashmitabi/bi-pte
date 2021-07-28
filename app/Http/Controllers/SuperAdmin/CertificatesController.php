@@ -9,6 +9,7 @@ use App\Models\Certificates;
 use App\Models\Notifications;
 use App\Models\Tests;
 use App\Models\User;
+use App\Models\StudentTests;
 use App\Http\Requests\CreateCertificateRequest;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\SendEmailUser;
@@ -44,6 +45,10 @@ class CertificatesController extends Controller
                     ->addColumn('test_name', function($row){
                         return $row->test->test_name;
                         
+                    }) 
+                    ->addColumn('attempted_date', function($row){
+                        $student_test_date = StudentTests::where(['user_id' => $row->user_id, 'test_id' => $row->test_id, 'status' => 'C'])->first();
+                        return date('Y-m-d', strtotime($student_test_date->end_date));                  
                     })                                      
                     ->addColumn('action', function($row){
                         $existing_certificate = Certificates::latest()->where(['student_user_id' => $row->user_id, 'test_id' => $row->test_id])->first();

@@ -25,7 +25,7 @@ class UpdateVideosRequest extends FormRequest
     {
         return [
             'title'=>'required|max:250',
-            'description'=>'required|max:1000',
+            'description'=>'max:1000',
             'link'=>'required|url|max:250',
             'section_id'=>'required|numeric',
             'design_id'=>'required|numeric'
@@ -43,7 +43,6 @@ class UpdateVideosRequest extends FormRequest
             'section_id.required' => 'Please select the video section',
             'design_id.required' => 'Please select the video type',
             'title.required' => 'Please enter the video title',
-            'description.required' => 'Please enter the video description',
             'link.required' => 'Please enter the video link'
         ];
     }

@@ -1,7 +1,7 @@
 <form class="form mt-4 ml-3" enctype="multipart/form-data" id="editPrediction">
 @csrf
 <div class="form-group row">
-    <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Prediction Title</label>
+    <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label required">Prediction Title</label>
     <div class="col-12 col-md-7 col-xl-7 col-sm-12">
         <input type="text" class="form-control "name="title" placeholder="Enter Prediction Title" value="{{ $prediction->title }}">
         <span class="error-msg" id="titleError"></span>
@@ -15,7 +15,7 @@
     </div>
 </div>
 <div class="form-group row">
-    <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Prediction File</label>
+    <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label">Prediction File</label>
     <div class="col-12 col-md-7 col-xl-7 col-sm-12">
       <div class="custom-file">
         <input type="file" class="custom-file-input" name="file" id="customFile">
@@ -29,7 +29,7 @@
     </div>
 </div>
 <div class="form-group row">
-  <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label">Prediction Section</label>
+  <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label required">Prediction Section</label>
   <div class="col-12 col-md-7 col-xl-7 col-sm-12">
     <select id="sections" name="section_id"  class="form-select">
       <option value="" selected>Select Section</option>
@@ -43,7 +43,7 @@
   </div>
 </div>
 <div class="form-group row">
-  <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label">Prediction Type</label>
+  <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label required">Prediction Type</label>
   <div class="col-12 col-md-7 col-xl-7 col-sm-12">
     <select id="types" name="design_id" class="form-select" data-json="{{ json_encode($types) }}">
       <option value="" selected>Select Type</option>
