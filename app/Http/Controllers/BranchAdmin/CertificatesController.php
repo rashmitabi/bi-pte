@@ -9,6 +9,7 @@ use App\Models\Certificates;
 use App\Models\Notifications;
 use App\Models\Activities;
 use App\Models\Tests;
+use App\Models\StudentTests;
 use App\Http\Requests\CreateCertificateRequest;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\SendEmailUser;
@@ -23,7 +24,7 @@ class CertificatesController extends Controller
             //$data = TestResults::with(['test','user'])->join('users', 'users.id', '=', 'test_results.user_id')->select('test_id','user_id')->groupBy('test_id', 'user_id')->where('users.parent_user_id', \Auth::user()->id)->get();
 
             $data = TestResults::with(['test','user'])
-                ->select('test_results.test_id','test_results.user_id')
+                ->select('test_results.test_id', 'test_results.user_id')
                 ->join('users', 'users.id', '=', 'test_results.user_id')
                 ->join('student_tests', function($join)
                          {
@@ -47,7 +48,11 @@ class CertificatesController extends Controller
                     ->addColumn('test_name', function($row){
                         return $row->test->test_name;
                         
-                    })                                      
+                    })     
+                    ->addColumn('attempted_date', function($row){
+                        $student_test_date = StudentTests::where(['user_id' => $row->user_id, 'test_id' => $row->test_id, 'status' => 'C'])->first();
+                        return date('Y-m-d', strtotime($student_test_date->end_date));                
+                    })                                  
                     ->addColumn('action', function($row){
                         $existing_certificate = Certificates::latest()->where(['student_user_id' => $row->user_id, 'test_id' => $row->test_id])->first();
                         if($existing_certificate){

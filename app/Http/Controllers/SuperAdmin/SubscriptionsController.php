@@ -28,6 +28,14 @@ class SubscriptionsController extends Controller
                     ->addColumn('title', function($row){
                         return $row->title;
                     })
+                    ->addColumn('status', function($row){
+                        if($row->status == "E"){
+                            $status = "Enabled";
+                        }else{
+                            $status = "Disabled";
+                        }
+                        return $status;
+                    })
                     ->addColumn('monthly_price', function($row){
                         return $row->monthly_price;
                     })

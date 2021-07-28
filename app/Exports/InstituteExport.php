@@ -12,7 +12,7 @@ class InstituteExport implements FromCollection, WithHeadings, WithMapping
 
 	public function headings(): array
     {
-        return array('Institute Name', 'Email', 'Mobile Number', 'State');
+        return array('Institute Name', 'Email', 'Mobile Number');
     }
 
     /**
@@ -20,8 +20,8 @@ class InstituteExport implements FromCollection, WithHeadings, WithMapping
     */
     public function collection()
     {
-        $input = request()->all();
-        return $users = User::whereIn('id',$input['ids'])->with(['institue'])->get();
+        $input = request()->all(); 
+        return $users = User::whereIn('id',$input['ids'])->with(['institue'])->latest()->get();
     }
     public function map($users): array
     {
@@ -29,7 +29,7 @@ class InstituteExport implements FromCollection, WithHeadings, WithMapping
             $users->institue->institute_name,
             $users->email,
             $users->mobile_no,
-            $users->state,
+           
         ];
     }
 }

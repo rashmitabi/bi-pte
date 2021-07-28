@@ -56,6 +56,13 @@
                                 <Button type="submit" class="btn btn-submit"> Sign IN  </Button>
 
                             </div>
+                            <div class="form-group mt-3 text-center">
+                                @if (Route::has('register'))
+                                    <a class="pass-label" href="{{ route('register') }}">
+                                        {{ __('Sign Up') }}
+                                    </a>
+                                @endif
+                            </div>
                         </form>
                     </div>
                 </div>

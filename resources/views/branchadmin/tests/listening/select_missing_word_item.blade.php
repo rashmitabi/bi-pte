@@ -112,7 +112,7 @@
                                         <input type="file" class="custom-file-input " onchange ="uploadAduio()" id="customFile_audio123" data-url="{{ route('branchadmin-upload-audio') }}" data-token="{{ csrf_token() }}">
                                             <label class="custom-file-label" for="customFile">Select Audio</label>
                                         </div>
-                                        <input type="text" name="upload-audio" id="upload-audio" class="form-control" >
+                                        <input type="text" name="upload-audio" id="upload-audio" class="form-control" placeholder="Here Display the code of Audio">
                                         <span class="error-msg" id="upload-audioError"></span>
                                     </div>
                                 </div>        

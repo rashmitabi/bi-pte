@@ -116,7 +116,7 @@ class PredictionFilesController extends Controller
         $prediction->section_id = $input['section_id'];
         $prediction->design_id = $input['design_id'];
         $prediction->title = $input['title'];
-        $prediction->description = $input['description'];
+        $prediction->description = isset($input['description'])?$input['description']:'';
         $prediction->link = $filePath;
         if(!isset($input['status'])){
             $prediction->status = 'D';
@@ -221,6 +221,7 @@ class PredictionFilesController extends Controller
         if(!isset($input['status'])){
             $input['status'] = 'D';
         }       
+        $input['description'] = isset($input['description'])?$input['description']:'';
         $result = PredictionFiles::where('id',$id)->update($input);        
         if($result){
             if(isset($prediction) && file_exists(public_path($prediction->link))){

@@ -11,7 +11,7 @@
 		content: '{{$message}}'
 	});
 </script>
-<?php Session::forget('success');?>
+{{ Session::forget('success'); }}
 @endif
 @if ($message = Session::get('error'))
 <script type="text/javascript">
@@ -20,7 +20,7 @@
 		content: '{{$message}}'
 	});
 </script>
-<?php Session::forget('error');?>
+{{ Session::forget('error'); }}
 @endif
 @if ($message = Session::get('warning'))
 <script type="text/javascript">
@@ -29,7 +29,7 @@
 		content: '{{$message}}'
 	});
 </script>
-<?php Session::forget('warning');?>
+{{ Session::forget('warning'); }}
 @endif
 @if ($message = Session::get('info'))
 <script type="text/javascript">
@@ -38,6 +38,6 @@
 		content: '{{$message}}'
 	});
 </script>
-<?php Session::forget('info');?>
+{{ Session::forget('info'); }}
 @endif
 

@@ -335,15 +335,15 @@ class UsersController extends Controller
         $body = '';
         $subject = '';
         $regexUrl = '/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/';
-        if($type == 3){
+        if($type == 3){ 
             $request->validate([
                 'type'=>'required',
-                'branch_admin'=>'required',
+                'branch_admin' => 'required|integer',
                 'fname' => 'required|min:3|max:100',
                 'lname' => 'required|min:3|max:100',
                 'uname'=>'required|regex:/^[a-zA-Z0-9]+$/u|unique:users,name|max:255',
                 'semail'=>'required|email|unique:users,email|max:255',
-                'spassword'=>'required|min:6|max:20',
+                'spassword'=>'required|min:8|max:20',
                 'confirm_spassword'=>'required|same:spassword',
                 'dob' =>'required|before:18 years ago',
                 'mobileno' =>'required|digits:10',
@@ -357,9 +357,14 @@ class UsersController extends Controller
                 'simage'=>'nullable|image|mimes:jpeg,png,jpg|max:2048'
             ],
             [
+                'branch_admin.required'=> 'Please select branch admin', // custom message
                 'semail.required'=> 'Email is required', // custom message
+                'fname.required'=> 'First name is required', // custom message
+                'lname.required'=> 'Last name is required', // custom message
+                'mobileno.required'=> 'Mobile no is required', // custom message
                 'semail.email'=> 'Email is must be email format',
                 'semail.unique'=> 'Email has already taken',
+                'uname.unique'=> 'User name has already taken',
                 'semail.max'=> 'Email maximum length allow 255',
                 'spassword.required'=>'Password is required',
                 'spassword.min'=>'Password min length at least 6',
@@ -387,7 +392,7 @@ class UsersController extends Controller
                 'simage.mimes'=>'Image must be file jpeg,png,jpg format'
             ]);
             $input  = \Arr::except($request->all(),array('_token'));
-            $body = '</p>You are successfuly register as Student.</p>';
+            $body = 'User Name: '.$input['uname'].' <br/> Password : '.$input['spassword'].' <br/> <p>You are successfuly register as Student.</p>';
             $subject = 'Student register';
             $emailid = $input['semail'];
             if(!isset($input['sstatus'])){
@@ -432,7 +437,7 @@ class UsersController extends Controller
                 'iuname' => 'required|regex:/^[a-zA-Z0-9]+$/u|unique:users,name|max:255',
                 'iname'=>'required|min:2|max:255',
                 'iemail'=>'required|email|unique:users,email|max:255',
-                'ipassword'=>'required|min:6|max:20',
+                'ipassword'=>'required|min:8|max:20',
                 'confirm_ipassword'=>'required|same:ipassword',
                 'country_code'=>'required|max:5',
                 'phone_no' =>'required|min:6|max:20',
@@ -486,7 +491,7 @@ class UsersController extends Controller
                 'bimage.max'=>'Background image maximum length allow 2048'
                ]);
             $input  = \Arr::except($request->all(),array('_token'));
-            $body = '</p>You are successfuly register as Branch admin.</p>';
+            $body = 'User Name : '.$input['iuname'].' <br/> Password : '.$input['ipassword'].' <br/> <p>You are successfuly register as Branch admin.</p>';
             $subject = 'Branch admin register';
             $emailid = $input['iemail'];
 
@@ -582,7 +587,7 @@ class UsersController extends Controller
                 dd($e->getMessage());
             }
             return redirect()->route('users.index')
-                        ->with('success','User created successfully!');
+                        ->with('success','Thank you for creating new user');
         }else{
             return redirect()->route('users.index')
                         ->with('error','Sorry!Something wrong.Try again later!');
