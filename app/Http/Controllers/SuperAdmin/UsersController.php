@@ -338,7 +338,7 @@ class UsersController extends Controller
         if($type == 3){ 
             $request->validate([
                 'type'=>'required',
-                'branch_admin'=>'required',
+                'branch_admin' => 'required|integer',
                 'fname' => 'required|min:3|max:100',
                 'lname' => 'required|min:3|max:100',
                 'uname'=>'required|regex:/^[a-zA-Z0-9]+$/u|unique:users,name|max:255',
@@ -357,9 +357,14 @@ class UsersController extends Controller
                 'simage'=>'nullable|image|mimes:jpeg,png,jpg|max:2048'
             ],
             [
+                'branch_admin.required'=> 'Please select branch admin', // custom message
                 'semail.required'=> 'Email is required', // custom message
+                'fname.required'=> 'First name is required', // custom message
+                'lname.required'=> 'Last name is required', // custom message
+                'mobileno.required'=> 'Mobile no is required', // custom message
                 'semail.email'=> 'Email is must be email format',
                 'semail.unique'=> 'Email has already taken',
+                'uname.unique'=> 'User name has already taken',
                 'semail.max'=> 'Email maximum length allow 255',
                 'spassword.required'=>'Password is required',
                 'spassword.min'=>'Password min length at least 6',

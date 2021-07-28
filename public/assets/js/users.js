@@ -984,6 +984,7 @@ $(document).ready(function() {
         },
         success:function(data) {
           if(data == false){
+            $("#semail-unique-msg2").text("");
             $(".unique-semail").after("<span class='error-msg' id='semail-unique-msg'>"+msg+"</span>");
             $(':input[type="submit"]').prop('disabled', true);
           }else{
@@ -1023,6 +1024,7 @@ $(document).ready(function() {
         },
         success:function(data) {
           if(data == false){
+            $("#iuname-unique-msg2").text("");
             $(".unique-iusername").after("<span class='error-msg' id='iuname-unique-msg'>"+msg+"</span>");
             $(':input[type="submit"]').prop('disabled', true);
             console.log('false');
@@ -1062,6 +1064,7 @@ $(document).ready(function() {
         },
         success:function(data) {
           if(data == false){
+            $("#iemail-unique-msg2").text("");
             $(".unique-iemail").after("<span class='error-msg' id='iemail-unique-msg'>"+msg+"</span>");
             $(':input[type="submit"]').prop('disabled', true);
           }else{

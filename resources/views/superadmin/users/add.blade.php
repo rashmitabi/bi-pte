@@ -54,11 +54,14 @@
               <label  class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Branch Admin</label>
               <div class="col-12 col-md-7 col-xl-7 col-sm-12">
                 <select class="custom-select" name="branch_admin" id="branch_admin">
-                  <option value="" selected disabled>Select Branch Admin</option>
+                  <option value selected disabled>Select Branch Admin</option>
                   @foreach($admins as $admin)
                     <option value="{{ $admin->id }}" {{ (old('branch_admin') == $admin->id)?'selected':''}} >{{ isset($admin->institue->institute_name)?$admin->institue->institute_name:'' }}</option>
                   @endforeach
                 </select>
+                 @if($errors->has('branch_admin'))
+                  <span class="error-msg">{{$errors->first('branch_admin')}}</span>
+                @endif
               </div>
             </div>
             <div class="form-group row">
@@ -84,7 +87,7 @@
               <div class="col-12 col-md-7 col-xl-7 col-sm-12">
                 <input type="text" name="uname" value="{{old('uname')}}" data-id="" data-action="store" data-unique-type="username" data-url="{{ route('superadmin-check-unique-validation') }}" class="form-control unique-susername" placeholder="Enter User Name">
                 @if($errors->has('uname'))
-                  <span class="error-msg">{{$errors->first('uname')}}</span>
+                  <span class="error-msg" id="suname-unique-msg2">{{$errors->first('uname')}}</span>
                 @endif
               </div>
             </div>
@@ -93,7 +96,7 @@
               <div class="col-12 col-md-7 col-xl-7 col-sm-12">
                 <input type="email" name="semail" value="{{old('semail')}}" data-id="" data-action="store" data-unique-type="email" data-url="{{ route('superadmin-check-unique-validation') }}" class="form-control unique-semail" placeholder="Enter Email id">
                 @if($errors->has('semail'))
-                  <span class="error-msg">{{$errors->first('semail')}}</span>
+                  <span class="error-msg" id="semail-unique-msg2">{{$errors->first('semail')}}</span>
                 @endif
               </div>
             </div>
@@ -248,7 +251,7 @@
               <div class="col-12 col-md-7 col-xl-7 col-sm-12">
                 <input type="text" name="iuname" value="{{ old('iuname') }}" data-id="" data-action="store" data-unique-type="username" data-url="{{ route('superadmin-check-unique-validation') }}" class="form-control unique-iusername" placeholder="Enter User Name">
                 @if($errors->has('iuname'))
-                  <span class="error-msg">{{$errors->first('iuname')}}</span>
+                  <span class="error-msg" id="iuname-unique-msg2">{{$errors->first('iuname')}}</span>
                 @endif
               </div>
             </div>
@@ -257,7 +260,7 @@
               <div class="col-12 col-md-7 col-xl-7 col-sm-12">
                 <input type="text" name="iname" value="{{ old('iname') }}" class="form-control " placeholder="Enter Institute Name">
                 @if($errors->has('iname'))
-                  <span class="error-msg">{{$errors->first('iname')}}</span>
+                  <span class="error-msg" >{{$errors->first('iname')}}</span>
                 @endif
               </div>
             </div>
@@ -266,7 +269,7 @@
               <div class="col-12 col-md-7 col-xl-7 col-sm-12">
                 <input type="email" name="iemail" value="{{ old('iemail') }}" data-id="" class="form-control unique-iemail" data-action="store" data-unique-type="email" data-url="{{ route('superadmin-check-unique-validation') }}"  placeholder="Enter Email id">
                 @if($errors->has('iemail'))
-                  <span class="error-msg">{{$errors->first('iemail')}}</span>
+                  <span class="error-msg" id="iemail-unique-msg2">{{$errors->first('iemail')}}</span>
                 @endif
               </div>
             </div>
