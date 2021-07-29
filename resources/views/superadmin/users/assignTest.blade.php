@@ -1,4 +1,33 @@
 @if(count($tests) > 0)
+@php
+$number10 = '';
+$number20 = '';
+$number30 = '';
+$number40 = '';
+$number50 = '';
+$totalAssign = count($alreadyAssign);
+@endphp
+@if($totalAssign >= 10 && $totalAssign < 20)
+  @php
+  $number10 = 'checked';
+  @endphp
+@elseif($totalAssign >= 20 && $totalAssign < 30)
+  @php
+  $number20 = 'checked';
+  @endphp
+@elseif($totalAssign >= 30 && $totalAssign < 40)
+  @php
+  $number30 = 'checked';
+  @endphp
+@elseif($totalAssign >= 40 && $totalAssign < 50)
+  @php
+  $number40 = 'checked';
+  @endphp
+@else
+  @php
+  $number50 = 'checked';
+  @endphp
+@endif
 <form class="form" id="precticeForm" name="precticeForm">
   <div class="form-check form-check-inline common-heading">
     <input type="checkbox" class="form-check-input" id="selectAllTest">
@@ -10,7 +39,7 @@
   </div>            
   <div class="form-check form-check-inline">
     <label for="rdo-1" class="btn-radio">
-      <input type="radio" id="rdo-1" class="test_select testradio10" name="test_select" value="10">
+      <input type="radio" id="rdo-1" class="test_select testradio10" {{$number10}} name="test_select" value="10">
       <svg width="20px" height="20px" viewBox="0 0 20 20">
           <circle cx="10" cy="10" r="9"></circle>
           <path d="M10,7 C8.34314575,7 7,8.34314575 7,10 C7,11.6568542 8.34314575,13 10,13 C11.6568542,13 13,11.6568542 13,10 C13,8.34314575 11.6568542,7 10,7 Z" class="inner"></path>
@@ -23,7 +52,7 @@
   @if(count($tests) >= 20)
   <div class="form-check form-check-inline">
     <label for="rdo-2" class="btn-radio">
-      <input type="radio" id="rdo-2" class="test_select testradio20" name="test_select" value="20">
+      <input type="radio" id="rdo-2" class="test_select testradio20" {{$number20}} name="test_select" value="20">
       <svg width="20px" height="20px" viewBox="0 0 20 20">
         <circle cx="10" cy="10" r="9"></circle>
         <path d="M10,7 C8.34314575,7 7,8.34314575 7,10 C7,11.6568542 8.34314575,13 10,13 C11.6568542,13 13,11.6568542 13,10 C13,8.34314575 11.6568542,7 10,7 Z" class="inner"></path>
@@ -36,7 +65,7 @@
   @if(count($tests) >= 30)
   <div class="form-check form-check-inline">
       <label for="rdo-3" class="btn-radio">
-            <input type="radio" id="rdo-3" class="test_select testradio30" name="test_select" value="30">
+            <input type="radio" id="rdo-3" class="test_select testradio30" {{$number30}} name="test_select" value="30">
                   <svg width="20px" height="20px" viewBox="0 0 20 20">
                       <circle cx="10" cy="10" r="9"></circle>
                       <path d="M10,7 C8.34314575,7 7,8.34314575 7,10 C7,11.6568542 8.34314575,13 10,13 C11.6568542,13 13,11.6568542 13,10 C13,8.34314575 11.6568542,7 10,7 Z" class="inner"></path>
@@ -49,7 +78,7 @@
   @if(count($tests) >= 40)
   <div class="form-check form-check-inline">
       <label for="rdo-4" class="btn-radio">
-            <input type="radio" id="rdo-4" class="test_select testradio40" name="test_select" value="40">
+            <input type="radio" id="rdo-4" class="test_select testradio40" {{$number40}} name="test_select" value="40">
                   <svg width="20px" height="20px" viewBox="0 0 20 20">
                       <circle cx="10" cy="10" r="9"></circle>
                       <path d="M10,7 C8.34314575,7 7,8.34314575 7,10 C7,11.6568542 8.34314575,13 10,13 C11.6568542,13 13,11.6568542 13,10 C13,8.34314575 11.6568542,7 10,7 Z" class="inner"></path>
@@ -62,7 +91,7 @@
   @if(count($tests) >= 50)
   <div class="form-check form-check-inline">
       <label for="rdo-5" class="btn-radio">
-            <input type="radio" id="rdo-5" class="test_select testradio50" name="test_select" value="50">
+            <input type="radio" id="rdo-5" class="test_select testradio50" {{$number50}} name="test_select" value="50">
                   <svg width="20px" height="20px" viewBox="0 0 20 20">
                       <circle cx="10" cy="10" r="9"></circle>
                       <path d="M10,7 C8.34314575,7 7,8.34314575 7,10 C7,11.6568542 8.34314575,13 10,13 C11.6568542,13 13,11.6568542 13,10 C13,8.34314575 11.6568542,7 10,7 Z" class="inner"></path>

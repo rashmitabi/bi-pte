@@ -22,7 +22,7 @@
         <label class="custom-file-label" for="customFile">Please Upload Prediction File</label>
         <span class="info">
           <small><i>Please upload the file only if you want to change the document for this prediction.</i>
-          <br><a href="{{ url('/'.$prediction->link) }}">Click Here</a> to check Current Document</span></small>
+          <br><a  target="_blank" href="{{ url('/'.$prediction->link) }}">Click Here</a> to check Current Document</span></small>
         </span><br>
         <span class="error-msg" id="fileError"></span>
       </div>

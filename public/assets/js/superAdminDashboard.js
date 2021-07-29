@@ -57,6 +57,9 @@ $(document).ready(function() {
       $(this).addClass('active');
       $('#near-to-expire_wrapper').css('display', 'none');
       $('#expired_wrapper').css('display', 'block');
+      if($('#expired_wrapper').find('.dataTables_empty')){            
+        $('#expired_wrapper').find('.dataTables_empty').attr('colspan', '6');
+      }
     });
 
     $('body').on('click', '#nearToExpireSub', function(){
@@ -64,6 +67,9 @@ $(document).ready(function() {
       $(this).addClass('active');     
       $('#expired_wrapper').css('display', 'none'); 
       $('#near-to-expire_wrapper').css('display', 'block');
+      if($('#near-to-expire_wrapper').find('.dataTables_empty')){            
+        $('#near-to-expire_wrapper').find('.dataTables_empty').attr('colspan', '6');
+      }
     });
 
     $('#activitylog').DataTable({
@@ -109,6 +115,7 @@ $(document).ready(function() {
            {data: 'date', name: 'date'},
         ]
     });
+
     $("#transaction_wrapper div.toolbar").html(''); 
 
     $('#expired').DataTable({
@@ -191,4 +198,35 @@ $(document).ready(function() {
       todayHighlight: true,
       format:'yyyy-mm-dd'
   });
+
+  $('#from_date, #to_date').change(function(){
+     filterTransactions();
+  });
 });
+
+function filterTransactions(){
+  var from = $("#from_date").val();
+  var to  = $("#to_date").val();
+  $("#transaction").DataTable().destroy();
+  $('#transaction').DataTable({
+        language: {
+            paginate: {
+              next: '<i class="fas fa-chevron-right"></i>', // or '→'
+              previous: '<i class="fas fa-chevron-left"></i>' // or '←' 
+            }
+        }, 
+        "dom": "<'row'<'col-sm-12 col-md-3 top-label'<'toolbar'>>>" +
+        "<'row'<'col-sm-12't>>" +
+        "<'row'>",
+        processing: true,
+        serverSide: true,
+        ajax: transactionurl+'?from='+from+'&to='+to,
+        columns: [
+           {data: 'DT_RowIndex', name: 'DT_RowIndex'},
+           {data: 'transaction_id', name: 'transaction_id'},
+           {data: 'name', name: 'name'},
+           {data: 'amount', name: 'amount'},
+           {data: 'date', name: 'date'},
+        ]
+    });
+}

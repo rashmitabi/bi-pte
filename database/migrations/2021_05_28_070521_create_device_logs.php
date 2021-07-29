@@ -14,8 +14,7 @@ class CreateDeviceLogs extends Migration
     public function up()
     {
         Schema::create('device_logs', function (Blueprint $table) {
-            //$table->integer('id');
-            $table->increments('id');
+            $table->integer('id');
             $table->integer('user_id')->comment('Foreign key of users table');
             $table->string('browser_name',255);
             $table->string('device_name',255);
@@ -26,13 +25,8 @@ class CreateDeviceLogs extends Migration
             $table->timestamp('updated_at')->nullable();
         });
 
-        // DB::statement("ALTER TABLE device_logs CHANGE `updated_at` `updated_at` TIMESTAMP NULL ON UPDATE CURRENT_TIMESTAMP");
-        // DB::statement("ALTER TABLE device_logs MODIFY  id INT AUTO_INCREMENT  PRIMARY KEY");
-        DB::statement("CREATE TRIGGER update_timestamp
-          BEFORE UPDATE
-          ON device_logs
-          FOR EACH ROW
-          EXECUTE PROCEDURE upd_timestamp()");
+        DB::statement("ALTER TABLE device_logs CHANGE `updated_at` `updated_at` TIMESTAMP NULL ON UPDATE CURRENT_TIMESTAMP");
+        DB::statement("ALTER TABLE device_logs MODIFY  id INT AUTO_INCREMENT  PRIMARY KEY");
     }
 
     /**

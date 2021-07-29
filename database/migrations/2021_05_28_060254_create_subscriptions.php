@@ -26,8 +26,7 @@ class CreateSubscriptions extends Migration
         // });
 
         Schema::create('subscriptions', function (Blueprint $table) {
-            //$table->tinyInteger('id');
-            $table->tinyIncrements('id');
+            $table->tinyInteger('id');
             $table->tinyInteger('role_id')->comment('Foreign key of roles table');
             $table->string('title',255);
             $table->tinyInteger('students_allowed')->comment('No. of students allowed, 0 if unlimited');
@@ -47,13 +46,8 @@ class CreateSubscriptions extends Migration
             $table->timestamp('updated_at')->nullable();
         });
 
-        // DB::statement("ALTER TABLE subscriptions CHANGE `updated_at` `updated_at` TIMESTAMP NULL ON UPDATE CURRENT_TIMESTAMP");
-        // DB::statement("ALTER TABLE subscriptions MODIFY  id tinyint(4) AUTO_INCREMENT  PRIMARY KEY");
-        DB::statement("CREATE TRIGGER update_timestamp
-          BEFORE UPDATE
-          ON subscriptions
-          FOR EACH ROW
-          EXECUTE PROCEDURE upd_timestamp()");
+        DB::statement("ALTER TABLE subscriptions CHANGE `updated_at` `updated_at` TIMESTAMP NULL ON UPDATE CURRENT_TIMESTAMP");
+        DB::statement("ALTER TABLE subscriptions MODIFY  id tinyint(4) AUTO_INCREMENT  PRIMARY KEY");
     }
 
     /**

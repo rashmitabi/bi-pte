@@ -40,7 +40,7 @@
 <div class="form-group row">
     <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label voucher-price-label required">{{ ($voucher->discount_type == 'P')?'Percentage Price':'Fixed Price'}}</label>
     <div class="col-12 col-md-7 col-xl-7 col-sm-12">
-        <input type="text" class="form-control " name="voucher_price" placeholder="Enter Voucher Price" value="{{ ($voucher->discount_type == 'P')?$voucher->discount_percentage:$voucher->discount_price }}">
+        <input type="text" class="form-control " id="voucher_price" name="voucher_price" placeholder="Enter Voucher Price" value="{{ ($voucher->discount_type == 'P')?$voucher->discount_percentage:$voucher->discount_price }}">
         <span class="error-msg" id="voucherPriceError"></span>
     </div>
 </div>

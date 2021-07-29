@@ -14,8 +14,7 @@ class CreateVideos extends Migration
     public function up()
     {
         Schema::create('videos', function (Blueprint $table) {
-            //$table->bigInteger('id');
-            $table->bigIncrements('id');
+            $table->bigInteger('id');
             $table->integer('user_id')->comment('Foreign key of users  table');
             $table->tinyInteger('section_id')->comment('Foreign key of sections table');
             $table->tinyInteger('question_type_id')->comment('Foreign key of question_types table');
@@ -27,13 +26,8 @@ class CreateVideos extends Migration
             $table->timestamp('updated_at')->nullable();
         });
 
-        // DB::statement("ALTER TABLE videos CHANGE `updated_at` `updated_at` TIMESTAMP NULL ON UPDATE CURRENT_TIMESTAMP");
-        // DB::statement("ALTER TABLE videos MODIFY  id INT AUTO_INCREMENT  PRIMARY KEY");
-        DB::statement("CREATE TRIGGER update_timestamp
-          BEFORE UPDATE
-          ON videos
-          FOR EACH ROW
-          EXECUTE PROCEDURE upd_timestamp()");
+        DB::statement("ALTER TABLE videos CHANGE `updated_at` `updated_at` TIMESTAMP NULL ON UPDATE CURRENT_TIMESTAMP");
+        DB::statement("ALTER TABLE videos MODIFY  id INT AUTO_INCREMENT  PRIMARY KEY");
     }
 
     /**

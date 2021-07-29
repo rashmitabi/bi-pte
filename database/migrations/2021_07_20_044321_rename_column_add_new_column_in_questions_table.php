@@ -18,7 +18,7 @@ class RenameColumnAddNewColumnInQuestionsTable extends Migration
             $table->renameColumn('answer_time', 'recording_answer_time')->nullable();
             $table->renameColumn('waiting_time', 'befor_audio_waiting_time')->nullable();
             $table->integer('prepration_time')->after('waiting_time')->comment('prepration_time in seconds')->nullable();
-            $table->smallInteger('max_time')->comment(' total time for question in seconds')->change();
+            $table->renameColumn('max_time', 'max_time')->comment(' total time for question in seconds')->nullable();
         });
     }
 
