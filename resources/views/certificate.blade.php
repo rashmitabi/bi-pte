@@ -5,13 +5,17 @@
   <meta charset="utf-8">
   <title>PTE</title>
   <style>
-    @font-face {
+    /* @font-face {
       font-family: SourceSansPro;
       src: url("{{ asset('assets/fonts/SourceSansPro-Regular.ttf') }}");
-    }
+    } */
 
-    body {
-      font-family: SourceSansPro;
+    html {
+      /* font-family: SourceSansPro; */
+      font-size: 14px;
+      width: 100%;
+      margin: 0;
+      padding: 0;
     }
 
     .line{
@@ -36,7 +40,7 @@
   </style>
 </head>
 
-<body style="width: 21cm; margin: 0 auto; background: #000000;font-size: 14px;">
+<body style="">
   <header style="height: 100px; width: 100%;background-color: #d4ebe2;overflow: hidden;">
     <div id="logo" style="display: inline-block;width: 100%; padding: 10px 30px;">
         @php
@@ -56,7 +60,7 @@
       </div> -->
     </div>
   </header>
-  <main style="padding: 25px 30px;background-color: #fff;">
+  <main style="padding: 25px 30px;background-color: #fff;display: block;">
     <div id="details" class="clearfix">
       <div id="client" style="width: 68%;display: inline-block;border-right:2px solid #e8e8e8;">
         @php
@@ -68,43 +72,40 @@
         <div><strong>Registration ID:</strong>21123123</div>
       </div>
       <div id="invoice" style="width: 30%;float: right;text-align: center;">
-        <div style="display: grid;width: 110px;margin: 0 auto;">
-          <span
-            style="background-color: #0d546c;color: #fff;  border-top-left-radius: 10px; border-top-right-radius: 10px;font-size: 16px;padding: 3px 8px;">Overall
-            Score</span>
-          <span
-            style="background-color: #a0007e;color: #fff; padding: 5px 5px 15px 5px; font-size: 50px;border-bottom-right-radius: 60px; border-bottom-left-radius: 60px;">56</span>
+        <div style="display: block;width: 110px;margin: 0 auto;">
+          <span style="display: inline-block;background-color: #0d546c;color: #fff;  border-top-left-radius: 10px; border-top-right-radius: 10px;font-size: 16px;padding: 3px 8px;margin-bottom: 0;">Overall Score</span>
+          <span style="display: block;background-color: #a0007e;color: #fff; padding: 0px 30px 20px 25px; font-size: 50px;border-bottom-right-radius: 60px; border-bottom-left-radius: 60px;">56</span>
         </div>
       </div>
     </div>
 
-    <div>
-      <h2 style="border-bottom:2px solid #e8e8e8;margin-top: 30px;padding-bottom: 7px;">Communicative Skills</h2>
+    <div style="margin-top: 20px;">
+      <h2 style="border-bottom:2px solid #e8e8e8;margin-top: 30px;padding-bottom: 7px;margin-bottom: 20px;">Communicative Skills</h2>
       <div style="text-align: center;">
         <div style="width: 85px; text-align: center;display: inline-block;margin: 0px 15px;">
-          <span style="border: 4px solid #243455; padding: 20px;display: block;  border-radius: 100%; font-size: 24px;
+          <span style="border: 4px solid #243455; padding: 20px;display: block;  border-radius: 40px; font-size: 24px;
             width: 36px;font-weight: 700;height: 36px;margin-bottom: 8px;">57</span>
           <span>Listening</span>
         </div>
         <div style="width: 85px; text-align: center;display: inline-block;margin: 0px 15px;">
-          <span style="border: 4px solid #c3cf24; padding: 20px;display: block;  border-radius: 100%; font-size: 24px;
+          <span style="border: 4px solid #c3cf24; padding: 20px;display: block;  border-radius: 40px; font-size: 24px;
             width: 36px;font-weight: 700;height: 36px;margin-bottom: 8px;">57</span>
           <span>Reading</span>
         </div>
         <div style="width: 85px; text-align: center;display: inline-block;margin: 0px 15px;">
-          <span style="border: 4px solid #5b5b5b; padding: 20px;display: block;  border-radius: 100%; font-size: 24px;
+          <span style="border: 4px solid #5b5b5b; padding: 20px;display: block;  border-radius: 40px; font-size: 24px;
             width: 36px;font-weight: 700;height: 36px;margin-bottom: 8px;">57</span>
           <span>Speaking</span>
         </div>
         <div style="width: 85px; text-align: center;display: inline-block;margin: 0px 15px;">
-          <span style="border: 4px solid #910c68; padding: 20px;display: block;  border-radius: 100%; font-size: 24px;
+          <span style="border: 4px solid #910c68; padding: 20px;display: block;  border-radius: 40px; font-size: 24px;
             width: 36px;font-weight: 700;height: 36px;margin-bottom: 8px;">57</span>
           <span>Writing</span>
         </div>
       </div>
     </div>
 
-    <div class="line-block" style="width: 100%;display: inline-block;">
+    <div class="line-block" style="width: 100%;display: inline-block;background-color: #fff;">
       <div style="width: 55%;float: left;">
         <h2 style="border-bottom:2px solid #e8e8e8;margin-top: 30px;padding-bottom: 7px;">Skills Breakdown</h2>
 
