@@ -217,12 +217,30 @@ class UsersController extends Controller
             {
                 $result = UserAssignTests::updateOrCreate(['user_id'   => $new_user,],
                         ['practise_test_id'   => $test_id,]);
+                $notification_data = array(
+                    'user_id' => $new_user,
+                    'sender_id' => \Auth::user()->id,
+                    'type' => getUserRole($new_user),
+                    'title' => "Branch admin assign test to students",
+                    'body' => "A new Test assign you.",
+                    'url' => ""
+                );
+                $notification = Notifications::create($notification_data);
             }
         }else{
             foreach($user_id as $new_user)
             {
                 $result = UserAssignTests::updateOrCreate(['user_id'   => $new_user,],
                 ['mock_test_id'   => $test_id,]);
+                $notification_data = array(
+                    'user_id' => $new_user,
+                    'sender_id' => \Auth::user()->id,
+                    'type' => getUserRole($new_user),
+                    'title' => "Branch admin assign test to students",
+                    'body' => "A new Test assign you.",
+                    'url' => ""
+                );
+                $notification = Notifications::create($notification_data);
             }
         }
         if($result){
@@ -260,6 +278,8 @@ class UsersController extends Controller
             'lname' => 'required|min:3|max:100',
             'uname'=>'required|regex:/^[a-zA-Z0-9]+$/u|unique:users,name|max:255,',
             'email'=>'required|email|unique:users,email|max:255',
+            'password'=>'required|min:8|max:20',
+            'confirm_password'=>'required|same:password',
             'dob' =>'required|before:18 years ago',
             'mobileno' =>'required|digits:10',
             'gender'=>'required|in:M,F',
@@ -267,11 +287,18 @@ class UsersController extends Controller
             'residence'=>'required|min:2|max:255',
             'state'=>'required|min:2|max:100',
             'state_code'=>'required|min:1|max:100',
+            'city'=>'required|min:2|max:100',
             'validity'=>'required|after:' . date('Y-m-d'),
             'image'=>'nullable|image|mimes:jpeg,png,jpg|max:2048'
             ]);
              
             $input  = \Arr::except($request->all(),array('_token'));
+
+            $body = 'Hello '.$input['uname'].', <p>A PTE account has been created by your branch administrator using your email address. You can Contact Us at '.\Auth::user()->email.' if you have any questions regarding the creation of your account.</p><p>You can access your account with following details:</p>User Name: '.$input['uname'].' <br/> Password : '.$input['password'].' <br/>Thanks,<br/>PTE Team';
+
+            $subject = 'A new PTE account has been created with your email address.';
+            
+
 
             $count = User::where('parent_user_id',\Auth::user()->id)->count();
             $Institues = Institues::where('user_id',\Auth::user()->id)->get();
@@ -290,6 +317,8 @@ class UsersController extends Controller
             if(!isset($input['status'])){
                 $input['status'] = 'P';
             }
+
+            $password = Hash::make($input['password']);
             $user_input = array(
                 'role_id' => '3',
                 'parent_user_id' => \Auth::user()->id,
@@ -297,6 +326,7 @@ class UsersController extends Controller
                 'last_name' => $input['lname'],
                 'name' => $input['uname'],
                 'email' => $input['email'],
+                'password'=>$password,
                 'mobile_no' => $input['mobileno'],
                 'date_of_birth' => $input['dob'],
                 'profile_image' => isset($fileNameToStore)?$fileNameToStore:'',
@@ -305,6 +335,7 @@ class UsersController extends Controller
                 'country_residence' => $input['residence'],
                 'state' => $input['state'],
                 'state_code' => $input['state_code'],
+                'city'=> $input['city'],
                 'validity' => $input['validity'],
                 'status' => $input['status'],
                 'ip_address' => '',
@@ -313,6 +344,14 @@ class UsersController extends Controller
             );
             $result = User::create($user_input);
         if($result){
+            $data = ['body'=>$body,'subject'=>$subject];
+            try{
+                Mail::to($input['email'])->send(new SendEmailUser($data));
+                $flag = 1;
+            }catch(\Exception $e){
+                dd($e->getMessage());
+            }
+
             $name = getUserName($result->id);
             $activity_data = array(
                 'user_id' => \Auth::user()->id,
@@ -448,12 +487,20 @@ class UsersController extends Controller
         $result = User::where('id',$id)->update($user_input);
 
         if($result){
+            $subject = 'Your PTE account information has been updated.';
+            $body    = 'Hello '.$input['fname'].' '.$input['lname'].', <p>Your PTE account information has been updated by the branch administrator. Please login and check your account details for the updated information.</p><br/>Thanks,<br/>PTE Team';
+            $data = ['body'=>$body,'subject'=>$subject];
+            try{
+                Mail::to($input['email'])->send(new SendEmailUser($data));
+            }catch(\Exception $e){
+                dd($e->getMessage());
+            }
             $notification_data = array(
                 'user_id' => $id,
                 'sender_id' => \Auth::user()->id,
                 'type' => getUserRole($id),
                 'title' => "Update your profile.",
-                'body' => "Branch admin change your profile details.",
+                'body' => "Your account information has been updated.",
                 'url' => ""
             );
             $notification = Notifications::create($notification_data);
@@ -487,6 +534,12 @@ class UsersController extends Controller
                 'longitude' => ''
             );
             try{
+                $body = 'Hello '.$user->fullname.', <p>Your PTE account has been deleted by the branch administrator. You can Contact Us at '.\Auth::user()->email.' if you have any questions regarding the deletion of your account.</p><br/>Thanks,<br/>PTE Team';
+                $subject = 'Your PTE account has been deleted.';
+                $data = ['body'=>$body,'subject'=>$subject];
+                $emailid = $user->email;
+                Mail::to($emailid)->send(new SendEmailUser($data));
+
                 DB::beginTransaction();
                     DeviceLogs::where('user_id',$id)->delete();
                     Notifications::where('user_id',$id)->delete();
@@ -501,6 +554,9 @@ class UsersController extends Controller
                     User::where('id',$id)->delete();
                     $activity = Activities::create($activity_data);
                 DB::commit();
+
+                
+
                 return redirect()->route('branchadmin-students.index')->with('success','Student deleted successfully');
             }catch(\Exception $e){
                 DB::rollback();
@@ -576,7 +632,22 @@ class UsersController extends Controller
             $status   = $request->status;
             $user_ids = explode(",",$request->user_id);
             $result = User::whereIn('id',$user_ids)->update(['status'=>$status]);
+
             if($result){
+                foreach($user_ids as $new_user)
+                {
+                    $user = User::find($new_user);
+                    $body = 'Hello '.$user->fullname.', <p>Your PTE account has been blocked/unblocked by the branch administrator. You can Contact Us at '.\Auth::user()->email.' if you have any questions regarding the same.</p><br/>Thanks,<br/>PTE Team';
+                    $subject = 'Your PTE account has been blocked/unblocked.';
+                    $data = ['body'=>$body,'subject'=>$subject];
+                    $emailid = $user->email;
+                    try{
+                        Mail::to($emailid)->send(new SendEmailUser($data));
+                    }catch(\Exception $e){
+                        dd($e->getMessage());
+                    }
+                }
+
                 \Session::put('success', 'Status Updated successfully');
                 return true;
                 
@@ -596,6 +667,16 @@ class UsersController extends Controller
             }
             $result = $user->update();
             if($result){
+                $user = User::find($id);
+                $body = 'Hello '.$user->fullname.', <p>Your PTE account has been blocked/unblocked by the branch administrator. You can Contact Us at '.\Auth::user()->email.' if you have any questions regarding the same.</p><br/>Thanks,<br/>PTE Team';
+                $subject = 'Your PTE account has been blocked/unblocked.';
+                $data = ['body'=>$body,'subject'=>$subject];
+                $emailid = $user->email;
+                try{
+                    Mail::to($emailid)->send(new SendEmailUser($data));
+                }catch(\Exception $e){
+                    dd($e->getMessage());
+                }
                 return redirect()->route('branchadmin-students.index')
                             ->with('success','Status Updated successfully');
             }else{
@@ -611,7 +692,16 @@ class UsersController extends Controller
         {
             $user->status = "R";
             $user->update();   
-
+            $user = User::find($new_user);
+            $body = 'Hello '.$user->fullname.', <p>Your PTE account has been blocked/unblocked by the branch administrator. You can Contact Us at '.\Auth::user()->email.' if you have any questions regarding the same.</p><br/>Thanks,<br/>PTE Team';
+            $subject = 'Your PTE account has been blocked/unblocked.';
+            $data = ['body'=>$body,'subject'=>$subject];
+            $emailid = $user->email;
+            try{
+                Mail::to($emailid)->send(new SendEmailUser($data));
+            }catch(\Exception $e){
+                dd($e->getMessage());
+            }
             return redirect()->route('users.index')
                             ->with('success','Status Updated successfully');
         }
@@ -647,8 +737,28 @@ class UsersController extends Controller
         
         if(is_array($request->user_ids)){
             $result = User::whereIn('id',$request->user_ids)->where('role_id',$request->role_id)->update($input_password);
+            foreach ($request->user_ids as $user_id) {
+                $user = User::find($user_id);
+                $body = "Hello ".$user->fullname.", <p>Your PTE account password has been changed by the branch administrator. You can Contact Us at ".\Auth::user()->email." if you have any questions regarding the updation of your account password.</p><p>You can now access your PTE account with following login details:</p>Username:".$user->name."<br/>Password:".$input['password']."<br/>Thanks,<br/>PTE Team";
+                $subject = "Your PTE account password has been reset.";
+                $data = ['body'=>$body,'subject'=>$subject];
+                try{
+                    Mail::to($user->email)->send(new SendEmailUser($data));
+                }catch(\Exception $e){
+                    dd($e->getMessage());
+                }
+            }
         }else{
             $result = User::where('id',$id)->update($input_password);
+            $user = User::find($id);
+            $body = "Hello ".$user->fullname.", <p>Your PTE account password has been changed by the branch administrator. You can Contact Us at ".\Auth::user()->email." if you have any questions regarding the updation of your account password.</p><p>You can now access your PTE account with following login details:</p>Username:".$user->name."<br/>Password:".$input['password']."<br/>Thanks,<br/>PTE Team";
+            $subject = "Your PTE account password has been reset.";
+            $data = ['body'=>$body,'subject'=>$subject];
+            try{
+                Mail::to($user->email)->send(new SendEmailUser($data));
+            }catch(\Exception $e){
+                dd($e->getMessage());
+            }
         }
         if($result){
             \Session::put('success', 'Password Updated successfully');
