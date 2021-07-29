@@ -6,9 +6,13 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Tests;
+use App\Models\Videos;
+use App\Models\PredictionFiles;
+use App\Models\Vouchers;
 use App\Models\userSubscriptions;
 use App\Models\Activities;
 use App\Models\UserSession;
+use App\Models\EmailTemplates;
 use DataTables;
 
 class DashboardController extends Controller
@@ -16,36 +20,40 @@ class DashboardController extends Controller
 	
     public function index()
     {
-    	$data['students'] = User::where(['role_id' => 3])->count(); 
-    	$data['institutes'] = User::where(['role_id' => 2])->count();
-    	$data['mock_tests'] = Tests::where(['type' => 'M'])->count();
-    	$data['practice_tests'] = Tests::where(['type' => 'P'])->count();
+    	$data['students'] = User::where(['role_id' => 3, 'status' => 'A'])->count(); 
+    	$data['institutes'] = User::where(['role_id' => 2, 'status' => 'A'])->count();
+    	$data['mock_tests'] = Tests::where(['type' => 'M', 'status' => 'E'])->count();
+    	$data['practice_tests'] = Tests::where(['type' => 'P', 'status' => 'E'])->count();
+        $data['videos'] = Videos::where(['status' => 'E'])->count();
+        $data['files'] = PredictionFiles::where(['status' => 'E'])->count();
+        $data['vouchers'] = Vouchers::where(['status' => 'E'])->count();
+        $data['templates'] = EmailTemplates::where(['user_id' => \Auth::user()->id, 'status' => 'E'])->count();
 
     	// mysql query
-        //$data['chartSubs'] = userSubscriptions::selectRaw('monthname(created_at) month, count(*) count')->whereYear('created_at', date('Y'))
-     //            ->groupBy('month')
-     //            ->orderBy('month', 'desc')
-     //            ->get();
-
-        //pgsql query
-        $data['chartSubs'] = userSubscriptions::selectRaw('EXTRACT(MONTH FROM created_at) AS month, count(*) count')->whereYear('created_at', date('Y'))
+        $data['chartSubs'] = userSubscriptions::selectRaw('monthname(created_at) month, count(*) count')->whereYear('created_at', date('Y'))
                 ->groupBy('month')
                 ->orderBy('month', 'desc')
                 ->get();
 
+        //pgsql query
+        // $data['chartSubs'] = userSubscriptions::selectRaw('EXTRACT(MONTH FROM created_at) AS month, count(*) count')->whereYear('created_at', date('Y'))
+        //         ->groupBy('month')
+        //         ->orderBy('month', 'desc')
+        //         ->get();
+
         //mysql query
-        // $data['userSession'] = UserSession::selectRaw('DATE_FORMAT(created_at, "%l:00 %p") time, count(*) count')->whereDate('created_at', date('Y-m-d'))
-        //     ->groupBy('time')
-        //     ->orderBy('time', 'ASC')
-        //     ->get();
+        $data['userSession'] = UserSession::selectRaw('DATE_FORMAT(created_at, "%l:00 %p") time, count(*) count')->whereDate('created_at', date('Y-m-d'))
+            ->groupBy('time')
+            ->orderBy('time', 'ASC')
+            ->get();
 
         //pgsql query
-        $data['userSession'] = UserSession::selectRaw("CASE WHEN updated_at IS NOT NULL THEN to_char(updated_at, 'hh pm') ELSE to_char(created_at, 'hh pm') END as time, count(*) count")
-        ->whereDate('created_at', date('Y-m-d'))
-        ->orWhereDate('updated_at', date('Y-m-d'))
-        ->groupBy('time')
-        ->orderBy('time', 'ASC')
-        ->get();
+        // $data['userSession'] = UserSession::selectRaw("CASE WHEN updated_at IS NOT NULL THEN to_char(updated_at, 'hh pm') ELSE to_char(created_at, 'hh pm') END as time, count(*) count")
+        // ->whereDate('created_at', date('Y-m-d'))
+        // ->orWhereDate('updated_at', date('Y-m-d'))
+        // ->groupBy('time')
+        // ->orderBy('time', 'ASC')
+        // ->get();
     	
         return view('superadmin/dashboard', compact('data'));
     }
@@ -70,8 +78,26 @@ class DashboardController extends Controller
     }
 
     public function transactions(Request $request){
-        if($request->ajax())  {
-            $data = userSubscriptions::with(['user','subscription', 'transaction'])->latest()->limit(10)->get();
+        if($request->ajax())  {            
+            $input  = \Arr::except($request->all(),array('_token'));
+            $from = $to = '';
+            if(isset($input['from']) || isset($input['to'])){
+                $from = (isset($input['from']) && $input['from'] != '') ? date('Y-m-d', strtotime($input['from'])) : '';
+                $to = (isset($input['to']) && $input['to'] != '') ? date('Y-m-d', strtotime($input['to'])) : '';
+            }
+            if($from != '' && $to != ''){
+                $data = userSubscriptions::with(['user','subscription', 'transaction'])->latest()->whereBetween('created_at', [$from, $to])->limit(10)->get();
+            }
+            else if($from != '' && $to == ''){
+                $data = userSubscriptions::with(['user','subscription', 'transaction'])->latest()->whereDate('created_at', '>=', $from)->limit(10)->get();
+            }
+            else if($to != '' && $from == ''){
+                $data = userSubscriptions::with(['user','subscription', 'transaction'])->latest()->whereDate('created_at', '<=', $to)->limit(10)->get();
+            }
+            else{
+                $data = userSubscriptions::with(['user','subscription', 'transaction'])->latest()->limit(10)->get();
+            }            
+            
             return Datatables::of($data)
                     ->addIndexColumn()
                     ->addColumn('transaction_id', function($row){

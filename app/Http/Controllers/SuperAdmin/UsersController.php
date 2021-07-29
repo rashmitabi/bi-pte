@@ -290,12 +290,59 @@ class UsersController extends Controller
             {
                 $result = UserAssignTests::updateOrCreate(['user_id'   => $new_user,],
                         ['practise_test_id'   => $test_id,]);
+                $user = User::find($new_user);
+                if($user->role == '3')
+                {
+                    $notification_data = array(
+                        'user_id' => $new_user,
+                        'sender_id' => \Auth::user()->id,
+                        'type' => getUserRole($new_user),
+                        'title' => "Assign Tests",
+                        'body' => "Super admin Assign test to you.",
+                        'url' => ""
+                    );
+                }
+                else
+                {
+                    $notification_data = array(
+                        'user_id' => $new_user,
+                        'sender_id' => \Auth::user()->id,
+                        'type' => getUserRole($new_user),
+                        'title' => "Assign Tests",
+                        'body' => "Super admin Assign test to you.",
+                        'url' => ""
+                    );
+                }
+                $notification = Notifications::create($notification_data);
             }
         }else{
             foreach($user_id as $new_user)
             {
                 $result = UserAssignTests::updateOrCreate(['user_id'   => $new_user,],
                 ['mock_test_id'   => $test_id,]);
+                $user = User::find($new_user);
+                if($user->role == '3')
+                {
+                    $notification_data = array(
+                        'user_id' => $new_user,
+                        'sender_id' => \Auth::user()->id,
+                        'type' => getUserRole($new_user),
+                        'title' => "Assign Tests",
+                        'body' => "Super admin Assign test to you.",
+                        'url' => ""
+                    );
+                }
+                else
+                {
+                    $notification_data = array(
+                        'user_id' => $new_user,
+                        'sender_id' => \Auth::user()->id,
+                        'type' => getUserRole($new_user),
+                        'title' => "Assign Tests",
+                        'body' => "Super admin Assign test to you.",
+                        'url' => ""
+                    );
+                }
             }
         }
         if($result){
@@ -335,15 +382,16 @@ class UsersController extends Controller
         $body = '';
         $subject = '';
         $regexUrl = '/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/';
-        if($type == 3){
+        $regexGst = '/^[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9A-Z]{1}Z[0-9A-Z]{1}$/';
+        if($type == 3){ 
             $request->validate([
                 'type'=>'required',
-                'branch_admin'=>'required',
+                'branch_admin' => 'required|integer',
                 'fname' => 'required|min:3|max:100',
                 'lname' => 'required|min:3|max:100',
                 'uname'=>'required|regex:/^[a-zA-Z0-9]+$/u|unique:users,name|max:255',
                 'semail'=>'required|email|unique:users,email|max:255',
-                'spassword'=>'required|min:6|max:20',
+                'spassword'=>'required|min:8|max:20',
                 'confirm_spassword'=>'required|same:spassword',
                 'dob' =>'required|before:18 years ago',
                 'mobileno' =>'required|digits:10',
@@ -357,9 +405,14 @@ class UsersController extends Controller
                 'simage'=>'nullable|image|mimes:jpeg,png,jpg|max:2048'
             ],
             [
+                'branch_admin.required'=> 'Please select branch admin', // custom message
                 'semail.required'=> 'Email is required', // custom message
+                'fname.required'=> 'First name is required', // custom message
+                'lname.required'=> 'Last name is required', // custom message
+                'mobileno.required'=> 'Mobile no is required', // custom message
                 'semail.email'=> 'Email is must be email format',
                 'semail.unique'=> 'Email has already taken',
+                'uname.unique'=> 'User name has already taken',
                 'semail.max'=> 'Email maximum length allow 255',
                 'spassword.required'=>'Password is required',
                 'spassword.min'=>'Password min length at least 6',
@@ -387,8 +440,9 @@ class UsersController extends Controller
                 'simage.mimes'=>'Image must be file jpeg,png,jpg format'
             ]);
             $input  = \Arr::except($request->all(),array('_token'));
-            $body = '</p>You are successfuly register as Student.</p>';
-            $subject = 'Student register';
+            $body = 'Hello '.$input['uname'].', <p>A PTE account has been created by the administrator using your email address. You can Contact Us at '.\Auth::user()->email.' if you have any questions regarding the creation of your account.</p><p>You can access your account with following details:</p>User Name: '.$input['uname'].' <br/> Password : '.$input['spassword'].' <br/>Thanks,<br/>PTE Team';
+
+            $subject = 'A new PTE account has been created with your email address';
             $emailid = $input['semail'];
             if(!isset($input['sstatus'])){
                 $input['sstatus'] = 'P';
@@ -398,6 +452,18 @@ class UsersController extends Controller
                 $destinationPath = 'assets/images/profile/';
                 $fileNameToStore = date('YmdHis') . "." . $image->getClientOriginalExtension();
                 $image->move($destinationPath, $fileNameToStore);
+                /*try{
+                    $client = createAwsClient();
+                    $upload = $client->putObject([
+                        'Bucket' => env('AWS_BUCKET'),
+                        'Key'    => 'profile/' . $fileNameToStore,
+                        'Body'   => fopen($request->simage, 'r'),
+                        'ACL'    => 'public-read'
+                    ]);
+                    dd($upload);  
+                } catch (AwsException $e){
+                    dd($e->getMessage());
+                }*/
             }
             $password = Hash::make($input['spassword']);
             $user_input = array(
@@ -432,7 +498,7 @@ class UsersController extends Controller
                 'iuname' => 'required|regex:/^[a-zA-Z0-9]+$/u|unique:users,name|max:255',
                 'iname'=>'required|min:2|max:255',
                 'iemail'=>'required|email|unique:users,email|max:255',
-                'ipassword'=>'required|min:6|max:20',
+                'ipassword'=>'required|min:8|max:20',
                 'confirm_ipassword'=>'required|same:ipassword',
                 'country_code'=>'required|max:5',
                 'phone_no' =>'required|min:6|max:20',
@@ -442,7 +508,7 @@ class UsersController extends Controller
                 'istate'=>'required|min:2|max:100',
                 'istate_code'=>'required|min:1|max:100',
                 'icity'=>'required|min:2|max:100',
-                'igstin'=>'required|min:2|max:100',
+                'igstin'=>'required|min:2|max:100|regex:'.$regexGst,
                 'logo'=>'required|image|mimes:jpeg,png,jpg|max:2048',
                 'banner'=>'required|image|mimes:jpeg,png,jpg|max:2048',
                 'bimage'=>'nullable|image|mimes:jpeg,png,jpg|max:2048',
@@ -481,13 +547,14 @@ class UsersController extends Controller
                 'igstin.required'=>'GSTIN is required',
                 'igstin.min'=>'GSTIN min length at least 2',
                 'igstin.max'=>'GSTIN maximum length allow 100',
+                'igstin.regex'=>'GSTIN format is not valid',
                 'bimage.image'=>'Background image must be image format',
                 'bimage.mimes'=>'Background image must be jpeg,png,jpg format',
                 'bimage.max'=>'Background image maximum length allow 2048'
                ]);
             $input  = \Arr::except($request->all(),array('_token'));
-            $body = '</p>You are successfuly register as Branch admin.</p>';
-            $subject = 'Branch admin register';
+            $body = 'Hello '.$input['iuname'].', <p>A PTE account has been created by the administrator using your email address. You can Contact Us at '.\Auth::user()->email.' if you have any questions regarding the creation of your account.</p><p>You can access your account with following details:</p>User Name : '.$input['iuname'].'<br/> Password : '.$input['ipassword'].' <br/> Thanks,<br/>PTE Team';
+            $subject = 'A new PTE account has been created with your email address';
             $emailid = $input['iemail'];
 
             if(!isset($input['istatus'])){
@@ -498,18 +565,54 @@ class UsersController extends Controller
                 $destinationPath = 'assets/images/institute/';
                 $logo = date('YmdHis') ."_logo". "." . $image->getClientOriginalExtension();
                 $image->move($destinationPath, $logo);
+                /*try{
+                    $client = createAwsClient();
+                    $upload = $client->putObject([
+                        'Bucket' => env('AWS_BUCKET'),
+                        'Key'    => 'logo/' . $logo,
+                        'Body'   => fopen($request->logo, 'r'),
+                        'ACL'    => 'public-read'
+                    ]);
+                    dd($upload);  
+                } catch (AwsException $e){
+                    dd($e->getMessage());
+                }*/
             }
 
             if ($image = $request->file('banner')) {
                 $destinationPath = 'assets/images/institute/';
                 $banner = date('YmdHis') ."_banner". "." . $image->getClientOriginalExtension();
                 $image->move($destinationPath, $banner);
+                /*try{
+                    $client = createAwsClient();
+                    $upload = $client->putObject([
+                        'Bucket' => env('AWS_BUCKET'),
+                        'Key'    => 'banner/' . $banner,
+                        'Body'   => fopen($request->banner, 'r'),
+                        'ACL'    => 'public-read'
+                    ]);
+                    dd($upload);  
+                } catch (AwsException $e){
+                    dd($e->getMessage());
+                }*/
             }
 
             if ($image = $request->file('bimage')) {
                 $destinationPath = 'assets/images/profile/';
                 $profile = date('YmdHis') ."_banner". "." . $image->getClientOriginalExtension();
                 $image->move($destinationPath, $profile);
+                /*try{
+                    $client = createAwsClient();
+                    $upload = $client->putObject([
+                        'Bucket' => env('AWS_BUCKET'),
+                        'Key'    => 'backgroundimage/' . $profile,
+                        'Body'   => fopen($request->bimage, 'r'),
+                        'ACL'    => 'public-read'
+                    ]);
+                    dd($upload);  
+                } catch (AwsException $e){
+                    dd($e->getMessage());
+                }*/
                 $user_input = array(
                     'role_id' => $input['type'],
                     'parent_user_id' => 0,
@@ -582,7 +685,7 @@ class UsersController extends Controller
                 dd($e->getMessage());
             }
             return redirect()->route('users.index')
-                        ->with('success','User created successfully!');
+                        ->with('success','Thank you for creating new user');
         }else{
             return redirect()->route('users.index')
                         ->with('error','Sorry!Something wrong.Try again later!');
@@ -689,6 +792,18 @@ class UsersController extends Controller
                 $destinationPath = 'assets/images/profile/';
                 $fileNameToStore = date('YmdHis') . "." . $image->getClientOriginalExtension();
                 $image->move($destinationPath, $fileNameToStore);
+                /*try{
+                    $client = createAwsClient();
+                    $upload = $client->putObject([
+                        'Bucket' => env('AWS_BUCKET'),
+                        'Key'    => 'profile/' . $fileNameToStore,
+                        'Body'   => fopen($request->simage, 'r'),
+                        'ACL'    => 'public-read'
+                    ]);
+                    dd($upload);  
+                } catch (AwsException $e){
+                    dd($e->getMessage());
+                }*/
                 $user_input = array(
                     'role_id' => $input['type'],
                     'parent_user_id' => $input['branch_admin'],
@@ -745,10 +860,12 @@ class UsersController extends Controller
             
             $result = User::where('id',$id)->update($user_input);
             $user = User::find($id);
-            $subject = 'Student Profile Update';
-            $body    = '<p>Hello '.$user->fullname.', Your profile update by superadmin.</p>';
+            $subject = 'Your PTE account information has been updated.';
+            $body    = 'Hello '.$user->fullname.', <p>Your PTE account information has been updated by the administrator. Please login and check your account details for the updated information.</p><br/>Thanks,<br/>PTE Team';
             $user_emailid = $user->email;
         }else if($type == 2){
+            $regexUrl = '/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/';
+            $regexGst = '/^[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9A-Z]{1}Z[0-9A-Z]{1}$/';
             $request->validate([
                 'type'=>'required',
                 'iuname' => 'required|unique:users,name,'.$id.'|max:255',
@@ -757,13 +874,13 @@ class UsersController extends Controller
                 'country_code'=>'required|max:5',
                 'phone_no' =>'required|max:20',
                 'students_allowed' =>'required',
-                'subdomain' =>'required|max:255',
-                'domain'=>'required|max:255',
+                'subdomain' =>'required|max:255|regex:'.$regexUrl,
+                'domain'=>'required|max:255|regex:'.$regexUrl,
                 'welcome_msg'=>'required|max:500',
                 'istate'=>'required|min:2|max:100',
                 'istate_code'=>'required|min:1|max:100',
                 'icity'=>'required|min:2|max:100',
-                'igstin'=>'required|min:2|max:100',
+                'igstin'=>'required|min:2|max:100|regex:'.$regexGst,
                 'logo'=>'nullable|image|mimes:jpeg,png,jpg|max:2048',
                 'banner'=>'nullable|image|mimes:jpeg,png,jpg|max:2048',
                 'validity'=>'required|after:' . date('Y-m-d'),
@@ -794,25 +911,62 @@ class UsersController extends Controller
                 'icity.max'=>'City maximum length allow 100',
                 'igstin.required'=>'GSTIN is required',
                 'igstin.min'=>'GSTIN min length at least 2',
-                'igstin.max'=>'GSTIN maximum length allow 100'
+                'igstin.max'=>'GSTIN maximum length allow 100',
+                'igstin.regex'=>'GSTIN number format is not valid'
             ]);
             $input  = \Arr::except($request->all(),array('_token'));
             if ($image = $request->file('logo')) {
                 $destinationPath = 'assets/images/institute/';
                 $logo = date('YmdHis') ."_logo". "." . $image->getClientOriginalExtension();
                 $image->move($destinationPath, $logo);
+                /*try{
+                    $client = createAwsClient();
+                    $upload = $client->putObject([
+                        'Bucket' => env('AWS_BUCKET'),
+                        'Key'    => 'logo/' . $logo,
+                        'Body'   => fopen($request->logo, 'r'),
+                        'ACL'    => 'public-read'
+                    ]);
+                    dd($upload);  
+                } catch (AwsException $e){
+                    dd($e->getMessage());
+                }*/
             }
 
             if ($image = $request->file('banner')) {
                 $destinationPath = 'assets/images/institute/';
                 $banner = date('YmdHis') ."_banner". "." . $image->getClientOriginalExtension();
                 $image->move($destinationPath, $banner);
+                /*try{
+                    $client = createAwsClient();
+                    $upload = $client->putObject([
+                        'Bucket' => env('AWS_BUCKET'),
+                        'Key'    => 'banner/' . $banner,
+                        'Body'   => fopen($request->banner, 'r'),
+                        'ACL'    => 'public-read'
+                    ]);
+                    dd($upload);  
+                } catch (AwsException $e){
+                    dd($e->getMessage());
+                }*/
             }
 
             if ($image = $request->file('iimage')) {
                 $destinationPath = 'assets/images/profile/';
                 $fileNameToStore = date('YmdHis') . "." . $image->getClientOriginalExtension();
                 $image->move($destinationPath, $fileNameToStore);
+                /*try{
+                    $client = createAwsClient();
+                    $upload = $client->putObject([
+                        'Bucket' => env('AWS_BUCKET'),
+                        'Key'    => 'profile/' . $fileNameToStore,
+                        'Body'   => fopen($request->iimage, 'r'),
+                        'ACL'    => 'public-read'
+                    ]);
+                    dd($upload);  
+                } catch (AwsException $e){
+                    dd($e->getMessage());
+                }*/
                 $user_input = array(
                     'role_id' => $input['type'],
                     'parent_user_id' => 0,
@@ -925,8 +1079,8 @@ class UsersController extends Controller
 
             $result = Institues::where('user_id',$id)->update($institue);
             $user = User::find($id);
-            $subject = 'BranchAdmin Profile Update';
-            $body    = '<p>Hello '.$user->fullname.', Your profile update by superadmin.</p>';
+            $subject = 'Your PTE account information has been updated.';
+            $body    = 'Hello '.$user->fullname.', <p>Your PTE account information has been updated by the administrator. Please login and check your account details for the updated information.</p><br/>Thanks,<br/>PTE Team';
             $user_emailid = $user->email;
         }
 
@@ -1000,8 +1154,8 @@ class UsersController extends Controller
                     User::where('id',$id)->delete();
                 DB::commit();
                 //Mail send code
-                $body = '<p>'.$user->fullname.' are remove from PTE-education system!</p>';
-                $subject = 'Remove from PTE';
+                $body = 'Hello '.$user->fullname.', <p>Your PTE account has been deleted by the administrator. You can Contact Us at '.\Auth::user()->email.' if you have any questions regarding the deletion of your account.</p><br/>Thanks,<br/>PTE Team';
+                $subject = 'Your PTE account has been deleted.';
                 $data = ['body'=>$body,'subject'=>$subject];
                 $emailid = $user->email;
                 Mail::to($emailid)->send(new SendEmailUser($data));
@@ -1067,8 +1221,8 @@ class UsersController extends Controller
                     User::where('id',$id)->delete();
                 DB::commit();
                 
-                $body = '<p>'.$user->fullname.' are remove from PTE-education system!</p>';
-                $subject = 'Remove from PTE';
+                $body = 'Hello '.$user->fullname.', <p>Your PTE account has been deleted by the administrator. You can Contact Us at '.\Auth::user()->email.' if you have any questions regarding the deletion of your account.</p><br/>Thanks,<br/>PTE Team';
+                $subject = 'Your PTE account has been deleted.';
                 $data = ['body'=>$body,'subject'=>$subject];
                 $emailid = $user->email;
                 Mail::to($emailid)->send(new SendEmailUser($data));
@@ -1158,8 +1312,8 @@ class UsersController extends Controller
                 foreach($user_ids as $new_user)
                 {
                     $user = User::find($new_user);
-                    $body = '<p>Hello,'.$user->fullname.' now your status in PTE education is '.$st_name.'.</p>';
-                    $subject = 'Status Change';
+                    $body = 'Hello '.$user->fullname.', <p>Your PTE account has been blocked/unblocked by the administrator. You can Contact Us at '.\Auth::user()->email.' if you have any questions regarding the same.</p><br/>Thanks,<br/>PTE Team';
+                    $subject = 'Your PTE account has been blocked/unblocked.';
                     $data = ['body'=>$body,'subject'=>$subject];
                     $emailid = $user->email;
                     try{
@@ -1196,10 +1350,10 @@ class UsersController extends Controller
                 }else{
                     $st_name = 'Reject';
                 }
-                $body = '<p>Hello,'.$user->fullname.' now your status in PTE education is '.$st_name.'.</p>';
-                $subject = 'Status Change';
+                $body = 'Hello '.$user->fullname.', <p>Your PTE account has been blocked/unblocked by the administrator. You can Contact Us at '.\Auth::user()->email.' if you have any questions regarding the same.</p><br/>Thanks,<br/>PTE Team';
+                $subject = 'Your PTE account has been blocked/unblocked.';
                 $data = ['body'=>$body,'subject'=>$subject];
-                $emailid = 'vishal.mistry.bi@gmail.com';
+                $emailid = $user->email;
                 try{
                     Mail::to($emailid)->send(new SendEmailUser($data));
                 }catch(\Exception $e){
@@ -1220,7 +1374,15 @@ class UsersController extends Controller
         {
             $user->status = "R";
             $user->update();   
-
+            $body = 'Hello '.$user->fullname.', <p>Your PTE account has been blocked/unblocked by the administrator. You can Contact Us at '.\Auth::user()->email.' if you have any questions regarding the same.</p><br/>Thanks,<br/>PTE Team';
+            $subject = 'Your PTE account has been blocked/unblocked.';
+            $data = ['body'=>$body,'subject'=>$subject];
+            $emailid = $user->email;
+            try{
+                Mail::to($emailid)->send(new SendEmailUser($data));
+            }catch(\Exception $e){
+                dd($e->getMessage());
+            }
             return redirect()->route('users.index')
                             ->with('success','Status Updated successfully');
         }
@@ -1256,8 +1418,29 @@ class UsersController extends Controller
         
         if(is_array($request->user_ids)){
             $result = User::whereIn('id',$request->user_ids)->where('role_id',$request->role_id)->update($input_password);
+            foreach ($request->user_ids as $user_id) {
+                $user = User::find($user_id);
+                $body = "Hello ".$user->fullname.", <p>Your PTE account password has been changed by the administrator. You can Contact Us at ".\Auth::user()->email." if you have any questions regarding the updation of your account password.</p><p>You can now access your PTE account with following login details:</p>Username:".$user->name."<br/>Password:".$input['password']."<br/>Thanks,<br/>PTE Team";
+                $subject = "Your PTE account password has been reset.";
+                $data = ['body'=>$body,'subject'=>$subject];
+                try{
+                    Mail::to($user->email)->send(new SendEmailUser($data));
+                }catch(\Exception $e){
+                    dd($e->getMessage());
+                }
+            }
+            
         }else{
             $result = User::where('id',$id)->update($input_password);
+            $user = User::find($id);
+            $body = "Hello ".$user->fullname.", <p>Your PTE account password has been changed by the administrator. You can Contact Us at ".\Auth::user()->email." if you have any questions regarding the updation of your account password.</p><p>You can now access your PTE account with following login details:</p>Username:".$user->name."<br/>Password:".$input['password']."<br/>Thanks,<br/>PTE Team";
+            $subject = "Your PTE account password has been reset.";
+            $data = ['body'=>$body,'subject'=>$subject];
+            try{
+                Mail::to($user->email)->send(new SendEmailUser($data));
+            }catch(\Exception $e){
+                dd($e->getMessage());
+            }
         }
         if($result){
             \Session::put('success', 'Password Updated successfully');

@@ -12,6 +12,9 @@ function setPriceLabel(){
 }
 $(document).ready(function() {
     setPriceLabel();
+    var date = new Date();
+    var today = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+    var end = new Date(date.getFullYear(), date.getMonth(), date.getDate());
     //Vouchers Edit page data start
     $('body').on('click','.vouchers-edit',function(){
            var id = $(this).data('id');
@@ -25,6 +28,11 @@ $(document).ready(function() {
                },
                success:function(data) {
                    $('#voucher-edit-body').html(data.html);
+                   $("#voucher_exp_date").datepicker({
+                        todayHighlight: true,
+                        startDate: today,
+                        format:'yyyy-mm-dd'
+                    });
                },
            });
    });
@@ -68,6 +76,7 @@ $(document).ready(function() {
    //voucher price label change start
    $('body').on('change','.voucher-type',function(){
         var value = $(this).val();
+        $("#voucher_price").val('');
         if(value == 'P'){
             $(".voucher-price-label").text("Percentage Price");
         }else{

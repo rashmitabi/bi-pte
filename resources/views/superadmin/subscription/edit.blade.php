@@ -88,21 +88,24 @@
         <div class="form-group row">
             <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Can Add Videos?</label>
             <div class="col-12 col-md-7 col-xl-7 col-sm-12 toggle-switch">
-                <input type="checkbox" id="videos" name="videos" value="Y" {{ ($subscription->videos == 'Y')?'checked':''}} /><label for="videos">Toggle</label>
+                <input type="checkbox" id="videos" name="videos" value="Y" {{ ($subscription->videos == 'Y')?'checked':''}} />
+                <label for="videos">Toggle</label>
                 <span class="error-msg" id="videosError"></span>
             </div>
         </div>
         <div class="form-group row">
             <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Can Add Prediction Files?</label>
             <div class="col-12 col-md-7 col-xl-7 col-sm-12 toggle-switch">
-                <input type="checkbox" id="prediction_files" name="prediction_files" value="Y" {{ ($subscription->prediction_files == 'Y')?'checked':''}} /><label for="prediction_files">Toggle</label>
+                <input type="checkbox" id="prediction_files" name="prediction_files" value="Y" {{ ($subscription->prediction_files == 'Y')?'checked':''}} />
+                <label for="prediction_files">Toggle</label>
                 <span class="error-msg" id="predictionFilesError"></span>
             </div>
         </div>
         <div class="form-group row">
             <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Status</label>
             <div class="col-12 col-md-7 col-xl-7 col-sm-12 toggle-switch">
-                <input type="checkbox" id="status" name="status" value="E" {{ ($subscription->status == 'E')?'checked':''}} /><label for="status">Toggle</label>
+                <input type="checkbox" id="status" name="status" value="E" {{ ($subscription->status == 'E')?'checked':''}} />
+                <label for="status">Toggle</label>
                 <span class="error-msg" id="statusError"></span>
             </div>
         </div>

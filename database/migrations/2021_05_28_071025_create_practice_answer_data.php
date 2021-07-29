@@ -14,8 +14,7 @@ class CreatePracticeAnswerData extends Migration
     public function up()
     {
         Schema::create('practice_answer_data', function (Blueprint $table) {
-            //$table->integer('id');
-            $table->increments('id');
+            $table->integer('id');
             $table->integer('practice_question_id')->comment('Foreign key of practice questions table');
             $table->string('answer_type',255)->comment('correct Option,keywords,list of correct Order');
             $table->string('answer_value',3000);
@@ -23,7 +22,7 @@ class CreatePracticeAnswerData extends Migration
             $table->string('sample_answer',1000);
         });
 
-        //DB::statement("ALTER TABLE practice_answer_data MODIFY  id INT AUTO_INCREMENT  PRIMARY KEY");
+        DB::statement("ALTER TABLE practice_answer_data MODIFY  id INT AUTO_INCREMENT  PRIMARY KEY");
     }
 
     /**

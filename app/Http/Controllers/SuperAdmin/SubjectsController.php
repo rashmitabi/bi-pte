@@ -36,6 +36,10 @@ class SubjectsController extends Controller
                         }
                         return $status;
                     })
+                    ->addColumn('tests', function($row){
+                        $total_tests = Tests::where(['subject_id' => $row->id, 'status' => 'E'])->count();
+                        return $total_tests;
+                    })
                     ->addColumn('action', function($row){
                         if($row->status == "E"){
                             $iconClass = "red";
@@ -127,8 +131,14 @@ class SubjectsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(UpdateSubjectRequest $request, $id)
-    {
+    {        
         $input  = \Arr::except($request->all(),array('_token'));
+        if(!isset($input['status'])){
+            $data['status'] = 'D';
+        } 
+        else{
+            $data['status'] = 'E';
+        }
         $data['subject_name'] = $input['name'];
         $result = Subjects::where('id',$id)->update($data);
         if($result){

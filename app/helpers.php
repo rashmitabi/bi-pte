@@ -5,6 +5,8 @@ use App\Models\Settings;
 use App\Models\Notifications;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Storage;
+use Aws\S3\S3Client;
+use Aws\Exception\AwsException;
 use Carbon\Carbon;
 
 function getNotifications($limit = '5')
@@ -228,5 +230,24 @@ function getUserEmail($user_id){
     $user = User::select('email')->where('id',$user_id)->first();
     return $user->email;
 }
+function createAwsClient()
+{
+    $client = new S3Client([
+        'region'      => env('AWS_DEFAULT_REGION'),
+        'version'     => 'latest',
+        'credentials' => false
+    ]);
+    return $client;
+}
+function getS3Url($file)
+{
+    $client = Storage::disk('s3')->getDriver()->getAdapter()->getClient();
+    $command = $client->getCommand('GetObject', [
+        'Bucket' => env('AWS_BUCKET'),
+        'Key' => $file
+    ]);
+    $request = $client->createPresignedRequest($command, '+20 minutes');
 
+    return (string)$request->getUri();
+}
 ?>

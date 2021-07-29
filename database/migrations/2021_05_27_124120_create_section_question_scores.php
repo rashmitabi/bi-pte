@@ -14,8 +14,7 @@ class CreateSectionQuestionScores extends Migration
     public function up()
     {
         Schema::create('section_question_scores', function (Blueprint $table) {
-            //$table->tinyInteger('id');
-            $table->tinyIncrements('id');
+            $table->tinyInteger('id');
             $table->tinyInteger('section_id')->comment('Foreign key of sections table');
             $table->tinyInteger('question_type_id')->comment('Foreign key of question_types table');
             $table->tinyInteger('score_division');
@@ -23,14 +22,8 @@ class CreateSectionQuestionScores extends Migration
             $table->timestamp('updated_at')->nullable();
         });
 
-        // DB::statement("ALTER TABLE section_question_scores CHANGE `updated_at` `updated_at` TIMESTAMP NULL ON UPDATE CURRENT_TIMESTAMP");
-        // DB::statement("ALTER TABLE section_question_scores MODIFY  id tinyint(4) AUTO_INCREMENT  PRIMARY KEY");
-
-         DB::statement("CREATE TRIGGER update_timestamp
-          BEFORE UPDATE
-          ON section_question_scores
-          FOR EACH ROW
-          EXECUTE PROCEDURE upd_timestamp()");
+        DB::statement("ALTER TABLE section_question_scores CHANGE `updated_at` `updated_at` TIMESTAMP NULL ON UPDATE CURRENT_TIMESTAMP");
+        DB::statement("ALTER TABLE section_question_scores MODIFY  id tinyint(4) AUTO_INCREMENT  PRIMARY KEY");
     }
 
     /**

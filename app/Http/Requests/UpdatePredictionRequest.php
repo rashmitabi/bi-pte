@@ -25,7 +25,7 @@ class UpdatePredictionRequest extends FormRequest
     {
         return [
             'title'=>'required|max:250',
-            'description'=>'required|max:1000',
+            'description'=>'max:1000',
             'file'=>'max:10000|mimes:doc,docx,pdf',
             'section_id'=>'required|numeric',
             'design_id'=>'required|numeric',
@@ -44,7 +44,6 @@ class UpdatePredictionRequest extends FormRequest
             'section_id.required' => 'Please select file section',
             'design_id.required' => 'Please select file type',
             'title.required' => 'Please enter file title',
-            'description.required' => 'Please enter file description',
             'file.required' => 'Please upload the prediction file'
         ];
     }

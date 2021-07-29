@@ -14,8 +14,7 @@ class CreateTestResults extends Migration
     public function up()
     {
         Schema::create('test_results', function (Blueprint $table) {
-            // $table->bigInteger('id');
-            $table->bigIncrements('id');
+            $table->bigInteger('id');
             $table->integer('test_id')->comment('Foreign key of generate_tests  table');
             $table->integer('user_id')->comment('Foreign key of users  table');
             $table->tinyInteger('section_id')->comment('Foreign key of sections table');
@@ -27,14 +26,8 @@ class CreateTestResults extends Migration
             $table->timestamp('updated_at')->nullable();
         });
 
-        // DB::statement("ALTER TABLE test_results CHANGE `updated_at` `updated_at` TIMESTAMP NULL ON UPDATE CURRENT_TIMESTAMP");
-        // DB::statement("ALTER TABLE test_results MODIFY  id bigint(20) AUTO_INCREMENT  PRIMARY KEY");
-
-        DB::statement("CREATE TRIGGER update_timestamp
-          BEFORE UPDATE
-          ON test_results
-          FOR EACH ROW
-          EXECUTE PROCEDURE upd_timestamp()");
+        DB::statement("ALTER TABLE test_results CHANGE `updated_at` `updated_at` TIMESTAMP NULL ON UPDATE CURRENT_TIMESTAMP");
+        DB::statement("ALTER TABLE test_results MODIFY  id bigint(20) AUTO_INCREMENT  PRIMARY KEY");
     }
 
     /**

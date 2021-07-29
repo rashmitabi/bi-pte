@@ -38,7 +38,7 @@ $('<div class="pull-right">' +
       '<option selected disabled>Actions</option>'+
       '<option value="email">Send Email</option>'+
       '<option value="password" >Change Password</option>'+
-      '<option value="blockUnblock">BLock/unblock Users</option>'+
+      '<option value="blockUnblock">Block/Unblock Users</option>'+
       '<option value="export">Export Users</option>'+
       '<option value="assignPracticeTest">Assign Practice Tests</option>'+
       '<option value="assignMockTest">Assign Mock Tests</option>'+
@@ -85,7 +85,7 @@ $('<div class="pull-right">' +
       '<option selected disabled>Actions</option>'+
       '<option value="email">Send Email</option>'+
       '<option value="password" >Change Password</option>'+
-      '<option value="blockUnblock">BLock/unblock Users</option>'+
+      '<option value="blockUnblock">Block/Unblock Users</option>'+
       '<option value="export">Export Users</option>'+
       '<option value="assignPracticeTest">Assign Practice Tests</option>'+
       '<option value="assignMockTest">Assign Mock Tests</option>'+
@@ -202,7 +202,7 @@ $(document).ready(function() {
         $('#edit-user-body').html('<div class="mb-5 text-center"><i class="fa fa-spinner fa-spin"></i>  Please Wait...</div>');
       },
       success:function(data) {
-        $('#edit-user-body').html(data.html);
+        // $('#edit-user-body').html(data.html);
       },
     }); 
   });
@@ -564,7 +564,7 @@ $(document).ready(function() {
             type:'GET',
             data:{'id' : chekedInstituteIds},
             beforeSend: function(){
-              $('#password-set-body').html('<i class="fa fa-spinner fa-spin"></i>  Please Wait...');
+              $('#password-set-body').html('<div class="mb-5 text-center"><i class="fa fa-spinner fa-spin"></i>  Please Wait...</div>');
             },
             success:function(data) {
               $('#password-set-body').html(data.html);
@@ -579,7 +579,7 @@ $(document).ready(function() {
             type:'POST',
             data:{'_token':CSRF_TOKEN,'user_ids' : chekedInstituteIds},
             beforeSend: function(){
-              $('#user-status-update').html('<i class="fa fa-spinner fa-spin"></i>  Please Wait...');
+              $('#user-status-update').html('<div class="mb-5 text-center"><i class="fa fa-spinner fa-spin"></i>  Please Wait...</div>');
             },
             success:function(data) {
               $('#user-status-update').html(data.html);
@@ -595,7 +595,7 @@ $(document).ready(function() {
             type:'POST',
             data:{'_token':CSRF_TOKEN,'user_ids' : chekedInstituteIds},
             beforeSend: function(){
-              $('#show-send-email-body').html('<i class="fa fa-spinner fa-spin"></i>  Please Wait...');
+              $('#show-send-email-body').html('<div class="mb-5 text-center"><i class="fa fa-spinner fa-spin"></i>  Please Wait...</div>');
             },
             success:function(data) {
               $('#show-send-email-body').html(data.html);
@@ -614,7 +614,7 @@ $(document).ready(function() {
               type:'POST',
               data:{'_token':CSRF_TOKEN, 'id' : chekedInstituteIds,'type':'P', 'role': 'Institute'},
               beforeSend: function(){
-                $('#prectice-test-body').html('<i class="fa fa-spinner fa-spin"></i>  Please Wait...');
+                $('#prectice-test-body').html('<div class="mb-5 text-center"><i class="fa fa-spinner fa-spin"></i>  Please Wait...</div>');
               },
               success:function(data) {
                 $('#prectice-test-body').html(data.html);
@@ -628,7 +628,7 @@ $(document).ready(function() {
               type:'POST',
               data:{'_token':CSRF_TOKEN, 'id' : chekedInstituteIds,'type':'M', 'role': 'Institute'},
               beforeSend: function(){
-                $('#assign-mock-test-body').html('<i class="fa fa-spinner fa-spin"></i>  Please Wait...');
+                $('#assign-mock-test-body').html('<div class="mb-5 text-center"><i class="fa fa-spinner fa-spin"></i>  Please Wait...</div>');
               },
               success:function(data) {
                 $('#assign-mock-test-body').html(data.html);
@@ -693,7 +693,7 @@ $(document).ready(function() {
             type:'GET',
             data:{'id' : chekedStudentsIds},
             beforeSend: function(){
-              $('#password-set-body').html('<i class="fa fa-spinner fa-spin"></i>  Please Wait...');
+              $('#password-set-body').html('<div class="mb-5 text-center"><i class="fa fa-spinner fa-spin"></i>  Please Wait...</div>');
             },
             success:function(data) {
               $('#password-set-body').html(data.html);
@@ -707,7 +707,7 @@ $(document).ready(function() {
             type:'POST',
             data:{'_token':CSRF_TOKEN,'user_ids' : chekedStudentsIds},
             beforeSend: function(){
-              $('#user-status-update').html('<i class="fa fa-spinner fa-spin"></i>  Please Wait...');
+              $('#user-status-update').html('<div class="mb-5 text-center"><i class="fa fa-spinner fa-spin"></i>  Please Wait...</div>');
             },
             success:function(data) {
               $('#user-status-update').html(data.html);
@@ -777,7 +777,7 @@ $(document).ready(function() {
             type:'POST',
             data:{'_token':CSRF_TOKEN,'user_ids' : chekedStudentsIds},
             beforeSend: function(){
-              $('#show-send-email-body').html('<i class="fa fa-spinner fa-spin"></i>  Please Wait...');
+              $('#show-send-email-body').html('<div class="mb-5 text-center"><i class="fa fa-spinner fa-spin"></i>  Please Wait...</div>');
             },
             success:function(data) {
               $('#show-send-email-body').html(data.html);
@@ -984,6 +984,7 @@ $(document).ready(function() {
         },
         success:function(data) {
           if(data == false){
+            $("#semail-unique-msg2").text("");
             $(".unique-semail").after("<span class='error-msg' id='semail-unique-msg'>"+msg+"</span>");
             $(':input[type="submit"]').prop('disabled', true);
           }else{
@@ -1023,6 +1024,7 @@ $(document).ready(function() {
         },
         success:function(data) {
           if(data == false){
+            $("#iuname-unique-msg2").text("");
             $(".unique-iusername").after("<span class='error-msg' id='iuname-unique-msg'>"+msg+"</span>");
             $(':input[type="submit"]').prop('disabled', true);
             console.log('false');
@@ -1062,6 +1064,7 @@ $(document).ready(function() {
         },
         success:function(data) {
           if(data == false){
+            $("#iemail-unique-msg2").text("");
             $(".unique-iemail").after("<span class='error-msg' id='iemail-unique-msg'>"+msg+"</span>");
             $(':input[type="submit"]').prop('disabled', true);
           }else{

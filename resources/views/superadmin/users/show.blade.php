@@ -55,9 +55,9 @@
           <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label">Status</label>
           <div class=" form-input col-12 col-md-7 col-xl-7 col-sm-12">
             @if($user->status == "A")
-              <label class="label" for="">Active</label>
+              <label class="label" for="">Unblock</label>
             @elseif($user->status == "R")
-              <label class="label" for="">Reject</label>
+              <label class="label" for="">Block</label>
             @else
               <label class="label" for="">Pending</label>
             @endif
@@ -125,9 +125,9 @@
           <label class="col-12 col-md-5 col-xl-5 col-sm-12 col-form-label">Status</label>
           <div class=" form-input col-12 col-md-7 col-xl-7 col-sm-12">
             @if($user->status == "A")
-              <label class="label" for="">Active</label>
+              <label class="label" for="">Unblock</label>
             @elseif($user->status == "R")
-              <label class="label" for="">Reject</label>
+              <label class="label" for="">Block</label>
             @else
               <label class="label" for="">Pending</label>
             @endif
@@ -146,12 +146,12 @@
             <label class="label" for="">{{ $user->gstin }}</label>
           </div>
         </div>
-        <div class="form-group row">
+        <!-- <div class="form-group row">
           <label class="col-12 col-md-5 col-xl-5 col-sm-12 col-form-label">Country Citizen</label>
           <div class=" form-input col-12 col-md-7 col-xl-7 col-sm-12">
             <label class="label" for="">{{ $user->country_citizen }}</label>
           </div>
-        </div>
+        </div> -->
         <div class="form-group row">
           <label class="col-12 col-md-5 col-xl-5 col-sm-12 col-form-label">Validity</label>
           <div class=" form-input col-12 col-md-7 col-xl-7 col-sm-12">

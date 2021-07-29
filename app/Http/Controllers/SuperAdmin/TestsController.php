@@ -15,6 +15,7 @@ use App\Models\StudentTests;
 use App\Models\TestResults;
 use DataTables;
 use DB;
+use Aws\Exception\AwsException;
 class TestsController extends Controller
 {
     private $moduleTitleP = 'superadmin.tests.';
@@ -118,6 +119,19 @@ class TestsController extends Controller
         if($request->image->move(public_path('assets/images/test-images'), $fileName)){
             $filePath = $fileName;
         }
+        // try{
+        //     $client = createAwsClient();
+        //     $upload = $client->putObject([
+        //         'Bucket' => env('AWS_BUCKET'),
+        //         'Key'    => 'test/' . $fileName,
+        //         'Body'   => fopen($request->image, 'r'),
+        //         'ACL'    => 'public-read'
+        //     ]);
+        //     $filePath = $upload['ObjectURL'];
+        //     dd($upload); 
+        // } catch (AwsException $e){
+        //     dd($e->getMessage());
+        // }
         $input['image'] = $filePath;
         $result = Tests::create($input);
         
@@ -240,8 +254,22 @@ class TestsController extends Controller
             $fileName = substr(time().'_'.str_replace(' ', '_', $request->image->getClientOriginalName()), 0, 250);  
             if($request->image->move(public_path('assets/images/test-images'), $fileName)){
                 $filePath = $fileName;
+                $input['image'] = $filePath;
             }
-            $input['image'] = $filePath;
+            // try{
+            //     $client = createAwsClient();
+            //     $upload = $client->putObject([
+            //         'Bucket' => env('AWS_BUCKET'),
+            //         'Key'    => 'test/' . $fileName,
+            //         'Body'   => fopen($request->image, 'r'),
+            //         'ACL'    => 'public-read'
+            //     ]);
+            //     $input['image'] = $upload['ObjectURL'];
+            //     dd($upload);  
+            // } catch (AwsException $e){
+            //     dd($e->getMessage());
+            // }
+            
         }
         $result = Tests::where('id',$id)->update($input);
         if($result){

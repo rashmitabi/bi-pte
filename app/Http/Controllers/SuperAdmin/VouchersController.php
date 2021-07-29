@@ -200,6 +200,9 @@ class VouchersController extends Controller
         }
         unset($input['voucher_type']);
         unset($input['voucher_price']);
+        if(!isset($input['status'])){
+            $input['status'] = 'D';
+        }
         $result = Vouchers::where('id',$id)->update($input);
         if($result){
             \Session::put('success', 'Voucher updated Successfully!');

@@ -8,7 +8,7 @@
     </div>
 </div>
 <div class="form-group row">
-    <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label required">Prediction Description</label>
+    <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label">Prediction Description</label>
     <div class="col-12 col-md-7 col-xl-7 col-sm-12">
         <input type="text" class="form-control "name="description" placeholder="Enter Prediction Description" value="{{ $prediction->description }}">
         <span class="error-msg" id="descriptionError"></span>
@@ -22,7 +22,7 @@
         <label class="custom-file-label" for="customFile">Please Upload Prediction File</label>
         <span class="info">
           <small><i>Please upload the file only if you want to change the document for this prediction.</i>
-          <br><a href="{{ url('/'.$prediction->link) }}">Click Here</a> to check Current Document</span></small>
+          <br><a  target="_blank" href="{{ url('/'.$prediction->link) }}">Click Here</a> to check Current Document</span></small>
         </span><br>
         <span class="error-msg" id="fileError"></span>
       </div>

@@ -62,6 +62,64 @@
                     <h2>{{$data['institutes']}}</h2>
                </div>
            </div>
+         </div>
+         <div class="row custom-row">
+           <div class="col-12 col-md-3 col-xl-3 col-sm-3 common-wrap-col student-col">
+               <div class="dashboard-common-wrap">
+                    <div class="icon">
+                      <img src="{{ asset('assets/images/icons/email.svg') }}">
+                    </div>
+                    <div class="title">
+                      <h4>Email Templates</h4>
+                    </div>
+               </div>
+               <div class="text-wrap"> 
+                    <h3>Total</h3>
+                     <h2>{{$data['templates']}}</h2>
+               </div>
+            </div>
+           <div class="col-12 col-md-3 col-xl-3 col-sm-3 common-wrap-col mocktest-col">
+               <div class="dashboard-common-wrap">
+                    <div class="icon">
+                      <img src="{{ asset('assets/images/icons/video.svg') }}">
+                    </div>
+                    <div class="title">
+                      <h4>Videos</h4>
+                    </div>
+               </div>
+               <div class="text-wrap"> 
+                    <h3>Total</h3>
+                     <h2>{{$data['videos']}}</h2>
+               </div>
+            </div>
+            <div class="col-12 col-md-3 col-xl-3 col-sm-3 common-wrap-col practicetest-col">
+               <div class="dashboard-common-wrap">
+                    <div class="icon">
+                      <img src="{{ asset('assets/images/icons/questions.svg') }}">
+                    </div>
+                    <div class="title">
+                      <h4>Prediction Files</h4>
+                    </div>
+               </div>
+               <div class="text-wrap"> 
+                    <h3>Total</h3>
+                     <h2>{{$data['files']}}</h2>
+               </div>
+            </div>
+            <div class="col-12 col-md-3 col-xl-3 col-sm-3 common-wrap-col institute-col">
+               <div class="dashboard-common-wrap">
+                    <div class="icon">
+                      <img src="{{ asset('assets/images/icons/vouchers.svg') }}">
+                    </div>
+                    <div class="title">
+                      <h4>Vouchers</h4>
+                    </div>
+               </div>
+               <div class="text-wrap"> 
+                    <h3>Total</h3>
+                     <h2>{{$data['vouchers']}}</h2>
+               </div>
+            </div>            
         </div>
         <!-- graph -->
         <div class="row graph-wrap-row ">
@@ -144,7 +202,7 @@
                      <h1 class="table-head">Transactions</h1>
                    </div>
                    <div class="col-6 datapicker">
-                          <input type="text" id="from_date" class="form-control ml-4" placeholder="Form" autocomplete="off">
+                          <input type="text" id="from_date" class="form-control ml-4" placeholder="From" autocomplete="off">
                           <input type="text" id="to_date" class="form-control" placeholder="To" autocomplete="off">
                       </div>
                    <div class="row mx-0 align-items-center">

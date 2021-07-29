@@ -12,6 +12,7 @@ use App\Models\Institues;
 use Illuminate\Http\Request;
 use App\Http\Requests\CreatePredictionRequest;
 use App\Http\Requests\UpdatePredictionRequest;
+use Aws\Exception\AwsException;
 use DataTables;
 
 class PredictionFilesController extends Controller
@@ -109,6 +110,20 @@ class PredictionFilesController extends Controller
             if($request->file->move(public_path('files/predictions'), $fileName)){
                 $filePath = 'files/predictions/'.$fileName;
             }
+
+            /*try{
+                $client = createAwsClient();
+                $upload = $client->putObject([
+                    'Bucket' => env('AWS_BUCKET'),
+                    'Key'    => 'predictionFiles/' . $fileName,
+                    'Body'   => fopen($request->file, 'r'),
+                    'ACL'    => 'public-read'
+                ]);
+                $filePath = $upload['ObjectURL'];
+                dd($upload); 
+            } catch (AwsException $e){
+                dd($e->getMessage());
+            }*/
         }
         
         $prediction = new PredictionFiles;
@@ -116,7 +131,7 @@ class PredictionFilesController extends Controller
         $prediction->section_id = $input['section_id'];
         $prediction->design_id = $input['design_id'];
         $prediction->title = $input['title'];
-        $prediction->description = $input['description'];
+        $prediction->description = isset($input['description'])?$input['description']:'';
         $prediction->link = $filePath;
         if(!isset($input['status'])){
             $prediction->status = 'D';
@@ -217,10 +232,23 @@ class PredictionFilesController extends Controller
                 unset($input['file']);
                 $prediction = PredictionFiles::find($id);                
             }
+            /*try{
+                $client = createAwsClient();
+                $upload = $client->putObject([
+                    'Bucket' => env('AWS_BUCKET'),
+                    'Key'    => 'predictionFiles/' . $fileName,
+                    'Body'   => fopen($request->file, 'r'),
+                    'ACL'    => 'public-read'
+                ]);
+                dd($upload);  
+            } catch (AwsException $e){
+                dd($e->getMessage());
+            }*/
         }     
         if(!isset($input['status'])){
             $input['status'] = 'D';
         }       
+        $input['description'] = isset($input['description'])?$input['description']:'';
         $result = PredictionFiles::where('id',$id)->update($input);        
         if($result){
             if(isset($prediction) && file_exists(public_path($prediction->link))){

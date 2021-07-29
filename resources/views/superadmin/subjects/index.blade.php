@@ -26,7 +26,7 @@
                             <th>Sr No</th>
                             <th>Subject Name</th>
                             <th>Status</th>
-                            <!-- <th>Total Test</th> -->
+                            <th>Total Tests Available</th>
                             <th>Action</th>
                         </tr>
                     </thead>

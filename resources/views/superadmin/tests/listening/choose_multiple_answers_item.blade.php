@@ -121,10 +121,10 @@
                   <div class="form-group mb-2 row">
                     <div class="col-12 p-0">                              
                       <div class="custom-file mb-3">
-                        <input type="file" class="custom-file-input " onchange ="uploadAduio()" id="customFile_audio" data-url="{{ route('upload-audio') }}" data-token="{{ csrf_token() }}">
+                        <input type="file" class="custom-file-input " onchange ="uploadAduio()" id="customFile_audio" data-url="{{ route('upload-audio') }}" data-token="{{ csrf_token() }}" >
                         <label class="custom-file-label" for="customFile">Select Audio</label>
                       </div>
-                      <input type="text" name="upload-audio" id="upload-audio" class="form-control" >
+                      <input type="text" name="upload-audio" id="upload-audio" class="form-control" placeholder="Here Display the code of Audio">
                       <span class="error-msg" id="upload-audioError"></span>
                     </div>
                   </div>
