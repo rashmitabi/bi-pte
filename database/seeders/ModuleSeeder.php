@@ -20,30 +20,36 @@ class ModuleSeeder extends Seeder
         if($check < 1){
             DB::table('modules')->insert([
             	'id' => 1,
-                'module_name' => "Add Student",
-                'module_slug' => "add_student",
+                'module_name' => "Manage Students",
+                'module_slug' => "manage_student",
                 'status'=>'E'
             ]);
             DB::table('modules')->insert([
-            	'id' => 2,
-                'module_name' => "Add Mock Test",
-                'module_slug' => "add_mock_test",
+                'id' => 2,
+                'module_name' => "View Students",
+                'module_slug' => "view_student",
                 'status'=>'E'
             ]);
             DB::table('modules')->insert([
             	'id' => 3,
+                'module_name' => "Manage Mock Test",
+                'module_slug' => "manage_mock_test",
+                'status'=>'E'
+            ]);
+            DB::table('modules')->insert([
+            	'id' => 4,
                 'module_name' => "View Mock Test",
                 'module_slug' => "mock_test",
                 'status'=>'E'
             ]);
             DB::table('modules')->insert([
-            	'id' => 4,
-                'module_name' => "Add Practice Test",
-                'module_slug' => "add_practice_test",
+            	'id' => 5,
+                'module_name' => "Manage Practice Test",
+                'module_slug' => "manage_practice_test",
                 'status'=>'E'
             ]);
             DB::table('modules')->insert([
-            	'id' => 5,
+            	'id' => 6,
                 'module_name' => "View Practice Test",
                 'module_slug' => "practice_test",
                 'status'=>'E'
@@ -56,8 +62,8 @@ class ModuleSeeder extends Seeder
             ]);
             DB::table('modules')->insert([
             	'id' => 8,
-                'module_name' => "Add Videos",
-                'module_slug' => "add_video",
+                'module_name' => "Manage Videos",
+                'module_slug' => "manage_video",
                 'status'=>'E'
             ]);
             DB::table('modules')->insert([
@@ -68,8 +74,8 @@ class ModuleSeeder extends Seeder
             ]);
             DB::table('modules')->insert([
             	'id' => 10,
-                'module_name' => "Add Prediction Files",
-                'module_slug' => "add_prediction_file",
+                'module_name' => "Manage Prediction Files",
+                'module_slug' => "manage_prediction_file",
                 'status'=>'E'
             ]);
             DB::table('modules')->insert([
