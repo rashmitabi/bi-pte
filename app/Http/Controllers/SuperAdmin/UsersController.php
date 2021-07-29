@@ -335,6 +335,7 @@ class UsersController extends Controller
         $body = '';
         $subject = '';
         $regexUrl = '/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/';
+        $regexGst = '/^[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9A-Z]{1}Z[0-9A-Z]{1}$/';
         if($type == 3){ 
             $request->validate([
                 'type'=>'required',
@@ -447,7 +448,7 @@ class UsersController extends Controller
                 'istate'=>'required|min:2|max:100',
                 'istate_code'=>'required|min:1|max:100',
                 'icity'=>'required|min:2|max:100',
-                'igstin'=>'required|min:2|max:100',
+                'igstin'=>'required|min:2|max:100|regex:'.$regexGst,
                 'logo'=>'required|image|mimes:jpeg,png,jpg|max:2048',
                 'banner'=>'required|image|mimes:jpeg,png,jpg|max:2048',
                 'bimage'=>'nullable|image|mimes:jpeg,png,jpg|max:2048',
@@ -486,6 +487,7 @@ class UsersController extends Controller
                 'igstin.required'=>'GSTIN is required',
                 'igstin.min'=>'GSTIN min length at least 2',
                 'igstin.max'=>'GSTIN maximum length allow 100',
+                'igstin.regex'=>'GSTIN format is not valid',
                 'bimage.image'=>'Background image must be image format',
                 'bimage.mimes'=>'Background image must be jpeg,png,jpg format',
                 'bimage.max'=>'Background image maximum length allow 2048'
@@ -754,6 +756,8 @@ class UsersController extends Controller
             $body    = '<p>Hello '.$user->fullname.', Your profile update by superadmin.</p>';
             $user_emailid = $user->email;
         }else if($type == 2){
+            $regexUrl = '/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/';
+            $regexGst = '/^[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9A-Z]{1}Z[0-9A-Z]{1}$/';
             $request->validate([
                 'type'=>'required',
                 'iuname' => 'required|unique:users,name,'.$id.'|max:255',
@@ -762,13 +766,13 @@ class UsersController extends Controller
                 'country_code'=>'required|max:5',
                 'phone_no' =>'required|max:20',
                 'students_allowed' =>'required',
-                'subdomain' =>'required|max:255',
-                'domain'=>'required|max:255',
+                'subdomain' =>'required|max:255|regex:'.$regexUrl,
+                'domain'=>'required|max:255|regex:'.$regexUrl,
                 'welcome_msg'=>'required|max:500',
                 'istate'=>'required|min:2|max:100',
                 'istate_code'=>'required|min:1|max:100',
                 'icity'=>'required|min:2|max:100',
-                'igstin'=>'required|min:2|max:100',
+                'igstin'=>'required|min:2|max:100|regex:'.$regexGst,
                 'logo'=>'nullable|image|mimes:jpeg,png,jpg|max:2048',
                 'banner'=>'nullable|image|mimes:jpeg,png,jpg|max:2048',
                 'validity'=>'required|after:' . date('Y-m-d'),
@@ -799,7 +803,8 @@ class UsersController extends Controller
                 'icity.max'=>'City maximum length allow 100',
                 'igstin.required'=>'GSTIN is required',
                 'igstin.min'=>'GSTIN min length at least 2',
-                'igstin.max'=>'GSTIN maximum length allow 100'
+                'igstin.max'=>'GSTIN maximum length allow 100',
+                'igstin.regex'=>'GSTIN number format is not valid'
             ]);
             $input  = \Arr::except($request->all(),array('_token'));
             if ($image = $request->file('logo')) {

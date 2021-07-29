@@ -64,7 +64,7 @@
                     <div class="form-group row">
                         <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label voucher-price-label required">Voucher Price</label>
                         <div class="col-12 col-md-7 col-xl-7 col-sm-12">
-                            <input type="text" class="form-control " name="voucher_price" placeholder="Enter Voucher Price" value="{{ old('voucher_price') }}">
+                            <input type="text" class="form-control " id="voucher_price" name="voucher_price" placeholder="Enter Voucher Price" value="{{ old('voucher_price') }}">
                             @if($errors->has('voucher_price'))
                                 <span class="error-msg">{{$errors->first('voucher_price')}}</span>
                             @endif

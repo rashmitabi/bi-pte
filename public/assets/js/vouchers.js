@@ -76,6 +76,7 @@ $(document).ready(function() {
    //voucher price label change start
    $('body').on('change','.voucher-type',function(){
         var value = $(this).val();
+        $("#voucher_price").val('');
         if(value == 'P'){
             $(".voucher-price-label").text("Percentage Price");
         }else{
