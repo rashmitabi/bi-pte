@@ -78,8 +78,26 @@ class DashboardController extends Controller
     }
 
     public function transactions(Request $request){
-        if($request->ajax())  {
-            $data = userSubscriptions::with(['user','subscription', 'transaction'])->latest()->limit(10)->get();
+        if($request->ajax())  {            
+            $input  = \Arr::except($request->all(),array('_token'));
+            $from = $to = '';
+            if(isset($input['from']) || isset($input['to'])){
+                $from = (isset($input['from']) && $input['from'] != '') ? date('Y-m-d', strtotime($input['from'])) : '';
+                $to = (isset($input['to']) && $input['to'] != '') ? date('Y-m-d', strtotime($input['to'])) : '';
+            }
+            if($from != '' && $to != ''){
+                $data = userSubscriptions::with(['user','subscription', 'transaction'])->latest()->whereBetween('created_at', [$from, $to])->limit(10)->get();
+            }
+            else if($from != '' && $to == ''){
+                $data = userSubscriptions::with(['user','subscription', 'transaction'])->latest()->whereDate('created_at', '>=', $from)->limit(10)->get();
+            }
+            else if($to != '' && $from == ''){
+                $data = userSubscriptions::with(['user','subscription', 'transaction'])->latest()->whereDate('created_at', '<=', $to)->limit(10)->get();
+            }
+            else{
+                $data = userSubscriptions::with(['user','subscription', 'transaction'])->latest()->limit(10)->get();
+            }            
+            
             return Datatables::of($data)
                     ->addIndexColumn()
                     ->addColumn('transaction_id', function($row){

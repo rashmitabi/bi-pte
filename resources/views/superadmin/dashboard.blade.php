@@ -62,6 +62,8 @@
                     <h2>{{$data['institutes']}}</h2>
                </div>
            </div>
+         </div>
+         <div class="row custom-row">
            <div class="col-12 col-md-3 col-xl-3 col-sm-3 common-wrap-col student-col">
                <div class="dashboard-common-wrap">
                     <div class="icon">
@@ -200,8 +202,8 @@
                      <h1 class="table-head">Transactions</h1>
                    </div>
                    <div class="col-6 datapicker">
-                          <input type="text" id="from_date" class="form-control ml-4" placeholder="From" autocomplete="off" disabled>
-                          <input type="text" id="to_date" class="form-control" placeholder="To" autocomplete="off" disabled>
+                          <input type="text" id="from_date" class="form-control ml-4" placeholder="From" autocomplete="off">
+                          <input type="text" id="to_date" class="form-control" placeholder="To" autocomplete="off">
                       </div>
                    <div class="row mx-0 align-items-center">
                       <div class="col-12 col-md-12 col-xl-12 col-sm-12 left p-0">

@@ -14,21 +14,14 @@ class CreateSections extends Migration
     public function up()
     {
         Schema::create('sections', function (Blueprint $table) {
-            //$table->tinyInteger('id');
-            $table->tinyIncrements('id');
+            $table->tinyInteger('id');
             $table->string('section_name',200);
             $table->dateTime('created_at')->useCurrent();
             $table->timestamp('updated_at')->nullable();
         });
 
-        // DB::statement("ALTER TABLE sections CHANGE `updated_at` `updated_at` TIMESTAMP NULL ON UPDATE CURRENT_TIMESTAMP");
-        // DB::statement("ALTER TABLE sections MODIFY  id tinyint(4) AUTO_INCREMENT  PRIMARY KEY");
-
-        DB::statement("CREATE TRIGGER user_update_at
-          BEFORE UPDATE
-          ON sections
-          FOR EACH ROW
-          EXECUTE PROCEDURE upd_timestamp()");
+        DB::statement("ALTER TABLE sections CHANGE `updated_at` `updated_at` TIMESTAMP NULL ON UPDATE CURRENT_TIMESTAMP");
+        DB::statement("ALTER TABLE sections MODIFY  id tinyint(4) AUTO_INCREMENT  PRIMARY KEY");
     }
 
     /**

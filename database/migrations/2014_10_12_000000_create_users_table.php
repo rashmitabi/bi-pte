@@ -14,8 +14,7 @@ class CreateUsersTable extends Migration
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
-            //$table->integer('id');
-            $table->increments('id');
+            $table->integer('id');
             $table->tinyInteger('role_id')->comment('Foreign key of roles table');
             $table->integer('parent_user_id')->nullable()->comment('Self join with parent id');
             $table->string('first_name',100);
@@ -40,24 +39,8 @@ class CreateUsersTable extends Migration
             $table->timestamp('updated_at')->nullable();
         });
 
-        //DB::statement("ALTER TABLE users CHANGE `updated_at` `updated_at` TIMESTAMP NULL ON UPDATE CURRENT_TIMESTAMP");
-        //DB::statement("ALTER TABLE users MODIFY  id INT AUTO_INCREMENT  PRIMARY KEY");
-
-        DB::statement("CREATE OR REPLACE FUNCTION upd_timestamp() RETURNS TRIGGER 
-                LANGUAGE plpgsql
-                AS
-                $$
-                BEGIN
-                    NEW.updated_at = CURRENT_TIMESTAMP;
-                    RETURN NEW;
-                END;
-                $$");
-
-        DB::statement("CREATE TRIGGER update_timestamp
-          BEFORE UPDATE
-          ON users
-          FOR EACH ROW
-          EXECUTE PROCEDURE upd_timestamp()");
+        DB::statement("ALTER TABLE users CHANGE `updated_at` `updated_at` TIMESTAMP NULL ON UPDATE CURRENT_TIMESTAMP");
+        DB::statement("ALTER TABLE users MODIFY  id INT AUTO_INCREMENT  PRIMARY KEY");
     }   
 
     /**

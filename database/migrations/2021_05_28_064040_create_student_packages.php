@@ -14,8 +14,7 @@ class CreateStudentPackages extends Migration
     public function up()
     {
         Schema::create('student_packages', function (Blueprint $table) {
-            //$table->bigInteger('id');
-            $table->bigIncrements('id');
+            $table->bigInteger('id');
             $table->integer('user_id')->comment('Foreign key of users table');
             $table->tinyInteger('speaking');
             $table->tinyInteger('listening');
@@ -28,7 +27,7 @@ class CreateStudentPackages extends Migration
             
         });
 
-        //DB::statement("ALTER TABLE student_packages MODIFY  id INT AUTO_INCREMENT  PRIMARY KEY");
+        DB::statement("ALTER TABLE student_packages MODIFY  id INT AUTO_INCREMENT  PRIMARY KEY");
     }
 
     /**
