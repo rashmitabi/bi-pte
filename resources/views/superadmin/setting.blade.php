@@ -23,7 +23,7 @@ $currency = getSingleSettingValue('currency');
                         <div class="form-group row mt-4">
                             <label class="col-12 col-md-5 col-xl-5 col-sm-12 col-form-label required">Set Currency</label>
                             <div class="col-12 col-md-7 col-xl-7 col-sm-12">
-                            <select class="user-type" name="currency" id="currency">
+                            <select class="custom-select" name="currency" id="currency">
                                 <option selected disabled>Select Currency</option>
                                 <option value="2" {{ ($currency == '2')?'selected':''}}>Dollar</option>
                                 <option value="3" {{ ($currency == '3')?'selected':''}}>Rupees</option>
@@ -119,7 +119,7 @@ $currency = getSingleSettingValue('currency');
                             </div>
                         </div>
                         <div class="form-group row">
-                            <div class="col-12 col-md-12 col-xl-11 col-sm-12 save-btn">
+                            <div class="col-12 col-md-12 col-xl-12 col-sm-12 save-btn">
                                 <button type="button" class="btn btn-outline-primary save-setting" data-url="{{ route('settings.store') }}"><i
                                         class="far fa-save save-icon"></i>Save</button>
                             </div>
@@ -150,7 +150,7 @@ $currency = getSingleSettingValue('currency');
                         </div>
                         </div>
                         <div class="form-group row">
-                            <div class="col-12 col-md-12 col-xl-11 col-sm-12 save-btn">
+                            <div class="col-12 col-md-12 col-xl-12 col-sm-12 save-btn">
                                 <button type="button" class="btn btn-outline-primary change-password" data-url="{{ route('superadmin-change-password') }}"><i
                                         class="far fa-save save-icon"></i>Save</button>
                             </div>
@@ -202,7 +202,7 @@ $currency = getSingleSettingValue('currency');
                             </div>
                         </div>
                         <div class="form-group row">
-                            <div class="col-12 col-md-12 col-xl-11 col-sm-12 save-btn">
+                            <div class="col-12 col-md-12 col-xl-12 col-sm-12 save-btn">
                                 <button type="button" class="btn btn-outline-primary reading-store-instructions" data-url="{{ route('superadmin-reading-questions-instructions') }}"><i
                                         class="far fa-save save-icon"></i>Save</button>
                             </div>
@@ -275,7 +275,7 @@ $currency = getSingleSettingValue('currency');
                             </div>
                         </div>
                         <div class="form-group row">
-                            <div class="col-12 col-md-12 col-xl-11 col-sm-12 save-btn">
+                            <div class="col-12 col-md-12 col-xl-12 col-sm-12 save-btn">
                                 <button type="button" class="btn btn-outline-primary listening-store-instructions" data-url="{{ route('superadmin-listening-questions-instructions') }}"><i
                                         class="far fa-save save-icon"></i>Save</button>
                             </div>
@@ -306,7 +306,7 @@ $currency = getSingleSettingValue('currency');
                         </div>
                         </div>
                         <div class="form-group row">
-                            <div class="col-12 col-md-12 col-xl-11 col-sm-12 save-btn">
+                            <div class="col-12 col-md-12 col-xl-12 col-sm-12 save-btn">
                                 <button type="button" class="btn btn-outline-primary writing-store-instructions" data-url="{{ route('superadmin-writing-questions-instructions') }}"><i
                                         class="far fa-save save-icon"></i>Save</button>
                             </div>
@@ -358,7 +358,7 @@ $currency = getSingleSettingValue('currency');
                             </div>
                         </div>
                         <div class="form-group row">
-                            <div class="col-12 col-md-12 col-xl-11 col-sm-12 save-btn">
+                            <div class="col-12 col-md-12 col-xl-12 col-sm-12 save-btn">
                                 <button type="button" class="btn btn-outline-primary speaking-store-instructions" data-url="{{ route('superadmin-speaking-questions-instructions') }}"><i
                                         class="far fa-save save-icon"></i>Save</button>
                             </div>
