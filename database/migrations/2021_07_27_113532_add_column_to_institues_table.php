@@ -14,7 +14,8 @@ class AddColumnToInstituesTable extends Migration
     public function up()
     {
         Schema::table('institues', function (Blueprint $table) {
-            $table->smallInteger('tests_allowed')->after('students_allowed');
+            $table->smallInteger('mock_tests_allowed')->after('students_allowed');
+            $table->smallInteger('practice_tests_allowed')->after('students_allowed');
         }); 
     }
 
@@ -26,7 +27,8 @@ class AddColumnToInstituesTable extends Migration
     public function down()
     {
         Schema::table('institues', function (Blueprint $table) {
-            $table->dropColumn('tests_allowed');
+            $table->dropColumn('mock_tests_allowed');
+            $table->dropColumn('practice_tests_allowed');
         });
     }
 }
