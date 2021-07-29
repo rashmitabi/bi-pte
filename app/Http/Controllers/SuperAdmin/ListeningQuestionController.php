@@ -114,7 +114,7 @@ class ListeningQuestionController extends Controller
 	            $questiondata->question_id = $id;
 	            $questiondata->data_type = $questionType->question_title.$i;
 	            $questiondata->data_value = json_encode(
-	            		array($input['question_audio'.$i],$input['question_image'.$i])
+	            		array("question_audio" => $input['question_audio'.$i],"question_image" => $input['question_image'.$i])
 	            	);
 	            $questiondata->save();
 
@@ -140,7 +140,7 @@ class ListeningQuestionController extends Controller
             $questiondata = Questiondata::where('id',$input['question_data_id'.$i])->update(
                 array(
                     "data_value" => json_encode(
-	            			array($input['question_audio'.$i],$input['question_image'.$i])
+	            			array("question_audio" =>$input['question_audio'.$i],"question_image" => $input['question_image'.$i])
 	            		)
                 )
             );

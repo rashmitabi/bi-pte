@@ -20,7 +20,7 @@
             <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Select Role</label>
             <div class="col-12 col-md-7 col-xl-7 col-sm-12">
               <select  class="custom-select usertype_form" id="type" name="type">
-                <option selected>Select User Type</option>
+                <option selected disabled>Select User Type</option>
                 <option value="2" {{ (old('type') == '2')?'selected':''}}>Branch Admin</option>
                 <option value="3" {{ (old('type') == '3')?'selected':''}}>Student</option>
               </select>
