@@ -14,8 +14,7 @@ class CreateStudentDetails extends Migration
     public function up()
     {
         Schema::create('student_details', function (Blueprint $table) {
-            //$table->integer('id');
-            $table->increments('id');
+            $table->integer('id');
             $table->integer('user_id')->comment('Foreign key of users table');
             $table->string('address',255);
             $table->string('user_interests',255);
@@ -27,13 +26,8 @@ class CreateStudentDetails extends Migration
             $table->timestamp('updated_at')->nullable();
         });
         
-        // DB::statement("ALTER TABLE student_details CHANGE `updated_at` `updated_at` TIMESTAMP NULL ON UPDATE CURRENT_TIMESTAMP");
-        // DB::statement("ALTER TABLE student_details MODIFY  id INT AUTO_INCREMENT  PRIMARY KEY");
-        DB::statement("CREATE TRIGGER update_timestamp
-          BEFORE UPDATE
-          ON student_details
-          FOR EACH ROW
-          EXECUTE PROCEDURE upd_timestamp()");
+        DB::statement("ALTER TABLE student_details CHANGE `updated_at` `updated_at` TIMESTAMP NULL ON UPDATE CURRENT_TIMESTAMP");
+        DB::statement("ALTER TABLE student_details MODIFY  id INT AUTO_INCREMENT  PRIMARY KEY");
     }
 
     /**

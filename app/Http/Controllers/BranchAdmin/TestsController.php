@@ -158,9 +158,18 @@ class TestsController extends Controller
         $count = Tests::where('generated_by_user_id',\Auth::user()->id)->count();
         $Institues = Institues::where('user_id',\Auth::user()->id)->get();
         
-        if($count == $Institues[0]->tests_allowed || $count > $Institues[0]->tests_allowed){
-            return redirect()->route('branchadmin-tests.index')
-            ->with('error','Sorry!Your generate test limit is out of reach!');
+        // if($count == $Institues[0]->tests_allowed || $count > $Institues[0]->tests_allowed){
+        if($input['type'] == "M"){
+            if($count == $Institues[0]->mock_tests_allowed || $count > $Institues[0]->mock_tests_allowed){
+                return redirect()->route('branchadmin-tests.index')
+                ->with('error','Sorry!Your mock test generate  limit is out of reach!');
+            }
+        }
+        if($input['type'] == "P"){
+            if($count == $Institues[0]->practice_tests_allowed || $count > $Institues[0]->practice_tests_allowed){
+                return redirect()->route('branchadmin-tests.index')
+                ->with('error','Sorry!Your practice test generate  limit is out of reach!');
+            }
         }
         
         $filePath = '';

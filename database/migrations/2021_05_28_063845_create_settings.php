@@ -14,12 +14,11 @@ class CreateSettings extends Migration
     public function up()
     {
         Schema::create('settings', function (Blueprint $table) {
-            //$table->tinyInteger('id');
-            $table->tinyIncrements('id');
+            $table->tinyInteger('id');
             $table->string('label',255);
             $table->string('value',255);
         });
-        //DB::statement("ALTER TABLE settings MODIFY  id tinyint(4) AUTO_INCREMENT  PRIMARY KEY");  
+        DB::statement("ALTER TABLE settings MODIFY  id tinyint(4) AUTO_INCREMENT  PRIMARY KEY");  
         
     }
 

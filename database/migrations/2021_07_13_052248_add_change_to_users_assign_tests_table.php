@@ -18,15 +18,9 @@ class AddChangeToUsersAssignTestsTable extends Migration
             
         });
         
-        /*DB::statement("ALTER TABLE users_assign_tests
+        DB::statement("ALTER TABLE users_assign_tests
         CHANGE `created_at` `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP NULL,
-        CHANGE `updated_at` `updated_at` TIMESTAMP NULL ON UPDATE CURRENT_TIMESTAMP");*/
-
-        DB::statement("CREATE TRIGGER update_timestamp
-          BEFORE UPDATE
-          ON users_assign_tests
-          FOR EACH ROW
-          EXECUTE PROCEDURE upd_timestamp()");
+        CHANGE `updated_at` `updated_at` TIMESTAMP NULL ON UPDATE CURRENT_TIMESTAMP");
         
     }
 

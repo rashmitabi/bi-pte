@@ -14,8 +14,7 @@ class CreatePredictions extends Migration
     public function up()
     {
         Schema::create('predictions', function (Blueprint $table) {
-            //$table->bigInteger('id');
-            $table->bigIncrements('id');
+            $table->bigInteger('id');
             $table->integer('user_id')->comment('Foreign key of generat users  table');
             $table->tinyInteger('section_id')->comment('Foreign key of sections table');
             $table->tinyInteger('question_type_id')->comment('Foreign key of question_types table');
@@ -27,13 +26,8 @@ class CreatePredictions extends Migration
             $table->timestamp('updated_at')->nullable();
         });
 
-        // DB::statement("ALTER TABLE predictions CHANGE `updated_at` `updated_at` TIMESTAMP NULL ON UPDATE CURRENT_TIMESTAMP");
-        // DB::statement("ALTER TABLE predictions MODIFY  id INT AUTO_INCREMENT  PRIMARY KEY");
-        DB::statement("CREATE TRIGGER update_timestamp
-          BEFORE UPDATE
-          ON predictions
-          FOR EACH ROW
-          EXECUTE PROCEDURE upd_timestamp()");
+        DB::statement("ALTER TABLE predictions CHANGE `updated_at` `updated_at` TIMESTAMP NULL ON UPDATE CURRENT_TIMESTAMP");
+        DB::statement("ALTER TABLE predictions MODIFY  id INT AUTO_INCREMENT  PRIMARY KEY");
     }
 
     /**
