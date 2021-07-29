@@ -12,6 +12,7 @@ use App\Models\Institues;
 use Illuminate\Http\Request;
 use App\Http\Requests\CreatePredictionRequest;
 use App\Http\Requests\UpdatePredictionRequest;
+use Aws\Exception\AwsException;
 use DataTables;
 
 class PredictionFilesController extends Controller
@@ -109,6 +110,20 @@ class PredictionFilesController extends Controller
             if($request->file->move(public_path('files/predictions'), $fileName)){
                 $filePath = 'files/predictions/'.$fileName;
             }
+
+            /*try{
+                $client = createAwsClient();
+                $upload = $client->putObject([
+                    'Bucket' => env('AWS_BUCKET'),
+                    'Key'    => 'predictionFiles/' . $fileName,
+                    'Body'   => fopen($request->file, 'r'),
+                    'ACL'    => 'public-read'
+                ]);
+                $filePath = $upload['ObjectURL'];
+                dd($upload); 
+            } catch (AwsException $e){
+                dd($e->getMessage());
+            }*/
         }
         
         $prediction = new PredictionFiles;
@@ -217,6 +232,18 @@ class PredictionFilesController extends Controller
                 unset($input['file']);
                 $prediction = PredictionFiles::find($id);                
             }
+            /*try{
+                $client = createAwsClient();
+                $upload = $client->putObject([
+                    'Bucket' => env('AWS_BUCKET'),
+                    'Key'    => 'predictionFiles/' . $fileName,
+                    'Body'   => fopen($request->file, 'r'),
+                    'ACL'    => 'public-read'
+                ]);
+                dd($upload);  
+            } catch (AwsException $e){
+                dd($e->getMessage());
+            }*/
         }     
         if(!isset($input['status'])){
             $input['status'] = 'D';

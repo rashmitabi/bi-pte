@@ -404,6 +404,18 @@ class UsersController extends Controller
                 $destinationPath = 'assets/images/profile/';
                 $fileNameToStore = date('YmdHis') . "." . $image->getClientOriginalExtension();
                 $image->move($destinationPath, $fileNameToStore);
+                /*try{
+                    $client = createAwsClient();
+                    $upload = $client->putObject([
+                        'Bucket' => env('AWS_BUCKET'),
+                        'Key'    => 'profile/' . $fileNameToStore,
+                        'Body'   => fopen($request->simage, 'r'),
+                        'ACL'    => 'public-read'
+                    ]);
+                    dd($upload);  
+                } catch (AwsException $e){
+                    dd($e->getMessage());
+                }*/
             }
             $password = Hash::make($input['spassword']);
             $user_input = array(
@@ -505,18 +517,54 @@ class UsersController extends Controller
                 $destinationPath = 'assets/images/institute/';
                 $logo = date('YmdHis') ."_logo". "." . $image->getClientOriginalExtension();
                 $image->move($destinationPath, $logo);
+                /*try{
+                    $client = createAwsClient();
+                    $upload = $client->putObject([
+                        'Bucket' => env('AWS_BUCKET'),
+                        'Key'    => 'logo/' . $logo,
+                        'Body'   => fopen($request->logo, 'r'),
+                        'ACL'    => 'public-read'
+                    ]);
+                    dd($upload);  
+                } catch (AwsException $e){
+                    dd($e->getMessage());
+                }*/
             }
 
             if ($image = $request->file('banner')) {
                 $destinationPath = 'assets/images/institute/';
                 $banner = date('YmdHis') ."_banner". "." . $image->getClientOriginalExtension();
                 $image->move($destinationPath, $banner);
+                /*try{
+                    $client = createAwsClient();
+                    $upload = $client->putObject([
+                        'Bucket' => env('AWS_BUCKET'),
+                        'Key'    => 'banner/' . $banner,
+                        'Body'   => fopen($request->banner, 'r'),
+                        'ACL'    => 'public-read'
+                    ]);
+                    dd($upload);  
+                } catch (AwsException $e){
+                    dd($e->getMessage());
+                }*/
             }
 
             if ($image = $request->file('bimage')) {
                 $destinationPath = 'assets/images/profile/';
                 $profile = date('YmdHis') ."_banner". "." . $image->getClientOriginalExtension();
                 $image->move($destinationPath, $profile);
+                /*try{
+                    $client = createAwsClient();
+                    $upload = $client->putObject([
+                        'Bucket' => env('AWS_BUCKET'),
+                        'Key'    => 'backgroundimage/' . $profile,
+                        'Body'   => fopen($request->bimage, 'r'),
+                        'ACL'    => 'public-read'
+                    ]);
+                    dd($upload);  
+                } catch (AwsException $e){
+                    dd($e->getMessage());
+                }*/
                 $user_input = array(
                     'role_id' => $input['type'],
                     'parent_user_id' => 0,
@@ -696,6 +744,18 @@ class UsersController extends Controller
                 $destinationPath = 'assets/images/profile/';
                 $fileNameToStore = date('YmdHis') . "." . $image->getClientOriginalExtension();
                 $image->move($destinationPath, $fileNameToStore);
+                /*try{
+                    $client = createAwsClient();
+                    $upload = $client->putObject([
+                        'Bucket' => env('AWS_BUCKET'),
+                        'Key'    => 'profile/' . $fileNameToStore,
+                        'Body'   => fopen($request->simage, 'r'),
+                        'ACL'    => 'public-read'
+                    ]);
+                    dd($upload);  
+                } catch (AwsException $e){
+                    dd($e->getMessage());
+                }*/
                 $user_input = array(
                     'role_id' => $input['type'],
                     'parent_user_id' => $input['branch_admin'],
@@ -811,18 +871,54 @@ class UsersController extends Controller
                 $destinationPath = 'assets/images/institute/';
                 $logo = date('YmdHis') ."_logo". "." . $image->getClientOriginalExtension();
                 $image->move($destinationPath, $logo);
+                /*try{
+                    $client = createAwsClient();
+                    $upload = $client->putObject([
+                        'Bucket' => env('AWS_BUCKET'),
+                        'Key'    => 'logo/' . $logo,
+                        'Body'   => fopen($request->logo, 'r'),
+                        'ACL'    => 'public-read'
+                    ]);
+                    dd($upload);  
+                } catch (AwsException $e){
+                    dd($e->getMessage());
+                }*/
             }
 
             if ($image = $request->file('banner')) {
                 $destinationPath = 'assets/images/institute/';
                 $banner = date('YmdHis') ."_banner". "." . $image->getClientOriginalExtension();
                 $image->move($destinationPath, $banner);
+                /*try{
+                    $client = createAwsClient();
+                    $upload = $client->putObject([
+                        'Bucket' => env('AWS_BUCKET'),
+                        'Key'    => 'banner/' . $banner,
+                        'Body'   => fopen($request->banner, 'r'),
+                        'ACL'    => 'public-read'
+                    ]);
+                    dd($upload);  
+                } catch (AwsException $e){
+                    dd($e->getMessage());
+                }*/
             }
 
             if ($image = $request->file('iimage')) {
                 $destinationPath = 'assets/images/profile/';
                 $fileNameToStore = date('YmdHis') . "." . $image->getClientOriginalExtension();
                 $image->move($destinationPath, $fileNameToStore);
+                /*try{
+                    $client = createAwsClient();
+                    $upload = $client->putObject([
+                        'Bucket' => env('AWS_BUCKET'),
+                        'Key'    => 'profile/' . $fileNameToStore,
+                        'Body'   => fopen($request->iimage, 'r'),
+                        'ACL'    => 'public-read'
+                    ]);
+                    dd($upload);  
+                } catch (AwsException $e){
+                    dd($e->getMessage());
+                }*/
                 $user_input = array(
                     'role_id' => $input['type'],
                     'parent_user_id' => 0,

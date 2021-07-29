@@ -24,7 +24,18 @@ class ListeningQuestionController extends Controller
             $ImageName = date('YmdHis') . "." . $image->getClientOriginalExtension();
             $image->move($destinationPath, $ImageName);
         }
-
+        /*try{
+            $client = createAwsClient();
+            $upload = $client->putObject([
+                'Bucket' => env('AWS_BUCKET'),
+                'Key'    => 'questionfiles/' . $ImageName,
+                'Body'   => fopen($request->image_file, 'r'),
+                'ACL'    => 'public-read'
+            ]);
+            dd($upload);  
+        } catch (AwsException $e){
+            dd($e->getMessage());
+        }*/
         return response()->json([
             'success' => 1,
             'html'=>"<img src='".url($destinationPath.$ImageName)."'>"    
@@ -43,7 +54,18 @@ class ListeningQuestionController extends Controller
             $ImageName = date('YmdHis') . "." . $image->getClientOriginalExtension();
             $image->move($destinationPath, $ImageName);
         }
-
+        /*try{
+            $client = createAwsClient();
+            $upload = $client->putObject([
+                'Bucket' => env('AWS_BUCKET'),
+                'Key'    => 'questionfiles/' . $ImageName,
+                'Body'   => fopen($request->audio_file, 'r'),
+                'ACL'    => 'public-read'
+            ]);
+            dd($upload);  
+        } catch (AwsException $e){
+            dd($e->getMessage());
+        }*/
         $html ='<audio controls >';
             $html .='<source src="'.url($destinationPath.$ImageName).'" type="audio/'.$image->getClientOriginalExtension().'">';
             $html .='Your browser does not support the audio element.';
