@@ -61,7 +61,7 @@
                     <div class="form-group row">
                       <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label required">Video Type</label>
                       <div class="col-12 col-md-7 col-xl-7 col-sm-12">
-                        <select  id="types" name="design_id" class="form-select custom-select" data-json="{{ json_encode($types) }}">
+                        <select  id="types" name="design_id" class="form-select select custom-select"  data-json="{{ json_encode($types) }}">
                           <option value="" selected>Select Type</option>
                           
                         </select>
