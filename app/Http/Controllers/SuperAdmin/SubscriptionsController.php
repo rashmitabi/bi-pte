@@ -66,7 +66,7 @@ class SubscriptionsController extends Controller
                     })
                     ->addColumn('action', function($row){
                         $btn = '<ul class="actions-btns">
-                            <li class="action" data-toggle="modal" data-target="#editsubscription"><a href="javascript:void(0);" class="subscription-edit" data-id="'.$row->id.'" data-url="'.route('subscription.edit', $row->id).'"><i class="fas fa-pen"></i></a></li>
+                            <li class="action subscription-edit" data-toggle="modal" data-target="#editsubscription" data-id="'.$row->id.'" data-url="'.route('subscription.edit', $row->id).'"><a href="javascript:void(0);"><i class="fas fa-pen"></i></a></li>
                             <li class="action bg-danger"><a href="#" class="delete_modal" data-toggle="modal" data-target="#delete_modal"  data-url="'.route('subscription.destroy', $row->id).'" data-id="'.$row->id.'"><i class="fas fa-trash"></i></a></li>
                             <li class="action shield '.(($row->status == "E") ? "red" : "green").'"><a href="'.route('superadmin-subscription-changestatus', $row->id ).'"><img src="'.asset('assets/images/icons/blocked.svg').'" class=""></a></li>
                             </ul>';
