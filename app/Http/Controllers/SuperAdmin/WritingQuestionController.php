@@ -90,34 +90,34 @@ class WritingQuestionController extends Controller
         // ]);
 
         $input  = \Arr::except($request->all(),array('_token'));
-
-        $questiondata = Questiondata::where('id',$input['question_data_id1'])->update(
-                array(
-                    "data_value" => $input['editor1']
-                )
-            );
-        $questiondata = Questiondata::where('id',$input['question_data_id2'])->update(
-                array(
-                    "data_value" => $input['editor2']
-                )
-            );
-        $answerdata = Answerdata::where('id',$input['answer_data_id1'])->update(
-                array(
-                    "sample_answer" => $input['sample_editor1']
-                )
-            );
-        $answerdata = Answerdata::where('id',$input['answer_data_id2'])->update(
-                array(
-                    "sample_answer" => $input['sample_editor2']
-                )
-            );
-
-            
-        if($answerdata || $questiondata){
+        try{
+            $questiondata = Questiondata::where('id',$input['question_data_id1'])->update(
+                    array(
+                        "data_value" => $input['editor1']
+                    )
+                );
+            $questiondata = Questiondata::where('id',$input['question_data_id2'])->update(
+                    array(
+                        "data_value" => $input['editor2']
+                    )
+                );
+            $answerdata = Answerdata::where('id',$input['answer_data_id1'])->update(
+                    array(
+                        "sample_answer" => $input['sample_editor1']
+                    )
+                );
+            $answerdata = Answerdata::where('id',$input['answer_data_id2'])->update(
+                    array(
+                        "sample_answer" => $input['sample_editor2']
+                    )
+                );
             return redirect()->route('tests.show',$input['test_id'])->with('success','Questions Updated Successfully!');
-        }else{
+        }catch(\Exception $e){
             return redirect()->route('tests.show',$input['test_id'])->with('error','Sorry!Something wrong.Try Again.');
         }
+
+            
+        
     }
 
     public function storeEssayWritting(Request $request){
@@ -176,24 +176,24 @@ class WritingQuestionController extends Controller
         //     'sample_essay'=>'required'
         // ]);
         $input  = \Arr::except($request->all(),array('_token'));
-
+        try{
         
-        $questiondata = Questiondata::where('id',$input['question_data_id1'])->update(
-            array(
-                "data_value" => $input['essay_title1']
-            )
-        );
-        $answerdata = Answerdata::where('id',$input['answer_data_id1'])->update(
+            $questiondata = Questiondata::where('id',$input['question_data_id1'])->update(
                 array(
-                    "sample_answer" => $input['sample_essay1']
+                    "data_value" => $input['essay_title1']
                 )
             );
-
-        if($questiondata || $answerdata){
+            $answerdata = Answerdata::where('id',$input['answer_data_id1'])->update(
+                    array(
+                        "sample_answer" => $input['sample_essay1']
+                    )
+                );
             return redirect()->route('tests.show',$input['test_id'])->with('success','Questions updated Successfully!');
-        }else{
+        }catch(\Exception $e){
             return redirect()->route('tests.show',$input['test_id'])->with('error','Sorry!Something wrong.Try Again.');
         }
+
+        
     }
 
 }

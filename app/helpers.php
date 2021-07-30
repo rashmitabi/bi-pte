@@ -3,6 +3,7 @@
 use App\Models\User;
 use App\Models\Settings;
 use App\Models\Notifications;
+use App\Models\RoleHasPermissions;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Storage;
 use Aws\S3\S3Client;
@@ -249,5 +250,21 @@ function getS3Url($file)
     $request = $client->createPresignedRequest($command, '+20 minutes');
 
     return (string)$request->getUri();
+}
+function checkPermission($module_slug){
+    $check = RoleHasPermissions::join('modules', function($join)
+                {
+                    $join->on('role_has_permissions.module_id', '=', 'modules.id');
+                })
+                ->where([
+                    'role_id' => \Auth::user()->role_id, 
+                    'modules.module_slug' => $module_slug
+                ])->get();
+    if(count($check) > 0){
+        return true;
+    }
+    else{
+        return false;
+    }
 }
 ?>
