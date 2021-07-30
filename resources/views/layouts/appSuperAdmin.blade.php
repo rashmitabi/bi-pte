@@ -27,7 +27,7 @@ $pageActive = isset($pageArray[4]) ? $pageArray[4] : 'dashboard';
 		<script src="{{ asset('assets/js/bootstrap-datepicker.js') }}" defer></script>
 	    <!-- <script src="{{ asset('assets/js/ckeditor.js') }}" defer></script> -->
 		<!-- <script src="https://cdn.ckeditor.com/ckeditor5/28.0.0/classic/ckeditor.js"></script>   -->
-		<script src="{{ asset('assets/js/ckeditor.js') }}"></script>
+		<script src="{{ asset('assets/js/ckeditor.js') }}" defer></script>
 	    <script src="{{ asset('assets/js/admin-custom.js') }}" defer></script>
 		<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js" defer></script> -->
 		<script src="{{ asset('assets/js/jquery.validate.min.js') }}" defer></script>
@@ -78,7 +78,7 @@ $pageActive = isset($pageArray[4]) ? $pageArray[4] : 'dashboard';
 		        @yield('content')
 		    </div>
 		</div>
-		<script src="{{ asset('assets/js/jquery-confirm.min.js') }}"></script>
+		<script src="{{ asset('assets/js/jquery-confirm.min.js') }}" defer></script>
 		
 		@include('superadmin.deleteModel')
 		@include('superadmin.alert')
