@@ -21,7 +21,8 @@ class ModulesController extends Controller
     public function index(Request $request)
     {
         if($request->ajax())  {
-            $data = Modules::latest()->get();
+            //$data = Modules::latest()->get();
+            $data = Modules::get();
             return Datatables::of($data)
                     ->addIndexColumn()
                     ->addColumn('status', function($row){

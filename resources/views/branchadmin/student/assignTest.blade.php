@@ -1,3 +1,4 @@
+@if(count($tests) > 0)
 <form class="form" id="precticeForm" name="precticeForm">
             <div class="form-check form-check-inline common-heading">
               <input type="checkbox" class="form-check-input" id="selectAllTest">
@@ -98,3 +99,6 @@
                     </div>
                 </div>
           </form>
+@else
+<h3>Test not found!</h3>
+@endif

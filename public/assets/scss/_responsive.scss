@@ -1107,6 +1107,14 @@
                     }
                }
           }
+          #subscription{
+               thead{
+                    th{
+                         padding-right: 35px!important;
+                         white-space: nowrap!important;
+                    }
+               } 
+          }
           #expired_wrapper{
                padding: 0px;
           }

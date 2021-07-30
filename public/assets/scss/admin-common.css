@@ -907,6 +907,10 @@
   body #videos thead th {
     padding-right: 50px !important;
   }
+  body #subscription thead th {
+    padding-right: 35px !important;
+    white-space: nowrap !important;
+  }
   body #expired_wrapper {
     padding: 0px;
   }
@@ -1280,7 +1284,7 @@ body {
   display: block;
   position: absolute;
   top: 50%;
-  right: 20px;
+  right: 10px;
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
 }
@@ -1399,6 +1403,7 @@ body {
 
 .form .form-group .dropdown {
   width: 100% !important;
+  padding: 0px;
 }
 
 .form .form-group .dropdown button {
@@ -1471,7 +1476,7 @@ body {
   left: 0;
   padding: 10px 15px;
   display: block;
-  z-index: 9;
+  z-index: 20;
   color: #000;
   font-weight: 600;
 }
@@ -1554,7 +1559,7 @@ body {
   display: block;
   border-radius: 100px;
   position: relative;
-  margin-top: -15px;
+  margin-top: -18px;
 }
 
 .form .form-group .toggle-switch label:after {
@@ -2100,6 +2105,7 @@ body {
 
 .modal-body .row .user-form .form-group .label {
   margin-top: 6px;
+  line-break: anywhere;
 }
 
 .modal-body .row .user-form .form-input input {

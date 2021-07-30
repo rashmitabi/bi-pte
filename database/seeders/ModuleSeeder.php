@@ -108,6 +108,12 @@ class ModuleSeeder extends Seeder
                 'module_slug' => "device_log",
                 'status'=>'E'
             ]);
+            DB::table('modules')->insert([
+                'id' => 16,
+                'module_name' => "Manage Email Templates",
+                'module_slug' => "manage_email_templates",
+                'status'=>'E'
+            ]);
         }
     }
 }
