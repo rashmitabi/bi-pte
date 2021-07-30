@@ -17,6 +17,11 @@ class EmailTemplatesController extends Controller
      */
     public function index(Request $request)
     {
+        if(!checkPermission('manage_email_templates')){
+            return redirect()->route('branchadmin-dashboard')
+                        ->with('error','You are not accessible to the requested URL.');
+        
+        }
         if($request->ajax())  {
             $data = EmailTemplates::latest()->where('user_id',\Auth::user()->id)->get();
             return Datatables::of($data)
@@ -60,6 +65,11 @@ class EmailTemplatesController extends Controller
      */
     public function create()
     {
+        if(!checkPermission('add_email_templates')){
+            return redirect()->route('branchadmin-dashboard')
+                        ->with('error','You are not accessible to the requested URL.');
+        
+        }
         return view($this->moduleTitleP.'addemail');
     }
 
@@ -122,6 +132,11 @@ class EmailTemplatesController extends Controller
     }
     public function changeStatus($id)
     {
+        if(!checkPermission('manage_email_templates')){
+            return redirect()->route('branchadmin-dashboard')
+                        ->with('error','You are not accessible to the requested URL.');
+        
+        }
         $email = EmailTemplates::find($id);
         if($email->status == 'D'){
             $email->status = 'E';
@@ -173,6 +188,11 @@ class EmailTemplatesController extends Controller
      */
     public function destroy($id)
     {
+        if(!checkPermission('manage_email_templates')){
+            return redirect()->route('branchadmin-dashboard')
+                        ->with('error','You are not accessible to the requested URL.');
+        
+        }
         $result = EmailTemplates::where('id',$id)->delete();
         if($result)
         {

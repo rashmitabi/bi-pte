@@ -30,6 +30,11 @@ class TestsController extends Controller
      */
     public function index(Request $request)
     {
+        if(!checkPermission('add_mock_test') && !checkPermission('manage_mock_test') && !checkPermission('mock_test') && !checkPermission('add_practice_test') && !checkPermission('manage_practice_test') && !checkPermission('practice_test')){
+            return redirect()->route('branchadmin-dashboard')
+                        ->with('error','You are not accessible to the requested URL.');
+        
+        }
         $id = \Auth::user()->id;
         if($request->ajax())  {
             if(\Auth::user()->institue->show_admin_tests == 'Y')
@@ -62,12 +67,17 @@ class TestsController extends Controller
                         else
                         {
                             $btn = '<ul class="actions-btns">
-                                <li class="action" data-toggle="tooltip" data-placement="top" title="Add Questions"><a href="'.route('branchadmin-tests.show',$row->id).'"><i class="fas fa-question"></i></a></li>
-                                <li class="action" data-toggle="modal" data-target="#edittest"><a
+                                <li class="action" data-toggle="tooltip" data-placement="top" title="Add Questions"><a href="'.route('branchadmin-tests.show',$row->id).'"><i class="fas fa-question"></i></a></li>';
+                            if(checkPermission('manage_practice_test')){
+                                $btn .= '<li class="action" data-toggle="modal" data-target="#edittest"><a
                                     href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="Edit" class="test-edit" data-id="'.$row->id.'" data-url="'.route('branchadmin-tests.edit', $row->id).'"><i class="fas fa-pen"></i></a></li>
                                 <li class="action" data-toggle="tooltip" data-placement="top" title="Delete"><a href="#" class="delete_modal" data-toggle="modal" data-target="#delete_modal"  data-url="'.route('branchadmin-tests.destroy', $row->id).'" data-id="'.$row->id.'"><i class="fas fa-trash"></i></a></li>
-                            <li class="action shield '.(($row->status == "E") ? "red" : "green").'" data-toggle="tooltip" data-placement="top" title="'.(($row->status == "E") ? "Disable" : "Enable").'"><a href="'.route('branchadmin-tests-changestatus', $row->id ).'"><img src="'.asset('assets/images/icons/blocked.svg').'" class=""></a></li>
-                            </ul>';
+                                <li class="action shield '.(($row->status == "E") ? "red" : "green").'" data-toggle="tooltip" data-placement="top" title="'.(($row->status == "E") ? "Disable" : "Enable").'"><a href="'.route('branchadmin-tests-changestatus', $row->id ).'"><img src="'.asset('assets/images/icons/blocked.svg').'" class=""></a></li>
+                                </ul>';
+                            }
+                            else{
+                                $btn .= '</ul>';
+                            }
                         }
                         return $btn;
                     })
@@ -112,12 +122,18 @@ class TestsController extends Controller
                         else
                         {
                             $btn = '<ul class="actions-btns">
-                                <li class="action"><a href="'.route('branchadmin-tests.show',$row->id).'"><i class="fas fa-question"></i></a></li>
-                                <li class="action" data-toggle="modal" data-target="#edittest"><a
+                                <li class="action"><a href="'.route('branchadmin-tests.show',$row->id).'"><i class="fas fa-question"></i></a></li>';
+                            if(checkPermission('manage_mock_test')){
+                                $btn .= '<li class="action" data-toggle="modal" data-target="#edittest"><a
                                     href="javascript:void(0);" class="test-edit" data-id="'.$row->id.'" data-url="'.route('branchadmin-tests.edit', $row->id).'"><i class="fas fa-pen"></i></a></li>
                                 <li class="action"><a href="#" class="delete_modal" data-toggle="modal" data-target="#delete_modal"  data-url="'.route('branchadmin-tests.destroy', $row->id).'" data-id="'.$row->id.'"><i class="fas fa-trash"></i></a></li>
                                 <li class="action shield '.(($row->status == "E") ? "red" : "green").'"><a href="'.route('branchadmin-tests-changestatus', $row->id ).'"><img src="'.asset('assets/images/icons/blocked.svg').'" class=""></a></li>
                                 </ul>';
+                            }   
+                            else{
+                                $btn .= '</ul>';
+                            }
+                                
                         }
                         return $btn;
                     })
@@ -132,6 +148,11 @@ class TestsController extends Controller
      */
     public function create()
     {
+        if(!checkPermission('add_mock_test') && !checkPermission('add_practice_test')){
+            return redirect()->route('branchadmin-dashboard')
+                        ->with('error','You are not accessible to the requested URL.');
+        
+        }
         $subjects = Subjects::where('status','E')->latest()->get();
 
         return view($this->moduleTitleP.'add',compact('subjects'));

@@ -18,6 +18,12 @@ class DeviceController extends Controller
      */
     public function index(Request $request)
     {
+        if(!checkPermission('device_log')){
+            return redirect()->route('branchadmin-dashboard')
+                        ->with('error','You are not accessible to the requested URL.');
+        
+        }
+
         if($request->ajax())  {
             $data = DeviceLogs::with('user')
             ->select('device_logs.*')
@@ -69,6 +75,11 @@ class DeviceController extends Controller
      */
     public function changeStatus($id)
     {
+        if(!checkPermission('device_log')){
+            return redirect()->route('branchadmin-dashboard')
+                        ->with('error','You are not accessible to the requested URL.');
+        
+        }
         $device = DeviceLogs::find($id);
         $status = '';
         if($device->status == 'N'){

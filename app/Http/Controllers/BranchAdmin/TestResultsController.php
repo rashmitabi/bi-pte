@@ -18,6 +18,11 @@ class TestResultsController extends Controller
      */
     public function index(Request $request)   
     {
+        if(!checkPermission('test_result')){
+            return redirect()->route('branchadmin-dashboard')
+                        ->with('error','You are not accessible to the requested URL.');
+        
+        }
         if($request->ajax()) {    
             $data = TestResults::with(['test','subject','user'])
                 ->selectRaw('test_results.test_id,test_results.user_id,test_results.subject_id,SUM(get_score) AS score')

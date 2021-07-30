@@ -13,7 +13,7 @@ class AddNullToInstituteTable extends Migration
      */
     public function up()
     {
-        Schema::table('institute', function (Blueprint $table) {
+        Schema::table('institues', function (Blueprint $table) {
              $table->smallInteger('mock_tests_allowed')->nullable()->change();
             $table->smallInteger('practice_tests_allowed')->nullable()->change();
         }); 
@@ -26,7 +26,7 @@ class AddNullToInstituteTable extends Migration
      */
     public function down()
     {
-        Schema::table('institute', function (Blueprint $table) {
+        Schema::table('institues', function (Blueprint $table) {
             //
         });
     }

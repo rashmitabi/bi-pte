@@ -20,8 +20,12 @@
                         <div class="col-12 col-md-7 col-xl-7 col-sm-12">
                             <select class="user-type custom-select" name="type">
                                 <option selected disabled>Select Test Type</option>
+                                @if(checkPermission('add_mock_test'))
                                 <option value="M" {{ (old('type') == 'M')?'selected':''}} >Mock</option>
+                                @endif
+                                @if(checkPermission('add_practice_test')
                                 <option value="P" {{ (old('type') == 'P')?'selected':''}} >Practice</option>
+                                @endif
                             </select>
                             @if($errors->has('type'))
                             <span class="error-msg">{{$errors->first('type')}}</span>

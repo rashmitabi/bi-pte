@@ -6,14 +6,20 @@
     <section class="top-title-button mb-3">
         <div class="row mx-0 align-items-center">
             <div class="col-12 col-md-8 col-xl-8 col-sm-8 left">
+                @if(checkPermission('manage_video'))
                 <h1 class="title mb-4">Manage Videos</h1>
+                @else
+                <h1 class="title mb-4">Videos</h1>
+                @endif
             </div>
+            @if(checkPermission('add_video'))
             <div class="col-12 col-md-4 col-xl-4 col-sm-4 right">
                 <a href="{{ route('branchadmin-videos.create') }}">
                 <button type="button" class="btn btn-primary"><i class="fas fa-plus-circle mr-1"></i> New
                     Videos</button>
                 </a>
             </div>
+            @endif
         </div>
     </section>
 
@@ -31,7 +37,9 @@
                             <th>Created By</th>
                             <th>Created Date</th>
                             <th>Status</th>
+                            @if(checkPermission('manage_video'))
                             <th>Action</th>
+                            @endif
                         </tr>
                     </thead>
                     
@@ -60,6 +68,7 @@
 @section('js-hooks')
 <script type="text/javascript" defer>
   var url="{{ route('branchadmin-videos.index') }}";
+  var permission = "{{ checkPermission('manage_video') }}";
 </script>
-<script src="{{ asset('assets/js/videos.js') }}" defer></script>
+<script src="{{ asset('assets/js/branchadmin/videos.js') }}" defer></script>
 @endsection

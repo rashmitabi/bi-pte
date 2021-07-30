@@ -24,6 +24,12 @@ class VideosController extends Controller
      */
     public function index(Request $request)
     {        
+
+        if(!checkPermission('add_video') && !checkPermission('manage_video') && !checkPermission('video')){
+            return redirect()->route('branchadmin-dashboard')
+                        ->with('error','You are not accessible to the requested URL.');
+        
+        }
         if($request->ajax())  {
             if(\Auth::user()->institue->show_admin_videos == 'Y'){
                 $superadmin = User::select('id')->where('role_id', 1)->first();
@@ -35,7 +41,8 @@ class VideosController extends Controller
             else{
                 $data = Videos::latest()->where('user_id',\Auth::user()->id)->get();
             }            
-            return Datatables::of($data)
+            if(checkPermission('manage_video')){
+                return Datatables::of($data)
                     ->addIndexColumn()
                     ->addColumn('title', function($row){
                         return $row->title;
@@ -84,6 +91,40 @@ class VideosController extends Controller
                     })
                     ->rawColumns(['checkbox','action'])
                     ->make(true);
+            }
+            else{
+                return Datatables::of($data)
+                    ->addIndexColumn()
+                    ->addColumn('title', function($row){
+                        return $row->title;
+                    })  
+                    ->addColumn('link', function($row){
+                        return $row->link;
+                    })   
+                    ->addColumn('type', function($row){                        
+                        return ucfirst($row->section->section_name).' - '.ucfirst($row->design->design_name);
+                    })
+                    ->addColumn('created by', function($row){
+                        if($row->user_id == \Auth::user()->id){
+                            return 'You';
+                        }else{
+                            return 'Superadmin';
+                        }
+                    })
+                    ->addColumn('created date', function($row){
+                        return date('Y-m-d', strtotime($row->created_at));
+                    })
+                    ->addColumn('status', function($row){
+                        if($row->status == "E"){
+                            $status = "Enabled";
+                        }else{
+                            $status = "Disabled";
+                        }
+                        return $status;
+                    })                    
+                    ->make(true);
+            }
+            
         }
         return view($this->moduleTitleP.'index');
     }

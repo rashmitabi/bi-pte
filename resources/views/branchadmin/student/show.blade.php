@@ -95,6 +95,7 @@
           </div>
         </div>
       @endif
+      @if(checkPermission('manage_student')){
       <div class="form-group row">
         <div class="col-12 col-md-12 col-xl-11 col-sm-12 btn mt-2">
           <button  type="button" class="btn delete-btn btn-outline-primary delete_modal" data-toggle="modal" data-target="#delete_modal" data-url="{{ route('branchadmin-students.destroy', $user->id) }}" data-id="{{ $user->id }}" style="    min-width: auto;"><i class="fas fa-trash icon"></i>Delete</button>
@@ -107,6 +108,7 @@
                         
         </div>
       </div>
+      @endif
     </form>
   </div>
 </div>

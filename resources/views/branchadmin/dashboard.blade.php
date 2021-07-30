@@ -86,6 +86,7 @@
         </div>
 
          <!-- tables -->
+         @if(checkPermission('activity_log'))  
         <div class="row">
           <div class="col-12 col-md-12 col-xl-12 col-sm-12 table-col pl-0 custom-wrap-p">
                <section class="top-title-button white-bg common-wrap mb-3">
@@ -116,15 +117,13 @@
           </div>
       </div>
    </div>
+   @endif
 
    
 @endsection
 @section('js-hooks')
 <script type="text/javascript" defer>
   var activityurl="{{ route('branchadmin-dashboard-activitylogs') }}";
-  var expiredSubscriptionurl="{{ route('dashboard-expired-subscriptions') }}";
-  var neartoexpiresubscriptionurl = "{{ route('dashboard-near-to-expire-subscriptions') }}";
-  var toprankinginstitutesurl = "{{ route('dashboard-top-ranking-institutes') }}";
 </script>
 <script src="{{ asset('assets/js/branchadmin/dashboard.js') }}" defer></script>
 @endsection

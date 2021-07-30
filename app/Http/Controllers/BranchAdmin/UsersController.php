@@ -43,6 +43,11 @@ class UsersController extends Controller
      */
     public function index(Request $request)
     {
+        if(!checkPermission('add_student') && !checkPermission('manage_student') && !checkPermission('view_student')){
+            return redirect()->route('branchadmin-dashboard')
+                        ->with('error','You are not accessible to the requested URL.');
+        
+        }
         $id = \Auth::user()->id;
         if($request->ajax()) {
             $data = User::where(['parent_user_id'=>$id,'role_id'=>3])->latest()->get();
@@ -69,9 +74,9 @@ class UsersController extends Controller
                 })
                 ->addColumn('action', function($row){
                     $btn = '<ul class="actions-btns">
-                            <li class="action" data-toggle="modal" data-target="#userdetail"><a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="view" class="user-show" data-id="'.$row->id .'" data-url="'.route('branchadmin-students.show', $row->id).'"><i class="fas fa-user"></i></a></li>
-
-                                <li class="action" data-toggle="modal" data-target="#editdetail"><a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="edit" class="user-edit" data-id="'.$row->id .'" data-url="'.route('branchadmin-students.edit', $row->id).'" data-md="no"><i class="fas fa-pen"></i></a></li>
+                            <li class="action" data-toggle="modal" data-target="#userdetail"><a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="view" class="user-show" data-id="'.$row->id .'" data-url="'.route('branchadmin-students.show', $row->id).'"><i class="fas fa-user"></i></a></li>';
+                    if(checkPermission('manage_student')){
+                       $btn .= '<li class="action" data-toggle="modal" data-target="#editdetail"><a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="edit" class="user-edit" data-id="'.$row->id .'" data-url="'.route('branchadmin-students.edit', $row->id).'" data-md="no"><i class="fas fa-pen"></i></a></li>
 
                                 <li class="action bg-danger" data-toggle="tooltip" data-placement="top" title="delete"><a href="#" class="delete_modal" data-toggle="modal" data-target="#delete_modal"  data-url="'.route('branchadmin-students.destroy', $row->id).'" data-id="'.$row->id.'"><i class="fas fa-trash" ></i></a></li>
 
@@ -91,6 +96,12 @@ class UsersController extends Controller
                                     </a>
                                 </li>                                   
                             </ul>';
+                    }
+                    else{
+                        $btn .= '</ul>';
+                    }
+
+                                
                     return $btn;
                 })
                 ->rawColumns(['checkbox','action'])
@@ -259,6 +270,11 @@ class UsersController extends Controller
      */
     public function create()
     {
+        if(!checkPermission('add_student')){
+            return redirect()->route('branchadmin-dashboard')
+                        ->with('error','You are not accessible to the requested URL.');
+        
+        }
         $roles = Roles::all();
         $admins = User::where('role_id',2)->with(['institue'])->get();
         return view($this->moduleTitleP.'add',compact('roles','admins'));
@@ -520,6 +536,11 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
+        if(!checkPermission('manage_student')){
+            return redirect()->route('branchadmin-dashboard')
+                        ->with('error','You are not accessible to the requested URL.');
+        
+        }
         $name = getUserName($id);
         $user = User::find($id);
         if($user)
@@ -658,7 +679,12 @@ class UsersController extends Controller
             }
         }
         else
-        {
+        {            
+            if(!checkPermission('manage_student')){
+                return redirect()->route('branchadmin-dashboard')
+                            ->with('error','You are not accessible to the requested URL.');
+            
+            }
             $user = User::find($id);
             if($user->status == 'A'){
                 $user->status = 'R';

@@ -24,6 +24,11 @@ class PredictionFilesController extends Controller
      */
     public function index(Request $request)
     {
+        if(!checkPermission('prediction_file') && !checkPermission('manage_prediction_file') && !checkPermission('add_prediction_file')){
+            return redirect()->route('branchadmin-dashboard')
+                        ->with('error','You are not accessible to the requested URL.');
+        
+        }
         if($request->ajax())  {
             if(\Auth::user()->institue->show_admin_files == 'Y'){
                 $superadmin = User::select('id')->where('role_id', 1)->first();
@@ -35,7 +40,8 @@ class PredictionFilesController extends Controller
             else{
                 $data = PredictionFiles::latest()->where('user_id',\Auth::user()->id)->get();
             }  
-            return Datatables::of($data)
+            if(checkPermission('manage_prediction_file')){
+                return Datatables::of($data)
                     ->addIndexColumn()
                     ->addColumn('title', function($row){
                         return $row->title;
@@ -89,6 +95,45 @@ class PredictionFilesController extends Controller
                     })
                     ->rawColumns(['checkbox','action'])
                     ->make(true);
+            }
+            else{
+                return Datatables::of($data)
+                    ->addIndexColumn()
+                    ->addColumn('title', function($row){
+                        return $row->title;
+                    })  
+                    ->addColumn('link', function($row){
+                        if($row->link != ''){
+                            return url('/'.$row->link);
+                        }
+                        else{
+                            return 'N/A';
+                        }                        
+                    })   
+                    ->addColumn('type', function($row){
+                        return ucfirst($row->section->section_name).' - '.ucfirst($row->design->design_name);
+                    })
+                    ->addColumn('created by', function($row){
+                        if($row->user_id == \Auth::user()->id){
+                            return 'You';
+                        }else{
+                            return 'Superadmin';
+                        }
+                    })
+                    ->addColumn('created date', function($row){
+                        return date('Y-m-d', strtotime($row->created_at));
+                    })
+                    ->addColumn('status', function($row){
+                        if($row->status == "E"){
+                            $status = "Enabled";
+                        }else{
+                            $status = "Disabled";
+                        }
+                        return $status;
+                    })
+                    ->make(true);
+            }
+            
         }
         return view($this->moduleTitleP.'index');
     }
@@ -100,6 +145,11 @@ class PredictionFilesController extends Controller
      */
     public function create()
     {
+        if(!checkPermission('add_prediction_file')){
+            return redirect()->route('branchadmin-dashboard')
+                        ->with('error','You are not accessible to the requested URL.');
+        
+        }
         $sections = Sections::all();
         $designs = QuestionDesigns::all();
         $types = array();
@@ -258,6 +308,11 @@ class PredictionFilesController extends Controller
      */
     public function destroy($id)
     {
+        if(!checkPermission('manage_prediction_file')){
+            return redirect()->route('branchadmin-dashboard')
+                        ->with('error','You are not accessible to the requested URL.');
+        
+        }
         $prediction = PredictionFiles::find($id);
         $result = PredictionFiles::where('id',$id)->delete();
         if(file_exists(public_path($prediction->link))){
@@ -283,6 +338,11 @@ class PredictionFilesController extends Controller
      */
     public function changeStatus($id)
     {
+        if(!checkPermission('manage_prediction_file')){
+            return redirect()->route('branchadmin-dashboard')
+                        ->with('error','You are not accessible to the requested URL.');
+        
+        }
         $prediction = PredictionFiles::find($id);
         if($prediction->status == 'D'){
             $prediction->status = 'E';
@@ -298,7 +358,5 @@ class PredictionFilesController extends Controller
                         ->with('error','Status Not Updated!');
         }
     }
-
-   
 
 }

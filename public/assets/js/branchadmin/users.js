@@ -31,18 +31,23 @@ var table = $('#students').DataTable({
   ]
   });
   $("#students_wrapper div.toolbar").html('Manage Students');
-  $('<div class="pull-right">' +
-  '<select id="action-student" class="form-control action-btn">'+
-    '<option selected disabled>Actions</option>'+
-    '<option value="email">Send Email</option>'+
-    '<option value="password" >Change Password</option>'+
-    '<option value="blockUnblock">BLock/unblock Users</option>'+
-    '<option value="export">Export Users</option>'+
-    '<option value="assignPracticeTest">Assign Practice Tests</option>'+
-    '<option value="assignMockTest">Assign Mock Tests</option>'+
-  '</select>' +
-'</div>').appendTo("#students_wrapper .header_filter");
-$(".dataTables_filter label").addClass("pull-right");
+  
+  if(permission == '1'){
+    $('<div class="pull-right">' +
+      '<select id="action-student" class="form-control action-btn">'+
+        '<option selected disabled>Actions</option>'+
+        '<option value="email">Send Email</option>'+
+        '<option value="password" >Change Password</option>'+
+        '<option value="blockUnblock">BLock/unblock Users</option>'+
+        '<option value="export">Export Users</option>'+
+        '<option value="assignPracticeTest">Assign Practice Tests</option>'+
+        '<option value="assignMockTest">Assign Mock Tests</option>'+
+      '</select>' +
+    '</div>').appendTo("#students_wrapper .header_filter");
+    
+  }
+  $(".dataTables_filter label").addClass("pull-right");
+  
 
 
 

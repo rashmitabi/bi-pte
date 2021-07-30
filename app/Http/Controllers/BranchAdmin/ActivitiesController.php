@@ -12,11 +12,16 @@ class ActivitiesController extends Controller
 {
     public function index(Request $request)
     {
+        if(!checkPermission('activity_log')){
+            return redirect()->route('branchadmin-dashboard')
+                        ->with('error','You are not accessible to the requested URL.');
+        
+        }
         if($request->ajax())  {
             $data = Activities::latest()->select('log_activities.*')
-            	->join('users', 'users.id', '=', 'log_activities.user_id')
-            	->where('users.parent_user_id', \Auth::user()->id)
-            	->get();
+                ->join('users', 'users.id', '=', 'log_activities.user_id')
+                ->where('users.parent_user_id', \Auth::user()->id)
+                ->get();
             return Datatables::of($data)
                     ->addIndexColumn()
                     ->addColumn('student', function($row){
@@ -35,5 +40,7 @@ class ActivitiesController extends Controller
                     ->make(true);
         }
         return view('branchadmin.activities.index');
+        
+        
     }
 }

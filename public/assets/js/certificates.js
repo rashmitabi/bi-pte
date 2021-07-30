@@ -46,25 +46,27 @@ $(document).ready(function(){
     });
 
     $('body').on('blur', '#certificateScore input', function(){
-      var url = $('#update_url').val();
-      $.ajax({
-         url: url,
-         type:'POST',   
-         data: $('form#certificateScore').serialize(),          
-         success:function(response) {
-            var result = response.data;
-            $('input[name="grammar"]').val(result.grammar);
-            $('input[name="oral_fluency"]').val(result.oral_fluency);
-            $('input[name="pronunciation"]').val(result.pronunciation);
-            $('input[name="spelling"]').val(result.spelling);
-            $('input[name="vocabulary"]').val(result.vocabulary);
-            $('input[name="written_discourse"]').val(result.written_disclosure);
-            $('input[name="score"]').val(result.overall);
-         }, 
-         error: function(response) {
-            console.log(response);
-          }
-      });
+      if($('#update_url').length){
+        var url = $('#update_url').val();
+        $.ajax({
+           url: url,
+           type:'POST',   
+           data: $('form#certificateScore').serialize(),          
+           success:function(response) {
+              var result = response.data;
+              $('input[name="grammar"]').val(result.grammar);
+              $('input[name="oral_fluency"]').val(result.oral_fluency);
+              $('input[name="pronunciation"]').val(result.pronunciation);
+              $('input[name="spelling"]').val(result.spelling);
+              $('input[name="vocabulary"]').val(result.vocabulary);
+              $('input[name="written_discourse"]').val(result.written_disclosure);
+              $('input[name="score"]').val(result.overall);
+           }, 
+           error: function(response) {
+              console.log(response);
+            }
+        });
+      }
     });
 
     $('#certificates').DataTable({

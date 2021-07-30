@@ -20,6 +20,12 @@ class CertificatesController extends Controller
 {
     public function index(Request $request)
     {
+        if(!checkPermission('test_reports') && !checkPermission('add_test_reports')){
+            return redirect()->route('branchadmin-dashboard')
+                        ->with('error','You are not accessible to the requested URL.');
+        
+        }
+
     	if($request->ajax()) {
             //$data = TestResults::with(['test','user'])->join('users', 'users.id', '=', 'test_results.user_id')->select('test_id','user_id')->groupBy('test_id', 'user_id')->where('users.parent_user_id', \Auth::user()->id)->get();
 

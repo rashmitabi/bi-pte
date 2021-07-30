@@ -7,11 +7,13 @@
       <div class="col-12 col-md-12 col-xl-8 col-sm-8 left">
         <h1 class="title mb-4">Manage User</h1>
       </div>
+      @if(checkPermission('add_student'))
       <div class="col-12 col-md-12 col-xl-4 col-12 col-md-5 col-xl-4 col-sm-12 right">
         <a href="{{ route('branchadmin-students.create') }}"><button type="button" class="btn btn-primary" ><i class="fas fa-plus-circle mr-1"></i> New
               User</button>
         </a>
       </div>
+      @endif
     </div>
   </section>
   <section class="top-title-button white-bg remove-main-margin mb-3">
@@ -163,6 +165,7 @@
 @section('js-hooks')
 <script type="text/javascript" defer>
   var url_users = "";  
+  var permission = "{{checkPermission('manage_student')}}";
   var url_students = "{{ route('branchadmin-students.index') }}";
   var password_url_route = "{{ route('branchadmin-students-showpassword', 'all') }}";
   var change_status_get_model = "{{ route('branchadmin-students-getstatus') }}";

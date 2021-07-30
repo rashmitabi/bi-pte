@@ -3,7 +3,9 @@
     <input type="hidden" name="student_user_id" value="{{ $scores['user_id'] }}">
     <input type="hidden" name="test_id" value="{{ $scores['test_id'] }}">
     <input type="hidden" name="count" value="{{ $scores['count'] }}">
+    @if(checkPermission('add_test_reports'))
     <input type="hidden" id="update_url" value="{{ route('branchadmin-update-score') }}">
+    @endif
     <div class="form-group row">
         <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label ">Listening</label>
         <div class="col-12 col-md-7 col-xl-7 col-sm-12">
@@ -81,11 +83,12 @@
             <span class="error-msg" id="scoreError"></span>
         </div>
     </div>
-    
+    @if(checkPermission('add_test_reports'))
     <div class="form-group row">
         <div class="col-12 col-md-12 col-xl-11 col-sm-12 save-btn">
             <button type="button" class="btn btn-outline-primary" id="add_certificate" data-url="{{ route('branchadmin-certificates.store') }}"><i
                     class="far fa-save save-icon"></i>Save Certificate</button>
         </div>
     </div>
+    @endif
 </form>
