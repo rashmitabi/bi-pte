@@ -1,7 +1,7 @@
 @extends('layouts.appSuperAdmin')
 @section('content')
   <div id="content">
-  	<section class="top-title-button mb-3">
+    <section class="top-title-button mb-3">
       <div class="row mx-0 align-items-center">
         <div class="col-12 col-md-12 col-xl-8 col-sm-8 left">
           <h1 class="title mb-4">Add New Question</h1>
@@ -38,7 +38,7 @@
                         <div class="form-group mb-2 row">
                             <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label pl-1 ">Q13 Audio</label>
                             <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
-                                <input type="text" name="audio13" id="audio13" class="form-control " placeholder="Please Enter audio13" value="{{ (isset($json13))?$json13->audio13:''}}">
+                                <input type="text" name="audio13" id="audio13" class="form-control " placeholder="Please Enter audio13" value="{{ (isset($json13))?$json13->audio:''}}">
                             </div>
                         </div>
                       </div>
@@ -47,7 +47,7 @@
                       </div>
                       <div class="form-group mb-2 row">
                         <div class="col-12 pl-1 p-0">
-                          <textarea name="editor13" id="editor13">{{ (isset($json13))?$json13->editor13:''}}</textarea>
+                          <textarea name="editor13" id="editor13">{{ (isset($json13))?$json13->editor:''}}</textarea>
                         </div>
                       </div>
                       <div class=" col-12 mt-4 mb-1 ml-1 white-bg common-col">
@@ -62,7 +62,7 @@
                       <div class="form-group mb-2 row">
                           <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label pl-1 ">Q14 Audio</label>
                           <div class="col-12 col-md-7 col-xl-7 col-sm-12 p-0">
-                              <input type="text" name="audio14" id="audio14"  class="form-control " placeholder="Please Enter audio14" value="{{ (isset($json14))?$json14->audio14:''}}">
+                              <input type="text" name="audio14" id="audio14"  class="form-control " placeholder="Please Enter audio14" value="{{ (isset($json14))?$json14->audio:''}}">
                           </div>
                        </div>
                     </div>
@@ -71,7 +71,7 @@
                     </div>
                     <div class="form-group mb-2 row">
                       <div class="col-12 pl-1 p-0">
-                        <textarea name="editor14" id="editor14">{{ (isset($json14))?$json14->editor14:''}}</textarea>
+                        <textarea name="editor14" id="editor14">{{ (isset($json14))?$json14->editor:''}}</textarea>
                       </div>
                     </div>
                     <div class=" col-12 mt-4 mb-1 ml-1 white-bg common-col">

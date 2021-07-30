@@ -20,8 +20,6 @@ class CreateRoleHasPermissions extends Migration
             $table->dateTime('created_at')->useCurrent();
             $table->timestamp('updated_at')->nullable();
         });
-        
-        DB::statement("ALTER TABLE role_has_permissions CHANGE `updated_at` `updated_at` TIMESTAMP NULL ON UPDATE CURRENT_TIMESTAMP");
        
     }
 

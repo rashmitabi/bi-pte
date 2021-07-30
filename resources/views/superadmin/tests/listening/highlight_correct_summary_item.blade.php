@@ -20,7 +20,7 @@
               @csrf
               <input type="hidden" name="question_type_id" value="{{ $question_id }}">
               <input type="hidden" name="section_id" value="{{ $section_id }}">
-              <input type="hidden" name="test_id" value="{{ $test_id }}">
+              <input type="hidden" name="test_id" value="{{ $test_id }}"> 
               <div class="row">
                 <div class="col-12 col-md-8 col-xl-8 col-sm-12">
                   @if(isset($questions->desc))

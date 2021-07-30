@@ -14,7 +14,7 @@ class CreateInstitues extends Migration
     public function up()
     {
         Schema::create('institues', function (Blueprint $table) {
-            $table->integer('id');
+            $table->increments('id');
             $table->integer('user_id')->comment('Foreign key of users table');
             $table->string('sub_domain',255);
             $table->string('domain',255);
@@ -33,9 +33,6 @@ class CreateInstitues extends Migration
             $table->dateTime('created_at')->useCurrent();
             $table->timestamp('updated_at')->nullable();
         });
-        
-        DB::statement("ALTER TABLE institues CHANGE `updated_at` `updated_at` TIMESTAMP NULL ON UPDATE CURRENT_TIMESTAMP");
-        DB::statement("ALTER TABLE institues MODIFY  id INT AUTO_INCREMENT  PRIMARY KEY");
     }
 
     /**

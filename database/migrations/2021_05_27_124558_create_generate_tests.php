@@ -14,7 +14,7 @@ class CreateGenerateTests extends Migration
     public function up()
     {
         Schema::create('generate_tests', function (Blueprint $table) {
-            $table->integer('id');
+            $table->increments('id');
             $table->string('test_name',255);
             $table->tinyInteger('subject_id')->comment('Foreign key of test subjects table');
             $table->integer('generated_by_user_id')->comment('Foreign key of users table');
@@ -26,9 +26,6 @@ class CreateGenerateTests extends Migration
             $table->dateTime('created_at')->useCurrent();
             $table->timestamp('updated_at')->nullable();
         });
-
-        DB::statement("ALTER TABLE generate_tests CHANGE `updated_at` `updated_at` TIMESTAMP NULL ON UPDATE CURRENT_TIMESTAMP");
-        DB::statement("ALTER TABLE generate_tests MODIFY  id INT AUTO_INCREMENT  PRIMARY KEY");
     }
 
     /**

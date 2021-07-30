@@ -14,7 +14,7 @@ class CreateUsersSubscriptions extends Migration
     public function up()
     {
         Schema::create('users_subscriptions', function (Blueprint $table) {
-            $table->bigInteger('id');
+            $table->increments('id');
             $table->integer('user_id')->comment('Foreign key of users table');
             $table->tinyInteger('subscription_id')->comment('Foreign key of subscriptions table');
             $table->date('start_date');
@@ -24,9 +24,6 @@ class CreateUsersSubscriptions extends Migration
             $table->dateTime('created_at')->useCurrent();
             $table->timestamp('updated_at')->nullable();
         });
-
-        DB::statement("ALTER TABLE users_subscriptions CHANGE `updated_at` `updated_at` TIMESTAMP NULL ON UPDATE CURRENT_TIMESTAMP");
-        DB::statement("ALTER TABLE users_subscriptions MODIFY  id INT AUTO_INCREMENT  PRIMARY KEY");
     }
 
     /**

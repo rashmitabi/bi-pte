@@ -14,7 +14,7 @@ class CreateQuestionTypes extends Migration
     public function up()
     {
         Schema::create('question_types', function (Blueprint $table) {
-            $table->tinyInteger('id');
+            $table->tinyIncrements('id');
             $table->tinyInteger('section_id')->comment('Foreign key of sections table');
             $table->string('question_title',255)->comment('Read Aloud,Repeat Sentence etc...');
             $table->tinyInteger('min_question')->nullable();
@@ -23,8 +23,6 @@ class CreateQuestionTypes extends Migration
             $table->string('instructions',500)->nullable();
             
         });
-
-        DB::statement("ALTER TABLE question_types MODIFY  id tinyint(4) AUTO_INCREMENT  PRIMARY KEY");
     }
 
     /**

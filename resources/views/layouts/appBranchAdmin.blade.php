@@ -18,7 +18,7 @@ $pageActive = isset($pageArray[4]) ? $pageArray[4] : 'dashboard';
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
         <script src="{{ asset('assets/fontawesome/js/all.min.js') }}" defer></script>
-        <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
+        <script src="{{ asset('assets/js/jquery.min.js') }}" defer></script>
         <!-- <script src="{{ asset('assets/js/admin-custom.js') }}" defer></script> -->
 
         <script src="{{ asset('assets/js/jquery.dataTables.min.js') }}" defer></script>
@@ -26,7 +26,7 @@ $pageActive = isset($pageArray[4]) ? $pageArray[4] : 'dashboard';
         <script src="{{ asset('assets/js/dataTables.responsive.min.js') }}" defer></script>
         <script src="{{ asset('assets/js/responsive.bootstrap4.min.js') }}" defer></script>
         <script src="{{ asset('assets/js/bootstrap-datepicker.js') }}" defer></script>
-        <script src="{{ asset('assets/js/ckeditor.js') }}"></script>
+        <script src="{{ asset('assets/js/ckeditor.js') }}" defer></script>
         <script src="{{ asset('assets/js/admin-custom.js') }}" defer></script>
         <script src="{{ asset('assets/js/jquery.validate.min.js') }}" defer></script>
         <script src="{{ asset('assets/js/additional-methods.min.js') }}" defer></script>
@@ -76,7 +76,7 @@ $pageActive = isset($pageArray[4]) ? $pageArray[4] : 'dashboard';
     	        @yield('content')
     	    </div>
     	</div>
-        <script src="{{ asset('assets/js/jquery-confirm.min.js') }}"></script>
+        <script src="{{ asset('assets/js/jquery-confirm.min.js') }}" defer></script>
         
         @include('branchadmin.deleteModel')
         @include('branchadmin.alert')

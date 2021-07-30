@@ -415,7 +415,7 @@ class UsersController extends Controller
                 'uname.unique'=> 'User name has already taken',
                 'semail.max'=> 'Email maximum length allow 255',
                 'spassword.required'=>'Password is required',
-                'spassword.min'=>'Password min length at least 6',
+                'spassword.min'=>'Password min length at least 8',
                 'spassword.max'=>'Password maximum length allow 20',
                 'confirm_spassword.required'=>'Confirm password is required',
                 'confirm_spassword.same'=>'Confirm password not match with password',
@@ -531,7 +531,7 @@ class UsersController extends Controller
                 'iemail.unique'=>'Email has already taken',
                 'iemail.max'=>'Email maximum length allow 255',
                 'ipassword.required'=>'Password is required',
-                'ipassword.min'=>'Password min length at least 6',
+                'ipassword.min'=>'Password min length at least 8',
                 'ipassword.max'=>'Password maximum length allow 20',
                 'confirm_ipassword.required'=>'Confirm password is required',
                 'confirm_ipassword.same'=>'Confirm password not match with password',
@@ -1409,7 +1409,7 @@ class UsersController extends Controller
     public function setPassword(Request $request,$id){
         
         $request->validate([
-           'password' => 'required|min:6',
+           'password' => 'required|min:8|max:20',
            'confirm_password' => 'required|same:password'
         ]);
         $input  = \Arr::except($request->all(),array('_token'));

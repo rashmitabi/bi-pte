@@ -14,7 +14,7 @@ class CreateVouchers extends Migration
     public function up()
     {
         Schema::create('vouchers', function (Blueprint $table) {
-            $table->bigInteger('id');
+            $table->increments('id');
             $table->tinyInteger('role_id')->comment('Foreign key of roles table');
             $table->string('name',255);
             $table->string('code',50);
@@ -24,9 +24,6 @@ class CreateVouchers extends Migration
             $table->dateTime('created_at')->useCurrent();
             $table->timestamp('updated_at')->nullable();
         });
-
-        DB::statement("ALTER TABLE vouchers CHANGE `updated_at` `updated_at` TIMESTAMP NULL ON UPDATE CURRENT_TIMESTAMP");
-        DB::statement("ALTER TABLE vouchers MODIFY  id INT AUTO_INCREMENT  PRIMARY KEY");
     }
 
     /**

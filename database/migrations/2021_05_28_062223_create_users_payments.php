@@ -14,7 +14,7 @@ class CreateUsersPayments extends Migration
     public function up()
     {
         Schema::create('users_payments', function (Blueprint $table) {
-            $table->bigInteger('id');
+            $table->increments('id');
             $table->integer('user_id')->comment('Foreign key of users table');
             $table->float('amount',8, 2);
             $table->string('payment_method',255);
@@ -23,9 +23,6 @@ class CreateUsersPayments extends Migration
             $table->dateTime('created_at')->useCurrent();
             $table->timestamp('updated_at')->nullable();
         });
-
-        DB::statement("ALTER TABLE users_payments CHANGE `updated_at` `updated_at` TIMESTAMP NULL ON UPDATE CURRENT_TIMESTAMP");
-        DB::statement("ALTER TABLE users_payments MODIFY  id INT AUTO_INCREMENT  PRIMARY KEY");
     }
 
     /**
