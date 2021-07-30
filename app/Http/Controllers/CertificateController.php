@@ -24,7 +24,8 @@ class CertificateController extends Controller
         $data['student_test'] = StudentTests::where(['user_id' => $data['certificate']->student_user_id, 'test_id' => $data['certificate']->test_id, 'status' => 'C'])->first();
     	if($data['certificate'] && $data['institute'] && $data['student_test']){
     		view()->share('data', $data);
-	        $pdf = PDF::setOptions(['isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true])->setPaper('A4', 'landscape')->loadView('certificate', $data);
+            $customPaper = array(0,0,800,700);
+	        $pdf = PDF::setOptions(['isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true])->setPaper($customPaper, 'landscape')->loadView('certificate', $data);
 	        $fileName = time().'_'.$data['certificate']->test->test_name.'.pdf';
 
 	        // download PDF file with download method

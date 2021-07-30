@@ -38,7 +38,7 @@ class RolesController extends Controller
                                array_push($slugs,$value->slug);
                             }
                         }
-                        $slug = implode(',',$slugs);
+                        $slug = implode(', ',$slugs);
                         return $slug;
                         
                     })
