@@ -14,9 +14,8 @@ class CreateEmailTemplates extends Migration
     public function up()
     {
         Schema::create('email_templates', function (Blueprint $table) {
-            $table->integer('id');
+            $table->increments('id');
             $table->integer('user_id')->comment('Foreign key of users table');
-            
             $table->string('name',255);
             $table->string('subject',1000);
             $table->text('body');
@@ -24,9 +23,6 @@ class CreateEmailTemplates extends Migration
             $table->dateTime('created_at')->useCurrent();
             $table->timestamp('updated_at')->nullable();
         });
-
-        DB::statement("ALTER TABLE email_templates CHANGE `updated_at` `updated_at` TIMESTAMP NULL ON UPDATE CURRENT_TIMESTAMP");
-        DB::statement("ALTER TABLE email_templates MODIFY  id INT AUTO_INCREMENT  PRIMARY KEY");
     }
 
     /**

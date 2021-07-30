@@ -14,15 +14,12 @@ class CreateTestSubjects extends Migration
     public function up()
     {
         Schema::create('test_subjects', function (Blueprint $table) {
-            $table->tinyInteger('id');
+            $table->tinyIncrements('id');
             $table->string('subject_name',255);
             $table->enum('status',['E','D'])->comment("E=enable , D=disable");
             $table->dateTime('created_at')->useCurrent();
             $table->timestamp('updated_at')->nullable();
         });
-
-        DB::statement("ALTER TABLE test_subjects CHANGE `updated_at` `updated_at` TIMESTAMP NULL ON UPDATE CURRENT_TIMESTAMP");
-        DB::statement("ALTER TABLE test_subjects MODIFY  id tinyint(4) AUTO_INCREMENT  PRIMARY KEY");
     }
 
     /**

@@ -14,15 +14,12 @@ class CreateRoles extends Migration
     public function up()
     {
         Schema::create('roles', function (Blueprint $table) {
-            $table->tinyInteger('id');
+            $table->tinyIncrements('id');
             $table->string('role_name',100);
             $table->enum('status',['E','D'])->comment("E=enable , D=disable");
             $table->dateTime('created_at')->useCurrent();
             $table->timestamp('updated_at')->nullable();
         });
-        DB::statement("ALTER TABLE roles CHANGE `updated_at` `updated_at` TIMESTAMP NULL ON UPDATE CURRENT_TIMESTAMP");
-        DB::statement("ALTER TABLE roles MODIFY  id tinyint(4) AUTO_INCREMENT  PRIMARY KEY");
-        
     }
 
     /**

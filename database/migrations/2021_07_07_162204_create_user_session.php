@@ -14,14 +14,12 @@ class CreateUserSession extends Migration
     public function up()
     {
         Schema::create('user_session', function (Blueprint $table) {
-            $table->integer('id');
+            $table->increments('id');
             $table->tinyInteger('role_id')->comment('Foreign key of roles table');
             $table->integer('user_id')->comment('Foreign key of users table');
             $table->dateTime('created_at')->useCurrent();
             $table->timestamp('updated_at')->nullable();
         });
-        DB::statement("ALTER TABLE user_session CHANGE `updated_at` `updated_at` TIMESTAMP NULL ON UPDATE CURRENT_TIMESTAMP");
-        DB::statement("ALTER TABLE user_session MODIFY  id INT AUTO_INCREMENT  PRIMARY KEY");
     }
 
     /**

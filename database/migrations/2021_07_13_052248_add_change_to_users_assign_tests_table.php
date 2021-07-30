@@ -15,13 +15,7 @@ class AddChangeToUsersAssignTestsTable extends Migration
     {
         Schema::table('users_assign_tests', function (Blueprint $table) {
             $table->dateTime('created_at')->useCurrent()->change();
-            
         });
-        
-        DB::statement("ALTER TABLE users_assign_tests
-        CHANGE `created_at` `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP NULL,
-        CHANGE `updated_at` `updated_at` TIMESTAMP NULL ON UPDATE CURRENT_TIMESTAMP");
-        
     }
 
     /**

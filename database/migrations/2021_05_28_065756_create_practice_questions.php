@@ -14,7 +14,7 @@ class CreatePracticeQuestions extends Migration
     public function up()
     {
         Schema::create('practice_questions', function (Blueprint $table) {
-            $table->bigInteger('id');
+            $table->increments('id');
             $table->integer('user_id')->comment('Foreign key of users table');
             $table->tinyInteger('section_id')->comment('Foreign key of sections table');
             $table->tinyInteger('design_id')->comment('Foreign key of question_designs table');
@@ -30,9 +30,6 @@ class CreatePracticeQuestions extends Migration
             $table->dateTime('created_at')->useCurrent();
             $table->timestamp('updated_at')->nullable();
         });
-
-        DB::statement("ALTER TABLE practice_questions CHANGE `updated_at` `updated_at` TIMESTAMP NULL ON UPDATE CURRENT_TIMESTAMP");
-        DB::statement("ALTER TABLE practice_questions MODIFY  id INT AUTO_INCREMENT  PRIMARY KEY");
     }
 
     /**

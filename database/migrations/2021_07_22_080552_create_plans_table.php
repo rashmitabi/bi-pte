@@ -14,7 +14,7 @@ class CreatePlansTable extends Migration
     public function up()
     {
         Schema::create('plans', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
             $table->bigInteger('sub_id');
             $table->string('razorpay_plan_id');
             $table->string('plan_name',200);

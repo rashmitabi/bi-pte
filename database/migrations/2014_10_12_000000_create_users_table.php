@@ -14,7 +14,7 @@ class CreateUsersTable extends Migration
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->integer('id');
+            $table->increments('id');
             $table->tinyInteger('role_id')->comment('Foreign key of roles table');
             $table->integer('parent_user_id')->nullable()->comment('Self join with parent id');
             $table->string('first_name',100);
@@ -38,9 +38,6 @@ class CreateUsersTable extends Migration
             $table->dateTime('created_at')->useCurrent();
             $table->timestamp('updated_at')->nullable();
         });
-
-        DB::statement("ALTER TABLE users CHANGE `updated_at` `updated_at` TIMESTAMP NULL ON UPDATE CURRENT_TIMESTAMP");
-        DB::statement("ALTER TABLE users MODIFY  id INT AUTO_INCREMENT  PRIMARY KEY");
     }   
 
     /**
