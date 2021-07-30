@@ -100,9 +100,9 @@
           <button  type="button" class="btn delete-btn btn-outline-primary delete_modal" data-toggle="modal" data-target="#delete_modal" data-url="{{ route('branchadmin-students.destroy', $user->id) }}" data-id="{{ $user->id }}" style="    min-width: auto;"><i class="fas fa-trash icon"></i>Delete</button>
           <button  type="button" data-toggle="modal" data-target="#editdetail" class="btn edit-btn btn-outline-primary user-edit" data-id="{{ $user->id }}" data-url="{{ route('branchadmin-students.edit',$user->id) }}" data-md="yes" style="    min-width: auto;"><i class="fas fa-pen icon"></i>Edit</button>
             @if($user->status == 'A')
-                <a href="{{ route('branchadmin-student-changestatus',$user->id) }}"><button  type="button" class="btn shield-btn btn-outline-primary" style="min-width: auto;"><img src="{{ asset('assets/images/icons/blocked.svg') }}" class="icon"></i>Block</button></a>
+                <a href="{{ route('branchadmin-students-getstatus',$user->id) }}"><button  type="button" class="btn shield-btn btn-outline-primary" style="min-width: auto;"><img src="{{ asset('assets/images/icons/blocked.svg') }}" class="icon"></i>Block</button></a>
             @else
-            <a href="{{ route('branchadmin-student-changestatus',$user->id) }}"><button  type="button" class="btn btn-success" style="min-width: auto;"><img src="{{ asset('assets/images/icons/blocked.svg') }}" class="icon"></i>Unblock</button></a>
+            <a href="{{ route('branchadmin-students-getstatus',$user->id) }}"><button  type="button" class="btn btn-success" style="min-width: auto;"><img src="{{ asset('assets/images/icons/blocked.svg') }}" class="icon"></i>Unblock</button></a>
             @endif
                         
         </div>

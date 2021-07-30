@@ -27,14 +27,14 @@ $pageActive = isset($pageArray[4]) ? $pageArray[4] : 'dashboard';
 		<script src="{{ asset('assets/js/bootstrap-datepicker.js') }}" defer></script>
 	    <!-- <script src="{{ asset('assets/js/ckeditor.js') }}" defer></script> -->
 		<!-- <script src="https://cdn.ckeditor.com/ckeditor5/28.0.0/classic/ckeditor.js"></script>   -->
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/ckeditor/4.12.1/ckeditor.js"></script>
+		<script src="{{ asset('assets/js/ckeditor.js') }}"></script>
 	    <script src="{{ asset('assets/js/admin-custom.js') }}" defer></script>
 		<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js" defer></script> -->
 		<script src="{{ asset('assets/js/jquery.validate.min.js') }}" defer></script>
-		<script src="http://jqueryvalidation.org/files/dist/additional-methods.min.js" defer></script>
+		<script src="{{ asset('assets/js/additional-methods.min.js') }}" defer></script>
 
-		<script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js" defer></script>
+		<script src="{{ asset('assets/js/chart.js') }}" defer></script>
+		<script src="{{ asset('assets/js/bootstrap-select.min.js') }}" defer></script>
 		
 	    <!-- Fonts -->
 	    <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -54,7 +54,7 @@ $pageActive = isset($pageArray[4]) ? $pageArray[4] : 'dashboard';
   		<!-- <link href="{{ asset('assets/css/waitMe.min.css') }}" rel="stylesheet"> -->
 	    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
 	      rel="stylesheet">
-	    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
+	    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap-select.css') }}" />
 		  <style>
 		  		.error-msg{
 					  color:red;
