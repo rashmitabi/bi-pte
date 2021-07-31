@@ -84,6 +84,11 @@ class User extends Authenticatable
     {
         return $this->hasMany(User::class, 'parent_user_id');
     }
+    
+    public function student_taken_test()
+    {
+        return $this->hasMany(StudentTests::class, 'user_id');
+    }
 
     public function getFullnameAttribute($value)
     {

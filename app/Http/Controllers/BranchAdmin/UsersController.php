@@ -49,9 +49,13 @@ class UsersController extends Controller
         
         }
         $id = \Auth::user()->id;
+
+            
         if($request->ajax()) {
-            $data = User::where(['parent_user_id'=>$id,'role_id'=>3])->latest()->get();
+             $data = User::with(['student_taken_test'])->where(['parent_user_id'=>$id,'role_id'=>3])->latest()->get();
+
             return Datatables::of($data)
+                
                 ->addIndexColumn()
                 ->addColumn('checkbox', function($row){
                     $checkbox = '<input type="checkbox" class="form-check-input position-relative ml-0 checkSingleStudent" data-id="'.$row->id.'" value="0">';
@@ -71,6 +75,11 @@ class UsersController extends Controller
                     
                     $mobile_no = $row->mobile_no;
                     return $mobile_no;
+                })
+                 ->addColumn('count', function($row){
+                    
+                    $count = ($row->student_taken_test->count() >0) ? $row->student_taken_test->count(): 0;
+                    return $count;
                 })
                 ->addColumn('action', function($row){
                     $btn = '<ul class="actions-btns">
@@ -754,7 +763,7 @@ class UsersController extends Controller
     public function setPassword(Request $request,$id){
         
         $request->validate([
-           'password' => 'required|min:6',
+           'password' => 'required|min:8|max:20',
            'confirm_password' => 'required|same:password'
         ]);
         $input  = \Arr::except($request->all(),array('_token'));

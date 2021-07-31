@@ -29,7 +29,7 @@ $pageArray = explode('/', $currentPageURL);
             @foreach($sections as $section)
             <div class="card mb-3 section-show">
                 <div class="card-header collapsed" data-toggle="collapse" href="#collapse{{ $section->id}}">
-                    <a class="card-title">{{ $section->section_name }}</a>
+                    <a class="card-title">{{ ucfirst($section->section_name) }}</a>
                 </div>
                 <div id="collapse{{ $section->id}}" class="card-body collapse" data-parent="#accordion" >
                     <div class="reading-list">

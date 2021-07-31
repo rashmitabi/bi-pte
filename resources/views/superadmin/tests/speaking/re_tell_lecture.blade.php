@@ -26,22 +26,25 @@
                   @if(isset($questions->desc))
                     @php
                       $count = count($questions->questiondata);
-                    @endphp
+                    @endphp 
                     <input type="hidden" name="question_id" value="{{ $questions->id }}">
                     @for($i=0;$i<$count;$i++)
                       <div class=" col-12 mt-5 mb-1 ml-1 pr-3 white-bg common-col">
                         <input type="hidden" name="question_data_id[]" value="{{ $questions->questiondata[$i]->id }}">
+                        @php
+                          $data_value = json_decode($questions->questiondata[$i]->data_value);
+                        @endphp
                         <div class="form-group mb-2 row">
                            <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label">Question {{ $i+23 }}</label>
                            <div class="col-12 col-md-7 col-xl-8 col-sm-12 p-0">
-                              <input type="text" name="question[]" id="question{{ $i+1 }}" value="{{ $questions->questiondata[$i]->data_value }}" class="form-control " placeholder="Please Enter question{{ $i+23 }} like Whole,Total,Very,Open">
+                              <input type="text" name="question[]" id="question{{ $i+1 }}" value="{{ (isset($data_value->question) ? $data_value->question : '') }}" class="form-control " placeholder="Please Enter question{{ $i+23 }} like Whole,Total,Very,Open">
                            </div>
                         </div>
                         <input type="hidden" name="answer_data_id[]" value="{{ $questions->answerdata[$i]->id }}">
                         <div class="form-group mb-2 row">
                            <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label">Image {{ $i+23 }}</label>
                            <div class="col-12 col-md-7 col-xl-8 col-sm-12 p-0">
-                              <input type="text" name="image[]" id="image{{ $i+1 }}" value="{{ $questions->answerdata[$i]->answer_value }}" class="form-control " placeholder="Please Enter image{{ $i+23 }}">
+                              <input type="text" name="image[]" id="image{{ $i+1 }}" value="{{ (isset($data_value->image) ? $data_value->image : '') }}" class="form-control " placeholder="Please Enter image{{ $i+23 }}">
                            </div>
                         </div>
                         <div class="form-group mb-2 row">

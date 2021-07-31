@@ -64,6 +64,16 @@ class LoginController extends Controller
         if (Auth::attempt($request->only($login_type, 'password'))) {
             
             $user = Auth::user();
+            if($user->status == "R"){
+                $this->guard()->logout();
+                    $request->session()->flush();
+                    $request->session()->regenerate();
+                    return redirect()->back()
+                    ->withInput()
+                    ->withErrors([
+                        'login' => 'Your account is block by super admin.',
+                    ]);
+            }
             if($user->role_id == 2){
                 $loginrecord = UserSession::where("user_id",$user->id)->first();
                 if($loginrecord){

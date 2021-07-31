@@ -27,6 +27,7 @@ var table = $('#students').DataTable({
     {data: 'name', name: 'name'},
     {data: 'email', name: 'email'},
     {data: 'mobile_no', name: 'mobile_no'},
+    {data: 'count', name: 'count'},
     {data: 'action', name: 'action', orderable: false, searchable: false},
   ]
   });
@@ -458,7 +459,7 @@ $(document).ready(function() {
             type:'GET',
             data:{'id' : chekedStudentsIds},
             beforeSend: function(){
-              $('#password-set-body').html('<i class="fa fa-spinner fa-spin"></i>  Please Wait...');
+              $('#password-set-body').html('<div class="mb-5 text-center"><i class="fa fa-spinner fa-spin"></i>  Please Wait...</div>');
             },
             success:function(data) {
               $('#password-set-body').html(data.html);
@@ -472,7 +473,7 @@ $(document).ready(function() {
             type:'POST',
             data:{'_token':CSRF_TOKEN,'user_ids' : chekedStudentsIds},
             beforeSend: function(){
-              $('#user-status-update').html('<i class="fa fa-spinner fa-spin"></i>  Please Wait...');
+              $('#user-status-update').html('<div class="mb-5 text-center"><i class="fa fa-spinner fa-spin"></i>  Please Wait...</div>');
             },
             success:function(data) {
               $('#user-status-update').html(data.html);
@@ -542,7 +543,7 @@ $(document).ready(function() {
             type:'POST',
             data:{'_token':CSRF_TOKEN,'user_ids' : chekedStudentsIds},
             beforeSend: function(){
-              $('#show-send-email-body').html('<i class="fa fa-spinner fa-spin"></i>  Please Wait...');
+              $('#show-send-email-body').html('<div class="mb-5 text-center"><i class="fa fa-spinner fa-spin"></i>  Please Wait...</div>');
             },
             success:function(data) {
               $('#show-send-email-body').html(data.html);

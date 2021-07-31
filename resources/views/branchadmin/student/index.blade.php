@@ -27,6 +27,7 @@
                         <th>Full Name</th>
                         <th>Email</th>
                         <th>Mobile Number</th>
+                        <th>Taken Test</th>
                         <th>Action</th>
                     </tr>
                 </thead>

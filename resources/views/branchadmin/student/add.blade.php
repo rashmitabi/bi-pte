@@ -52,7 +52,7 @@
             <div class="form-group row">
               <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label required">Password</label>
               <div class="col-12 col-md-7 col-xl-7 col-sm-12">
-                <input type="password" name="password" value="{{ old('password') }}" class="form-control" placeholder="Enter Password">
+                <input type="password" name="password"  class="form-control" placeholder="Enter Password">
                 @if($errors->has('password'))
                   <span class="error-msg">{{$errors->first('password')}}</span>
                 @endif
@@ -61,7 +61,7 @@
             <div class="form-group row">
               <label class="col-12 col-md-5 col-xl-4 col-sm-12 col-form-label required">Confirm Password</label>
               <div class="col-12 col-md-7 col-xl-7 col-sm-12">
-                <input type="password" name="confirm_password" value="{{ old('confirm_password') }}" class="form-control" placeholder="Enter Confirm Password">
+                <input type="password" name="confirm_password"  class="form-control" placeholder="Enter Confirm Password">
                 @if($errors->has('confirm_password'))
                   <span class="error-msg">{{$errors->first('confirm_password')}}</span>
                 @endif

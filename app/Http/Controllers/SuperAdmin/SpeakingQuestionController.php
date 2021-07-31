@@ -291,14 +291,14 @@ class SpeakingQuestionController extends Controller
                 $questiondata = new Questiondata;
                 $questiondata->question_id = $id;
                 $questiondata->data_type = $questionType->question_title.$i;
-                $questiondata->data_value = $input['question'][$i];
+                $questiondata->data_value = array("question" => $input['question'][$i],"image" => $input['image'][$i]);
                 $questiondata->save();
            
 
                 $answerdata = new Answerdata;
                 $answerdata->question_id = $id;
                 $answerdata->answer_type = $questionType->question_title.$i;
-                $answerdata->answer_value = $input['image'][$i];
+                $answerdata->answer_value = '-';
                 $answerdata->sample_answer = $input['sample_ans'][$i];
                 $answerdata->save();
             }
@@ -317,12 +317,12 @@ class SpeakingQuestionController extends Controller
                
                 $questiondata = Questiondata::where('id',$input['question_data_id'][$i])->update(
                     array(
-                        "data_value" => $input['question'][$i]
+                        "data_value" => array("question" => $input['question'][$i],"image" => $input['image'][$i])
                     )
                 );
                 $answerdata = Answerdata::where('id',$input['answer_data_id'][$i])->update(
                     array(
-                        "answer_value" => $input['image'][$i],
+                        "answer_value" => '-',
                         "sample_answer" => $input['sample_ans'][$i]
                     )
                 );
@@ -371,14 +371,14 @@ class SpeakingQuestionController extends Controller
                 $questiondata = new Questiondata;
                 $questiondata->question_id = $id;
                 $questiondata->data_type = $questionType->question_title.$i;
-                $questiondata->data_value = $input['question'][$i];
+                $questiondata->data_value = array("question" => $input['question'][$i],"image" => $input['image'][$i]);
                 $questiondata->save();
            
 
                 $answerdata = new Answerdata;
                 $answerdata->question_id = $id;
                 $answerdata->answer_type = $questionType->question_title.$i;
-                $answerdata->answer_value = $input['image'][$i];
+                $answerdata->answer_value = '-';
                 $answerdata->sample_answer = $input['sample_ans'][$i];
                 $answerdata->save();
             }
@@ -397,12 +397,12 @@ class SpeakingQuestionController extends Controller
                
                 $questiondata = Questiondata::where('id',$input['question_data_id'][$i])->update(
                     array(
-                        "data_value" => $input['question'][$i]
+                        "data_value" => array("question" => $input['question'][$i] , "image" => $input['image'][$i])
                     )
                 );
                 $answerdata = Answerdata::where('id',$input['answer_data_id'][$i])->update(
                     array(
-                        "answer_value" => $input['image'][$i],
+                        "answer_value" => '-',
                         "sample_answer" => $input['sample_ans'][$i]
                     )
                 );

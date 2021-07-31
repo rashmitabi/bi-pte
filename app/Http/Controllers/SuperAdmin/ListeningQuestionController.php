@@ -51,6 +51,7 @@ class ListeningQuestionController extends Controller
         $image = $request->file('audio_file');
         if ($image) {
             $destinationPath = 'assets/images/upload-audio/';
+            $bip_file_path = 'assets/images/upload-audio/beep.wav';
             $ImageName = date('YmdHis') . "." . $image->getClientOriginalExtension();
             $image->move($destinationPath, $ImageName);
         }
@@ -66,7 +67,8 @@ class ListeningQuestionController extends Controller
         } catch (AwsException $e){
             dd($e->getMessage());
         }*/
-        $html ='<audio controls >';
+        $html ='<audio controls autoplay controlsList="nodownload">';
+            $html .='<source src="'.url($bip_file_path).'" type="audio/wav">';
             $html .='<source src="'.url($destinationPath.$ImageName).'" type="audio/'.$image->getClientOriginalExtension().'">';
             $html .='Your browser does not support the audio element.';
         $html .='</audio>';
